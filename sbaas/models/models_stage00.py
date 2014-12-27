@@ -3,26 +3,26 @@ from sqlalchemy.orm import relationship
 
 #Base models:
 #Experimentor
-#metabolomics_experimentor_id2name
-class metabolomics_experimentor_id2name(Base):
-    __table__ = make_table('metabolomics_experimentor_id2name')
+#experimentor_id2name
+class experimentor_id2name(Base):
+    __table__ = make_table('experimentor_id2name')
 
     def __repr__(self):
-        return "metabolomics_experimentor_id2name: %s, %s, %s" % (self.experimentor_id,self.experimentor_name,self.experimentor_role)
+        return "experimentor_id2name: %s, %s, %s" % (self.experimentor_id,self.experimentor_name,self.experimentor_role)
 
     def __repr__dict__(self):
         return {"experimentor_id":self.experimentor_id,"experimentor_name":self.experimentor_name,"experimentor_role":self.experimentor_role}
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
-#metabolomics_experimentor
-class metabolomics_experimentor(Base):
-    __table__ = make_table('metabolomics_experimentor')
+#experimentor
+class experimentor(Base):
+    __table__ = make_table('experimentor')
     #define relations
-    metabolomics_experimentor_id2name = relationship(metabolomics_experimentor_id2name);
+    experimentor_id2name = relationship(experimentor_id2name);
 
     def __repr__(self):
-        return "metabolomics_experimentor: %s, %s" % (self.experimentor_name,self.contact_information)
+        return "experimentor: %s, %s" % (self.experimentor_name,self.contact_information)
 
     #TODO:
     #JSON representation
@@ -31,19 +31,19 @@ class metabolomics_experimentor(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
-#metabolomics_experimentor_list
-class metabolomics_experimentor_list(Base):
-    __table__ = make_table('metabolomics_experimentor_list')
+#experimentor_list
+class experimentor_list(Base):
+    __table__ = make_table('experimentor_list')
     #define relations
-    metabolomics_experimentor_id2name = relationship(metabolomics_experimentor_id2name);
+    experimentor_id2name = relationship(experimentor_id2name);
 
     def __repr__(self):
-        return "metabolomics_experimentor_list: %s" % (self.experimentor_id)
+        return "experimentor_list: %s" % (self.experimentor_id)
 
     #TODO:
     #JSON representation
     def __repr__dict__(self):
-        return {"metabolomics_experimentor_list":self.experimentor_id}
+        return {"experimentor_list":self.experimentor_id}
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
@@ -67,9 +67,9 @@ class extraction_method(Base):
         return json.dumps(self.__repr__dict__())
 
 #Standards
-#metabolomics_standards
-class metabolomics_standards(Base):
-    __table__ = make_table('metabolomics_standards')
+#standards
+class standards(Base):
+    __table__ = make_table('standards')
 
     def __init__(self,met_id_I,met_name_I,formula_I,hmdb_I,
                 solubility_I,solubility_units_I,mass_I,cas_number_I,
@@ -93,7 +93,7 @@ class metabolomics_standards(Base):
 
     #define representation
     def __repr__(self):
-        return "metabolomics_standards: %s" % (self.met_id)
+        return "standards: %s" % (self.met_id)
 
     #JSON representation
     def __repr__dict__(self):
@@ -171,7 +171,7 @@ class mix2met_id(Base):
         self.mix_id=mix_id_I
         self.met_id=met_id_I
         self.met_name=met_name_I
-#metabolomics_calibrator
+#calibrator
 #calibrator_concentrations
 class calibrator_concentrations(Base):
     #__table__ = make_table('calibrator_concentrations')
@@ -379,7 +379,7 @@ class lc_elution(Base):
     #TODO:
     #define representation
     #def __repr__(self):
-        #return "metabolomics_sample %s" % ()
+        #return "sample %s" % ()
 
     #TODO:
     #JSON representation
@@ -452,10 +452,10 @@ class quantitation_method_list(Base):
     #JSON representation
 
 #Samples
-#metabolomics_sample
-class metabolomics_sample(Base):
-    #__table__ = make_table('metabolomics_sample')
-    __tablename__ = 'metabolomics_sample'
+#sample
+class sample(Base):
+    #__table__ = make_table('sample')
+    __tablename__ = 'sample'
 
     sample_name=Column(String(length=500), nullable = False, primary_key=True)
     sample_type=Column(String(length=100), nullable = False)
@@ -479,7 +479,7 @@ class metabolomics_sample(Base):
     #TODO:
     #define representation
     #def __repr__(self):
-        #return "metabolomics_sample %s" % ()
+        #return "sample %s" % ()
 
     #TODO:
     #JSON representation
@@ -637,53 +637,53 @@ class sample_massVolumeConversion(Base):
     #JSON representation
 
 #IS
-#metabolomics_IS
-#IS_storage
+#internal_standard
+#internal_standard_storage
 
 #experiments
 #experiment_types
-#metabolomics_experiment
-class metabolomics_experiment(Base):
-    #__table__ = make_table('metabolomics_experiment')
-    __tablename__ = 'metabolomics_experiment'
+#experiment
+class experiment(Base):
+    #__table__ = make_table('experiment')
+    __tablename__ = 'experiment'
     wid = Column(Integer, Sequence('wids'), primary_key=True,nullable=False,)
     exp_type_id=Column(Integer);
     id=Column(String(50),nullable=False, primary_key=True);
-    metabolomics_sample_name=Column(String(500),nullable=False, primary_key=True);
-    metabolomics_experimentor_id=Column(String(50));
+    sample_name=Column(String(500),nullable=False, primary_key=True);
+    experimentor_id=Column(String(50));
     extraction_method_id=Column(String(50));
     acquisition_method_id=Column(String(50),nullable=False);
     quantitation_method_id=Column(String(50));
-    metabolomics_is_id=Column(Integer);
+    internal_standard_id=Column(Integer);
 
-    def __init__(self,exp_type_id_I,id_I,metabolomics_sample_name_I,
-                 metabolomics_experimentor_id_I,extraction_method_id_I,
+    def __init__(self,exp_type_id_I,id_I,sample_name_I,
+                 experimentor_id_I,extraction_method_id_I,
                  acquisition_method_id_I,quantitation_method_id_I,
-                 metabolomics_is_id_I):
+                 internal_standard_id_I):
         self.exp_type_id=exp_type_id_I;
         self.id=id_I;
-        self.metabolomics_sample_name=metabolomics_sample_name_I;
-        self.metabolomics_experimentor_id=metabolomics_experimentor_id_I;
+        self.sample_name=sample_name_I;
+        self.experimentor_id=experimentor_id_I;
         self.extraction_method_id=extraction_method_id_I;
         self.acquisition_method_id=acquisition_method_id_I;
         self.quantitation_method_id=quantitation_method_id_I;
-        self.metabolomics_is_id=metabolomics_is_id_I;
+        self.internal_standard_id=internal_standard_id_I;
     #TODO:
     #define relations
 
     #define representation
     def __repr__(self):
-        return "metabolomics_experiment: %s" % (self.id)
+        return "experiment: %s" % (self.id)
 
     #JSON representation
     def __repr__dict__(self):
         return {"id":self.id,
-                "metabolomics_sample_name":self.metabolomics_sample_name,
-                "metabolomics_experimentor_id":self.metabolomics_experimentor_id,
+                "sample_name":self.sample_name,
+                "experimentor_id":self.experimentor_id,
                 "extraction_method_ide":self.extraction_method_id,
                 "acquisition_method_id":self.acquisition_method_id,
                 "quantitation_method_id":self.quantitation_method_id,
-                "metabolomics_IS_id":self.metabolomics_IS_id}
+                "internal_standard_id":self.internal_standard_id}
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
@@ -1370,15 +1370,15 @@ class metabolomics_characterization(Base):
         return json.dumps(self.__repr__dict__())
 
 '''
-class metabolomics_standards(Base):
-    __table__ = make_table('metabolomics_standards')
+class standards(Base):
+    __table__ = make_table('standards')
     #TODO:
     #define relations
 
     #TODO:
     #define representation
     #def __repr__(self):
-        #return "metabolomics_standards %s" % ()
+        #return "standards %s" % ()
 
     #TODO:
     #JSON representation
@@ -1490,15 +1490,15 @@ class mix2met_ID(Base):
 
     #TODO:
     #JSON representation
-class metabolomics_calibrator(Base):
-    __table__ = make_table('metabolomics_calibrator')
+class calibrator(Base):
+    __table__ = make_table('calibrator')
     #TODO:
     #define relations
 
     #TODO:
     #define representation
     #def __repr__(self):
-        #return "metabolomics_calibrator %s" % ()
+        #return "calibrator %s" % ()
 
     #TODO:
     #JSON representation

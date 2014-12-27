@@ -91,21 +91,21 @@ class stage01_quantification_execute():
         matches that of the calibration method'''
 
         '''SELECT 
-          metabolomics_experiment.id,
+          experiment.id,
           data_stage01_quantification_mqresultstable.sample_name, 
           data_stage01_quantification_mqresultstable.component_name, 
           data_stage01_quantification_mqresultstable.is_name,
           quantitation_method.is_name
         FROM 
           public.data_stage01_quantification_mqresultstable, 
-          public.metabolomics_experiment, 
+          public.experiment, 
           public.quantitation_method
         WHERE 
-          metabolomics_experiment.id LIKE 'ibop_rbc02' AND 
-          metabolomics_experiment.metabolomics_sample_name LIKE data_stage01_quantification_mqresultstable.sample_name AND 
+          experiment.id LIKE 'ibop_rbc02' AND 
+          experiment.sample_name LIKE data_stage01_quantification_mqresultstable.sample_name AND 
           (data_stage01_quantification_mqresultstable.sample_type LIKE 'Unknown' OR
           data_stage01_quantification_mqresultstable.sample_type LIKE 'Quality Control') AND 
-          metabolomics_experiment.quantitation_method_id LIKE quantitation_method.id AND 
+          experiment.quantitation_method_id LIKE quantitation_method.id AND 
           quantitation_method.component_name LIKE data_stage01_quantification_mqresultstable.component_name AND 
           data_stage01_quantification_mqresultstable.used_ AND
           NOT data_stage01_quantification_mqresultstable.is_ AND
@@ -1232,21 +1232,21 @@ class stage01_quantification_execute():
           --data_stage01_quantification_mqresultstable.used_, 
           --data_stage01_quantification_mqresultstable.calculated_concentration
         FROM 
-          public.metabolomics_experiment, 
-          public.metabolomics_sample, 
+          public.experiment, 
+          public.sample, 
           public.sample_description--, 
           --public.data_stage01_quantification_mqresultstable
         WHERE 
-          metabolomics_experiment.id LIKE 'nitrate01' AND 
-          metabolomics_experiment.metabolomics_sample_name LIKE data_stage01_quantification_mqresultstable.sample_name AND 
-          metabolomics_experiment.metabolomics_sample_name LIKE metabolomics_sample.sample_name AND 
-          metabolomics_sample.sample_id LIKE sample_description.sample_id AND 
+          experiment.id LIKE 'nitrate01' AND 
+          experiment.sample_name LIKE data_stage01_quantification_mqresultstable.sample_name AND 
+          experiment.sample_name LIKE sample.sample_name AND 
+          sample.sample_id LIKE sample_description.sample_id AND 
           sample_description.sample_name_abbreviation LIKE 'AnoxicWTNitrate' AND 
           sample_description.time_point LIKE '0' AND 
           sample_description.sample_description LIKE 'Filtrate' AND 
           data_stage01_quantification_mqresultstable.component_name LIKE 'uri.uri_1.Light' AND 
-          (metabolomics_sample.sample_dilution = 1 OR
-          metabolomics_sample.sample_dilution = 10);'''
+          (sample.sample_dilution = 1 OR
+          sample.sample_dilution = 10);'''
 
         return
     def update_dataStage01Averages_checkCVAndExtracellular(self,experiment_id_I):

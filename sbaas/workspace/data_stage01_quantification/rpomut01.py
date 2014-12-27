@@ -4,8 +4,8 @@ def data_stage01():
     '''data import'''
     #data_io = stage01_quantification_io();
     #data_io.import_quantitationMethod_add('131015','131015_QMethod.csv');
-    #data_io.import_metabolomicsSample_add('131015_metabolomics_sample.csv');
-    #data_io.import_metabolomicsExperiment_add('131015_metabolomics_experiment.csv');
+    #data_io.import_sample_add('131015_sample.csv');
+    #data_io.import_experiment_add('131015_experiment.csv');
     #data_io.import_dataStage01MQResultsTable_add('131015_Samples.csv');
     #data_io.import_dataStage01MQResultsTable_add('131015_Calibrators.csv');
 

@@ -49,8 +49,8 @@ class stage01_quantification_QMethod(base_analysis):
         #       calibrators_components
         # query experiment and samples that were used to create the given calibration method
         self.calibrators_samples = self.session.query(data_stage01_quantification_MQResultsTable.sample_name).filter(
-                             quantitation_method.id==metabolomics_experiment.quantitation_method_id,
-                             metabolomics_experiment.metabolomics_sample_name==data_stage01_quantification_MQResultsTable.sample_name,
+                             quantitation_method.id==experiment.quantitation_method_id,
+                             experiment.sample_name==data_stage01_quantification_MQResultsTable.sample_name,
                              data_stage01_quantification_MQResultsTable.sample_type.like('Standard'),
                              data_stage01_quantification_MQResultsTable.used_,
                              quantitation_method.id.like(quant_method_id_I)).group_by(

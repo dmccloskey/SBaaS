@@ -10,11 +10,11 @@ def data_stage01():
     #data_io.import_samplePhysiologicalParameters_add('data\\_input\\131210_sample_physiologicalparameters2.csv');
     #data_io.import_sampleDescription_add('data\\_input\\131210_sample_description.csv');
     #data_io.import_sampleDescription_add('data\\_input\\131210_sample_description2.csv');
-    #data_io.import_metabolomicsSample_add('data\\_input\\131210_metabolomics_sample.csv');
-    #data_io.import_metabolomicsSample_add('data\\_input\\131210_metabolomics_sample2.csv');
-    #data_io.import_metabolomicsSample_update('data\\_input\\131210_metabolomics_sample2.csv');
-    #data_io.import_metabolomicsExperiment_add('data\\_input\\131210_metabolomics_experiment.csv');
-    #data_io.import_metabolomicsExperiment_add('data\\_input\\131210_metabolomics_experiment2.csv');
+    #data_io.import_sample_add('data\\_input\\131210_sample.csv');
+    #data_io.import_sample_add('data\\_input\\131210_sample2.csv');
+    #data_io.import_sample_update('data\\_input\\131210_sample2.csv');
+    #data_io.import_experiment_add('data\\_input\\131210_experiment.csv');
+    #data_io.import_experiment_add('data\\_input\\131210_experiment2.csv');
     #data_io.import_dataStage01MQResultsTable_add('data\\_input\\131210_samples.csv');
     #data_io.import_dataStage01MQResultsTable_update('data\\_input\\131210_samples_update.csv');
     #data_io.import_dataStage01MQResultsTable_add('data\\_input\\131210_samples2.csv');

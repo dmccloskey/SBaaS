@@ -169,20 +169,20 @@ class stage01_isotopomer_io(base_analysis):
         export = base_exportData(data);
         export.write_headersAndElements2csv(header,filename);
 
-    def import_metabolomicsSample_add(self, filename):
+    def import_sample_add(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.add_metabolomicsSample(data.data);
+        self.add_sample(data.data);
         data.clear_data();
 
-    def add_metabolomicsSample(self, data_I):
-        '''add rows of metabolomics_sample'''
+    def add_sample(self, data_I):
+        '''add rows of sample'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = metabolomics_sample(d['sample_name'],
+                    data_add = sample(d['sample_name'],
                             d['sample_type'],
                             d['calibrator_id'],
                             d['calibrator_level'],
@@ -193,21 +193,21 @@ class stage01_isotopomer_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def import_metabolomicsSample_update(self, filename):
+    def import_sample_update(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.update_metabolomicsSample(data.data);
+        self.update_sample(data.data);
         data.clear_data();
 
-    def update_metabolomicsSample(self,data_I):
-        '''update rows of metabolomics_sample'''
+    def update_sample(self,data_I):
+        '''update rows of sample'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_sample).filter(
-                            metabolomics_sample.sample_name.like(d['sample_name'])).update(
+                    data_update = self.session.query(sample).filter(
+                            sample.sample_name.like(d['sample_name'])).update(
                             {'sample_type':d['sample_type'],
                             'calibrator_id':d['calibrator_id'],
                             'calibrator_level':d['calibrator_level'],
@@ -313,27 +313,27 @@ class stage01_isotopomer_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def import_metabolomicsExperiment_add(self, filename):
+    def import_experiment_add(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.add_metabolomicsExperiment(data.data);
+        self.add_experiment(data.data);
         data.clear_data();
 
-    def add_metabolomicsExperiment(self, data_I):
-        '''add rows of metabolomics_experiment'''
+    def add_experiment(self, data_I):
+        '''add rows of experiment'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = metabolomics_experiment(d['exp_type_id'],
+                    data_add = experiment(d['exp_type_id'],
                         d['id'],
-                        d['metabolomics_sample_name'],
-                        d['metabolomics_experimentor_id'],
+                        d['sample_name'],
+                        d['experimentor_id'],
                         d['extraction_method_id'],
                         d['acquisition_method_id'],
                         d['quantitation_method_id'],
-                        d['metabolomics_is_id']);
+                        d['internal_standard_id']);
                     self.session.add(data_add);
                 except SQLAlchemyError as e:
                     print(e);

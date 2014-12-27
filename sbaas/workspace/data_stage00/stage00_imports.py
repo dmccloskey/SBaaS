@@ -2,8 +2,8 @@ from analysis import *
 
 '''data import'''
 data_io = stage00_io();
-#data_io.import_metabolomicsStandards_update('data\\_input\\140117_metabolomics_standards_update.csv');
-#data_io.import_metabolomicsStandards_add('data\\_input\\140117_metabolomics_standards_add.csv');
+#data_io.import_standards_update('data\\_input\\140117_standards_update.csv');
+#data_io.import_standards_add('data\\_input\\140117_standards_add.csv');
 #data_io.import_standardsOrdering_add('data\\_input\\140117_standards_ordering_add.csv');
 
 #self.session = Session();

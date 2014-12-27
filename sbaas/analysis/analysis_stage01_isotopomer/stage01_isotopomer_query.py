@@ -9,9 +9,9 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_names = self.session.query(data_stage01_isotopomer_MQResultsTable.sample_name).filter(
                     data_stage01_isotopomer_MQResultsTable.sample_type.like(sample_type_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     data_stage01_isotopomer_MQResultsTable.sample_name).order_by(
                     data_stage01_isotopomer_MQResultsTable.sample_name.asc()).all();
             sample_names_O = [];
@@ -23,14 +23,14 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names (i.e. unknowns) that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+            sample_names = self.session.query(sample.sample_name).filter(
+                    sample.sample_id.like(sample_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -40,15 +40,15 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names (i.e. unknowns) that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_dilution == sample_dilution_I,
-                    metabolomics_experiment.id.like(experiment_id_I),
+            sample_names = self.session.query(sample.sample_name).filter(
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_dilution == sample_dilution_I,
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -58,16 +58,16 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
+            sample_names = self.session.query(sample.sample_name).filter(
                     sample_description.sample_name_short.like(sample_name_short_I),
                     sample_description.sample_description.like(sample_decription_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -77,16 +77,16 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
+            sample_names = self.session.query(sample.sample_name).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.sample_description.like(sample_decription_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -96,16 +96,16 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
+            sample_names = self.session.query(sample.sample_name).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    metabolomics_sample.sample_dilution == sample_dilution_I,
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    sample.sample_dilution == sample_dilution_I,
+                    experiment.id.like(experiment_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -116,23 +116,23 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name,
+            sample_names = self.session.query(sample.sample_name,
                     sample_description.sample_replicate,
-                    metabolomics_sample.sample_type).filter(
+                    sample.sample_type).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.time_point.like(time_point_I),
                     sample_description.sample_description.like(sample_description_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_dilution == sample_dilution_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_dilution == sample_dilution_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.component_name.like(component_name_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True)).group_by(
-                    metabolomics_sample.sample_name,
+                    sample.sample_name,
                     sample_description.sample_replicate,
-                    metabolomics_sample.sample_type).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_type).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             sample_replicates_O = [];
             sample_types_O = [];
@@ -148,22 +148,22 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name,
+            sample_names = self.session.query(sample.sample_name,
                     sample_description.sample_replicate,
-                    metabolomics_sample.sample_type).filter(
+                    sample.sample_type).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.time_point.like(time_point_I),
                     sample_description.sample_description.like(sample_description_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_dilution == sample_dilution_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_dilution == sample_dilution_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True)).group_by(
-                    metabolomics_sample.sample_name,
+                    sample.sample_name,
                     sample_description.sample_replicate,
-                    metabolomics_sample.sample_type).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_type).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             sample_replicates_O = [];
             sample_types_O = [];
@@ -179,16 +179,16 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names that are used from
         the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_name).filter(
+            sample_names = self.session.query(sample.sample_name).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.time_point.like(time_point_I),
                     sample_description.sample_description.like(sample_description_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_dilution == sample_dilution_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.id.like(experiment_id_I)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name.asc()).all();
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_dilution == sample_dilution_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.id.like(experiment_id_I)).group_by(
+                    sample.sample_name).order_by(
+                    sample.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_name);
             return sample_names_O;
@@ -199,14 +199,14 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names (i.e. unknowns) that are used from
         the experiment'''
         try:
-            sample_ids = self.session.query(metabolomics_sample.sample_id).filter(
+            sample_ids = self.session.query(sample.sample_id).filter(
                     data_stage01_isotopomer_MQResultsTable.sample_type.like(sample_type_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_id).order_by(
-                    metabolomics_sample.sample_id.asc()).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_id).order_by(
+                    sample.sample_id.asc()).all();
             sample_ids_O = [];
             for si in sample_ids: sample_ids_O.append(si.sample_id);
             return sample_ids_O;
@@ -215,13 +215,13 @@ class stage01_isotopomer_query(base_analysis):
     def get_sampleIDs_experimentID(self,experiment_id_I):
         '''Querry sample names that are used from the experiment'''
         try:
-            sample_ids = self.session.query(metabolomics_sample.sample_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
+            sample_ids = self.session.query(sample.sample_id).filter(
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_id).order_by(
-                    metabolomics_sample.sample_id.asc()).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_id).order_by(
+                    sample.sample_id.asc()).all();
             sample_ids_O = [];
             for si in sample_ids: sample_ids_O.append(si.sample_id);
             return sample_ids_O;
@@ -231,13 +231,13 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample names (i.e. unknowns) that are used from
         the experiment'''
         try:
-            sample_id = self.session.query(metabolomics_sample.sample_id).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+            sample_id = self.session.query(sample.sample_id).filter(
+                    sample.sample_name.like(sample_name_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_id).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_id).all();
             sample_id_O = sample_id[0];
             return sample_id_O;
         except SQLAlchemyError as e:
@@ -247,19 +247,19 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample name and sample name short that are used from
         the experimentfor specific time-points and dilutions'''
         try:
-            sample_name_short = self.session.query(metabolomics_sample.sample_name,
+            sample_name_short = self.session.query(sample.sample_name,
                     sample_description.sample_name_short).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+                    experiment.id.like(experiment_id_I),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.sample_type.like(sample_type_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_sample.sample_dilution == dilution_I,
-                    sample_description.sample_id.like(metabolomics_sample.sample_id),
+                    sample.sample_name.like(experiment.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample.sample_dilution == dilution_I,
+                    sample_description.sample_id.like(sample.sample_id),
                     sample_description.time_point.like(time_point_I)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name).all();
+                    sample.sample_name).order_by(
+                    sample.sample_name).all();
             sample_name_O = [];
             sample_name_short_O = [];
             for sn in sample_name_short:
@@ -273,19 +273,19 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry sample name and sample abbreviation that are used from
         the experimentfor specific time-points and dilutions'''
         try:
-            sample_name_abbreviation = self.session.query(metabolomics_sample.sample_name,
+            sample_name_abbreviation = self.session.query(sample.sample_name,
                     sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+                    experiment.id.like(experiment_id_I),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.sample_type.like(sample_type_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_sample.sample_dilution == dilution_I,
-                    sample_description.sample_id.like(metabolomics_sample.sample_id),
+                    sample.sample_name.like(experiment.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample.sample_dilution == dilution_I,
+                    sample_description.sample_id.like(sample.sample_id),
                     sample_description.time_point.like(time_point_I)).group_by(
-                    metabolomics_sample.sample_name).order_by(
-                    metabolomics_sample.sample_name).all();
+                    sample.sample_name).order_by(
+                    sample.sample_name).all();
             sample_name_O = [];
             sample_name_abbreviation_O = [];
             for sn in sample_name_abbreviation:
@@ -300,12 +300,12 @@ class stage01_isotopomer_query(base_analysis):
         the experiment'''
         try:
             sample_name_short = self.session.query(sample_description.sample_name_short).filter(
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    sample.sample_type.like(sample_type_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.sample_name_short).order_by(
                     sample_description.sample_name_short.asc()).all();
             sample_name_short_O = [];
@@ -318,12 +318,12 @@ class stage01_isotopomer_query(base_analysis):
         the experiment'''
         try:
             sample_name_short = self.session.query(sample_description.sample_name_short).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    sample.sample_name.like(sample_name_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.sample_name_short).all();
             sample_name_short_O = sample_name_short[0];
             return sample_name_short_O;
@@ -335,11 +335,11 @@ class stage01_isotopomer_query(base_analysis):
         the experiment'''
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
@@ -352,12 +352,12 @@ class stage01_isotopomer_query(base_analysis):
         the experiment'''
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    sample.sample_type.like(sample_type_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
@@ -370,12 +370,12 @@ class stage01_isotopomer_query(base_analysis):
         the experiment by sample name'''
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    sample.sample_name.like(sample_name_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
@@ -389,13 +389,13 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_name_abbreviations = self.session.query(
                     sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+                    experiment.id.like(experiment_id_I),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_sample.sample_dilution == dilution_I,
-                    sample_description.sample_id.like(metabolomics_sample.sample_id),
+                    sample.sample_name.like(experiment.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample.sample_dilution == dilution_I,
+                    sample_description.sample_id.like(sample.sample_id),
                     sample_description.time_point.like(time_point_I)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation).all();
@@ -409,14 +409,14 @@ class stage01_isotopomer_query(base_analysis):
     def get_sampleDilution_experimentIDAndSampleID(self,experiment_id_I,sample_id_I):
         '''Querry dilutions that are used from the experiment'''
         try:
-            sample_dilutions = self.session.query(metabolomics_sample.sample_dilution).filter(
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+            sample_dilutions = self.session.query(sample.sample_dilution).filter(
+                    sample.sample_id.like(sample_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_dilution).order_by(
-                    metabolomics_sample.sample_dilution.asc()).all();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_dilution).order_by(
+                    sample.sample_dilution.asc()).all();
             sample_dilutions_O = [];
             for sd in sample_dilutions: sample_dilutions_O.append(sd.sample_dilution);
             return sample_dilutions_O;
@@ -425,15 +425,15 @@ class stage01_isotopomer_query(base_analysis):
     def get_sampleDilution_experimentIDAndSampleNameAbbreviation(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry dilutions that are used from the experiment'''
         try:
-            sample_dilutions = self.session.query(metabolomics_sample.sample_dilution).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+            sample_dilutions = self.session.query(sample.sample_dilution).filter(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
-                    metabolomics_sample.sample_dilution).order_by(
-                    metabolomics_sample.sample_dilution.asc()).all();
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    sample.sample_dilution).order_by(
+                    sample.sample_dilution.asc()).all();
             sample_dilutions_O = [];
             for sd in sample_dilutions: sample_dilutions_O.append(sd.sample_dilution);
             return sample_dilutions_O;
@@ -442,15 +442,15 @@ class stage01_isotopomer_query(base_analysis):
     def get_sampleDilution_experimentIDAndTimePoint(self,experiment_id_I,time_point_I):
         '''Querry dilutions that are used from the experiment'''
         try:
-            sample_dilutions = self.session.query(metabolomics_sample.sample_dilution).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+            sample_dilutions = self.session.query(sample.sample_dilution).filter(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.time_point.like(time_point_I)).group_by(
-                    metabolomics_sample.sample_dilution).order_by(
-                    metabolomics_sample.sample_dilution.asc()).all();
+                    sample.sample_dilution).order_by(
+                    sample.sample_dilution.asc()).all();
             sample_dilutions_O = [];
             for sd in sample_dilutions: sample_dilutions_O.append(sd.sample_dilution);
             return sample_dilutions_O;
@@ -462,11 +462,11 @@ class stage01_isotopomer_query(base_analysis):
         try:
             time_points = self.session.query(sample_description.time_point).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     sample_description.time_point).order_by(
                     sample_description.time_point.asc()).all();
             time_points_O = [];
@@ -478,12 +478,12 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry time points that are used from the experiment and sample name'''
         try:
             time_points = self.session.query(sample_description.time_point).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(sample_name_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample_name_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.time_point).order_by(
                     sample_description.time_point.asc()).all();
             time_points_O = [];
@@ -495,11 +495,11 @@ class stage01_isotopomer_query(base_analysis):
         '''Querry time points that are used from the experiment and sample name'''
         try:
             time_points = self.session.query(sample_description.time_point).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.time_point).order_by(
                     sample_description.time_point.asc()).all();
             time_points_O = [];
@@ -513,12 +513,12 @@ class stage01_isotopomer_query(base_analysis):
         the experiment and sample_id'''
         try:
             component_names = self.session.query(data_stage01_isotopomer_MQResultsTable.component_name).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),                   
                     data_stage01_isotopomer_MQResultsTable.is_.is_(False),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name)).group_by(
                     data_stage01_isotopomer_MQResultsTable.component_name).order_by(
                     data_stage01_isotopomer_MQResultsTable.component_name.asc()).all();
             component_names_O = [];
@@ -532,10 +532,10 @@ class stage01_isotopomer_query(base_analysis):
         try:
             component_names = self.session.query(data_stage01_isotopomer_MQResultsTable.component_name).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),                   
+                    experiment.id.like(experiment_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),                   
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),                   
                     data_stage01_isotopomer_MQResultsTable.is_.is_(False)).group_by(
                     data_stage01_isotopomer_MQResultsTable.component_name).order_by(
@@ -550,9 +550,9 @@ class stage01_isotopomer_query(base_analysis):
         the experiment and sample_name'''
         try:
             component_names = self.session.query(data_stage01_isotopomer_MQResultsTable.component_name).filter(
-                    metabolomics_experiment.metabolomics_sample_name.like(sample_name_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),                   
+                    experiment.sample_name.like(sample_name_I),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),                   
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),                   
                     data_stage01_isotopomer_MQResultsTable.is_.is_(False)).group_by(
                     data_stage01_isotopomer_MQResultsTable.component_name).order_by(
@@ -581,8 +581,8 @@ class stage01_isotopomer_query(base_analysis):
         NOTE: intended to be used within a for loop'''
         try:
             component_group_name = self.session.query(data_stage01_isotopomer_MQResultsTable.component_group_name).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     data_stage01_isotopomer_MQResultsTable.component_name.like(component_name_I)).group_by(
                     data_stage01_isotopomer_MQResultsTable.component_group_name).all();
             if len(component_group_name)>1:
@@ -606,8 +606,8 @@ class stage01_isotopomer_query(base_analysis):
                     MS_components.product_exactmass).filter(
                     data_stage01_isotopomer_MQResultsTable.sample_name.like(sample_name_I),               
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_MQResultsTable.sample_name),
                     MS_components.component_name.like(data_stage01_isotopomer_MQResultsTable.component_name),
                     MS_components.ms_methodtype.like(ms_methodtype_I)).group_by(
                     data_stage01_isotopomer_MQResultsTable.component_name).order_by(
@@ -644,11 +644,11 @@ class stage01_isotopomer_query(base_analysis):
                     MS_components.product_exactmass).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.time_point.like(time_point_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_dilution == dilution_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),               
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_dilution == dilution_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),               
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
                     MS_components.component_name.like(data_stage01_isotopomer_MQResultsTable.component_name),
                     MS_components.ms_methodtype.like(ms_methodtype_I)).group_by(
@@ -696,11 +696,11 @@ class stage01_isotopomer_query(base_analysis):
                     MS_components.product_exactmass).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.time_point.like(time_point_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_dilution == dilution_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    data_stage01_isotopomer_MQResultsTable.sample_name.like(metabolomics_experiment.metabolomics_sample_name),      
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_dilution == dilution_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    data_stage01_isotopomer_MQResultsTable.sample_name.like(experiment.sample_name),      
                     data_stage01_isotopomer_MQResultsTable.used_.is_(True),
                     MS_components.component_name.like(data_stage01_isotopomer_MQResultsTable.component_name),
                     MS_components.ms_methodtype.like(ms_methodtype_I),
@@ -758,9 +758,9 @@ class stage01_isotopomer_query(base_analysis):
                     sample_physiologicalParameters.od600,
                     sample_description.reconstitution_volume,
                     sample_description.reconstitution_volume_units).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_sample.sample_id.like(sample_physiologicalParameters.sample_id),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).all();
+                    sample.sample_name.like(sample_name_I),
+                    sample.sample_id.like(sample_physiologicalParameters.sample_id),
+                    sample.sample_id.like(sample_description.sample_id)).all();
             cvs_O = physiologicalParameters[0][0];
             cvs_units_O = physiologicalParameters[0][1];
             od600_O = physiologicalParameters[0][2];
@@ -840,8 +840,8 @@ class stage01_isotopomer_query(base_analysis):
             # check for area or peak height ratio from quantitation_method
             try:
                 data = self.session.query(quantitation_method.use_area).filter(
-                        metabolomics_experiment.metabolomics_sample_name.like(sample_name_I),
-                        metabolomics_experiment.quantitation_method_id.like(quantitation_method.id),
+                        experiment.sample_name.like(sample_name_I),
+                        experiment.quantitation_method_id.like(quantitation_method.id),
                         quantitation_method.component_name.like(component_name_I)).all();
                 if data:
                     ratio_O = data[0][0];
@@ -1038,10 +1038,10 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_names = self.session.query(data_stage01_isotopomer_peakData.sample_name).filter(
                     data_stage01_isotopomer_peakData.experiment_id.like(experiment_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_peakData.sample_name),
-                    metabolomics_sample.sample_name.like( metabolomics_experiment.metabolomics_sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I)).group_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_peakData.sample_name),
+                    sample.sample_name.like( experiment.sample_name),
+                    sample.sample_type.like(sample_type_I)).group_by(
                     data_stage01_isotopomer_peakData.sample_name).order_by(
                     data_stage01_isotopomer_peakData.sample_name.asc()).all();
             sample_names_O = [];
@@ -1055,11 +1055,11 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_names = self.session.query(data_stage01_isotopomer_peakData.sample_name).filter(
                     data_stage01_isotopomer_peakData.experiment_id.like(experiment_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_isotopomer_peakData.sample_name),
-                    metabolomics_sample.sample_name.like( metabolomics_experiment.metabolomics_sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    sample_description.sample_id.like(metabolomics_sample.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(data_stage01_isotopomer_peakData.sample_name),
+                    sample.sample_name.like( experiment.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample_description.sample_id.like(sample.sample_id),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I)).group_by(
                     data_stage01_isotopomer_peakData.sample_name).order_by(
                     data_stage01_isotopomer_peakData.sample_name.asc()).all();
@@ -1078,8 +1078,8 @@ class stage01_isotopomer_query(base_analysis):
                     sample_description.sample_replicate).filter(
                     data_stage01_isotopomer_peakData.sample_name.like(sample_name_I),
                     data_stage01_isotopomer_peakData.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_peakData.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    data_stage01_isotopomer_peakData.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation,
                     sample_description.time_point,
                     sample_description.sample_replicate).order_by(
@@ -1234,16 +1234,16 @@ class stage01_isotopomer_query(base_analysis):
         by time-point, sample name abbreviation, scan type, and replicate numbers'''
         try:
             sample_name = self.session.query(data_stage01_isotopomer_peakSpectrum.sample_name,
-                    metabolomics_sample.sample_dilution).filter(
+                    sample.sample_dilution).filter(
                     data_stage01_isotopomer_peakSpectrum.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     data_stage01_isotopomer_peakSpectrum.time_point.like(time_point_I),
                     data_stage01_isotopomer_peakSpectrum.scan_type.like(scan_type_I),
                     data_stage01_isotopomer_peakSpectrum.experiment_id.like(experiment_id_I),
                     data_stage01_isotopomer_peakSpectrum.replicate_number == sample_replicate_I,
                     data_stage01_isotopomer_peakSpectrum.used_,
-                    data_stage01_isotopomer_peakSpectrum.sample_name.like(metabolomics_sample.sample_name)).group_by(
+                    data_stage01_isotopomer_peakSpectrum.sample_name.like(sample.sample_name)).group_by(
                     data_stage01_isotopomer_peakSpectrum.sample_name,
-                    metabolomics_sample.sample_dilution).all();
+                    sample.sample_dilution).all();
             sample_name_O = None;
             dilution_O = None;
             if not sample_name: 
@@ -1263,8 +1263,8 @@ class stage01_isotopomer_query(base_analysis):
                     data_stage01_isotopomer_peakSpectrum.time_point.like(time_point_I),
                     data_stage01_isotopomer_peakSpectrum.sample_type.like(sample_type_I),
                     data_stage01_isotopomer_peakSpectrum.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_peakSpectrum.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    data_stage01_isotopomer_peakSpectrum.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     data_stage01_isotopomer_peakSpectrum.used_).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
@@ -1286,8 +1286,8 @@ class stage01_isotopomer_query(base_analysis):
                     sample_description.sample_replicate).filter(
                     data_stage01_isotopomer_peakSpectrum.sample_name.like(sample_name_I),
                     data_stage01_isotopomer_peakSpectrum.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_peakSpectrum.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    data_stage01_isotopomer_peakSpectrum.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation,
                     sample_description.time_point,
                     sample_description.sample_replicate).order_by(
@@ -1308,15 +1308,15 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation,
                     sample_description.time_point,
-                    metabolomics_sample.sample_dilution,
+                    sample.sample_dilution,
                     sample_description.sample_replicate).filter(
                     data_stage01_isotopomer_peakSpectrum.sample_name.like(sample_name_I),
                     data_stage01_isotopomer_peakSpectrum.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_peakSpectrum.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    data_stage01_isotopomer_peakSpectrum.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation,
                     sample_description.time_point,
-                    metabolomics_sample.sample_dilution,
+                    sample.sample_dilution,
                     sample_description.sample_replicate).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = None;
@@ -1338,8 +1338,8 @@ class stage01_isotopomer_query(base_analysis):
             timepoints = self.session.query(
                     sample_description.time_point).filter(
                     data_stage01_isotopomer_peakSpectrum.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_peakSpectrum.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    data_stage01_isotopomer_peakSpectrum.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     data_stage01_isotopomer_peakSpectrum.used_).group_by(
                     sample_description.time_point).order_by(
                     sample_description.time_point.asc()).all();
@@ -1971,11 +1971,11 @@ class stage01_isotopomer_query(base_analysis):
         the experiment'''
         try:
             sample_name_short = self.session.query(sample_description.sample_name_short).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
+                    sample.sample_name.like(sample_name_I),
                     data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
                     data_stage01_isotopomer_normalized.used_.is_(True),
-                    data_stage01_isotopomer_normalized.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    data_stage01_isotopomer_normalized.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_short).all();
             sample_name_short_O = sample_name_short[0];
             return sample_name_short_O;
@@ -1988,8 +1988,8 @@ class stage01_isotopomer_query(base_analysis):
         try:
             sample_names = self.session.query(sample_description.sample_name_abbreviation).filter(
                     data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
-                    data_stage01_isotopomer_normalized.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    data_stage01_isotopomer_normalized.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     data_stage01_isotopomer_normalized.used_.is_(True)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
@@ -2120,15 +2120,15 @@ class stage01_isotopomer_query(base_analysis):
             sample_name_abbreviations = self.session.query(
                     data_stage01_isotopomer_normalized.sample_name_abbreviation).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
                     data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
                     data_stage01_isotopomer_normalized.used_.is_(True),
                     data_stage01_isotopomer_normalized.sample_type.like(sample_type_I),
                     data_stage01_isotopomer_normalized.time_point.like(time_point_I),
-                    data_stage01_isotopomer_normalized.sample_name.like(metabolomics_sample.sample_name)).group_by(
+                    data_stage01_isotopomer_normalized.sample_name.like(sample.sample_name)).group_by(
                     data_stage01_isotopomer_normalized.sample_name_abbreviation).order_by(
                     data_stage01_isotopomer_normalized.sample_name_abbreviation).all();
             sample_name_abbreviations_O = [];
@@ -2450,8 +2450,8 @@ class stage01_isotopomer_query(base_analysis):
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
                     data_stage01_isotopomer_normalized.used_.is_(True),
-                    data_stage01_isotopomer_normalized.sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    data_stage01_isotopomer_normalized.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.time_point).order_by(
                     sample_description.time_point.asc()).all();
             time_points_O = [];

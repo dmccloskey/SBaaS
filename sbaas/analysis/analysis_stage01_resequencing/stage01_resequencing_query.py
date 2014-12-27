@@ -9,9 +9,9 @@ class stage01_resequencing_query(base_analysis):
             sample_names = self.session.query(data_stage01_resequencing_metadata.experiment_id,
                     data_stage01_resequencing_metadata.sample_name).filter(
                     data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_resequencing_metadata.sample_name)).order_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_resequencing_metadata.sample_name)).order_by(
                     data_stage01_resequencing_metadata.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: 

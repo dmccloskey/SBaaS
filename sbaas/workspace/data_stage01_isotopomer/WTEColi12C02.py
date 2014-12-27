@@ -20,8 +20,8 @@ def data_stage01():
     #data_io.import_sampleStorage_add('data\\_input\\140415_sample_storage.csv');
     #data_io.import_samplePhysiologicalParameters_add('data\\_input\\140415_sample_physiologicalparameters.csv');
     #data_io.import_sampleDescription_add('data\\_input\\140415_sample_description.csv');
-    #data_io.import_metabolomicsSample_add('data\\_input\\140415_metabolomics_sample.csv');
-    #data_io.import_metabolomicsExperiment_add('data\\_input\\140415_metabolomics_experiment.csv');
+    #data_io.import_sample_add('data\\_input\\140415_sample.csv');
+    #data_io.import_experiment_add('data\\_input\\140415_experiment.csv');
     #data_io.import_dataStage01MQResultsTable_add('data\\_input\\140415_samples.csv');
 
     ## updates after review:

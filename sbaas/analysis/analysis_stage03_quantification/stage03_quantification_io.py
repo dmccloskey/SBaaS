@@ -244,7 +244,7 @@ class stage03_quantification_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage03_quantification_dG0_r).filter(
-                            metabolomics_standards.id.like(d['id'])).update(
+                            standards.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -315,7 +315,7 @@ class stage03_quantification_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage03_quantification_dG_r).filter(
-                            metabolomics_standards.id.like(d['id'])).update(
+                            standards.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -391,7 +391,7 @@ class stage03_quantification_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage03_quantification_dG_f).filter(
-                            metabolomics_standards.id.like(d['id'])).update(
+                            standards.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -554,7 +554,7 @@ class stage03_quantification_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage03_quantification_tcc).filter(
-                            metabolomics_standards.id.like(d['id'])).update(
+                            standards.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],

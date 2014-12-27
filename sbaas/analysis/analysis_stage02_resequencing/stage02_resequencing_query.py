@@ -9,10 +9,10 @@ class stage02_resequencing_query(stage01_resequencing_query,stage01_physiology_q
         '''Query description by sample id from sample_description'''
         try:
             data = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation).all();
             sample_name_abbreviation_O = None;
             if len(data)>2:

@@ -383,7 +383,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_experiment).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -403,7 +403,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_calcFragments).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                                 'model_id':d['model_id'],
@@ -430,7 +430,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_calcFluxes).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -455,8 +455,8 @@ class stage02_isotopomer_io(base_analysis):
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_sample).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                    data_update = self.session.query(sample).filter(
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -501,7 +501,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_modelReactions).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'model_id':d['model_id'],
                             'rxn_id':d['rxn_id'],
@@ -534,7 +534,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_modelMetabolites).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'model_id':d['model_id'],
                             'met_name':d['met_name'],
@@ -561,7 +561,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_experimentalFluxes).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -586,7 +586,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_experimentalPools).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -612,7 +612,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_experimentalFragments).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -711,7 +711,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_modelReactionsAtomMapping).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'model_id':d['model_id'],
                             'mapping_id':d['mapping_id'],
@@ -754,7 +754,7 @@ class stage02_isotopomer_io(base_analysis):
             for d in data_I:
                 try:
                     data_update = self.session.query(data_stage02_isotopomer_modelMetabolitesAtomMapping).filter(
-                            #metabolomics_sample.sample_name.like(d['sample_name'])
+                            #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'model_id':d['model_id'],
                             'mapping_id':d['mapping_id'],

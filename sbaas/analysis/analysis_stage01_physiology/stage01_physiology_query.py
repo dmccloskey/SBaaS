@@ -25,11 +25,11 @@ class stage01_physiology_query(base_analysis):
             sample_names = self.session.query(sample_description.sample_name_short).filter(
                     data_stage01_physiology_data.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_data.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_short).order_by(
                     sample_description.sample_name_short.asc()).all();
             sample_names_O = [];
@@ -45,9 +45,9 @@ class stage01_physiology_query(base_analysis):
             sample_names = self.session.query(data_stage01_physiology_data.sample_id).filter(
                     data_stage01_physiology_data.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_data.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id)).group_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id)).group_by(
                     data_stage01_physiology_data.sample_id).order_by(
                     data_stage01_physiology_data.sample_id.asc()).all();
             sample_names_O = [];
@@ -63,11 +63,11 @@ class stage01_physiology_query(base_analysis):
             met_ids = self.session.query(data_stage01_physiology_data.met_id).filter(
                     data_stage01_physiology_data.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_data.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_short.like(sample_name_short_I)).group_by(
                     data_stage01_physiology_data.met_id).order_by(
                     data_stage01_physiology_data.met_id.asc()).all();
@@ -87,11 +87,11 @@ class stage01_physiology_query(base_analysis):
                     data_stage01_physiology_data.met_id.like(met_id_I),
                     data_stage01_physiology_data.data_units.like(data_units_I),
                     data_stage01_physiology_data.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_short.like(sample_name_short_I)).order_by(
                     sample_description.sample_date.asc()).all();
             sample_date_O = [];
@@ -114,11 +114,11 @@ class stage01_physiology_query(base_analysis):
                     data_stage01_physiology_data.met_id.like(met_id_I),
                     data_stage01_physiology_data.data_units.like(data_units_I),
                     data_stage01_physiology_data.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_short.like(sample_name_short_I)).order_by(
                     sample_description.sample_date.asc()).all();
             sample_date_O = [];
@@ -139,10 +139,10 @@ class stage01_physiology_query(base_analysis):
         that do not have an OD600 but do have a time'''
         try:
             sample_names = self.session.query(sample_physiologicalParameters.sample_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_physiologicalParameters.sample_id),
-                    #metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_physiologicalParameters.sample_id),
+                    #sample.sample_id.like(sample_description.sample_id),
                     sample_physiologicalParameters.od600 == None).group_by(
                     sample_physiologicalParameters.sample_id).order_by(
                     sample_physiologicalParameters.sample_id.asc()).all();
@@ -157,10 +157,10 @@ class stage01_physiology_query(base_analysis):
         that do not have an OD600 but do have a time'''
         try:
             sample_names = self.session.query(sample_physiologicalParameters.sample_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_physiologicalParameters.sample_id),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_physiologicalParameters.sample_id),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_description.like(sample_description_I),
                     sample_physiologicalParameters.od600 == None).group_by(
                     sample_physiologicalParameters.sample_id).order_by(
@@ -176,9 +176,9 @@ class stage01_physiology_query(base_analysis):
         that do have an OD600 but do not have a culture density'''
         try:
             sample_names = self.session.query(sample_physiologicalParameters.sample_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_physiologicalParameters.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_physiologicalParameters.sample_id),
                     sample_physiologicalParameters.od600 != None,
                     sample_physiologicalParameters.culture_density == None).group_by(
                     sample_physiologicalParameters.sample_id).order_by(
@@ -193,10 +193,10 @@ class stage01_physiology_query(base_analysis):
         '''Query physiologicalParameters by sample id from sample_physiologicalparameters'''
         try:
             data = self.session.query(sample_physiologicalParameters).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_physiologicalParameters.sample_id)).first();
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_physiologicalParameters.sample_id)).first();
             pp = {};
             if data: 
                 pp['sample_id']=data.sample_id;
@@ -228,11 +228,11 @@ class stage01_physiology_query(base_analysis):
         #1 query sample_name_abbreviation and exp_typ_id by experiment_id and sample_id
         try:
             sample_names = self.session.query(sample_description.sample_name_abbreviation,
-                    metabolomics_experiment.exp_type_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_sample.sample_id.like(sample_id_I)).first();
+                    experiment.exp_type_id).filter(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_id.like(sample_id_I)).first();
             sample_name_abbreviation_O = None;
             exp_type_id_O = None;
             if sample_names:
@@ -247,11 +247,11 @@ class stage01_physiology_query(base_analysis):
                     sample_description.sample_description.like('Broth'),
                     sample_description.istechnical.is_(False),
                     sample_physiologicalParameters.od600 != None,
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_physiologicalParameters.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.exp_type_id == exp_type_id_O).group_by(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.exp_type_id == exp_type_id_O).group_by(
                     sample_physiologicalParameters.od600).all();
             od600_O = [];
             if od600: 
@@ -267,12 +267,12 @@ class stage01_physiology_query(base_analysis):
             od600 = self.session.query(sample_physiologicalParameters.od600,
                     sample_physiologicalParameters.culture_density,
                     sample_description.sample_date).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     sample_description.sample_name_short.like(sample_name_short_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    sample_physiologicalParameters.sample_id.like(metabolomics_sample.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.exp_type_id == exp_type_id_I).group_by(
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample_physiologicalParameters.sample_id.like(sample.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.exp_type_id == exp_type_id_I).group_by(
                     sample_physiologicalParameters.od600,
                     sample_physiologicalParameters.culture_density,
                     sample_description.sample_date).order_by(
@@ -293,12 +293,12 @@ class stage01_physiology_query(base_analysis):
             od600 = self.session.query(sample_physiologicalParameters.od600,
                     sample_physiologicalParameters.culture_density,
                     sample_description.sample_date).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
+                    experiment.id.like(experiment_id_I),
                     sample_description.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_id_I),
                     sample_physiologicalParameters.sample_id.like(sample_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.exp_type_id == exp_type_id_I).first();
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.exp_type_id == exp_type_id_I).first();
             od600_O = None;
             culture_density_O = None;
             if od600: 
@@ -313,10 +313,10 @@ class stage01_physiology_query(base_analysis):
         '''Query description by sample id from sample_description'''
         try:
             data = self.session.query(sample_description).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).first();
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id)).first();
             desc = {};
             if data: 
                 desc['sample_id']=data.sample_id;
@@ -381,10 +381,10 @@ class stage01_physiology_query(base_analysis):
         '''Query sample_date by sample id'''
         try:
             data = self.session.query(sample_description.sample_date).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).first();
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id)).first();
             sample_date_O = None;
             if data: 
                 sample_date_O=data.sample_date;
@@ -400,11 +400,11 @@ class stage01_physiology_query(base_analysis):
             sample_names = self.session.query(sample_description.sample_name_abbreviation).filter(
                     data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_rates.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_short.like(data_stage01_physiology_rates.sample_name_short)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
@@ -420,11 +420,11 @@ class stage01_physiology_query(base_analysis):
             sample_names = self.session.query(sample_description.sample_name_short).filter(
                     data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_rates.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_short.like(data_stage01_physiology_rates.sample_name_short),
                     data_stage01_physiology_rates.met_id.like(met_id_I),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I)).group_by(
@@ -443,11 +443,11 @@ class stage01_physiology_query(base_analysis):
             met_ids = self.session.query(data_stage01_physiology_rates.met_id).filter(
                     data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_rates.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id == exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(data_stage01_physiology_data.sample_id),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id == exp_type_I,
+                    experiment.sample_name.like(data_stage01_physiology_data.sample_id),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.sample_name_short.like(data_stage01_physiology_rates.sample_name_short)).group_by(
                     data_stage01_physiology_rates.met_id).order_by(
@@ -469,11 +469,11 @@ class stage01_physiology_query(base_analysis):
                                      sample_description.sample_name_abbreviation,
                                      sample_description.sample_description,
                                      sample_description.time_point,
-                                     metabolomics_experiment.exp_type_id).filter(
+                                     experiment.exp_type_id).filter(
                     sample_description.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name)).first();
+                    sample.sample_id.like(sample_id_I),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name)).first();
            technical_O = False;
            sample_replicate_biological_O = None;
            sample_name_abbreviation_O = None;
@@ -502,10 +502,10 @@ class stage01_physiology_query(base_analysis):
                         sample_description.sample_replicate_biological == sample_replicate_biological_O,
                         sample_description.sample_date == sample_date_O,
                         sample_description.sample_replicate == sample_replicate_biological_O,
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_experiment.exp_type_id == exp_type_id_O).first();
+                    sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    experiment.exp_type_id == exp_type_id_O).first();
                sample_id_I = None;
                if sample_id: sample_id_I = sample_id.sample_id
             except SQLAlchemyError as e:
@@ -522,10 +522,10 @@ class stage01_physiology_query(base_analysis):
                     data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_rates.met_id.like(met_id_I),
                     data_stage01_physiology_rates.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
                     data_stage01_physiology_rates.sample_name_short.like(sample_description.sample_name_short)).first();
             slope, intercept, r2, rate, rate_units, p_value, std_err = None,None,None,None,None,None,None;
             if data: 
@@ -600,10 +600,10 @@ class stage01_physiology_query(base_analysis):
                     data_stage01_physiology_ratesAverages.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_ratesAverages.met_id.like(met_id_I),
                     data_stage01_physiology_ratesAverages.used_.is_(True),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
                     data_stage01_physiology_ratesAverages.sample_name_abbreviation.like(sample_description.sample_name_abbreviation)).first();
             slope_average, intercept_average, rate_average, rate_units, rate_var = None,None,None,None,None;
             if data: 

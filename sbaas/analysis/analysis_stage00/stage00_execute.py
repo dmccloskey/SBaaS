@@ -188,7 +188,7 @@ class stage00_execute():
         #                       e.g. data\\Compound Structure Files\\
         #                  file_ext = extension of the file (e.g. .mol)}]
         # output:
-        #       update to metabolomics_standards table
+        #       update to standards table
         
         data_O = [];
         for data in data_I:
@@ -198,22 +198,22 @@ class stage00_execute():
             # read in the structure file
             with open (fileName, "r") as myfile:
                 structureFile=myfile.read()
-            # update the metabolomics_standards table with the structure file
+            # update the standards table with the structure file
             data_O.append({'met_id':data['met_id'],
                            'structure_file':structureFile,
                            'structure_file_extention':data['file_ext']});
-        # update metabolomics_standards table
+        # update standards table
         io = stage00_io();
-        io.update_metabolomicsStandards_structureFile(data_O);
+        io.update_standards_structureFile(data_O);
 
     def execute_updateFormulaAndMassFromStructure(self, met_ids_I):
         '''update the molecular formula and exact mass of
-        metabolomics_standards from imported structure file'''
+        standards from imported structure file'''
 
         data_O = [];
         for met in met_ids_I:
             # query the structure file and extension
-            struct_file, struct_file_ext = self.stage00_query.get_structureFile_metabolomicsStandards(met);
+            struct_file, struct_file_ext = self.stage00_query.get_structureFile_standards(met);
             # write the structure file to a temporary directory
             struct_file_name = 'data\\struct'+struct_file_ext
             with open(struct_file_name, 'w') as outfile:
@@ -233,11 +233,11 @@ class stage00_execute():
             res = RunCxcalc(cxcalc_bin,cmd,args)
             res = res.split('\n')[1].split('\t')[1].split('\r')[0]
             formula_O = res;
-            # update metabolomics_standards with the formula and exact mass
+            # update standards with the formula and exact mass
             data_O.append({'met_id':met,'exactmass':exactmass_O,'mass':mass_O,'formula':formula_O});
-        # update metabolomics_standards table
+        # update standards table
         io = stage00_io();
-        io.update_metabolomicsStandards_formulaAndMass(data_O);
+        io.update_standards_formulaAndMass(data_O);
 
     def execute_updatePrecursorFormulaAndMass(self, met_ids_I):
         '''update the precusor formula and exact mass of
@@ -250,17 +250,17 @@ class stage00_execute():
         mass_h = Formula('H').mass
         data_O = [];
         for met in met_ids_I:
-            # query exact mass and formula from metabolomics_standards
-            exactMass_O, formula_O = self.stage00_query.get_exactMassAndFormula_metabolomicsStandards(met);
+            # query exact mass and formula from standards
+            exactMass_O, formula_O = self.stage00_query.get_exactMassAndFormula_standards(met);
             ## calculate the formula and exact mass using chemAxon cxcalc
             ## query the structure file and extension
-            #struct_file, struct_file_ext = self.stage00_query.get_structureFile_metabolomicsStandards(met);
+            #struct_file, struct_file_ext = self.stage00_query.get_structureFile_standards(met);
             ## write the structure file to a temporary directory
             #struct_file_name = 'data\\struct'+struct_file_ext
             #with open(struct_file_name, 'w') as outfile:
             #    outfile.write(struct_file);
             ## calculate the formula and exact mass using chemAxon cxcalc
-            ## alternatively, one could query metabolomics_standards for the formula
+            ## alternatively, one could query standards for the formula
             #molfile = os.getcwd() + '\\' + struct_file_name
             #args = [molfile];
             #cmd = 'formula';
@@ -325,7 +325,7 @@ class stage00_execute():
         return;
 
     def execute_makeExperimentFromSampleFile(self, sample_fileName_I, nTechReps_I, dil_levels_I):
-        '''Populate metabolomics_experiment, metabolomics_samples,
+        '''Populate experiment, samples,
         sample_physiologicalparameters, sample_description, and sample_storage tables'''
 
         # Input:
@@ -336,22 +336,22 @@ class stage00_execute():
         io = stage00_io();
         #import sample file and split into respective tables
         sampleDescription_data,samplePhysiologicalParameters_data,\
-            sampleStorage_data,metabolomicsSample_data,\
-            metabolomicsExperiment_data = io.import_sampleFile_add(sample_fileName_I);
+            sampleStorage_data,sample_data,\
+            experiment_data = io.import_sampleFile_add(sample_fileName_I);
         #make technical replicates and dilutions
         if nTechReps_I>0 or len(dil_levels_I)>0:
             sampleDescription_data,samplePhysiologicalParameters_data,\
-                sampleStorage_data,metabolomicsSample_data,\
-                metabolomicsExperiment_data = self.make_techRepsAndDils(nTechReps_I, dil_levels_I,
+                sampleStorage_data,sample_data,\
+                experiment_data = self.make_techRepsAndDils(nTechReps_I, dil_levels_I,
                                                                         sampleDescription_data,samplePhysiologicalParameters_data,
                                                                         sampleStorage_data,
-                                                                        metabolomicsSample_data,metabolomicsExperiment_data);
+                                                                        sample_data,experiment_data);
             # add the data in order
             io.add_sampleDescription(sampleDescription_data);
             io.add_samplePhysiologicalParameters(samplePhysiologicalParameters_data);
             io.add_sampleStorage(sampleStorage_data);
-            io.add_metabolomicsSample(metabolomicsSample_data);
-            io.add_metabolomicsExperiment(metabolomicsExperiment_data);
+            io.add_sample(sample_data);
+            io.add_experiment(experiment_data);
 
     def execute_makeBatchFile(self, experiment_id_I, DateAcquisition_I, batch_fileName_I, experiment_type_I=4):
         '''generate the acqusition batch file for the experiment'''
@@ -374,22 +374,22 @@ class stage00_execute():
 
     def make_techRepsAndDils(self,nTechReps_I, dil_levels_I,
                              sampleDescription_data_I, samplePhysiologicalParameters_data_I, sampleStorage_data_I,
-                             metabolomicsSample_data_I,metabolomicsExperiment_data_I):
-        '''expand metabolomics_experiment and metabolomics_sample tables
+                             sample_data_I,experiment_data_I):
+        '''expand experiment and sample tables
         to include technical replicates and dilutions'''
 
         sampleDescription_data_O = [];
         samplePhysiologicalParameters_data_O = [];
         sampleStorage_data_O = [];
-        metabolomicsSample_data_O = [];
-        metabolomicsExperiment_data_O = [];
+        sample_data_O = [];
+        experiment_data_O = [];
 
         # get the different metabolomics experiment ids:
-        experiment_ids = [v['id'] for v in metabolomicsExperiment_data_I];
+        experiment_ids = [v['id'] for v in experiment_data_I];
         experiment_ids_unique = list(set(experiment_ids));
         for experiment_id in experiment_ids_unique:
             # get the bioRep sample names for the experiment
-            sample_names = [v['metabolomics_sample_name'] for v in metabolomicsExperiment_data_I];
+            sample_names = [v['sample_name'] for v in experiment_data_I];
             ## query the maximum number of technical reps based on the experiment id
             #nMaxBioReps = self.stage00_query.get_nMaxBioReps_sampleDescription(experiment_id); # breaks when the number of bio reps is not the same for all samples in an experiment
             for row in sampleDescription_data_I:
@@ -495,11 +495,11 @@ class stage00_execute():
                                         'ph':row['ph'],
                                         'box':row['box'],
                                         'pos':row['pos']});
-            for row in metabolomicsSample_data_I:
-                # add techReps to metabolomics_sample
-                # copy metabolomics_sample fields to techReps
-                # add dilutions to metabolomics_sample
-                # copy metabolomics_sample fields for bio/techReps to dilutions
+            for row in sample_data_I:
+                # add techReps to sample
+                # copy sample fields to techReps
+                # add dilutions to sample
+                # copy sample fields for bio/techReps to dilutions
                 # modify sample_dilution field to reflect the dilution factor
 
                 # query the maximum number of technical reps based on the experiment id and sample name
@@ -508,7 +508,7 @@ class stage00_execute():
                 for dil in dil_levels_I:
                     sample_name_new_dil = copy(row['sample_name']);
                     sample_name_new_dil += '-' + str(dil) + 'x';
-                    metabolomicsSample_data_O.append({'sample_name':sample_name_new_dil,
+                    sample_data_O.append({'sample_name':sample_name_new_dil,
                                     'sample_type':row['sample_type'],
                                     'calibrator_id':None,
                                     'calibrator_level':None,
@@ -534,7 +534,7 @@ class stage00_execute():
                     for l in range(len(sample_name_list)-1):  sample_name_new += sample_name_list[l] + '-';
                     sample_name_new += str(nMaxBioReps*rep + replicate_number);
                     if sample_dil: sample_name_new += '-' + sample_dil;
-                    metabolomicsSample_data_O.append({'sample_name':sample_name_new,
+                    sample_data_O.append({'sample_name':sample_name_new,
                                         'sample_type':row['sample_type'],
                                         'calibrator_id':None,
                                         'calibrator_level':None,
@@ -543,34 +543,34 @@ class stage00_execute():
                     for dil in dil_levels_I:
                         sample_name_new_dil = copy(sample_name_new);
                         sample_name_new_dil += '-' + str(dil) + 'x';
-                        metabolomicsSample_data_O.append({'sample_name':sample_name_new_dil,
+                        sample_data_O.append({'sample_name':sample_name_new_dil,
                                         'sample_type':row['sample_type'],
                                         'calibrator_id':None,
                                         'calibrator_level':None,
                                         'sample_id':sample_id_new,
                                         'sample_dilution':dil});
                         
-            for row in metabolomicsExperiment_data_I:
+            for row in experiment_data_I:
                 # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['metabolomics_sample_name']);
+                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['sample_name']);
                 nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                # add techReps and dilutions to metabolomics_experiment
-                # copy metabolomics_experiment fields to techReps and dilutions
+                # add techReps and dilutions to experiment
+                # copy experiment fields to techReps and dilutions
                 for dil in dil_levels_I:
-                    sample_name_new_dil = copy(row['metabolomics_sample_name']);
+                    sample_name_new_dil = copy(row['sample_name']);
                     sample_name_new_dil += '-' + str(dil) + 'x';
-                    metabolomicsExperiment_data_O.append({'exp_type_id':row['exp_type_id'],
+                    experiment_data_O.append({'exp_type_id':row['exp_type_id'],
                                         'id':row['id'],
-                                        'metabolomics_sample_name':sample_name_new_dil,
-                                        'metabolomics_experimentor_id':row['metabolomics_experimentor_id'],
+                                        'sample_name':sample_name_new_dil,
+                                        'experimentor_id':row['experimentor_id'],
                                         'extraction_method_id':row['extraction_method_id'],
                                         'acquisition_method_id':row['acquisition_method_id'],
                                         'quantitation_method_id':row['quantitation_method_id'],
-                                        'metabolomics_is_id':row['metabolomics_is_id']});
+                                        'internal_standard_id':row['internal_standard_id']});
 
                 for rep in range(1,nTechReps_I+1):
                     sample_name_new = '';
-                    sample_name_list = row['metabolomics_sample_name'].split('-');
+                    sample_name_list = row['sample_name'].split('-');
                     sample_dil = None #check for something else besides the replicate number
                     if any(let.isalpha() for let in sample_name_list[len(sample_name_list)-1]): 
                         sample_dil = sample_name_list[len(sample_name_list)-1]
@@ -579,28 +579,28 @@ class stage00_execute():
                     replicate_number = int(sample_name_list[len(sample_name_list)-1]);
                     sample_name_new += str(nMaxBioReps*rep + replicate_number);
                     if sample_dil: sample_name_new += '-' + sample_dil;
-                    metabolomicsExperiment_data_O.append({'exp_type_id':row['exp_type_id'],
+                    experiment_data_O.append({'exp_type_id':row['exp_type_id'],
                                         'id':row['id'],
-                                        'metabolomics_sample_name':sample_name_new,
-                                        'metabolomics_experimentor_id':row['metabolomics_experimentor_id'],
+                                        'sample_name':sample_name_new,
+                                        'experimentor_id':row['experimentor_id'],
                                         'extraction_method_id':row['extraction_method_id'],
                                         'acquisition_method_id':row['acquisition_method_id'],
                                         'quantitation_method_id':row['quantitation_method_id'],
-                                        'metabolomics_is_id':row['metabolomics_is_id']});
+                                        'internal_standard_id':row['internal_standard_id']});
 
                     for dil in dil_levels_I:
                         sample_name_new_dil = copy(sample_name_new);
                         sample_name_new_dil += '-' + str(dil) + 'x';
-                        metabolomicsExperiment_data_O.append({'exp_type_id':row['exp_type_id'],
+                        experiment_data_O.append({'exp_type_id':row['exp_type_id'],
                                         'id':row['id'],
-                                        'metabolomics_sample_name':sample_name_new_dil,
-                                        'metabolomics_experimentor_id':row['metabolomics_experimentor_id'],
+                                        'sample_name':sample_name_new_dil,
+                                        'experimentor_id':row['experimentor_id'],
                                         'extraction_method_id':row['extraction_method_id'],
                                         'acquisition_method_id':row['acquisition_method_id'],
                                         'quantitation_method_id':row['quantitation_method_id'],
-                                        'metabolomics_is_id':row['metabolomics_is_id']});
+                                        'internal_standard_id':row['internal_standard_id']});
 
-        return sampleDescription_data_O, samplePhysiologicalParameters_data_O, sampleStorage_data_O, metabolomicsSample_data_O,metabolomicsExperiment_data_O;
+        return sampleDescription_data_O, samplePhysiologicalParameters_data_O, sampleStorage_data_O, sample_data_O,experiment_data_O;
 
     def make_batchFile(self,DateAcquisition_I,data_unknown_I,data_qc_I):
         '''make an acquisition batch file from sample_description'''
@@ -860,8 +860,8 @@ class stage00_execute():
         # NOTES: DELETE statement appears to be broken
 
         # remove samples from
-        # 1. metabolomics_experiment
-        # 2. metabolomics_sample
+        # 1. experiment
+        # 2. sample
         # 3. sample_description, sample_storage, sample_physiologicalparameters
 
         dataListDelete = [];
@@ -869,14 +869,14 @@ class stage00_execute():
             dataListDelete.append({'experiment_id':experiment_id_I,
                                    'sample_id':si});
         # remove samples in order
-        self.stage00_query.delete_sample_experimentIDAndSampleID_metabolomicsExperiment(dataListDelete);
-        self.stage00_query.delete_sample_experimentIDAndSampleID_metabolomicsSample(dataListDelete);
+        self.stage00_query.delete_sample_experimentIDAndSampleID_experiment(dataListDelete);
+        self.stage00_query.delete_sample_experimentIDAndSampleID_sample(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_sampleDescription(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_sampleStorage(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_samplePhysiologicalParameters(dataListDelete);
 
     def execute_makeExperimentFromCalibrationFile(self, calibration_fileName_I):
-        '''Populate metabolomics_experiment and metabolomics_samples'''
+        '''Populate experiment and samples'''
 
         # Input:
         #   calibration_fileName_I = name of the .csv file with calibrator information
@@ -908,9 +908,9 @@ class stage00_execute():
                 met_id_conv = met_id_conv_dict[sc['met_id']];
             else:
                 met_id_conv = sc['met_id'];
-            #query calibrator_id and calibrator_level from metabolomics_sample
+            #query calibrator_id and calibrator_level from sample
             calibrator_id,calibrator_level = None,None;
-            calibrator_id,calibrator_level = self.stage00_query.get_calibratorIDAndLevel_sampleNameAndSampleType_metabolomicsSample(sc['sample_name'],sc['sample_type']);
+            calibrator_id,calibrator_level = self.stage00_query.get_calibratorIDAndLevel_sampleNameAndSampleType_sample(sc['sample_name'],sc['sample_type']);
             #query calibrator_concentration from calibrator_concentrations
             calibrator_concentration, concentration_units = 'N/A', None;
             if calibrator_id and calibrator_level:
@@ -933,20 +933,20 @@ class stage00_execute():
         # NOTES: DELETE statement appears to be broken
 
         # remove samples from
-        # 1. metabolomics_experiment
-        # 2. metabolomics_sample
+        # 1. experiment
+        # 2. sample
         # 3. sample_description, sample_storage, sample_physiologicalparameters
 
         dataListDelete = [];
         for experiment_id_I in experiment_ids_I:
             #query the sample IDs in the experiment
-            sample_ids = self.stage00_query.get_sampleIDs_experimentID_metabolomicsExperiment(experiment_id_I);
+            sample_ids = self.stage00_query.get_sampleIDs_experimentID_experiment(experiment_id_I);
             for si in sample_ids:
                 dataListDelete.append({'experiment_id':experiment_id_I,
                                    'sample_id':si});
         # remove samples in order
-        self.stage00_query.delete_sample_experimentIDAndSampleID_metabolomicsExperiment(dataListDelete);
-        self.stage00_query.delete_sample_experimentIDAndSampleID_metabolomicsSample(dataListDelete);
+        self.stage00_query.delete_sample_experimentIDAndSampleID_experiment(dataListDelete);
+        self.stage00_query.delete_sample_experimentIDAndSampleID_sample(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_sampleDescription(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_sampleStorage(dataListDelete);
         self.stage00_query.delete_sample_experimentIDAndSampleID_samplePhysiologicalParameters(dataListDelete);

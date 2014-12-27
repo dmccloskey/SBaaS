@@ -2,7 +2,7 @@ from analysis import *
 
 stage00 = stage00_execute()
 
-# import structure files into metabolomics_standards
+# import structure files into standards
 data = [
         {'met_id':'12ppd-R','file_directory':'data\\BIGG_mol\\','file_ext':'.mol'},
 {'met_id':'2392410','file_directory':'data\\BIGG_mol\\','file_ext':'.mol'},

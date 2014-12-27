@@ -24,7 +24,6 @@
     <Compile Include="analysis\analysis_base\base_calculate.py" />
     <Compile Include="analysis\analysis_base\base_exportData.py" />
     <Compile Include="analysis\analysis_base\base_importData.py" />
-    <Compile Include="analysis\analysis_isotopomer.py" />
     <Compile Include="analysis\analysis_base\base_analysis.py" />
     <Compile Include="analysis\analysis_base\__init__.py" />
     <Compile Include="analysis\analysis_stage00\stage00_execute.py" />

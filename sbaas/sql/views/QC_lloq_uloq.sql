@@ -13,11 +13,11 @@ SELECT
 FROM 
   public.data_stage01_mqresultstable, 
   public.quantitation_method, 
-  public.metabolomics_experiment
+  public.experiment
 WHERE 
-  metabolomics_experiment.id LIKE 'nitrate01' AND --change per experiment
-  metabolomics_experiment.metabolomics_sample_name LIKE data_stage01_mqresultstable.sample_name AND 
-  metabolomics_experiment.quantitation_method_id LIKE quantitation_method.id AND 
+  experiment.id LIKE 'nitrate01' AND --change per experiment
+  experiment.sample_name LIKE data_stage01_mqresultstable.sample_name AND 
+  experiment.quantitation_method_id LIKE quantitation_method.id AND 
   data_stage01_mqresultstable.component_name LIKE quantitation_method.component_name AND 
   NOT data_stage01_mqresultstable.is_  AND 
   data_stage01_mqresultstable.used_ AND

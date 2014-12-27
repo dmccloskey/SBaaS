@@ -4,20 +4,20 @@ from sqlalchemy.exc import IntegrityError
 
 class stage00_io(base_analysis):
 
-    def import_metabolomicsStandards_add(self, filename):
+    def import_standards_add(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.add_metabolomicsStandards(data.data);
+        self.add_standards(data.data);
         data.clear_data();
 
-    def add_metabolomicsStandards(self, data_I):
+    def add_standards(self, data_I):
         '''add rows of metabolomics_standard'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = metabolomics_standards(d['met_id'],
+                    data_add = standards(d['met_id'],
                             d['met_name'],
                             d['formula'],
                             d['hmdb'],
@@ -33,21 +33,21 @@ class stage00_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def import_metabolomicsStandards_update(self, filename):
+    def import_standards_update(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.update_metabolomicsStandards(data.data);
+        self.update_standards(data.data);
         data.clear_data();
 
-    def update_metabolomicsStandards(self,data_I):
-        '''update rows of metabolomics_standards'''
+    def update_standards(self,data_I):
+        '''update rows of standards'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_standards).filter(
-                            metabolomics_standards.met_id.like(d['met_id'])).update(
+                    data_update = self.session.query(standards).filter(
+                            standards.met_id.like(d['met_id'])).update(
                             {'met_id':d['met_id'],
                             'met_name':d['met_name'],
                             'formula':d['formula'],
@@ -64,13 +64,13 @@ class stage00_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def update_metabolomicsStandards_structureFile(self,data_I):
-        '''update rows of metabolomics_standards'''
+    def update_standards_structureFile(self,data_I):
+        '''update rows of standards'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_standards).filter(
-                            metabolomics_standards.met_id.like(d['met_id'])).update(
+                    data_update = self.session.query(standards).filter(
+                            standards.met_id.like(d['met_id'])).update(
                             {'structure_file':d['structure_file'],
                             'structure_file_extention':d['structure_file_extention']},
                             synchronize_session=False);
@@ -78,13 +78,13 @@ class stage00_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def update_metabolomicsStandards_formulaAndMass(self,data_I):
-        '''update rows of metabolomics_standards'''
+    def update_standards_formulaAndMass(self,data_I):
+        '''update rows of standards'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_standards).filter(
-                            metabolomics_standards.met_id.like(d['met_id'])).update(
+                    data_update = self.session.query(standards).filter(
+                            standards.met_id.like(d['met_id'])).update(
                             {'formula':d['formula'],
                             'mass':d['mass'],
                             'exactmass':d['exactmass']},
@@ -366,8 +366,8 @@ class stage00_io(base_analysis):
         sampleDescription_data = [];
         samplePhysiologicalParameters_data = [];
         sampleStorage_data = [];
-        metabolomicsSample_data = [];
-        metabolomicsExperiment_data = [];
+        sample_data = [];
+        experiment_data = [];
         for d in data.data:
             sampleDescription_data.append({'sample_id':d['sample_id'],
                                         'sample_name_short':d['sample_name_short'],
@@ -413,7 +413,7 @@ class stage00_io(base_analysis):
                                         'ph':d['ph'],
                                         'box':d['box'],
                                         'pos':d['pos']});
-            metabolomicsSample_data.append({'sample_name':d['sample_id'],
+            sample_data.append({'sample_name':d['sample_id'],
                                         #'sample_name':d['sample_name'],
                                         'sample_type':d['sample_type'],
                                         #'sample_type':'Unknown',
@@ -424,25 +424,25 @@ class stage00_io(base_analysis):
                                         'sample_id':d['sample_id'],
                                         'sample_dilution':1.0});
                                         #'sample_dilution':d['sample_dilution']});
-            metabolomicsExperiment_data.append({'exp_type_id':d['exp_type_id'],
+            experiment_data.append({'exp_type_id':d['exp_type_id'],
                                         'id':d['experiment_id'],
-                                        'metabolomics_sample_name':d['sample_id'],
-                                        #'metabolomics_sample_name':d['sample_name'],
-                                        'metabolomics_experimentor_id':d['experimentor_id'],
+                                        'sample_name':d['sample_id'],
+                                        #'sample_name':d['sample_name'],
+                                        'experimentor_id':d['experimentor_id'],
                                         'extraction_method_id':d['extraction_method_id'],
                                         'acquisition_method_id':d['acquisition_method_id'],
                                         'quantitation_method_id':d['quantitation_method_id'],
-                                        'metabolomics_is_id':d['is_id']});
+                                        'internal_standard_id':d['is_id']});
         # add data to the database:
         self.add_sampleDescription(sampleDescription_data);
         self.add_samplePhysiologicalParameters(samplePhysiologicalParameters_data);
         self.add_sampleStorage(sampleStorage_data);
-        self.add_metabolomicsSample(metabolomicsSample_data);
-        self.add_metabolomicsExperiment(metabolomicsExperiment_data);
+        self.add_sample(sample_data);
+        self.add_experiment(experiment_data);
         # deallocate memory
         data.clear_data();
 
-        return sampleDescription_data,samplePhysiologicalParameters_data,sampleStorage_data,metabolomicsSample_data,metabolomicsExperiment_data;
+        return sampleDescription_data,samplePhysiologicalParameters_data,sampleStorage_data,sample_data,experiment_data;
 
     def import_sampleFile_update(self, filename):
         '''table adds'''
@@ -453,8 +453,8 @@ class stage00_io(base_analysis):
         sampleDescription_data = [];
         samplePhysiologicalParameters_data = [];
         sampleStorage_data = [];
-        metabolomicsSample_data = [];
-        metabolomicsExperiment_data = [];
+        sample_data = [];
+        experiment_data = [];
         for d in data.data:
             sampleDescription_data.append({'sample_id':d['sample_id'],
                                         'sample_name_short':d['sample_name_short'],
@@ -500,7 +500,7 @@ class stage00_io(base_analysis):
                                         'ph':d['ph'],
                                         'box':d['box'],
                                         'pos':d['pos']});
-            metabolomicsSample_data.append({'sample_name':d['sample_id'],
+            sample_data.append({'sample_name':d['sample_id'],
                                         #'sample_name':d['sample_name'],
                                         'sample_type':d['sample_type'],
                                         #'sample_type':'Unknown',
@@ -511,32 +511,32 @@ class stage00_io(base_analysis):
                                         'sample_id':d['sample_id'],
                                         'sample_dilution':1.0});
                                         #'sample_dilution':d['sample_dilution']});
-            metabolomicsExperiment_data.append({'exp_type_id':d['exp_type_id'],
+            experiment_data.append({'exp_type_id':d['exp_type_id'],
                                         'id':d['experiment_id'],
-                                        'metabolomics_sample_name':d['sample_id'],
-                                        #'metabolomics_sample_name':d['sample_name'],
-                                        'metabolomics_experimentor_id':d['experimentor_id'],
+                                        'sample_name':d['sample_id'],
+                                        #'sample_name':d['sample_name'],
+                                        'experimentor_id':d['experimentor_id'],
                                         'extraction_method_id':d['extraction_method_id'],
                                         'acquisition_method_id':d['acquisition_method_id'],
                                         'quantitation_method_id':d['quantitation_method_id'],
-                                        'metabolomics_is_id':d['is_id']});
+                                        'internal_standard_id':d['is_id']});
         # add data to the database:
         self.update_sampleDescription(sampleDescription_data);
         #self.update_samplePhysiologicalParameters(samplePhysiologicalParameters_data); #todo
         #self.update_sampleStorage(sampleStorage_data); #todo
-        self.update_metabolomicsSample(metabolomicsSample_data);
-        #self.update_metabolomicsExperiment(metabolomicsExperiment_data); #todo
+        self.update_sample(sample_data);
+        #self.update_experiment(experiment_data); #todo
         # deallocate memory
         data.clear_data();
 
-        return sampleDescription_data,samplePhysiologicalParameters_data,sampleStorage_data,metabolomicsSample_data,metabolomicsExperiment_data;
+        return sampleDescription_data,samplePhysiologicalParameters_data,sampleStorage_data,sample_data,experiment_data;
 
-    def add_metabolomicsSample(self, data_I):
-        '''add rows of metabolomics_sample'''
+    def add_sample(self, data_I):
+        '''add rows of sample'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = metabolomics_sample(d['sample_name'],
+                    data_add = sample(d['sample_name'],
                             d['sample_type'],
                             d['calibrator_id'],
                             d['calibrator_level'],
@@ -551,13 +551,13 @@ class stage00_io(base_analysis):
                     print(e);
             self.session.commit();
     
-    def update_metabolomicsSample(self,data_I):
-        '''update rows of metabolomics_sample'''
+    def update_sample(self,data_I):
+        '''update rows of sample'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(metabolomics_sample).filter(
-                            metabolomics_sample.sample_name.like(d['sample_name'])).update(
+                    data_update = self.session.query(sample).filter(
+                            sample.sample_name.like(d['sample_name'])).update(
                             {'sample_type':d['sample_type'],
                             'calibrator_id':d['calibrator_id'],
                             'calibrator_level':d['calibrator_level'],
@@ -696,19 +696,19 @@ class stage00_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def add_metabolomicsExperiment(self, data_I):
-        '''add rows of metabolomics_experiment'''
+    def add_experiment(self, data_I):
+        '''add rows of experiment'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = metabolomics_experiment(d['exp_type_id'],
+                    data_add = experiment(d['exp_type_id'],
                         d['id'],
-                        d['metabolomics_sample_name'],
-                        d['metabolomics_experimentor_id'],
+                        d['sample_name'],
+                        d['experimentor_id'],
                         d['extraction_method_id'],
                         d['acquisition_method_id'],
                         d['quantitation_method_id'],
-                        d['metabolomics_is_id']);
+                        d['internal_standard_id']);
                     self.session.add(data_add);
                     self.session.commit();
                 except IntegrityError as e:
@@ -729,26 +729,26 @@ class stage00_io(base_analysis):
         data.read_csv(filename);
         data.format_data();
         # split into seperate data structures based on the destined table add
-        metabolomicsSample_data = [];
-        metabolomicsExperiment_data = [];
+        sample_data = [];
+        experiment_data = [];
         for d in data.data:
-            metabolomicsSample_data.append({'sample_name':d['sample_name'],
+            sample_data.append({'sample_name':d['sample_name'],
                                         'sample_type':d['sample_type'],
                                         'calibrator_id':d['calibrator_id'],
                                         'calibrator_level':d['calibrator_level'],
                                         'sample_id':d['sample_id'],
                                         'sample_dilution':d['sample_dilution']});
-            metabolomicsExperiment_data.append({'exp_type_id':d['exp_type_id'],
+            experiment_data.append({'exp_type_id':d['exp_type_id'],
                                         'id':d['experiment_id'],
-                                        'metabolomics_sample_name':d['sample_name'],
-                                        'metabolomics_experimentor_id':d['experimentor_id'],
+                                        'sample_name':d['sample_name'],
+                                        'experimentor_id':d['experimentor_id'],
                                         'extraction_method_id':d['extraction_method_id'],
                                         'acquisition_method_id':d['acquisition_method_id'],
                                         'quantitation_method_id':d['quantitation_method_id'],
-                                        'metabolomics_is_id':d['is_id']});
+                                        'internal_standard_id':d['is_id']});
         # add data to the database:
-        self.add_metabolomicsSample(metabolomicsSample_data);
-        self.add_metabolomicsExperiment(metabolomicsExperiment_data);
+        self.add_sample(sample_data);
+        self.add_experiment(experiment_data);
         # deallocate memory
         data.clear_data();
 
@@ -989,73 +989,3 @@ class stage00_io(base_analysis):
         # write acquisition method to file
         export = base_exportData(data);
         export.write_dict2csv(filename);
-
-    #Change to data_stage01_physiology_data
-    def import_metabolomicsCharacterization_add(self, filename):
-        '''table adds'''
-        data = base_importData();
-        data.read_csv(filename);
-        data.format_data();
-        self.add_metabolomicsCharacterization(data.data);
-        data.clear_data();
-
-    def add_metabolomicsCharacterization(self, data_I):
-        '''add rows of metabolomics_characterization'''
-        if data_I:
-            for d in data_I:
-                try:
-                    data_add = metabolomics_characterization(d['experiment_id'],
-                                            d['experiment_type'],
-                                            d['sample_name_short'],
-                                            d['sample_label'],
-                                            d['time_point'],
-                                            d['date_and_time'],
-                                            d['data_raw'],
-                                            d['data_corrected'],
-                                            d['data_type'],
-                                            d['data_type_units'],
-                                            d['data_type_reference'],
-                                            d['used_'],
-                                            d['comment_']);
-                    self.session.add(data_add);
-                except SQLAlchemyError as e:
-                    print(e);
-            self.session.commit();
-
-    def import_metabolomicsCharacterization_update(self, filename):
-        '''table adds'''
-        data = base_importData();
-        data.read_csv(filename);
-        data.format_data();
-        self.update_metabolomicsCharacterization(data.data);
-        data.clear_data();
-
-    def update_metabolomicsCharacterization(self,data_I):
-        '''update rows of metabolomics_characterization'''
-        if data_I:
-            for d in data_I:
-                try:
-                    data_update = self.session.query(metabolomics_characterization).filter(
-                            metabolomics_characterization.experiment_id.like(d['experiment_id']),
-                            metabolomics_characterization.experiment_type.like(d['experiment_type']),
-                            metabolomics_characterization.time_point.like(d['time_point']),
-                            metabolomics_characterization.acquisition_date_and_time.like(d['date_and_time']),
-                            metabolomics_characterization.data_type_units.like(d['data_type_units']),
-                            metabolomics_characterization.experiment_id.like(d['data_type_reference'])).update(
-                            {'experiment_id':d['experiment_id'],
-                            'experiment_type':d['experiment_type'],
-                            'sample_name_short':d['sample_name_short'],
-                            'sample_label':d['sample_label'],
-                            'time_point':d['time_point'],
-                            'date_and_time':d['date_and_time'],
-                            'data_raw':d['data_raw'],
-                            'data_corrected':d['data_corrected'],
-                            'data_type':d['data_type'],
-                            'data_type_units':d['data_type_units'],
-                            'data_type_reference':d['data_type_reference'],
-                            'used_':d['used_'],
-                            'comment_':d['comment_']},
-                            synchronize_session=False);
-                except SQLAlchemyError as e:
-                    print(e);
-            self.session.commit();

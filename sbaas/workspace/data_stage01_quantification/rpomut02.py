@@ -7,7 +7,7 @@ def data_stage00():
     #io00.import_MSComponents_add('data\\_input\\140521_ms_components.csv'); # complete
 
     execute00 = stage00_execute();
-    ## import structure files into metabolomics_standards
+    ## import structure files into standards
     #execute00.execute_importStructureFile([{'met_id':'ara5p','file_directory':'data\\BIGG_mol\\','file_ext':'.mol'}]); # complete
     ## update formula, mass, and exact mass from structure files
     ##execute00.execute_updateFormulaAndMassFromStructure(['ara5p']); #cxcalc appears to be broken # complete

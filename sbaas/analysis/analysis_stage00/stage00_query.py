@@ -1,12 +1,12 @@
 from analysis.analysis_base import *
 
 class stage00_query(base_analysis):
-    def get_structureFile_metabolomicsStandards(self,met_id_I):
+    def get_structureFile_standards(self,met_id_I):
         '''Querry structure file and extension from metabolomics standards'''
         try:
-            structure = self.session.query(metabolomics_standards.structure_file,
-                    metabolomics_standards.structure_file_extention).filter(
-                    metabolomics_standards.met_id.like(met_id_I)).all();
+            structure = self.session.query(standards.structure_file,
+                    standards.structure_file_extention).filter(
+                    standards.met_id.like(met_id_I)).all();
             struct_file_O = '';
             struct_file_ext_O = '';
             if structure:
@@ -19,12 +19,12 @@ class stage00_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    def get_exactMassAndFormula_metabolomicsStandards(self,met_id_I):
+    def get_exactMassAndFormula_standards(self,met_id_I):
         '''Querry exact mass and formula from metabolomics standards'''
         try:
-            massformula = self.session.query(metabolomics_standards.exactmass,
-                    metabolomics_standards.formula).filter(
-                    metabolomics_standards.met_id.like(met_id_I)).all();
+            massformula = self.session.query(standards.exactmass,
+                    standards.formula).filter(
+                    standards.met_id.like(met_id_I)).all();
             mass_O = '';
             formula_O = '';
             if massformula:
@@ -213,9 +213,9 @@ class stage00_query(base_analysis):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
             bioReps = self.session.query(sample_description.sample_replicate).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.istechnical != True).group_by(
                     sample_description.sample_replicate).order_by(
                     sample_description.sample_replicate.desc()).all();
@@ -230,40 +230,40 @@ class stage00_query(base_analysis):
             print(e);
 
     def get_batchFileInfo_experimentID(self,experiment_id_I,sample_type_I):
-        '''Query data from metabolomics_experiment and metabolomics_sample for batch file'''
+        '''Query data from experiment and sample for batch file'''
         try:
-            data = self.session.query(metabolomics_experiment.id,
-                    metabolomics_sample.sample_name,
-                    metabolomics_experiment.acquisition_method_id,
-                    metabolomics_sample.sample_dilution,
-                    metabolomics_sample.sample_type,
+            data = self.session.query(experiment.id,
+                    sample.sample_name,
+                    experiment.acquisition_method_id,
+                    sample.sample_dilution,
+                    sample.sample_type,
                     sample_description.sample_replicate,
                     sample_description.sample_description,
                     sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
-                    metabolomics_experiment.id,
-                    metabolomics_sample.sample_name,
-                    metabolomics_experiment.acquisition_method_id,
-                    metabolomics_sample.sample_dilution,
-                    metabolomics_sample.sample_type,
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
+                    experiment.id,
+                    sample.sample_name,
+                    experiment.acquisition_method_id,
+                    sample.sample_dilution,
+                    sample.sample_type,
                     sample_description.sample_replicate,
                     sample_description.sample_description,
                     sample_description.sample_name_abbreviation).order_by(
-                    metabolomics_experiment.id.asc(),
-                    metabolomics_sample.sample_dilution.desc(),
+                    experiment.id.asc(),
+                    sample.sample_dilution.desc(),
                     sample_description.sample_name_abbreviation.asc(),
-                    #metabolomics_sample.sample_name.asc(),
+                    #sample.sample_name.asc(),
                     sample_description.sample_replicate.asc(),
                     sample_description.sample_description.desc()).all();
             #.order_by(
-            #        metabolomics_experiment.id.asc(),
-            #        metabolomics_sample.sample_dilution.desc(),
+            #        experiment.id.asc(),
+            #        sample.sample_dilution.desc(),
             #        sample_description.sample_replicate.asc(),
             #        sample_description.sample_description.desc(),
-            #        metabolomics_sample.sample_name.asc()).all();
+            #        sample.sample_name.asc()).all();
             data_O = [];
             if data:
                 for d in data:
@@ -281,41 +281,41 @@ class stage00_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
     def get_batchFileInfo_experimentIDAndExpType(self,experiment_id_I,sample_type_I,exp_type_I):
-        '''Query data from metabolomics_experiment and metabolomics_sample for batch file'''
+        '''Query data from experiment and sample for batch file'''
         try:
-            data = self.session.query(metabolomics_experiment.id,
-                    metabolomics_sample.sample_name,
-                    metabolomics_experiment.acquisition_method_id,
-                    metabolomics_sample.sample_dilution,
-                    metabolomics_sample.sample_type,
+            data = self.session.query(experiment.id,
+                    sample.sample_name,
+                    experiment.acquisition_method_id,
+                    sample.sample_dilution,
+                    sample.sample_type,
                     sample_description.sample_replicate,
                     sample_description.sample_description,
                     sample_description.sample_name_abbreviation).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.exp_type_id==exp_type_I,
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_type.like(sample_type_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
-                    metabolomics_experiment.id,
-                    metabolomics_sample.sample_name,
-                    metabolomics_experiment.acquisition_method_id,
-                    metabolomics_sample.sample_dilution,
-                    metabolomics_sample.sample_type,
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id==exp_type_I,
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_type.like(sample_type_I),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
+                    experiment.id,
+                    sample.sample_name,
+                    experiment.acquisition_method_id,
+                    sample.sample_dilution,
+                    sample.sample_type,
                     sample_description.sample_replicate,
                     sample_description.sample_description,
                     sample_description.sample_name_abbreviation).order_by(
-                    metabolomics_experiment.id.asc(),
-                    metabolomics_sample.sample_dilution.desc(),
+                    experiment.id.asc(),
+                    sample.sample_dilution.desc(),
                     sample_description.sample_name_abbreviation.asc(),
-                    #metabolomics_sample.sample_name.asc(),
+                    #sample.sample_name.asc(),
                     sample_description.sample_replicate.asc(),
                     sample_description.sample_description.desc()).all();
             #.order_by(
-            #        metabolomics_experiment.id.asc(),
-            #        metabolomics_sample.sample_dilution.desc(),
+            #        experiment.id.asc(),
+            #        sample.sample_dilution.desc(),
             #        sample_description.sample_replicate.asc(),
             #        sample_description.sample_description.desc(),
-            #        metabolomics_sample.sample_name.asc()).all();
+            #        sample.sample_name.asc()).all();
             data_O = [];
             if data:
                 for d in data:
@@ -333,15 +333,15 @@ class stage00_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    def delete_sample_experimentIDAndSampleID_metabolomicsExperiment(self,dataListDelete_I):
-        '''Delete specific samples from an experiment by their sample ID from metabolomics_experiment'''
+    def delete_sample_experimentIDAndSampleID_experiment(self,dataListDelete_I):
+        '''Delete specific samples from an experiment by their sample ID from experiment'''
         deletes = [];
         for d in dataListDelete_I:
             try:
-                delete = self.session.query(metabolomics_experiment).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_sample.sample_id.like(d['sample_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name)).delete(
+                delete = self.session.query(experiment).filter(
+                        experiment.id.like(d['experiment_id']),
+                        sample.sample_id.like(d['sample_id']),
+                        experiment.sample_name.like(sample.sample_name)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -351,15 +351,15 @@ class stage00_query(base_analysis):
                 print(e);
         self.session.commit();
 
-    def delete_sample_experimentIDAndSampleID_metabolomicsSample(self,dataListDelete_I):
-        '''Delete specific samples from an experiment by their sample ID from metabolomics_sample'''
+    def delete_sample_experimentIDAndSampleID_sample(self,dataListDelete_I):
+        '''Delete specific samples from an experiment by their sample ID from sample'''
         deletes = [];
         for d in dataListDelete_I:
             try:
-                delete = self.session.query(metabolomics_sample).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_sample.sample_id.like(d['sample_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name)).delete(
+                delete = self.session.query(sample).filter(
+                        experiment.id.like(d['experiment_id']),
+                        sample.sample_id.like(d['sample_id']),
+                        experiment.sample_name.like(sample.sample_name)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -375,10 +375,10 @@ class stage00_query(base_analysis):
         for d in dataListDelete_I:
             try:
                 delete = self.session.query(sample_description).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_sample.sample_id.like(d['sample_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                        sample_description.sample_id.like(metabolomics_sample.sample_id)).delete(
+                        experiment.id.like(d['experiment_id']),
+                        sample.sample_id.like(d['sample_id']),
+                        experiment.sample_name.like(sample.sample_name),
+                        sample_description.sample_id.like(sample.sample_id)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -394,10 +394,10 @@ class stage00_query(base_analysis):
         for d in dataListDelete_I:
             try:
                 delete = self.session.query(sample_storage).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_sample.sample_id.like(d['sample_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                        sample_storage.sample_id.like(metabolomics_sample.sample_id)).delete(
+                        experiment.id.like(d['experiment_id']),
+                        sample.sample_id.like(d['sample_id']),
+                        experiment.sample_name.like(sample.sample_name),
+                        sample_storage.sample_id.like(sample.sample_id)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -413,10 +413,10 @@ class stage00_query(base_analysis):
         for d in dataListDelete_I:
             try:
                 delete = self.session.query(sample_physiologicalParameters).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_sample.sample_id.like(d['sample_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                        sample_physiologicalParameters.sample_id.like(metabolomics_sample.sample_id)).delete(
+                        experiment.id.like(d['experiment_id']),
+                        sample.sample_id.like(d['sample_id']),
+                        experiment.sample_name.like(sample.sample_name),
+                        sample_physiologicalParameters.sample_id.like(sample.sample_id)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -426,13 +426,13 @@ class stage00_query(base_analysis):
                 print(e);
         self.session.commit();
 
-    def get_calibratorIDAndLevel_sampleNameAndSampleType_metabolomicsSample(self,sample_name_I,sample_type_I):
+    def get_calibratorIDAndLevel_sampleNameAndSampleType_sample(self,sample_name_I,sample_type_I):
         '''Querry calibrator id and level from metabolomics sample'''
         try:
-            calibratorInfo = self.session.query(metabolomics_sample.calibrator_id,
-                    metabolomics_sample.calibrator_level).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_sample.sample_type.like(sample_type_I)).all();
+            calibratorInfo = self.session.query(sample.calibrator_id,
+                    sample.calibrator_level).filter(
+                    sample.sample_name.like(sample_name_I),
+                    sample.sample_type.like(sample_type_I)).all();
             id_O = None;
             level_O = None;
             if calibratorInfo:
@@ -558,13 +558,13 @@ class stage00_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    def delete_sample_experimentID_metabolomicsExperiment(self,dataListDelete_I):
-        '''Delete samples from an experiment from metabolomics_experiment'''
+    def delete_sample_experimentID_experiment(self,dataListDelete_I):
+        '''Delete samples from an experiment from experiment'''
         deletes = [];
         for d in dataListDelete_I:
             try:
-                delete = self.session.query(metabolomics_experiment).filter(
-                        metabolomics_experiment.id.like(d['experiment_id'])).delete(
+                delete = self.session.query(experiment).filter(
+                        experiment.id.like(d['experiment_id'])).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -574,14 +574,14 @@ class stage00_query(base_analysis):
                 print(e);
         self.session.commit();
 
-    def delete_sample_experimentID_metabolomicsSample(self,dataListDelete_I):
-        '''Delete an experiment from metabolomics_sample'''
+    def delete_sample_experimentID_sample(self,dataListDelete_I):
+        '''Delete an experiment from sample'''
         deletes = [];
         for d in dataListDelete_I:
             try:
-                delete = self.session.query(metabolomics_sample).filter(
-                        metabolomics_experiment.id.like(d['experiment_id']),
-                        metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name)).delete(
+                delete = self.session.query(sample).filter(
+                        experiment.id.like(d['experiment_id']),
+                        experiment.sample_name.like(sample.sample_name)).delete(
                         synchronize_session=False);
                 if delete == 0:
                     print 'row not found'
@@ -595,10 +595,10 @@ class stage00_query(base_analysis):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
             bioReps = self.session.query(sample_description.sample_replicate).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(sample_name_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample_name_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.istechnical != True).group_by(
                     sample_description.sample_replicate).order_by(
                     sample_description.sample_replicate.desc()).all();
@@ -616,10 +616,10 @@ class stage00_query(base_analysis):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
             bioReps = self.session.query(sample_description.sample_replicate).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_id_I),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_description.like('Broth'),
                     sample_description.istechnical != True).group_by(
                     sample_description.sample_replicate).order_by(
@@ -638,9 +638,9 @@ class stage00_query(base_analysis):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
             bioReps = self.session.query(sample_description.sample_replicate).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.sample_description.like('Broth')
                     #sample_description.istechnical != True
@@ -657,14 +657,14 @@ class stage00_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
        
-    def get_sampleIDs_experimentID_metabolomicsExperiment(self,experiment_id_I):
+    def get_sampleIDs_experimentID_experiment(self,experiment_id_I):
         '''Querry sample IDs that are used from the experiment'''
         try:
-            sample_names = self.session.query(metabolomics_sample.sample_id).filter(
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name)).group_by(
-                    metabolomics_sample.sample_id).order_by(
-                    metabolomics_sample.sample_id.asc()).all();
+            sample_names = self.session.query(sample.sample_id).filter(
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name)).group_by(
+                    sample.sample_id).order_by(
+                    sample.sample_id.asc()).all();
             sample_names_O = [];
             for sn in sample_names: sample_names_O.append(sn.sample_id);
             return sample_names_O;
@@ -675,10 +675,10 @@ class stage00_query(base_analysis):
         '''Querry sample name abbreviation from the experiment'''
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_sample.sample_id.like(sample_id_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    sample.sample_id.like(sample_id_I),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = None;
@@ -691,10 +691,10 @@ class stage00_query(base_analysis):
         '''Querry sample name abbreviation from the experiment'''
         try:
             sample_name_abbreviations = self.session.query(sample_description.sample_name_abbreviation).filter(
-                    metabolomics_sample.sample_name.like(sample_name_I),
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_description.sample_id)).group_by(
+                    sample.sample_name.like(sample_name_I),
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id)).group_by(
                     sample_description.sample_name_abbreviation).order_by(
                     sample_description.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = None;
@@ -710,10 +710,10 @@ class stage00_query(base_analysis):
                     sample_storage.sample_label,
                     sample_storage.box,
                     sample_storage.pos).filter(
-                    metabolomics_experiment.exp_type_id == exp_type_id_I,
-                    metabolomics_experiment.id.like(experiment_id_I),
-                    metabolomics_experiment.metabolomics_sample_name.like(metabolomics_sample.sample_name),
-                    metabolomics_sample.sample_id.like(sample_storage.sample_id)).group_by(
+                    experiment.exp_type_id == exp_type_id_I,
+                    experiment.id.like(experiment_id_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_storage.sample_id)).group_by(
                     sample_storage.sample_id,
                     sample_storage.sample_label,
                     sample_storage.box,
