@@ -1,0 +1,517 @@
+experiment_id,experiment_type,experiment_type_name,used_,comment_,growth_rate,growth_rate_r2,growth_rate_units,date_and_time,time_hrs,sample_name_short,time_point,sample_label,data_raw,data_corrected,data_type,data_type_units,data_type_reference
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:03,1004051.06,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0108,0.03820373,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:25,1004051.42,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0126,0.044571018,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:45,1004051.75,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0186,0.065795313,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:06,1004052.1,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0283,0.100107922,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:29,1004052.49,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0416,0.147155108,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:50,1004052.84,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0602,0.21295042,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:11,1004053.2,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.0846,0.29926255,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:33,1004053.56,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.126,0.445710181,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:56,1004053.94,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.1839,0.650524622,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:17,1004054.29,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.2228,0.788128797,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.977575444,0.995695332,,7/15/2014 14:38,1004054.65,OxicEvo04EcoliGlc_Broth-1,,evo04_1,0.3035,1.073595556,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 10:43,1004050.73,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0073,0.025822891,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:04,1004051.08,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0144,0.050938306,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:26,1004051.44,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0176,0.06225793,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:46,1004051.77,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0246,0.087019607,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:09,1004052.15,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0371,0.131236887,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:30,1004052.51,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0473,0.167318187,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:51,1004052.87,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0664,0.234882191,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:13,1004053.22,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.0769,0.272024706,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:34,1004053.58,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.1128,0.399016734,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:57,1004053.96,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.1636,0.578715759,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:18,1004054.32,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.2066,0.730823202,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.890595298,0.997328819,,7/15/2014 14:40,1004054.67,OxicEvo04EcoliGlc_Broth-2,,evo04_2,0.2865,1.013460056,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 10:44,1004050.75,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0105,0.037142515,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:06,1004051.11,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.013,0.045985971,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:27,1004051.46,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0176,0.06225793,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 11:47,1004051.8,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0263,0.093033157,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:10,1004052.18,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0366,0.129468196,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:31,1004052.53,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0543,0.192079864,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 12:54,1004052.91,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0675,0.238773312,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:16,1004053.27,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.0879,0.310935912,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:37,1004053.62,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.1262,0.446417658,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:00,1004054.01,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.1857,0.65689191,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:21,1004054.36,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.2342,0.828454956,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.82743384,0.996815868,,7/15/2014 14:43,1004054.72,OxicEvo04EcoliGlc_Broth-3,,evo04_3,0.3069,1.085622656,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:54,1004053.91,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0069,0.024407939,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:56,1004054.94,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0132,0.046693448,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:12,1004055.21,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0156,0.055183165,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:41,1004055.69,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0242,0.085604654,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:13,1004056.23,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0292,0.103291566,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:30,1004056.51,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0377,0.133359316,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:46,1004056.78,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0483,0.17085557,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:03,1004057.05,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0579,0.204814441,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:19,1004057.33,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0642,0.22709995,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:35,1004057.6,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.0876,0.309874698,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:52,1004057.87,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.1116,0.394771875,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:08,1004058.14,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.1341,0.474362979,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:25,1004058.42,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.1608,0.568811089,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:41,1004058.69,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.1996,0.706061526,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:57,1004058.96,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.2335,0.825978789,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.737463089,0.996247049,,7/15/2014 19:16,1004059.27,OxicEvo04gndEcoliGlc_Broth-1,,gnd_1,0.2871,1.015582485,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 13:58,1004053.98,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0043,0.015210744,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:00,1004055.01,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0151,0.053414474,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:38,1004055.64,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0192,0.067917742,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:54,1004055.91,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.026,0.091971942,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:11,1004056.19,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0363,0.128406981,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:27,1004056.46,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0406,0.143617725,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:43,1004056.73,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.04862,0.171987532,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:00,1004057.01,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0613,0.216841541,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:16,1004057.28,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.0766,0.270963491,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:33,1004057.55,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.1041,0.368241507,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:49,1004057.82,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.13,0.459859711,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:05,1004058.1,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.1606,0.568103612,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:22,1004058.37,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.1999,0.70712274,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:38,1004058.64,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.24449,0.864854621,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:54,1004058.92,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.2637,0.932807737,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.746740215,0.988604823,,7/15/2014 19:13,1004059.23,OxicEvo04gndEcoliGlc_Broth-2,,gnd_2,0.3122,1.104370783,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 14:01,1004054.03,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0048,0.016979435,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:03,1004055.05,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0116,0.041033636,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:39,1004055.66,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0244,0.08631213,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 15:56,1004055.94,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0265,0.093740633,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:12,1004056.21,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0342,0.120978478,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:28,1004056.48,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.044,0.155644825,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 16:45,1004056.76,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0561,0.198447152,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:01,1004057.03,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.071,0.25115415,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:18,1004057.3,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.0873,0.308813483,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:34,1004057.58,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.117,0.41387374,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 17:50,1004057.85,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.1394,0.493111106,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:07,1004058.12,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.183,0.647340978,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:23,1004058.39,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.2182,0.771856838,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:40,1004058.67,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.2549,0.901678772,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/15/2014 18:56,1004058.94,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.2898,1.025133417,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.718538483,0.989420221,,7/15/2014 19:15,1004059.25,OxicEvo04gndEcoliGlc_Broth-3,,gnd_3,0.3416,1.208369825,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 8:59,1004073,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.0538999,0.190664557,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:52,1004073.88,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.0464,0.164134543,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:14,1004074.23,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.0535,0.189249958,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:35,1004074.59,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.0542,0.191726126,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:36,1004075.61,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.0586,0.207290608,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,Air removed from lines,,,,7/16/2014 12:38,1004076.64,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.1092,0.386282157,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:09,1004077.16,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.1319,0.466580738,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:41,1004077.68,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.1303,0.460920926,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:12,1004078.21,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.143,0.505845682,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:55,1004078.92,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.1621,0.573409686,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 15:26,1004079.44,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.17099,0.604857015,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 15:57,1004079.97,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.191699,0.678112667,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 16:29,1004080.49,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.21369999,0.755938582,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 17:00,1004081.01,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.233799999,0.82704,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 17:32,1004081.53,OxicEvo04pgiEcoliGlc_Broth-1,,pgi_1,0.2575,0.910875966,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.180933817,0.726015073,,7/16/2014 18:03,1004082.06,OxicEvo04pgiEcoliGlc_Broth-1,6,pgi_1,0.2855,1.009922673,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:25,1004195.42,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.038,0.134420531,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:07,1004196.12,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0416,0.147155108,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:48,1004196.82,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0539,0.190664911,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:03,1004197.06,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0576,0.203753226,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:05,1004197.08,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0558,0.197385938,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:06,1004197.11,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0551,0.19490977,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:08,1004197.13,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0546,0.193141079,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:25,1004197.42,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0652,0.230637332,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 13:58,1004197.97,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.0888,0.314119556,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:30,1004198.51,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.1166,0.412458787,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:09,1004199.15,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.1397,0.49417232,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:47,1004199.8,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.1851,0.654769481,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.404517169,0.928530624,,7/21/2014 16:30,1004200.51,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.256,0.905569893,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:26,1004195.44,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0615,0.217549017,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:13,1004196.22,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0828,0.292895262,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:50,1004196.84,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0781,0.276269565,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:26,1004197.44,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0586,0.207290608,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 13:59,1004197.99,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.1046,0.370010198,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:31,1004198.53,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0838,0.296432645,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:10,1004199.17,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.0976,0.345248522,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:49,1004199.82,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.1369,0.48426765,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 16:32,1004200.54,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.1215,0.429791961,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 17:12,1004201.21,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.1567,0.554307821,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.193737119,0.9009032,,7/21/2014 17:39,1004201.66,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.2017,0.713490029,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:28,1004195.47,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0514,0.181821455,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:14,1004196.24,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0439,0.155291087,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:51,1004196.86,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0571,0.201984535,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:27,1004197.47,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.056,0.198093414,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:31,1004197.53,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0571,0.201984535,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 14:00,1004198.02,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0697,0.246555553,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:33,1004198.56,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.071,0.25115415,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:11,1004199.2,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.0832,0.294310215,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:50,1004199.84,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.1296,0.458444758,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 16:33,1004200.56,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.1216,0.430145699,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 17:13,1004201.23,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.162,0.573055948,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.297069548,0.947986923,,7/21/2014 17:40,1004201.68,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.2056,0.72728582,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:58,1004195.97,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0455,0.160950899,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:18,1004196.3,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0462,0.163427067,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:53,1004196.89,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0603,0.213304158,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:33,1004197.56,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0535,0.189249958,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 14:02,1004198.04,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0742,0.262473774,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:34,1004198.58,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0737,0.260705082,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:13,1004199.22,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.0818,0.28935788,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:51,1004199.87,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.1182,0.418118599,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 16:34,1004200.58,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.1785,0.631422757,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.415905891,0.777467216,,7/21/2014 17:15,1004201.25,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.263,0.930331569,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:19,1004196.32,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.068,0.240542003,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:54,1004196.91,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.0594,0.210120514,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:35,1004197.59,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.0563,0.199154629,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:41,1004197.69,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.0688,0.243371909,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 14:03,1004198.06,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.0918,0.324731704,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:36,1004198.6,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.0754,0.266718632,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:14,1004199.24,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.1229,0.434744296,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:53,1004199.89,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.144,0.509383065,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 16:36,1004200.61,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.1293,0.457383543,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.225455507,0.891787931,,7/21/2014 17:16,1004201.27,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.1791,0.633545187,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:20,1004196.35,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.0382,0.135128007,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:55,1004196.93,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.0511,0.18076024,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:36,1004197.61,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.0698,0.246909291,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 13:39,1004197.66,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.0744,0.26318125,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air bubbles found and purged from lines 7/21/2014  1:49:00 PM,,,,7/21/2014 14:04,1004198.08,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.0883,0.312350865,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 14:37,1004198.62,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.116,0.410336358,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:15,1004199.27,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.172,0.608429772,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 15:54,1004199.91,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.239,0.845434392,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.529952254,0.505937824,,7/21/2014 16:37,1004200.63,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.3341,1.181839457,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:01,1004073.02,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.0539,0.190664911,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:32,1004073.54,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.061,0.215780326,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:15,1004074.26,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.0664,0.234882191,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:38,1004074.64,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.0734,0.259643868,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:41,1004075.68,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.088799,0.314116019,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 12:42,1004076.71,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.1709,0.604538651,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:13,1004077.23,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.1833,0.648402193,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:45,1004077.75,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.2054,0.726578343,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:16,1004078.28,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.2264,0.800863374,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:56,1004078.94,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.2579,0.912290919,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 15:27,1004079.47,OxicEvo04pgiEcoliGlc_Broth-2,,pgi_2,0.279,0.986929688,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.186695833,0.985372342,,7/16/2014 15:59,1004079.99,OxicEvo04pgiEcoliGlc_Broth-2,6,pgi_2,0.3142,1.111445548,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:02,1004073.04,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.0428,0.151399966,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:34,1004073.57,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.0426,0.15069249,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 9:55,1004073.92,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.052,0.183943884,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:16,1004074.28,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.0489,0.172977999,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:41,1004074.68,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.0512,0.181113979,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:43,1004075.73,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.0581,0.205521917,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 12:45,1004076.75,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1084,0.383452251,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:16,1004077.28,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1161,0.410690096,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:47,1004077.8,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1258,0.445002705,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:19,1004078.32,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1379,0.487805032,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:57,1004078.96,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.15,0.530607359,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 15:29,1004079.49,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1611,0.569872303,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 16:00,1004080.01,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.1772,0.62682416,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 16:32,1004080.53,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.193,0.682714802,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 17:03,1004081.06,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.2069,0.731884417,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 17:34,1004081.58,OxicEvo04pgiEcoliGlc_Broth-3,,pgi_3,0.23379,0.82700463,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.157313354,0.997802939,,7/16/2014 18:06,1004082.1,OxicEvo04pgiEcoliGlc_Broth-3,6,pgi_3,0.2505,0.886114289,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 10:52,1004098.87,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0147,0.051999521,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:25,1004099.43,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0112,0.039618683,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:57,1004099.96,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0098,0.034666347,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 12:28,1004100.48,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0228,0.080652319,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 13:00,1004101,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0126,0.044571018,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 13:31,1004101.53,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0144,0.050938306,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:02,1004102.05,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.028,0.099046707,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:34,1004102.57,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.022,0.077822413,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:05,1004104.1,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0199,0.07039391,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:37,1004104.62,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0194,0.068625218,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:08,1004105.14,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0217,0.076761198,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:39,1004105.66,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0222,0.078529889,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:57,1004105.96,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0213,0.075346245,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 9:34,1004121.57,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0699,0.247263029,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 11:13,1004123.23,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0818,0.28935788,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 12:15,1004124.26,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0847,0.299616289,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 13:18,1004125.31,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.0971,0.34347983,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:04,1004126.08,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.1071,0.378853654,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:53,1004126.89,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.1334,0.471886811,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:24,1004127.41,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.1521,0.538035862,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:55,1004127.93,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.1704,0.60276996,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 16:27,1004128.46,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,5,pts_1,0.2056,0.72728582,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 16:58,1004128.98,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.2446,0.865243733,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.183060785,0.913746066,,7/18/2014 17:32,1004129.54,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,6,pts_1,0.3057,1.081377797,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 10:19,1004098.32,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.012,0.042448589,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 10:50,1004098.84,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0153,0.054121951,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:24,1004099.41,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0178,0.062965407,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:55,1004099.93,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0223,0.078883627,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 12:27,1004100.46,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0235,0.083128486,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 12:58,1004100.98,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0198,0.070040171,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 13:30,1004101.5,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0286,0.101169136,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:01,1004102.02,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0257,0.090910727,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:32,1004102.55,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0252,0.089142036,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:04,1004104.07,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.038,0.134420531,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:35,1004104.59,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0486,0.171916784,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:07,1004105.12,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0395,0.139726605,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:38,1004105.64,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0769,0.272024706,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 9:35,1004121.59,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0742,0.262473774,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 11:15,1004123.25,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0818,0.28935788,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 12:17,1004124.28,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.0902,0.319071892,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 13:19,1004125.33,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.1025,0.362581695,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:06,1004126.1,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.1338,0.473301764,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:54,1004126.91,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.1701,0.601708745,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:25,1004127.43,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.16269999,0.57553208,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:57,1004127.96,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.195,0.689789567,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 16:28,1004128.48,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,5,pts_2,0.2332,0.824917574,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 17:00,1004129,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.2801,0.990820808,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.218526678,0.966832443,,7/18/2014 17:33,1004129.56,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,6,pts_2,0.3368,1.19139039,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 10:53,1004098.89,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0106,0.037496253,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:27,1004099.46,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0141,0.049877092,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 11:58,1004099.98,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0201,0.071101386,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 12:30,1004100.5,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0221,0.078176151,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 13:01,1004101.03,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0228,0.080652319,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 13:32,1004101.55,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0216,0.07640746,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:04,1004102.08,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0213,0.075346245,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 14:35,1004102.6,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.025,0.08843456,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:07,1004104.12,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0419,0.148216322,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 16:38,1004104.64,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0289,0.102230351,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:09,1004105.16,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0258,0.091264466,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:41,1004105.69,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0282,0.099754183,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 9:36,1004121.61,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0773,0.273439659,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 11:16,1004123.28,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0923,0.326500395,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 12:18,1004124.31,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.0967,0.342064877,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 13:21,1004125.35,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.1119,0.39583309,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:07,1004126.13,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.1357,0.480022791,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 14:55,1004126.93,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.1636,0.578715759,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:27,1004127.46,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.1895,0.670333963,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 15:58,1004127.98,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.232,0.820672715,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/18/2014 16:30,1004128.5,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,5,pts_3,0.2805,0.992235761,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.233955388,0.944498258,,7/18/2014 17:01,1004129.03,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.341,1.206247396,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:05,1004074.09,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0046,0.016271959,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:22,1004074.37,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0076,0.026884106,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:42,1004074.71,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0066,0.023346724,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:13,1004075.23,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0206,0.072870077,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:45,1004075.75,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0173,0.061196715,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 12:16,1004076.28,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0349,0.123454646,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,Air removed from lines,,,,7/16/2014 12:47,1004076.8,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.0933,0.330037777,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:19,1004077.32,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.13369,0.472912652,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:50,1004077.84,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.2215,0.7835302,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:22,1004078.37,OxicEvo04sdhCadhBEcoliGlc_Broth-1,,sdh_1,0.278,0.983392305,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.678796882,0.980773523,,7/16/2014 14:37,1004078.62,OxicEvo04sdhCadhBEcoliGlc_Broth-1,6,sdh_1,0.3135,1.10896938,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:19,1004074.32,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0049,0.017333174,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:36,1004074.61,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0057,0.02016308,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:08,1004075.14,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0101,0.035727562,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:39,1004075.66,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0153,0.054121951,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 12:11,1004076.18,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0237,0.083835963,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 12:43,1004076.73,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.0726,0.256813962,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:15,1004077.25,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.1067,0.377438701,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:46,1004077.78,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.1757,0.621518086,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:17,1004078.3,OxicEvo04sdhCadhBEcoliGlc_Broth-2,,sdh_2,0.2749,0.97242642,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.837446498,0.997720153,,7/16/2014 14:38,1004078.65,OxicEvo04sdhCadhBEcoliGlc_Broth-2,6,sdh_2,0.3472,1.228179167,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:04,1004074.07,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0037,0.013088315,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:20,1004074.34,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0069999,0.024761323,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 10:39,1004074.66,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0069,0.024407939,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:11,1004075.18,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0117,0.041387374,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 11:42,1004075.71,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0257,0.090910727,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Air in lines; OD600 is not accurate!; need to back-calculate from later time-points,,,,7/16/2014 12:13,1004076.23,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.0365,0.129114457,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 12:46,1004076.78,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.07719,0.273050547,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:17,1004077.3,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.13269,0.46937527,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 13:49,1004077.82,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.1735,0.613735845,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/16/2014 14:20,1004078.34,OxicEvo04sdhCadhBEcoliGlc_Broth-3,,sdh_3,0.2669,0.944127361,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.753628612,0.990446234,,7/16/2014 14:40,1004078.67,OxicEvo04sdhCadhBEcoliGlc_Broth-3,6,sdh_3,0.3353,1.186084316,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 8:30,1004192.5,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.2169,0.767258241,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 9:03,1004193.07,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.2723,0.963229226,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 9:36,1004193.6,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.2693,0.952617078,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 10:12,1004194.2,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.2738,0.968535299,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:30,1004195.5,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.502,1.775765961,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.190043506,0.745511492,,7/21/2014 11:50,1004195.83,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,0.3564,1.260723085,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 8:31,1004192.52,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.2279,0.806169447,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 9:05,1004193.09,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.2876,1.017351176,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 9:37,1004193.63,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.2746,0.971365205,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 10:13,1004194.23,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.2606,0.921841852,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:32,1004195.53,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.389,1.376041751,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.149734168,0.830240887,,7/21/2014 11:51,1004195.85,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,0.3884,1.373919321,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 8:32,1004192.55,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.2397,0.84791056,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 9:06,1004193.11,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.252,0.891420363,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 9:39,1004193.65,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.2684,0.949433434,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 10:14,1004194.25,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.2907,1.028317062,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 11:33,1004195.55,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.4313,1.525673026,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.183903468,0.94510151,,7/21/2014 11:52,1004195.87,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,0.4063,1.437238466,biomass,OD600,ALE1.1
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 14:44,1004054.73,OxicEvo04EcoliGlc_Broth-1,6,evo04B1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 14:45,1004054.75,OxicEvo04EcoliGlc_Broth-2,6,evo04B2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 14:46,1004054.77,OxicEvo04EcoliGlc_Broth-3,6,evo04B3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 14:46,1004054.77,OxicEvo04EcoliGlc_Filtrate-1,6,evo04F1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 19:19,1004059.32,OxicEvo04gndEcoliGlc_Broth-1,6,gndB1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 19:18,1004059.3,OxicEvo04gndEcoliGlc_Broth-2,6,gndB2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 19:17,1004059.28,OxicEvo04gndEcoliGlc_Filtrate-1,6,gndF1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/15/2014 19:17,1004059.28,OxicEvo04gndEcoliGlc_Broth-3,6,gndB3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 18:03,1004082.06,OxicEvo04pgiEcoliGlc_Broth-1,6,pgiB1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 16:48,1004200.8,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,0,pgi_1_1B1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 18:00,1004202,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,0,pgi_1_1B2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 18:00,1004202,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,0,pgi_1_1B3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 18:00,1004202,OxicEvo04pgiEvo01J01EcoliGlc_Filtrate-3,0,pgi_1_1F1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 17:27,1004201.45,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,0,pgi_1_2B1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 17:27,1004201.45,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,0,pgi_1_2B2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 16:40,1004200.67,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,0,pgi_1_2B3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 16:40,1004200.67,OxicEvo04pgiEvo01J02EcoliGlc_Filtrate-3,0,pgi_1_2F1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 15:59,1004079.99,OxicEvo04pgiEcoliGlc_Broth-2,6,pgiB2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 18:06,1004082.1,OxicEvo04pgiEcoliGlc_Broth-3,6,pgiB3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 18:06,1004082.1,OxicEvo04pgiEcoliGlc_Filtrate-1,6,pgiF1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/18/2014 17:32,1004129.54,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,6,ptsB1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/18/2014 17:33,1004129.56,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,6,ptsB2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/18/2014 19:05,1004131.08,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,6,ptsB3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/18/2014 19:05,1004131.08,OxicEvo04ptsHIcrrEcoliGlc_Filtrate-1,6,ptsF1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 14:37,1004078.62,OxicEvo04sdhCadhBEcoliGlc_Broth-1,6,sdhB1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 14:38,1004078.65,OxicEvo04sdhCadhBEcoliGlc_Broth-2,6,sdhB2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 14:40,1004078.67,OxicEvo04sdhCadhBEcoliGlc_Broth-3,6,sdhB3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/16/2014 14:40,1004078.67,OxicEvo04sdhCadhBEcoliGlc_Filtrate-3,6,sdhF1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 11:40,1004195.67,OxicEvo04tpiAEcoliGlc_Broth-1,4,tpiB1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 11:41,1004195.68,OxicEvo04tpiAEcoliGlc_Broth-2,4,tpiB2,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 11:42,1004195.7,OxicEvo04tpiAEcoliGlc_Filtrate-2,4,tpiF1,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,4,Metabolomics,TRUE,,,,,7/21/2014 11:42,1004195.7,OxicEvo04tpiAEcoliGlc_Broth-3,4,tpiB3,,,endometabolome,,Aqueous acidic acetonitrile filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 11:43,1004051.72,OxicEvo04EcoliGlc_Broth-1,1,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 12:25,1004052.43,OxicEvo04EcoliGlc_Broth-1,2,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:08,1004053.14,OxicEvo04EcoliGlc_Broth-1,3,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:53,1004053.89,OxicEvo04EcoliGlc_Broth-1,4,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:14,1004054.24,OxicEvo04EcoliGlc_Broth-1,5,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:44,1004054.73,OxicEvo04EcoliGlc_Broth-1,6,evo04_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 11:44,1004051.74,OxicEvo04EcoliGlc_Broth-2,1,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 12:26,1004052.45,OxicEvo04EcoliGlc_Broth-2,2,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:09,1004053.16,OxicEvo04EcoliGlc_Broth-2,3,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:54,1004053.91,OxicEvo04EcoliGlc_Broth-2,4,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:15,1004054.26,OxicEvo04EcoliGlc_Broth-2,5,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:45,1004054.75,OxicEvo04EcoliGlc_Broth-2,6,evo04_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 11:45,1004051.76,OxicEvo04EcoliGlc_Broth-3,1,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 12:27,1004052.46,OxicEvo04EcoliGlc_Broth-3,2,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:11,1004053.18,OxicEvo04EcoliGlc_Broth-3,3,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 13:55,1004053.92,OxicEvo04EcoliGlc_Broth-3,4,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:17,1004054.28,OxicEvo04EcoliGlc_Broth-3,5,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 14:46,1004054.77,OxicEvo04EcoliGlc_Broth-3,6,evo04_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 15:15,1004055.25,OxicEvo04gndEcoliGlc_Broth-1,1,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 16:11,1004056.18,OxicEvo04gndEcoliGlc_Broth-1,2,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 17:05,1004057.08,OxicEvo04gndEcoliGlc_Broth-1,3,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:11,1004058.18,OxicEvo04gndEcoliGlc_Broth-1,4,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:41,1004058.68,OxicEvo04gndEcoliGlc_Broth-1,5,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 19:19,1004059.32,OxicEvo04gndEcoliGlc_Broth-1,6,gnd_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 15:17,1004055.28,OxicEvo04gndEcoliGlc_Broth-2,1,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 16:13,1004056.22,OxicEvo04gndEcoliGlc_Broth-2,2,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 17:06,1004057.1,OxicEvo04gndEcoliGlc_Broth-2,3,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:12,1004058.2,OxicEvo04gndEcoliGlc_Broth-2,4,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:42,1004058.7,OxicEvo04gndEcoliGlc_Broth-2,5,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 19:18,1004059.3,OxicEvo04gndEcoliGlc_Broth-2,6,gnd_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 15:19,1004055.32,OxicEvo04gndEcoliGlc_Broth-3,1,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 16:15,1004056.25,OxicEvo04gndEcoliGlc_Broth-3,2,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 17:07,1004057.12,OxicEvo04gndEcoliGlc_Broth-3,3,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:13,1004058.22,OxicEvo04gndEcoliGlc_Broth-3,4,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 18:43,1004058.72,OxicEvo04gndEcoliGlc_Broth-3,5,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/15/2014 19:17,1004059.28,OxicEvo04gndEcoliGlc_Broth-3,6,gnd_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 9:03,1004073.05,OxicEvo04pgiEcoliGlc_Broth-1,1,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:44,1004075.73,OxicEvo04pgiEcoliGlc_Broth-1,2,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:47,1004076.78,OxicEvo04pgiEcoliGlc_Broth-1,3,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:07,1004078.12,OxicEvo04pgiEcoliGlc_Broth-1,4,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 16:39,1004080.65,OxicEvo04pgiEcoliGlc_Broth-1,5,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 18:03,1004082.06,OxicEvo04pgiEcoliGlc_Broth-1,6,pgi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 9:04,1004073.07,OxicEvo04pgiEcoliGlc_Broth-2,1,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:45,1004075.75,OxicEvo04pgiEcoliGlc_Broth-2,2,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:48,1004076.8,OxicEvo04pgiEcoliGlc_Broth-2,3,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:08,1004078.13,OxicEvo04pgiEcoliGlc_Broth-2,4,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 15:18,1004079.3,OxicEvo04pgiEcoliGlc_Broth-2,5,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 15:59,1004079.99,OxicEvo04pgiEcoliGlc_Broth-2,6,pgi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 9:05,1004073.08,OxicEvo04pgiEcoliGlc_Broth-3,1,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:46,1004075.77,OxicEvo04pgiEcoliGlc_Broth-3,2,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:49,1004076.82,OxicEvo04pgiEcoliGlc_Broth-3,3,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:09,1004078.15,OxicEvo04pgiEcoliGlc_Broth-3,4,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 16:40,1004080.67,OxicEvo04pgiEcoliGlc_Broth-3,5,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 18:06,1004082.1,OxicEvo04pgiEcoliGlc_Broth-3,6,pgi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 11:26,1004099.43,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,1,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 16:08,1004104.13,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,2,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 14:18,1004126.3,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,3,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 14:58,1004126.97,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,4,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 16:27,1004128.46,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,5,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 17:32,1004129.54,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,6,pts_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 11:27,1004099.45,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,1,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 16:09,1004104.15,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,2,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 14:19,1004126.32,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,3,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 14:59,1004126.98,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,4,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 16:28,1004128.48,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,5,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 17:33,1004129.56,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,6,pts_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 11:28,1004099.47,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,1,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/17/2014 16:10,1004104.17,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,2,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 14:20,1004126.33,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,3,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 15:00,1004127,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,4,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 16:30,1004128.5,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,5,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/18/2014 19:05,1004131.08,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,6,pts_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:16,1004075.27,OxicEvo04sdhCadhBEcoliGlc_Broth-1,1,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:18,1004076.3,OxicEvo04sdhCadhBEcoliGlc_Broth-1,2,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:51,1004076.85,OxicEvo04sdhCadhBEcoliGlc_Broth-1,3,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 13:30,1004077.5,OxicEvo04sdhCadhBEcoliGlc_Broth-1,4,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:19,1004078.32,OxicEvo04sdhCadhBEcoliGlc_Broth-1,5,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:37,1004078.62,OxicEvo04sdhCadhBEcoliGlc_Broth-1,6,sdh_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:17,1004075.28,OxicEvo04sdhCadhBEcoliGlc_Broth-2,1,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:19,1004076.32,OxicEvo04sdhCadhBEcoliGlc_Broth-2,2,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:52,1004076.87,OxicEvo04sdhCadhBEcoliGlc_Broth-2,3,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 13:31,1004077.52,OxicEvo04sdhCadhBEcoliGlc_Broth-2,4,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:20,1004078.33,OxicEvo04sdhCadhBEcoliGlc_Broth-2,5,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:38,1004078.65,OxicEvo04sdhCadhBEcoliGlc_Broth-2,6,sdh_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 11:18,1004075.3,OxicEvo04sdhCadhBEcoliGlc_Broth-3,1,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:20,1004076.33,OxicEvo04sdhCadhBEcoliGlc_Broth-3,2,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 12:53,1004076.88,OxicEvo04sdhCadhBEcoliGlc_Broth-3,3,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 13:32,1004077.53,OxicEvo04sdhCadhBEcoliGlc_Broth-3,4,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:21,1004078.35,OxicEvo04sdhCadhBEcoliGlc_Broth-3,5,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/16/2014 14:40,1004078.67,OxicEvo04sdhCadhBEcoliGlc_Broth-3,6,sdh_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 8:34,1004192.57,OxicEvo04tpiAEcoliGlc_Broth-1,1,tpi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 9:07,1004193.12,OxicEvo04tpiAEcoliGlc_Broth-1,2,tpi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 10:15,1004194.25,OxicEvo04tpiAEcoliGlc_Broth-1,3,tpi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 11:40,1004195.67,OxicEvo04tpiAEcoliGlc_Broth-1,4,tpi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 12:49,1004196.82,OxicEvo04tpiAEcoliGlc_Broth-1,5,tpi_1,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 8:35,1004192.58,OxicEvo04tpiAEcoliGlc_Broth-2,2,tpi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 9:08,1004193.13,OxicEvo04tpiAEcoliGlc_Broth-2,2,tpi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 10:16,1004194.27,OxicEvo04tpiAEcoliGlc_Broth-2,3,tpi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 11:41,1004195.68,OxicEvo04tpiAEcoliGlc_Broth-2,4,tpi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 12:50,1004196.83,OxicEvo04tpiAEcoliGlc_Broth-2,5,tpi_2,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 8:36,1004192.6,OxicEvo04tpiAEcoliGlc_Broth-3,3,tpi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 9:09,1004193.15,OxicEvo04tpiAEcoliGlc_Broth-3,2,tpi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 10:17,1004194.28,OxicEvo04tpiAEcoliGlc_Broth-3,3,tpi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 11:42,1004195.7,OxicEvo04tpiAEcoliGlc_Broth-3,4,tpi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,7,Phenomics_uptakeAndSecretionRate,TRUE,,,,,7/21/2014 12:51,1004196.85,OxicEvo04tpiAEcoliGlc_Broth-3,5,tpi_3,,,exometabolome,,Filtration
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 14:44,1004054.73,OxicEvo04EcoliGlc_Broth-1,6,evo04_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 14:45,1004054.75,OxicEvo04EcoliGlc_Broth-2,6,evo04_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 14:46,1004054.77,OxicEvo04EcoliGlc_Broth-3,6,evo04_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 19:19,1004059.32,OxicEvo04gndEcoliGlc_Broth-1,6,gnd_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 19:18,1004059.3,OxicEvo04gndEcoliGlc_Broth-2,6,gnd_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/15/2014 19:17,1004059.28,OxicEvo04gndEcoliGlc_Broth-3,6,gnd_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 18:03,1004082.06,OxicEvo04pgiEcoliGlc_Broth-1,6,pgi_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 15:59,1004079.99,OxicEvo04pgiEcoliGlc_Broth-2,6,pgi_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 18:06,1004082.1,OxicEvo04pgiEcoliGlc_Broth-3,6,pgi_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/18/2014 17:32,1004129.54,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,6,pts_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/18/2014 17:33,1004129.56,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,6,pts_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/18/2014 19:05,1004131.08,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,6,pts_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 14:37,1004078.62,OxicEvo04sdhCadhBEcoliGlc_Broth-1,6,sdh_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 14:38,1004078.65,OxicEvo04sdhCadhBEcoliGlc_Broth-2,6,sdh_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/16/2014 14:40,1004078.67,OxicEvo04sdhCadhBEcoliGlc_Broth-3,6,sdh_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/21/2014 11:40,1004195.67,OxicEvo04tpiAEcoliGlc_Broth-1,4,tpi_1,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/21/2014 11:41,1004195.68,OxicEvo04tpiAEcoliGlc_Broth-2,4,tpi_2,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,2,RNAseq,TRUE,,,,,7/21/2014 11:42,1004195.7,OxicEvo04tpiAEcoliGlc_Broth-3,4,tpi_3,,,transcriptome,,RNAprotect
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:30,1004198.51,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.418,0.418,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:09,1004199.15,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.538,0.538,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:47,1004199.8,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.68,0.68,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:30,1004200.51,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,,pgi_1_1B1,0.964,0.964,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.379825318,0.985181407,,7/21/2014 16:48,1004200.8,OxicEvo04pgiEvo01J01EcoliGlc_Broth-1,0,pgi_1_1B1,0.95,0.95,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:31,1004198.53,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.254,0.254,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:10,1004199.17,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.32,0.32,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:49,1004199.82,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.436,0.436,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:32,1004200.54,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.452,0.452,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:12,1004201.21,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.61,0.61,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:39,1004201.66,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,,pgi_1_1B2,0.78,0.78,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.358787419,0.923976244,,7/21/2014 18:00,1004202,OxicEvo04pgiEvo01J01EcoliGlc_Broth-2,0,pgi_1_1B2,0.915,0.915,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:33,1004198.56,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.248,0.248,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:11,1004199.2,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.314,0.314,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:50,1004199.84,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.42,0.42,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:33,1004200.56,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.456,0.456,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:13,1004201.23,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.62,0.62,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:40,1004201.68,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,,pgi_1_1B3,0.785,0.785,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.385034061,0.944976632,,7/21/2014 18:00,1004202,OxicEvo04pgiEvo01J01EcoliGlc_Broth-3,0,pgi_1_1B3,0.94,0.94,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:34,1004198.58,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.242,0.242,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:13,1004199.22,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.308,0.308,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:51,1004199.87,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.426,0.426,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:34,1004200.58,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,0.644,0.644,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:15,1004201.25,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,,pgi_1_2B1,1,1,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.578744419,0.997778869,,7/21/2014 17:27,1004201.45,OxicEvo04pgiEvo01J02EcoliGlc_Broth-1,0,pgi_1_2B1,1.09,1.09,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:36,1004198.6,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.25,0.25,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:14,1004199.24,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.318,0.318,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:53,1004199.89,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.446,0.446,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:36,1004200.61,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.48,0.48,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 17:16,1004201.27,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,,pgi_1_2B2,0.675,0.675,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.360425267,0.961470394,,7/21/2014 17:27,1004201.45,OxicEvo04pgiEvo01J02EcoliGlc_Broth-2,0,pgi_1_2B2,0.72,0.72,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 14:37,1004198.62,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.418,0.418,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:15,1004199.27,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.584,0.584,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 15:54,1004199.91,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,0.81,0.81,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 16:37,1004200.63,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,,pgi_1_2B3,1.148,1.148,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.526758109,0.995258893,,7/21/2014 16:40,1004200.67,OxicEvo04pgiEvo01J02EcoliGlc_Broth-3,0,pgi_1_2B3,1.28,1.28,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:57,1004105.96,OxicEvo04ptsHIcrrEcoliGlc_Broth-1,,pts_1,0.084,0.084,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:38,1004105.64,OxicEvo04ptsHIcrrEcoliGlc_Broth-2,,pts_2,0.092,0.092,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,Possible biphasic growth,,,,7/17/2014 17:41,1004105.69,OxicEvo04ptsHIcrrEcoliGlc_Broth-3,,pts_3,0.101,0.101,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 11:49,1004195.82,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,1.37,1.37,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 12:21,1004196.35,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,1.535,1.535,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.18493529,0.993138369,,7/21/2014 12:56,1004196.93,OxicEvo04tpiAEcoliGlc_Broth-1,,tpi_1,1.685,1.685,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 11:49,1004195.82,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,1.41,1.41,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,,,,7/21/2014 12:21,1004196.35,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,1.565,1.565,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,TRUE,,0.185607462,0.999152553,,7/21/2014 12:56,1004196.93,OxicEvo04tpiAEcoliGlc_Broth-2,,tpi_2,1.735,1.735,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 11:49,1004195.82,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,1.44,1.44,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,,,,7/21/2014 12:21,1004196.35,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,1.575,1.575,biomass,OD600,spectrophotometer
+Quantification_ALEsKOs01,6,Phenomics_growthRate,FALSE,,0.166877312,0.999986088,,7/21/2014 12:56,1004196.93,OxicEvo04tpiAEcoliGlc_Broth-3,,tpi_3,1.735,1.735,biomass,OD600,spectrophotometer

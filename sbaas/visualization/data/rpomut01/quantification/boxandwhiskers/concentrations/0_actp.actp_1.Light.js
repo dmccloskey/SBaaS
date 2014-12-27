@@ -1,0 +1,1 @@
+var data = {"labels": ["OxicWTGlyc [mM]"], "data": [{"replicate": 0, "value": 0.316518889685005, "condition": 0}, {"replicate": 1, "value": 0.196710200279997, "condition": 0}, {"replicate": 2, "value": 0.212298143927576, "condition": 0}], "options": {"row_axis_label": "concentration", "col_axis_label": "sample", "value_label": "mM"}}

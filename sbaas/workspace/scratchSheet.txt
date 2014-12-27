@@ -1,0 +1,101 @@
+Physiological ratio calcuations in R:
+ec = {};
+ec['atp'] = 1.0;
+ec['adp'] = 0.1;
+ec['amp'] = 0.1;
+
+r_statement = ('( %(atp)s + %(adp)s / 2 ) / ( %(atp)s + %(adp)s + %(amp)s )' % ec);
+ans = robjects.r(r_statment);  
+
+>>> for r in cobra_model.reactions:
+...     for met_id, stoich in r._metabolites.iteritems():
+...         print met_id, stoich
+
+Method to find redundant signal in spectra and remove.
+Method to calculate average and cv from peakSpectrum and normalized
+	sample table as peakSpectrum or normalized, but append column for average and CV
+
+Add ability to recombine N dilutions instead of just two
+
+bug found in compare_peakSpectrum_normMax/normSum: use > 0.0 to avoid including a 0 value when calculating the average
+
+####atomMapping scripts####
+from analysis.analysis_base import *
+from analysis.analysis_stage02_isotopomer.stage02_isotopomer_io import stage02_isotopomer_io
+def part1():
+    session = Session();
+    try:
+        data = session.query(data_stage02_isotopomer_atomMappingReactions1);
+        data_O = []
+        if data:
+            for i,d in enumerate(data):
+                print d.id
+                reactants_elements_tracked = [];
+                reactants_positions_tracked = [];
+                if d.reactants_mapping[0]:
+                    for r_cnt,r in enumerate(d.reactants_mapping):
+                        element = d.reactants_elements_tracked[r_cnt];
+                        elements_tracked = [];
+                        positions_tracked = [];
+                        for e_cnt, e in enumerate(r):
+                            elements_tracked.append(element);
+                            positions_tracked.append(e_cnt);
+                        reactants_elements_tracked.append(elements_tracked);
+                        reactants_positions_tracked.append(positions_tracked);
+                #else:
+                #    reactants_elements_tracked.append([]);
+                #    reactants_positions_tracked.append([]);
+
+                products_elements_tracked = [];
+                products_positions_tracked = [];
+                if d.products_mapping[0]:
+                    for r_cnt,r in enumerate(d.products_mapping):
+                        element = d.products_elements_tracked[r_cnt];
+                        elements_tracked = [];
+                        positions_tracked = [];
+                        for e_cnt, e in enumerate(r):
+                            elements_tracked.append(element);
+                            positions_tracked.append(e_cnt);
+                        products_elements_tracked.append(elements_tracked);
+                        products_positions_tracked.append(positions_tracked);
+                #else:
+                #    products_elements_tracked.append([]);
+                #    products_positions_tracked.append([]);
+
+                data_O.append({'mapping_id':d.mapping_id,
+                                'rxn_id':d.rxn_id,
+                                'rxn_description':d.rxn_description,
+                                'reactants_stoichiometry_tracked':d.reactants_stoichiometry_tracked,
+                                'products_stoichiometry_tracked':d.products_stoichiometry_tracked,
+                                'reactants_ids_tracked':d.reactants_ids_tracked,
+                                'products_ids_tracked':d.products_ids_tracked,
+                                'reactants_mapping':d.reactants_mapping,
+                                'products_mapping':d.products_mapping,
+                                'rxn_equation':d.rxn_equation,
+                                'products_elements_tracked':products_elements_tracked,
+                                'products_positions_tracked':products_positions_tracked,
+                                'reactants_elements_tracked':reactants_elements_tracked,
+                                'reactants_positions_tracked':reactants_positions_tracked,
+                                'used_':d.used_,
+                                'comment_':d.comment_,
+                                'id':d.id});
+        io = base_exportData(data_O);
+        io.write_dict2csv('data\\140923_data_stage02_isotopomer_atomMappingReactions03.csv');
+        io.write_dict2json('data\\140923_data_stage02_isotopomer_atomMappingReactions03.json');
+
+        io2 = stage02_isotopomer_io();
+        io2.add_data_stage02_isotopomer_atomMappingReactions(data_O);
+
+    except SQLAlchemyError as e:
+        print(e);
+def part2():
+    io0 = base_importData();
+    io0.read_csv('data\\140923_data_stage02_isotopomer_atomMappingReactions01.csv')
+    io1 = base_exportData(io0.data);
+    io1.write_dict2json('data\\140923_data_stage02_isotopomer_atomMappingReactions01.json')
+def part3():
+    io2 = stage02_isotopomer_io();
+    io2.import_data_stage02_isotopomer_atomMappingReactions_update('data\\140923_data_stage02_isotopomer_atomMappingReactions01.json');
+#part1();
+#part2();
+#part3();

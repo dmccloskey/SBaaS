@@ -1,0 +1,9 @@
+sample_id,growth_condition_short,growth_condition_long,media_short,media_long,isoxic,temperature,supplementation,od600,vcd,culture_density,culture_volume_sampled,cells,dcw,wcw,vcd_units,culture_density_units,culture_volume_sampled_units,dcw_units,wcw_units
+140221_0_OxicWTEcoliGlcM9_Broth-7,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.68,1.06E+12,0.306,10,10551724138,3.06,10.02413793,cells*L-1,g*L-1,mL,mg,mg
+140221_0_OxicWTEcoliGlcM9_Broth-8,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.675,1.05E+12,0.30375,10,10474137931,3.0375,9.950431034,cells*L-1,g*L-1,mL,mg,mg
+140221_0_OxicWTEcoliGlcM9_Broth-9,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.64,9.93E+11,0.288,10,9931034483,2.88,9.434482759,cells*L-1,g*L-1,mL,mg,mg
+140221_0_OxicWTEcoliGlcM9_Broth-10,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.68,1.06E+12,0.306,10,10551724138,3.06,10.02413793,cells*L-1,g*L-1,mL,mg,mg
+140221_0_OxicWTEcoliGlcM9_Broth-11,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.675,1.05E+12,0.30375,10,10474137931,3.0375,9.950431034,cells*L-1,g*L-1,mL,mg,mg
+140221_0_OxicWTEcoliGlcM9_Broth-12,Batch,Aerobic E. coli; Grown and sampled from shake flasks in a water bath at 37C,Glucose M9 minimal media,,t,37,,0.64,9.93E+11,0.288,10,9931034483,2.88,9.434482759,cells*L-1,g*L-1,mL,mg,mg
+140415_Null_OxicWTEcoliGlcM9_Broth-9,,,,,,,,,,,,,,,cells*L-1,g*L-1,mL,mg,mg
+140415_Null_OxicWTEcoliGlcM9_Broth-12,,,,,,,,,,,,,,,cells*L-1,g*L-1,mL,mg,mg

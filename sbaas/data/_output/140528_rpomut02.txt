@@ -1,0 +1,26 @@
+% header=SampleName	SampleID	Comments	AcqMethod	ProcMethod	RackCode	PlateCode	VialPos	SmplInjVol	DilutFact	WghtToVol	Type	RackPos	PlatePos	SetName	OutputFile
+140521_Blank6			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank7			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank8			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Filtrate-1-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	4	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-1-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	1	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-2-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	2	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-3-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	3	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Filtrate-4-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	4	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-4-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	1	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-5-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	2	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-6-10.0x			140521_McCloskey2013	none	CStk1-04	VT54	3	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank9			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Filtrate-1			140521_McCloskey2013	none	CStk1-04	VT54	8	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-1			140521_McCloskey2013	none	CStk1-04	VT54	5	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-2			140521_McCloskey2013	none	CStk1-04	VT54	6	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-3			140521_McCloskey2013	none	CStk1-04	VT54	7	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Filtrate-4			140521_McCloskey2013	none	CStk1-04	VT54	8	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-4			140521_McCloskey2013	none	CStk1-04	VT54	5	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-5			140521_McCloskey2013	none	CStk1-04	VT54	6	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140523_0_OxicRph-pyrE82GlcM9_Broth-6			140521_McCloskey2013	none	CStk1-04	VT54	7	10	1	0	Unknown	4	1	140521_rpomut02	14052102\140528_rpomut02
+140503_0_QC_Broth-6			140521_McCloskey2013	none	CStk1-04	VT54	46	10	1	0	QC	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank10			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank11			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank10			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02
+140521_Blank11			140521_McCloskey2013	none	CStk1-04	VT54	54	10	1	0	Solvent	4	1	140521_rpomut02	14052102\140528_rpomut02

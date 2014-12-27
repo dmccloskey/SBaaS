@@ -1,0 +1,279 @@
+10fthf             ,10-Formyltetrahydrofolate                    
+12dgr_EC  ,"1,2-Diacylglycerol  (E.coli) **              "
+13dpg       ,3-Phospho-D-glyceroyl phosphate              
+1pyr5c        ,1-Pyrroline-5-carboxylate                    
+23dhdp        ,"2,3-Dihydrodipicolinate                      "
+23dhmb      ,"(R)-2,3-Dihydroxy-3-methylbutanoate          "
+23dhmp   ,"(R)-2,3-Dihydroxy-3-methylpentanoate         "
+25aics     ,(S)-2-[5-Amino-1-(5-phospho-D-ribosyl) imidazole-4-carboxamido]succinate 
+26dap-LL      ,"LL-2,6-Diaminoheptanedioate                  "
+26dap-M    ,"meso-2,6-Diaminoheptanedioate              "
+2ahbut             ,(S)-2-Aceto-2-hydroxybutanoate               
+2cpr5p     ,1-(2-Carboxyphenylamino)-1-deoxy-D-ribulose-5-phosphate
+2dda7p     ,2-Dehydro-3-deoxy-D-arabino-heptonate7-phosphate    
+2dr1p        ,2-Deoxy-D-ribose 1-phosphate                 
+2dr5p          ,2-Deoxy-D-ribose 5-phosphate                 
+2ippm         ,2-Isopropylmaleate                           
+2kmb         ,2-keto-4-methylthiobutyrate                  
+2obut              ,2-Oxobutanoate                               
+2pg         ,D-Glycerate 2-phosphate                      
+34hpp    ,3-(4-Hydroxyphenyl)pyruvate                  
+3c2hmp       ,3-Carboxy-2-hydroxy-4-methylpentanoate       
+3c3hmp     ,3-Carboxy-3-hydroxy-4-methylpentanoate       
+3c4mop    ,3-Carboxy-4-methyl-2-oxopentanoate           
+3dhq         ,3-Dehydroquinate                             
+3dhsk              ,3-Dehydroshikimate                           
+3hmrsACP ,R-3-hydroxy-myristoyl-ACP                    
+3ig3p              ,C'-(3-Indolyl)-glycerol 3-phosphate          
+3mob        ,3-Methyl-2-oxobutanoate                      
+3mop            ,(S)-3-Methyl-2-oxopentanoate                 
+3pg                ,3-Phospho-D-glycerate                        
+3php               ,3-Phosphohydroxypyruvate                     
+3psme        ,5-O-(1-Carboxyvinyl)-3-phosphoshikimate      
+4mop       ,4-Methyl-2-oxopentanoate                     
+4pasp              ,4-Phospho-L-aspartate                        
+5aizc     ,5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate 
+5caiz              ,5-phosphoribosyl-5-carboxyaminoimidazole     
+5mdr1p         ,5-Methylthio-5-deoxy-D-ribose 1-phosphate    
+5mdru1p   ,5-Methylthio-5-deoxy-D-ribulose 1-phosphate  
+5mta               ,5-Methylthioadenosine                        
+5mthf              ,5-Methyltetrahydrofolate                     
+5mtr               ,5-Methylthio-D-ribose                        
+6pgc               ,6-Phospho-D-gluconate                        
+6pgl               ,"6-phospho-D-glucono-1,5-lactone              "
+Aaprot  ,Averige amino acid composition for protein synthesis
+ac                 ,Acetate                                      
+acald              ,Acetaldehyde                                
+accoa              ,Acetyl-CoA                                   
+acg5p              ,N-Acetyl-L-glutamyl 5-phosphate              
+acg5sa        ,N-Acetyl-L-glutamate 5-semialdehyde          
+acgam1p     ,N-Acetyl-D-glucosamine 1-phosphate           
+acglu              ,N-Acetyl-L-glutamate                         
+acorn              ,N2-Acetyl-L-ornithine                        
+ACP         ,acyl carrier protein                         
+acser              ,O-Acetyl-L-serine                            
+actACP         ,Acetoacetyl-ACP                              
+actp               ,Acetyl phosphate                             
+ade                ,Adenine                                      
+adn                ,Adenosine                                    
+adp                ,ADP                                          
+adpglc        ,ADPglucose                                   
+"adphep-D,D  ",ADP-D-glycero-D-manno-heptose                
+"adphep-L,D   ",ADP-L-glycero-D-manno-heptose                
+agpe_EC      ,acyl-glycerophosphoethanolamine  (E.coli) ** 
+agpg_EC        ,acyl-glycerophosphoglycerol  (E.coli) **     
+aicar     ,5-Amino-1-(5-Phospho-D-ribosyl)imidazole-4-carboxamide    
+air           ,5-amino-1-(5-phospho-D-ribosyl)imidazole     
+akg                ,2-Oxoglutarate                               
+alaala            ,D-Alanyl-D-alanine                           
+alac-S           ,(S)-2-Acetolactate                           
+ala-D              ,D-Alanine                                    
+ala-L              ,L-Alanine                                    
+amet           ,S-Adenosyl-L-methionine                      
+ametam     ,S-Adenosylmethioninamine                     
+amp                ,AMP                                          
+anth               ,Anthranilate                                 
+aps                ,Adenosine 5'-phosphosulfate                  
+ara5p              ,D-Arabinose 5-phosphate                      
+arg-L              ,L-Arginine                                   
+argsuc             ,N(omega)-(L-Arginino)succinate               
+asn-L              ,L-Asparagine                                 
+asp-L              ,L-Aspartate                                  
+aspsa              ,L-Aspartate 4-semialdehyde                   
+atp                ,ATP                                          
+Biom_Prot ,Biomass protein                              
+biom3          ,biomass3                                     
+cbasp              ,N-Carbamoyl-L-aspartate                      
+cbp                ,Carbamoyl phosphate                          
+cdp                ,CDP                                          
+cdpdag1  ,CDPdiacylglycerol (E coli) **                
+cdpea              ,CDPethanolamine                              
+chor               ,Chorismate                                   
+cit                ,Citrate                                      
+citr-L             ,L-Citrulline                                 
+ckdo               ,CMP-3-deoxy-D-manno-octulosonate       
+cmp                ,CMP                                          
+co2                ,CO2                                          
+coa                ,Coenzyme A                                   
+ctp               ,CTP                                          
+cys-L              ,L-Cysteine                                   
+cyst-L             ,L-Cystathionine                             
+dad-2              ,Deoxyadenosine                               
+dadp               ,dADP                                         
+damp               ,dAMP                                         
+dcamp        ,"N6-(1,2-Dicarboxyethyl)-AMP                  "
+dcdp               ,dCDP                                         
+dcmp               ,dCMP                                         
+ddcaACP  ,Dodecanoyl-ACP (n-C12:0ACP)                  
+dgdp               ,dGDP                                         
+dgmp      ,dGMP                                         
+dhap               ,Dihydroxyacetone phosphate                   
+dhf                ,"7,8-Dihydrofolate                            "
+dhor-S             ,(S)-Dihydroorotate                           
+dkmpp        ,"2,3-diketo-5-methylthio-1-phosphopentane     "
+DNA                ,Deoxyribonucleic acid                        
+dtmp               ,dTMP                                         
+dudp               ,dUDP                                         
+dump       ,dUMP                                         
+dutp               ,dUTP                                         
+e4p                ,D-Erythrose 4-phosphate                      
+eig3p        ,D-erythro-1-(Imidazol-4-yl)glycerol3-phosphate    
+etha               ,Ethanolamine                                 
+etoh               ,Ethanol                                      
+f6p                ,D-Fructose 6-phosphate                      
+fad                ,FAD                                          
+fadh2              ,FADH2                                        
+fdp                ,"D-Fructose 1,6-bisphosphate                  "
+fgam           ,N2-Formyl-N1-(5-phospho-D-ribosyl)glycinamide
+for                ,Formate                                      
+fpram      ,2-(Formamido)-N1-(5-phospho-D-ribosyl) acetamidine    
+fprica     ,5-Formamido-1-(5-phospho-D-ribosyl)imidazole-4-carboxamide
+fum                ,Fumarate                                     
+g1p        ,D-Glucose 1-phosphate                        
+g3p                ,Glyceraldehyde 3-phosphate                   
+g3pe               ,sn-Glycero-3-phosphoethanolamine             
+g3pg               ,Glycerophosphoglycerol                       
+g6p         ,D-Glucose 6-phosphate                        
+gam1p          ,D-Glucosamine 1-phosphate                    
+gam6p        ,D-Glucosamine 6-phosphate                    
+gar                ,N1-(5-Phospho-D-ribosyl)glycinamide          
+gdp                ,GDP                                          
+glc-D         ,D-Glucose                                    
+gln-L              ,L-Glutamine                                  
+glu5p              ,L-Glutamate 5-phosphate                      
+glu5sa             ,L-Glutamate 5-semialdehyde                   
+glu-D     ,D-Glutamate                                  
+glu-L              ,L-Glutamate                                  
+gly                ,Glycine                                      
+glyc               ,Glycerol                                     
+glyc3p       ,Glycerol 3-phosphate                         
+glycogen   ,glycogen                                     
+gmhep17bp    ,"D-Glycero-D-manno-heptose 1,7-bisphosphate   "
+gmhep1p      ,D-Glycero-D-manno-heptose 1-phosphate        
+gmhep7p  ,D-Glycero-D-manno-heptose 7-phosphate        
+gmp                ,GMP                                          
+gtp                ,GTP                                          
+h                  ,H+                                           
+h2o                ,H2O                                         
+h2s                ,Hydrogen sulfide                             
+hco3               ,Bicarbonate                                  
+hcys-L      ,L-Homocysteine                               
+hdca               ,Hexadecanoate (n-C16:0)                      
+hdcea              ,hexadecenoate (n-C16:1)                      
+hdeACP      ,Hexadecenoyl-ACP (n-C16:1ACP)                
+his-L              ,L-Histidine                                  
+hisp               ,L-Histidinol phosphate                       
+histd              ,L-Histidinol                          
+hom-L          ,L-Homoserine                                 
+icit               ,Isocitrate                                   
+ile-L              ,L-Isoleucine                                 
+imacp        ,3-(Imidazol-4-yl)-2-oxopropyl phosphate      
+imp                ,IMP                                          
+Indole   ,Indole                                       
+kdo                ,3-Deoxy-D-manno-2-octulosonate               
+kdo2lipid4 ,KDO(2)-lipid IV(A)                           
+kdo2lipid4L,KDO(2)-lipid IV(A) with laurate              
+kdo8p        ,3-Deoxy-D-manno-octulosonate 8-phosphate     
+kdolipid4    ,KDO-lipid IV(A)                              
+lac-D              ,D-Lactate                                    
+leu-L              ,L-Leucine                                    
+lipa               ,KDO(2)-lipid (A)                             
+lipidA     ,"2,3,2'3'-Tetrakis(beta-hydroxymyristoyl)-D-glucosaminyl-1,6-beta-D-glucosam     "
+lipidAds      ,Lipid A Disaccharide                         
+lipidX     ,"2,3-Bis(3-hydroxytetradecanoyl)-beta-D-glucosaminyl 1-phosphate    "
+lps_EC      ,lipopolysaccharide (Ecoli)                   
+lys-L              ,L-Lysine                                     
+malACP      ,Malonyl-[acyl-carrier protein]               
+malcoa       ,Malonyl-CoA                                  
+mal-L        ,L-Malate                                     
+methf              ,"5,10-Methenyltetrahydrofolate               "
+met-L         ,L-Methionine                                 
+mlthf              ,"5,10-Methylenetetrahydrofolate               "
+myrsACP    ,Myristoyl-ACP (n-C14:0ACP)                  
+nad                ,Nicotinamide adenine dinucleotide            
+nadh               ,Nicotinamide adenine dinucleotide - reduced  
+nadp               ,Nicotinamide adenine dinucleotide phosphate  
+nadph  ,Nicotinamide adenine dinucleotide phosphate- reduced 
+nh4                ,ammonium                                     
+o2                 ,O2                                           
+oaa                ,Oxaloacetate                                 
+ocdcea        ,octadecenoate (n-C18:1)                      
+octeACP        ,Octadecenoyl-ACP (n-C18:1ACP)                
+orn                ,Ornithine                                    
+orot               ,Orotate                                      
+orot5p             ,Orotidine 5'-phosphate                       
+pa_EC     ,phosphatidate  (E.coli) **                   
+palmACP   ,Palmitoyl-ACP (n-C16:0ACP)                   
+pap             ,"Adenosine 3',5'-bisphosphate                 "
+paps           ,3'-Phosphoadenylyl sulfate                   
+pe_EC          ,Phosphatidylethanolamine (Ecoli) **          
+pep                ,Phosphoenolpyruvate                          
+peptido_EC   ,Peptidoglycan subunit of Escherichia coli    
+pg_EC       ,Phosphatidylglycerol (Ecoli) **              
+pgp_EC   ,Phosphatidylglycerophosphate (Ecoli) **      
+phe-L          ,L-Phenylalanine                              
+phpyr              ,Phenylpyruvate                               
+pi                 ,Phosphate                                    
+pphn               ,Prephenate                                  
+ppi                ,Diphosphate                                  
+pram               ,5-Phospho-beta-D-ribosylamine                
+pran               ,N-(5-Phospho-D-ribosyl)anthranilate          
+prbamp ,1-(5-Phosphoribosyl)-AMP                     
+prbatp             ,1-(5-Phosphoribosyl)-ATP                     
+prfp     ,1-(5-Phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino]imidazole-4
+prlp     ,5-[(5-phospho-1-deoxyribulos-1-ylamino)methylideneamino]-1-(5-phosphoribosy
+pro-L           ,L-Proline                                    
+prpp               ,5-Phospho-alpha-D-ribose 1-diphosphate       
+ps_EC       ,phosphatidylserine (Ecoli) **                
+pser-L             ,O-Phospho-L-serine                           
+ptrc               ,Putrescine                                  
+pyr                ,Pyruvate                                     
+q8                 ,Ubiquinone-8                                 
+q8h2               ,Ubiquinol-8                                  
+r1p                ,alpha-D-Ribose 1-phosphate                   
+r5p                ,alpha-D-Ribose 5-phosphate                   
+RNAtot    ,Ribonucleic acid total                       
+ru5p-D     ,D-Ribulose 5-phosphate                       
+s7p                ,Sedoheptulose 7-phosphate                    
+ser-L              ,L-Serine                                     
+skm                ,Shikimate                                    
+skm5p        ,Shikimate 5-phosphate                        
+sl26da             ,"N-Succinyl-LL-2,6-diaminoheptanedioate       "
+sl2a6o             ,N-Succinyl-2-L-amino-6-oxoheptanedioate      
+so3                ,Sulfite                                      
+so4                ,Sulfate                                      
+spmd            ,Spermidine                                   
+succ               ,Succinate                                    
+succoa       ,Succinyl-CoA                                 
+suchms    ,O-Succinyl-L-homoserine                      
+tdeACP     ,Tetradecenoyl-ACP (n-C14:1ACP)               
+thdp               ,"2,3,4,5-Tetrahydrodipicolinate               "
+thf                ,"5,6,7,8-Tetrahydrofolate                     "
+thr-L              ,L-Threonine                                  
+trdox              ,Oxidized thioredoxin                         
+trdrd              ,Reduced thioredoxin                          
+trp-L              ,L-Tryptophan                                 
+ttdca              ,tetradecanoate (n-C14:0)                     
+ttdcea       ,tetradecenoate (n-C14:1)                     
+tyr-L              ,L-Tyrosine                                   
+u23ga       ,"UDP-2,3-bis(3-hydroxytetradecanoyl) glucosamine"
+u3aga   ,UDP-3-O-(3-hydroxytetradecanoyl)- N-acetylglucosamine    
+u3hga    ,UDP-3-O-(3-hydroxytetradecanoyl)- D-glucosamine   
+uaagmda     ,Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-ala-D-glu-m    
+uaccg        ,UDP-N-acetyl-3-O-(1-carboxyvinyl)- D-glucosamine    
+uacgam       ,UDP-N-acetyl-D-glucosamine                  
+uagmda     ,"Undecaprenyl-diphospho-N-acetylmuramoyl-L-alanyl-D-glutamyl-meso-2,6-diamin    "
+uama           ,UDP-N-acetylmuramoyl-L-alanine               
+uamag        ,UDP-N-acetylmuramoyl-L-alanyl-D-glutamate    
+uamr               ,UDP-N-acetylmuramate                         
+udcpdp     ,Undecaprenyl diphosphate                     
+udcpp         ,Undecaprenyl phosphate                       
+udp                ,UDP                                          
+udpg               ,UDPglucose                                   
+ugmd     ,"UDP-N-acetylmuramoyl-L-alanyl- D-gamma-glutamyl-meso-2,6-diaminopimelate"
+ugmda     ,"UDP-N-acetylmuramoyl-L-alanyl- D-glutamyl-meso-2,6-diaminopimeloyl-D-alanyl-    "
+ump                ,UMP                                          
+utp                ,UTP                                          
+val-L              ,L-Valine                                     
+xmp                ,Xanthosine 5'-phosphate                      
+xu5p-D     ,D-Xylulose 5-phosphate                       

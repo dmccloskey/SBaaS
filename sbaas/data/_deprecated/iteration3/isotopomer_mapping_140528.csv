@@ -1,0 +1,891 @@
+rxn_id_old,rxn_id,rxn_description,include,notes,ctrack,mapping
+COMBO2,ptrc_to_4abut_1,"[PTRCTA,ABUTD]",TRUE,combo,1 xakg_c 1 xptrc_c > 1 x4abut_c 1 xglu_DASH_L_c,"#abcde #fghi > #fghi #abcde,#abcde #ihgf > #fghi #abcde"
+COMBO2,ptrc_to_4abut_2,"[GGPTRCS,GGPTRCO,GGGABADr,GGGABAH]",TRUE,combo added ptrc_to_4abut_2,1 xptrc_c > 1 x4abut_c,"#abcd > #abcd,#dcba > #abcd"
+COMBO3,glu_DASH_L_to_acg5p,"[ACGS,ACGK]",TRUE,combo,1 xaccoa_c 1 xglu_DASH_L_c > 1 xacg5p_c,#ab #cdefg > #cdefgab
+COMBO3,glu_DASH_L_to_acg5p,"[ACGS,ACGK]",TRUE,combo,1 xaccoa_c 1 xglu_DASH_L_c > 1 xacg5p_c 1 xcoa_c,#ABCDEFGHIJKLMNOPQRSTUab #cdefg > #cdefgab #ABCDEFGHIJKLMNOPQRSTU
+COMBO4,2obut_and_pyr_to_3mop,"[ACHBS,KARA2,DHAD2]",TRUE,combo,1 x2obut_c 1 xpyr_c > 1 x3mop_c 1 xco2_c,#abcd #efg > #abfcdg #e
+COMBO5,pyr_to_23dhmb,"[ACLS,KARA1]",TRUE,combo,1 xpyr_c 1 xpyr_c > 1 x23dhmb_c 1 xco2_c,#abc #def > #debcf #a
+COMBOSPMD,met_DASH_L_and_ptrc_to_spmd_and_5mta,"[METAT,ADMDC,SPMS]",TRUE,combo,1 xmet_DASH_L_c 1 xatp_c 1 xptrc_c > 1 xco2_c 1 x5mta_c 1 xspmd_c 1 xade_c,"#abcde #fghij12345 #klmn > #a #fghije #klmndcb #12345,#abcde #fghij12345 #nmlk > #a #fghije #klmndcb #12345"
+COMBOSPMD,METAT,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,1 xmet_DASH_L_c 1 xatp_c > 1 xamet_c,#abcde #123456789A > #123456789Aabcde
+COMBOSPMD,METAT_-amet,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,1 xmet_DASH_L_c >,#abcde >
+COMBOSPMD,ADMDC,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,1 xamet_c > 1 xametam_c 1 xco2_c ,#123456789Aabcde > #123456789Abcde #a
+COMBOSPMD,ADMDC_-amet,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,,
+COMBOSPMD,SPMS,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,1 xametam_c 1 xptrc_c > 1 xspmd_c 1 x5mta_c,"#123456789Aabcd #efgh > #efghabc #123456789Ad,#123456789Aabcd #efgh > #hgfeabc #123456789Ad"
+COMBOSPMD,MTAN,,TRUE,individual,1 x5mta_c > 1 xade_c 1 x5mtr_c,#123456789Aa > #6789A #12345a
+,5MTRtpp,,TRUE,individual,1 x5mtr_c > 1 x5mtr_p,#abcdef > #abcdef
+,5MTRtex_reverse,,TRUE,individual,1 x5mtr_p > 1 x5mtr_e,#abcdef > #abcdef
+,EX_5mtr_LPAREN_e_RPAREN_,,TRUE,individual,1 x5mtr_e >,#abcdef >
+COMBO15,chor_and_prpp_to_3ig3p,"[ANS,ANPRT,PRAIi,IGPS]",TRUE,combo,1 xchor_c 1 xgln_DASH_L_c 1 xprpp_c > 1 x3ig3p_c 1 xco2_c 1 xglu_DASH_L_c 1 xpyr_c ,#abcdefghij #klmno #pqrst > #tsrqbgfedcp #a #klmno #ihj
+COMBO22,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L_-coa,"[HSST,SHSL1,CYSTL]",TRUE,combo,1 xcys_DASH_L_c 1 xhom_DASH_L_c 1 xsuccoa_c > 1 xhcys_DASH_L_c 1 xpyr_c 1 xsucc_c ,"#bcd #efgh #ijkl > #efgh #bcd #ijkl,#bcd #efgh #ijkl > #efgh #bcd #lkji"
+COMBO22,HSST_-coa,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,1 xsuccoa_c 1 xhom_DASH_L_c > 1 xsuchms_c,#abcd #efgh > #efghabcd
+COMBO22,SHSL1,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,1 xsuchms_c 1 xcys_DASH_L_c > 1 xsucc_c 1 xcyst_DASH_L_c,"#abcdefg #ijk > #efgh #abcdkji,#abcdefg #ijk > #hgfe #abcdkji"
+COMBO22,CYSTL,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,1 xcyst_DASH_L_c > 1 xpyr_c 1 xhcys_DASH_L_c 1 xnh4_c,#abcdefg > #abcd #gfe
+COMBO22,METS,,TRUE,individual,1 xhcys_DASH_L_c 1 x5mthf_c > 1 xmet_DASH_L_c,#abcd #e > #abcde
+COMBO25,e4p_and_pep_to_3dhq,"[DDPA,DHQS]",TRUE,combo,1 xe4p_c 1 xpep_c > 1 x3dhq_c,#abcd #efg > #efdcbag
+COMBO26,aspsa_to_sl2a6o_-coa,"[DHDPS,DHDPRy,THDPS]",TRUE,combo,1 xaspsa_c 1 xpyr_c 1 xsuccoa_c > 1 xsl2a6o_c,#abcd #efg #hijk > #abcdgfehijk
+COMBO34,glu_DASH_L_to_glu5sa,"[GLU5K,G5SD]",TRUE,combo,1 xglu_DASH_L_c > 1 xglu5sa_c,#abcde > #abcde
+COMBO36,g1p_to_glycogen,"[GLGC,GLCS1]",TRUE,combo,1 xg1p_c > 1 xglycogen_c,#abcdef > #abcdef
+COMBO37,thr_DASH_L_to_gly_-coa,"[THRD,GLYAT]",TRUE,combo,1 xthr_DASH_L_c > 1 xaccoa_c 1 xgly_c,#abcd > #cd #ab
+COMBO37,thr_DASH_L_to_gly,"[THRD,GLYAT]",TRUE,combo,1 xcoa_c 1 xthr_DASH_L_c > 1 xaccoa_c 1 xgly_c,#ABCDEFGHIJKLMNOPQRSTU #abcd > #ABCDEFGHIJKLMNOPQRSTUcd #ab
+COMBO38,dhap_to_lac_DASH_D,"[MGSA,LGTHL,GLYOX]",TRUE,combo,1 xdhap_c > 1 xlac_DASH_D_c,#abc > #cba
+COMBO41,hom_DASH_L_to_thr_DASH_L,"[HSK,THRS]",TRUE,combo,1 xhom_DASH_L_c > 1 xthr_DASH_L_c,#abcd > #abcd
+COMBO47,3pg_to_ser_DASH_L,"[PGCD,PSERT,PSP_L]",TRUE,combo,1 x3pg_c 1 xglu_DASH_L_c > 1 xakg_c 1 xser_DASH_L_c,#abc #defgh > #defgh #abc
+HISSYN,prpp_to_his_DASH_L,"[ATPPRT,PRATPP,PRAMPC,PRMICI,IG3PS,IGPDH,HSTPT,HISTP,HISTD]",TRUE,combo,1 xatp_c 1 xgln_DASH_L_c 1 xprpp_c > 1 xaicar_c 1 xakg_c 1 xhis_DASH_L_c ,#123456789a #bcdef #ghijk > #12345789a #bcdef #kjihg6
+UMPSYN1,UMPSYN_aerobic,"[ASPCT,DHORTS,DHORD2,ORPT,OMPDC]",TRUE,combo,1 xcbp_c 1 xprpp_c 1 xasp_DASH_L_c > 1 xump_c 1 xco2_c  ,#a #bcdef #ghij > #bcdefahij #g
+UMPSYN1,ASPCT,,TRUE,added UMPSYN_aerobic,1 xcbp_c 1 xasp_DASH_L_c > 1 xcbasp_c,#a #bcde > #cdeab
+UMPSYN1,DHORTS,,TRUE,added UMPSYN_aerobic,1 xcbasp_c > 1 xdhorS_c,#abcde > #abcde
+UMPSYN1,DHORD2,,TRUE,added UMPSYN_aerobic,1 xdhorS_c > 1 xorot_c,#abcde > #abcde
+UMPSYN1,ORPT,,TRUE,added UMPSYN_aerobic,1 xorot_c 1 xprpp_c > 1 xorot5p_c,#abcde #fghij >fghijabcde
+UMPSYN1,OMPDC,,TRUE,added UMPSYN_aerobic,1 xorot5p_c > 1 xump_c 1 xco2_c ,#abcdefghij > #abcdefghi #j
+UMPSYN2,UMPSYN_anaerobic,"[ASPCT,DHORTS,DHORD5,ORPT,OMPDC]",TRUE,combo,1 xcbp_c 1 xprpp_c 1 xasp_DASH_L_c > 1 xump_c 1 xco2_c  ,#a #bcdef #ghij > #bcdefahij #g
+UMPSYN2,ASPCT,,TRUE,added UMPSYN_anaerobic,1 xcbp_c 1 xasp_DASH_L_c > 1 xcbasp_c,#a #bcde > #cdeab
+UMPSYN2,DHORTS,,TRUE,added UMPSYN_anaerobic,1 xcbasp_c > 1 xdhorS_c,#abcde > #abcde
+UMPSYN2,DHORD5,,TRUE,added UMPSYN_anaerobic,1 xdhorS_c > 1 xorot_c,#abcde > #abcde
+UMPSYN2,ORPT,,TRUE,added UMPSYN_anaerobic,1 xorot_c 1 xprpp_c > 1 xorot5p_c,#abcde #fghij >fghijabcde
+UMPSYN2,OMPDC,,TRUE,added UMPSYN_anaerobic,1 xorot5p_c > 1 xump_c 1 xco2_c,#abcdefghij > #abcdefghi #j
+IMPSYN1,IMPSYN_1,"[GLUPRT,PRAGSr,PRFGS,PRAIS]",TRUE,combo,1 xprpp_c 1 xgly_c 1 xfgam_c > 1 xgar_c 1 xair_c,#abcde #fg #hijklmno > #abcdefg #hijklmno
+IMPSYN1,GLUPRT,,TRUE,added IMPSYN1,1 xprpp_c > 1 xpram_c,#abcde > #abcde
+IMPSYN1,PRAGSr,,TRUE,added IMPSYN1,1 xpram_c 1 xgly_c > 1 xgar_c,#abcde #fg > #abcdefg
+IMPSYN1,PRFGS,,TRUE,added IMPSYN1,1 xfgam_c > 1 xfpram_c,#abcdefgh > #abcdefgh
+IMPSYN1,PRAIS,,TRUE,added IMPSYN1,1 xfpram_c > 1 xair_c,#abcdefgh > #abcdefgh
+IMPSYN1,PRAGSr_reverse,,TRUE,added IMPSYN1,1 xgar_c > 1 xpram_c 1 xgly_c,#abcdefg > #abcde #fg
+IMPSYN1,GARFT,,TRUE,added IMPSYN1,1 xgar_c 1 x10fthf_c > 1 xfgam_c,#abcdefg #h > #abcdefgh
+IMPSYN1,GART,,TRUE,added IMPSYN1,1 xgar_c 1 xfor_c > 1 xfgam_c,#abcdefg #h > #abcdefgh
+IMPSYN1,IMPSYN_2,"[AIRC2,AIRC3_reverse,PRASCSi,ADSL2r]",TRUE,combo,1 xair_c 1 xhco3 1 xasp_DASH_L_c > 1 xaicar_c 1 xfum_c,"#abcdefgh #i #jklm > #abcdefghi #jklm,#abcdefgh #i #jklm > #abcdefghi #mlkj"
+IMPSYN1,AIRC2,,TRUE,added IMPSYN1,1 xair_c 1 xhco3 > 1 x5caiz_c,#abcdefgh #i > #abcdefgih
+IMPSYN1,AIRC3_reverse,,TRUE,added IMPSYN1,1 x5caiz_c > 1 x5aizc_c,#abcdefghi > #abcdefghi
+IMPSYN1,PRASCSi,,TRUE,added IMPSYN1,1 x5aizc_c 1 xasp_DASH_L_c > 1 x25aics_c,#abcdefghi #jklm > #abcdefghijklm
+IMPSYN1,ADSL2r,,TRUE,added IMPSYN1,1 x25aics_c > 1 xaicar_c 1 xfum_c,"#abcdefghijklm > #abcdefghi #jklm,#abcdefghijklm > #abcdefghi #mlkj"
+IMPSYN1,IMPSYN_3,"[AICART,IMPC_reverse]",TRUE,combo,1 xaicar_c 1 x10fthf_c > 1 ximp_c,#abcdefghi #j > #abcdejfghi
+IMPSYN1,AICART,,TRUE,added IMPSYN1,1 xaicar_c 1 x10fthf_c > 1 xfprica_c,#abcdefghi #j > #abcdejfghi
+IMPSYN1,IMPC_reverse,,TRUE,added IMPSYN1,1 xfprica_c > 1 ximp_c,#abcdefghij > #abcdefghij
+,imp_to_gmp,"[IMPD,GMPS2]",TRUE,combo,1 ximp_c > 1 xgmp_c,#abcdefghij > #abcdefghij
+COMBO10,imp_to_amp,"[ADSS,ADSL1r]",TRUE,combo,1 ximp_c 1 xasp_DASH_L_c > 1 xamp_c 1 xfum_c,"#abcdefghij #klmn > #abcdefghij #klmn,#abcdefghij #klmn > #abcdefghij #nmlk"
+COMBO10,ADSS,,TRUE,added imp_to_amp,1 ximp_c 1 xasp_DASH_L_c > 1 xdcamp_c,#abcdefghij #klmn > #abcdefghijklmn
+COMBO10,ADSL1r,,TRUE,added imp_to_amp,1 xdcamp_c > 1 xamp_c 1 xfum_c,"#abcdefghijklmn > #abcdefghij #klmn,#abcdefghijklmn > #abcdefghij #nmlk"
+dTTPSYN,utp_to_dump_anaerobic,"['RNTR4c2','DUTPDP']",TRUE,combo,1 xutp_c > 1 xdump_c,#abcdefghi > #abcdefghi
+dTTPSYN,udp_to_dump_aerobic,"['RNDR4','NDPK6','DUTPDP']",TRUE,combo,1 xudp_c > 1 xdump_c,#abcdefghi > #abcdefghi
+dTTPSYN,dtmp_to_dttp,"[DTMPK,NDPK4]",TRUE,combo,1 xdtmp_c > 1 xdttp_c,#abcdefghij > #abcdefghij
+dTTPSYN,TMDS,,TRUE,combo,1 xdump_c 1 xmlthf_c > 1 xdtmp_c,#abcdefghi #j > #abcdefghij
+dTTPSYN,DTMPK,,TRUE,added dtmp_to_dttp,1 xdtmp_c > 1 xdtdp_c,#abcdefghij > #abcdefghij
+dTTPSYN,NDPK4,,TRUE,added dtmp_to_dttp,1 xdtdp_c > 1 xdttp_c,#abcdefghij > #abcdefghij
+COASYN,COASYN_Full,"[ASP1DC,MOHMT,DPR,PANTS,PNTK,PPNCL2,PPCDC,PTPATi,DPCOAK]",TRUE,combo,1 x3mob_c 1 xmlthf_c 1 xasp_DASH_L_c 1 xcys_DASH_L_c 1 xatp_c > 1 xcoa_c 1 xco2_c 1 xco2_c ,#abcde #f #ghij #klm #123456789n > #123456789nfedcbajihlm #g #k
+,COASYN,"[ASP1DC,MOHMT,DPR,PANTS,PNTK,PPNCL2,PPCDC,PTPATi,DPCOAK]",TRUE,combo,1 x3mob_c 1 xmlthf_c 1 xasp_DASH_L_c 1 xcys_DASH_L_c > 1 xco2_c 1 xco2_c ,#abcde #f #ghij #klm > #g #k
+FADSYN,FADSYN,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,DB4PS,RBFSa,RBFSb,RBFK,FMNAT]",TRUE,combo,  ,
+,FADSYN_1_Full,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,RBFSb]",TRUE,combo,1 xgtp_c 1 xru5p_DASH_D_c > 1 x4r5au_c 1 xfor_c 1 xdb4p_c 1 xfor_c,#abcdefghij #klmno > #abcdefghi #j #lmno #k
+,FADSYN_1,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,RBFSb]",TRUE,combo,1 xgtp_c > 1 xfor_c,#abcdefghij > #j
+FADSYN,GTPCII2,,TRUE,added FADSYN,1 xgtp_c > 1 x25drapp_c 1 xfor_c,#abcdefghij > #abcdefghi #j
+FADSYN,DHPPDA2,,TRUE,added FADSYN,1 x25drapp_c > 1 x5apru_c,#abcdefghi > #abcdefghi
+FADSYN,APRAUR,,TRUE,added FADSYN,1 x5apru_c > 1 x5aprbu_c,#abcdefghi > #abcdefghi
+FADSYN,PMDPHT,,TRUE,added FADSYN,1 x5aprbu_c > 1 x4r5au_c,#abcdefghi > #abcdefghi
+FADSYN,RBFSb,,TRUE,added FADSYN,2 xdmlz_c > 1 x4r5au_c 1 xribflv,"#abcdefghijklm #ABCDEFGHIJKLM > #abcdefghi #ABCDEFGHIJKLMjklm,#abcdefghijklm #ABCDEFGHIJKLM > #ABCDEFGHI #abcdefghiJKLM"
+FADSYN,FADSYN_2,"[RBFSa,DB4PS]",TRUE,combo,1 xru5p_DASH_D_c > 1 xfor_c,#abcde > #a
+FADSYN,RBFSa,,TRUE,added FADSYN,1 x4r5au_c 1 xdb4p_c > 1 xdmlz_c,"#abcdefghi #jklm > #abcdefghijklm,#abcdefghi #jklm > #abcdefghimlkj"
+FADSYN,DB4PS,,TRUE,added FADSYN,1 xru5p_DASH_D_c > 1 xdb4p_c 1 xfor_c,#abcde > #bcde #a
+FADSYN,FADSYN_3_Full,"[RBFK,FMNAT]",TRUE,combo,1 xribflv_c 1 xatp_c > 1 xfad_c,#abcdefghijklmnopq #ABCDEFGHIJ > #abcdefghijklmnopqABCDEFGHIJ
+FADSYN,FADSYN_3,"[RBFK,FMNAT]",TRUE,combo,,
+FADSYN,RBFK,,TRUE,added FADSYN,1 xribflv_c > 1 xfmn_c,#abcdefghijklmnopq > #abcdefghijklmnopq
+FADSYN,FMNAT,,TRUE,added FADSYN,1 xfmn_c 1 xatp_c > 1 xfad_c,#abcdefghijklmnopq #ABCDEFGHIJ > #abcdefghijklmnopqABCDEFGHIJ
+NADSYN1,NADSYN_aerobic_Full,"[ASPO6,QULNS,NNDPR,NNATr,NADS1,NADK]",TRUE,combo,1 xdhap_c 1 xprpp_c 1 xasp_DASH_L_c 1 xatp_c > 1 xnad_c 1 xco2_c ,#abc #defgh #ijkl #123456789A > #defghjklabc123456789A #i
+NADSYN1,NADSYN_aerobic,"[ASPO6,QULNS,NNDPR,NNATr,NADS1,NADK]",TRUE,combo,1 xdhap_c 1 xprpp_c 1 xasp_DASH_L_c > 1 xco2_c ,#abc #defgh #ijkl > #i
+NADSYN1,ASPO6,,TRUE,add NADSYN_aerobic,1 xasp_DASH_L_c > 1 xiasp_c,#abcd > #abcd
+NADSYN1,QULNS,,TRUE,add NADSYN_aerobic,1 xiasp_c 1 xdhap_c > 1 xquln_c,#abcd #efg > #abcdefg
+NADSYN1,NNDPR,,TRUE,add NADSYN_aerobic,1 xquln_c 1 xprpp_c > 1 xnicrnt_c 1 xco2_c,#abcdefg #ABCDE > #ABCDEbcdefg #a
+NADSYN1,NNATr,,TRUE,add NADSYN_aerobic,1 xnicrnt_c 1 xatp_c > 1 xdnad_c,#abcdefghijk #lmnopqrstuv > #abcdefghijklmnopqrstu
+NADSYN1,NADS1,,TRUE,add NADSYN_aerobic,1 xdnad_c > 1 xnad_c,#abcdefghijklmnopqrstu > #abcdefghijklmnopqrstu
+NADSYN1,NADK,,TRUE,add NADSYN_aerobic,1 xnad_c > 1 xnadp_c,#abcdefghijklmnopqrstu > #abcdefghijklmnopqrstu
+NADSYN2,NADSYN_anaerobic,"[ASPO5,QULNS,NNDPR,NNATr,NADS1,NADK]",TRUE,combo,  ,
+NADSYN2,ASPO5,,TRUE,add NADSYN_anaerobic,1 xasp_DASH_L_c 1 xfum_c > 1 xiasp_c 1 xsucc_c,"#abcd #efgh > #abcd #efgh,#abcd #efgh > #abcd #hgfe"
+NADSYN2,QULNS,,TRUE,add NADSYN_anaerobic,1 xiasp_c 1 xdhap_c > 1 xquln_c,#abcd #efg > #abcdefg
+NADSYN2,NNDPR,,TRUE,add NADSYN_anaerobic,1 xquln_c 1 xprpp_c > 1 xnicrnt_c 1 xco2_c,#abcdefg #ABCDE > #ABCDEbcdefg #a
+NADSYN2,NNATr,,TRUE,add NADSYN_anaerobic,1 xnicrnt_c 1 xatp_c > 1 xdnad_c,#abcdefghijk #lmnopqrstuv > #abcdefghijklmnopqrstu
+NADSYN2,NADS1,,TRUE,add NADSYN_anaerobic,1 xdnad_c > 1 xnad_c,#abcdefghijklmnopqrstu > #abcdefghijklmnopqrstu
+NADSYN2,NADK,,TRUE,add NADSYN_anaerobic,1 xnad_c > 1 xnadp_c,#abcdefghijklmnopqrstu > #abcdefghijklmnopqrstu
+,NADSALVAGE,"[NADPPPS,NADN,NNAM,NAMNPP,NMNN,NMNDA,NMNAT,NADDP,ADPRDP]",TRUE,combo,  ,
+,NADPPPS,,TRUE,add NADSALVAGE,,
+,NADN,,TRUE,add NADSALVAGE,,
+,NNAM,,TRUE,add NADSALVAGE,,
+,NAMNPP,,TRUE,add NADSALVAGE,,
+,NMNN,,TRUE,add NADSALVAGE,,
+,NMNDA,,TRUE,add NADSALVAGE,,
+,NMNAT,,TRUE,add NADSALVAGE,,
+,NADDP,,TRUE,add NADSALVAGE,,
+,ADPRDP,,TRUE,add NADSALVAGE,,
+,NADPPPS_Full,,TRUE,add NADSALVAGE,1 xnadp_c > 1 xnad_c,#abcdefghijklmnopqrstu > #abcdefghijklmnopqrstu
+,NADN_Full,,TRUE,add NADSALVAGE,1 xnad_c > 1 xadprib_c 1 xncam_c,#abcdefghijklmnopqrstu > #abcdelmnopqrstu #fghijk
+,NNAM_Full,,TRUE,add NADSALVAGE,1 xncam_c > 1 xnac_c,#abcdef > #abcdef
+,NAMNPP_Full,,TRUE,add NADSALVAGE,1 xprpp_c 1 xnac_c > 1 xnicrnt_c,#abcde #fghijk > #abcdefghijk
+,NMNN_Full,,TRUE,add NADSALVAGE,1 xnmn_c > 1 xr5p_c 1 xncam_c,#abcdefghijk > #abcde #fghijk
+,NMNDA_Full,,TRUE,add NADSALVAGE,1 xnmn_c > 1 xnicrnt_c,#abcdefghijk > #abcdefghijk
+,NMNAT_Full,,TRUE,add NADSALVAGE,1 xnmn_c 1 xatp_c > 1 xnad_c,#abcdefghijk #lmnopqrstu > #abcdefghijklmnopqrstu
+,NADDP_Full,,TRUE,add NADSALVAGE,1 xnad_c > 1 xnmn_c 1 xamp_c,#abcdefghijklmnopqrstu > #abcdefghijk #lmnopqrstu
+,ADPRDP_Full,,TRUE,add NADSALVAGE,1 xadprib_c > 1 xr5p_c 1 xamp_c,#abcdefghijklmno > #abcde #fghijklmno
+THFSYN,THFSYN_Test,"[GTPCI,DNTPPA,DNMPPA,DHNPA2r,HPPK2,ADCS,ADCL,DHPS2,DHFS]",TRUE,combo,1 xglu_DASH_L_c 1 xgtp_c 1 xchor_c 1 xgln_DASH_L_c > 1 xfor_c 1 xgcald_c 1 xpyr_c 1 xglu_DASH_L_c,#abcde #qrstu6789f #ghijklmnop #ABCDE > #f #tu #onp #ABCDE
+THFSYN,THFSYN,"[GTPCI,DNTPPA,DNMPPA,DHNPA2r,HPPK2,ADCS,ADCL,DHPS2,DHFS]",TRUE,combo,1 xgln_DASH_L_c 1 xgtp_c 1 xchor_c > 1 xfor_c 1 xgcald_c 1 xpyr_c,#abcde #qrstu6789f #ghijklmnop > #f #tu #onp
+THFSYN,GTPCI,,TRUE,added THFSYN,1 xgtp_c > 1 xfor_c 1 xahdt_c,#abcdefghij > #j #abcdefghi
+THFSYN,DNTPPA,,TRUE,added THFSYN,1 xahdt_c > 1 xdhpmp_c,#abcdefghi > #abcdefghi
+THFSYN,DNMPPA,,TRUE,added THFSYN,1 xdhpmp_c > 1 xdhnpt_c,#abcdefghi > #abcdefghi
+THFSYN,DHNPA2r,,TRUE,added THFSYN,1 xdhnpt_c > 1 x6hmhpt_c 1 xgcald_c,#abcdefghi > #abcfghi #de
+THFSYN,HPPK2,,TRUE,added THFSYN,1 x6hmhpt_c > 1 x6hmhptpp_c,#abcdefg > #abcdefg
+THFSYN,ADCS,,TRUE,added THFSYN,1 xchor_c 1 xgln_DASH_L_c > 1 xglu_DASH_L_c 1 x4adcho_c,#abcdefghij #klmno > #klmno #abcdefghij
+THFSYN,ADCL,,TRUE,added THFSYN,1 x4adcho_c > 1 xpyr_c 1 x4abz_c,#abcdefghij > #ihj #abcdefg
+THFSYN,DHPS2,,TRUE,added THFSYN,1 x6hmhptpp_c 1 x4abz_c > 1 xdhpt_c,#abcdefg #hijklmn > #abcdefghijklmn
+THFSYN,DHFS,,TRUE,added THFSYN,1 xdhpt_c 1 xglu_DASH_L_c > 1 xdhf_c,#abcdefghijklmn #opqrs > #abcdefghijklmnopqrs
+THFSYN,DHFR,,TRUE,added THFSYN,,
+THFSYN,DHFR_reverse,,TRUE,added THFSYN,,
+THFSYN,GCALDD,,TRUE,added THFSYN,1 xgcald_c > 1 xglyclt_c,#ab > #ab
+GTHSYN,GTHSYN,"[GLUCYS,GTHS]",TRUE,combo,1 xglu_DASH_L_c 1 xcys_DASH_L_c 1 xgly_c > ,#abcde #fgh #ij >
+GTHSYN,GLUCYS,,TRUE,added GTHSYN,1 xglu_DASH_L_c 1 xcys_DASH_L_c > 1 xglucys_c ,#abcde #fgh > #abcdegfh
+GTHSYN,GTHS,,TRUE,added GTHSYN,1 xglucys_c 1 xgly_c > 1 xgthrd_c,#abcdefgh #ij > #abcdefgjih
+EX_ac,EX_ac_LPAREN_e_RPAREN_,,TRUE,individual,1 xac_e >,#ab >
+EX_co2,EX_co2_LPAREN_e_RPAREN_,,TRUE,individual,1 xco2_e >,#a >
+EX_etoh,EX_etoh_LPAREN_e_RPAREN_,,TRUE,individual,1 xetoh_e >,#ab >
+EX_for,EX_for_LPAREN_e_RPAREN_,,TRUE,individual,1 xfor_e >,#a >
+EX_fum,EX_fum_LPAREN_e_RPAREN_,,TRUE,individual,1 xfum_e >,"#abcd >,#dcba >"
+EX_glc,EX_glc_LPAREN_e_RPAREN_,,TRUE,individual,1 xglc_DASH_D_e >,#abcdef >
+EX_glyc,EX_glyc_LPAREN_e_RPAREN_,,TRUE,individual,1 xglyc_e >,"#abc >,#cba >"
+EX_lacD,EX_lac_DASH_D_LPAREN_e_RPAREN_,,TRUE,individual,1 xlac_DASH_D_e >,#abc >
+EX_lacL,EX_lac_DASH_L_LPAREN_e_RPAREN_,,TRUE,individual,1 xlac_DASH_L_e >,#abc >
+EX_pyr,EX_pyr_LPAREN_e_RPAREN_,,TRUE,individual,1 xpyr_e > ,#abc >
+EX_succ,EX_succ_LPAREN_e_RPAREN_,,TRUE,individual,1 xsucc_e > ,"#abcd >,#dcba >"
+,EX_co_LPAREN_e_RPAREN_,,TRUE,individual,1 xco_e >,#a >
+,COtpp,,TRUE,individual,1 xco_c > 1 xco_p,#a > #a
+,COtex,,TRUE,individual,1 xco_p > 1 xco_e,#a > #a
+,COtpp_reverse,,TRUE,individual,1 xco_p > 1 xco_c,#a > #a
+,COtex_reverse,,TRUE,individual,1 xco_e > 1 xco_p,#a > #a
+ABTA,ABTA,,TRUE,individual,1 x4abut_c 1 xakg_c > 1 xglu_DASH_L_c 1 xsucsal_c,#abcd #efghi > #efghi #abcd
+ACKr,ACKr,,TRUE,individual,1 xac_c > 1 xactp_c,#ab > #ab
+ACODA,ACODA,,TRUE,individual,1 xacorn_c > 1 xac_c 1 xorn_c,#abcdefg > #fg #abcde
+rACONT,ACONTa,,TRUE,individual,1 xcit_c > 1 xacon_DASH_C_c,#abcdef > #abcdef
+rACONT,ACONTb,,TRUE,individual,1 xacon_DASH_C_c > 1 xicit_c,#abcdef > #abcdef
+ACOTA,ACOTA,,TRUE,individual,1 xacorn_c 1 xakg_c > 1 xacg5sa_c 1 xglu_DASH_L_c,#abcdefg #hijkl > #abcdefg #hijkl
+ACS,ACS_-coa,,TRUE,individual,1 xac_c > 1 xaccoa_c,#ab > #ab
+ACS,ACS,,TRUE,individual,1 xac_c 1 xcoa_c > 1 xaccoa_c,#ab #ABCDEFGHIJKLMNOPQRSTU > #ABCDEFGHIJKLMNOPQRSTUab
+ACt2r,ACt2rpp,,TRUE,individual,1 xac_p > 1 xac_c,#ab > #ab
+ACt2r,ACtex,,TRUE,individual,1 xac_e > 1 xac_p,#ab > #ab
+ADHEr,ALCD2x_-coa,,TRUE,individual,1 xaccoa_c > 1 xetoh_c,#ab > #ab
+ADHEr,ALCD2x,,TRUE,individual,1 xaccoa_c > 1 xcoa_c 1 xetoh_c,#ABCDEFGHIJKLMNOPQRSTUab > #ABCDEFGHIJKLMNOPQRSTU #ab
+ADHEr,ACALD_reverse_-coa,,TRUE,individual,1 xaccoa_c > 1 xacald_c,#ab > #ab
+ADHEr,ACALD_reverse,,TRUE,individual,1 xaccoa_c > 1 xacald_c 1 xcoa_c,#ABCDEFGHIJKLMNOPQRSTUab > #ab #ABCDEFGHIJKLMNOPQRSTU
+ADHEr_r,ALCD2x_reverse_-coa,,TRUE,individual,1 xetoh_c > 1 xaccoa_c,#ab > #ab
+ADHEr_r,ALCD2x_reverse,,TRUE,individual,1 xetoh_c 1 xcoa_c > 1 xaccoa_c,#ab #ABCDEFGHIJKLMNOPQRSTU > #ABCDEFGHIJKLMNOPQRSTUab
+ADHEr_r,ACALD_-coa,,TRUE,individual,1 xacald_c > 1 xaccoa_c,#ab > #ab
+ADHEr_r,ACALD,,TRUE,individual,1 xacald_c 1 xcoa_c > 1 xaccoa_c,#ab #ABCDEFGHIJKLMNOPQRSTU > #ABCDEFGHIJKLMNOPQRSTUab
+AGPR,AGPR,,TRUE,individual,1 xacg5sa_c > 1 xacg5p_c,#abcdefg > #abcdefg
+ALAR,ALAR,,TRUE,individual,1 xala_DASH_L_c > 1 xala_DASH_D_c,#abc > #abc
+ALATAL,ALATA_L,,TRUE,individual,1 xakg_c 1 xala_DASH_L_c > 1 xglu_DASH_L_c 1 xpyr_c,#abcde #fgh > #abcde #fgh
+ALDD2x,ALDD2x,,TRUE,individual,1 xacald_c > 1 xac_c,#ab > #ab
+ARGSL,ARGSL,,TRUE,individual,1 xargsuc_c > 1 xarg_DASH_L_c 1 xfum_c,"#abcdefghij > #abcdef #jghi,#abcdefghij > #abcdef #ihgj"
+ARGSS,ARGSS,,TRUE,individual,1 xasp_DASH_L_c 1 xcitr_DASH_L_c > 1 xargsuc_c,#abcd #efghij > #efghijbcda
+ASAD,ASAD,,TRUE,individual,1 xaspsa_c > 1 x4pasp_c,#abcd > #abcd
+ASNN,ASNN,,TRUE,individual,1 xasn_DASH_L_c > 1 xasp_DASH_L_c,#abcd > #abcd
+ASNS1,ASNS1,,TRUE,individual,1 xasp_DASH_L_c 1 xgln_DASH_L_c > 1 xasn_DASH_L_c 1 xglu_DASH_L_c,#abcd #efghi > #abcd #efghi
+ASNS2,ASNS2,,TRUE,individual,1 xasp_DASH_L_c > 1 xasn_DASH_L_c,#abcd > #abcd
+ASPK,ASPK,,TRUE,individual,1 xasp_DASH_L_c > 1 x4pasp_c,#abcd > #abcd
+ASPTA,ASPTA,,TRUE,individual,1 xakg_c 1 xasp_DASH_L_c > 1 xglu_DASH_L_c 1 xoaa_c,#abcde #fghi > #abcde #fghi
+CBPS,CBPS,,TRUE,individual,1 xgln_DASH_L_c 1 xhco3_c > 1 xcbp_c 1 xglu_DASH_L_c,#abcde #f > #f #abcde
+CHORM,CHORM,,TRUE,individual,1 xchor_c > 1 xpphn_c,#abcdefghij > #ihjbcdefga
+CHORS,CHORS,,TRUE,individual,1 x3psme_c > 1 xchor_c,#abcdefghij > #abgfedchij
+CO2t,CO2tex,,TRUE,individual,1 xco2_e > 1 xco2_p,#a > #a
+CO2t_reverse,CO2tex_reverse,,TRUE,individual,1 xco2_p > 1 xco2_e,#a > #a
+CO2t,CO2tpp,,TRUE,individual,1 xco2_p > 1 xco2_c,#a > #a
+CO2t_reverse,CO2tpp_reverse,,TRUE,individual,1 xco2_c > 1 xco2_p,#a > #a
+CS,CS_-coa,,TRUE,individual,1 xaccoa_c 1 xoaa_c > 1 xcit_c,#ab #cdef > #fedbac
+CS,CS,,TRUE,individual,1 xaccoa_c 1 xoaa_c > 1 xcit_c 1 xcoa_c ,#ABCDEFGHIJKLMNOPQRSTUab #cdef > #fedbac #ABCDEFGHIJKLMNOPQRSTU
+CYSDS,CYSDS,,TRUE,individual,1 xcys_DASH_L_c > 1 xpyr_c,#abc > #abc
+CYSS,CYSS,,TRUE,individual,1 xacser_c > 1 xac_c 1 xcys_DASH_L_c,#abcde > #de #abc
+DLACt2,D_DASH_LACt2pp,,TRUE,individual,1 xlac_DASH_D_p > 1 xlac_DASH_D_c,#abc > #abc
+DLACt2,D_DASH_LACtex,,TRUE,individual,1 xlac_DASH_D_e > 1 xlac_DASH_D_p,#abc > #abc
+DAPDC,DAPDC,,TRUE,individual,1 x26dap_DASH_M_c > 1 xco2_c 1 xlys_DASH_L_c,"#abcdefg > #g #abcdef,#gfedcba > #g #abcdef"
+DAPE,DAPE,,TRUE,individual,1 x26dap_DASH_LL_c > 1 x26dap_DASH_M_c,"#abcdefg > #abcdefg,#gfedcba > #abcdefg,#abcdefg > #gfedcba,#gfedcba > #gfedcba"
+DHAD1,DHAD1,,TRUE,individual,1 x23dhmb_c > 1 x3mob_c,#abcde > #abcde
+DHAPT,DHAPT,,TRUE,individual,1 xdha_c 1 xpep_c > 1 xdhap_c 1 xpyr_c,"#abc #def > #abc #def,#cba #def > #abc #def"
+DHQD,DHQTi,,TRUE,individual,1 x3dhq_c > 1 x3dhsk_c,#abcdefg > #abcdefg
+EDA,EDA,,TRUE,individual,1 x2ddg6p_c > 1 xg3p_c 1 xpyr_c,#abcdef > #def #abc
+EDD,EDD,,TRUE,individual,1 x6pgc_c > 1 x2ddg6p_c,#abcdef > #abcdef
+ENO,ENO,,TRUE,individual,1 x2pg_c > 1 xpep_c,#abc > #abc
+ETOHt2r,ETOHtex,,TRUE,individual,1 xetoh_e > 1 xetoh_p,#ab > #ab
+ETOHt2r,ETOHtrpp,,TRUE,individual,1 xetoh_p > 1 xetoh_c,#ab > #ab
+F6PA,F6PA,,TRUE,individual,1 xf6p_c > 1 xdha_c 1 xg3p_c,"#abcdef > #abc #def,#abcdef > #cba #def"
+FBA,FBA,,TRUE,individual,1 xfdp_c > 1 xdhap_c 1 xg3p_c,#abcdef > #abc #def
+FBP,FBP,,TRUE,individual,1 xfdp_c > 1 xf6p_c,#abcdef > #abcdef
+FDH2,FDH2,,TRUE,individual,1 xfor_c > 1 xco2_c,#a > #a
+FDH3,FDH3,,TRUE,individual,1 xfor_c > 1 xco2_c,#a > #a
+,Htex,,TRUE,individual,  ,
+FHL,FHL,,TRUE,individual,1 xfor_c > 1 xco2_c,#a > #a
+FORt,FORt2pp,,TRUE,individual,1 xfor_p > 1 xfor_c,#a > #a
+FORt,FORtex,,TRUE,individual,1 xfor_e > 1 xfor_p,#a > #a
+FRD2,FRD2,,TRUE,individual,1 xfum_c > 1 xsucc_c,"#abcd > #dcba,#dcba > #dcba,#abcd > #abcd,#dcba > #abcd"
+FRD3,FRD3,,TRUE,individual,1 xfum_c > 1 xsucc_c,"#abcd > #dcba,#dcba > #dcba,#abcd > #abcd,#dcba > #abcd"
+FTHFD,FTHFD,,TRUE,individual,1 x10fthf_c > 1 xfor_c,#a > #a
+rFUM,FUM,,TRUE,individual,1 xfum_c > 1 xmal_DASH_L_c,"#abcd > #abcd,#dcba > #abcd"
+FUMt22,FUMt2_2pp,,TRUE,individual,1 xfum_p > 1 xfum_c,"#abcd > #abcd,#dcba > #abcd,#abcd > #dcba,#dcba > #dcba"
+FUMt23,FUMt2_3pp,,TRUE,individual,1 xfum_p > 1 xfum_c,"#abcd > #abcd,#dcba > #abcd,#abcd > #dcba,#dcba > #dcba"
+,FUMtex,,TRUE,individual,1 xfum_e > 1 xfum_p,#abcd > #abcd
+G1PP,G1PPpp,,TRUE,individual,1 xg1p_c > 1 xglc_DASH_D_c,#abcdef > #abcdef
+G3PD2,G3PD2,,TRUE,individual,1 xglyc3p_c > 1 xdhap_c,#abc > #abc
+G3PD5,G3PD5,,TRUE,individual,1 xglyc3p_c > 1 xdhap_c,#abc > #abc
+G3PD6,G3PD6,,TRUE,individual,1 xglyc3p_c > 1 xdhap_c,#abc > #abc
+G3PD7,G3PD7,,TRUE,individual,1 xglyc3p_c > 1 xdhap_c,#abc > #abc
+G5SADs,G5SADs,,TRUE,individual,1 xglu5sa_c > 1 x1pyr5c_c,#abcde > #abcde
+G6PDH2r,G6PDH2r,,TRUE,individual,1 xg6p_c > 1 x6pgl_c,#abcdef > #abcdef
+GAPD,GAPD,,TRUE,individual,1 xg3p_c > 1 x13dpg_c,#abc > #abc
+GHMT2,GHMT2r,,TRUE,individual,1 xser_DASH_L_c > 1 xgly_c 1 xmlthf_c,#abc > #ab #c
+GLCP,GLCP_Full,,TRUE,individual,1 xglycogen_c > 1 xg1p_c,#abcdef > #abcdef
+GLCP,GLCP,,TRUE,individual,,
+GLCpts,GLCptspp,,TRUE,individual,1 xglc_DASH_D_e 1 xpep_c > 1 xg6p_c 1 xpyr_c,#abcdef #ghi > #abcdef #ghi
+GLNS,GLNS,,TRUE,individual,1 xglu_DASH_L_c > 1 xgln_DASH_L_c,#abcde > #abcde
+GLUDC,GLUDC,,TRUE,individual,1 xglu_DASH_L_c > 1 x4abut_c 1 xco2_c,#abcde > #edcb #a
+GLUDy,GLUDy,,TRUE,individual,1 xglu_DASH_L_c > 1 xakg_c,#abcde > #abcde
+GLUN,GLUN,,TRUE,individual,1 xgln_DASH_L_c > 1 xglu_DASH_L_c,#abcde > #abcde
+GLUSy,GLUSy,,TRUE,individual,1 xakg_c 1 xgln_DASH_L_c > 1 xglu_DASH_L_c 1 xglu_DASH_L_c,"#abcde #fghij > #abcde #fghij, #abcde #fghij > #fghij #abcde"
+GLXCL,GLXCL,,TRUE,individual,1 xglx_c 1 xglx_c > 1 x2h3oppan_c 1 xco2_c,#ab #cd > #abd #c
+GLYCDx,GLYCDx,,TRUE,individual,1 xglyc_c > 1 xdha_c,"#abc > #abc,#abc > #cba,#cba > #abc,#cba > #cba"
+GLYCK,GLYCK,,TRUE,individual,1 xglyc_DASH_R_c > 1 x3pg_c,#abc > #abc
+GLYCL,GLYCL,,TRUE,individual,1 xgly_c > 1 xco2_c 1 xmlthf_c,#ab > #a #b
+GLYCLTDx,GLYCLTDx,,TRUE,individual,1 xglx_c > 1 xglyclt_c,#ab > #ab
+GLYCLTDy,GLYCLTDy,,TRUE,individual,1 xglx_c > 1 xglyclt_c,#ab > #ab
+GLYCTO2,GLYCTO2,,TRUE,individual,1 xglyclt_c > 1 xglx_c,#ab > #ab
+GLYCTO3,GLYCTO3,,TRUE,individual,1 xglyclt_c > 1 xglx_c,#ab > #ab
+GLYCTO4,GLYCTO4,,TRUE,individual,1 xglyclt_c > 1 xglx_c,#ab > #ab
+GLYCt,GLYCtex,,TRUE,individual,1 xglyc_e > 1 xglyc_p,"#abc > #abc,#abc > #cba,#cba > #abc,#cba > #cba"
+GLYCt,GLYCtpp,,TRUE,individual,1 xglyc_p > 1 xglyc_c,"#abc > #abc,#abc > #cba,#cba > #abc,#cba > #cba"
+GLYK,GLYK,,TRUE,individual,1 xglyc_c > 1 xglyc3p_c,"#abc > #abc,#cba > #abc"
+GND,GND,,TRUE,individual,1 x6pgc_c > 1 xco2_c 1 xru5p_DASH_D_c,#abcdef > #a #bcdef
+HCO3E,HCO3E,,TRUE,individual,1 xco2_c > 1 xhco3_c,#a > #a
+HEX1,HEX1,,TRUE,individual,1 xglc_DASH_D_c > 1 xg6p_c,#abcdef > #abcdef
+HSDy,HSDy,,TRUE,individual,1 xhom_DASH_L_c > 1 xaspsa_c,#abcd > #abcd
+ICDHyr,ICDHyr,,TRUE,individual,1 xicit_c > 1 xakg_c 1 xco2_c,#abcdef > #abcde #f
+ICL,ICL,,TRUE,individual,1 xicit_c > 1 xglx_c 1 xsucc_c,"#abcdef > #ab #fcde,#abcdef > #ab #edcf"
+ILETA,ILETA,,TRUE,individual,1 xakg_c 1 xile_DASH_L_c > 1 x3mop_c 1 xglu_DASH_L_c,#abcde #fghijk > #fghijk #abcde
+IPMD,IPMD,,TRUE,individual,1 x3c2hmp_c > 1 x3c4mop_c,#abcdefg > #abcdefg
+IPPMIa,IPPMIa,,TRUE,individual,1 x3c2hmp_c > 1 x2ippm_c,#abcdefg > #abcdefg
+IPPMIb,IPPMIb,,TRUE,individual,1 x2ippm_c > 1 x3c3hmp_c,#abcdefg > #abcdefg
+IPPS,IPPS_-coa,,TRUE,individual,1 x3mob_c 1 xaccoa_c > 1 x3c3hmp_c,#abcde #fg > #fgbcdae
+IPPS,IPPS,,TRUE,individual,1 x3mob_c 1 xaccoa_c > 1 x3c3hmp_c 1 xcoa_c ,#abcde #ABCDEFGHIJKLMNOPQRSTUfg > #fgbcdae #ABCDEFGHIJKLMNOPQRSTU
+LLACD2,L_DASH_LACD2,,TRUE,individual,1 xlac_DASH_L_c > 1 xpyr_c,#abc > #abc
+LLACD3,L_DASH_LACD3,,TRUE,individual,1 xlac_DASH_L_c > 1 xpyr_c,#abc > #abc
+LLACt2r,L_DASH_LACt2rpp,,TRUE,individual,1 xlac_DASH_L_p > 1 xlac_DASH_L_c,#abc > #abc
+LLACt2r,L_DASH_LACtex,,TRUE,individual,1 xlac_DASH_L_e > 1 xlac_DASH_L_p,#abc > #abc
+LDHD,LDH_D,,TRUE,individual,1 xlac_DASH_D_c > 1 xpyr_c,#abc > #abc
+LDHD2,LDH_D2,,TRUE,individual,1 xlac_DASH_D_c > 1 xpyr_c,#abc > #abc
+LEUTAi,LEUTAi,,TRUE,individual,1 x4mop_c 1 xglu_DASH_L_c > 1 xakg_c 1 xleu_DASH_L_c,#abcdef #ghijk > #ghijk #abcdef
+MALS,MALS_-coa,,TRUE,individual,1 xaccoa_c 1 xglx_c > 1 xmal_DASH_L_c,#ab #cd > #cdba
+MALS,MALS,,TRUE,individual,1 xaccoa_c 1 xglx_c > 1 xcoa_c 1 xmal_DASH_L_c,#ABCDEFGHIJKLMNOPQRSTUab #cd > #ABCDEFGHIJKLMNOPQRSTU #cdba
+MDH,MDH,,TRUE,individual,1 xmal_DASH_L_c > 1 xoaa_c,#abcd > #abcd
+MDH2,MDH2,,TRUE,individual,1 xmal_DASH_L_c > 1 xoaa_c,#abcd > #abcd
+MDH3,MDH3,,TRUE,individual,1 xmal_DASH_L_c > 1 xoaa_c,#abcd > #abcd
+ME1,ME1,,TRUE,individual,1 xmal_DASH_L_c > 1 xco2_c 1 xpyr_c,#abcd > #d #abc
+ME2,ME2,,TRUE,individual,1 xmal_DASH_L_c > 1 xco2_c 1 xpyr_c,#abcd > #d #abc
+MTHFC,MTHFC,,TRUE,individual,1 xmethf_c > 1 x10fthf_c,#a > #a
+MTHFD,MTHFD,,TRUE,individual,1 xmlthf_c > 1 xmethf_c,#a > #a
+MTHFR2,MTHFR2,,TRUE,individual,1 xmlthf_c > 1 x5mthf_c,#a > #a
+NACODA,NACODA,,TRUE,individual,1 xacg5sa_c > 1 xac_c 1 xglu5sa_c,#abcdefg > #fg #abcde
+OCBT,OCBT,,TRUE,individual,1 xcbp_c 1 xorn_c > 1 xcitr_DASH_L_c,#a #bcdef > #bcdefa
+OMCDC,OMCDC,,TRUE,individual,1 x3c4mop_c > 1 x4mop_c 1 xco2_c,#abcdefg > #abcdeg #f
+ORNDC,ORNDC,,TRUE,individual,1 xorn_c > 1 xco2_c 1 xptrc_c,"#abcde > #a #bcde,#abcde > #a #edcb"
+P5CD,P5CD,,TRUE,individual,1 x1pyr5c_c > 1 xglu_DASH_L_c,#abcde > #abcde
+P5CR,P5CR,,TRUE,individual,1 x1pyr5c_c > 1 xpro_DASH_L_c,#abcde > #abcde
+PDH,PDH_-coa,,TRUE,individual,1 xpyr_c > 1 xaccoa_c 1 xco2_c,#abc > #bc #a
+PDH,PDH,,TRUE,individual,1 xcoa_c 1 xpyr_c > 1 xaccoa_c 1 xco2_c,#ABCDEFGHIJKLMNOPQRSTU #abc > #ABCDEFGHIJKLMNOPQRSTUbc #a
+PFK,PFK,,TRUE,individual,1 xf6p_c > 1 xfdp_c,#abcdef > #abcdef
+PFL,PFL_-coa,,TRUE,individual,1 xpyr_c > 1 xaccoa_c 1 xfor_c,#abc > #bc #a
+PFL,PFL,,TRUE,individual,1 xcoa_c 1 xpyr_c > 1 xaccoa_c 1 xfor_c,#ABCDEFGHIJKLMNOPQRSTU #abc > #ABCDEFGHIJKLMNOPQRSTUbc #a
+PGI,PGI,,TRUE,individual,1 xg6p_c > 1 xf6p_c,#abcdef > #abcdef
+PGK,PGK,,TRUE,individual,1 x3pg_c > 1 x13dpg_c,#abc > #abc
+PGL,PGL,,TRUE,individual,1 x6pgl_c > 1 x6pgc_c,#abcdef > #abcdef
+PGM,PGM,,TRUE,individual,1 x2pg_c > 1 x3pg_c,#abc > #abc
+PGMT,PGMT,,TRUE,individual,1 xg1p_c > 1 xg6p_c,#abcdef > #abcdef
+PHETA1,PHETA1,,TRUE,individual,1 xakg_c 1 xphe_DASH_L_c > 1 xglu_DASH_L_c 1 xphpyr_c,"#abcde #fghijklmn > #abcde #fghijklmn,#abcde #fghinmlkj > #abcde #fghijklmn,#abcde #fghijklmn > #abcde #fghinmlkj,#abcde #fghinmlkj > #abcde #fghinmlkj"
+POX,POX,,TRUE,individual,1 xpyr_c > 1 xac_c 1 xco2_c,#abc > #bc #a
+PPC,PPC,,TRUE,individual,1 xco2_c 1 xpep_c > 1 xoaa_c,#a #bcd > #bcda
+PPCK,PPCK,,TRUE,individual,1 xoaa_c > 1 xco2_c 1 xpep_c,#abcd > #d #abc
+PPND,PPND,,TRUE,individual,1 xpphn_c > 1 x34hpp_c 1 xco2_c,"#abcdefghij > #abcdefghi #j,#abcdefghij > #abcdihgfe #j"
+PPNDH,PPNDH,,TRUE,individual,1 xpphn_c > 1 xco2_c 1 xphpyr_c,"#abcdefghij > #j #abcdefghi,#abcdefghij > #j #abcdihgfe"
+PPS,PPS,,TRUE,individual,1 xpyr_c > 1 xpep_c,#abc > #abc
+PROD2,PROD2,,TRUE,individual,1 xpro_DASH_L_c > 1 x1pyr5c_c,#abcde > #abcde
+PRPPS,PRPPS,,TRUE,individual,1 xr5p_c > 1 xprpp_c,#abcde > #abcde
+PSCVT,PSCVT,,TRUE,individual,1 xpep_c 1 xskm5p_c > 1 x3psme_c,#abc #defghij > #defghijbac
+PTAr,PTAr_-coa,,TRUE,individual,1 xaccoa_c > 1 xactp_c,#ab > #ab
+PTAr,PTAr,,TRUE,individual,1 xaccoa_c > 1 xactp_c 1 xcoa_c ,#ABCDEFGHIJKLMNOPQRSTUab > #ab #ABCDEFGHIJKLMNOPQRSTU
+PYK,PYK,,TRUE,individual,1 xpep_c > 1 xpyr_c,#abc > #abc
+PYRt2r,PYRt2rpp,,TRUE,individual,1 xpyr_p > 1 xpyr_c,#abc > #abc
+PYRt2r_reverse,PYRt2rpp_reverse,,TRUE,individual,1 xpyr_c > 1 xpyr_p,#abc > #abc
+PYRt2r,PYRtex,,TRUE,individual,1 xpyr_p > 1 xpyr_e,#abc > #abc
+PYRt2r_reverse,PYRtex_reverse,,TRUE,individual,1 xpyr_e > 1 xpyr_p,#abc > #abc
+RPE,RPE,,TRUE,individual,1 xru5p_DASH_D_c > 1 xxu5p_DASH_D_c,#abcde > #abcde
+RPI,RPI,,TRUE,individual,1 xr5p_c > 1 xru5p_DASH_D_c,#abcde > #abcde
+SDPDS,SDPDS,,TRUE,individual,1 xsl26da_c > 1 x26dap_DASH_LL_c 1 xsucc_c,"#abcdefghijk > #abcdefg #hijk,#abcdefghijk > #gfedcba #hijk,#abcdefghijk > #abcdefg #kjih,#abcdefghijk > #gfedcba #kjih"
+SDPTA,SDPTA,,TRUE,individual,1 xakg_c 1 xsl26da_c > 1 xglu_DASH_L_c 1 xsl2a6o_c,#abcde #fghijklmnop > #abcde #fghijklmnop
+SERAT,SERAT_-coa,,TRUE,individual,1 xaccoa_c 1 xser_DASH_L_c > 1 xacser_c,#ab #cde > #cdeab
+SERAT,SERAT,,TRUE,individual,1 xaccoa_c 1 xser_DASH_L_c > 1 xacser_c 1 xcoa_c ,#ABCDEFGHIJKLMNOPQRSTUab #cde > #cdeab #ABCDEFGHIJKLMNOPQRSTU
+SERDL,SERD_L,,TRUE,individual,1 xser_DASH_L_c > 1 xpyr_c,#abc > #abc
+SHK3Dr,SHK3Dr,,TRUE,individual,1 x3dhsk_c > 1 xskm_c,#abcdefg > #abcdefg
+SHKK,SHKK,,TRUE,individual,1 xskm_c > 1 xskm5p_c,#abcdefg > #abcdefg
+SSALx,SSALx,,TRUE,individual,1 xsucsal_c > 1 xsucc_c,"#abcd > #abcd,#abcd > #dcba"
+SSALy,SSALy,,TRUE,individual,1 xsucsal_c > 1 xsucc_c,"#abcd > #abcd,#abcd > #dcba"
+SUCCabc,SUCASPtpp,,TRUE,individual,1 xsucc_c 1 xasp_DASH_L_p > 1 xsucc_p 1 xasp_DASH_L_c,"#abcd #efgh > #abcd #efgh,#dcba #efgh > #abcd #efgh,#abcd #efgh > #dcba #efgh,#dcba #efgh > #dcba #efgh"
+SUCCt22,SUCCt2_2pp,,TRUE,individual,1 xsucc_p > 1 xsucc_c,"#abcd > #abcd,#dcba > #abcd,#abcd > #dcba,#dcba > #dcba"
+SUCCt23,SUCCt2_3pp,,TRUE,individual,1 xsucc_p > 1 xsucc_c,"#abcd > #abcd,#dcba > #abcd,#abcd > #dcba,#dcba > #dcba"
+SUCCt2b,SUCCt3pp,,TRUE,individual,1 xsucc_c > 1 xsucc_p,"#abcd > #abcd,#abcd > #dcba,#dcba > #abcd,#dcba > #dcba"
+,SUCDi,,TRUE,individual,1 xsucc_c > 1 xfum_c,"#abcd > #dcba,#abcd > #abcd,#dcba > #dcba,#dcba > #abcd"
+SUCFUMt,SUCFUMtpp,,TRUE,individual,1 xfum_p 1 xsucc_c > 1 xfum_c 1 xsucc_p,"#abcd #efgh > #abcd #efgh,#dcba #efgh > #abcd #efgh,#abcd #efgh > #dcba #efgh,#dcba #efgh > #dcba #efgh"
+SUCFUMt,SUCCtex,,TRUE,individual,1 xsucc_e > 1 xsucc_p,#abcd > #abcd
+SUCOAS,SUCOAS_-coa,,TRUE,individual,1 xsucc_c > 1 xsuccoa_c,"#abcd > #abcd,#dcba > #abcd"
+TALA,TALA,,TRUE,individual,1 xg3p_c 1 xs7p_c > 1 xe4p_c 1 xf6p_c,#abc #defghij > #ghij #defabc
+TESTAKGDH,AKGDH_-coa,,TRUE,individual,1 xakg_c > 1 xco2_c 1 xsuccoa_c,#abcde > #a #bcde
+THRAr,THRAi,,TRUE,individual,1 xthr_DASH_L_c > 1 xacald_c 1 xgly_c,#abcd > #cd #ab
+THRDL,THRD_L,,TRUE,individual,1 xthr_DASH_L_c > 1 x2obut_c,#abcd > #abcd
+TKT1,TKT1,,TRUE,individual,1 xr5p_c 1 xxu5p_DASH_D_c > 1 xg3p_c 1 xs7p_c,#abcde #fghij > #hij #fgabcde
+TKT2,TKT2,,TRUE,individual,1 xe4p_c 1 xxu5p_DASH_D_c > 1 xf6p_c 1 xg3p_c,#abcd #efghi > #efabcd #ghi
+TPI,TPI,,TRUE,individual,1 xdhap_c > 1 xg3p_c,#abc > #cba
+TRPAS2,TRPAS2,,TRUE,individual,1 xtrp_DASH_L_c > 1 xindole_c 1 xpyr_c,#abcdefghijk > #kdefghij #abc
+TRPS1,TRPS1,,TRUE,individual,1 x3ig3p_c 1 xser_DASH_L_c > 1 xg3p_c 1 xtrp_DASH_L_c,#abcdefghijk #lmn > #cba #lmndefghijk
+TRPS2,TRPS2,,TRUE,individual,1 xindole_c 1 xser_DASH_L_c > 1 xtrp_DASH_L_c,#abcdefgh #ijk > #ijkbcdefgha
+TRPS3,TRPS3,,TRUE,individual,1 x3ig3p_c > 1 xg3p_c 1 xindole_c,#abcdefghijk > #cba #kdefghij
+TRSAR,TRSARr,,TRUE,individual,1 x2h3oppan_c > 1 xglyc_DASH_R_c,#abc > #abc
+TYRTA,TYRTA,,TRUE,individual,1 xakg_c 1 xtyr_DASH_L_c > 1 x34hpp_c 1 xglu_DASH_L_c,"#abcde #fghijklmn > #fghijklmn #abcde,#abcde #fghijklmn > #fghinmlkj #abcde,#abcde #fghinmlkj > #fghijklmn #abcde,#abcde #fghinmlkj > #fghinmlkj #abcde"
+VALTA,VALTA,,TRUE,individual,1 xakg_c 1 xval_DASH_L_c > 1 x3mob_c 1 xglu_DASH_L_c,#abcde #fghij > #fghij #abcde
+G3PP,G3PT,,TRUE,individual,1 xglyc3p_c > 1 xglyc_c,"#def > #def,#fed > #def"
+ACKr_r,ACKr_reverse,,TRUE,individual,1 xactp_c > 1 xac_c,#ab > #ab
+rACONT_r,ACONTa_reverse,,TRUE,individual,1 xacon_DASH_C_c > 1 xcit_c,#abcdef > #abcdef
+rACONT_r,ACONTb_reverse,,TRUE,individual,1 xicit_c > 1 xacon_DASH_C_c ,#abcdef > #abcdef
+ACOTA_r,ACOTA_reverse,,TRUE,individual,1 xacg5sa_c 1 xglu_DASH_L_c > 1 xacorn_c 1 xakg_c,#abcdefg #hijkl > #abcdefg #hijkl
+ACt2r_r,ACt2rpp_reverse,,TRUE,individual,1 xac_c > 1 xac_p,#ab > #ab
+ACt2r_r,Actex_reverse,,TRUE,individual,1 xac_p > 1 xac_e,#ab > #ab
+AGPR_r,AGPR_reverse,,TRUE,individual,1 xacg5p_c > 1 xacg5sa_c,#abcdefg > #abcdefg
+ALAR_r,ALAR_reverse,,TRUE,individual,1 xala_DASH_D_c > 1 xala_DASH_L_c,#abc > #abc
+ALATAL_r,ALATA_L_reverse,,TRUE,individual,1 xglu_DASH_L_c 1 xpyr_c > 1 xakg_c 1 xala_DASH_L_c,#abcde #fgh > #abcde #fgh
+ARGSL_r,ARGSL_reverse,,TRUE,individual,1 xarg_DASH_L_c 1 xfum_c > 1 xargsuc_c,"#abcdef #jghi > #abcdefghij,#abcdef #ihgj > #abcdefghij"
+ASAD_r,ASAD_reverse,,TRUE,individual,1 x4pasp_c > 1 xaspsa_c,#abcd > #abcd
+ASPK_r,ASPK_reverse,,TRUE,individual,1 x4pasp_c > 1 xasp_DASH_L_c,#abcd > #abcd
+ASPTA_r,ASPTA_reverse,,TRUE,individual,1 xglu_DASH_L_c 1 xoaa_c > 1 xakg_c 1 xasp_DASH_L_c,#abcde #fghi > #abcde #fghi
+DLACt2_r,D_DASH_LACt2pp_reverse,,TRUE,individual,1 xlac_DASH_D_c > 1 xlac_DASH_D_p,#abc > #abc
+DLACt2_r,D_DASH_LACtex_reverse,,TRUE,individual,1 xlac_DASH_D_p > 1 xlac_DASH_D_e,#abc > #abc
+DAPE_r,DAPE_reverse,,TRUE,individual,1 x26dap_DASH_M_c > 1 x26dap_DASH_LL_c,"#abcdefg > #abcdefg,#abcdefg > #gfedcba,#gfedcba > #abcdefg,#gfedcba > #gfedcba"
+DHQD_r,DHQTi_reverse,,TRUE,individual,1 x3dhsk_c > 1 x3dhq_c,#abcdefg > #abcdefg
+ENO_r,ENO_reverse,,TRUE,individual,1 xpep_c > 1 x2pg_c,#abc > #abc
+ETOHt2r_r,ETOHtex_reverse,,TRUE,individual,1 xetoh_p > 1 xetoh_e,#ab > #ab
+ETOHt2r_r,ETOHtrpp_reverse,,TRUE,individual,1 xetoh_c > 1 xetoh_p,#ab > #ab
+F6PA_r,F6PA_reverse,,TRUE,individual,1 xdha_c 1 xg3p_c > 1 xf6p_c,"#abc #def > #abcdef,#cba #def > #abcdef"
+FBA_r,FBA_reverse,,TRUE,individual,1 xdhap_c 1 xg3p_c > 1 xfdp_c,#abc #def > #abcdef
+FORt_r,FORt2pp_reverse,,TRUE,individual,1 xfor_c > 1 xfor_p,#a > #a
+FORt_r,FORtex_reverse,,TRUE,individual,1 xfor_p > 1 xfor_e,#a > #a
+rFUM_r,FUM_reverse,,TRUE,individual,1 xmal_DASH_L_c > 1 xfum_c,"#abcd > #abcd,#abcd > #dcba"
+G3PD2_r,G3PD2_reverse,,TRUE,individual,1 xdhap_c > 1 xglyc3p_c,#abc > #abc
+G6PDH2r_r,G6PDH2r_reverse,,TRUE,individual,1 x6pgl_c > 1 xg6p_c,#abcdef > #abcdef
+GAPD_r,GAPD_reverse,,TRUE,individual,1 x13dpg_c > 1 xg3p_c,#abc > #abc
+GLUDy_r,GLUDy_reverse,,TRUE,individual,1 xakg_c > 1 xglu_DASH_L_c,#abcde > #abcde
+GLYCt_r,GLYCtex_reverse,,TRUE,individual,1 xglyc_p > 1 xglyc_e,"#abc > #abc,#cba > #abc,#abc > #cba,#cba > #cba"
+GLYCt_r,GLYCtpp_reverse,,TRUE,individual,1 xglyc_c > 1 xglyc_p,"#abc > #abc,#cba > #abc,#abc > #cba,#cba > #cba"
+HCO3E_r,HCO3E_reverse,,TRUE,individual,1 xhco3_c > 1 xco2_c,#a > #a
+HSDy_r,HSDy_reverse,,TRUE,individual,1 xaspsa_c > 1 xhom_DASH_L_c,#abcd > #abcd
+ICDHyr_r,ICDHyr_reverse,,TRUE,individual,1 xakg_c 1 xco2_c > 1 xicit_c,#abcde #f > #abcdef
+ILETA_r,ILETA_reverse,,TRUE,individual,1 x3mop_c 1 xglu_DASH_L_c > 1 xakg_c 1 xile_DASH_L_c,#fghijk #abcde > #abcde #fghijk
+IPPMIa_r,IPPMIa_reverse,,TRUE,individual,1 x2ippm_c > 1 x3c2hmp_c,#abcdefg > #abcdefg
+IPPMIb_r,IPPMIb_reverse,,TRUE,individual,1 x3c3hmp_c > 1 x2ippm_c,#abcdefg > #abcdefg
+LLACt2r_r,L_DASH_LACt2rpp_reverse,,TRUE,individual,1 xlac_DASH_L_c > 1 xlac_DASH_L_p,#abc > #abc
+LLACt2r_r,L_DASH_LACtex_reverse,,TRUE,individual,1 xlac_DASH_L_p > 1 xlac_DASH_L_e,#abc > #abc
+LDHD_r,LDH_D_reverse,,TRUE,individual,1 xpyr_c > 1 xlac_DASH_D_c,#abc > #abc
+MDH_r,MDH_reverse,,TRUE,individual,1 xoaa_c > 1 xmal_DASH_L_c,#abcd > #abcd
+MTHFC_r,MTHFC_reverse,,TRUE,individual,1 x10fthf_c > 1 xmethf_c,#a > #a
+MTHFD_r,MTHFD_reverse,,TRUE,individual,1 xmethf_c > 1 xmlthf_c,#a > #a
+OCBT_r,OCBT_reverse,,TRUE,individual,1 xcitr_DASH_L_c > 1 xcbp_c 1 xorn_c,#bcdefa > #a #bcdef
+PGI_r,PGI_reverse,,TRUE,individual,1 xf6p_c > 1 xg6p_c,#abcdef > #abcdef
+PGK_r,PGK_reverse,,TRUE,individual,1 x13dpg_c > 1 x3pg_c,#abc > #abc
+PGM_r,PGM_reverse,,TRUE,individual,1 x3pg_c > 1 x2pg_c,#abc > #abc
+PGMT_r,PGMT_reverse,,TRUE,individual,1 xg6p_c > 1 xg1p_c,#abcdef > #abcdef
+PHETA1_r,PHETA1_reverse,,TRUE,individual,1 xglu_DASH_L_c 1 xphpyr_c > 1 xakg_c 1 xphe_DASH_L_c,"#abcde #fghijklmn > #abcde #fghijklmn,#abcde #fghijklmn > #abcde #fghinmlkj,#abcde #fghinmlkj > #abcde #fghijklmn,#abcde #fghinmlkj > #abcde #fghinmlkj"
+PRPPS_r,PRPPS_reverse,,TRUE,individual,1 xprpp_c > 1 xr5p_c,#abcde > #abcde
+PSCVT_r,PSCVT_reverse,,TRUE,individual,1 x3psme_c > 1 xpep_c 1 xskm5p_c,#defghijbac > #abc #defghij
+PTAr_r,PTAr_reverse_-coa,,TRUE,individual,1 xactp_c > 1 xaccoa_c,#ab > #ab
+PTAr_r,PTAr_reverse,,TRUE,individual,1 xactp_c 1 xcoa_c > 1 xaccoa_c,#ab #ABCDEFGHIJKLMNOPQRSTU > #ABCDEFGHIJKLMNOPQRSTUab
+RPE_r,RPE_reverse,,TRUE,individual,1 xxu5p_DASH_D_c > 1 xru5p_DASH_D_c,#abcde > #abcde
+RPI_r,RPI_reverse,,TRUE,individual,1 xru5p_DASH_D_c > 1 xr5p_c,#abcde > #abcde
+SDPTA_r,SDPTA_reverse,,TRUE,individual,1 xglu_DASH_L_c 1 xsl2a6o_c > 1 xakg_c 1 xsl26da_c,#abcde #fghijklmnop > #abcde #fghijklmnop
+SERAT_r,SERAT_reverse_-coa,,TRUE,individual,1 xacser_c > 1 xaccoa_c 1 xser_DASH_L_c,#cdeab > #ab #cde
+SERAT_r,SERAT_reverse,,TRUE,individual,1 xacser_c 1 xcoa_c > 1 xaccoa_c 1 xser_DASH_L_c,#cdeab #ABCDEFGHIJKLMNOPQRSTU > #ABCDEFGHIJKLMNOPQRSTUab #cde
+SHK3Dr_r,SHK3Dr_reverse,,TRUE,individual,1 xskm_c > 1 x3dhsk_c,#abcdefg > #abcdefg
+SUCFUMt_r,SUCFUMtpp_reverse,,TRUE,individual,1 xfum_c 1 xsucc_p > 1 xfum_p 1 xsucc_c,"#abcd #efgh > #abcd #efgh,#abcd #efgh > #dcba #efgh,#dcba #efgh > #abcd #efgh,#dcba #efgh > #dcba #efgh"
+,SUCCtex_reverse,,TRUE,individual,1 xsucc_p > 1 xsucc_e,#abcd > #abcd
+SUCOAS_r,SUCOAS_reverse_-coa,,TRUE,individual,1 xsuccoa_c > 1 xsucc_c,"#abcd > #abcd,#abcd > #dcba"
+TALA_r,TALA_reverse,,TRUE,individual,1 xe4p_c 1 xf6p_c > 1 xg3p_c 1 xs7p_c,#ghij #defabc > #abc #defghij
+THRAr_r,THRA2i,,TRUE,individual,1 xacald_c 1 xgly_c > 1 xthr_DASH_L_c,#cd #ab > #abcd
+TKT1_r,TKT1_reverse,,TRUE,individual,1 xg3p_c 1 xs7p_c > 1 xr5p_c 1 xxu5p_DASH_D_c,#hij #fgabcde > #abcde #fghij
+TKT2_r,TKT2_reverse,,TRUE,individual,1 xf6p_c 1 xg3p_c > 1 xe4p_c 1 xxu5p_DASH_D_c,#efabcd #ghi > #abcd #efghi
+TPI_r,TPI_reverse,,TRUE,individual,1 xg3p_c > 1 xdhap_c,#cba > #abc
+TRPAS2_r,TRPAS2_reverse,,TRUE,individual,1 xindole_c 1 xpyr_c > 1 xtrp_DASH_L_c,#kdefghij #abc > #abcdefghijk
+TYRTA_r,TYRTA_reverse,,TRUE,individual,1 x34hpp_c 1 xglu_DASH_L_c > 1 xakg_c 1 xtyr_DASH_L_c,"#fghijklmn #abcde > #abcde #fghijklmn,#fghinmlkj #abcde > #abcde #fghijklmn,#fghijklmn #abcde > #abcde #fghinmlkj,#fghinmlkj #abcde > #abcde #fghinmlkj"
+VALTA_r,VALTA_reverse,,TRUE,individual,1 x3mob_c 1 xglu_DASH_L_c > 1 xakg_c 1 xval_DASH_L_c,#fghij #abcde > #abcde #fghij
+GHMT2_r,GHMT2r_reverse,,TRUE,individual,1 xgly_c 1 xmlthf_c > 1 xser_DASH_L_c,#ab #c > #abc
+CYTK1,CYTK1_Full,,TRUE,modified,1 xatp_c 1 xcmp_c > 1 xadp_c 1 xcdp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+NDPK2,NDPK2_Full,,TRUE,modified,1 xatp_c 1 xudp_c > 1 xadp_c 1 xutp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+NDPK3,NDPK3_Full,,TRUE,modified,1 xatp_c 1 xcdp_c > 1 xadp_c 1 xctp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+UMPK,UMPK_Full,,TRUE,modified,1 xatp_c 1 xump_c > 1 xadp_c 1 xudp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+GK1,GK1_Full,,TRUE,modified,1 xatp_c 1 xgmp_c > 1 xadp_c 1 xgdp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+NDPK1,NDPK1_Full,,TRUE,modified,1 xatp_c 1 xgdp_c > 1 xadp_c 1 xgtp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+ADK1,ADK1_Full,,TRUE,modified,1 xamp_c 1 xatp_c > 1 xadp_c 1 xadp_c,"#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst,#abcdefghij #klmnopqrst > #klmnopqrst #abcdefghij"
+ADK3,ADK3_Full,,TRUE,modified,1 xamp_c 1 xgtp_c > 1 xadp_c 1 xgdp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+NTPP6,NTPP6_Full,,TRUE,modified,1 xatp_c > 1 xamp_c,#abcdefghij > #abcdefghij
+ATPS4r,ATPS4rpp_Full,,TRUE,modified,1 xadp_c > 1 xatp_c,#abcdefghij > #abcdefghij
+CTPSYN,CTPS2_Full,,TRUE,modified CTPSYN,1 xgln_DASH_L_c 1 xutp_c > 1 xglu_DASH_L_c 1 xctp_c ,#abcde #fghijklmn > #abcde #fghijklmn
+CYTK1,CYTK1,,TRUE,modified,,
+NDPK2,NDPK2,,TRUE,modified,1 xatp_c 1 xudp_c > 1 xadp_c 1 xutp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+NDPK3,NDPK3,,TRUE,modified,,
+UMPK,UMPK,,TRUE,modified,1 xatp_c 1 xump_c > 1 xadp_c 1 xudp_c,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+GK1,GK1,,TRUE,modified,,
+NDPK1,NDPK1,,TRUE,modified,,
+ADK1,ADK1,,TRUE,modified,1 xamp_c 1 xatp_c > 1 xadp_c 1 xadp_c,"#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst,#abcdefghij #klmnopqrst > #klmnopqrst #abcdefghij"
+ADK3,ADK3,,TRUE,modified,,
+NTPP6,NTPP6,,TRUE,modified,,
+ATPS4r,ATPS4rpp,,TRUE,modified,1 xadp_c > 1 xatp_c,#abcdefghij > #abcdefghij
+CTPSYN,CTPS2,,TRUE,modified CTPSYN,1 xgln_DASH_L_c > 1 xglu_DASH_L_c,#abcde > #abcde
+GTHOr,GTHOr_Full,,TRUE,add glutathione synthesis,1 xgthox_c > 1 xgthrd_c 1 xgthrd_c,"#abcdefghijklmnopqrst > #abcdefghij #klmnopqrst,#abcdefghijklmnopqrst > #klmnopqrst #abcdefghij"
+GTHOr_reverse,GTHOr_reverse_Full,,TRUE,add glutathione synthesis,1 xgthrd_c 1 xgthrd_c > 1 xgthox_c,"#abcdefghij #klmnopqrst > #abcdefghijklmnopqrst,#abcdefghij #klmnopqrst > #klmnopqrstabcdefghij"
+GTHOr,GTHOr,,TRUE,add glutathione synthesis,,
+GTHOr_reverse,GTHOr_reverse,,TRUE,add glutathione synthesis,,
+,GALUi,,TRUE,individual,1 xutp_c 1 xg1p_c > 1 xudpg_c,#abcdefghi #jklmno > #abcdefghijklmno
+,DXPS,,TRUE,individual,1 xpyr_c 1 xg3p_c > 1 xco2_c,#abc #def > #a
+,DXPS_Full,,TRUE,individual,1 xpyr_c 1 xg3p_c > 1 xdxyl5p_c 1 xco2_c,#abc #def > #cbdef #a
+,ICHORSi,,TRUE,individual,1 xchor_c > 1 xichor_c,#abcdefghij > #abcdefghij
+,ICYSDS,,TRUE,individual,1 xcys_DASH_L_c > 1 xala_DASH_L_c,#abc > #abc
+,CHRPL,,TRUE,individual,1 xchor_c > 1 xpyr_c ,#abcdefghij > #ihj
+,CHRPL_Full,,TRUE,individual,1 xchor_c > 1 x4hbz_c 1 xpyr_c ,#abcdefghij > #abcdefg #ihj
+,HBZOPT_Full,,TRUE,individual,1 x4hbz_c >,#abcdefg >
+,ICHORT_Full,,TRUE,individual,1 xichor_c > 1 x23ddhb_c 1 xpyr_c ,#abcdefghij > #abcdefg #ihj
+,ICHORT,,TRUE,individual,1 xichor_c > 1 xpyr_c ,#abcdefghij > #ihj
+,ACCOAC_-coa,,TRUE,individual,1 xhco3_c 1 xaccoa_c > 1 xmalcoa_c,#a #bc > #bca
+,ACCOAC,,TRUE,individual,1 xhco3_c 1 xaccoa_c > 1 xmalcoa_c,#a #ABCDEFGHIJKLMNOPQRSTUbc > #ABCDEFGHIJKLMNOPQRSTUbca
+,KAS15_-coa,,TRUE,individual,1 xaccoa_c >,#ab >
+,KAS15,,TRUE,individual,1 xaccoa_c > 1 xcoa_c,#ABCDEFGHIJKLMNOPQRSTUab > #ABCDEFGHIJKLMNOPQRSTU
+,MCOATA_-coa,,TRUE,individual,1 xmalcoa_c >,#abc >
+,MCOATA,,TRUE,individual,1 xmalcoa_c > 1 xcoa_c,#ABCDEFGHIJKLMNOPQRSTUabc > #ABCDEFGHIJKLMNOPQRSTU
+,CLPNS160pp,,TRUE,individual,1 xpg160_p > 1 xglyc_p,"#abc > #abc,#abc > #cba"
+,CLPNS161pp,,TRUE,individual,1 xpg161_p > 1 xglyc_p,"#abc > #abc,#abc > #cba"
+,CLPNS181pp,,TRUE,individual,1 xpg181_p > 1 xglyc_p,"#abc > #abc,#abc > #cba"
+,PG160abcpp,,TRUE,individual,1 xpg160_c > 1 xpg160_p,#abc > #abc
+,PG161abcpp,,TRUE,individual,1 xpg161_c > 1 xpg161_p,#abc > #abc
+,PG181abcpp,,TRUE,individual,1 xpg181_c > 1 xpg181_p,#abc > #abc
+,PE160abcpp,,TRUE,individual,,
+,PE161abcpp,,TRUE,individual,,
+,PE181abcpp,,TRUE,individual,,
+,GLYCPHOSPHOLIPID_1,"['DASYN181','AGPAT181','G3PAT181']",TRUE,combo,1 xglyc3p_c >,#abc >
+,GLYCPHOSPHOLIPID_2,"['PSSA181','PSD181']",TRUE,combo,1 xser_DASH_L_c > 1 xco2_c,#abc > #a
+,GLYCPHOSPHOLIPID_3,"['PGSA160','PGPP160']",TRUE,combo,1 xglyc3p_c > 1 xpg160_c ,#abc > #abc
+,GLYCPHOSPHOLIPID_4,"['DASYN161','AGPAT161','G3PAT161']",TRUE,combo,1 xglyc3p_c >,#abc >
+,GLYCPHOSPHOLIPID_5,"['PGSA181','PGPP181']",TRUE,combo,1 xglyc3p_c > 1 xpg181_c ,#abc > #abc
+,GLYCPHOSPHOLIPID_6,"['PSD161','PSSA161']",TRUE,combo,1 xser_DASH_L_c > 1 xco2_c,#abc > #a
+,GLYCPHOSPHOLIPID_7,"['PSSA160','PSD160']",TRUE,combo,1 xser_DASH_L_c > 1 xco2_c,#abc > #a
+,GLYCPHOSPHOLIPID_8,"['DASYN160','AGPAT160','G3PAT160']",TRUE,combo,1 xglyc3p_c >,#abc >
+,GLYCPHOSPHOLIPID_9,"['PGSA161','PGPP161']",TRUE,combo,1 xglyc3p_c > 1 xpg161_c ,#abc > #abc
+,MOLYBDOPTERIN_1,"['MPTAT','MPTS','CPMPS']",TRUE,combo,,
+,MOLYBDOPTERIN_2,"['MOCDS','MOGDS']",TRUE,combo,,
+,MOLYBDOPTERIN_3,"['MOADSUx','MPTSS']",TRUE,combo,,
+,COFACTOR_1,"['GLUTRR','G1SAT','GLUTRS']",TRUE,combo,1 xglu_DASH_L_c >,#abcde >
+,COFACTOR_2,"['DHNAOT4','UPPDC1','DHNCOAT','DHNCOAS','SEPHCHCS','SUCBZS','SUCBZL','PPPGO3','FCLT','CPPPGO','SHCHCS3']",TRUE,combo,1 xakg_c 1 xichor_c 3 xfum_c > 3 xsucc_c 1 xco2_c 1 xpyr_c,"#abcde #fghijklmno #pqrs > #pqrs #a #nom,#abcde #fghijklmno #pqrs > #srqp #a #nom"
+,COFACTOR_3,"['TYRL','AMMQLT8','HEMEOS','UPP3MT','SHCHD2','SHCHF','ENTCS','CBLAT']",TRUE,combo,1 xamet_c 1 xtyr_DASH_L_c > 1 xmet_DASH_L_c,#123456789Aabcde #fghijklmn > #abcde
+,COFACTOR_3_-amet,"['TYRL','AMMQLT8','HEMEOS','UPP3MT','SHCHD2','SHCHF','ENTCS','CBLAT']",TRUE,combo,1 xtyr_DASH_L_c >,#fghijklmn >
+,VITB6,"['E4PD','PERD','OHPBAT','PDX5PS','PDX5PO2']",TRUE,combo,1 xe4p_c 1 xglu_DASH_L_c > 1 xakg_c 1 xco2_c,#abcd #efghi > #efghi #a
+,THIAMIN,"['AMPMS3','PMPK','THZPSN3','TMPPP','TMPK']",TRUE,combo,1 xair_c 1 xamet_c > 1 xmet_DASH_L_c 1 xco_c 1 xfor_c,#abcdefgh #123456789Aijklm > #ijklm #d #f
+,THIAMIN_-amet,"['AMPMS3','PMPK','THZPSN3','TMPPP','TMPK']",TRUE,combo,1 xair_c > 1 xco_c 1 xfor_c,#abcdefgh > #d #f
+,COFACTOR_4,"['I4FE4ST','I4FE4SR','I2FE2SS2']",TRUE,combo,,
+,COFACTOR_5,"['BMOGDS1','BMOGDS2','BMOCOS']",TRUE,combo,,
+,COFACTOR_6,"['DMPPS','GRTT','DMATT']",TRUE,combo,,
+,COFACTOR_7,"['MECDPS','DXPRIi','MEPCT','CDPMEK','MECDPDH5']",TRUE,combo,,
+,COFACTOR_8,"['LIPOS','LIPOCT']",TRUE,combo,2 xamet_c > 2 xmet_DASH_L_c,#123456789Aabcde > #abcde
+,COFACTOR_8_-amet,"['LIPOS','LIPOCT']",TRUE,combo,,
+,COFACTOR_9,"['OMMBLHX','OMPHHX','OPHHX','HBZOPT','DMQMT','CHRPL','OMBZLM','OPHBDC','OHPHM']",TRUE,combo,3 xamet_c 1 xchor_c > 3 xahcys_c 1 xco2_c 1 xpyr_c,#123456789Aabcde #fghijklmno > #123456789Aabcd #f #nmo
+,COFACTOR_9_-amet,"['OMMBLHX','OMPHHX','OPHHX','HBZOPT','DMQMT','CHRPL','OMBZLM','OPHBDC','OHPHM']",TRUE,combo,1 xchor_c > 1 xco2_c 1 xpyr_c,#abcdefghij > #a #ihj
+,COFACTOR_10,"['SERASr','DHBD','UPP3S','HMBS','ICHORT','DHBS']",TRUE,combo,1 xichor_c 1 xser_DASH_L_c > 1 xpyr_c,#abcdefghij #klm > #ihj
+,COFACTOR_11,"['PMEACPE','EGMEACPR','DBTS','AOXSr2','I2FE2SR','OPMEACPD','MALCOAMT','AMAOTr','OPMEACPS','OPMEACPR','OGMEACPD','OGMEACPR','OGMEACPS','EPMEACPR','BTS5']",TRUE,combo,1 xamet_c 1 xamet_c 1 xamet_c 1 xala_DASH_L_c > 1 xahcys_c 1 xmet_DASH_L_c  1 xco2_c,#123456789Aabcde #123456789Aabcde #123456789Aabcde #fgh > #123456789Aabcd #abcde #f
+,COFACTOR_11_-amet,"['PMEACPE','EGMEACPR','DBTS','AOXSr2','I2FE2SR','OPMEACPD','MALCOAMT','AMAOTr','OPMEACPS','OPMEACPR','OGMEACPD','OGMEACPR','OGMEACPS','EPMEACPR','BTS5']",TRUE,combo,1 xala_DASH_L_c > 1 xco2_c,#abc > #a
+,CELLENV_1,"['UAMAGS','UAPGR','UAGPT3','PAPPT3','GLUR','reverse','UAGCVT','UAMAS','UDCPDP','UGMDDS','UAAGDS']",TRUE,combo,1 xala_DASH_L_c 1 xpep_c 1 xglu_DASH_L_c 1 x26dap_DASH_M_c > ,#abc #def #ghijk #lmnopqr >
+,CELLENV_2,"['3HAD181','3OAR181','3OAS181','EAR181x']",TRUE,combo,,
+,CELLENV_3,"['3HAD160','3OAR160','EAR160x','3OAS160']",TRUE,combo,,
+,CELLENV_4,"['EAR120x','3OAR120','3HAD120','3OAS120','EAR100x']",TRUE,combo,,
+,CELLENV_5,"['G1PACT','UAGDP','PGAMT','reverse','GF6PTA']",TRUE,combo,1 xf6p_c 1 xgln_DASH_L_c > 1 xglu_DASH_L_c,#abcdef #ghijk > #ghijk
+,CELLENV_6,"['3OAR40','EAR40x','3OAS60','3OAR60','3HAD80','3OAS80','3OAR80','EAR60x','3HAD60','EAR80x','3HAD40']",TRUE,combo,,
+,CELLENV_7,"['3HAD161','EAR161x','3OAS161','3OAR161','3OAS141','3HAD141','3OAR121','EAR121x','3HAD121','EAR141x','T2DECAI','3OAR141','3OAS121']",TRUE,combo,,
+,CELLENV_8,"['TDPGDH','TDPDRR','TDPDRE','G1PTT']",TRUE,combo,1 xg1p_c >,#abcdef >
+,CELLENV_9,"['3OAS140','3OAR140']",TRUE,combo,,
+,CELLENV_10,"['3HAD140','EAR140x']",TRUE,combo,,
+,CELLENV_11,"['3OAR100','3HAD100','3OAS100']",TRUE,combo,,
+,LIPOPOLYSACCHARIDE_1,"['COLIPAabcpp','COLIPAabctex','EDTXS1','EDTXS2','GALT1','GLCTR1','GLCTR2','GLCTR3','HEPK1','HEPK2','HEPT1','HEPT2','HEPT3','HEPT4','LPADSS','MOAT','MOAT2','MOAT3C','RHAT1','TDSK','USHD']",TRUE,combo,,
+,LIPOPOLYSACCHARIDE_2,"['AGMHE','GMHEPAT','GMHEPK','GMHEPPA','S7PI']",TRUE,combo,1 xs7p_c >,#abcdefg >
+,LIPOPOLYSACCHARIDE_3,"['U23GAAT','UHGADA','UAGAAT']",TRUE,combo,,
+,LIPOPOLYSACCHARIDE_4,"['KDOPP','KDOCT2','KDOPS']",TRUE,combo,1 xpep_c 1 xara5p_c >,#abc #defgh >
+,A5PISO,,TRUE,individual,1 xru5p_DASH_D_c > 1 xara5p_c,#abcde > #abcde
+,A5PISO_reverse,,TRUE,individual,1 xara5p_c > 1 xru5p_DASH_D_c,#abcde > #abcde
+,PPM,,TRUE,individual,1 xr1p_c > 1 xr5p_c,#abcde > #abcde
+,PPM_reverse,,TRUE,individual,1 xr5p_c > 1 xr1p_c,#abcde > #abcde
+,A5PISO,,TRUE,individual,1 xru5p_DASH_D_c > 1 xara5p_c,#abcde > #abcde
+,ACCOAL,,TRUE,individual; growth on proprionate,1 xppa_c > 1 xppcoa_c,#abc > #abc
+,ALCD19,,TRUE,individual,1 xglyald_c > 1 xglyc_c,#abc > #abc
+,ALDD2y,,TRUE,individual,1 xacald_c > 1 xac_c,#ab > #ab
+,CYTDH,,TRUE,individual,,
+,F6PP,,TRUE,individual,1 xf6p_c > 1 xfru_c,#abcdef > #abcdef
+,G6PDA,,TRUE,individual,1 xgam6p_c > 1 xf6p_c,#abcdef > #abcdef
+,GALKr,,TRUE,individual,1 xgal_c > 1 xgal1p_c,#abcdef > #abcdef
+,GLCATr_-coa,,TRUE,individual,1 xglc_DASH_D_c 1 xaccoa_c > 1 xacglc_DASH_D_c,#abcdef #gh > #abcdefgh
+,GLCATr,,TRUE,individual,1 xglc_DASH_D_c 1 xaccoa_c > 1 xacglc_DASH_D_c 1 xcoa_c ,#abcdef #ABCDEFGHIJKLMNOPQRSTUgh > #abcdefgh #ABCDEFGHIJKLMNOPQRSTU
+,HEX4,,TRUE,individual,1 xman_c > 1 xman6p_c,#abcdef > #abcdef
+,HEX7,,TRUE,individual,1 xfru_c > 1 xf6p_c,#abcdef > #abcdef
+,HPYRI,,TRUE,individual,1 xhpyr_c > 1 x2h3oppan_c,#abc > #abc
+,HPYRRx,,TRUE,individual,1 xhpyr_c > 1 xglyc_DASH_R_c,#abc > #abc
+,HPYRRy,,TRUE,individual,1 xhpyr_c > 1 xglyc_DASH_R_c,#abc > #abc
+,LCADi,,TRUE,individual,1 xlald_DASH_L_c > 1 xlac_DASH_L_c,#abc > #abc
+,LCARS,,TRUE,individual,1 xlald_DASH_L_c > 1 x12ppd_DASH_S_c,#abc > #abc
+,M1PD,,TRUE,individual,1 xmnl1p_c > 1 xf6p_c,#abcdef > #abcdef
+,MALTATr_-coa,,TRUE,individual,1 xmalt_c 1 xaccoa_c > 1 xacmalt_c,#abcdefghijkl #mn > #abcdefghijklmn
+,MALTATr,,TRUE,individual,1 xmalt_c 1 xaccoa_c > 1 xacmalt_c 1 xcoa_c ,#abcdefghijkl #ABCDEFGHIJKLMNOPQRSTUmn > #abcdefghijklmn #ABCDEFGHIJKLMNOPQRSTU
+,MAN6PI,,TRUE,individual,1 xman6p_c > 1 xf6p_c,#abcdef > #abcdef
+,MANAO,,TRUE,individual,1 xmana_c > 1 xfruur_c,#abcdef > #abcdef
+,MCITD,,TRUE,individual,1 x2mcit_c > 1 x2mcacn_c,#abcdefg > #abcdefg
+,MCITL2,,TRUE,individual,1 xmicit_c > 1 xsucc_c 1 xpyr_c,"#abcdefg > #fcde #abg,#abcdefg > #abg #edcf"
+,MCITS,,TRUE,individual,1 xoaa_c 1 xppcoa_c > 1 x2mcit_c,#abcd #efg > #efbcdag
+,MICITDr,,TRUE,individual,1 x2mcacn_c > 1 xmicit_c,#abcdefg > #abcdefg
+,MLTG3,,TRUE,individual,,
+,MLTG4,,TRUE,individual,,
+,MLTG5,,TRUE,individual,,
+,MLTP1,,TRUE,individual,,
+,MLTP2,,TRUE,individual,,
+,MLTP3,,TRUE,individual,,
+,MMCD,,TRUE,individual,1 xmmcoa_DASH_S_c > 1 xco2_c 1 xppcoa_c,#abcd > #d #abc
+,MMM_-coa,,TRUE,individual,1 xsuccoa_c > 1 xmmcoa_DASH_S_c,#abcd > abcd
+,MN6PP,,TRUE,individual,1 xman6p_c > 1 xman_c,#abcdef > #abcdef
+,OBTFL,,TRUE,individual,1 x2obut_c > 1 xfor_c 1 xppcoa_c,#abcd > #a #bcd
+,PMANM,,TRUE,individual,1 xman1p_c > 1 xman6p_c,#abcdef > #abcdef
+,PPAKr,,TRUE,individual,1 xppap_c > 1 xppa_c,#abc > #abc
+,PPCSCT_-coa,,TRUE,individual,1 xsucc_c 1 xppcoa_c > 1 xppa_c 1 xsuccoa_c,"#abcd #efg > #efg #abcd,#abcd #efg > #efg #dcba"
+,PPM,,TRUE,individual,1 xr1p_c > 1 xr5p_c,#abcde > #abcde
+,PTA2,,TRUE,individual,1 xppcoa_c > 1 xppap_c,#abc > #abc
+,R15BPK,,TRUE,individual,1 xr15bp_c > 1 xprpp_c,#abcde > #abcde
+,R1PK,,TRUE,individual,1 xr1p_c > 1 xr15bp_c,#abcde > #abcde
+,R5PP,,TRUE,individual,1 xr5p_c > 1 xrib_DASH_D_c,#abcde > #abcde
+,RBK,,TRUE,individual,1 xrib_DASH_D_c > 1 xr5p_c,#abcde > #abcde
+,RBP4E,,TRUE,individual,1 xru5p_DASH_L_c > 1 xxu5p_DASH_D_c,#abcde > #abcde
+,TRE6PH,,TRUE,individual,1 xtre6p_c > 1 xg6p_c 1 xglc_DASH_D_c,#abcdefghijkl > #abcdef #ghijkl
+,TRE6PP,,TRUE,individual,1 xtre6p_c > 1 xtre_c,#abcdefghijkl > #abcdefghijkl
+,TRE6PS,,TRUE,individual,1 xg6p_c 1 xudpg_c > 1 xtre6p_c 1 xudp_c,#abcdef #ghijklmnopqrstu > #abcdefghijkl #mnopqrstu
+,TREH,,TRUE,individual,1 xtre_c > 1 xglc_DASH_D_c 1 xglc_DASH_D_c,#abcdefghijkl > #abcdef #ghijkl
+,UDPG4E,,TRUE,individual,1 xudpg_c > 1 xudpgal_c,#abcdefghijklmno > #abcdefghijklmno
+,UGLT,,TRUE,individual,1 xudpg_c 1 xgal1p_c > 1 xudpgal_c 1 xg1p_c,#abcdefghijklmno #pqrstu > #abcdefghipqrstu #jklmno
+,URIH,,TRUE,individual,,
+,XYLI1,,TRUE,individual,1 xxyl_DASH_D_c > 1 xxylu_DASH_D_c,#abcde > #abcde
+,XYLI2,,TRUE,individual,1 xglc_DASH_D_c > 1 xfru_c,#abcdef > #abcdef
+,A5PISO_reverse,,TRUE,individual,1 xara5p_c > 1 xru5p_DASH_D_c,#abcde > #abcde
+,ALCD19_reverse,,TRUE,individual,1 xglyc_c > 1 xglyald_c,#abc > #abc
+,GALKr_reverse,,TRUE,individual,1 xgal1p_c > 1 xgal_c,#abcdef > #abcdef
+,GLCATr_reverse_-coa,,TRUE,individual,1 xacglc_DASH_D_c > 1 xglc_DASH_D_c 1 xaccoa_c,#abcdefgh > #abcdef #gh
+,GLCATr_reverse,,TRUE,individual,1 xacglc_DASH_D_c 1 xcoa_c > 1 xglc_DASH_D_c 1 xaccoa_c,#abcdefgh #ABCDEFGHIJKLMNOPQRSTU > #abcdef #ABCDEFGHIJKLMNOPQRSTUgh
+,HPYRI_reverse,,TRUE,individual,1 x2h3oppan_c > 1 xhpyr_c,#abc > #abc
+,LCARS_reverse,,TRUE,individual,1 x12ppd_DASH_S_c > 1 xlald_DASH_L_c,#abc > #abc
+,M1PD_reverse,,TRUE,individual,1 xf6p_c > 1 xmnl1p_c,#abcdef > #abcdef
+,MALTATr_reverse_-coa,,TRUE,individual,1 xacmalt_c > 1 xmalt_c 1 xaccoa_c,#abcdefghijklmn > #abcdefghijkl #mn
+,MALTATr_reverse,,TRUE,individual,1 xacmalt_c 1 xcoa_c > 1 xmalt_c 1 xaccoa_c,#abcdefghijklmn #ABCDEFGHIJKLMNOPQRSTU > #abcdefghijkl #ABCDEFGHIJKLMNOPQRSTUmn
+,MAN6PI_reverse,,TRUE,individual,1 xf6p_c > 1 xman6p_c,#abcdef > #abcdef
+,MANAO_reverse,,TRUE,individual,1 xfruur_c > 1 xmana_c,#abcdef > #abcdef
+,MCITL2_reverse,,TRUE,individual,1 xsucc_c 1 xpyr_c > 1 xmicit_c,"#abcd #efg > #efbcdag,#abcd #efg > #efcbadg"
+,MICITDr_reverse,,TRUE,individual,1 xmicit_c > 1 x2mcacn_c,#abcdefg > #abcdefg
+,MLTP1_reverse,,TRUE,individual,1 xg1p_c >,#abcdef >
+,MLTP2_reverse,,TRUE,individual,1 xg1p_c >,#abcdef >
+,MLTP3_reverse,,TRUE,individual,1 xg1p_c >,#abcdef >
+,PMANM_reverse,,TRUE,individual,1 xman6p_c > 1 xman1p_c,#abcdef > #abcdef
+,PPAKr_reverse,,TRUE,individual,1 xppa_c > 1 xppap_c,#abc > #abc
+,PPM_reverse,,TRUE,individual,1 xr5p_c > 1 xr1p_c,#abcde > #abcde
+,RBP4E_reverse,,TRUE,individual,1 xxu5p_DASH_D_c > 1 xru5p_DASH_L_c,#abcde > #abcde
+,TRSARr_reverse,,TRUE,individual,1 xglyc_DASH_R_c > 1 x2h3oppan_c,#abc > #abc
+,UDPG4E_reverse,,TRUE,individual,1 xudpgal_c > 1 xudpg_c,#abcdefghijklmno > #abcdefghijklmno
+,UGLT_reverse,,TRUE,individual,1 xudpgal_c 1 xg1p_c > 1 xudpg_c 1 xgal1p_c,#abcdefghijklmno #pqrstu > #abcdefghipqrstu #jklmno
+,XYLI1_reverse,,TRUE,individual,1 xxylu_DASH_D_c > 1 xxyl_DASH_D_c,#abcde > #abcde
+,XYLI2_reverse,,TRUE,individual,1 xfru_c > 1 xglc_DASH_D_c,#abcdef > #abcdef
+,PUNP1,,TRUE,individual,,
+,PUNP3,,TRUE,individual,,
+,PUNP5,,TRUE,individual,,
+,PUNP7,,TRUE,individual,,
+,PYNP2r,,TRUE,individual,,
+,PUNP1_Full,,TRUE,individual,1 xadn_c > 1 xade_c 1 xr1p_c,#abcdefghij > #fghij #abcde 
+,PUNP3_Full,,TRUE,individual,1 xgsn_c > 1 xgua_c 1 xr1p_c,#abcdefghij > #fghij #abcde 
+,PUNP5_Full,,TRUE,individual,1 xins_c > 1 xhxan_c 1 xr1p_c,#abcdefghij > #fghij #abcde 
+,PUNP7_Full,,TRUE,individual,1 xxtsn_c > 1 xr1p_c 1 xxan_c,#abcdefghij > #abcde #fghij 
+,PYNP2r_Full,,TRUE,individual,1 xuri_c > 1 xura_c 1 xr1p_c,#abcdefghi > #fghi #abcde 
+,UPPRT_Full,,TRUE,individual,1 xura_c 1 xprpp_c > 1 xump_c,#abcd #efghi > #abcdefghi
+,UPPRT,,TRUE,individual,1 xprpp_c >,#abcde >
+,XPPT_Full,,TRUE,individual,1 xxan_c 1 xprpp_c > 1 xxmp_c,#abcde #fghij > #abcdefghij
+,XPPT,,TRUE,individual,1 xprpp_c >,#abcde >
+,PUNP1_reverse_Full,,TRUE,individual,1 xade_c 1 xr1p_c > 1 xadn_c,#abcde #fghij > #abcdefghij 
+,PUNP3_reverse_Full,,TRUE,individual,1 xgua_c 1 xr1p_c > 1 xgsn_c,#abcde #fghij > #abcdefghij 
+,PUNP5_reverse_Full,,TRUE,individual,1 xhxan_c 1 xr1p_c > 1 xins_c,#abcde #fghij > #abcdefghij 
+,PUNP7_reverse_Full,,TRUE,individual,1 xr1p_c 1 xxan_c > 1 xxtsn_c,#abcde #fghij > #abcdefghij 
+,PYNP2r_reverse_Full,,TRUE,individual,1 xura_c 1 xr1p_c > 1 xuri_c,#abcd #efghi > #abcdefghi 
+,PUNP1_reverse,,TRUE,individual,1 xr1p_c >,#abcde >
+,PUNP3_reverse,,TRUE,individual,1 xr1p_c >,#abcde >
+,PUNP5_reverse,,TRUE,individual,1 xr1p_c >,#abcde >
+,PUNP7_reverse,,TRUE,individual,1 xr1p_c >,#abcde >
+,PYNP2r_reverse,,TRUE,individual,1 xr1p_c >,#abcde >
+,ADPT_Full,,TRUE,individual,1 xade_c 1 xprpp_c > 1 xamp_c,#abcde #fghij > #abcdefghij
+,ADPT,,TRUE,individual,1 xprpp_c >,#abcde >
+,GUAPRT_Full,,TRUE,individual,1 xgua_c 1 xprpp_c > 1 xgmp_c,#abcde #fghij > #abcdefghij
+,GUAPRT,,TRUE,individual,1 xprpp_c >,#abcde >
+,HXPRT_Full,,TRUE,individual,1 xhxan_c 1 xprpp_c > 1 ximp_c,#abcde #fghij > #abcdefghij
+,HXPRT,,TRUE,individual,1 xprpp_c >,#abcde >
+,5DGLCNR,,FALSE,not included; growth on L-idonate,1 x5dglcn_c > 1 xglcn_c,#abcdef > #abcdef
+,ACM6PH,,FALSE,not included; growth on acmum6p,,
+,ADNUC,,FALSE,not included; growth on acmum6p,,
+,AGDC,,FALSE,not included; growth on acmum6p,,
+,ALDD19xr,,FALSE,not included; growth on 2-phenylethylamine,,
+,ALLPI,,FALSE,not included; growth on allose,1 xall6p_c > 1 xallul6p_c,#abcdef > #abcdef
+,ALLULPE,,FALSE,not included; growth on allose,1 xallul6p_c > 1 xf6p_c,#abcdef > #abcdef
+,AMANAPEr,,FALSE,not included; growth on acmum6p,,
+,ARAI,,FALSE,not included; growth on L-arabinose,,
+,DDPGALA,,FALSE,not included; growth on D-galactonate,,
+,DHACOAH,,FALSE,not included; involved in phenylacetate catabolism,,
+,DRPA,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,,
+,FCI,,FALSE,not included; growth on L-fucose,1 xfuc_DASH_L_c > 1 xfcl_DASH_L_c,#abcdef > #abcdef
+,FCLPA,,FALSE,not included; growth on psicoselysine,,
+,FORCT,,FALSE,not included; oxalate-induced acid response (J Bacteriol. 2013 Apr;195(7):1446-55. doi: 10.1128/JB.01936-12. Epub 2013 Jan 18.),,
+,FRULYSDG,,FALSE,not included; growth on psicoselysine,,
+,FRULYSE,,FALSE,not included; growth on psicoselysine,,
+,GLTPD,,FALSE,not included; growth on galactitol,,
+,GUI1,,FALSE,not included; growth on glucuronate and galacturonate,1 xglcur_c > 1 xfruur_c,#abcdef > #abcdef
+,GUI2,,FALSE,not included; growth on glucuronate and galacturonate,1 xgalur_c > 1 xtagur_c,#abcdef > #abcdef
+,HADPCOADH3,,FALSE,not included; involved in phenylacetate catabolism,,
+,IDOND,,FALSE,not included; growth on L-idonate,,
+,IDOND2,,FALSE,not included; growth on L-idonate,,
+,PPM2,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,1 x2dr1p_c > 1 x2dr5p_c,#abcde > #abcde
+,REPHACCOAI,,FALSE,not included,,
+,RMI,,FALSE,not included; growth on L-rhamnose,1 xrmn_c > 1 xrml_c,#abcdef > #abcdef
+,RMPA,,FALSE,not included; growth on L-rhamnose,,
+,SBTPD,,FALSE,not included; growth on Sorbitol,1 xsbt6p_c > 1 xf6p_c,#abcdef > #abcdef
+,TAGURr,,FALSE,not included; growth on galacturonate,,
+,TGBPA,,FALSE,not included; growth on galactitol,,
+,5DGLCNR_reverse,,FALSE,not included; growth on L-idonate,1 xglcn_c > 1 x5dglcn_c,#abcdef > #abcdef
+,ALDD19xr_reverse,,FALSE,not included; growth on 2-phenylethylamine,,
+,ALLPI_reverse,,FALSE,not included; growth on allose,1 xallul6p_c > 1 xall6p_c,#abcdef > #abcdef
+,ALLULPE_reverse,,FALSE,not included; growth on allose,1 xf6p_c > 1 xallul6p_c,#abcdef > #abcdef
+,AMANAPEr_reverse,,FALSE,not included; growth on acmum6p,,
+,ARAI_reverse,,FALSE,not included; growth on L-arabinose,1 xrbl_DASH_L_c > 1 xarab_DASH_L_c,#abcdef > #abcdef
+,DDPGALA_reverse,,FALSE,not included; growth on D-galactonate,,
+,DHACOAH_reverse,,FALSE,not included; involved in phenylacetate catabolism,,
+,FCI_reverse,,FALSE,not included; growth on L-fucose,1 xfcl_DASH_L_c > 1 xfuc_DASH_L_c,#abcdef > #abcdef
+,FCLPA_reverse,,FALSE,not included; growth on psicoselysine,,
+,FORCT_reverse,,FALSE,not included; oxalate-induced acid response (J Bacteriol. 2013 Apr;195(7):1446-55. doi: 10.1128/JB.01936-12. Epub 2013 Jan 18.),,
+,FRULYSDG_reverse,,FALSE,not included; growth on psicoselysine,,
+,FRULYSE_reverse,,FALSE,not included; growth on psicoselysine,,
+,GLTPD_reverse,,FALSE,not included; growth on galactitol,,
+,GUI1_reverse,,FALSE,not included; growth on glucuronate and galacturonate,1 xfruur_c > 1 xglcur_c,#abcdef > #abcdef
+,GUI2_reverse,,FALSE,not included; growth on glucuronate and galacturonate,1 xtagur_c > 1 xgalur_c,#abcdef > #abcdef
+,HADPCOADH3_reverse,,FALSE,not included; involved in phenylacetate catabolism,,
+,IDOND_reverse,,FALSE,not included; growth on L-idonate,,
+,PPM2_reverse,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,1 x2dr5p_c > 1 x2dr1p_c,#abcde > #abcde
+,REPHACCOAI_reverse,,FALSE,not included,,
+,RMI_reverse,,FALSE,not included; growth on L-rhamnose,1 xrml_c > 1 xrmn_c,#abcdef > #abcdef
+,RMPA_reverse,,FALSE,not included; growth on L-rhamnose,,
+,SBTPD_reverse,,FALSE,not included; growth on Sorbitol,1 xf6p_c > 1 xsbt6p_c,#abcdef > #abcdef
+,TAGURr_reverse,,FALSE,not included; growth on galacturonate,,
+,TGBPA_reverse,,FALSE,not included; growth on galactitol,,
+,ACGAMK,,,individual,,
+,ADNCYC_Full,adenylate cyclase,,individual,1 xatp_c > 1 xcamp_c,#abcdefghij > #abcdefghij
+,AMPN_Full,AMP nucleosidase,,individual,1 xamp_c > 1 xade_c 1 xr5p_c ,#abcdefghij > #abcde #fghij
+,ADNCYC,adenylate cyclase,,individual,,
+,AMPN,AMP nucleosidase,,individual,,
+,ADNK1,adenosine kinase,,individual,,
+,ADNK1_Full,adenosine kinase,,individual,1 xadn_c 1 xatp_c > 1 xadp_c 1 xamp_c ,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,ASPT,L-aspartase,,individual,1 xasp_DASH_L_c > 1 xfum_c,"#abcd > #abcd,#abcd > #dcba"
+,CBMKr,Carbamate kinase,,individual,1 xco2_c > 1 xcbp_c ,#a > #a
+,CITL,Citrate lyase,,individual,1 xcit_c > 1 xac_c 1 xoaa_c ,"#abcdef > #ab #fcde,#abcdef > #ed #fdba"
+,CMPN_Full,CMP nucleosidase,,individual,1 xcmp_c > 1 xcsn_c 1 xr5p_c ,#abcdefghi > #fghi #abcde
+,CYTDK2_Full,cytidine kinase (GTP),,individual,1 xcytd_c 1 xgtp_c > 1 xcmp_c 1 xgdp_c ,#abcdefghi #jklmnopqrs > #abcdefghi #jklmnopqrs
+,CYTK2_Full,cytidylate kinase (dCMP),,individual,1 xatp_c 1 xdcmp_c > 1 xadp_c 1 xdcdp_c ,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+,CMPN,CMP nucleosidase,,individual,,
+,CYTDK2,cytidine kinase (GTP),,individual,,
+,CYTK2,cytidylate kinase (dCMP),,individual,,
+,FBA3,"Sedoheptulose 1,7-bisphosphate D-glyceraldehyde-3-phosphate-lyase",,individual,1 xs17bp_c > 1 xdhap_c 1 xe4p_c ,#abcdefg > #abc #defg
+,FTHFLi,formate-tetrahydrofolate ligase,,individual,1 xfor_c > 1 x10fthf_c,#a > #a
+,G6PP,glucose-6-phosphate phosphatase,,individual,1 xg6p_c > 1 xglc_DASH_D_c ,#abcdef > #abcdef
+,GLCP2,glycogen phosphorylase,,individual,,
+,GLBRAN2,"1,4-alpha-glucan branching enzyme (glycogen -> bglycogen)",,individual,,
+,GLCtexi,D-glucose transport via diffusion (extracellular to periplasm) irreversible,,individual,1 xglc_DASH_D_e > 1 xglc_DASH_D_p ,#abcdef > #abcdef
+,GLDBRAN2,glycogen debranching enzyme (bglycogen -> glycogen),,individual,,
+,GLUt4pp,Na+/glutamate symport (periplasm),,individual,1 xglu_DASH_L_p > 1 xglu_DASH_L_c,#abcde > #abcde
+,GLYCK2,glycerate kinase,,individual,1 xglyc_DASH_R_c > 1 x2pg_c,#abc > #abc
+,GMPR_Full,GMP reductase,,individual,1 xgmp_c > 1 ximp_c,#abcdefghij > #abcdefghij
+,GSNK_Full,guanosine kinase,,individual,1 xatp_c 1 xgsn_c > 1 xadp_c 1 xgmp_c ,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,GUACYC_Full,guanylate cyclase,,individual,1 xgtp_c > 1 x35cgmp_c ,#abcdefghij > #abcdefghij
+,GMPR,GMP reductase,,individual,,
+,GSNK,guanosine kinase,,individual,,
+,GUACYC,guanylate cyclase,,individual,,
+,HCYSMT_-amet,homocysteine S-methyltransferase,,individual,1 xhcys_DASH_L_c > 1 xmet_DASH_L_c ,#abcde > #abcde
+,HCYSMT,homocysteine S-methyltransferase,,individual,1 xamet_c 1 xhcys_DASH_L_c > 1 xahcys_c 1 xmet_DASH_L_c ,#123456789Aabcde #fghi > #123456789Aabcd #fghie
+,INSH_Full,Inosine hydrolase,,individual,1 xins_c > 1 xhxan_c 1 xrib_DASH_D_c ,#abcdefghij > #abcde #fghij
+,INSK_Full,insosine kinase,,individual,1 xatp_c 1 xins_c > 1 xadp_c 1 ximp_c ,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,INSH,Inosine hydrolase,,individual,,
+,INSK,insosine kinase,,individual,,
+,LCARR,"lacaldehyde reductase (R-propane-1,2-diol forming)",,individual,1 xlald_DASH_D_c > 1 x12ppd_DASH_R_c,#abc > #abc
+,LCARR_reverse,,,individual,1 x12ppd_DASH_R_c > 1 xlald_DASH_D_c,#abc > #abc
+,LSERDHr,L-serine dehydrogenase,,individual,1 xser_DASH_L_c >,#abc >
+,LSERDHr_reverse,,,individual,,
+,METOX1s,methionine oxidation (spontaneous),,individual,1 xmet_DASH_L_c >,#abcde >
+,METOX2s,methionine oxidation 2 (spontaneous),,individual,1 xmet_DASH_L_c >,#abcde >
+,MOX,malate oxidase,,individual,1 xmal_DASH_L_c > 1 xoaa_c ,#abcd > #abcd
+,NTD1_Full,5'-nucleotidase (dUMP),,individual,1 xdump_c > 1 xduri_c ,#abcdefghi > #abcdefghi 
+,NTD10_Full,5'-nucleotidase (XMP),,individual,1 xxmp_c > 1 xxtsn_c ,#abcdefghij > #abcdefghij
+,NTD11_Full,5'-nucleotidase (IMP),,individual,1 ximp_c > 1 xins_c ,#abcdefghij > #abcdefghij
+,NTD12_Full,5'-nucleotidase (dIMP),,individual,1 xdimp_c > 1 xdin_c ,#abcdefghij > #abcdefghij
+,NTD2_Full,5'-nucleotidase (UMP),,individual,1 xump_c > 1 xuri_c ,#abcdefghi > #abcdefghi 
+,NTD3_Full,5'-nucleotidase (dCMP),,individual,1 xdcmp_c > 1 xdcyt_c ,#abcdefghi > #abcdefghi 
+,NTD4_Full,5'-nucleotidase (CMP),,individual,1 xcmp_c > 1 xcytd_c ,#abcdefghi > #abcdefghi 
+,NTD5_Full,5'-nucleotidase (dTMP),,individual,1 xdtmp_c > 1 xthymd_c ,#abcdefghij > #abcdefghij
+,NTD6_Full,5'-nucleotidase (dAMP),,individual,1 xdamp_c >,#abcdefghij >
+,NTD7_Full,5'-nucleotidase (AMP),,individual,1 xamp_c > 1 xadn_c ,#abcdefghi > #abcdefghi 
+,NTD8_Full,5'-nucleotidase (dGMP),,individual,1 xdgmp_c > 1 xdgsn_c ,#abcdefghij > #abcdefghij
+,NTD9_Full,5'-nucleotidase (GMP),,individual,1 xgmp_c > 1 xgsn_c ,#abcdefghij > #abcdefghij
+,NTP1_Full,nucleoside-triphosphatase (ATP),,individual,1 xatp_c > 1 xadp_c ,#abcdefghij > #abcdefghij
+,NTP10_Full,nucleoside-triphosphatase (ITP),,individual,1 xitp_c > 1 xidp_c ,#abcdefghij > #abcdefghij
+,NTP11_Full,nucleoside-triphosphatase (dITP),,individual,1 xditp_c > 1 xdidp_c ,#abcdefghij > #abcdefghij
+,NTP12_Full,nucleoside-triphosphatase (XTP),,individual,1 xxtp_c > 1 xxdp_c ,#abcdefghij > #abcdefghij
+,NTP3_Full,nucleoside-triphosphatase (GTP),,individual,1 xgtp_c > 1 xgdp_c ,#abcdefghij > #abcdefghij
+,NTP5_Full,nucleoside-triphosphatase (CTP),,individual,1 xctp_c > 1 xcdp_c ,#abcdefghi > #abcdefghi 
+,NTPP1_Full,Nucleoside triphosphate pyrophosphorylase (dgtp),,individual,1 xdgtp_c > 1 xdgmp_c ,#abcdefghij > #abcdefghij
+,NTPP10_Full,Nucleoside triphosphate pyrophosphorylase (ditp),,individual,1 xditp_c > 1 xdimp_c ,#abcdefghij > #abcdefghij
+,NTPP11_Full,Nucleoside triphosphate pyrophosphorylase (xtp),,individual,1 xxtp_c > 1 xxmp_c ,#abcdefghij > #abcdefghij
+,NTPP2_Full,Nucleoside triphosphate pyrophosphorylase (gtp),,individual,1 xgtp_c > 1 xgmp_c ,#abcdefghij > #abcdefghij
+,NTPP3_Full,Nucleoside triphosphate pyrophosphorylase (dctp),,individual,1 xdctp_c > 1 xdcmp_c ,#abcdefghi > #abcdefghi 
+,NTPP4_Full,Nucleoside triphosphate pyrophosphorylase (ctp),,individual,1 xctp_c > 1 xcmp_c ,#abcdefghi > #abcdefghi 
+,NTPP5_Full,Nucleoside triphosphate pyrophosphorylase (datp),,individual,1 xdatp_c > 1 xdamp_c ,#abcdefghij > #abcdefghij
+,NTPP7_Full,Nucleoside triphosphate pyrophosphorylase (dttp),,individual,1 xdttp_c > 1 xdtmp_c ,#abcdefghij > #abcdefghij
+,NTPP8_Full,Nucleoside triphosphate pyrophosphorylase (utp),,individual,1 xutp_c > 1 xump_c ,#abcdefghi > #abcdefghi 
+,NTPP9_Full,Nucleoside triphosphate pyrophosphorylase (itp),,individual,1 xitp_c > 1 ximp_c ,#abcdefghij > #abcdefghij
+,NTPTP1_Full,Nucleoside triphosphate tripolyhydrolase,,individual,1 xdgtp_c > 1 xdgsn_c ,#abcdefghij > #abcdefghij
+,NTPTP2_Full,Nucleoside triphosphate tripolyhydrolase,,individual,1 xgtp_c > 1 xgsn_c ,#abcdefghij > #abcdefghij
+,PDE1_Full,"3',5'-cyclic-nucleotide phosphodiesterase",,individual,1 xcamp_c > 1 xamp_c ,#abcdefghij > #abcdefghij
+,PDE4_Full,"3',5'-cyclic-nucleotide phosphodiesterase",,individual,1 x35cgmp_c > 1 xgmp_c ,#abcdefghij > #abcdefghij
+,NTD1,,,,,
+,NTD10,,,,,
+,NTD11,,,,,
+,NTD12,,,,,
+,NTD2,,,,,
+,NTD3,,,,,
+,NTD4,,,,,
+,NTD5,,,,,
+,NTD6,,,,,
+,NTD7,,,,,
+,NTD8,,,,,
+,NTD9,,,,,
+,NTP1,,,,,
+,NTP10,,,,,
+,NTP11,,,,,
+,NTP12,,,,,
+,NTP3,,,,,
+,NTP5,,,,,
+,NTPP1,,,,,
+,NTPP10,,,,,
+,NTPP11,,,,,
+,NTPP2,,,,,
+,NTPP3,,,,,
+,NTPP4,,,,,
+,NTPP5,,,,,
+,NTPP7,,,,,
+,NTPP8,,,,,
+,NTPP9,,,,,
+,NTPTP1,,,,,
+,NTPTP2,,,,,
+,PDE1,"3',5'-cyclic-nucleotide phosphodiesterase",,,,
+,PDE4,"3',5'-cyclic-nucleotide phosphodiesterase",,,,
+,PFK_3,phosphofructokinase (s7p),,individual,1 xs7p_c > 1 xs17bp_c ,#abcdefg > #abcdefg
+,POR5_-coa,pyruvate synthase,,individual,1 xpyr_c > 1 xaccoa_c 1 xco2_c,#abc > #bc #a
+,POR5,pyruvate synthase,,individual,1 xcoa_c 1 xpyr_c > 1 xaccoa_c 1 xco2_c,#ABCDEFGHIJKLMNOPQRSTU #abc > #ABCDEFGHIJKLMNOPQRSTUbc #a
+,POR5_reverse_-coa,,,individual,1 xaccoa_c 1 xco2_c > 1 xpyr_c,#ab #c > #cab
+,POR5_reverse,,,individual,1 xaccoa_c 1 xco2_c > 1 xcoa_c 1 xpyr_c,#ABCDEFGHIJKLMNOPQRSTUab #c > #ABCDEFGHIJKLMNOPQRSTU #cab
+,RNDR1_Full,ribonucleoside-diphosphate reductase (ADP),,individual,1 xadp_c > 1 xdadp_c,#abcdefghij > #abcdefghij
+,RNDR1b_Full,ribonucleoside-diphosphate reductase (ADP) (glutaredoxin),,individual,1 xadp_c > 1 xdadp_c,#abcdefghij > #abcdefghij
+,RNDR2_Full,ribonucleoside-diphosphate reductase (GDP),,individual,1 xgdp_c > 1 xdgdp_c ,#abcdefghij > #abcdefghij
+,RNDR2b_Full,ribonucleoside-diphosphate reductase (GDP) (glutaredoxin),,individual,1 xgdp_c > 1 xdgdp_c,#abcdefghij > #abcdefghij
+,RNDR3_Full,ribonucleoside-diphosphate reductase (CDP),,individual,1 xcdp_c > 1 xdcdp_c ,#abcdefghij > #abcdefghij
+,RNDR3b_Full,ribonucleoside-diphosphate reductase (CDP) (glutaredoxin),,individual,1 xcdp_c > 1 xdcdp_c,#abcdefghij > #abcdefghij
+,RNDR4_Full,ribonucleoside-diphosphate reductase (UDP),,individual,1 xudp_c > 1 xdudp_c ,#abcdefghi > #abcdefghi 
+,RNDR4b_Full,ribonucleoside-diphosphate reductase (UDP) (glutaredoxin),,individual,1 xudp_c > 1 xdudp_c,#abcdefghi > #abcdefghi 
+,RNTR1c2_Full,ribonucleoside-triphosphate reductase (ATP) (flavodoxin),,individual,1 xatp_c > 1 xdatp_c,#abcdefghij > #abcdefghij
+,RNTR2c2_Full,ribonucleoside-triphosphate reductase (GTP) (flavodoxin),,individual,1 xgtp_c > 1 xdgtp_c,#abcdefghij > #abcdefghij
+,RNTR3c2_Full,ribonucleoside-triphosphate reductase (CTP) (flavodoxin),,individual,1 xctp_c > 1 xdctp_c,#abcdefghi > #abcdefghi 
+,RNTR4c2_Full,ribonucleoside-triphosphate reductase (UTP) (flavodoxin),,individual,1 xutp_c > 1 xdutp_c,#abcdefghi > #abcdefghi 
+,RNDR1,ribonucleoside-diphosphate reductase (ADP),,individual,,
+,RNDR1b,ribonucleoside-diphosphate reductase (ADP) (glutaredoxin),,individual,,
+,RNDR2,ribonucleoside-diphosphate reductase (GDP),,individual,,
+,RNDR2b,ribonucleoside-diphosphate reductase (GDP) (glutaredoxin),,individual,,
+,RNDR3,ribonucleoside-diphosphate reductase (CDP),,individual,,
+,RNDR3b,ribonucleoside-diphosphate reductase (CDP) (glutaredoxin),,individual,,
+,RNDR4,ribonucleoside-diphosphate reductase (UDP),,individual,,
+,RNDR4b,ribonucleoside-diphosphate reductase (UDP) (glutaredoxin),,individual,,
+,RNTR1c2,ribonucleoside-triphosphate reductase (ATP) (flavodoxin),,individual,,
+,RNTR2c2,ribonucleoside-triphosphate reductase (GTP) (flavodoxin),,individual,,
+,RNTR3c2,ribonucleoside-triphosphate reductase (CTP) (flavodoxin),,individual,,
+,RNTR4c2,ribonucleoside-triphosphate reductase (UTP) (flavodoxin),,individual,,
+,ASTPathway,"['AST','SADH','SGDS','SGSAD','SOTA']",,individual,1 xarg_DASH_L_c 1 xakg_c 1 xsuccoa_c > 1 xsucc_c 1 xglu_DASH_L_c 1 xglu_DASH_L_c 1 xco2_c,"#abcdef #ghijk #mnop > #mnop #ghijk #abcde #f,#abcdef #ghijk #mnop > #ponm #ghijk #abcde #f"
+,AST,Arginine succinyltransferase,,individual,,
+,SADH,Succinylarginine dihydrolase,,individual,,
+,SGDS,Succinylglutamate desuccinylase,,individual,,
+,SGSAD,Succinylglutamic semialdehyde dehydrogenase,,individual,,
+,SOTA,Succinylornithine transaminase,,individual,,
+,TMDK1_Full,thymidine kinase (ATP:thymidine),,individual,1 xatp_c 1 xthymd_c > 1 xadp_c 1 xdtmp_c ,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,URIK2_Full,uridine kinase (GTP:Uridine),,individual,1 xgtp_c 1 xuri_c > 1 xgdp_c 1 xump_c ,#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+,TMDK1,thymidine kinase (ATP:thymidine),,individual,,
+,URIK2,uridine kinase (GTP:Uridine),,individual,,
+,VPAMTr,Valine-pyruvate aminotransferase,,individual,1 x3mob_c 1 xala_DASH_L_c > 1 xpyr_c 1 xval_DASH_L_c ,#abcde #fgh > #fgh #abcde
+,VPAMTr_reverse,,,individual,1 xpyr_c 1 xval_DASH_L_c > 1 x3mob_c 1 xala_DASH_L_c ,#abc #defgh > #defgh #abc
+,XTSNH_Full,Xanthosine hydrolase,,individual,1 xxtsn_c > 1 xrib_DASH_D_c 1 xxan_c ,#abcdefghij > #abcde #fghij
+,XTSNH,Xanthosine hydrolase,,individual,,
+,ATPS4rpp_reverse,,,individual,1 xatp_c > 1 xadp_c,#abcdefghij > #abcdefghij
+,FBA3_reverse,,,individual,1 xe4p_c 1 xdhap_c > 1 xs17bp_c,#abcd #efg > #gfeabcd
+,GARFT_reverse,,,individual,1 xfgam_c > 1 xgar_c 1 x10fthf_c,#abcdefgh > #abcdefg #h
+,ADK1_reverse_Full,,,individual,1 xadp_c 1 xadp_c > 1 xamp_c 1 xatp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,ADK3_reverse_Full,,,individual,1 xgdp_c 1 xadp_c > 1 xgtp_c 1 xamp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,ADK4_reverse_Full,,,individual,1 xidp_c 1 xadp_c > 1 xamp_c 1 xitp_c,#abcdefghij #klmnopqrst > #klmnopqrst #abcdefghij
+,CYTK1_reverse_Full,,,individual,1 xcdp_c 1 xadp_c > 1 xatp_c 1 xcmp_c,#abcdefghi #jklmnopqrs > #jklmnopqrs #abcdefghi
+,CYTK2_reverse_Full,,,individual,1 xadp_c 1 xdcdp_c > 1 xdcmp_c 1 xatp_c,#abcdefghij #klmnopqrs > #klmnopqrs #abcdefghij
+,DTMPK_reverse_Full,,,individual,1 xdtdp_c 1 xadp_c > 1 xdtmp_c 1 xatp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,GK1_reverse_Full,,,individual,1 xgdp_c 1 xadp_c > 1 xgmp_c 1 xatp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,GLUt2rpp_reverse,,,individual,1 xglu_DASH_L_c > 1 xglu_DASH_L_p,#abcde > #abcde
+,NDPK1_reverse_Full,,,individual,1 xgtp_c 1 xadp_c > 1 xgdp_c 1 xatp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,NDPK2_reverse_Full,,,individual,1 xutp_c 1 xadp_c > 1 xudp_c 1 xatp_c,#abcdefghi #jklmnopqrs > #abcdefghi #jklmnopqrs
+,NDPK3_reverse_Full,,,individual,1 xctp_c 1 xadp_c > 1 xcdp_c 1 xatp_c,#abcdefghi #jklmnopqrs > #abcdefghi #jklmnopqrs
+,NDPK4_reverse_Full,,,individual,1 xdttp_c 1 xadp_c > 1 xdtdp_c 1 xatp_c,#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst
+,UMPK_reverse_Full,,,individual,1 xudp_c 1 xadp_c > 1 xump_c 1 xatp_c,#abcdefghi #jklmnopqrs > #abcdefghi #jklmnopqrs
+,ADK1_reverse,,,individual,,
+,ADK3_reverse,,,individual,,
+,ADK4_reverse,,,individual,,
+,CYTK1_reverse,,,individual,,
+,CYTK2_reverse,,,individual,,
+,DTMPK_reverse,,,individual,,
+,GK1_reverse,,,individual,,
+,NDPK1_reverse,,,individual,,
+,NDPK2_reverse,,,individual,,
+,NDPK3_reverse,,,individual,,
+,NDPK4_reverse,,,individual,,
+,UMPK_reverse,,,individual,,
+,OAADC,,,individual,1 xoaa_c > 1 xpyr_c 1 xco2_c,#abcd > #abc #d
+,DALAt2pp,,,individual,1 xala_DASH_D_p > 1 xala_DASH_D_c,#abc > #abc
+,THRt4pp,,,individual,1 xthr_DASH_L_p > 1 xthr_DASH_L_c,#abcd > #abcd
+,THRt2rpp_reverse,,,individual,1 xthr_DASH_L_c > 1 xthr_DASH_L_p,#abcd > #abcd
+,DAAD,,,individual,1 xala_DASH_D_c > 1 xpyr_c,#abc > #abc
+,ALAALAr,,,individual,1 xala_DASH_D_c 1 xala_DASH_D_c >,#abc #def >
+,DSERDHr,,,individual,1 xser_DASH_D_c > 1 x2amsa_c,#abc > #abc
+,SERD_D,,,individual,1 xser_DASH_D_c > 1 xpyr_c,#abc > #abc
+,DSERDHr_reverse,,,individual,1 x2amsa_c > 1 xser_DASH_D_c,#abc > #abc
+,LSERDHr_reverse,,,individual,1 x2amsa_c > 1 xser_DASH_L_c,#abc > #abc
+,FOMETRi,,,individual,1 x5fthf_c > 1 xmethf_c,#a > #a
+,THFAT,,,individual,1 xmethf_c > 1 x5fthf_c,#a > #a
+,MOX_reverse,,,individual,1 xoaa_c > 1 xmal_DASH_L_c,#abcd > #abcd
+,Ec_biomass_iJO1366_WT_53p95M_-coa,,,"individual; FAD, atp, gtp, utp not included",0.006744 xspmd_c 0.149336 xmet_DASH_L_c 0.499149 xala_DASH_L_c 0.133993 xtyr_DASH_L_c 0.209684 xser_DASH_L_c 0.234232 xasn_DASH_L_c 0.000223 x10fthf_c 0.003805 xpg161_p 0.004439 xpg161_c 0.255712 xglu_DASH_L_c 0.000279 xaccoa_c 0.000223 x5mthf_c 0.000223 xmlthf_c 0.03327 xptrc_c 0.004892 xpg160_p 0.255712 xgln_DASH_L_c 0.005707 xpg160_c 0.088988 xcys_DASH_L_c 0.214798 xpro_DASH_L_c 0.595297 xgly_c 0.411184 xval_DASH_L_c 0.180021 xphe_DASH_L_c 0.234232 xasp_DASH_L_c 0.000223 xchor_c 3.10E-05 xmalcoa_c 0.333448 xlys_DASH_L_c 0.282306 xile_DASH_L_c 0.001961 xpg181_p 0.28742 xarg_DASH_L_c 0.002288 xpg181_c 0.437778 xleu_DASH_L_c 9.80E-05 xsuccoa_c 0.092056 xhis_DASH_L_c 0.246506 xthr_DASH_L_c 0.055234 xtrp_DASH_L_c 0.000223 amet_c >,#abcdefg #hijkl #mno #pqrstuvwx #yz1 #2345 #6 #789 #ABC #DEFGH #IJ #K #L #MNOP #QRS #TUVWX #Y12 #345 #6789a #bc #defgh #ijklmnopq #rstu #vwxyz12345 #678 #9ABCDE #FGHIJK #LMN #OPQRST #UVW #XYZ123 #4567 #89abcd #efgh #ijklmnopqrs #123456789Aabcde >
+,Ec_biomass_iJO1366_WT_53p95M_-amet-coa,,,"individual; FAD, atp, gtp, utp not included",0.006744 xspmd_c 0.149336 xmet_DASH_L_c 0.499149 xala_DASH_L_c 0.133993 xtyr_DASH_L_c 0.209684 xser_DASH_L_c 0.234232 xasn_DASH_L_c 0.000223 x10fthf_c 0.003805 xpg161_p 0.004439 xpg161_c 0.255712 xglu_DASH_L_c 0.000279 xaccoa_c 0.000223 x5mthf_c 0.000223 xmlthf_c 0.03327 xptrc_c 0.004892 xpg160_p 0.255712 xgln_DASH_L_c 0.005707 xpg160_c 0.088988 xcys_DASH_L_c 0.214798 xpro_DASH_L_c 0.595297 xgly_c 0.411184 xval_DASH_L_c 0.180021 xphe_DASH_L_c 0.234232 xasp_DASH_L_c 0.000223 xchor_c 3.10E-05 xmalcoa_c 0.333448 xlys_DASH_L_c 0.282306 xile_DASH_L_c 0.001961 xpg181_p 0.28742 xarg_DASH_L_c 0.002288 xpg181_c 0.437778 xleu_DASH_L_c 9.80E-05 xsuccoa_c 0.092056 xhis_DASH_L_c 0.246506 xthr_DASH_L_c 0.055234 xtrp_DASH_L_c >,#abcdefg #hijkl #mno #pqrstuvwx #yz1 #2345 #6 #789 #ABC #DEFGH #IJ #K #L #MNOP #QRS #TUVWX #Y12 #345 #6789a #bc #defgh #ijklmnopq #rstu #vwxyz12345 #678 #9ABCDE #FGHIJK #LMN #OPQRST #UVW #XYZ123 #4567 #89abcd #efgh #ijklmnopqrs >
+,AHCYSNS,,TRUE,individual,1 xahcys_c >,#123456789Aabcd >
+,Ec_biomass_iJO1366_WT_53p95M,,,,0.000223 xribflv_c 0.006744 xspmd_c 0.149336 xmet_DASH_L_c 0.024805 xdatp_c 0.499149 xala_DASH_L_c 0.133993 xtyr_DASH_L_c 0.209684 xser_DASH_L_c 0.234232 xasn_DASH_L_c 0.000223 x10fthf_c 0.003805 xpg161_p 0.004439 xpg161_c 0.129799 xctp_c 0.255712 xglu_DASH_L_c 54.119975 xatp_c 0.000168 xcoa_c 0.000279 xaccoa_c 0.000223 x5mthf_c 0.000223 xmlthf_c 0.209121 xgtp_c 0.000223 xfad_c 0.03327 xptrc_c 0.140101 xutp_c 0.004892 xpg160_p 0.255712 xgln_DASH_L_c 0.005707 xpg160_c 0.088988 xcys_DASH_L_c 0.214798 xpro_DASH_L_c 0.595297 xgly_c 0.411184 xval_DASH_L_c 0.180021 xphe_DASH_L_c 0.234232 xasp_DASH_L_c 0.000223 xchor_c 3.10E-05 xmalcoa_c 0.333448 xlys_DASH_L_c 0.282306 xile_DASH_L_c 0.001961 xpg181_p 0.025612 xdgtp_c 0.28742 xarg_DASH_L_c 0.002288 xpg181_c 0.024805 xdttp_c 0.437778 xleu_DASH_L_c 9.80E-05 xsuccoa_c 0.025612 xdctp_c 0.092056 xhis_DASH_L_c 0.246506 xthr_DASH_L_c 0.055234 xtrp_DASH_L_c 0.000223 xamet_c >,#abcdefghijklmnopq #abcdefg #hijkl #ABCDEFGHIJ #mno #pqrstuvwx #yz1 #2345 #6 #789 #ABC #ABCDEFGHIJ #DEFGH #ABCDEFGHIJ #ABCDEFGHIJKLMNOPQRSTU #ABCDEFGHIJKLMNOPQRSTUIJ #K #L #ABCDEFGHIJ #abcdefghijklmnopqABCDEFGHIJ #MNOP #ABCDEFGHIJ #QRS #TUVWX #Y12 #345 #6789a #bc #defgh #ijklmnopq #rstu #vwxyz12345 #ABCDEFGHIJKLMNOPQRSTU678 #9ABCDE #FGHIJK #LMN #ABCDEFGHIJ #OPQRST #UVW #ABCDEFGHIJ #XYZ123 #ABCDEFGHIJKLMNOPQRSTU4567 #ABCDEFGHIJ #89abcd #efgh #ijklmnopqrs #123456789Aabcde >
+COMBO22,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,"[HSST,SHSL1,CYSTL]",TRUE,combo,1 xcys_DASH_L_c 1 xhom_DASH_L_c 1 xsuccoa_c > 1 xcoa_c 1 xhcys_DASH_L_c 1 xpyr_c 1 xsucc_c ,"#bcd #efgh #ABCDEFGHIJKLMNOPQRSTUijkl > #ABCDEFGHIJKLMNOPQRSTU #efgh #bcd #ijkl,#bcd #efgh #ABCDEFGHIJKLMNOPQRSTUijkl > #ABCDEFGHIJKLMNOPQRSTU #efgh #bcd #lkji"
+COMBO22,HSST,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,1 xsuccoa_c 1 xhom_DASH_L_c > 1 xcoa_c 1 xsuchms_c,#ABCDEFGHIJKLMNOPQRSTUabcd #efgh > #ABCDEFGHIJKLMNOPQRSTU #efghabcd
+COMBO26,aspsa_to_sl2a6o,"[DHDPS,DHDPRy,THDPS]",TRUE,combo,1 xaspsa_c 1 xpyr_c 1 xsuccoa_c > 1 xcoa_c 1 xsl2a6o_c,#abcd #efg #ABCDEFGHIJKLMNOPQRSTUhijk > #ABCDEFGHIJKLMNOPQRSTU #abcdgfehijk
+SUCOAS,SUCOAS,,TRUE,individual,1 xcoa_c 1 xsucc_c > 1 xsuccoa_c,"#ABCDEFGHIJKLMNOPQRSTU #abcd > #ABCDEFGHIJKLMNOPQRSTUabcd,#ABCDEFGHIJKLMNOPQRSTU #dcba > #ABCDEFGHIJKLMNOPQRSTUabcd"
+TESTAKGDH,AKGDH,,TRUE,individual,1 xakg_c 1 xcoa_c > 1 xco2_c 1 xsuccoa_c,#abcde #ABCDEFGHIJKLMNOPQRSTU > #a #ABCDEFGHIJKLMNOPQRSTUbcde
+SUCOAS_r,SUCOAS_reverse,,TRUE,individual,1 xsuccoa_c > 1 xcoa_c 1 xsucc_c,"#ABCDEFGHIJKLMNOPQRSTUabcd > #ABCDEFGHIJKLMNOPQRSTU #abcd,#ABCDEFGHIJKLMNOPQRSTUabcd > #ABCDEFGHIJKLMNOPQRSTU #dcba"
+,MMM,,TRUE,individual,1 xsuccoa_c > 1 xmmcoa_DASH_S_c,#ABCDEFGHIJKLMNOPQRSTUabcd > #ABCDEFGHIJKLMNOPQRSTUabcd
+,PPCSCT,,TRUE,individual,1 xsucc_c 1 xppcoa_c > 1 xppa_c 1 xsuccoa_c,"#abcd #ABCDEFGHIJKLMNOPQRSTUefg > #efg #ABCDEFGHIJKLMNOPQRSTUabcd,#abcd #ABCDEFGHIJKLMNOPQRSTUefg > #efg #ABCDEFGHIJKLMNOPQRSTUdcba"
+,ASTPathway_Full,"['AST','SADH','SGDS','SGSAD','SOTA']",,individual,1 xarg_DASH_L_c 1 xakg_c 1 xsuccoa_c > 1 xcoa_c 1 xsucc_c 1 xglu_DASH_L_c 1 xglu_DASH_L_c 1 xco2_c,"#abcdef #ghijk #ABCDEFGHIJKLMNOPQRSTUmnop > #ABCDEFGHIJKLMNOPQRSTU #mnop #abcde #ghijk #f,#abcdef #ghijk #ABCDEFGHIJKLMNOPQRSTUmnop > #ABCDEFGHIJKLMNOPQRSTU #ponm #abcde #ghijk #abcde #f,#abcdef #ghijk #ABCDEFGHIJKLMNOPQRSTUmnop > #ABCDEFGHIJKLMNOPQRSTU #mnop #ghijk #abcde #f,#abcdef #ghijk #ABCDEFGHIJKLMNOPQRSTUmnop > #ABCDEFGHIJKLMNOPQRSTU #ponm #ghijk #abcde #f"

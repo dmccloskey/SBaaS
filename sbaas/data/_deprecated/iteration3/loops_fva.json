@@ -1,0 +1,2306 @@
+{
+    "CSND": {
+        "minimum": 0.0, 
+        "maximum": -4.775922237146847e-13
+    }, 
+    "G6PDH2r": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MEOHtrpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACt2rpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1.9326762412674725e-12
+    }, 
+    "GUAPRT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD11": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD12": {
+        "minimum": 0.0, 
+        "maximum": 3.513297464970502e-11
+    }, 
+    "NACODA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "3pg_to_ser_DASH_L": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "P5CD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FBA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "P5CR": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PG161abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "METSOXR2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ATPM": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "METSOXR1": {
+        "minimum": 0.0, 
+        "maximum": 2.3874235921539366e-12
+    }, 
+    "GLCtexi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PHETA1_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MN2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DAPE_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "KAS15": {
+        "minimum": 2.4476406705988784e-13, 
+        "maximum": -0.0
+    }, 
+    "FOMETRi": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "G5SADs": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PSCVT_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PHETA1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SUCOAS_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PYNP2r": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PGM_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP8": {
+        "minimum": 0.0, 
+        "maximum": -6.12426891077869e-10
+    }, 
+    "EX_meoh_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP6": {
+        "minimum": 0.0, 
+        "maximum": 2.0463630789890885e-12
+    }, 
+    "NTPP5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP2": {
+        "minimum": 0.0, 
+        "maximum": 1.5916157281026244e-12
+    }, 
+    "NTPP1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACODA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACOTA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOX_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MEOHtex_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "RPE_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NDPK8_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GUACYC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PTAr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP3": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CMPN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLBRAN2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CYTBO3_4pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PE160abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPND": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "e4p_and_pep_to_3dhq": {
+        "minimum": 0.0, 
+        "maximum": 3.6001586681827256e-13
+    }, 
+    "LSERDHr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ICL": {
+        "minimum": -6.252776074688882e-13, 
+        "maximum": 2.5011104298755527e-12
+    }, 
+    "ASPTA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GART": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LDH_D_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_pi_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": 4.2847305950191295e-12
+    }, 
+    "METOX1s": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYTDK2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPK2r": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MDDCP2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ABTA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LEUTAi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "RPI_reverse": {
+        "minimum": 0.0, 
+        "maximum": 999.9999999999998
+    }, 
+    "MG2t3_2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PIt2rpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_fe2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PE161abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GSNK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDH": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PPBNGS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "QUINDH_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SHK3Dr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SULRi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASPK": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ASPT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PTAr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_co_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYTBDpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CBPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SADT2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "HCYSMT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTP10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DHAD1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TMDK1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADPT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "THFSYN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EDA": {
+        "minimum": 0.0, 
+        "maximum": -1.9326762412674725e-12
+    }, 
+    "MNtex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EDD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TMDPP": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DURADx": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ALAGLUE_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "THFAT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "COASYN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PRPPS": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SDPDS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DHFR": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ILETA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_cu2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "VALTA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NH4tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "VALTA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "HEX1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FTHFD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PGMT_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "imp_to_gmp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPNDH": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ICHORS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PGL": {
+        "minimum": 0.0, 
+        "maximum": -4.892656094829314e-12
+    }, 
+    "PGM": {
+        "minimum": 0.0, 
+        "maximum": 999.9999999999984
+    }, 
+    "PGK": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PGI": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PPKr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SUCOAS": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NADPHQR4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FE2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PUNP3_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CRNCDH_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "OCBT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "FADRx": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FTHFLi": {
+        "minimum": 0.0, 
+        "maximum": 5.6772364587232005e-12
+    }, 
+    "CRNCDH": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ICYSDS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GHMT2r_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_mobd_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPM_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FRD3": {
+        "minimum": 0.0, 
+        "maximum": 1.8189894035458565e-12
+    }, 
+    "CO2tpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "G3PD2_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ALATA_L_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP4_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GLCP2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "RHCCE": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MCTP1Bpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FUM_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ADK4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYSS": {
+        "minimum": 0.0, 
+        "maximum": -9.208633855450898e-12
+    }, 
+    "IPMD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADK3": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SERAT_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PAPSR": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "5DOAN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADK1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DURADx_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "5MTRtex_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PE181abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASAD_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "2obut_and_pyr_to_3mop": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "H2Otex_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "HXPRT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PUNP7_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TPI": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ACONTa": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ACKr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ACONTb": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DURIPP": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DALAt2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CO2tex_reverse": {
+        "minimum": -8.423648549269342e-12, 
+        "maximum": -0.0
+    }, 
+    "G6PDH2r_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PGK_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DAPDC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "chor_and_prpp_to_3ig3p": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLCptspp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PSCVT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DSERDHr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PYK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SPMS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ATPS4rpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PDE4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LCARR": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PDE1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PItex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CLtex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYTK2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNCAR": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NTP3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNCAR_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NTP1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTP5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PUNP2_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DXPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPKr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "FUM": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ICDHyr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_cobalt2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DAPE": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP6_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "O2tex": {
+        "minimum": -2.2737367544323206e-13, 
+        "maximum": 2.8421709430404007e-12
+    }, 
+    "GLUt4pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CBL1tonex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_ni2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ZN2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ptrc_to_4abut_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ILETA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ENO": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NTPP7": {
+        "minimum": 0.0, 
+        "maximum": 3.9497110685522585e-10
+    }, 
+    "g1p_to_glycogen": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_cl_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_h_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IPPMIb": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "IPPMIa": {
+        "minimum": 3.2436122052631755e-13, 
+        "maximum": 1000.0
+    }, 
+    "GLYCtpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IPPMIb_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_mg2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNBTCT_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NDPK5_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ALCD2x_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MCTP1App": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DM_4CRSOL": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FRD2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCTO2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ALAGLUE": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MTHFR2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "glu_DASH_L_to_glu5sa": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CHORS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "H2Otpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNBTCT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CELLENV_11": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADSK": {
+        "minimum": 0.0, 
+        "maximum": 1.5563256060406135e-13
+    }, 
+    "imp_to_amp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "glu_DASH_L_to_acg5p": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LDH_D2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PUNP1_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ALATA_L": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GLUt2rpp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADNCYC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TRPAS2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_zn2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MPTG": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYSDS": {
+        "minimum": -1.1052532943670315e-13, 
+        "maximum": -1.8991548552756328e-12
+    }, 
+    "TMDS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCL": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PDH": {
+        "minimum": -3.680333795409504e-12, 
+        "maximum": -0.0
+    }, 
+    "PUNP5_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MLDCP1App": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_8": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GALUi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADSYN_aerobic": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "I2FE2SS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NI2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "I2FE2ST": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SSALy": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SERD_D": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASPTA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SDPTA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DADK_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SERD_L": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_6": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DM_MTHTHF": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADH17pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "UPPRT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SUCDi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GAPD_reverse": {
+        "minimum": 0.0, 
+        "maximum": 999.9999999999725
+    }, 
+    "POX": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CLt3_2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYTD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TKT1_reverse": {
+        "minimum": 3.069544618483633e-12, 
+        "maximum": 1000.0
+    }, 
+    "NDPK8": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "RPE": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DSERDHr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NDPK2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NDPK3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NDPK1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TRDR": {
+        "minimum": 0.0, 
+        "maximum": 6.631732200427596e-13
+    }, 
+    "NDPK7": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NDPK4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NDPK5": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MCOATA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LIPOPOLYSACCHARIDE_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LIPOPOLYSACCHARIDE_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LIPOPOLYSACCHARIDE_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LIPOPOLYSACCHARIDE_4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_8": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COtex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DTMPK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "G3PD7": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "G3PD6": {
+        "minimum": 0.0, 
+        "maximum": -4.88853402202949e-12
+    }, 
+    "G3PD5": {
+        "minimum": 0.0, 
+        "maximum": -6.674517569462617e-13
+    }, 
+    "PFK_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PRPPS_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NI2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CBL1abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDEP3pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TALA_reverse": {
+        "minimum": 1.1368683772161603e-13, 
+        "maximum": 1000.0
+    }, 
+    "CITL": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCLTDy": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "aspsa_to_sl2a6o": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACCOAC": {
+        "minimum": 0.0, 
+        "maximum": 7.791800278762839e-13
+    }, 
+    "OCBT_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GHMT2r": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MLDCP1Bpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MLDCP3App": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AKGDH": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DATPHs": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "XPPT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ATPHs": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LCARR_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NADH18pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "Htex_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "UDCPDPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DHQTi": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IPDPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACOTA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DAAD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLDBRAN2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ALCD2x": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_mn2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GTHSYN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GAPD": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MTHFD_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "OCTDPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASNS2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "THIAMIN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASNS1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASPK_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TRPS1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CU2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GMPR": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "Kt2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADPPPS": {
+        "minimum": 0.0, 
+        "maximum": 4.092726157978177e-12
+    }, 
+    "THRD_L": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_k_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACtex_reverse": {
+        "minimum": 1.4779288903810084e-12, 
+        "maximum": -0.0
+    }, 
+    "ARGSL_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DM_AMOB": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COBALT2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "URIK2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SSALx": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PGI_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GLYCPHOSPHOLIPID_6": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CBMKr": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FBA3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDCP1pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GK1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_11": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MALS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FE2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_so4_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DURIPP_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CU2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "UMPK": {
+        "minimum": 0.0, 
+        "maximum": 2.4584778657299466e-12
+    }, 
+    "EX_glc_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GCALDD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "udp_to_dump_aerobic": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ENO_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "POR5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MLDCP2Bpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SO4tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SDPTA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CAt6pp_reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FESD1s": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DHPTDCs2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "A5PISO": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ARGSL": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CTPS2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "THRAi": {
+        "minimum": 0.0, 
+        "maximum": 1.3642420526593924e-12
+    }, 
+    "TYRTA_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "Ec_biomass_iJO1366_WT_53p95M": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GARFT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ARGSS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "UMPSYN_aerobic": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "HSDy_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "NADH16pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CLPNS160pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LSERDHr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GLCP": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOX": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CS": {
+        "minimum": 0.0, 
+        "maximum": -4.547473508864641e-13
+    }, 
+    "Ktex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SHK3Dr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP4": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP5": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP6": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP7": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PUNP2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "5MTRtpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASNN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SO4t2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "dhap_to_lac_DASH_D": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ALAR_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "THD2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "INSK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DURIK1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDH3": {
+        "minimum": 0.0, 
+        "maximum": -9.094947017729282e-13
+    }, 
+    "MDH2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GND": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACKr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "prpp_to_his_DASH_L": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADH10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PYNP2r_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TKT2_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_cbl1_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADTRHD": {
+        "minimum": 0.0, 
+        "maximum": -5.686949799553683e-11
+    }, 
+    "IPPS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PG181abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ALAALAD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ASTPathway": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "VITB6": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DADK": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_ac_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": 1.2505552149377763e-12
+    }, 
+    "OAADC": {
+        "minimum": 0.0, 
+        "maximum": 2.2737367544323206e-13
+    }, 
+    "DADA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ALAALAr": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MCTP2App": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNCBCT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ACALD_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "BPNT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPTP1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPTP2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTPP10": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "Zn2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CA2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PPK2r_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "APPLDHr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "GLNS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CRNCBCT_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MTHFC_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ALAALAabcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FADSYN_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FADSYN_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FADSYN_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDEP1pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DGK1_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CLPNS161pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "RPI": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MG2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AHCYSNS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_o2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NDPK7_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TKT2": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TKT1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOLYBDOPTERIN_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MOLYBDOPTERIN_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MOLYBDOPTERIN_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "VPAMTr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "RNDR3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "RNDR2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "RNDR1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MTHTHFSs": {
+        "minimum": 0.0, 
+        "maximum": 1.1368683772161603e-13
+    }, 
+    "METS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "SERAT": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PROD2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLUN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NH4tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MLDEP1pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AP4AS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TMDPP_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOBDabcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACALD": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MDDCP4pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COtpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CLPNS181pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TRPAS2_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "AP4AH": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDCP5pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "DGK1": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "SHKK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACONTb_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MPTG2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADNK1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AMPN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADH5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADH9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CHORM": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PG160abcpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADPHQR2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NADPHQR3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "LDH_D": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_5mtr_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FESR": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "HCO3E": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IPPMIa_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "DM_5DRIB": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "G6PP": {
+        "minimum": 0.0, 
+        "maximum": 7.366907084360719e-11
+    }, 
+    "OMCDC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AGPR": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "pyr_to_23dhmb": {
+        "minimum": 0.0, 
+        "maximum": -2.361597134575761e-13
+    }, 
+    "CYTK1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TYRTA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ACS": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ORNDC": {
+        "minimum": 0.0, 
+        "maximum": 1.1368683772161603e-13
+    }, 
+    "ALAR": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "ME1": {
+        "minimum": 0.0, 
+        "maximum": -1.2160104316634644e-11
+    }, 
+    "METOX2s": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ME2": {
+        "minimum": 0.0, 
+        "maximum": 6.387512293404687e-12
+    }, 
+    "DCYTD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLUDC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "VPAMTr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOCOS": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "TALA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CELLENV_5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_7": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ICDHyr": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "CELLENV_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCPHOSPHOLIPID_7": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDH_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MLDCP2App": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CELLENV_9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "AGPR_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MOBDtex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADD": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ADA": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDEP2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MTHFC": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MTHFD": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TRPS2": {
+        "minimum": 0.0, 
+        "maximum": 1.5509370250468048e-10
+    }, 
+    "TRPS3": {
+        "minimum": -1.5515767763760967e-10, 
+        "maximum": -0.0
+    }, 
+    "FBP": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IMPSYN_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IMPSYN_3": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "IMPSYN_2": {
+        "minimum": 0.0, 
+        "maximum": 3.315687595179459e-13
+    }, 
+    "PPA2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "FBA": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "EX_h2o_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COBALT2tex": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "CYTBD2pp": {
+        "minimum": 0.0, 
+        "maximum": 5.5675009745629635e-12
+    }, 
+    "ASAD": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "O2tpp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "hom_DASH_L_to_thr_DASH_L": {
+        "minimum": 0.0, 
+        "maximum": -1.1368683772161603e-13
+    }, 
+    "ADMDC": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLUSy": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_4": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_5": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_6": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_7": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_2": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_nh4_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "thr_DASH_L_to_gly": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_8": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "COFACTOR_9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "ACONTa_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "TPI_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "MTAN": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD8": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD9": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD6": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD7": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "NTD4": {
+        "minimum": 0.0, 
+        "maximum": -2.795374481564046e-10
+    }, 
+    "NTD5": {
+        "minimum": 0.0, 
+        "maximum": 4.28667357480221e-10
+    }, 
+    "NTD2": {
+        "minimum": 0.0, 
+        "maximum": -5.897300308204861e-10
+    }, 
+    "NTD3": {
+        "minimum": 2.4693383643572514e-09, 
+        "maximum": -0.0
+    }, 
+    "NTD1": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MLDEP2pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "HSDy": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "METAT": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "GLYCLTDx": {
+        "minimum": 0.0, 
+        "maximum": 6.821210263296962e-13
+    }, 
+    "APPLDHr_reverse": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "QUINDH": {
+        "minimum": 0.0, 
+        "maximum": 1000.0
+    }, 
+    "PPCK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PFK": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "PFL": {
+        "minimum": 0.0, 
+        "maximum": -8.29913915367797e-12
+    }, 
+    "EX_co2_LPAREN_e_RPAREN_": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "EX_ca2_LPAREN_e_RPAREN__reverse": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }, 
+    "MDDCP3pp": {
+        "minimum": 0.0, 
+        "maximum": -0.0
+    }
+}

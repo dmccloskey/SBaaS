@@ -1,0 +1,16 @@
+To create a text file that contains a list of the contents in a folder, use one of the following methods.
+How to Create a File List at a Command Prompt
+
+Click Start, point to Programs, and then click MS-DOS Prompt (or Command Prompt in Windows NT).
+At a command prompt, locate the drive that contains the folder whose contents you want to list. For example, if you want to create a text file that contains a list of the contents of a folder on drive C, type the following command at a command prompt, and then press ENTER:
+c:
+At a command prompt, locate the folder whose contents you want to list. For example, if you want to create a text file that contains a list of the contents in the Windows folder on drive C, type the following commands at a command prompt, and press ENTER after you type each command:
+cd\
+cd windows
+Type the following command at a command prompt, and then press ENTER, where filename is the name of the text file that you are creating:
+dir > filename.txt
+For example, if you want to create a file named Windowsfolderlist.txt, type the following command at a command prompt, and then press ENTER:
+dir > windowsfolderlist.txt
+NOTE: The text file that you create is located in the folder that you are in when you follow these steps. In the earlier example, the Windowsfolderlist.txt file is located in the Windows folder.
+Use a text editor, such as Notepad, to view or print this file.
+NOTE: You cannot export or print a list of the files that are contained in a folder in Windows Explorer.

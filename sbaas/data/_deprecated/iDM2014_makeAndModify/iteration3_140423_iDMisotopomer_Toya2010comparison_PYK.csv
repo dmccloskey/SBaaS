@@ -1,0 +1,611 @@
+Reaction,Formula,LB,UB,Genes,Subsystem,Isotopomer
+DM_4CRSOL,1.0 4crsol_c ->,0.0,1000.0,,,
+DM_5DRIB,1.0 5drib_c ->,0.0,1000.0,,,
+DM_AMOB,1.0 amob_c ->,0.0,1000.0,,,
+DM_MTHTHF,1.0 mththf_c ->,0.0,1000.0,,,
+Ec_biomass_iJO1366_WT_53p95M,0.000223 pydx5p_c + 2.4e-05 cobalt2_c + 0.004952 cl_c + 0.007428 fe3_c + 7e-06 mococdp_c + 0.000223 hemeO_c + 0.000223 ribflv_c + 0.006744 spmd_c + 0.149336 met_DASH_L_c + 0.024805 datp_c + 0.000605 murein3px4p_p + 0.000223 enter_c + 0.499149 ala_DASH_L_c + 0.000223 2dmmql8_c + 0.133993 tyr_DASH_L_c + 0.000674 cu2_c + 0.000112 nadp_c + 0.000673 murein4px4px4p_p + 0.209684 ser_DASH_L_c + 0.234232 asn_DASH_L_c + 0.000223 10fthf_c + 0.008151 colipa_e + 0.003805 pg161_p + 0.024732 pe161_p + 0.000307 ni2_c + 0.004439 pg161_c + 0.009618 pe161_c + 0.129799 ctp_c + 0.255712 glu_DASH_L_c + 0.000223 gthrd_c + 0.008253 mg2_c + 0.000223 mql8_c + 54.119975 atp_c + 0.000658 mn2_c + 2.5e-05 2fe2s_c + 0.004126 so4_c + 0.000168 coa_c + 0.000223 thf_c + 0.000279 accoa_c + 4.5e-05 nadh_c + 0.005448 murein4px4p_p + 0.000223 5mthf_c + 0.000223 amet_c + 0.012379 nh4_c + 3e-06 lipopb_c + 2e-06 btn_c + 0.000223 mlthf_c + 0.000223 q8h2_c + 0.209121 gtp_c + 0.000223 fad_c + 0.03327 ptrc_c + 0.00118 clpn181_p + 0.140101 utp_c + 7e-06 mobd_c + 0.246506 thr_DASH_L_c + 0.004892 pg160_p + 0.031798 pe160_p + 0.255712 gln_DASH_L_c + 0.000248 4fe4s_c + 0.005707 pg160_c + 0.012366 pe160_c + 0.088988 cys_DASH_L_c + 0.002288 pg181_c + 0.214798 pro_DASH_L_c + 0.00229 clpn161_p + 0.001787 nad_c + 0.595297 gly_c + 0.004952 ca2_c + 7e-06 mocogdp_c + 0.411184 val_DASH_L_c + 0.005381 murein4p4p_p + 0.001345 murein3p3p_p + 0.000335 nadph_c + 0.180021 phe_DASH_L_c + 0.18569 k_c + 0.234232 asp_DASH_L_c + 48.752916 h2o_c + 0.006388 fe2_c + 0.012747 pe181_p + 5.5e-05 udcpdp_c + 0.000223 thmpp_c + 0.000223 chor_c + 0.004957 pe181_c + 3.1e-05 malcoa_c + 0.333448 lys_DASH_L_c + 0.282306 ile_DASH_L_c + 0.002944 clpn160_p + 0.025612 dgtp_c + 0.000116 bmocogdp_c + 0.000223 adocbl_c + 0.001961 pg181_p + 0.154187 glycogen_c + 0.28742 arg_DASH_L_c + 0.024805 dttp_c + 0.437778 leu_DASH_L_c + 9.8e-05 succoa_c + 0.000223 pheme_c + 0.025612 dctp_c + 0.000223 sheme_c + 0.092056 his_DASH_L_c + 0.000324 zn2_c + 0.055234 trp_DASH_L_c -> 0.749831 ppi_c + 53.945874 pi_c + 53.95 h_c + 53.95 adp_c,0.7,0.7,,,Ec_biomass_iJO1366_WT_53p95M 0.006744 xspmd_c 0.149336 xmet_DASH_L_c 0.499149 xala_DASH_L_c 0.133993 xtyr_DASH_L_c 0.209684 xser_DASH_L_c 0.234232 xasn_DASH_L_c 0.000223 x10fthf_c 0.003805 xpg161_p 0.004439 xpg161_c 0.255712 xglu_DASH_L_c 0.000279 xaccoa_c 0.000223 x5mthf_c 0.000223 xmlthf_c 0.03327 xptrc_c 0.004892 xpg160_p 0.255712 xgln_DASH_L_c 0.005707 xpg160_c 0.088988 xcys_DASH_L_c 0.214798 xpro_DASH_L_c 0.595297 xgly_c 0.411184 xval_DASH_L_c 0.180021 xphe_DASH_L_c 0.234232 xasp_DASH_L_c 0.000223 xchor_c 3.10E-05 xmalcoa_c 0.333448 xlys_DASH_L_c 0.282306 xile_DASH_L_c 0.001961 xpg181_p 0.28742 xarg_DASH_L_c 0.002288 xpg181_c 0.437778 xleu_DASH_L_c 9.80E-05 xsuccoa_c 0.092056 xhis_DASH_L_c 0.246506 xthr_DASH_L_c 0.055234 xtrp_DASH_L_c 0.000223 amet_c >!#abcdefg #hijkl #mno #pqrstuvwx #yz1 #2345 #6 #789 #ABC #DEFGH #IJ #K #L #MNOP #QRS #TUVWX #Y12 #345 #6789a #bc #defgh #ijklmnopq #rstu #vwxyz12345 #678 #9ABCDE #FGHIJK #LMN #OPQRST #UVW #XYZ123 #4567 #89abcd #efgh #ijklmnopqrs #123456789Aabcde >
+EX_5mtr_LPAREN_e_RPAREN_,1.0 5mtr_e ->,0.0,1000.0,,,EX_5mtr_LPAREN_e_RPAREN_ 1 x5mtr_e >!#abcdef >
+EX_ac_LPAREN_e_RPAREN_,1.0 ac_e ->,3.0,3.0,,,EX_ac_LPAREN_e_RPAREN_ 1 xac_e >!#ab >
+EX_co2_LPAREN_e_RPAREN_,1.0 co2_e ->,0.0,1000.0,,,EX_co2_LPAREN_e_RPAREN_ 1 xco2_e >!#a >
+EX_etoh_LPAREN_e_RPAREN_,1.0 etoh_e ->,0.0,1000.0,,,EX_etoh_LPAREN_e_RPAREN_ 1 xetoh_e >!#ab >
+EX_for_LPAREN_e_RPAREN_,1.0 for_e ->,0.0,1000.0,,,EX_for_LPAREN_e_RPAREN_ 1 xfor_e >!#a >
+EX_fum_LPAREN_e_RPAREN_,1.0 fum_e ->,0.0,1000.0,,,EX_fum_LPAREN_e_RPAREN_ 1 xfum_e >!#abcd >!#dcba >
+EX_h_LPAREN_e_RPAREN_,1.0 h_e ->,0.0,1000.0,,,
+EX_h2o_LPAREN_e_RPAREN_,1.0 h2o_e ->,0.0,1000.0,,,
+EX_lac_DASH_L_LPAREN_e_RPAREN_,1.0 lac_DASH_L_e ->,0.0,1000.0,,,EX_lac_DASH_L_LPAREN_e_RPAREN_ 1 xlac_DASH_L_e >!#abc >
+EX_meoh_LPAREN_e_RPAREN_,1.0 meoh_e ->,0.0,1000.0,,,
+EX_pyr_LPAREN_e_RPAREN_,1.0 pyr_e ->,0.0,1000.0,,,EX_pyr_LPAREN_e_RPAREN_ 1 xpyr_e > !#abc >
+EX_succ_LPAREN_e_RPAREN_,1.0 succ_e ->,0.0,1000.0,,,EX_succ_LPAREN_e_RPAREN_ 1 xsucc_e > !#abcd >!#dcba >
+5DOAN,1.0 h2o_c + 1.0 dad_DASH_5_c -> 1.0 ade_c + 1.0 5drib_c,0.0,1000.0,b0159,Cofactor and Prosthetic Group Biosynthesis,
+5MTRtpp,1.0 5mtr_c + 1.0 h_c -> 1.0 h_p + 1.0 5mtr_p,0.0,1000.0,,"Transport, Inner Membrane",5MTRtpp 1 x5mtr_c > 1 x5mtr_p!#abcdef > #abcdef
+A5PISO,1.0 ru5p_DASH_D_c -> 1.0 ara5p_c,0.0,1000.0,(b3197 or b2708),Alternate Carbon Metabolism,A5PISO 1 xru5p_DASH_D_c > 1 xara5p_c!#abcde > #abcde
+ABTA,1.0 akg_c + 1.0 4abut_c -> 1.0 glu_DASH_L_c + 1.0 sucsal_c,0.0,1000.0,(b2662 or b1302),Arginine and Proline Metabolism,ABTA 1 x4abut_c 1 xakg_c > 1 xglu_DASH_L_c 1 xsucsal_c!#abcd #efghi > #efghi #abcd
+ACALD,1.0 acald_c + 1.0 coa_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 accoa_c,0.0,1000.0,(b0351 or b1241),Pyruvate Metabolism,ACALD 1 xacald_c > 1 xaccoa_c!#ab > #ab
+ACCOAC,1.0 hco3_c + 1.0 atp_c + 1.0 accoa_c -> 1.0 pi_c + 1.0 malcoa_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,(b0185 and b2316 and b3255 and b3256),Membrane Lipid Metabolism,ACCOAC 1 xhco3_c 1 xaccoa_c > 1 xmalcoa_c!#a #bc > #bca
+ACKr,1.0 ac_c + 1.0 atp_c -> 1.0 actp_c + 1.0 adp_c,0.0,1000.0,(b3115 or b2296 or b1849),Pyruvate Metabolism,ACKr 1 xac_c > 1 xactp_c!#ab > #ab
+ACODA,1.0 h2o_c + 1.0 acorn_c -> 1.0 ac_c + 1.0 orn_c,0.0,1000.0,b3957,Arginine and Proline Metabolism,ACODA 1 xacorn_c > 1 xac_c 1 xorn_c!#abcdefg > #fg #abcde
+ACONTa,1.0 cit_c -> 1.0 h2o_c + 1.0 acon_DASH_C_c,0.0,1000.0,(b0118 or b1276),Citric Acid Cycle,ACONTa 1 xcit_c > 1 xacon_DASH_C_c!#abcdef > #abcdef
+ACONTb,1.0 h2o_c + 1.0 acon_DASH_C_c -> 1.0 icit_c,0.0,1000.0,(b0118 or b1276),Citric Acid Cycle,ACONTb 1 xacon_DASH_C_c > 1 xicit_c!#abcdef > #abcdef
+ACOTA,1.0 akg_c + 1.0 acorn_c -> 1.0 glu_DASH_L_c + 1.0 acg5sa_c,0.0,1000.0,(b1748 or b3359),Arginine and Proline Metabolism,ACOTA 1 xacorn_c 1 xakg_c > 1 xacg5sa_c 1 xglu_DASH_L_c!#abcdefg #hijkl > #abcdefg #hijkl
+ACS,1.0 ac_c + 1.0 coa_c + 1.0 atp_c -> 1.0 ppi_c + 1.0 amp_c + 1.0 accoa_c,0.0,1000.0,b4069,Pyruvate Metabolism,ACS 1 xac_c > 1 xaccoa_c!#ab > #ab
+ADA,1.0 h2o_c + 1.0 adn_c + 1.0 h_c -> 1.0 nh4_c + 1.0 ins_c,0.0,1000.0,b1623,Nucleotide Salvage Pathway,
+ADD,1.0 h2o_c + 1.0 ade_c + 1.0 h_c -> 1.0 nh4_c + 1.0 hxan_c,0.0,1000.0,b3665,Nucleotide Salvage Pathway,
+ADK1,1.0 amp_c + 1.0 atp_c -> 2.0 adp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,ADK1 1 xamp_c 1 xatp_c > 1 xadp_c 1 xadp_c!#abcdefghij #klmnopqrst > #abcdefghij #klmnopqrst!#abcdefghij #klmnopqrst > #klmnopqrst #abcdefghij
+ADK3,1.0 gtp_c + 1.0 amp_c -> 1.0 gdp_c + 1.0 adp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+ADK4,1.0 amp_c + 1.0 itp_c -> 1.0 idp_c + 1.0 adp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+ADMDC,1.0 amet_c + 1.0 h_c -> 1.0 ametam_c + 1.0 co2_c,0.0,1000.0,b0120,Arginine and Proline Metabolism,ADMDC 1 xamet_c > 1 xametam_c 1 xco2_c !#123456789Aabcde > #123456789Abcde #a
+ADNCYC,1.0 atp_c -> 1.0 ppi_c + 1.0 camp_c,0.0,1000.0,b3806,Nucleotide Salvage Pathway,
+ADNK1,1.0 adn_c + 1.0 atp_c -> 1.0 amp_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+ADPT,1.0 ade_c + 1.0 prpp_c -> 1.0 ppi_c + 1.0 amp_c,0.0,1000.0,b0469,Nucleotide Salvage Pathway,ADPT 1 xprpp_c >!#abcde >
+ADSK,1.0 aps_c + 1.0 atp_c -> 1.0 paps_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b2750,Cysteine Metabolism,
+AGPR,1.0 nadp_c + 1.0 pi_c + 1.0 acg5sa_c -> 1.0 acg5p_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,b3958,Arginine and Proline Metabolism,AGPR 1 xacg5sa_c > 1 xacg5p_c!#abcdefg > #abcdefg
+AHCYSNS,1.0 h2o_c + 1.0 ahcys_c -> 1.0 ade_c + 1.0 rhcys_c,0.0,1000.0,b0159,Methionine Metabolism,AHCYSNS 1 xahcys_c >!#123456789Aabcd >
+AKGDH,1.0 akg_c + 1.0 coa_c + 1.0 nad_c -> 1.0 co2_c + 1.0 succoa_c + 1.0 nadh_c,0.0,1000.0,(b0116 and b0726 and b0727),Citric Acid Cycle,AKGDH 1 xakg_c > 1 xco2_c 1 xsuccoa_c!#abcde > #a #bcde
+ALAALAD,1.0 h2o_c + 1.0 alaala_c -> 2.0 ala_DASH_D_c,0.0,1000.0,b1488,Murein Recycling,
+ALAALAabcpp,1.0 h2o_c + 1.0 alaala_p + 1.0 atp_c -> 1.0 pi_c + 1.0 adp_c + 1.0 alaala_c + 1.0 h_c,0.0,1000.0,((b1487 and b1486 and b1485 and b1484 and b1483) or (b3544 and b3543 and b3542 and b3541 and b3540)),"Transport, Inner Membrane",
+ALAALAr,2.0 ala_DASH_D_c + 1.0 atp_c -> 1.0 pi_c + 1.0 adp_c + 1.0 alaala_c + 1.0 h_c,0.0,1000.0,(b0381 or b0092),Cell Envelope Biosynthesis,ALAALAr 1 xala_DASH_D_c 1 xala_DASH_D_c >!#abc #def >
+ALAGLUE,1.0 LalaDglu_c -> 1.0 LalaLglu_c,0.0,1000.0,b1325,Murein Recycling,
+ALAR,1.0 ala_DASH_L_c -> 1.0 ala_DASH_D_c,0.0,1000.0,(b1190 or b4053),Alanine and Aspartate Metabolism,ALAR 1 xala_DASH_L_c > 1 xala_DASH_D_c!#abc > #abc
+ALATA_L,1.0 akg_c + 1.0 ala_DASH_L_c -> 1.0 pyr_c + 1.0 glu_DASH_L_c,0.0,1000.0,(b2290 or b2379),Alanine and Aspartate Metabolism,ALATA_L 1 xakg_c 1 xala_DASH_L_c > 1 xglu_DASH_L_c 1 xpyr_c!#abcde #fgh > #abcde #fgh
+ALCD2x,1.0 etoh_c + 1.0 nad_c -> 1.0 acald_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,(b1478 or b1241 or b0356),Pyruvate Metabolism,ALCD2x 1 xaccoa_c > 1 xetoh_c!#ab > #ab
+AMPN,1.0 h2o_c + 1.0 amp_c -> 1.0 r5p_c + 1.0 ade_c,0.0,1000.0,b1982,Nucleotide Salvage Pathway,
+AP4AH,1.0 h2o_c + 1.0 ap4a_c -> 2.0 h_c + 2.0 adp_c,0.0,1000.0,b0049,Nucleotide Salvage Pathway,
+AP4AS,1.0 h_c + 2.0 atp_c -> 1.0 ap4a_c + 1.0 ppi_c,0.0,1000.0,b4129,Nucleotide Salvage Pathway,
+APPLDHr,1.0 nadh_c + 1.0 h_c + 1.0 aact_c -> 1.0 appl_c + 1.0 nad_c,0.0,1000.0,b3945,Threonine and Lysine Metabolism,
+ARGSL,1.0 argsuc_c -> 1.0 arg_DASH_L_c + 1.0 fum_c,0.0,1000.0,b3960,Arginine and Proline Metabolism,ARGSL 1 xargsuc_c > 1 xarg_DASH_L_c 1 xfum_c!#abcdefghij > #abcdef #jghi!#abcdefghij > #abcdef #ihgj
+ARGSS,1.0 citr_DASH_L_c + 1.0 asp_DASH_L_c + 1.0 atp_c -> 1.0 argsuc_c + 1.0 ppi_c + 1.0 amp_c + 1.0 h_c,0.0,1000.0,b3172,Arginine and Proline Metabolism,ARGSS 1 xasp_DASH_L_c 1 xcitr_DASH_L_c > 1 xargsuc_c!#abcd #efghij > #efghijbcda
+ASAD,1.0 aspsa_c + 1.0 nadp_c + 1.0 pi_c -> 1.0 nadph_c + 1.0 4pasp_c + 1.0 h_c,0.0,1000.0,b3433,Threonine and Lysine Metabolism,ASAD 1 xaspsa_c > 1 x4pasp_c!#abcd > #abcd
+ASNN,1.0 h2o_c + 1.0 asn_DASH_L_c -> 1.0 asp_DASH_L_c + 1.0 nh4_c,0.0,1000.0,(b1767 or b0828),Alanine and Aspartate Metabolism,ASNN 1 xasn_DASH_L_c > 1 xasp_DASH_L_c!#abcd > #abcd
+ASNS1,1.0 h2o_c + 1.0 asp_DASH_L_c + 1.0 atp_c + 1.0 gln_DASH_L_c -> 1.0 amp_c + 1.0 ppi_c + 1.0 asn_DASH_L_c + 1.0 glu_DASH_L_c + 1.0 h_c,0.0,1000.0,b0674,Alanine and Aspartate Metabolism,ASNS1 1 xasp_DASH_L_c 1 xgln_DASH_L_c > 1 xasn_DASH_L_c 1 xglu_DASH_L_c!#abcd #efghi > #abcd #efghi
+ASNS2,1.0 asp_DASH_L_c + 1.0 nh4_c + 1.0 atp_c -> 1.0 asn_DASH_L_c + 1.0 ppi_c + 1.0 amp_c + 1.0 h_c,0.0,1000.0,b3744,Alanine and Aspartate Metabolism,ASNS2 1 xasp_DASH_L_c > 1 xasn_DASH_L_c!#abcd > #abcd
+ASPK,1.0 asp_DASH_L_c + 1.0 atp_c -> 1.0 4pasp_c + 1.0 adp_c,0.0,1000.0,(b0002 or b3940 or b4024),Threonine and Lysine Metabolism,ASPK 1 xasp_DASH_L_c > 1 x4pasp_c!#abcd > #abcd
+ASPT,1.0 asp_DASH_L_c -> 1.0 fum_c + 1.0 nh4_c,0.0,1000.0,b4139,Alanine and Aspartate Metabolism,ASPT 1 xasp_DASH_L_c > 1 xfum_c!#abcd > #abcd!#abcd > #dcba
+ASPTA,1.0 akg_c + 1.0 asp_DASH_L_c -> 1.0 glu_DASH_L_c + 1.0 oaa_c,0.0,1000.0,b0928,Alanine and Aspartate Metabolism,ASPTA 1 xakg_c 1 xasp_DASH_L_c > 1 xglu_DASH_L_c 1 xoaa_c!#abcde #fghi > #abcde #fghi
+ATHRDHr,1.0 nadp_c + 1.0 athr_DASH_L_c -> 1.0 nadph_c + 1.0 2aobut_c + 1.0 h_c,0.0,1000.0,b1539,Threonine and Lysine Metabolism,
+ATPHs,1.0 h2o_c + 1.0 h_c + 1.0 atp_c -> 1.0 nh4_c + 1.0 itp_c,0.0,1000.0,s0001,Nucleotide Salvage Pathway,
+ATPM,1.0 h2o_c + 1.0 atp_c -> 1.0 pi_c + 1.0 h_c + 1.0 adp_c,3.15,1000.0,,Unassigned,
+ATPS4rpp,1.0 pi_c + 4.0 h_p + 1.0 adp_c -> 1.0 h2o_c + 3.0 h_c + 1.0 atp_c,0.0,1000.0,(((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735) and b3739) or ((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735))),Oxidative Phosphorylation,ATPS4rpp 1 xadp_c > 1 xatp_c!#abcdefghij > #abcdefghij
+BPNT,1.0 h2o_c + 1.0 pap_c -> 1.0 pi_c + 1.0 amp_c,0.0,1000.0,b4214,Cysteine Metabolism,
+CA2tex,1.0 ca2_e -> 1.0 ca2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+CBL1abcpp,1.0 cbl1_p + 1.0 h2o_c + 1.0 atp_c -> 1.0 cbl1_c + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,(b1711 and b1709 and b0158),"Transport, Inner Membrane",
+CBL1tonex,1.0 cbl1_e + 1.0 h_p -> 1.0 cbl1_p + 1.0 h_c,0.0,1000.0,(b3966 and (b1252 and b3005 and b3006)),"Transport, Outer Membrane",
+CBMKr,1.0 co2_c + 1.0 nh4_c + 1.0 atp_c -> 1.0 cbp_c + 2.0 h_c + 1.0 adp_c,0.0,1000.0,(b0521 or b0323 or b2874),Unassigned,CBMKr 1 xco2_c > 1 xcbp_c !#a > #a
+CBPS,1.0 hco3_c + 1.0 h2o_c + 2.0 atp_c + 1.0 gln_DASH_L_c -> 1.0 cbp_c + 1.0 pi_c + 1.0 glu_DASH_L_c + 2.0 h_c + 2.0 adp_c,0.0,1000.0,(b0032 and b0033),Arginine and Proline Metabolism,CBPS 1 xgln_DASH_L_c 1 xhco3_c > 1 xcbp_c 1 xglu_DASH_L_c!#abcde #f > #f #abcde
+CHORM,1.0 chor_c -> 1.0 pphn_c,0.0,1000.0,(b2599 or b2600),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",CHORM 1 xchor_c > 1 xpphn_c!#abcdefghij > #ihjbcdefga
+CHORS,1.0 3psme_c -> 1.0 chor_c + 1.0 pi_c,0.0,1000.0,b2329,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",CHORS 1 x3psme_c > 1 xchor_c!#abcdefghij > #abgfedchij
+CITL,1.0 cit_c -> 1.0 ac_c + 1.0 oaa_c,0.0,1000.0,((b0615 and b0616 and b0617) and b0614),Citric Acid Cycle,CITL 1 xcit_c > 1 xac_c 1 xoaa_c !#abcdef > #ab #fcde!#abcdef > #ed #fdba
+CLPNS160pp,2.0 pg160_p -> 1.0 clpn160_p + 1.0 glyc_p,0.0,1000.0,(b0789 or b1249),Glycerophospholipid Metabolism,CLPNS160pp 1 xpg160_p > 1 xglyc_p!#abc > #abc!#abc > #cba
+CLPNS161pp,2.0 pg161_p -> 1.0 clpn161_p + 1.0 glyc_p,0.0,1000.0,(b1249 or b0789),Glycerophospholipid Metabolism,CLPNS161pp 1 xpg161_p > 1 xglyc_p!#abc > #abc!#abc > #cba
+CLPNS181pp,2.0 pg181_p -> 1.0 clpn181_p + 1.0 glyc_p,0.0,1000.0,(b0789 or b1249),Glycerophospholipid Metabolism,CLPNS181pp 1 xpg181_p > 1 xglyc_p!#abc > #abc!#abc > #cba
+CLt3_2pp,2.0 cl_p + 1.0 h_c -> 1.0 h_p + 2.0 cl_c,0.0,1000.0,(b0155 or b1592),Inorganic Ion Transport and Metabolism,
+CLtex,1.0 cl_e -> 1.0 cl_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+CMPN,1.0 h2o_c + 1.0 cmp_c -> 1.0 r5p_c + 1.0 csn_c,0.0,1000.0,,Nucleotide Salvage Pathway,
+COBALT2tex,1.0 cobalt2_e -> 1.0 cobalt2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+COBALT2tpp,1.0 cobalt2_p -> 1.0 cobalt2_c,0.0,1000.0,(b3040 or b3816),Inorganic Ion Transport and Metabolism,
+CRNBTCT,1.0 crn_c + 1.0 bbtcoa_c -> 1.0 crncoa_c + 1.0 gbbtn_c,0.0,1000.0,b0038,Oxidative Phosphorylation,
+CRNCAR,1.0 crncoa_c -> 1.0 crnDcoa_c,0.0,1000.0,b0036,Oxidative Phosphorylation,
+CRNCBCT,1.0 crn_c + 1.0 ctbtcoa_c -> 1.0 crncoa_c + 1.0 ctbt_c,0.0,1000.0,b0038,Oxidative Phosphorylation,
+CRNCDH,1.0 crncoa_c -> 1.0 ctbtcoa_c + 1.0 h2o_c,0.0,1000.0,b0036,Oxidative Phosphorylation,
+CS,1.0 h2o_c + 1.0 accoa_c + 1.0 oaa_c -> 1.0 coa_c + 1.0 h_c + 1.0 cit_c,0.0,1000.0,b0720,Citric Acid Cycle,CS 1 xaccoa_c 1 xoaa_c > 1 xcit_c!#ab #cdef > #fedbac
+CSND,1.0 h2o_c + 1.0 csn_c + 1.0 h_c -> 1.0 ura_c + 1.0 nh4_c,0.0,1000.0,b0337,Nucleotide Salvage Pathway,
+CTPS2,1.0 h2o_c + 1.0 utp_c + 1.0 atp_c + 1.0 gln_DASH_L_c -> 1.0 ctp_c + 1.0 glu_DASH_L_c + 1.0 pi_c + 2.0 h_c + 1.0 adp_c,0.0,1000.0,b2780,Purine and Pyrimidine Biosynthesis,CTPS2 1 xgln_DASH_L_c > 1 xglu_DASH_L_c!#abcde > #abcde
+CU2tex,1.0 cu2_e -> 1.0 cu2_p,0.0,1000.0,(b2215 or b0241 or b0929 or b1377),"Transport, Outer Membrane Porin",
+CU2tpp,1.0 cu2_p -> 1.0 cu2_c,0.0,1000.0,b3040,Inorganic Ion Transport and Metabolism,
+CYSDS,1.0 h2o_c + 1.0 cys_DASH_L_c -> 1.0 pyr_c + 1.0 nh4_c + 1.0 h2s_c,0.0,1000.0,(b3708 or b3008),Cysteine Metabolism,CYSDS 1 xcys_DASH_L_c > 1 xpyr_c!#abc > #abc
+CYSS,1.0 acser_c + 1.0 h2s_c -> 1.0 ac_c + 1.0 cys_DASH_L_c + 1.0 h_c,0.0,1000.0,(b2414 or b2421),Cysteine Metabolism,CYSS 1 xacser_c > 1 xac_c 1 xcys_DASH_L_c!#abcde > #de #abc
+CYTBD2pp,0.5 o2_c + 2.0 h_c + 1.0 mql8_c -> 1.0 h2o_c + 1.0 mqn8_c + 2.0 h_p,0.0,1000.0,(b0978 and b0979),Oxidative Phosphorylation,
+CYTBDpp,1.0 q8h2_c + 2.0 h_c + 0.5 o2_c -> 1.0 h2o_c + 1.0 q8_c + 2.0 h_p,0.0,1000.0,((b0978 and b0979) or (b0733 and b0734)),Oxidative Phosphorylation,
+CYTBO3_4pp,0.5 o2_c + 4.0 h_c + 1.0 q8h2_c -> 1.0 h2o_c + 1.0 q8_c + 4.0 h_p,0.0,1000.0,(b0429 and b0430 and b0431 and b0432),Oxidative Phosphorylation,
+CYTD,1.0 cytd_c + 1.0 h2o_c + 1.0 h_c -> 1.0 uri_c + 1.0 nh4_c,0.0,1000.0,b2143,Nucleotide Salvage Pathway,
+CYTDK2,1.0 cytd_c + 1.0 gtp_c -> 1.0 gdp_c + 1.0 h_c + 1.0 cmp_c,0.0,1000.0,b2066,Nucleotide Salvage Pathway,
+CYTK1,1.0 atp_c + 1.0 cmp_c -> 1.0 cdp_c + 1.0 adp_c,0.0,1000.0,b0910,Nucleotide Salvage Pathway,
+CYTK2,1.0 dcmp_c + 1.0 atp_c -> 1.0 adp_c + 1.0 dcdp_c,0.0,1000.0,b0910,Nucleotide Salvage Pathway,
+DAAD,1.0 ala_DASH_D_c + 1.0 h2o_c + 1.0 fad_c -> 1.0 fadh2_c + 1.0 pyr_c + 1.0 nh4_c,0.0,1000.0,b1189,Alanine and Aspartate Metabolism,DAAD 1 xala_DASH_D_c > 1 xpyr_c!#abc > #abc
+DADA,1.0 h2o_c + 1.0 h_c + 1.0 dad_DASH_2_c -> 1.0 din_c + 1.0 nh4_c,0.0,1000.0,b1623,Nucleotide Salvage Pathway,
+DADK,1.0 damp_c + 1.0 atp_c -> 1.0 dadp_c + 1.0 adp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+DALAt2pp,1.0 ala_DASH_D_p + 1.0 h_p -> 1.0 ala_DASH_D_c + 1.0 h_c,0.0,1000.0,b4208,"Transport, Inner Membrane",DALAt2pp 1 xala_DASH_D_p > 1 xala_DASH_D_c!#abc > #abc
+DAPDC,1.0 26dap_DASH_M_c + 1.0 h_c -> 1.0 lys_DASH_L_c + 1.0 co2_c,0.0,1000.0,b2838,Threonine and Lysine Metabolism,DAPDC 1 x26dap_DASH_M_c > 1 xco2_c 1 xlys_DASH_L_c!#abcdefg > #g #abcdef!#gfedcba > #g #abcdef
+DAPE,1.0 26dap_DASH_LL_c -> 1.0 26dap_DASH_M_c,0.0,1000.0,b3809,Threonine and Lysine Metabolism,DAPE 1 x26dap_DASH_LL_c > 1 x26dap_DASH_M_c!#abcdefg > #abcdefg!#gfedcba > #abcdefg!#abcdefg > #gfedcba!#gfedcba > #gfedcba
+DATPHs,1.0 datp_c + 1.0 h2o_c + 1.0 h_c -> 1.0 ditp_c + 1.0 nh4_c,0.0,1000.0,s0001,Nucleotide Salvage Pathway,
+DCYTD,1.0 dcyt_c + 1.0 h2o_c + 1.0 h_c -> 1.0 nh4_c + 1.0 duri_c,0.0,1000.0,b2143,Nucleotide Salvage Pathway,
+DGK1,1.0 dgmp_c + 1.0 atp_c -> 1.0 dgdp_c + 1.0 adp_c,0.0,1000.0,b3648,Nucleotide Salvage Pathway,
+DHAD1,1.0 23dhmb_c -> 1.0 h2o_c + 1.0 3mob_c,0.0,1000.0,b3771,"Valine, Leucine, and Isoleucine Metabolism",DHAD1 1 x23dhmb_c > 1 x3mob_c!#abcde > #abcde
+DHFR,1.0 nadph_c + 1.0 dhf_c + 1.0 h_c -> 1.0 nadp_c + 1.0 thf_c,0.0,1000.0,(b1606 or b0048),Cofactor and Prosthetic Group Biosynthesis,
+DHPTDCs2,1.0 dhptd_c -> 1.0 mdhdhf_c,0.0,1000.0,s0001,Methionine Metabolism,
+DHQTi,1.0 3dhq_c -> 1.0 3dhsk_c + 1.0 h2o_c,0.0,1000.0,b1693,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",DHQTi 1 x3dhq_c > 1 x3dhsk_c!#abcdefg > #abcdefg
+DSERDHr,1.0 ser_DASH_D_c + 1.0 nadp_c -> 1.0 2amsa_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,b1539,Glycine and Serine Metabolism,DSERDHr 1 xser_DASH_D_c > 1 x2amsa_c!#abc > #abc
+DTMPK,1.0 dtmp_c + 1.0 atp_c -> 1.0 dtdp_c + 1.0 adp_c,0.0,1000.0,b1098,Nucleotide Salvage Pathway,DTMPK 1 xdtmp_c > 1 xdtdp_c!#abcdefghij > #abcdefghij
+DURADx,1.0 56dura_c + 1.0 nad_c -> 1.0 ura_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,(b2147 and b2146),Nucleotide Salvage Pathway,
+DURIK1,1.0 atp_c + 1.0 duri_c -> 1.0 dump_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,b1238,Nucleotide Salvage Pathway,
+DURIPP,1.0 pi_c + 1.0 duri_c -> 1.0 ura_c + 1.0 2dr1p_c,0.0,1000.0,(b4382 or b4384),Nucleotide Salvage Pathway,
+DXPS,1.0 pyr_c + 1.0 g3p_c + 1.0 h_c -> 1.0 dxyl5p_c + 1.0 co2_c,0.0,1000.0,b0420,Cofactor and Prosthetic Group Biosynthesis,DXPS 1 xpyr_c 1 xg3p_c > 1 xco2_c!#abc #def > #a
+EDA,1.0 2ddg6p_c -> 1.0 pyr_c + 1.0 g3p_c,0.0,1000.0,b1850,Pentose Phosphate Pathway,EDA 1 x2ddg6p_c > 1 xg3p_c 1 xpyr_c!#abcdef > #def #abc
+EDD,1.0 6pgc_c -> 1.0 h2o_c + 1.0 2ddg6p_c,0.0,1000.0,b1851,Pentose Phosphate Pathway,EDD 1 x6pgc_c > 1 x2ddg6p_c!#abcdef > #abcdef
+ENO,1.0 2pg_c -> 1.0 pep_c + 1.0 h2o_c,0.0,1000.0,b2779,Glycolysis/Gluconeogenesis,ENO 1 x2pg_c > 1 xpep_c!#abc > #abc
+FADRx,1.0 nadh_c + 1.0 h_c + 1.0 fad_c -> 1.0 fadh2_c + 1.0 nad_c,0.0,1000.0,b3844,Cofactor and Prosthetic Group Biosynthesis,
+FBA,1.0 fdp_c -> 1.0 dhap_c + 1.0 g3p_c,0.0,1000.0,(b2097 or b1773 or b2925),Glycolysis/Gluconeogenesis,FBA 1 xfdp_c > 1 xdhap_c 1 xg3p_c!#abcdef > #abc #def
+FBA3,1.0 s17bp_c -> 1.0 e4p_c + 1.0 dhap_c,0.0,1000.0,b2925,Pentose Phosphate Pathway,FBA3 1 xs17bp_c > 1 xdhap_c 1 xe4p_c !#abcdefg > #abc #defg
+FBP,1.0 h2o_c + 1.0 fdp_c -> 1.0 pi_c + 1.0 f6p_c,0.0,1000.0,(b3925 or b4232 or b2930),Glycolysis/Gluconeogenesis,FBP 1 xfdp_c > 1 xf6p_c!#abcdef > #abcdef
+FE2tex,1.0 fe2_e -> 1.0 fe2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+FE2tpp,1.0 fe2_p -> 1.0 fe2_c,0.0,1000.0,b3040,Inorganic Ion Transport and Metabolism,
+FE3abcpp,1.0 h2o_c + 1.0 fe3_p + 1.0 atp_c -> 1.0 fe3_c + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,,Inorganic Ion Transport and Metabolism,
+FE3tex,1.0 fe3_e -> 1.0 fe3_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+FESD1s,1.0 h2o2_c + 2.0 4fe4s_c + 2.0 h_c -> 2.0 fe3_c + 2.0 h2o_c + 2.0 3fe4s_c,0.0,1000.0,s0001,Cofactor and Prosthetic Group Biosynthesis,
+FESR,1.0 fe2_c + 1.0 3fe4s_c -> 1.0 4fe4s_c,0.0,1000.0,b4209,Cofactor and Prosthetic Group Biosynthesis,
+FOMETRi,1.0 5fthf_c + 1.0 h_c -> 1.0 h2o_c + 1.0 methf_c,0.0,1000.0,b2912,Folate Metabolism,FOMETRi 1 x5fthf_c > 1 xmethf_c!#a > #a
+FRD2,1.0 fum_c + 1.0 mql8_c -> 1.0 succ_c + 1.0 mqn8_c,0.0,1000.0,(b4151 and b4152 and b4153 and b4154),Citric Acid Cycle,FRD2 1 xfum_c > 1 xsucc_c!#abcd > #dcba!#dcba > #dcba!#abcd > #abcd!#dcba > #abcd
+FRD3,1.0 fum_c + 1.0 2dmmql8_c -> 1.0 succ_c + 1.0 2dmmq8_c,0.0,1000.0,(b4151 and b4152 and b4153 and b4154),Citric Acid Cycle,FRD3 1 xfum_c > 1 xsucc_c!#abcd > #dcba!#dcba > #dcba!#abcd > #abcd!#dcba > #abcd
+FTHFD,1.0 h2o_c + 1.0 10fthf_c -> 1.0 thf_c + 1.0 for_c + 1.0 h_c,0.0,1000.0,b1232,Folate Metabolism,FTHFD 1 x10fthf_c > 1 xfor_c!#a > #a
+FTHFLi,1.0 for_c + 1.0 thf_c + 1.0 atp_c -> 1.0 pi_c + 1.0 10fthf_c + 1.0 adp_c,0.0,1000.0,,Folate Metabolism,FTHFLi 1 xfor_c > 1 x10fthf_c!#a > #a
+FUM,1.0 h2o_c + 1.0 fum_c -> 1.0 mal_DASH_L_c,0.0,1000.0,(b1612 or b4122 or b1611),Citric Acid Cycle,FUM 1 xfum_c > 1 xmal_DASH_L_c!#abcd > #abcd!#dcba > #abcd
+G3PD5,1.0 glyc3p_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 dhap_c,0.0,1000.0,((b2241 and b2242 and b2243) or b3426),Oxidative Phosphorylation,G3PD5 1 xglyc3p_c > 1 xdhap_c!#abc > #abc
+G3PD6,1.0 glyc3p_c + 1.0 mqn8_c -> 1.0 dhap_c + 1.0 mql8_c,0.0,1000.0,(b2241 and b2242 and b2243),Oxidative Phosphorylation,G3PD6 1 xglyc3p_c > 1 xdhap_c!#abc > #abc
+G3PD7,1.0 glyc3p_c + 1.0 2dmmq8_c -> 1.0 dhap_c + 1.0 2dmmql8_c,0.0,1000.0,(b2241 and b2242 and b2243),Oxidative Phosphorylation,G3PD7 1 xglyc3p_c > 1 xdhap_c!#abc > #abc
+G5SADs,1.0 glu5sa_c -> 1.0 1pyr5c_c + 1.0 h2o_c + 1.0 h_c,0.0,1000.0,s0001,Arginine and Proline Metabolism,G5SADs 1 xglu5sa_c > 1 x1pyr5c_c!#abcde > #abcde
+G6PDH2r,1.0 g6p_c + 1.0 nadp_c -> 1.0 6pgl_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,b1852,Pentose Phosphate Pathway,G6PDH2r 1 xg6p_c > 1 x6pgl_c!#abcdef > #abcdef
+G6PP,1.0 h2o_c + 1.0 g6p_c -> 1.0 pi_c + 1.0 glc_DASH_D_c,0.0,1000.0,b0822,Glycolysis/Gluconeogenesis,G6PP 1 xg6p_c > 1 xglc_DASH_D_c !#abcdef > #abcdef
+GALUi,1.0 utp_c + 1.0 h_c + 1.0 g1p_c -> 1.0 ppi_c + 1.0 udpg_c,0.0,1000.0,b1236,Cell Envelope Biosynthesis,GALUi 1 xutp_c 1 xg1p_c > 1 xudpg_c!#abcdefghi #jklmno > #abcdefghijklmno
+GAPD,1.0 pi_c + 1.0 g3p_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 13dpg_c,0.0,1000.0,b1779,Glycolysis/Gluconeogenesis,GAPD 1 xg3p_c > 1 x13dpg_c!#abc > #abc
+GARFT,1.0 gar_c + 1.0 10fthf_c -> 1.0 fgam_c + 1.0 thf_c + 1.0 h_c,0.0,1000.0,b2500,Purine and Pyrimidine Biosynthesis,GARFT 1 xgar_c 1 x10fthf_c > 1 xfgam_c!#abcdefg #h > #abcdefgh
+GART,1.0 gar_c + 1.0 atp_c + 1.0 for_c -> 1.0 fgam_c + 1.0 pi_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,b1849,Purine and Pyrimidine Biosynthesis,GART 1 xgar_c 1 xfor_c > 1 xfgam_c!#abcdefg #h > #abcdefgh
+GCALDD,1.0 h2o_c + 1.0 gcald_c + 1.0 nad_c -> 1.0 glyclt_c + 1.0 nadh_c + 2.0 h_c,0.0,1000.0,b1415,Folate Metabolism,GCALDD 1 xgcald_c > 1 xglyclt_c!#ab > #ab
+GHBDHx,1.0 nadh_c + 1.0 h_c + 1.0 sucsal_c -> 1.0 ghb_c + 1.0 nad_c,0.0,1000.0,b3882,Arginine and Proline Metabolism,
+GHMT2r,1.0 ser_DASH_L_c + 1.0 thf_c -> 1.0 h2o_c + 1.0 gly_c + 1.0 mlthf_c,0.0,1000.0,b2551,Glycine and Serine Metabolism,GHMT2r 1 xser_DASH_L_c > 1 xgly_c 1 xmlthf_c!#abc > #ab #c
+GK1,1.0 gmp_c + 1.0 atp_c -> 1.0 gdp_c + 1.0 adp_c,0.0,1000.0,b3648,Nucleotide Salvage Pathway,
+GLBRAN2,1.0 glycogen_c -> 1.0 bglycogen_c,0.0,1000.0,b3432,Glycolysis/Gluconeogenesis,
+GLCP,1.0 pi_c + 1.0 glycogen_c -> 1.0 g1p_c,0.0,1000.0,(b3428 or b3417),Glycolysis/Gluconeogenesis,
+GLCP2,1.0 bglycogen_c + 1.0 pi_c -> 1.0 g1p_c,0.0,1000.0,(b3417 or b3428),Glycolysis/Gluconeogenesis,
+GLCptspp,1.0 pep_c + 1.0 glc_DASH_D_p -> 1.0 pyr_c + 1.0 g6p_c,0.0,1000.0,((b2417 and b1621 and b2415 and b2416) or (b2417 and b1101 and b2415 and b2416) or (b1817 and b1818 and b1819 and b2415 and b2416)),"Transport, Inner Membrane",GLCptspp 1 xglc_DASH_D_e 1 xpep_c > 1 xg6p_c 1 xpyr_c!#abcdef #ghi > #abcdef #ghi
+GLCtexi,1.0 glc_DASH_D_e -> 1.0 glc_DASH_D_p,0.0,1000.0,b4036,"Transport, Outer Membrane",GLCtexi 1 xglc_DASH_D_e > 1 xglc_DASH_D_p !#abcdef > #abcdef
+GLDBRAN2,1.0 bglycogen_c -> 1.0 glycogen_c,0.0,1000.0,b3431,Glycolysis/Gluconeogenesis,
+GLNS,1.0 glu_DASH_L_c + 1.0 nh4_c + 1.0 atp_c -> 1.0 pi_c + 1.0 h_c + 1.0 adp_c + 1.0 gln_DASH_L_c,0.0,1000.0,(b3870 or b1297),Glutamate Metabolism,GLNS 1 xglu_DASH_L_c > 1 xgln_DASH_L_c!#abcde > #abcde
+GLUDC,1.0 glu_DASH_L_c + 1.0 h_c -> 1.0 co2_c + 1.0 4abut_c,0.0,1000.0,(b3517 or b1493),Glutamate Metabolism,GLUDC 1 xglu_DASH_L_c > 1 x4abut_c 1 xco2_c!#abcde > #edcb #a
+GLUN,1.0 h2o_c + 1.0 gln_DASH_L_c -> 1.0 glu_DASH_L_c + 1.0 nh4_c,0.0,1000.0,(b1812 or b0485 or b1524),Glutamate Metabolism,GLUN 1 xgln_DASH_L_c > 1 xglu_DASH_L_c!#abcde > #abcde
+GLUSy,1.0 akg_c + 1.0 nadph_c + 1.0 h_c + 1.0 gln_DASH_L_c -> 2.0 glu_DASH_L_c + 1.0 nadp_c,0.0,1000.0,(b3212 and b3213),Glutamate Metabolism,GLUSy 1 xakg_c 1 xgln_DASH_L_c > 1 xglu_DASH_L_c 1 xglu_DASH_L_c!#abcde #fghij > #abcde #fghij! #abcde #fghij > #fghij #abcde
+GLYCL,1.0 gly_c + 1.0 nad_c + 1.0 thf_c -> 1.0 co2_c + 1.0 nadh_c + 1.0 nh4_c + 1.0 mlthf_c,0.0,1000.0,(b2904 and b2903 and b2905 and b0116),Folate Metabolism,GLYCL 1 xgly_c > 1 xco2_c 1 xmlthf_c!#ab > #a #b
+GLYCLTDx,1.0 nadh_c + 1.0 glx_c + 1.0 h_c -> 1.0 glyclt_c + 1.0 nad_c,0.0,1000.0,(b3553 or b1033),Glyoxylate Metabolism,GLYCLTDx 1 xglx_c > 1 xglyclt_c!#ab > #ab
+GLYCLTDy,1.0 nadph_c + 1.0 glx_c + 1.0 h_c -> 1.0 glyclt_c + 1.0 nadp_c,0.0,1000.0,(b1033 or b3553),Glyoxylate Metabolism,GLYCLTDy 1 xglx_c > 1 xglyclt_c!#ab > #ab
+GLYCLTt4pp,1.0 na1_p + 1.0 glyclt_p -> 1.0 na1_c + 1.0 glyclt_c,0.0,1000.0,b4067,"Transport, Inner Membrane",
+GLYCTO2,1.0 glyclt_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 glx_c,0.0,1000.0,(b2979 and b4467 and b4468),Alternate Carbon Metabolism,GLYCTO2 1 xglyclt_c > 1 xglx_c!#ab > #ab
+GLYK,1.0 glyc_c + 1.0 atp_c -> 1.0 glyc3p_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b3926,Alternate Carbon Metabolism,GLYK 1 xglyc_c > 1 xglyc3p_c!#abc > #abc!#cba > #abc
+GMPR,1.0 gmp_c + 1.0 nadph_c + 2.0 h_c -> 1.0 nadp_c + 1.0 nh4_c + 1.0 imp_c,0.0,1000.0,b0104,Purine and Pyrimidine Biosynthesis,
+GND,1.0 6pgc_c + 1.0 nadp_c -> 1.0 ru5p_DASH_D_c + 1.0 co2_c + 1.0 nadph_c,0.0,1000.0,b2029,Pentose Phosphate Pathway,GND 1 x6pgc_c > 1 xco2_c 1 xru5p_DASH_D_c!#abcdef > #a #bcdef
+GSNK,1.0 atp_c + 1.0 gsn_c -> 1.0 gmp_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b0477,Nucleotide Salvage Pathway,
+GSPMDA,1.0 gtspmd_c + 1.0 h2o_c -> 1.0 spmd_c + 1.0 gthrd_c,0.0,1000.0,b2988,Arginine and Proline Metabolism,
+GSPMDS,1.0 spmd_c + 1.0 gthrd_c + 1.0 atp_c -> 1.0 gtspmd_c + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b2988,Arginine and Proline Metabolism,
+GUACYC,1.0 gtp_c -> 1.0 ppi_c + 1.0 35cgmp_c,0.0,1000.0,,Nucleotide Salvage Pathway,
+GUAPRT,1.0 gua_c + 1.0 prpp_c -> 1.0 ppi_c + 1.0 gmp_c,0.0,1000.0,(b0238 or b0125),Nucleotide Salvage Pathway,GUAPRT 1 xprpp_c >!#abcde >
+HCO3E,1.0 h2o_c + 1.0 co2_c -> 1.0 hco3_c + 1.0 h_c,0.0,1000.0,(b0126 or b0339),Unassigned,HCO3E 1 xco2_c > 1 xhco3_c!#a > #a
+HCYSMT,1.0 amet_c + 1.0 hcys_DASH_L_c -> 1.0 ahcys_c + 1.0 h_c + 1.0 met_DASH_L_c,0.0,1000.0,b0261,Methionine Metabolism,HCYSMT 1 xamet_c 1 xhcys_DASH_L_c > 1 xahcys_c 1 xmet_DASH_L_c !#123456789Aabcde #fghi > #123456789Aabcd #fghie
+HEX1,1.0 glc_DASH_D_c + 1.0 atp_c -> 1.0 g6p_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b2388,Glycolysis/Gluconeogenesis,HEX1 1 xglc_DASH_D_c > 1 xg6p_c!#abcdef > #abcdef
+HSDy,1.0 nadp_c + 1.0 hom_DASH_L_c -> 1.0 aspsa_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,(b3940 or b0002),Threonine and Lysine Metabolism,HSDy 1 xhom_DASH_L_c > 1 xaspsa_c!#abcd > #abcd
+HXPRT,1.0 hxan_c + 1.0 prpp_c -> 1.0 ppi_c + 1.0 imp_c,0.0,1000.0,(b0238 or b0125),Nucleotide Salvage Pathway,HXPRT 1 xprpp_c >!#abcde >
+I2FE2SS,2.0 fe2_c + 1.0 fadh2_c + 1.0 iscu_c + 2.0 iscssh_c -> 6.0 h_c + 2.0 iscs_c + 1.0 fad_c + 1.0 iscu_DASH_2fe2s_c,0.0,1000.0,(b3807 and b2530 and b2529),Cofactor and Prosthetic Group Biosynthesis,
+I2FE2ST,1.0 iscu_DASH_2fe2s_c + 4.0 h_c -> 1.0 iscu_c + 1.0 2fe2s_c,0.0,1000.0,(b2528 and b2529),Cofactor and Prosthetic Group Biosynthesis,
+ICDHyr,1.0 icit_c + 1.0 nadp_c -> 1.0 akg_c + 1.0 co2_c + 1.0 nadph_c,0.0,1000.0,b1136,Citric Acid Cycle,ICDHyr 1 xicit_c > 1 xakg_c 1 xco2_c!#abcdef > #abcde #f
+ICHORSi,1.0 chor_c -> 1.0 ichor_c,0.0,1000.0,b0593,Cofactor and Prosthetic Group Biosynthesis,ICHORSi 1 xchor_c > 1 xichor_c!#abcdefghij > #abcdefghij
+ICL,1.0 icit_c -> 1.0 succ_c + 1.0 glx_c,0.0,1000.0,b4015,Anaplerotic Reactions,ICL 1 xicit_c > 1 xglx_c 1 xsucc_c!#abcdef > #ab #fcde!#abcdef > #ab #edcf
+ICYSDS,1.0 cys_DASH_L_c + 1.0 iscs_c -> 1.0 ala_DASH_L_c + 1.0 iscssh_c,0.0,1000.0,b2530,Cofactor and Prosthetic Group Biosynthesis,ICYSDS 1 xcys_DASH_L_c > 1 xala_DASH_L_c!#abc > #abc
+ILETA,1.0 akg_c + 1.0 ile_DASH_L_c -> 1.0 3mop_c + 1.0 glu_DASH_L_c,0.0,1000.0,b3770,"Valine, Leucine, and Isoleucine Metabolism",ILETA 1 xakg_c 1 xile_DASH_L_c > 1 x3mop_c 1 xglu_DASH_L_c!#abcde #fghijk > #fghijk #abcde
+INSK,1.0 atp_c + 1.0 ins_c -> 1.0 imp_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,b0477,Nucleotide Salvage Pathway,
+IPDPS,1.0 nadh_c + 1.0 h2mb4p_c + 1.0 h_c -> 1.0 h2o_c + 1.0 ipdp_c + 1.0 nad_c,0.0,1000.0,b0029,Cofactor and Prosthetic Group Biosynthesis,
+IPMD,1.0 3c2hmp_c + 1.0 nad_c -> 1.0 3c4mop_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,b0073,"Valine, Leucine, and Isoleucine Metabolism",IPMD 1 x3c2hmp_c > 1 x3c4mop_c!#abcdefg > #abcdefg
+IPPMIa,1.0 3c2hmp_c -> 1.0 2ippm_c + 1.0 h2o_c,0.0,1000.0,(b0071 and b0072),"Valine, Leucine, and Isoleucine Metabolism",IPPMIa 1 x3c2hmp_c > 1 x2ippm_c!#abcdefg > #abcdefg
+IPPMIb,1.0 2ippm_c + 1.0 h2o_c -> 1.0 3c3hmp_c,0.0,1000.0,(b0071 and b0072),"Valine, Leucine, and Isoleucine Metabolism",IPPMIb 1 x2ippm_c > 1 x3c3hmp_c!#abcdefg > #abcdefg
+IPPS,1.0 h2o_c + 1.0 accoa_c + 1.0 3mob_c -> 1.0 coa_c + 1.0 h_c + 1.0 3c3hmp_c,0.0,1000.0,b0074,"Valine, Leucine, and Isoleucine Metabolism",IPPS 1 x3mob_c 1 xaccoa_c > 1 x3c3hmp_c!#abcde #fg > #fgbcdae
+KAS15,1.0 malACP_c + 1.0 h_c + 1.0 accoa_c -> 1.0 actACP_c + 1.0 co2_c + 1.0 coa_c,0.0,1000.0,b1091,Membrane Lipid Metabolism,KAS15 1 xaccoa_c >!#ab >
+Kt2pp,1.0 k_p + 1.0 h_p -> 1.0 k_c + 1.0 h_c,0.0,1000.0,((b1291 and b3290 and b3849) or b1250 or (b1291 and b3290 and b1363) or b3747),Inorganic Ion Transport and Metabolism,
+Ktex,1.0 k_e -> 1.0 k_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+LCARR,1.0 nadh_c + 1.0 h_c + 1.0 lald_DASH_D_c -> 1.0 12ppd_DASH_R_c + 1.0 nad_c,0.0,1000.0,,Methylglyoxal Metabolism,LCARR 1 xlald_DASH_D_c > 1 x12ppd_DASH_R_c!#abc > #abc
+LDH_D,1.0 lac_DASH_D_c + 1.0 nad_c -> 1.0 pyr_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,(b2133 or b1380),Pyruvate Metabolism,LDH_D 1 xlac_DASH_D_c > 1 xpyr_c!#abc > #abc
+LDH_D2,1.0 lac_DASH_D_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 pyr_c,0.0,1000.0,b2133,Oxidative Phosphorylation,LDH_D2 1 xlac_DASH_D_c > 1 xpyr_c!#abc > #abc
+LEUTAi,1.0 glu_DASH_L_c + 1.0 4mop_c -> 1.0 akg_c + 1.0 leu_DASH_L_c,0.0,1000.0,(b3770 or b4054),"Valine, Leucine, and Isoleucine Metabolism",LEUTAi 1 x4mop_c 1 xglu_DASH_L_c > 1 xakg_c 1 xleu_DASH_L_c!#abcdef #ghijk > #ghijk #abcdef
+LSERDHr,1.0 ser_DASH_L_c + 1.0 nadp_c -> 1.0 2amsa_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,b1539,Glycine and Serine Metabolism,LSERDHr 1 xser_DASH_L_c >!#abc >
+MALS,1.0 h2o_c + 1.0 glx_c + 1.0 accoa_c -> 1.0 mal_DASH_L_c + 1.0 coa_c + 1.0 h_c,0.0,1000.0,(b4014 or b2976),Anaplerotic Reactions,MALS 1 xaccoa_c 1 xglx_c > 1 xmal_DASH_L_c!#ab #cd > #cdba
+MCOATA,1.0 ACP_c + 1.0 malcoa_c -> 1.0 malACP_c + 1.0 coa_c,0.0,1000.0,(b1094 and b1092),Membrane Lipid Metabolism,MCOATA 1 xmalcoa_c >!#abc >
+MCTP1App,1.0 murein5p5p_p -> 1.0 murein5px4p_p + 1.0 ala_DASH_D_p,0.0,1000.0,(b0084 or b0635 or b0149 or b3396),Murein Biosynthesis,
+MCTP1Bpp,1.0 murein5p5p_p -> 1.0 murein5px3p_p + 1.0 alaala_p,0.0,1000.0,(b0149 or b3396),Murein Biosynthesis,
+MCTP2App,1.0 murein5p5p5p_p -> 2.0 ala_DASH_D_p + 1.0 murein5px4px4p_p,0.0,1000.0,(b0084 or b0635 or b3396 or b0149),Murein Biosynthesis,
+MDDCP1pp,1.0 murein5px4p_p + 1.0 h2o_p -> 1.0 murein4px4p_p + 1.0 ala_DASH_D_p,0.0,1000.0,(b0632 or b3182 or b0839 or b2010),Murein Biosynthesis,
+MDDCP2pp,1.0 h2o_p + 1.0 murein5px4px4p_p -> 1.0 murein4px4px4p_p + 1.0 ala_DASH_D_p,0.0,1000.0,(b0632 or b3182 or b0839 or b2010),Murein Biosynthesis,
+MDDCP3pp,1.0 murein5p5p_p + 1.0 h2o_p -> 1.0 ala_DASH_D_p + 1.0 murein5p4p_p,0.0,1000.0,(b0632 or b3182 or b0839 or b2010),Murein Biosynthesis,
+MDDCP4pp,1.0 h2o_p + 1.0 murein5p4p_p -> 1.0 murein4p4p_p + 1.0 ala_DASH_D_p,0.0,1000.0,(b0632 or b3182 or b0839 or b2010),Murein Biosynthesis,
+MDDCP5pp,1.0 h2o_p + 1.0 murein5p3p_p -> 1.0 ala_DASH_D_p + 1.0 murein4p3p_p,0.0,1000.0,(b0632 or b3182 or b0839 or b2010),Murein Biosynthesis,
+MDDEP1pp,1.0 murein4px4p_p + 1.0 h2o_p -> 1.0 murein4p4p_p,0.0,1000.0,(b3182 or b2328 or b2134),Murein Recycling,
+MDDEP2pp,1.0 h2o_p + 1.0 murein3px4p_p -> 1.0 murein4p3p_p,0.0,1000.0,(b3182 or b2328 or b2134),Murein Recycling,
+MDDEP3pp,1.0 murein5px4p_p + 1.0 h2o_p -> 1.0 murein5p4p_p,0.0,1000.0,(b3182 or b2328 or b2134),Murein Recycling,
+MDH,1.0 mal_DASH_L_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 oaa_c,0.0,1000.0,b3236,Citric Acid Cycle,MDH 1 xmal_DASH_L_c > 1 xoaa_c!#abcd > #abcd
+MDH2,1.0 mal_DASH_L_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 oaa_c,0.0,1000.0,b2210,Citric Acid Cycle,MDH2 1 xmal_DASH_L_c > 1 xoaa_c!#abcd > #abcd
+MDH3,1.0 mal_DASH_L_c + 1.0 mqn8_c -> 1.0 mql8_c + 1.0 oaa_c,0.0,1000.0,b2210,Citric Acid Cycle,MDH3 1 xmal_DASH_L_c > 1 xoaa_c!#abcd > #abcd
+ME1,1.0 mal_DASH_L_c + 1.0 nad_c -> 1.0 pyr_c + 1.0 co2_c + 1.0 nadh_c,0.0,1000.0,b1479,Anaplerotic Reactions,ME1 1 xmal_DASH_L_c > 1 xco2_c 1 xpyr_c!#abcd > #d #abc
+ME2,1.0 mal_DASH_L_c + 1.0 nadp_c -> 1.0 pyr_c + 1.0 co2_c + 1.0 nadph_c,0.0,1000.0,b2463,Anaplerotic Reactions,ME2 1 xmal_DASH_L_c > 1 xco2_c 1 xpyr_c!#abcd > #d #abc
+METAT,1.0 h2o_c + 1.0 atp_c + 1.0 met_DASH_L_c -> 1.0 amet_c + 1.0 ppi_c + 1.0 pi_c,0.0,1000.0,b2942,Methionine Metabolism,METAT 1 xmet_DASH_L_c 1 xatp_c > 1 xamet_c!#abcde #123456789A > #123456789Aabcde
+METOX1s,1.0 h2o2_c + 1.0 met_DASH_L_c -> 1.0 h2o_c + 1.0 metsox_DASH_S_DASH_L_c,0.0,1000.0,s0001,Methionine Metabolism,METOX1s 1 xmet_DASH_L_c >!#abcde >
+METOX2s,1.0 h2o2_c + 1.0 met_DASH_L_c -> 1.0 h2o_c + 1.0 metsox_DASH_R_DASH_L_c,0.0,1000.0,s0001,Methionine Metabolism,METOX2s 1 xmet_DASH_L_c >!#abcde >
+METS,1.0 hcys_DASH_L_c + 1.0 5mthf_c -> 1.0 thf_c + 1.0 met_DASH_L_c + 1.0 h_c,0.0,1000.0,(b4019 or b3829),Methionine Metabolism,METS 1 xhcys_DASH_L_c 1 x5mthf_c > 1 xmet_DASH_L_c!#abcd #e > #abcde
+METSOXR1,1.0 trdrd_c + 1.0 metsox_DASH_S_DASH_L_c -> 1.0 h2o_c + 1.0 trdox_c + 1.0 met_DASH_L_c,0.0,1000.0,((b4219 and b2582) or (b4219 and b3781) or (b3551 and b2582) or (b3551 and b3781)),Methionine Metabolism,
+METSOXR2,1.0 metsox_DASH_R_DASH_L_c + 1.0 trdrd_c -> 1.0 h2o_c + 1.0 trdox_c + 1.0 met_DASH_L_c,0.0,1000.0,((b1778 and b2582) or (b1778 and b3781)),Methionine Metabolism,
+MG2t3_2pp,2.0 h_c + 1.0 mg2_p -> 1.0 mg2_c + 2.0 h_p,0.0,1000.0,,Inorganic Ion Transport and Metabolism,
+MG2tex,1.0 mg2_e -> 1.0 mg2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+MLDCP1App,1.0 murein5px4p_p + 1.0 h2o_p -> 1.0 murein3px4p_p + 1.0 alaala_p,0.0,1000.0,,Murein Biosynthesis,
+MLDCP1Bpp,1.0 murein4p4p_p + 1.0 h2o_p -> 1.0 ala_DASH_D_p + 1.0 murein4p3p_p,0.0,1000.0,,Murein Biosynthesis,
+MLDCP2App,1.0 murein5p5p_p + 1.0 h2o_p -> 1.0 alaala_p + 1.0 murein5p3p_p,0.0,1000.0,,Murein Biosynthesis,
+MLDCP2Bpp,1.0 h2o_p + 1.0 murein4p3p_p -> 1.0 murein3p3p_p + 1.0 ala_DASH_D_p,0.0,1000.0,,Murein Biosynthesis,
+MLDCP3App,1.0 h2o_p + 1.0 murein5px3p_p -> 1.0 murein3px3p_p + 1.0 alaala_p,0.0,1000.0,,Murein Biosynthesis,
+MLDEP1pp,1.0 h2o_p + 1.0 murein3px3p_p -> 1.0 murein3p3p_p,0.0,1000.0,,Murein Recycling,
+MLDEP2pp,1.0 h2o_p + 1.0 murein5px3p_p -> 1.0 murein5p3p_p,0.0,1000.0,,Murein Recycling,
+MN2tpp,1.0 mn2_p -> 1.0 mn2_c,0.0,1000.0,b3040,Inorganic Ion Transport and Metabolism,
+MNtex,1.0 mn2_e -> 1.0 mn2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+MOBDabcpp,1.0 h2o_c + 1.0 mobd_p + 1.0 atp_c -> 1.0 pi_c + 1.0 mobd_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,((b0763 and b0764 and b0765) or (b2422 and b2424 and b2423 and b3917) or (b2422 and b2425 and b2424 and b2423)),Inorganic Ion Transport and Metabolism,
+MOBDtex,1.0 mobd_e -> 1.0 mobd_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+MOCOS,2.0 h_c + 1.0 mobd_c + 1.0 mptamp_c -> 1.0 cu2_c + 1.0 h2o_c + 1.0 moco_c + 1.0 amp_c,0.0,1000.0,b0827,Cofactor and Prosthetic Group Biosynthesis,
+MOX,1.0 o2_c + 1.0 mal_DASH_L_c -> 1.0 h2o2_c + 1.0 oaa_c,0.0,1000.0,,Citric Acid Cycle,MOX 1 xmal_DASH_L_c > 1 xoaa_c !#abcd > #abcd
+MPTG,2.0 uaagmda_c -> 2.0 udcpdp_c + 1.0 murein5p5p_p + 2.0 h_c,0.0,1000.0,((b3396 and b1069) or (b0149 and b1069) or (b1069 and b2519)),Murein Biosynthesis,
+MPTG2,1.0 murein5p5p_p + 1.0 uaagmda_c -> 1.0 murein5p5p5p_p + 1.0 udcpdp_c + 1.0 h_c,0.0,1000.0,((b3396 and b1069) or (b0149 and b1069) or (b1069 and b2519)),Murein Biosynthesis,
+MTAN,1.0 h2o_c + 1.0 5mta_c -> 1.0 ade_c + 1.0 5mtr_c,0.0,1000.0,b0159,Arginine and Proline Metabolism,MTAN 1 x5mta_c > 1 xade_c 1 x5mtr_c!#123456789Aa > #6789A #12345a
+MTHFC,1.0 h2o_c + 1.0 methf_c -> 1.0 10fthf_c + 1.0 h_c,0.0,1000.0,b0529,Folate Metabolism,MTHFC 1 xmethf_c > 1 x10fthf_c!#a > #a
+MTHFD,1.0 nadp_c + 1.0 mlthf_c -> 1.0 nadph_c + 1.0 methf_c,0.0,1000.0,b0529,Folate Metabolism,MTHFD 1 xmlthf_c > 1 xmethf_c!#a > #a
+MTHFR2,1.0 nadh_c + 2.0 h_c + 1.0 mlthf_c -> 1.0 5mthf_c + 1.0 nad_c,0.0,1000.0,b3941,Folate Metabolism,MTHFR2 1 xmlthf_c > 1 x5mthf_c!#a > #a
+MTHTHFSs,1.0 h2o_c + 1.0 mdhdhf_c -> 1.0 mththf_c,0.0,1000.0,s0001,Methionine Metabolism,
+NACODA,1.0 h2o_c + 1.0 acg5sa_c -> 1.0 glu5sa_c + 1.0 ac_c,0.0,1000.0,b3957,Arginine and Proline Metabolism,NACODA 1 xacg5sa_c > 1 xac_c 1 xglu5sa_c!#abcdefg > #fg #abcde
+NADH10,1.0 nadh_c + 1.0 mqn8_c + 1.0 h_c -> 1.0 mql8_c + 1.0 nad_c,0.0,1000.0,b1109,Oxidative Phosphorylation,
+NADH16pp,1.0 nadh_c + 1.0 q8_c + 4.0 h_c -> 1.0 q8h2_c + 3.0 h_p + 1.0 nad_c,0.0,1000.0,(b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288),Oxidative Phosphorylation,
+NADH17pp,1.0 nadh_c + 1.0 mqn8_c + 4.0 h_c -> 3.0 h_p + 1.0 nad_c + 1.0 mql8_c,0.0,1000.0,(b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288),Oxidative Phosphorylation,
+NADH18pp,1.0 nadh_c + 1.0 2dmmq8_c + 4.0 h_c -> 3.0 h_p + 1.0 2dmmql8_c + 1.0 nad_c,0.0,1000.0,(b2276 and b2277 and b2278 and b2279 and b2280 and b2281 and b2282 and b2283 and b2284 and b2285 and b2286 and b2287 and b2288),Oxidative Phosphorylation,
+NADH5,1.0 nadh_c + 1.0 q8_c + 1.0 h_c -> 1.0 q8h2_c + 1.0 nad_c,0.0,1000.0,b1109,Oxidative Phosphorylation,
+NADH9,1.0 nadh_c + 1.0 2dmmq8_c + 1.0 h_c -> 1.0 nad_c + 1.0 2dmmql8_c,0.0,1000.0,b1109,Oxidative Phosphorylation,
+NADPHQR2,1.0 nadph_c + 1.0 q8_c + 1.0 h_c -> 1.0 q8h2_c + 1.0 nadp_c,0.0,1000.0,b3028,Oxidative Phosphorylation,
+NADPHQR3,1.0 mqn8_c + 1.0 nadph_c + 1.0 h_c -> 1.0 nadp_c + 1.0 mql8_c,0.0,1000.0,b3028,Oxidative Phosphorylation,
+NADPHQR4,1.0 nadph_c + 1.0 2dmmq8_c + 1.0 h_c -> 1.0 nadp_c + 1.0 2dmmql8_c,0.0,1000.0,b3028,Oxidative Phosphorylation,
+NADPPPS,1.0 h2o_c + 1.0 nadp_c -> 1.0 pi_c + 1.0 nad_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+NADTRHD,1.0 nadph_c + 1.0 nad_c -> 1.0 nadp_c + 1.0 nadh_c,0.0,1000.0,(b3962 or (b1602 and b1603)),Oxidative Phosphorylation,
+NDPK1,1.0 gdp_c + 1.0 atp_c -> 1.0 gtp_c + 1.0 adp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK2,1.0 udp_c + 1.0 atp_c -> 1.0 utp_c + 1.0 adp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,NDPK2 1 xatp_c 1 xudp_c > 1 xadp_c 1 xutp_c!#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+NDPK3,1.0 cdp_c + 1.0 atp_c -> 1.0 ctp_c + 1.0 adp_c,0.0,1000.0,(b2518 or b0474),Nucleotide Salvage Pathway,
+NDPK4,1.0 dtdp_c + 1.0 atp_c -> 1.0 dttp_c + 1.0 adp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,NDPK4 1 xdtdp_c > 1 xdttp_c!#abcdefghij > #abcdefghij
+NDPK5,1.0 dgdp_c + 1.0 atp_c -> 1.0 dgtp_c + 1.0 adp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK7,1.0 atp_c + 1.0 dcdp_c -> 1.0 adp_c + 1.0 dctp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK8,1.0 dadp_c + 1.0 atp_c -> 1.0 datp_c + 1.0 adp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NH4tex,1.0 nh4_e -> 1.0 nh4_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+NH4tpp,1.0 nh4_p -> 1.0 nh4_c,0.0,1000.0,(b0451 or s0001),Inorganic Ion Transport and Metabolism,
+NI2tex,1.0 ni2_e -> 1.0 ni2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+NI2tpp,1.0 ni2_p -> 1.0 ni2_c,0.0,1000.0,b3816,Inorganic Ion Transport and Metabolism,
+NTD1,1.0 h2o_c + 1.0 dump_c -> 1.0 pi_c + 1.0 duri_c,0.0,1000.0,(b2291 or b2744 or b4374),Nucleotide Salvage Pathway,
+NTD10,1.0 xmp_c + 1.0 h2o_c -> 1.0 pi_c + 1.0 xtsn_c,0.0,1000.0,b2744,Nucleotide Salvage Pathway,
+NTD11,1.0 h2o_c + 1.0 imp_c -> 1.0 pi_c + 1.0 ins_c,0.0,1000.0,b2744,Nucleotide Salvage Pathway,
+NTD12,1.0 h2o_c + 1.0 dimp_c -> 1.0 din_c + 1.0 pi_c,0.0,1000.0,(b2291 or b2744),Nucleotide Salvage Pathway,
+NTD2,1.0 ump_c + 1.0 h2o_c -> 1.0 uri_c + 1.0 pi_c,0.0,1000.0,(b2744 or b4374),Nucleotide Salvage Pathway,
+NTD3,1.0 dcmp_c + 1.0 h2o_c -> 1.0 dcyt_c + 1.0 pi_c,0.0,1000.0,(b2744 or b2291),Nucleotide Salvage Pathway,
+NTD4,1.0 h2o_c + 1.0 cmp_c -> 1.0 cytd_c + 1.0 pi_c,0.0,1000.0,b2744,Nucleotide Salvage Pathway,
+NTD5,1.0 h2o_c + 1.0 dtmp_c -> 1.0 pi_c + 1.0 thymd_c,0.0,1000.0,(b2291 or b2744 or b4374),Nucleotide Salvage Pathway,
+NTD6,1.0 h2o_c + 1.0 damp_c -> 1.0 pi_c + 1.0 dad_DASH_2_c,0.0,1000.0,(b2291 or b2744),Nucleotide Salvage Pathway,
+NTD7,1.0 h2o_c + 1.0 amp_c -> 1.0 pi_c + 1.0 adn_c,0.0,1000.0,b2744,Nucleotide Salvage Pathway,
+NTD8,1.0 h2o_c + 1.0 dgmp_c -> 1.0 dgsn_c + 1.0 pi_c,0.0,1000.0,(b2291 or b2744),Nucleotide Salvage Pathway,
+NTD9,1.0 h2o_c + 1.0 gmp_c -> 1.0 pi_c + 1.0 gsn_c,0.0,1000.0,b2744,Nucleotide Salvage Pathway,
+NTP1,1.0 h2o_c + 1.0 atp_c -> 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,(b0650 or b4161),Nucleotide Salvage Pathway,
+NTP10,1.0 h2o_c + 1.0 itp_c -> 1.0 pi_c + 1.0 h_c + 1.0 idp_c,0.0,1000.0,(b4161 or b4394),Nucleotide Salvage Pathway,
+NTP3,1.0 h2o_c + 1.0 gtp_c -> 1.0 pi_c + 1.0 gdp_c + 1.0 h_c,0.0,1000.0,b4161,Nucleotide Salvage Pathway,
+NTP5,1.0 ctp_c + 1.0 h2o_c -> 1.0 cdp_c + 1.0 pi_c + 1.0 h_c,0.0,1000.0,b4161,Nucleotide Salvage Pathway,
+NTPP1,1.0 h2o_c + 1.0 dgtp_c -> 1.0 ppi_c + 1.0 dgmp_c + 1.0 h_c,0.0,1000.0,(b0099 or b2781),Nucleotide Salvage Pathway,
+NTPP10,1.0 ditp_c + 1.0 h2o_c -> 1.0 dimp_c + 1.0 ppi_c + 1.0 h_c,0.0,1000.0,b2954,Nucleotide Salvage Pathway,
+NTPP2,1.0 h2o_c + 1.0 gtp_c -> 1.0 ppi_c + 1.0 gmp_c + 1.0 h_c,0.0,1000.0,(b0099 or b2781),Nucleotide Salvage Pathway,
+NTPP3,1.0 h2o_c + 1.0 dctp_c -> 1.0 dcmp_c + 1.0 ppi_c + 1.0 h_c,0.0,1000.0,(b2781 or b2251 or b1759),Nucleotide Salvage Pathway,
+NTPP4,1.0 ctp_c + 1.0 h2o_c -> 1.0 ppi_c + 1.0 h_c + 1.0 cmp_c,0.0,1000.0,(b1759 or b2781),Nucleotide Salvage Pathway,
+NTPP5,1.0 datp_c + 1.0 h2o_c -> 1.0 damp_c + 1.0 ppi_c + 1.0 h_c,0.0,1000.0,(b2781 or b1865),Nucleotide Salvage Pathway,
+NTPP6,1.0 h2o_c + 1.0 atp_c -> 1.0 ppi_c + 1.0 amp_c + 1.0 h_c,0.0,1000.0,b2781,Nucleotide Salvage Pathway,
+NTPP7,1.0 h2o_c + 1.0 dttp_c -> 1.0 ppi_c + 1.0 dtmp_c + 1.0 h_c,0.0,1000.0,(b2781 or b2251),Nucleotide Salvage Pathway,
+NTPP8,1.0 h2o_c + 1.0 utp_c -> 1.0 ump_c + 1.0 ppi_c + 1.0 h_c,0.0,1000.0,b2781,Nucleotide Salvage Pathway,
+NTPP9,1.0 h2o_c + 1.0 itp_c -> 1.0 ppi_c + 1.0 imp_c + 1.0 h_c,0.0,1000.0,b2954,Nucleotide Salvage Pathway,
+NTPTP1,1.0 h2o_c + 1.0 dgtp_c -> 1.0 dgsn_c + 1.0 pppi_c,0.0,1000.0,b0160,Nucleotide Salvage Pathway,
+NTPTP2,1.0 h2o_c + 1.0 gtp_c -> 1.0 pppi_c + 1.0 gsn_c,0.0,1000.0,b0160,Nucleotide Salvage Pathway,
+O2tex,1.0 o2_e -> 1.0 o2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+O2tpp,1.0 o2_p -> 1.0 o2_c,0.0,1000.0,s0001,Inorganic Ion Transport and Metabolism,
+OAADC,1.0 h_c + 1.0 oaa_c -> 1.0 pyr_c + 1.0 co2_c,0.0,1000.0,b1850,Pyruvate Metabolism,OAADC 1 xoaa_c > 1 xpyr_c 1 xco2_c!#abcd > #abc #d
+OCBT,1.0 cbp_c + 1.0 orn_c -> 1.0 citr_DASH_L_c + 1.0 h_c + 1.0 pi_c,0.0,1000.0,(b4254 or b0273),Arginine and Proline Metabolism,OCBT 1 xcbp_c 1 xorn_c > 1 xcitr_DASH_L_c!#a #bcdef > #bcdefa
+OCTDPS,5.0 ipdp_c + 1.0 frdp_c -> 5.0 ppi_c + 1.0 octdp_c,0.0,1000.0,b3187,Cofactor and Prosthetic Group Biosynthesis,
+OMCDC,1.0 3c4mop_c + 1.0 h_c -> 1.0 co2_c + 1.0 4mop_c,0.0,1000.0,s0001,"Valine, Leucine, and Isoleucine Metabolism",OMCDC 1 x3c4mop_c > 1 x4mop_c 1 xco2_c!#abcdefg > #abcdeg #f
+ORNDC,1.0 orn_c + 1.0 h_c -> 1.0 ptrc_c + 1.0 co2_c,0.0,1000.0,(b2965 or b0693),Arginine and Proline Metabolism,ORNDC 1 xorn_c > 1 xco2_c 1 xptrc_c!#abcde > #a #bcde!#abcde > #a #edcb
+P5CD,1.0 1pyr5c_c + 2.0 h2o_c + 1.0 nad_c -> 1.0 glu_DASH_L_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,b1014,Arginine and Proline Metabolism,P5CD 1 x1pyr5c_c > 1 xglu_DASH_L_c!#abcde > #abcde
+P5CR,1.0 1pyr5c_c + 1.0 nadph_c + 2.0 h_c -> 1.0 pro_DASH_L_c + 1.0 nadp_c,0.0,1000.0,b0386,Arginine and Proline Metabolism,P5CR 1 x1pyr5c_c > 1 xpro_DASH_L_c!#abcde > #abcde
+PAPSR,1.0 trdrd_c + 1.0 paps_c -> 1.0 so3_c + 1.0 trdox_c + 1.0 pap_c + 2.0 h_c,0.0,1000.0,((b2762 and b2582) or (b2762 and b3781)),Cysteine Metabolism,
+PDE1,1.0 h2o_c + 1.0 camp_c -> 1.0 amp_c + 1.0 h_c,0.0,1000.0,b1489,Nucleotide Salvage Pathway,
+PDE4,1.0 h2o_c + 1.0 35cgmp_c -> 1.0 gmp_c + 1.0 h_c,0.0,1000.0,b1489,Nucleotide Salvage Pathway,
+PDH,1.0 pyr_c + 1.0 coa_c + 1.0 nad_c -> 1.0 co2_c + 1.0 nadh_c + 1.0 accoa_c,0.0,1000.0,(b0114 and b0115 and b0116),Glycolysis/Gluconeogenesis,PDH 1 xpyr_c > 1 xaccoa_c 1 xco2_c!#abc > #bc #a
+PE160abcpp,1.0 h2o_c + 1.0 pe160_c + 1.0 atp_c -> 1.0 pi_c + 1.0 pe160_p + 1.0 adp_c + 1.0 h_c,0.0,1000.0,b0914,"Transport, Inner Membrane",
+PE161abcpp,1.0 h2o_c + 1.0 pe161_c + 1.0 atp_c -> 1.0 pi_c + 1.0 h_c + 1.0 adp_c + 1.0 pe161_p,0.0,1000.0,b0914,"Transport, Inner Membrane",
+PE181abcpp,1.0 h2o_c + 1.0 pe181_c + 1.0 atp_c -> 1.0 pe181_p + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b0914,"Transport, Inner Membrane",
+PFK,1.0 atp_c + 1.0 f6p_c -> 1.0 fdp_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,(b3916 or b1723),Glycolysis/Gluconeogenesis,PFK 1 xf6p_c > 1 xfdp_c!#abcdef > #abcdef
+PFK_3,1.0 s7p_c + 1.0 atp_c -> 1.0 s17bp_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b3916,Pentose Phosphate Pathway,PFK_3 1 xs7p_c > 1 xs17bp_c !#abcdefg > #abcdefg
+PFL,1.0 pyr_c + 1.0 coa_c -> 1.0 for_c + 1.0 accoa_c,0.0,1000.0,((b0902 and b0903) or (b0902 and b3114) or (b3951 and b3952) or ((b0902 and b0903) and b2579)),Pyruvate Metabolism,PFL 1 xpyr_c > 1 xaccoa_c 1 xfor_c!#abc > #bc #a
+PG160abcpp,1.0 h2o_c + 1.0 pg160_c + 1.0 atp_c -> 1.0 pg160_p + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b0914,"Transport, Inner Membrane",PG160abcpp 1 xpg160_c > 1 xpg160_p!#abc > #abc
+PG161abcpp,1.0 h2o_c + 1.0 pg161_c + 1.0 atp_c -> 1.0 pg161_p + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b0914,"Transport, Inner Membrane",PG161abcpp 1 xpg161_c > 1 xpg161_p!#abc > #abc
+PG181abcpp,1.0 h2o_c + 1.0 pg181_c + 1.0 atp_c -> 1.0 pi_c + 1.0 h_c + 1.0 adp_c + 1.0 pg181_p,0.0,1000.0,b0914,"Transport, Inner Membrane",PG181abcpp 1 xpg181_c > 1 xpg181_p!#abc > #abc
+PGI,1.0 g6p_c -> 1.0 f6p_c,0.0,1000.0,b4025,Glycolysis/Gluconeogenesis,PGI 1 xg6p_c > 1 xf6p_c!#abcdef > #abcdef
+PGK,1.0 atp_c + 1.0 3pg_c -> 1.0 adp_c + 1.0 13dpg_c,0.0,1000.0,b2926,Glycolysis/Gluconeogenesis,PGK 1 x3pg_c > 1 x13dpg_c!#abc > #abc
+PGL,1.0 h2o_c + 1.0 6pgl_c -> 1.0 6pgc_c + 1.0 h_c,0.0,1000.0,b0767,Pentose Phosphate Pathway,PGL 1 x6pgl_c > 1 x6pgc_c!#abcdef > #abcdef
+PGM,1.0 2pg_c -> 1.0 3pg_c,0.0,1000.0,(b3612 or b4395 or b0755),Glycolysis/Gluconeogenesis,PGM 1 x2pg_c > 1 x3pg_c!#abc > #abc
+PHETA1,1.0 akg_c + 1.0 phe_DASH_L_c -> 1.0 phpyr_c + 1.0 glu_DASH_L_c,0.0,1000.0,(b4054 or b0928 or b3770),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PHETA1 1 xakg_c 1 xphe_DASH_L_c > 1 xglu_DASH_L_c 1 xphpyr_c!#abcde #fghijklmn > #abcde #fghijklmn!#abcde #fghinmlkj > #abcde #fghijklmn!#abcde #fghijklmn > #abcde #fghinmlkj!#abcde #fghinmlkj > #abcde #fghinmlkj
+PIt2rpp,1.0 pi_p + 1.0 h_p -> 1.0 pi_c + 1.0 h_c,0.0,1000.0,(b2987 or b3493),Inorganic Ion Transport and Metabolism,
+PItex,1.0 pi_e -> 1.0 pi_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+POR5,2.0 flxso_c + 1.0 pyr_c + 1.0 coa_c -> 1.0 co2_c + 2.0 flxr_c + 1.0 h_c + 1.0 accoa_c,0.0,1000.0,((b0684 and b1378) or (b2895 and b1378)),Pyruvate Metabolism,POR5 1 xpyr_c > 1 xaccoa_c 1 xco2_c!#abc > #bc #a
+POX,1.0 h2o_c + 1.0 pyr_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 ac_c + 1.0 co2_c,0.0,1000.0,b0871,Oxidative Phosphorylation,POX 1 xpyr_c > 1 xac_c 1 xco2_c!#abc > #bc #a
+PPA,1.0 h2o_c + 1.0 ppi_c -> 2.0 pi_c + 1.0 h_c,0.0,1000.0,(b2744 or b4226 or b2502),Anaplerotic Reactions,
+PPA2,1.0 pppi_c + 1.0 h2o_c -> 1.0 ppi_c + 1.0 pi_c + 1.0 h_c,0.0,1000.0,(b2502 or b2744),Anaplerotic Reactions,
+PPBNGS,2.0 5aop_c -> 1.0 ppbng_c + 2.0 h2o_c + 1.0 h_c,0.0,1000.0,b0369,Cofactor and Prosthetic Group Biosynthesis,
+PPC,1.0 pep_c + 1.0 h2o_c + 1.0 co2_c -> 1.0 pi_c + 1.0 h_c + 1.0 oaa_c,0.0,1000.0,b3956,Anaplerotic Reactions,PPC 1 xco2_c 1 xpep_c > 1 xoaa_c!#a #bcd > #bcda
+PPCK,1.0 atp_c + 1.0 oaa_c -> 1.0 pep_c + 1.0 co2_c + 1.0 adp_c,0.0,1000.0,b3403,Anaplerotic Reactions,PPCK 1 xoaa_c > 1 xco2_c 1 xpep_c!#abcd > #d #abc
+PPK2r,1.0 ppi_c + 1.0 atp_c -> 1.0 pppi_c + 1.0 adp_c,0.0,1000.0,b2501,Oxidative Phosphorylation,
+PPKr,1.0 pi_c + 1.0 atp_c -> 1.0 ppi_c + 1.0 adp_c,0.0,1000.0,b2501,Oxidative Phosphorylation,
+PPND,1.0 pphn_c + 1.0 nad_c -> 1.0 34hpp_c + 1.0 co2_c + 1.0 nadh_c,0.0,1000.0,b2600,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PPND 1 xpphn_c > 1 x34hpp_c 1 xco2_c!#abcdefghij > #abcdefghi #j!#abcdefghij > #abcdihgfe #j
+PPNDH,1.0 pphn_c + 1.0 h_c -> 1.0 phpyr_c + 1.0 h2o_c + 1.0 co2_c,0.0,1000.0,b2599,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PPNDH 1 xpphn_c > 1 xco2_c 1 xphpyr_c!#abcdefghij > #j #abcdefghi!#abcdefghij > #j #abcdihgfe
+PPS,1.0 h2o_c + 1.0 pyr_c + 1.0 atp_c -> 1.0 pep_c + 1.0 pi_c + 1.0 amp_c + 2.0 h_c,0.0,1000.0,b1702,Glycolysis/Gluconeogenesis,PPS 1 xpyr_c > 1 xpep_c!#abc > #abc
+PROD2,1.0 pro_DASH_L_c + 1.0 fad_c -> 1.0 1pyr5c_c + 1.0 fadh2_c + 1.0 h_c,0.0,1000.0,b1014,Arginine and Proline Metabolism,PROD2 1 xpro_DASH_L_c > 1 x1pyr5c_c!#abcde > #abcde
+PRPPS,1.0 r5p_c + 1.0 atp_c -> 1.0 amp_c + 1.0 prpp_c + 1.0 h_c,0.0,1000.0,b1207,Histidine Metabolism,PRPPS 1 xr5p_c > 1 xprpp_c!#abcde > #abcde
+PSCVT,1.0 pep_c + 1.0 skm5p_c -> 1.0 pi_c + 1.0 3psme_c,0.0,1000.0,b0908,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PSCVT 1 xpep_c 1 xskm5p_c > 1 x3psme_c!#abc #defghij > #defghijbac
+PTAr,1.0 pi_c + 1.0 accoa_c -> 1.0 actp_c + 1.0 coa_c,0.0,1000.0,(b2297 or b2458),Pyruvate Metabolism,PTAr 1 xaccoa_c > 1 xactp_c!#ab > #ab
+PUNP1,1.0 pi_c + 1.0 adn_c -> 1.0 ade_c + 1.0 r1p_c,0.0,1000.0,b4384,Nucleotide Salvage Pathway,
+PUNP2,1.0 pi_c + 1.0 dad_DASH_2_c -> 1.0 2dr1p_c + 1.0 ade_c,0.0,1000.0,b4384,Nucleotide Salvage Pathway,
+PUNP3,1.0 pi_c + 1.0 gsn_c -> 1.0 gua_c + 1.0 r1p_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP4,1.0 dgsn_c + 1.0 pi_c -> 1.0 2dr1p_c + 1.0 gua_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP5,1.0 pi_c + 1.0 ins_c -> 1.0 hxan_c + 1.0 r1p_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP6,1.0 din_c + 1.0 pi_c -> 1.0 2dr1p_c + 1.0 hxan_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP7,1.0 pi_c + 1.0 xtsn_c -> 1.0 xan_c + 1.0 r1p_c,0.0,1000.0,b2407,Nucleotide Salvage Pathway,
+PYK,1.0 pep_c + 1.0 h_c + 1.0 adp_c -> 1.0 pyr_c + 1.0 atp_c,0.0,0.0,(b1854 or b1676),Glycolysis/Gluconeogenesis,PYK 1 xpep_c > 1 xpyr_c!#abc > #abc
+PYNP2r,1.0 uri_c + 1.0 pi_c -> 1.0 ura_c + 1.0 r1p_c,0.0,1000.0,b3831,Nucleotide Salvage Pathway,
+QUINDH,1.0 quin_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 3dhq_c + 2.0 h_c,0.0,1000.0,b1692,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",
+RHCCE,1.0 rhcys_c -> 1.0 hcys_DASH_L_c + 1.0 dhptd_c,0.0,1000.0,b2687,Methionine Metabolism,
+RNDR1,1.0 trdrd_c + 1.0 adp_c -> 1.0 dadp_c + 1.0 h2o_c + 1.0 trdox_c,0.0,1000.0,(((b2234 and b2235) and b2582) or ((b2234 and b2235) and b3781)),Nucleotide Salvage Pathway,
+RNDR2,1.0 gdp_c + 1.0 trdrd_c -> 1.0 h2o_c + 1.0 dgdp_c + 1.0 trdox_c,0.0,1000.0,(((b2234 and b2235) and b3781) or ((b2234 and b2235) and b2582)),Nucleotide Salvage Pathway,
+RNDR3,1.0 cdp_c + 1.0 trdrd_c -> 1.0 h2o_c + 1.0 trdox_c + 1.0 dcdp_c,0.0,1000.0,(((b2234 and b2235) and b3781) or ((b2234 and b2235) and b2582)),Nucleotide Salvage Pathway,
+RPE,1.0 ru5p_DASH_D_c -> 1.0 xu5p_DASH_D_c,0.0,1000.0,(b4301 or b3386),Pentose Phosphate Pathway,RPE 1 xru5p_DASH_D_c > 1 xxu5p_DASH_D_c!#abcde > #abcde
+RPI,1.0 r5p_c -> 1.0 ru5p_DASH_D_c,0.0,1000.0,(b2914 or b4090),Pentose Phosphate Pathway,RPI 1 xr5p_c > 1 xru5p_DASH_D_c!#abcde > #abcde
+SADT2,1.0 so4_c + 1.0 h2o_c + 1.0 gtp_c + 1.0 atp_c -> 1.0 ppi_c + 1.0 pi_c + 1.0 gdp_c + 1.0 aps_c,0.0,1000.0,(b2751 and b2752),Cysteine Metabolism,
+SDPDS,1.0 h2o_c + 1.0 sl26da_c -> 1.0 26dap_DASH_LL_c + 1.0 succ_c,0.0,1000.0,b2472,Threonine and Lysine Metabolism,SDPDS 1 xsl26da_c > 1 x26dap_DASH_LL_c 1 xsucc_c!#abcdefghijk > #abcdefg #hijk!#abcdefghijk > #gfedcba #hijk!#abcdefghijk > #abcdefg #kjih!#abcdefghijk > #gfedcba #kjih
+SDPTA,1.0 akg_c + 1.0 sl26da_c -> 1.0 sl2a6o_c + 1.0 glu_DASH_L_c,0.0,1000.0,b3359,Threonine and Lysine Metabolism,SDPTA 1 xakg_c 1 xsl26da_c > 1 xglu_DASH_L_c 1 xsl2a6o_c!#abcde #fghijklmnop > #abcde #fghijklmnop
+SERAT,1.0 ser_DASH_L_c + 1.0 accoa_c -> 1.0 acser_c + 1.0 coa_c,0.0,1000.0,b3607,Cysteine Metabolism,SERAT 1 xaccoa_c 1 xser_DASH_L_c > 1 xacser_c!#ab #cde > #cdeab
+SERD_D,1.0 ser_DASH_D_c -> 1.0 pyr_c + 1.0 nh4_c,0.0,1000.0,b2366,Glycine and Serine Metabolism,SERD_D 1 xser_DASH_D_c > 1 xpyr_c!#abc > #abc
+SERD_L,1.0 ser_DASH_L_c -> 1.0 pyr_c + 1.0 nh4_c,0.0,1000.0,(b4471 or b1814 or b2797 or b3708),Glycine and Serine Metabolism,SERD_L 1 xser_DASH_L_c > 1 xpyr_c!#abc > #abc
+SHK3Dr,1.0 3dhsk_c + 1.0 nadph_c + 1.0 h_c -> 1.0 nadp_c + 1.0 skm_c,0.0,1000.0,(b1692 or b3281),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",SHK3Dr 1 x3dhsk_c > 1 xskm_c!#abcdefg > #abcdefg
+SHKK,1.0 skm_c + 1.0 atp_c -> 1.0 skm5p_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,(b3390 or b0388),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",SHKK 1 xskm_c > 1 xskm5p_c!#abcdefg > #abcdefg
+SO4t2pp,1.0 so4_p + 1.0 h_p -> 1.0 so4_c + 1.0 h_c,0.0,1000.0,b1206,Inorganic Ion Transport and Metabolism,
+SO4tex,1.0 so4_e -> 1.0 so4_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+SPMS,1.0 ptrc_c + 1.0 ametam_c -> 1.0 spmd_c + 1.0 5mta_c + 1.0 h_c,0.0,1000.0,b0121,Arginine and Proline Metabolism,SPMS 1 xametam_c 1 xptrc_c > 1 xspmd_c 1 x5mta_c!#123456789Aabcd #efgh > #efghabc #123456789Ad!#123456789Aabcd #efgh > #hgfeabc #123456789Ad
+SSALx,1.0 h2o_c + 1.0 sucsal_c + 1.0 nad_c -> 1.0 succ_c + 1.0 nadh_c + 2.0 h_c,0.0,1000.0,b1525,Arginine and Proline Metabolism,SSALx 1 xsucsal_c > 1 xsucc_c!#abcd > #abcd!#abcd > #dcba
+SSALy,1.0 h2o_c + 1.0 nadp_c + 1.0 sucsal_c -> 1.0 succ_c + 1.0 nadph_c + 2.0 h_c,0.0,1000.0,(b2661 or b1525),Arginine and Proline Metabolism,SSALy 1 xsucsal_c > 1 xsucc_c!#abcd > #abcd!#abcd > #dcba
+SUCDi,1.0 succ_c + 1.0 q8_c -> 1.0 q8h2_c + 1.0 fum_c,0.0,1000.0,(b0721 and b0722 and b0723 and b0724),Oxidative Phosphorylation,SUCDi 1 xsucc_c > 1 xfum_c!#abcd > #dcba!#abcd > #abcd!#dcba > #dcba!#dcba > #abcd
+SUCOAS,1.0 succ_c + 1.0 coa_c + 1.0 atp_c -> 1.0 pi_c + 1.0 succoa_c + 1.0 adp_c,0.0,1000.0,(b0728 and b0729),Citric Acid Cycle,SUCOAS 1 xsucc_c > 1 xsuccoa_c!#abcd > #abcd!#dcba > #abcd
+SULRi,1.0 so3_c + 3.0 nadph_c + 5.0 h_c -> 3.0 h2o_c + 3.0 nadp_c + 1.0 h2s_c,0.0,1000.0,(b2763 and b2764),Cysteine Metabolism,
+TALA,1.0 g3p_c + 1.0 s7p_c -> 1.0 e4p_c + 1.0 f6p_c,0.0,1000.0,(b2464 or b0008),Pentose Phosphate Pathway,TALA 1 xg3p_c 1 xs7p_c > 1 xe4p_c 1 xf6p_c!#abc #defghij > #ghij #defabc
+THD2pp,1.0 nadp_c + 1.0 nadh_c + 2.0 h_p -> 1.0 nadph_c + 2.0 h_c + 1.0 nad_c,0.0,1000.0,(b1602 and b1603),Oxidative Phosphorylation,
+THFAT,1.0 h2o_c + 1.0 methf_c -> 1.0 5fthf_c + 1.0 h_c,0.0,1000.0,b2551,Folate Metabolism,THFAT 1 xmethf_c > 1 x5fthf_c!#a > #a
+THRAi,1.0 thr_DASH_L_c -> 1.0 acald_c + 1.0 gly_c,0.0,1000.0,(b2551 or b0870),Threonine and Lysine Metabolism,THRAi 1 xthr_DASH_L_c > 1 xacald_c 1 xgly_c!#abcd > #cd #ab
+THRD_L,1.0 thr_DASH_L_c -> 1.0 2obut_c + 1.0 nh4_c,0.0,1000.0,(b3117 or b3772),"Valine, Leucine, and Isoleucine Metabolism",THRD_L 1 xthr_DASH_L_c > 1 x2obut_c!#abcd > #abcd
+TKT1,1.0 r5p_c + 1.0 xu5p_DASH_D_c -> 1.0 g3p_c + 1.0 s7p_c,0.0,1000.0,(b2935 or b2465),Pentose Phosphate Pathway,TKT1 1 xr5p_c 1 xxu5p_DASH_D_c > 1 xg3p_c 1 xs7p_c!#abcde #fghij > #hij #fgabcde
+TKT2,1.0 e4p_c + 1.0 xu5p_DASH_D_c -> 1.0 g3p_c + 1.0 f6p_c,0.0,1000.0,(b2935 or b2465),Pentose Phosphate Pathway,TKT2 1 xe4p_c 1 xxu5p_DASH_D_c > 1 xf6p_c 1 xg3p_c!#abcd #efghi > #efabcd #ghi
+TMDK1,1.0 atp_c + 1.0 thymd_c -> 1.0 dtmp_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,b1238,Nucleotide Salvage Pathway,
+TMDPP,1.0 pi_c + 1.0 thymd_c -> 1.0 2dr1p_c + 1.0 thym_c,0.0,1000.0,b4382,Nucleotide Salvage Pathway,
+TMDS,1.0 dump_c + 1.0 mlthf_c -> 1.0 dtmp_c + 1.0 dhf_c,0.0,1000.0,b2827,Nucleotide Salvage Pathway,TMDS 1 xdump_c 1 xmlthf_c > 1 xdtmp_c!#abcdefghi #j > #abcdefghij
+TPI,1.0 dhap_c -> 1.0 g3p_c,0.0,1000.0,b3919,Glycolysis/Gluconeogenesis,TPI 1 xdhap_c > 1 xg3p_c!#abc > #cba
+TRDR,1.0 trdox_c + 1.0 nadph_c + 1.0 h_c -> 1.0 nadp_c + 1.0 trdrd_c,0.0,1000.0,((b3781 and b0888) or (b0888 and b2582)),Oxidative Phosphorylation,
+TRPAS2,1.0 h2o_c + 1.0 trp_DASH_L_c -> 1.0 pyr_c + 1.0 nh4_c + 1.0 indole_c,0.0,1000.0,b3708,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TRPAS2 1 xtrp_DASH_L_c > 1 xindole_c 1 xpyr_c!#abcdefghijk > #kdefghij #abc
+TRPS1,1.0 ser_DASH_L_c + 1.0 3ig3p_c -> 1.0 h2o_c + 1.0 g3p_c + 1.0 trp_DASH_L_c,0.0,1000.0,(b1260 and b1261),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TRPS1 1 x3ig3p_c 1 xser_DASH_L_c > 1 xg3p_c 1 xtrp_DASH_L_c!#abcdefghijk #lmn > #cba #lmndefghijk
+TRPS2,1.0 ser_DASH_L_c + 1.0 indole_c -> 1.0 h2o_c + 1.0 trp_DASH_L_c,0.0,1000.0,(b1260 and b1261),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TRPS2 1 xindole_c 1 xser_DASH_L_c > 1 xtrp_DASH_L_c!#abcdefgh #ijk > #ijkbcdefgha
+TRPS3,1.0 3ig3p_c -> 1.0 g3p_c + 1.0 indole_c,0.0,1000.0,(b1260 and b1261),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TRPS3 1 x3ig3p_c > 1 xg3p_c 1 xindole_c!#abcdefghijk > #cba #kdefghij
+TYRTA,1.0 akg_c + 1.0 tyr_DASH_L_c -> 1.0 34hpp_c + 1.0 glu_DASH_L_c,0.0,1000.0,(b4054 or b0928),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TYRTA 1 xakg_c 1 xtyr_DASH_L_c > 1 x34hpp_c 1 xglu_DASH_L_c!#abcde #fghijklmn > #fghijklmn #abcde!#abcde #fghijklmn > #fghinmlkj #abcde!#abcde #fghinmlkj > #fghijklmn #abcde!#abcde #fghinmlkj > #fghinmlkj #abcde
+UDCPDPS,8.0 ipdp_c + 1.0 frdp_c -> 1.0 udcpdp_c + 8.0 ppi_c,0.0,1000.0,b0174,Cofactor and Prosthetic Group Biosynthesis,
+UMPK,1.0 ump_c + 1.0 atp_c -> 1.0 udp_c + 1.0 adp_c,0.0,1000.0,(b0910 or b0171),Nucleotide Salvage Pathway,UMPK 1 xatp_c 1 xump_c > 1 xadp_c 1 xudp_c!#abcdefghij #klmnopqrs > #abcdefghij #klmnopqrs
+UPPRT,1.0 ura_c + 1.0 prpp_c -> 1.0 ump_c + 1.0 ppi_c,0.0,1000.0,b2498,Nucleotide Salvage Pathway,UPPRT 1 xprpp_c >!#abcde >
+URIK2,1.0 uri_c + 1.0 gtp_c -> 1.0 ump_c + 1.0 gdp_c + 1.0 h_c,0.0,1000.0,b2066,Nucleotide Salvage Pathway,
+VALTA,1.0 akg_c + 1.0 val_DASH_L_c -> 1.0 glu_DASH_L_c + 1.0 3mob_c,0.0,1000.0,b3770,"Valine, Leucine, and Isoleucine Metabolism",VALTA 1 xakg_c 1 xval_DASH_L_c > 1 x3mob_c 1 xglu_DASH_L_c!#abcde #fghij > #fghij #abcde
+VPAMTr,1.0 ala_DASH_L_c + 1.0 3mob_c -> 1.0 pyr_c + 1.0 val_DASH_L_c,0.0,1000.0,b3572,"Valine, Leucine, and Isoleucine Metabolism",VPAMTr 1 x3mob_c 1 xala_DASH_L_c > 1 xpyr_c 1 xval_DASH_L_c !#abcde #fgh > #fgh #abcde
+XPPT,1.0 prpp_c + 1.0 xan_c -> 1.0 xmp_c + 1.0 ppi_c,0.0,1000.0,b0238,Nucleotide Salvage Pathway,XPPT 1 xprpp_c >!#abcde >
+ZN2tpp,1.0 zn2_p -> 1.0 zn2_c,0.0,1000.0,b3040,Inorganic Ion Transport and Metabolism,
+Zn2tex,1.0 zn2_e -> 1.0 zn2_p,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+COtpp,1.0 co_c -> 1.0 co_p,0.0,1000.0,,,COtpp 1 xco_c > 1 xco_p!#a > #a
+COtex,1.0 co_p -> 1.0 co_e,0.0,1000.0,,,COtex 1 xco_p > 1 xco_e!#a > #a
+EX_co_LPAREN_e_RPAREN_,1.0 co_e ->,0.0,1000.0,,,EX_co_LPAREN_e_RPAREN_ 1 xco_e >!#a >
+EX_ca2_LPAREN_e_RPAREN__reverse,-> 1.0 ca2_e,0.0,1000.0,,,
+EX_cbl1_LPAREN_e_RPAREN__reverse,-> 1.0 cbl1_e,0.0,1000.0,,,
+EX_cl_LPAREN_e_RPAREN__reverse,-> 1.0 cl_e,0.0,1000.0,,,
+EX_co2_LPAREN_e_RPAREN__reverse,-> 1.0 co2_e,0.0,1000.0,,,
+EX_cobalt2_LPAREN_e_RPAREN__reverse,-> 1.0 cobalt2_e,0.0,1000.0,,,
+EX_cu2_LPAREN_e_RPAREN__reverse,-> 1.0 cu2_e,0.0,1000.0,,,
+EX_fe2_LPAREN_e_RPAREN__reverse,-> 1.0 fe2_e,0.0,1000.0,,,
+EX_fe3_LPAREN_e_RPAREN__reverse,-> 1.0 fe3_e,0.0,1000.0,,,
+EX_h_LPAREN_e_RPAREN__reverse,-> 1.0 h_e,0.0,1000.0,,,
+EX_h2o_LPAREN_e_RPAREN__reverse,-> 1.0 h2o_e,0.0,1000.0,,,
+EX_k_LPAREN_e_RPAREN__reverse,-> 1.0 k_e,0.0,1000.0,,,
+EX_mg2_LPAREN_e_RPAREN__reverse,-> 1.0 mg2_e,0.0,1000.0,,,
+EX_mn2_LPAREN_e_RPAREN__reverse,-> 1.0 mn2_e,0.0,1000.0,,,
+EX_mobd_LPAREN_e_RPAREN__reverse,-> 1.0 mobd_e,0.0,1000.0,,,
+EX_nh4_LPAREN_e_RPAREN__reverse,-> 1.0 nh4_e,0.0,1000.0,,,
+EX_ni2_LPAREN_e_RPAREN__reverse,-> 1.0 ni2_e,0.0,1000.0,,,
+EX_o2_LPAREN_e_RPAREN__reverse,-> 1.0 o2_e,0,16,,,
+EX_pi_LPAREN_e_RPAREN__reverse,-> 1.0 pi_e,0.0,1000.0,,,
+EX_so4_LPAREN_e_RPAREN__reverse,-> 1.0 so4_e,0.0,1000.0,,,
+EX_zn2_LPAREN_e_RPAREN__reverse,-> 1.0 zn2_e,0.0,1000.0,,,
+5MTRtex_reverse,1.0 5mtr_p -> 1.0 5mtr_e,0.0,1000.0,(b1377 or b0929 or b2215 or b0241),"Transport, Outer Membrane Porin",5MTRtex_reverse 1 x5mtr_p > 1 x5mtr_e!#abcdef > #abcdef
+ACALD_reverse,1.0 nadh_c + 1.0 h_c + 1.0 accoa_c -> 1.0 acald_c + 1.0 coa_c + 1.0 nad_c,0.0,1000.0,(b0351 or b1241),Pyruvate Metabolism,ACALD_reverse 1 xaccoa_c > 1 xacald_c!#ab > #ab
+ACKr_reverse,1.0 actp_c + 1.0 adp_c -> 1.0 ac_c + 1.0 atp_c,0.0,1000.0,(b3115 or b2296 or b1849),Pyruvate Metabolism,ACKr_reverse 1 xactp_c > 1 xac_c!#ab > #ab
+ACONTa_reverse,1.0 h2o_c + 1.0 acon_DASH_C_c -> 1.0 cit_c,0.0,1000.0,(b0118 or b1276),Citric Acid Cycle,ACONTa_reverse 1 xacon_DASH_C_c > 1 xcit_c!#abcdef > #abcdef
+ACONTb_reverse,1.0 icit_c -> 1.0 h2o_c + 1.0 acon_DASH_C_c,0.0,1000.0,(b0118 or b1276),Citric Acid Cycle,ACONTb_reverse 1 xicit_c > 1 xacon_DASH_C_c !#abcdef > #abcdef
+ACOTA_reverse,1.0 glu_DASH_L_c + 1.0 acg5sa_c -> 1.0 akg_c + 1.0 acorn_c,0.0,1000.0,(b1748 or b3359),Arginine and Proline Metabolism,ACOTA_reverse 1 xacg5sa_c 1 xglu_DASH_L_c > 1 xacorn_c 1 xakg_c!#abcdefg #hijkl > #abcdefg #hijkl
+ACt2rpp_reverse,1.0 ac_c + 1.0 h_c -> 1.0 ac_p + 1.0 h_p,0.0,1000.0,,"Transport, Inner Membrane",ACt2rpp_reverse 1 xac_c > 1 xac_p!#ab > #ab
+ACtex_reverse,1.0 ac_p -> 1.0 ac_e,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",
+ADK1_reverse,2.0 adp_c -> 1.0 amp_c + 1.0 atp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+ADK3_reverse,1.0 gdp_c + 1.0 adp_c -> 1.0 gtp_c + 1.0 amp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+ADK4_reverse,1.0 idp_c + 1.0 adp_c -> 1.0 amp_c + 1.0 itp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+AGPR_reverse,1.0 acg5p_c + 1.0 nadph_c + 1.0 h_c -> 1.0 nadp_c + 1.0 pi_c + 1.0 acg5sa_c,0.0,1000.0,b3958,Arginine and Proline Metabolism,AGPR_reverse 1 xacg5p_c > 1 xacg5sa_c!#abcdefg > #abcdefg
+ALAGLUE_reverse,1.0 LalaLglu_c -> 1.0 LalaDglu_c,0.0,1000.0,b1325,Murein Recycling,
+ALAR_reverse,1.0 ala_DASH_D_c -> 1.0 ala_DASH_L_c,0.0,1000.0,(b1190 or b4053),Alanine and Aspartate Metabolism,ALAR_reverse 1 xala_DASH_D_c > 1 xala_DASH_L_c!#abc > #abc
+ALATA_L_reverse,1.0 pyr_c + 1.0 glu_DASH_L_c -> 1.0 akg_c + 1.0 ala_DASH_L_c,0.0,1000.0,(b2290 or b2379),Alanine and Aspartate Metabolism,ALATA_L_reverse 1 xglu_DASH_L_c 1 xpyr_c > 1 xakg_c 1 xala_DASH_L_c!#abcde #fgh > #abcde #fgh
+ALCD2x_reverse,1.0 acald_c + 1.0 nadh_c + 1.0 h_c -> 1.0 etoh_c + 1.0 nad_c,0.0,1000.0,(b1478 or b1241 or b0356),Pyruvate Metabolism,ALCD2x_reverse 1 xetoh_c > 1 xaccoa_c!#ab > #ab
+APPLDHr_reverse,1.0 appl_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 aact_c,0.0,1000.0,b3945,Threonine and Lysine Metabolism,
+ARGSL_reverse,1.0 arg_DASH_L_c + 1.0 fum_c -> 1.0 argsuc_c,0.0,1000.0,b3960,Arginine and Proline Metabolism,ARGSL_reverse 1 xarg_DASH_L_c 1 xfum_c > 1 xargsuc_c!#abcdef #jghi > #abcdefghij!#abcdef #ihgj > #abcdefghij
+ASAD_reverse,1.0 nadph_c + 1.0 4pasp_c + 1.0 h_c -> 1.0 aspsa_c + 1.0 nadp_c + 1.0 pi_c,0.0,1000.0,b3433,Threonine and Lysine Metabolism,ASAD_reverse 1 x4pasp_c > 1 xaspsa_c!#abcd > #abcd
+ASPK_reverse,1.0 4pasp_c + 1.0 adp_c -> 1.0 asp_DASH_L_c + 1.0 atp_c,0.0,1000.0,(b0002 or b3940 or b4024),Threonine and Lysine Metabolism,ASPK_reverse 1 x4pasp_c > 1 xasp_DASH_L_c!#abcd > #abcd
+ASPTA_reverse,1.0 glu_DASH_L_c + 1.0 oaa_c -> 1.0 akg_c + 1.0 asp_DASH_L_c,0.0,1000.0,b0928,Alanine and Aspartate Metabolism,ASPTA_reverse 1 xglu_DASH_L_c 1 xoaa_c > 1 xakg_c 1 xasp_DASH_L_c!#abcde #fghi > #abcde #fghi
+ATHRDHr_reverse,1.0 nadph_c + 1.0 2aobut_c + 1.0 h_c -> 1.0 nadp_c + 1.0 athr_DASH_L_c,0.0,1000.0,b1539,Threonine and Lysine Metabolism,
+ATPS4rpp_reverse,1.0 h2o_c + 3.0 h_c + 1.0 atp_c -> 1.0 pi_c + 4.0 h_p + 1.0 adp_c,0.0,1000.0,(((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735) and b3739) or ((b3736 and b3737 and b3738) and (b3731 and b3732 and b3733 and b3734 and b3735))),Oxidative Phosphorylation,ATPS4rpp_reverse 1 xatp_c > 1 xadp_c!#abcdefghij > #abcdefghij
+CAt6pp_reverse,1.0 na1_c + 1.0 ca2_p -> 1.0 na1_p + 1.0 ca2_c,0.0,1000.0,b3196,Inorganic Ion Transport and Metabolism,
+CO2tex_reverse,1.0 co2_p -> 1.0 co2_e,0.0,1000.0,(b0241 or b0929 or b1377 or b2215),"Transport, Outer Membrane Porin",CO2tex_reverse 1 xco2_p > 1 xco2_e!#a > #a
+CO2tpp_reverse,1.0 co2_c -> 1.0 co2_p,0.0,1000.0,s0001,"Transport, Inner Membrane",CO2tpp_reverse 1 xco2_c > 1 xco2_p!#a > #a
+CRNBTCT_reverse,1.0 crncoa_c + 1.0 gbbtn_c -> 1.0 crn_c + 1.0 bbtcoa_c,0.0,1000.0,b0038,Oxidative Phosphorylation,
+CRNCAR_reverse,1.0 crnDcoa_c -> 1.0 crncoa_c,0.0,1000.0,b0036,Oxidative Phosphorylation,
+CRNCBCT_reverse,1.0 crncoa_c + 1.0 ctbt_c -> 1.0 crn_c + 1.0 ctbtcoa_c,0.0,1000.0,b0038,Oxidative Phosphorylation,
+CRNCDH_reverse,1.0 ctbtcoa_c + 1.0 h2o_c -> 1.0 crncoa_c,0.0,1000.0,b0036,Oxidative Phosphorylation,
+CYTK1_reverse,1.0 cdp_c + 1.0 adp_c -> 1.0 atp_c + 1.0 cmp_c,0.0,1000.0,b0910,Nucleotide Salvage Pathway,
+CYTK2_reverse,1.0 adp_c + 1.0 dcdp_c -> 1.0 dcmp_c + 1.0 atp_c,0.0,1000.0,b0910,Nucleotide Salvage Pathway,
+DADK_reverse,1.0 dadp_c + 1.0 adp_c -> 1.0 damp_c + 1.0 atp_c,0.0,1000.0,b0474,Nucleotide Salvage Pathway,
+DAPE_reverse,1.0 26dap_DASH_M_c -> 1.0 26dap_DASH_LL_c,0.0,1000.0,b3809,Threonine and Lysine Metabolism,DAPE_reverse 1 x26dap_DASH_M_c > 1 x26dap_DASH_LL_c!#abcdefg > #abcdefg!#abcdefg > #gfedcba!#gfedcba > #abcdefg!#gfedcba > #gfedcba
+DGK1_reverse,1.0 dgdp_c + 1.0 adp_c -> 1.0 dgmp_c + 1.0 atp_c,0.0,1000.0,b3648,Nucleotide Salvage Pathway,
+DSERDHr_reverse,1.0 2amsa_c + 1.0 nadph_c + 1.0 h_c -> 1.0 ser_DASH_D_c + 1.0 nadp_c,0.0,1000.0,b1539,Glycine and Serine Metabolism,DSERDHr_reverse 1 x2amsa_c > 1 xser_DASH_D_c!#abc > #abc
+DTMPK_reverse,1.0 dtdp_c + 1.0 adp_c -> 1.0 dtmp_c + 1.0 atp_c,0.0,1000.0,b1098,Nucleotide Salvage Pathway,
+DURADx_reverse,1.0 ura_c + 1.0 nadh_c + 1.0 h_c -> 1.0 56dura_c + 1.0 nad_c,0.0,1000.0,(b2147 and b2146),Nucleotide Salvage Pathway,
+DURIPP_reverse,1.0 ura_c + 1.0 2dr1p_c -> 1.0 pi_c + 1.0 duri_c,0.0,1000.0,(b4382 or b4384),Nucleotide Salvage Pathway,
+ENO_reverse,1.0 pep_c + 1.0 h2o_c -> 1.0 2pg_c,0.0,1000.0,b2779,Glycolysis/Gluconeogenesis,ENO_reverse 1 xpep_c > 1 x2pg_c!#abc > #abc
+FBA_reverse,1.0 dhap_c + 1.0 g3p_c -> 1.0 fdp_c,0.0,1000.0,(b2097 or b1773 or b2925),Glycolysis/Gluconeogenesis,FBA_reverse 1 xdhap_c 1 xg3p_c > 1 xfdp_c!#abc #def > #abcdef
+FBA3_reverse,1.0 e4p_c + 1.0 dhap_c -> 1.0 s17bp_c,0.0,1000.0,b2925,Pentose Phosphate Pathway,FBA3_reverse 1 xe4p_c 1 xdhap_c > 1 xs17bp_c!#abcd #efg > #gfeabcd
+FUM_reverse,1.0 mal_DASH_L_c -> 1.0 h2o_c + 1.0 fum_c,0.0,1000.0,(b1612 or b4122 or b1611),Citric Acid Cycle,FUM_reverse 1 xmal_DASH_L_c > 1 xfum_c!#abcd > #abcd!#abcd > #dcba
+G3PD2_reverse,1.0 dhap_c + 1.0 nadph_c + 1.0 h_c -> 1.0 glyc3p_c + 1.0 nadp_c,0.0,1000.0,b3608,Alternate Carbon Metabolism,G3PD2_reverse 1 xdhap_c > 1 xglyc3p_c!#abc > #abc
+G6PDH2r_reverse,1.0 6pgl_c + 1.0 nadph_c + 1.0 h_c -> 1.0 g6p_c + 1.0 nadp_c,0.0,1000.0,b1852,Pentose Phosphate Pathway,G6PDH2r_reverse 1 x6pgl_c > 1 xg6p_c!#abcdef > #abcdef
+GAPD_reverse,1.0 nadh_c + 1.0 h_c + 1.0 13dpg_c -> 1.0 pi_c + 1.0 g3p_c + 1.0 nad_c,0.0,1000.0,b1779,Glycolysis/Gluconeogenesis,GAPD_reverse 1 x13dpg_c > 1 xg3p_c!#abc > #abc
+GARFT_reverse,1.0 fgam_c + 1.0 thf_c + 1.0 h_c -> 1.0 gar_c + 1.0 10fthf_c,0.0,1000.0,b2500,Purine and Pyrimidine Biosynthesis,GARFT_reverse 1 xfgam_c > 1 xgar_c 1 x10fthf_c!#abcdefgh > #abcdefg #h
+GHBDHx_reverse,1.0 ghb_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 sucsal_c,0.0,1000.0,b3882,Arginine and Proline Metabolism,
+GHMT2r_reverse,1.0 h2o_c + 1.0 gly_c + 1.0 mlthf_c -> 1.0 ser_DASH_L_c + 1.0 thf_c,0.0,1000.0,b2551,Glycine and Serine Metabolism,GHMT2r_reverse 1 xgly_c 1 xmlthf_c > 1 xser_DASH_L_c!#ab #c > #abc
+GK1_reverse,1.0 gdp_c + 1.0 adp_c -> 1.0 gmp_c + 1.0 atp_c,0.0,1000.0,b3648,Nucleotide Salvage Pathway,
+GLYCLTt2rpp_reverse,1.0 glyclt_c + 1.0 h_c -> 1.0 glyclt_p + 1.0 h_p,0.0,1000.0,(b3603 or b2975),"Transport, Inner Membrane",
+GLYCtpp_reverse,1.0 glyc_p -> 1.0 glyc_c,0.0,1000.0,(b3927 or s0001),"Transport, Inner Membrane",GLYCtpp_reverse 1 xglyc_c > 1 xglyc_p!#abc > #abc!#cba > #abc!#abc > #cba!#cba > #cba
+H2Otex_reverse,1.0 h2o_p -> 1.0 h2o_e,0.0,1000.0,(s0001 or b0957 or b3875 or b2215 or b0241 or b1319 or b1377 or b0929),"Transport, Outer Membrane Porin",
+H2Otpp_reverse,1.0 h2o_c -> 1.0 h2o_p,0.0,1000.0,(s0001 or b0875),"Transport, Inner Membrane",
+HSDy_reverse,1.0 aspsa_c + 1.0 nadph_c + 1.0 h_c -> 1.0 nadp_c + 1.0 hom_DASH_L_c,0.0,1000.0,(b3940 or b0002),Threonine and Lysine Metabolism,HSDy_reverse 1 xaspsa_c > 1 xhom_DASH_L_c!#abcd > #abcd
+Htex_reverse,1.0 h_p -> 1.0 h_e,0.0,1000.0,(b0929 or b1377 or b2215 or b0241),"Transport, Outer Membrane Porin",
+ICDHyr_reverse,1.0 akg_c + 1.0 co2_c + 1.0 nadph_c -> 1.0 icit_c + 1.0 nadp_c,0.0,1000.0,b1136,Citric Acid Cycle,ICDHyr_reverse 1 xakg_c 1 xco2_c > 1 xicit_c!#abcde #f > #abcdef
+ILETA_reverse,1.0 3mop_c + 1.0 glu_DASH_L_c -> 1.0 akg_c + 1.0 ile_DASH_L_c,0.0,1000.0,b3770,"Valine, Leucine, and Isoleucine Metabolism",ILETA_reverse 1 x3mop_c 1 xglu_DASH_L_c > 1 xakg_c 1 xile_DASH_L_c!#fghijk #abcde > #abcde #fghijk
+IPPMIa_reverse,1.0 2ippm_c + 1.0 h2o_c -> 1.0 3c2hmp_c,0.0,1000.0,(b0071 and b0072),"Valine, Leucine, and Isoleucine Metabolism",IPPMIa_reverse 1 x2ippm_c > 1 x3c2hmp_c!#abcdefg > #abcdefg
+IPPMIb_reverse,1.0 3c3hmp_c -> 1.0 2ippm_c + 1.0 h2o_c,0.0,1000.0,(b0071 and b0072),"Valine, Leucine, and Isoleucine Metabolism",IPPMIb_reverse 1 x3c3hmp_c > 1 x2ippm_c!#abcdefg > #abcdefg
+LCARR_reverse,1.0 12ppd_DASH_R_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 h_c + 1.0 lald_DASH_D_c,0.0,1000.0,,Methylglyoxal Metabolism,LCARR_reverse 1 x12ppd_DASH_R_c > 1 xlald_DASH_D_c!#abc > #abc
+LDH_D_reverse,1.0 pyr_c + 1.0 nadh_c + 1.0 h_c -> 1.0 lac_DASH_D_c + 1.0 nad_c,0.0,1000.0,(b2133 or b1380),Pyruvate Metabolism,LDH_D_reverse 1 xpyr_c > 1 xlac_DASH_D_c!#abc > #abc
+LSERDHr_reverse,1.0 2amsa_c + 1.0 nadph_c + 1.0 h_c -> 1.0 ser_DASH_L_c + 1.0 nadp_c,0.0,1000.0,b1539,Glycine and Serine Metabolism,LSERDHr_reverse 1 x2amsa_c > 1 xser_DASH_L_c!#abc > #abc
+MDH_reverse,1.0 nadh_c + 1.0 h_c + 1.0 oaa_c -> 1.0 mal_DASH_L_c + 1.0 nad_c,0.0,1000.0,b3236,Citric Acid Cycle,MDH_reverse 1 xoaa_c > 1 xmal_DASH_L_c!#abcd > #abcd
+MEOHtex_reverse,1.0 meoh_p -> 1.0 meoh_e,0.0,1000.0,(b1377 or b0929 or b2215 or b0241),"Transport, Outer Membrane Porin",
+MEOHtrpp_reverse,1.0 meoh_c -> 1.0 meoh_p,0.0,1000.0,s0001,"Transport, Inner Membrane",
+MOX_reverse,1.0 h2o2_c + 1.0 oaa_c -> 1.0 o2_c + 1.0 mal_DASH_L_c,0.0,1000.0,,Citric Acid Cycle,MOX_reverse 1 xoaa_c > 1 xmal_DASH_L_c!#abcd > #abcd
+MTHFC_reverse,1.0 10fthf_c + 1.0 h_c -> 1.0 h2o_c + 1.0 methf_c,0.0,1000.0,b0529,Folate Metabolism,MTHFC_reverse 1 x10fthf_c > 1 xmethf_c!#a > #a
+MTHFD_reverse,1.0 nadph_c + 1.0 methf_c -> 1.0 nadp_c + 1.0 mlthf_c,0.0,1000.0,b0529,Folate Metabolism,MTHFD_reverse 1 xmethf_c > 1 xmlthf_c!#a > #a
+NDPK1_reverse,1.0 gtp_c + 1.0 adp_c -> 1.0 gdp_c + 1.0 atp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK2_reverse,1.0 utp_c + 1.0 adp_c -> 1.0 udp_c + 1.0 atp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK3_reverse,1.0 ctp_c + 1.0 adp_c -> 1.0 cdp_c + 1.0 atp_c,0.0,1000.0,(b2518 or b0474),Nucleotide Salvage Pathway,
+NDPK4_reverse,1.0 dttp_c + 1.0 adp_c -> 1.0 dtdp_c + 1.0 atp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK5_reverse,1.0 dgtp_c + 1.0 adp_c -> 1.0 dgdp_c + 1.0 atp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK7_reverse,1.0 adp_c + 1.0 dctp_c -> 1.0 atp_c + 1.0 dcdp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+NDPK8_reverse,1.0 datp_c + 1.0 adp_c -> 1.0 dadp_c + 1.0 atp_c,0.0,1000.0,(b0474 or b2518),Nucleotide Salvage Pathway,
+OCBT_reverse,1.0 pi_c + 1.0 h_c + 1.0 citr_DASH_L_c -> 1.0 cbp_c + 1.0 orn_c,0.0,1000.0,(b4254 or b0273),Arginine and Proline Metabolism,OCBT_reverse 1 xcitr_DASH_L_c > 1 xcbp_c 1 xorn_c!#bcdefa > #a #bcdef
+PGI_reverse,1.0 f6p_c -> 1.0 g6p_c,0.0,1000.0,b4025,Glycolysis/Gluconeogenesis,PGI_reverse 1 xf6p_c > 1 xg6p_c!#abcdef > #abcdef
+PGK_reverse,1.0 13dpg_c + 1.0 adp_c -> 1.0 atp_c + 1.0 3pg_c,0.0,1000.0,b2926,Glycolysis/Gluconeogenesis,PGK_reverse 1 x13dpg_c > 1 x3pg_c!#abc > #abc
+PGM_reverse,1.0 3pg_c -> 1.0 2pg_c,0.0,1000.0,(b3612 or b4395 or b0755),Glycolysis/Gluconeogenesis,PGM_reverse 1 x3pg_c > 1 x2pg_c!#abc > #abc
+PGMT_reverse,1.0 g6p_c -> 1.0 g1p_c,0.0,1000.0,(b2690 or b0688),Alternate Carbon Metabolism,PGMT_reverse 1 xg6p_c > 1 xg1p_c!#abcdef > #abcdef
+PHETA1_reverse,1.0 phpyr_c + 1.0 glu_DASH_L_c -> 1.0 akg_c + 1.0 phe_DASH_L_c,0.0,1000.0,(b4054 or b0928 or b3770),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PHETA1_reverse 1 xglu_DASH_L_c 1 xphpyr_c > 1 xakg_c 1 xphe_DASH_L_c!#abcde #fghijklmn > #abcde #fghijklmn!#abcde #fghijklmn > #abcde #fghinmlkj!#abcde #fghinmlkj > #abcde #fghijklmn!#abcde #fghinmlkj > #abcde #fghinmlkj
+POR5_reverse,1.0 co2_c + 2.0 flxr_c + 1.0 h_c + 1.0 accoa_c -> 2.0 flxso_c + 1.0 pyr_c + 1.0 coa_c,0.0,1000.0,((b0684 and b1378) or (b2895 and b1378)),Pyruvate Metabolism,POR5_reverse 1 xaccoa_c 1 xco2_c > 1 xpyr_c!#ab #c > #cab
+PPK2r_reverse,1.0 pppi_c + 1.0 adp_c -> 1.0 ppi_c + 1.0 atp_c,0.0,1000.0,b2501,Oxidative Phosphorylation,
+PPKr_reverse,1.0 ppi_c + 1.0 adp_c -> 1.0 pi_c + 1.0 atp_c,0.0,1000.0,b2501,Oxidative Phosphorylation,
+PPM_reverse,1.0 r5p_c -> 1.0 r1p_c,0.0,1000.0,(b3380 or b4383),Alternate Carbon Metabolism,PPM_reverse 1 xr5p_c > 1 xr1p_c!#abcde > #abcde
+PRPPS_reverse,1.0 amp_c + 1.0 prpp_c + 1.0 h_c -> 1.0 r5p_c + 1.0 atp_c,0.0,1000.0,b1207,Histidine Metabolism,PRPPS_reverse 1 xprpp_c > 1 xr5p_c!#abcde > #abcde
+PSCVT_reverse,1.0 pi_c + 1.0 3psme_c -> 1.0 pep_c + 1.0 skm5p_c,0.0,1000.0,b0908,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",PSCVT_reverse 1 x3psme_c > 1 xpep_c 1 xskm5p_c!#defghijbac > #abc #defghij
+PTAr_reverse,1.0 actp_c + 1.0 coa_c -> 1.0 pi_c + 1.0 accoa_c,0.0,1000.0,(b2297 or b2458),Pyruvate Metabolism,PTAr_reverse 1 xactp_c > 1 xaccoa_c!#ab > #ab
+PUNP1_reverse,1.0 ade_c + 1.0 r1p_c -> 1.0 pi_c + 1.0 adn_c,0.0,1000.0,b4384,Nucleotide Salvage Pathway,PUNP1_reverse 1 xr1p_c >!#abcde >
+PUNP2_reverse,1.0 2dr1p_c + 1.0 ade_c -> 1.0 pi_c + 1.0 dad_DASH_2_c,0.0,1000.0,b4384,Nucleotide Salvage Pathway,
+PUNP3_reverse,1.0 gua_c + 1.0 r1p_c -> 1.0 pi_c + 1.0 gsn_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,PUNP3_reverse 1 xr1p_c >!#abcde >
+PUNP4_reverse,1.0 2dr1p_c + 1.0 gua_c -> 1.0 dgsn_c + 1.0 pi_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP5_reverse,1.0 hxan_c + 1.0 r1p_c -> 1.0 pi_c + 1.0 ins_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,PUNP5_reverse 1 xr1p_c >!#abcde >
+PUNP6_reverse,1.0 2dr1p_c + 1.0 hxan_c -> 1.0 din_c + 1.0 pi_c,0.0,1000.0,(b2407 or b4384),Nucleotide Salvage Pathway,
+PUNP7_reverse,1.0 xan_c + 1.0 r1p_c -> 1.0 pi_c + 1.0 xtsn_c,0.0,1000.0,b2407,Nucleotide Salvage Pathway,PUNP7_reverse 1 xr1p_c >!#abcde >
+PYNP2r_reverse,1.0 ura_c + 1.0 r1p_c -> 1.0 uri_c + 1.0 pi_c,0.0,1000.0,b3831,Nucleotide Salvage Pathway,PYNP2r_reverse 1 xr1p_c >!#abcde >
+QUINDH_reverse,1.0 nadh_c + 1.0 3dhq_c + 2.0 h_c -> 1.0 quin_c + 1.0 nad_c,0.0,1000.0,b1692,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",
+RPE_reverse,1.0 xu5p_DASH_D_c -> 1.0 ru5p_DASH_D_c,0.0,1000.0,(b4301 or b3386),Pentose Phosphate Pathway,RPE_reverse 1 xxu5p_DASH_D_c > 1 xru5p_DASH_D_c!#abcde > #abcde
+RPI_reverse,1.0 ru5p_DASH_D_c -> 1.0 r5p_c,0.0,1000.0,(b2914 or b4090),Pentose Phosphate Pathway,RPI_reverse 1 xru5p_DASH_D_c > 1 xr5p_c!#abcde > #abcde
+SDPTA_reverse,1.0 sl2a6o_c + 1.0 glu_DASH_L_c -> 1.0 akg_c + 1.0 sl26da_c,0.0,1000.0,b3359,Threonine and Lysine Metabolism,SDPTA_reverse 1 xglu_DASH_L_c 1 xsl2a6o_c > 1 xakg_c 1 xsl26da_c!#abcde #fghijklmnop > #abcde #fghijklmnop
+SERAT_reverse,1.0 acser_c + 1.0 coa_c -> 1.0 ser_DASH_L_c + 1.0 accoa_c,0.0,1000.0,b3607,Cysteine Metabolism,SERAT_reverse 1 xacser_c > 1 xaccoa_c 1 xser_DASH_L_c!#cdeab > #ab #cde
+SHK3Dr_reverse,1.0 nadp_c + 1.0 skm_c -> 1.0 3dhsk_c + 1.0 nadph_c + 1.0 h_c,0.0,1000.0,(b1692 or b3281),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",SHK3Dr_reverse 1 xskm_c > 1 x3dhsk_c!#abcdefg > #abcdefg
+SUCOAS_reverse,1.0 pi_c + 1.0 succoa_c + 1.0 adp_c -> 1.0 succ_c + 1.0 coa_c + 1.0 atp_c,0.0,1000.0,(b0728 and b0729),Citric Acid Cycle,SUCOAS_reverse 1 xsuccoa_c > 1 xsucc_c!#abcd > #abcd!#abcd > #dcba
+TALA_reverse,1.0 e4p_c + 1.0 f6p_c -> 1.0 s7p_c + 1.0 g3p_c,0.0,1000.0,(b2464 or b0008),Pentose Phosphate Pathway,TALA_reverse 1 xe4p_c 1 xf6p_c > 1 xg3p_c 1 xs7p_c!#ghij #defabc > #abc #defghij
+TKT1_reverse,1.0 g3p_c + 1.0 s7p_c -> 1.0 r5p_c + 1.0 xu5p_DASH_D_c,0.0,1000.0,(b2935 or b2465),Pentose Phosphate Pathway,TKT1_reverse 1 xg3p_c 1 xs7p_c > 1 xr5p_c 1 xxu5p_DASH_D_c!#hij #fgabcde > #abcde #fghij
+TKT2_reverse,1.0 g3p_c + 1.0 f6p_c -> 1.0 e4p_c + 1.0 xu5p_DASH_D_c,0.0,1000.0,(b2935 or b2465),Pentose Phosphate Pathway,TKT2_reverse 1 xf6p_c 1 xg3p_c > 1 xe4p_c 1 xxu5p_DASH_D_c!#efabcd #ghi > #abcd #efghi
+TMDPP_reverse,1.0 2dr1p_c + 1.0 thym_c -> 1.0 pi_c + 1.0 thymd_c,0.0,1000.0,b4382,Nucleotide Salvage Pathway,
+TPI_reverse,1.0 g3p_c -> 1.0 dhap_c,0.0,1000.0,b3919,Glycolysis/Gluconeogenesis,TPI_reverse 1 xg3p_c > 1 xdhap_c!#cba > #abc
+TRPAS2_reverse,1.0 pyr_c + 1.0 nh4_c + 1.0 indole_c -> 1.0 h2o_c + 1.0 trp_DASH_L_c,0.0,1000.0,b3708,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TRPAS2_reverse 1 xindole_c 1 xpyr_c > 1 xtrp_DASH_L_c!#kdefghij #abc > #abcdefghijk
+TYRTA_reverse,1.0 34hpp_c + 1.0 glu_DASH_L_c -> 1.0 akg_c + 1.0 tyr_DASH_L_c,0.0,1000.0,(b4054 or b0928),"Tyrosine, Tryptophan, and Phenylalanine Metabolism",TYRTA_reverse 1 x34hpp_c 1 xglu_DASH_L_c > 1 xakg_c 1 xtyr_DASH_L_c!#fghijklmn #abcde > #abcde #fghijklmn!#fghinmlkj #abcde > #abcde #fghijklmn!#fghijklmn #abcde > #abcde #fghinmlkj!#fghinmlkj #abcde > #abcde #fghinmlkj
+UMPK_reverse,1.0 udp_c + 1.0 adp_c -> 1.0 ump_c + 1.0 atp_c,0.0,1000.0,(b0910 or b0171),Nucleotide Salvage Pathway,
+VALTA_reverse,1.0 glu_DASH_L_c + 1.0 3mob_c -> 1.0 akg_c + 1.0 val_DASH_L_c,0.0,1000.0,b3770,"Valine, Leucine, and Isoleucine Metabolism",VALTA_reverse 1 x3mob_c 1 xglu_DASH_L_c > 1 xakg_c 1 xval_DASH_L_c!#fghij #abcde > #abcde #fghij
+VPAMTr_reverse,1.0 pyr_c + 1.0 val_DASH_L_c -> 1.0 ala_DASH_L_c + 1.0 3mob_c,0.0,1000.0,b3572,"Valine, Leucine, and Isoleucine Metabolism",VPAMTr_reverse 1 xpyr_c 1 xval_DASH_L_c > 1 x3mob_c 1 xala_DASH_L_c !#abc #defgh > #defgh #abc
+FADSYN_3_Full,2.0 atp_c + 1.0 ribflv_c -> 1.0 ppi_c + 1.0 fad_c + 1.0 adp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,FADSYN_3_Full 1 xribflv_c 1 xatp_c > 1 xfad_c!#abcdefghijklmnopq #ABCDEFGHIJ > #abcdefghijklmnopqABCDEFGHIJ
+MOLYBDOPTERIN_3,1.0 h_c + 1.0 nadh_c + 1.0 iscssh_c + 1.0 atp_c + 1.0 moadcoo_c -> 1.0 moadcosh_c + 1.0 ppi_c + 1.0 iscs_c + 1.0 nad_c + 1.0 amp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+MOLYBDOPTERIN_1,2.0 moadcosh_c + 1.0 cu2_c + 1.0 h2o_c + 1.0 gtp_c + 1.0 atp_c -> 2.0 ppi_c + 2.0 moadcoo_c + 4.0 h_c + 1.0 mptamp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+IMPSYN_2,1.0 hco3_c + 1.0 asp_DASH_L_c + 2.0 atp_c + 1.0 air_c -> 1.0 fum_c + 1.0 aicar_c + 2.0 pi_c + 2.0 h_c + 2.0 adp_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,IMPSYN_2 1 xair_c 1 xhco3 1 xasp_DASH_L_c > 1 xaicar_c 1 xfum_c!#abcdefgh #i #jklm > #abcdefghi #jklm!#abcdefgh #i #jklm > #abcdefghi #mlkj
+GLYCPHOSPHOLIPID_1,1.0 ctp_c + 1.0 glyc3p_c + 1.0 h_c + 2.0 octeACP_c -> 1.0 ppi_c + 2.0 ACP_c + 1.0 cdpdodec11eg_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_1 1 xglyc3p_c >!#abc >
+glu_DASH_L_to_glu5sa,1.0 glu_DASH_L_c + 1.0 nadph_c + 1.0 h_c + 1.0 atp_c -> 1.0 glu5sa_c + 1.0 nadp_c + 1.0 pi_c + 1.0 adp_c,0.0,1000.0,,Arginine and Proline Metabolism,glu_DASH_L_to_glu5sa 1 xglu_DASH_L_c > 1 xglu5sa_c!#abcde > #abcde
+hom_DASH_L_to_thr_DASH_L,1.0 h2o_c + 1.0 hom_DASH_L_c + 1.0 atp_c -> 1.0 thr_DASH_L_c + 1.0 pi_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,,Threonine and Lysine Metabolism,hom_DASH_L_to_thr_DASH_L 1 xhom_DASH_L_c > 1 xthr_DASH_L_c!#abcd > #abcd
+prpp_to_his_DASH_L,3.0 h2o_c + 1.0 gln_DASH_L_c + 1.0 prpp_c + 2.0 nad_c + 1.0 atp_c -> 1.0 akg_c + 2.0 nadh_c + 1.0 aicar_c + 2.0 ppi_c + 5.0 h_c + 1.0 pi_c + 1.0 his_DASH_L_c,0.0,1000.0,,Histidine Metabolism,prpp_to_his_DASH_L 1 xatp_c 1 xgln_DASH_L_c 1 xprpp_c > 1 xaicar_c 1 xakg_c 1 xhis_DASH_L_c !#123456789a #bcdef #ghijk > #12345789a #bcdef #kjihg6
+hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,1.0 succoa_c + 1.0 h2o_c + 1.0 hom_DASH_L_c + 1.0 cys_DASH_L_c -> 1.0 pyr_c + 1.0 succ_c + 1.0 coa_c + 1.0 h_c + 1.0 hcys_DASH_L_c + 1.0 nh4_c,0.0,1000.0,,Methionine Metabolism,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L 1 xcys_DASH_L_c 1 xhom_DASH_L_c 1 xsuccoa_c > 1 xhcys_DASH_L_c 1 xpyr_c 1 xsucc_c !#bcd #efgh #ijkl > #efgh #bcd #ijkl!#bcd #efgh #ijkl > #efgh #bcd #lkji
+CELLENV_11,1.0 malACP_c + 1.0 ocACP_c + 1.0 nadph_c + 2.0 h_c -> 1.0 tdec2eACP_c + 1.0 h2o_c + 1.0 co2_c + 1.0 nadp_c + 1.0 ACP_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+CELLENV_10,1.0 nadh_c + 1.0 3hmrsACP_c + 1.0 h_c -> 1.0 h2o_c + 1.0 myrsACP_c + 1.0 nad_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+3pg_to_ser_DASH_L,1.0 h2o_c + 1.0 glu_DASH_L_c + 1.0 nad_c + 1.0 3pg_c -> 1.0 akg_c + 1.0 ser_DASH_L_c + 1.0 pi_c + 1.0 nadh_c + 1.0 h_c,0.0,1000.0,,Glycine and Serine Metabolism,3pg_to_ser_DASH_L 1 x3pg_c 1 xglu_DASH_L_c > 1 xakg_c 1 xser_DASH_L_c!#abc #defgh > #defgh #abc
+imp_to_gmp,2.0 h2o_c + 1.0 atp_c + 1.0 imp_c + 1.0 nad_c + 1.0 gln_DASH_L_c -> 1.0 gmp_c + 1.0 ppi_c + 1.0 amp_c + 1.0 glu_DASH_L_c + 1.0 nadh_c + 3.0 h_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,imp_to_gmp 1 ximp_c > 1 xgmp_c!#abcdefghij > #abcdefghij
+imp_to_amp,1.0 asp_DASH_L_c + 1.0 gtp_c + 1.0 imp_c -> 1.0 fum_c + 1.0 pi_c + 1.0 gdp_c + 1.0 amp_c + 2.0 h_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,imp_to_amp 1 ximp_c 1 xasp_DASH_L_c > 1 xamp_c 1 xfum_c!#abcdefghij #klmn > #abcdefghij #klmn!#abcdefghij #klmn > #abcdefghij #nmlk
+GTHSYN,1.0 glu_DASH_L_c + 1.0 gly_c + 2.0 atp_c + 1.0 cys_DASH_L_c -> 2.0 pi_c + 1.0 gthrd_c + 2.0 h_c + 2.0 adp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,GTHSYN 1 xglu_DASH_L_c 1 xcys_DASH_L_c 1 xgly_c > !#abcde #fgh #ij >
+FADSYN_1_Full,1.0 gtp_c + 5.0 h2o_c + 2.0 dmlz_c + 1.0 nadph_c -> 1.0 nadp_c + 1.0 ppi_c + 2.0 4r5au_c + 1.0 for_c + 1.0 pi_c + 1.0 nh4_c + 1.0 ribflv_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,FADSYN_1_Full 1 xgtp_c 1 xru5p_DASH_D_c > 1 x4r5au_c 1 xfor_c 1 xdb4p_c 1 xfor_c!#abcdefghij #klmno > #abcdefghi #j #lmno #k
+pyr_to_23dhmb,2.0 pyr_c + 1.0 nadph_c + 2.0 h_c -> 1.0 co2_c + 1.0 nadp_c + 1.0 23dhmb_c,0.0,1000.0,,"Valine, Leucine, and Isoleucine Metabolism",pyr_to_23dhmb 1 xpyr_c 1 xpyr_c > 1 x23dhmb_c 1 xco2_c!#abc #def > #debcf #a
+THIAMIN,1.0 nadph_c + 1.0 iscssh_c + 3.0 atp_c + 1.0 dhgly_c + 1.0 dxyl5p_c + 1.0 air_c + 1.0 amet_c -> 1.0 co_c + 2.0 h2o_c + 1.0 nadp_c + 1.0 dad_DASH_5_c + 2.0 adp_c + 1.0 met_DASH_L_c + 2.0 ppi_c + 1.0 iscs_c + 1.0 h_c + 1.0 for_c + 1.0 thmpp_c + 1.0 co2_c + 1.0 amp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,THIAMIN 1 xair_c 1 xamet_c > 1 xmet_DASH_L_c 1 xco_c 1 xfor_c!#abcdefgh #123456789Aijklm > #ijklm #d #f
+COFACTOR_4,2.0 fe2_c + 2.0 fadh2_c + 2.0 iscssh_c + 1.0 iscu_DASH_2fe2s_c -> 1.0 iscu_c + 2.0 iscs_c + 2.0 fad_c + 1.0 4fe4s_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+COFACTOR_5,1.0 moco_c + 2.0 gtp_c + 2.0 h_c + 1.0 mptamp_c -> 1.0 cu2_c + 2.0 ppi_c + 1.0 amp_c + 1.0 bmocogdp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+COFACTOR_6,1.0 nadh_c + 2.0 ipdp_c + 1.0 h2mb4p_c + 1.0 h_c -> 1.0 h2o_c + 1.0 frdp_c + 2.0 ppi_c + 1.0 nad_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+COFACTOR_7,1.0 nadph_c + 1.0 atp_c + 2.0 flxr_c + 1.0 dxyl5p_c + 2.0 h_c + 1.0 ctp_c -> 1.0 h2o_c + 1.0 nadp_c + 1.0 cmp_c + 2.0 flxso_c + 1.0 ppi_c + 1.0 h2mb4p_c + 1.0 adp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+COFACTOR_1,1.0 glu_DASH_L_c + 1.0 nadph_c + 1.0 h_c + 1.0 atp_c -> 1.0 5aop_c + 1.0 ppi_c + 1.0 nadp_c + 1.0 amp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_1 1 xglu_DASH_L_c >!#abcde >
+COFACTOR_2,1.0 akg_c + 1.0 o2_c + 1.0 ichor_c + 3.0 fum_c + 1.0 uppg3_c + 1.0 atp_c + 1.0 octdp_c + 1.0 fe2_c + 6.0 h_c -> 3.0 h2o_c + 1.0 pyr_c + 1.0 2dmmql8_c + 3.0 succ_c + 1.0 pheme_c + 8.0 co2_c + 2.0 ppi_c + 1.0 amp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_2 1 xakg_c 1 xichor_c 3 xfum_c > 3 xsucc_c 1 xco2_c 1 xpyr_c!#abcde #fghijklmno #pqrs > #pqrs #a #nom!#abcde #fghijklmno #pqrs > #srqp #a #nom
+COFACTOR_3,1.0 h2o_c + 1.0 nadph_c + 1.0 atp_c + 1.0 uppg3_c + 1.0 fe2_c + 1.0 frdp_c + 1.0 pheme_c + 3.0 23dhba_c + 1.0 cbl1_c + 1.0 2dmmql8_c + 1.0 nad_c + 1.0 tyr_DASH_L_c + 4.0 amet_c + 3.0 seramp_c -> 1.0 nadp_c + 1.0 dad_DASH_5_c + 1.0 nadh_c + 1.0 met_DASH_L_c + 3.0 ahcys_c + 1.0 ppi_c + 1.0 dhgly_c + 1.0 sheme_c + 1.0 adocbl_c + 15.0 h_c + 1.0 pppi_c + 1.0 4crsol_c + 6.0 amp_c + 1.0 hemeO_c + 1.0 mql8_c + 1.0 enter_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_3 1 xamet_c 1 xtyr_DASH_L_c > 1 xmet_DASH_L_c!#123456789Aabcde #fghijklmn > #abcde
+COASYN_Full,1.0 h2o_c + 1.0 nadph_c + 1.0 cys_DASH_L_c + 1.0 mlthf_c + 1.0 3mob_c + 1.0 ctp_c + 1.0 asp_DASH_L_c + 4.0 atp_c -> 1.0 nadp_c + 1.0 cmp_c + 3.0 ppi_c + 1.0 coa_c + 1.0 thf_c + 2.0 adp_c + 2.0 co2_c + 1.0 amp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COASYN_Full 1 x3mob_c 1 xmlthf_c 1 xasp_DASH_L_c 1 xcys_DASH_L_c 1 xatp_c > 1 xcoa_c 1 xco2_c 1 xco2_c !#abcde #f #ghij #klm #123456789n > #123456789nfedcbajihml #g #k
+COFACTOR_9,3.0 amet_c + 1.0 chor_c + 1.5 o2_c + 1.0 octdp_c -> 1.0 co2_c + 1.0 q8h2_c + 1.0 ppi_c + 2.0 h_c + 3.0 ahcys_c + 1.0 pyr_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_9 3 xamet_c 1 xchor_c > 3 xahcys_c 1 xco2_c 1 xpyr_c!#123456789Aabcde #fghijklmno > #123456789Aabcd #f #nmo
+FADSYN_2,1.0 4r5au_c + 1.0 ru5p_DASH_D_c -> 2.0 h2o_c + 1.0 pi_c + 1.0 dmlz_c + 1.0 h_c + 1.0 for_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,FADSYN_2 1 xru5p_DASH_D_c > 1 xfor_c!#abcde > #a
+ptrc_to_4abut_1,1.0 akg_c + 1.0 ptrc_c + 1.0 h2o_c + 1.0 nad_c -> 1.0 glu_DASH_L_c + 1.0 nadh_c + 2.0 h_c + 1.0 4abut_c,0.0,1000.0,,Arginine and Proline Metabolism,ptrc_to_4abut_1 1 xakg_c 1 xptrc_c > 1 x4abut_c 1 xglu_DASH_L_c!#abcde #fghi > #fghi #abcde!#abcde #ihgf > #fghi #abcde
+CELLENV_5,1.0 utp_c + 1.0 gln_DASH_L_c + 1.0 accoa_c + 1.0 f6p_c -> 1.0 uacgam_c + 1.0 ppi_c + 1.0 coa_c + 1.0 glu_DASH_L_c,0.0,1000.0,,Cell Envelope Biosynthesis,CELLENV_5 1 xf6p_c 1 xgln_DASH_L_c > 1 xglu_DASH_L_c!#abcdef #ghijk > #ghijk
+CELLENV_4,1.0 tdec2eACP_c + 1.0 malACP_c + 2.0 nadh_c + 1.0 nadph_c + 4.0 h_c -> 1.0 h2o_c + 1.0 nadp_c + 1.0 ACP_c + 2.0 nad_c + 1.0 ddcaACP_c + 1.0 co2_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+CELLENV_7,1.0 tdec2eACP_c + 3.0 malACP_c + 3.0 nadh_c + 3.0 nadph_c + 9.0 h_c -> 3.0 h2o_c + 3.0 nadp_c + 3.0 ACP_c + 3.0 nad_c + 3.0 co2_c + 1.0 hdeACP_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+CELLENV_6,2.0 malACP_c + 1.0 actACP_c + 3.0 nadh_c + 3.0 nadph_c + 8.0 h_c -> 3.0 h2o_c + 3.0 nadp_c + 2.0 ACP_c + 1.0 ocACP_c + 3.0 nad_c + 2.0 co2_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+CELLENV_1,1.0 ala_DASH_L_c + 2.0 uacgam_c + 1.0 h2o_c + 1.0 nadph_c + 4.0 atp_c + 1.0 26dap_DASH_M_c + 1.0 pep_c + 1.0 udcpdp_c + 1.0 glu_DASH_L_c + 1.0 alaala_c -> 1.0 ump_c + 1.0 nadp_c + 1.0 udp_c + 5.0 h_c + 4.0 adp_c + 1.0 uaagmda_c + 6.0 pi_c,0.0,1000.0,,Cell Envelope Biosynthesis,CELLENV_1 1 xala_DASH_L_c 1 xpep_c 1 xglu_DASH_L_c 1 x26dap_DASH_M_c > !#abc #def #ghijk #lmnopqr >
+CELLENV_3,1.0 malACP_c + 1.0 nadh_c + 1.0 nadph_c + 3.0 h_c + 1.0 myrsACP_c -> 1.0 h2o_c + 1.0 nadp_c + 1.0 ACP_c + 1.0 nad_c + 1.0 palmACP_c + 1.0 co2_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+2obut_and_pyr_to_3mop,1.0 pyr_c + 1.0 2obut_c + 1.0 nadph_c + 2.0 h_c -> 1.0 3mop_c + 1.0 h2o_c + 1.0 co2_c + 1.0 nadp_c,0.0,1000.0,,"Valine, Leucine, and Isoleucine Metabolism",2obut_and_pyr_to_3mop 1 x2obut_c 1 xpyr_c > 1 x3mop_c 1 xco2_c!#abcd #efg > #abfcdg #e
+LIPOPOLYSACCHARIDE_1,1.0 dtdprmn_c + 3.0 h2o_c + 5.0 atp_c + 3.0 ckdo_c + 1.0 ddcaACP_c + 4.0 adphep_DASH_LD_c + 1.0 myrsACP_c + 2.0 u23ga_c + 4.0 udpg_c -> 1.0 ump_c + 3.0 cmp_c + 2.0 ACP_c + 1.0 dtdp_c + 5.0 udp_c + 20.0 h_c + 9.0 adp_c + 2.0 pi_c + 1.0 colipa_e,0.0,1000.0,,Lipopolysaccharide Biosynthesis / Recycling,
+LIPOPOLYSACCHARIDE_2,1.0 h2o_c + 1.0 s7p_c + 2.0 atp_c -> 1.0 adphep_DASH_LD_c + 1.0 ppi_c + 1.0 pi_c + 1.0 adp_c,0.0,1000.0,,Lipopolysaccharide Biosynthesis / Recycling,LIPOPOLYSACCHARIDE_2 1 xs7p_c >!#abcdefg >
+LIPOPOLYSACCHARIDE_3,1.0 uacgam_c + 1.0 h2o_c + 2.0 3hmrsACP_c -> 1.0 u23ga_c + 1.0 ac_c + 2.0 ACP_c + 1.0 h_c,0.0,1000.0,,Lipopolysaccharide Biosynthesis / Recycling,
+CELLENV_9,1.0 malACP_c + 1.0 nadph_c + 2.0 h_c + 1.0 ddcaACP_c -> 1.0 co2_c + 1.0 nadp_c + 1.0 ACP_c + 1.0 3hmrsACP_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+CELLENV_8,1.0 dttp_c + 1.0 nadph_c + 2.0 h_c + 1.0 g1p_c -> 1.0 dtdprmn_c + 1.0 h2o_c + 1.0 nadp_c + 1.0 ppi_c,0.0,1000.0,,Cell Envelope Biosynthesis,CELLENV_8 1 xg1p_c >!#abcdef >
+glu_DASH_L_to_acg5p,1.0 glu_DASH_L_c + 1.0 accoa_c + 1.0 atp_c -> 1.0 acg5p_c + 1.0 coa_c + 1.0 h_c + 1.0 adp_c,0.0,1000.0,,Arginine and Proline Metabolism,glu_DASH_L_to_acg5p 1 xaccoa_c 1 xglu_DASH_L_c > 1 xacg5p_c!#ab #cdefg > #cdefgab
+e4p_and_pep_to_3dhq,1.0 pep_c + 1.0 h2o_c + 1.0 e4p_c -> 2.0 pi_c + 1.0 3dhq_c,0.0,1000.0,,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",e4p_and_pep_to_3dhq 1 xe4p_c 1 xpep_c > 1 x3dhq_c!#abcd #efg > #efdcbag
+CELLENV_2,1.0 malACP_c + 1.0 nadh_c + 1.0 nadph_c + 1.0 hdeACP_c + 3.0 h_c -> 1.0 h2o_c + 1.0 nadp_c + 1.0 octeACP_c + 1.0 ACP_c + 1.0 nad_c + 1.0 co2_c,0.0,1000.0,,Cell Envelope Biosynthesis,
+GLYCPHOSPHOLIPID_3,1.0 glyc3p_c + 1.0 h2o_c + 1.0 cdpdhdecg_c -> 1.0 pg160_c + 1.0 pi_c + 1.0 h_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_3 1 xglyc3p_c > 1 xpg160_c !#abc > #abc
+g1p_to_glycogen,1.0 atp_c + 1.0 g1p_c -> 1.0 ppi_c + 1.0 glycogen_c + 1.0 adp_c,0.0,1000.0,,Glycolysis/Gluconeogenesis,g1p_to_glycogen 1 xg1p_c > 1 xglycogen_c!#abcdef > #abcdef
+ASTPathway,1.0 akg_c + 1.0 arg_DASH_L_c + 4.0 h2o_c + 1.0 succoa_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 succ_c + 1.0 coa_c + 1.0 h_c + 2.0 glu_DASH_L_c + 1.0 co2_c + 2.0 nh4_c,0.0,1000.0,,Arginine and Proline Metabolism,ASTPathway 1 xarg_DASH_L_c 1 xakg_c 1 xsuccoa_c > 1 xsucc_c 1 xglu_DASH_L_c 1 xglu_DASH_L_c 1 xco2_c!#abcdef #ghijk #mnop > #mnop #ghijk #abcde #f!#abcdef #ghijk #mnop > #ponm #ghijk #abcde #f
+COFACTOR_10,1.0 h2o_c + 2.0 atp_c + 4.0 ppbng_c + 1.0 ser_DASH_L_c + 1.0 h_c + 1.0 nad_c + 1.0 ichor_c -> 1.0 uppg3_c + 1.0 23dhba_c + 1.0 pyr_c + 2.0 ppi_c + 1.0 seramp_c + 1.0 nadh_c + 4.0 nh4_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_10 1 xichor_c 1 xser_DASH_L_c > 1 xpyr_c!#abcdefghij #klm > #ihj
+GLYCPHOSPHOLIPID_8,1.0 ctp_c + 1.0 glyc3p_c + 1.0 h_c + 2.0 palmACP_c -> 1.0 ppi_c + 2.0 ACP_c + 1.0 cdpdhdecg_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_8 1 xglyc3p_c >!#abc >
+THFSYN,1.0 chor_c + 1.0 gtp_c + 3.0 h2o_c + 2.0 atp_c + 1.0 gln_DASH_L_c -> 1.0 dhf_c + 1.0 adp_c + 1.0 pyr_c + 1.0 amp_c + 1.0 for_c + 2.0 pi_c + 2.0 ppi_c + 1.0 gcald_c + 5.0 h_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,THFSYN 1 xgln_DASH_L_c 1 xgtp_c 1 xchor_c > 1 xfor_c 1 xgcald_c 1 xpyr_c!#abcde #qrstu6789f #ghijklmnop > #f #tu #onp
+VITB6,1.0 e4p_c + 1.0 glu_DASH_L_c + 1.0 dxyl5p_c + 4.0 nad_c -> 1.0 akg_c + 1.0 h2o_c + 1.0 pi_c + 1.0 pydx5p_c + 4.0 nadh_c + 5.0 h_c + 1.0 co2_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,VITB6 1 xe4p_c 1 xglu_DASH_L_c > 1 xakg_c 1 xco2_c!#abcd #efghi > #efghi #a
+NADSYN_aerobic,1.0 o2_c + 3.0 atp_c + 1.0 dhap_c + 1.0 asp_DASH_L_c + 1.0 nh4_c + 1.0 prpp_c -> 2.0 h2o_c + 1.0 nadp_c + 3.0 ppi_c + 1.0 h2o2_c + 1.0 pi_c + 1.0 amp_c + 1.0 adp_c + 1.0 co2_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,NADSYN_aerobic 1 xdhap_c 1 xprpp_c 1 xasp_DASH_L_c > 1 xco2_c !#abc #defgh #ijkl > #i
+chor_and_prpp_to_3ig3p,1.0 chor_c + 1.0 prpp_c + 1.0 gln_DASH_L_c -> 1.0 h2o_c + 1.0 ppi_c + 1.0 glu_DASH_L_c + 1.0 co2_c + 1.0 pyr_c + 1.0 3ig3p_c,0.0,1000.0,,"Tyrosine, Tryptophan, and Phenylalanine Metabolism",chor_and_prpp_to_3ig3p 1 xchor_c 1 xgln_DASH_L_c 1 xprpp_c > 1 x3ig3p_c 1 xco2_c 1 xglu_DASH_L_c 1 xpyr_c !#abcdefghij #klmno #pqrst > #tsrqbgfedcp #a #klmno #ihj
+GLYCPHOSPHOLIPID_9,1.0 h2o_c + 1.0 glyc3p_c + 1.0 cdpdhdec9eg_c -> 1.0 pg161_c + 1.0 pi_c + 1.0 h_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_9 1 xglyc3p_c > 1 xpg161_c !#abc > #abc
+COFACTOR_8,2.0 amet_c + 1.0 ocACP_c + 1.0 4fe4s_c + 1.0 nad_c + 2.0 h_c -> 2.0 dad_DASH_5_c + 2.0 met_DASH_L_c + 2.0 fe2_c + 1.0 ACP_c + 1.0 2fe2s_c + 1.0 nadh_c + 1.0 lipopb_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_8 2 xamet_c > 2 xmet_DASH_L_c!#123456789Aabcde > #abcde
+MOLYBDOPTERIN_2,1.0 ctp_c + 2.0 moco_c + 1.0 gtp_c + 2.0 h_c -> 1.0 mococdp_c + 2.0 ppi_c + 1.0 mocogdp_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,
+GLYCPHOSPHOLIPID_2,1.0 ser_DASH_L_c + 1.0 cdpdodec11eg_c -> 1.0 pe181_c + 1.0 co2_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_2 1 xser_DASH_L_c > 1 xco2_c!#abc > #a
+GLYCPHOSPHOLIPID_5,1.0 h2o_c + 1.0 glyc3p_c + 1.0 cdpdodec11eg_c -> 1.0 pi_c + 1.0 pg181_c + 1.0 h_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_5 1 xglyc3p_c > 1 xpg181_c !#abc > #abc
+GLYCPHOSPHOLIPID_4,1.0 ctp_c + 1.0 glyc3p_c + 2.0 hdeACP_c + 1.0 h_c -> 1.0 ppi_c + 2.0 ACP_c + 1.0 cdpdhdec9eg_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_4 1 xglyc3p_c >!#abc >
+GLYCPHOSPHOLIPID_7,1.0 ser_DASH_L_c + 1.0 cdpdhdecg_c -> 1.0 co2_c + 1.0 pe160_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_7 1 xser_DASH_L_c > 1 xco2_c!#abc > #a
+GLYCPHOSPHOLIPID_6,1.0 ser_DASH_L_c + 1.0 cdpdhdec9eg_c -> 1.0 co2_c + 1.0 pe161_c + 1.0 cmp_c,0.0,1000.0,,Glycerophospholipid Metabolism,GLYCPHOSPHOLIPID_6 1 xser_DASH_L_c > 1 xco2_c!#abc > #a
+IMPSYN_1,2.0 h2o_c + 3.0 atp_c + 1.0 fgam_c + 2.0 gln_DASH_L_c + 1.0 gly_c + 1.0 prpp_c -> 1.0 ppi_c + 4.0 h_c + 3.0 adp_c + 1.0 air_c + 1.0 gar_c + 2.0 glu_DASH_L_c + 3.0 pi_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,IMPSYN_1 1 xprpp_c 1 xgly_c 1 xfgam_c > 1 xgar_c 1 xair_c!#abcde #fg #hijklmno > #abcdefg #hijklmno
+thr_DASH_L_to_gly,1.0 thr_DASH_L_c + 1.0 coa_c + 1.0 nad_c -> 1.0 nadh_c + 1.0 gly_c + 1.0 accoa_c + 1.0 h_c,0.0,1000.0,,Glycine and Serine Metabolism,thr_DASH_L_to_gly 1 xthr_DASH_L_c > 1 xaccoa_c 1 xgly_c!#abcd > #cd #ab
+udp_to_dump_aerobic,1.0 udp_c + 1.0 trdrd_c + 1.0 atp_c -> 1.0 ppi_c + 1.0 trdox_c + 1.0 dump_c + 1.0 adp_c + 1.0 h_c,0.0,1000.0,,Nucleotide Salvage Pathway,udp_to_dump_aerobic 1 xudp_c > 1 xdump_c!#abcdefghi > #abcdefghi
+UMPSYN_aerobic,1.0 cbp_c + 1.0 asp_DASH_L_c + 1.0 q8_c + 1.0 prpp_c + 1.0 h_c -> 1.0 ump_c + 1.0 h2o_c + 1.0 pi_c + 1.0 q8h2_c + 1.0 ppi_c + 1.0 co2_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,UMPSYN_aerobic 1 xcbp_c 1 xprpp_c 1 xasp_DASH_L_c > 1 xump_c 1 xco2_c  !#a #bcdef #ghij > #bcdefahij #g
+dhap_to_lac_DASH_D,1.0 h2o_c + 1.0 dhap_c -> 1.0 lac_DASH_D_c + 1.0 pi_c + 1.0 h_c,0.0,1000.0,,Methylglyoxal Metabolism,dhap_to_lac_DASH_D 1 xdhap_c > 1 xlac_DASH_D_c!#abc > #cba
+aspsa_to_sl2a6o,1.0 aspsa_c + 1.0 pyr_c + 1.0 nadph_c + 1.0 succoa_c -> 1.0 sl2a6o_c + 1.0 h2o_c + 1.0 nadp_c + 1.0 coa_c,0.0,1000.0,,Threonine and Lysine Metabolism,aspsa_to_sl2a6o 1 xaspsa_c 1 xpyr_c 1 xsuccoa_c > 1 xsl2a6o_c!#abcd #efg #hijk > #abcdgfehijk
+IMPSYN_3,1.0 aicar_c + 1.0 10fthf_c -> 1.0 h2o_c + 1.0 imp_c + 1.0 thf_c,0.0,1000.0,,Purine and Pyrimidine Biosynthesis,IMPSYN_3 1 xaicar_c 1 x10fthf_c > 1 ximp_c!#abcdefghi #j > #abcdejfghi
+COFACTOR_11,1.0 ala_DASH_L_c + 1.0 malcoa_c + 4.0 nadph_c + 1.0 iscssh_c + 1.0 atp_c + 2.0 malACP_c + 1.0 2fe2s_c + 3.0 amet_c + 1.0 iscu_c -> 1.0 h2o_c + 1.0 pi_c + 1.0 dad_DASH_5_c + 1.0 met_DASH_L_c + 1.0 btn_c + 1.0 ahcys_c + 2.0 ACP_c + 1.0 iscu_DASH_2fe2s_c + 1.0 iscs_c + 1.0 amob_c + 4.0 nadp_c + 1.0 coa_c + 2.0 h_c + 1.0 adp_c + 1.0 meoh_c + 2.0 co2_c,0.0,1000.0,,Cofactor and Prosthetic Group Biosynthesis,COFACTOR_11 1 xamet_c 1 xamet_c 1 xamet_c 1 xala_DASH_L_c > 1 xahcys_c 1 xmet_DASH_L_c  1 xco2_c!#123456789Aabcde #123456789Aabcde #123456789Aabcde #fgh > #123456789Aabcd #abcde #f
+LIPOPOLYSACCHARIDE_4,1.0 ara5p_c + 1.0 ctp_c + 2.0 h2o_c + 1.0 pep_c -> 1.0 ckdo_c + 1.0 ppi_c + 2.0 pi_c,0.0,1000.0,,Lipopolysaccharide Biosynthesis / Recycling,LIPOPOLYSACCHARIDE_4 1 xpep_c 1 xara5p_c >!#abc #defgh >
+EX_glc_LPAREN_e_RPAREN_,1.0 glc_DASH_D_e <-,-11.0,-11.0,,,EX_glc_LPAREN_e_RPAREN_ 1 xglc_DASH_D_e >!#abcdef >

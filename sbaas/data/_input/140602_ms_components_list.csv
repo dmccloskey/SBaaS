@@ -1,0 +1,16 @@
+ms_method_id,q1_mass,q3_mass,met_id,component_name,ms_methodtype
+140602_McCloskey2013_13CFlux,179.0555631,59.01330434,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m0-0,isotopomer_13C
+140602_McCloskey2013_13CFlux,180.0589179,59.01330434,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m1-0,isotopomer_13C
+140602_McCloskey2013_13CFlux,180.0589179,60.01665918,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m1-1,isotopomer_13C
+140602_McCloskey2013_13CFlux,181.0622728,59.01330434,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m2-0,isotopomer_13C
+140602_McCloskey2013_13CFlux,181.0622728,60.01665918,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m2-1,isotopomer_13C
+140602_McCloskey2013_13CFlux,181.0622728,61.02001402,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m2-2,isotopomer_13C
+140602_McCloskey2013_13CFlux,182.0656276,59.01330434,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m3-0,isotopomer_13C
+140602_McCloskey2013_13CFlux,182.0656276,60.01665918,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m3-1,isotopomer_13C
+140602_McCloskey2013_13CFlux,182.0656276,61.02001402,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m3-2,isotopomer_13C
+140602_McCloskey2013_13CFlux,183.0689824,59.01330434,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m4-0,isotopomer_13C
+140602_McCloskey2013_13CFlux,183.0689824,60.01665918,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m4-1,isotopomer_13C
+140602_McCloskey2013_13CFlux,183.0689824,61.02001402,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m4-2,isotopomer_13C
+140602_McCloskey2013_13CFlux,184.0723373,60.01665918,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m5-1,isotopomer_13C
+140602_McCloskey2013_13CFlux,184.0723373,61.02001402,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m5-2,isotopomer_13C
+140602_McCloskey2013_13CFlux,185.0756921,61.02001402,Hexose_Pool_fru_glc-D,Hexose_Pool_fru_glc-D.Hexose_Pool_fru_glc-D_m6-2,isotopomer_13C

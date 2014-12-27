@@ -1,0 +1,2909 @@
+Reaction,Flux,Subsystem
+CSND,0.0,Nucleotide Salvage Pathway
+ADNt2pp,0.0,"Transport, Inner Membrane"
+GTPDPDP,0.0,Cofactor and Prosthetic Group Biosynthesis
+CITtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GAMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MEOHtrpp_reverse,1.8030723098905181e-06,"Transport, Inner Membrane"
+NH4tpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+NMNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NTD10,0.0,Nucleotide Salvage Pathway
+NTD11,0.0,Nucleotide Salvage Pathway
+NTD12,0.0,Nucleotide Salvage Pathway
+AGMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PItex_reverse,0.0,"Transport, Outer Membrane Porin"
+XTSNH,0.0,Nucleotide Salvage Pathway
+DCAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+Htex,0.0,"Transport, Outer Membrane Porin"
+P5CD,0.0,Arginine and Proline Metabolism
+2DGULRy,0.0,Alternate Carbon Metabolism
+2DGULRx,0.0,Alternate Carbon Metabolism
+GAMptspp,0.0,"Transport, Inner Membrane"
+THRt2rpp_reverse,0.0,"Transport, Inner Membrane"
+P5CR,0.19364816300993176,Arginine and Proline Metabolism
+GTHOr,0.0,Cofactor and Prosthetic Group Biosynthesis
+ULA4Ntppi,0.0,Lipopolysaccharide Biosynthesis / Recycling
+GLCtexi,10.0,"Transport, Outer Membrane"
+MSAR,0.0,Nucleotide Salvage Pathway
+AGM4Pt2pp,0.0,Murein Recycling
+EX_uacgam_LPAREN_e_RPAREN_,0.0,
+KAS15,0.282347600686531,Membrane Lipid Metabolism
+KAS14,0.0,Membrane Lipid Metabolism
+LEUtex,0.0,"Transport, Outer Membrane Porin"
+EX_r5p_LPAREN_e_RPAREN_,0.0,
+G5SADs,0.19364816300993176,Arginine and Proline Metabolism
+ALAALAtex,0.0,"Transport, Outer Membrane Porin"
+EX_cm_LPAREN_e_RPAREN_,0.0,
+ORNtex,0.0,"Transport, Outer Membrane Porin"
+2AGPG141tipp,0.0,"Transport, Inner Membrane"
+SERtex,0.0,"Transport, Outer Membrane Porin"
+S2FE2SS2,0.0,Cofactor and Prosthetic Group Biosynthesis
+PLIPA2A180pp,0.0,Glycerophospholipid Metabolism
+SCYSDS,0.0,Cofactor and Prosthetic Group Biosynthesis
+TREHpp,0.0,Alternate Carbon Metabolism
+PGM_reverse,14.47596868068785,Glycolysis/Gluconeogenesis
+EX_leu_DASH_L_LPAREN_e_RPAREN_,0.0,
+42A12BOOXpp,0.0,Nitrogen Metabolism
+ACOAD1f,0.0,Membrane Lipid Metabolism
+METSOX2tex,0.0,"Transport, Outer Membrane Porin"
+GALCTNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+IDONt2rpp,0.0,"Transport, Inner Membrane"
+EX_meoh_LPAREN_e_RPAREN_,1.8030723098905181e-06,
+GLYCTO4,0.0,Alternate Carbon Metabolism
+LPLIPAL2ATG120,0.0,Glycerophospholipid Metabolism
+GLYCTO3,0.0,Alternate Carbon Metabolism
+GLYCTO2,0.0008041702502110115,Alternate Carbon Metabolism
+LALADGLUtpp,0.0,"Transport, Inner Membrane"
+MOX_reverse,0.0020546009055271465,Citric Acid Cycle
+LYXt2pp,0.0,"Transport, Inner Membrane"
+GLYALDtpp_reverse,0.0,"Transport, Inner Membrane"
+ARBt2rpp_reverse,0.0,"Transport, Inner Membrane"
+NDPK8_reverse,0.0,Nucleotide Salvage Pathway
+PUNP1,0.0,Nucleotide Salvage Pathway
+2AGPEAT181,0.0,Glycerophospholipid Metabolism
+2AGPEAT180,0.0,Glycerophospholipid Metabolism
+EX_hacolipa_LPAREN_e_RPAREN_,0.0,
+PUNP3,0.0,Nucleotide Salvage Pathway
+DAPAL,0.0,Alternate Carbon Metabolism
+LPLIPAL2E181,0.0,Glycerophospholipid Metabolism
+ARBTNtex,0.0,"Transport, Outer Membrane"
+PAPA181pp,0.0,Glycerophospholipid Metabolism
+COBALT2abcpp,0.0,Inorganic Ion Transport and Metabolism
+CYTBO3_4pp,35.99859270207893,Oxidative Phosphorylation
+UMPtex,0.0,"Transport, Outer Membrane Porin"
+GALCTt2rpp,0.0,"Transport, Inner Membrane"
+MN2t3pp,0.0,Inorganic Ion Transport and Metabolism
+EX_rmn_LPAREN_e_RPAREN_,0.0,
+LPLIPAL2G140,0.0,Glycerophospholipid Metabolism
+LPLIPAL2G141,0.0,Glycerophospholipid Metabolism
+ALLTNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+MTRPOX,0.0,Glycine and Serine Metabolism
+SO4t2pp,0.22717178493157203,Inorganic Ion Transport and Metabolism
+FRUURtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TMDPP_reverse,0.0,Nucleotide Salvage Pathway
+H2tpp_reverse,0.0,"Transport, Inner Membrane"
+DSERt2pp,0.0,"Transport, Inner Membrane"
+ACONIs,0.0,Unassigned
+ASPTA,0.0,Alanine and Aspartate Metabolism
+GART,0.10376050068114312,Purine and Pyrimidine Biosynthesis
+CYSDDS,0.0,Cysteine Metabolism
+GAMAN6Ptex,0.0,"Transport, Outer Membrane Porin"
+DHCIND,0.0,Alternate Carbon Metabolism
+UDCPPtppi,0.0,Lipopolysaccharide Biosynthesis / Recycling
+34dhpactex,0.0,"Transport, Outer Membrane Porin"
+EAR121y,0.0,Cell Envelope Biosynthesis
+ALATRS,0.0,tRNA Charging
+CTBTt2rpp,0.0,"Transport, Inner Membrane"
+EX_tungs_LPAREN_e_RPAREN_,0.0,
+EX_ascb_DASH_L_LPAREN_e_RPAREN_,0.0,
+EX_frulys_LPAREN_e_RPAREN_,0.0,
+MDDCP2pp,0.0006067338322781593,Murein Biosynthesis
+UDPACGALtex,0.0,"Transport, Outer Membrane Porin"
+EX_hdcea_LPAREN_e_RPAREN_,0.0,
+23DAPPAt2pp,0.0,"Transport, Inner Membrane"
+LEUTAi,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+EX_dcyt_LPAREN_e_RPAREN_,0.0,
+EX_butso3_LPAREN_e_RPAREN_,0.0,
+IDONt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_LalaLglu_LPAREN_e_RPAREN_,0.0,
+REPHACCOAI_reverse,0.0,Alternate Carbon Metabolism
+3AMPtex,0.0,"Transport, Outer Membrane Porin"
+ARBtex_reverse,0.0,"Transport, Outer Membrane Porin"
+XANtex,0.0,"Transport, Outer Membrane Porin"
+EX_cys_DASH_D_LPAREN_e_RPAREN_,0.0,
+IPPMIb,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+EX_ump_LPAREN_e_RPAREN_,0.0,
+FCLK,0.0,Alternate Carbon Metabolism
+EX_xtsn_LPAREN_e_RPAREN_,0.0,
+PLIPA1A181pp,0.0,Glycerophospholipid Metabolism
+2AGPG120tipp,0.0,"Transport, Inner Membrane"
+EX_tcynt_LPAREN_e_RPAREN_,0.0,
+DTMPK_reverse,0.0,Nucleotide Salvage Pathway
+KG6PDC,0.0,Alternate Carbon Metabolism
+CYNTt2pp,0.0,"Transport, Inner Membrane"
+EX_so2_LPAREN_e_RPAREN_,0.0,
+23CGMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACtex,0.0,"Transport, Outer Membrane Porin"
+ACt2rpp_reverse,1.6474617198986623,"Transport, Inner Membrane"
+3PEPTabcpp,0.0,Murein Recycling
+ALATA_D2,0.0,Cofactor and Prosthetic Group Biosynthesis
+CFAS180G,0.0,Glycerophospholipid Metabolism
+EDA,0.0,Pentose Phosphate Pathway
+MLTP3_reverse,0.0,Alternate Carbon Metabolism
+EDD,0.0,Pentose Phosphate Pathway
+FRUK,0.0,Alternate Carbon Metabolism
+THYMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GALBDtex,0.0,"Transport, Outer Membrane Porin"
+EX_4hoxpacd_LPAREN_e_RPAREN_,0.0,
+GTHRDHpp,0.0,Cofactor and Prosthetic Group Biosynthesis
+PRPPS,0.8158703864300592,Histidine Metabolism
+23PDE9pp,0.0,Nucleotide Salvage Pathway
+MALTTTRabcpp,0.0,"Transport, Inner Membrane"
+SDPDS,0.32547709033911215,Threonine and Lysine Metabolism
+12PPDRtpp,0.0,"Transport, Inner Membrane"
+CHTBStex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_14glucan_LPAREN_e_RPAREN_,0.0,
+INDOLEt2rpp_reverse,0.0,"Transport, Inner Membrane"
+DHAtpp_reverse,0.0,"Transport, Inner Membrane"
+prpp_to_his_DASH_L,0.08299181227964077,Histidine Metabolism
+FTHFD,0.0,Folate Metabolism
+HIStex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_pnto_DASH_R_LPAREN_e_RPAREN_,0.0,
+FALGTHLs_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+AGPAT120,0.0,Glycerophospholipid Metabolism
+XTSNtex,0.0,"Transport, Outer Membrane Porin"
+VALabcpp,0.0,"Transport, Inner Membrane"
+23DAPPAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_pi_LPAREN_e_RPAREN_,0.0,
+thr_DASH_L_to_gly,0.0,Glycine and Serine Metabolism
+THMtex,0.0,"Transport, Outer Membrane Porin"
+AMANAPEr_reverse,0.0,Alternate Carbon Metabolism
+PGPP180pp,0.0,Glycerophospholipid Metabolism
+UDPGALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TRPTRS,0.0,tRNA Charging
+2AGPG181tipp,0.0,"Transport, Inner Membrane"
+OCBT,0.25911952165436636,Arginine and Proline Metabolism
+EX_ptrc_LPAREN_e_RPAREN_,0.0,
+DHORD5,0.0,Purine and Pyrimidine Biosynthesis
+CPGNexs,0.0,Inorganic Ion Transport and Metabolism
+S4FE4ST,0.0,Cofactor and Prosthetic Group Biosynthesis
+AGM4PH,0.0,Murein Recycling
+EX_23cgmp_LPAREN_e_RPAREN_,0.0,
+S4FE4SR,0.0,Cofactor and Prosthetic Group Biosynthesis
+ARBTNexs,0.0,Inorganic Ion Transport and Metabolism
+AGM4PA,0.0,Murein Recycling
+PPM_reverse,0.0076973156909396975,Alternate Carbon Metabolism
+PYNP2r_reverse,0.0,Nucleotide Salvage Pathway
+EX_ppa_LPAREN_e_RPAREN_,0.0,
+MELIBt3ipp,0.0,"Transport, Inner Membrane"
+HPYRI,0.0,Alternate Carbon Metabolism
+ADEt2rpp,0.0,"Transport, Inner Membrane"
+4PEPTabcpp,0.0,Murein Recycling
+GALt2pp,0.0,"Transport, Inner Membrane"
+LPLIPAL1E161pp,0.0,Glycerophospholipid Metabolism
+AGMH,0.0,Murein Recycling
+SERAT_reverse,0.0,Cysteine Metabolism
+EX_met_DASH_D_LPAREN_e_RPAREN_,0.0,
+MMETtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PPM2_reverse,0.0,Alternate Carbon Metabolism
+GALabcpp,0.0,"Transport, Inner Membrane"
+FUSAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TRPtex,0.0,"Transport, Outer Membrane Porin"
+EX_anhgm_LPAREN_e_RPAREN_,0.0,
+EX_glcr_LPAREN_e_RPAREN_,0.0,
+CRNtex,0.0,"Transport, Outer Membrane Porin"
+SERt2rpp_reverse,0.004464407039288923,"Transport, Inner Membrane"
+HMPK1,0.0,Cofactor and Prosthetic Group Biosynthesis
+LPLIPAL1E140pp,0.0,Glycerophospholipid Metabolism
+GLCURt2rpp,0.0,"Transport, Inner Membrane"
+ACSERtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_LalaDgluMdapDala_LPAREN_e_RPAREN_,0.0,
+TAUDO,0.0,Alternate Carbon Metabolism
+URIt2rpp_reverse,0.0,"Transport, Inner Membrane"
+IDOND2,0.0,Alternate Carbon Metabolism
+LYXtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_inost_LPAREN_e_RPAREN_,0.0,
+LYSTRS,0.0,tRNA Charging
+FE3Ri,0.0,Cofactor and Prosthetic Group Biosynthesis
+DDGLK,0.0,Alternate Carbon Metabolism
+TTRCYCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_tre_LPAREN_e_RPAREN_,0.0,
+ALAALAr_reverse,0.0,Cell Envelope Biosynthesis
+ASNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+3AMACHYD,0.0,Nucleotide Salvage Pathway
+EX_fald_LPAREN_e_RPAREN_,0.0,
+ACONTb,4.306843738971514,Citric Acid Cycle
+PGLYCP,0.0,Alternate Carbon Metabolism
+ACACt2pp_reverse,0.0,"Transport, Inner Membrane"
+BUTCT,0.0,Alternate Carbon Metabolism
+CLPNS180pp_reverse,0.0,Glycerophospholipid Metabolism
+ASNabcpp,0.0,"Transport, Inner Membrane"
+PLIPA1G160pp,0.0,Glycerophospholipid Metabolism
+DADNt2pp,0.0,"Transport, Inner Membrane"
+ARGtex,0.0,"Transport, Outer Membrane Porin"
+ETHAtex,0.0,"Transport, Outer Membrane Porin"
+PSCLYStex_reverse,0.0,"Transport, Outer Membrane Porin"
+5DGLCNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_nh4_LPAREN_e_RPAREN_,0.0,
+EX_12ppd_DASH_S_LPAREN_e_RPAREN_,0.0,
+ADNK1,0.0076973156909396975,Nucleotide Salvage Pathway
+23CGMPtex,0.0,"Transport, Outer Membrane Porin"
+CLtex,0.004464407039288923,"Transport, Outer Membrane Porin"
+TTDCEAtexi,0.0,"Transport, Outer Membrane"
+CRNCAR,0.0,Oxidative Phosphorylation
+EX_g3pg_LPAREN_e_RPAREN_,0.0,
+CRNCAR_reverse,0.0,Oxidative Phosphorylation
+EX_arg_DASH_L_LPAREN_e_RPAREN_,0.0,
+DXPS,0.006375663687818398,Cofactor and Prosthetic Group Biosynthesis
+ACSERtex,0.0,"Transport, Outer Membrane Porin"
+EX_mmet_LPAREN_e_RPAREN_,0.0,
+LEUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,0.1409146086987187,Methionine Metabolism
+FORt2pp,0.0,"Transport, Inner Membrane"
+PLIPA2E120pp,0.0,Glycerophospholipid Metabolism
+PMANM_reverse,0.0,Alternate Carbon Metabolism
+EX_malttr_LPAREN_e_RPAREN_,0.0,
+CTBTCAL2,0.0,Oxidative Phosphorylation
+LCTStex_reverse,0.0,"Transport, Outer Membrane Porin"
+SUCRtex,0.0,"Transport, Outer Membrane Porin"
+EAR120y,0.0,Cell Envelope Biosynthesis
+MLTP1,0.0,Alternate Carbon Metabolism
+MLTP2,0.0,Alternate Carbon Metabolism
+MLTP3,0.0,Alternate Carbon Metabolism
+COFACTOR_3_amet,0.00020104256255279278,Cofactor and Prosthetic Group Biosynthesis
+UDPG4E,0.0,Alternate Carbon Metabolism
+ISETACabcpp,0.0,"Transport, Inner Membrane"
+TTRCYCtex,0.0,"Transport, Outer Membrane Porin"
+EX_23ccmp_LPAREN_e_RPAREN_,0.0,
+EX_indole_LPAREN_e_RPAREN_,0.0,
+G3PCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+AM3PA,0.0,Murein Recycling
+DMSOtpp_reverse,0.0,"Transport, Inner Membrane"
+EX_cl_LPAREN_e_RPAREN__reverse,0.004464407039288923,
+ACMANAtex,0.0,"Transport, Outer Membrane Porin"
+MALTATr_reverse,0.0,Alternate Carbon Metabolism
+NOtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL2E160,0.0,Glycerophospholipid Metabolism
+LPLIPAL2E161,0.0,Glycerophospholipid Metabolism
+CITt3pp,0.0,"Transport, Inner Membrane"
+CRNBTCT_reverse,0.0,Oxidative Phosphorylation
+EX_mobd_LPAREN_e_RPAREN_,0.0,
+NDPK5_reverse,0.0,Nucleotide Salvage Pathway
+THRt2rpp,0.0,"Transport, Inner Membrane"
+UM4PCP,0.0,Murein Recycling
+PLIPA2A141pp,0.0,Glycerophospholipid Metabolism
+ECAP3pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+NTP11,0.0,Nucleotide Salvage Pathway
+PUNP5,0.0,Nucleotide Salvage Pathway
+LALDO2x,0.0,Methylglyoxal Metabolism
+ETHSO3abcpp,0.0,"Transport, Inner Membrane"
+EX_acmana_LPAREN_e_RPAREN_,0.0,
+12DGR160tipp,0.0,"Transport, Inner Membrane"
+O2Stex,0.0,"Transport, Outer Membrane Porin"
+D_DASH_LACtex,0.0,"Transport, Outer Membrane Porin"
+PPA2,0.0,Anaplerotic Reactions
+CRNBTCT,0.0,Oxidative Phosphorylation
+VALTRS,0.0,tRNA Charging
+PYDXK,0.0,Cofactor and Prosthetic Group Biosynthesis
+PGPP161pp,0.0,Glycerophospholipid Metabolism
+LDH_D2,0.0,Oxidative Phosphorylation
+12DGR161tipp,0.0,"Transport, Inner Membrane"
+3HPPtpp,0.0,"Transport, Inner Membrane"
+MSO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+THMDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+OXCDC,0.0,Alternate Carbon Metabolism
+UDPGtex,0.0,"Transport, Outer Membrane Porin"
+RMK,0.0,Alternate Carbon Metabolism
+RMI,0.0,Alternate Carbon Metabolism
+G3PEabcpp,0.0,"Transport, Inner Membrane"
+GLUt2rpp_reverse,0.0,"Transport, Inner Membrane"
+DKGLCNR2y,0.0,Alternate Carbon Metabolism
+GALBDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NO3R2pp,0.0,Oxidative Phosphorylation
+FFSD,0.0,Alternate Carbon Metabolism
+EX_glyc_LPAREN_e_RPAREN_,0.0,
+UDPGALPpp,0.0,Alternate Carbon Metabolism
+CYSDS,0.0,Cysteine Metabolism
+23DAPPAtex,0.0,"Transport, Outer Membrane Porin"
+GLYCtex,0.0,"Transport, Outer Membrane Porin"
+EX_ni2_LPAREN_e_RPAREN_,0.0,
+NADSYN_aerobic,0.002054600897118064,Cofactor and Prosthetic Group Biosynthesis
+PLIPA1G120pp,0.0,Glycerophospholipid Metabolism
+SELtex_reverse,0.0,"Transport, Outer Membrane Porin"
+INDOLEt2pp,0.0,"Transport, Inner Membrane"
+2MAHMP,0.0,Cofactor and Prosthetic Group Biosynthesis
+FEENTERtonex,0.0,"Transport, Outer Membrane"
+MCOATA,1.9688251411941335,Membrane Lipid Metabolism
+MANGLYCtex,0.0,"Transport, Outer Membrane Porin"
+EX_34dhpac_LPAREN_e_RPAREN_,0.0,
+CLPNS140pp_reverse,0.0,Glycerophospholipid Metabolism
+IPDDI_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+PPPNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+12PPDStex,0.0,"Transport, Outer Membrane Porin"
+DCYTt2pp,0.0,"Transport, Inner Membrane"
+GALURtex,0.0,"Transport, Outer Membrane Porin"
+PPCSCT,0.0,Alternate Carbon Metabolism
+LIPATPT,0.0,Cofactor and Prosthetic Group Biosynthesis
+ALAt2rpp,0.0,"Transport, Inner Membrane"
+23CAMPtex,0.0,"Transport, Outer Membrane Porin"
+POX,0.0,Oxidative Phosphorylation
+EX_n2o_LPAREN_e_RPAREN_,0.0,
+MALTTRabcpp,0.0,"Transport, Inner Membrane"
+EX_tsul_LPAREN_e_RPAREN_,0.0,
+PA141abcpp,0.0,"Transport, Inner Membrane"
+DGMPtex,0.0,"Transport, Outer Membrane Porin"
+EX_gthox_LPAREN_e_RPAREN_,0.0,
+PNTOt4pp,0.0,"Transport, Inner Membrane"
+EX_arbtn_DASH_fe3_LPAREN_e_RPAREN_,0.0,
+ACACT1r,0.0,Membrane Lipid Metabolism
+DTMPK,0.02236260432341715,Nucleotide Salvage Pathway
+PFK_3,1.393849877209819,Pentose Phosphate Pathway
+PFK_2,0.0,Alternate Carbon Metabolism
+FE3HOXUtpp,0.0,Inorganic Ion Transport and Metabolism
+GSNt2pp,0.0,"Transport, Inner Membrane"
+FACOAL140t2pp,0.0,Cell Envelope Biosynthesis
+NTPTP1,0.0,Nucleotide Salvage Pathway
+PSD140,0.0,Glycerophospholipid Metabolism
+PSD141,0.0,Glycerophospholipid Metabolism
+GLYK,0.005782452897818891,Alternate Carbon Metabolism
+2AGPE181tipp,0.0,"Transport, Inner Membrane"
+GUAtex,0.0,"Transport, Outer Membrane"
+EX_fecrm_LPAREN_e_RPAREN_,0.0,
+MLDCP3App,0.0012125661284013735,Murein Biosynthesis
+HDCEAtexi,0.0,"Transport, Outer Membrane"
+RNTR1c2,0.0,Nucleotide Salvage Pathway
+DATPHs,0.0,Nucleotide Salvage Pathway
+CLPNS120pp_reverse,0.0,Glycerophospholipid Metabolism
+GLCNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_his_DASH_L_LPAREN_e_RPAREN_,0.0,
+MANptspp,0.0,"Transport, Inner Membrane"
+EX_glyc2p_LPAREN_e_RPAREN_,0.0,
+Htex_reverse,9.653365122850433,"Transport, Outer Membrane Porin"
+FUCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DHQTi,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+EX_arab_DASH_L_LPAREN_e_RPAREN_,0.0,
+GSNtex,0.0,"Transport, Outer Membrane Porin"
+GLDBRAN2,0.0,Glycolysis/Gluconeogenesis
+ALAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+LEUt2rpp,0.0,"Transport, Inner Membrane"
+TARTRt7pp_reverse,0.0,"Transport, Inner Membrane"
+SO2tpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+DDGLCNt2rpp,0.0,"Transport, Inner Membrane"
+NI2uabcpp,0.0,Inorganic Ion Transport and Metabolism
+BALAt2pp,0.0,"Transport, Inner Membrane"
+GLYCPHOSPHOLIPID_8,0.054679069333584907,Glycerophospholipid Metabolism
+ASNS2,0.21116861664513792,Alanine and Aspartate Metabolism
+ASNS1,0.0,Alanine and Aspartate Metabolism
+EX_fe3hox_LPAREN_e_RPAREN_,0.0,
+EX_xyl_DASH_D_LPAREN_e_RPAREN_,0.0,
+LPLIPAL1E120pp,0.0,Glycerophospholipid Metabolism
+PSSA120,0.0,Glycerophospholipid Metabolism
+ACPPAT141,0.0,Glycerophospholipid Metabolism
+ACPPAT140,0.0,Glycerophospholipid Metabolism
+EX_ethso3_LPAREN_e_RPAREN_,0.0,
+THYMtex,0.0,"Transport, Outer Membrane Porin"
+PYDXNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYBtex,0.0,"Transport, Outer Membrane Porin"
+FACOAL120t2pp,0.0,Cell Envelope Biosynthesis
+Kt2pp,0.16740624861178516,Inorganic Ion Transport and Metabolism
+NADPPPS,0.001651614235856691,Cofactor and Prosthetic Group Biosynthesis
+EX_trp_DASH_L_LPAREN_e_RPAREN_,0.0,
+EX_sbt_DASH_D_LPAREN_e_RPAREN_,0.0,
+EX_na1_LPAREN_e_RPAREN__reverse,0.0,
+FECRMabcpp,0.0,Inorganic Ion Transport and Metabolism
+LALADGLUtex,0.0,"Transport, Outer Membrane Porin"
+GLYCPHOSPHOLIPID_2,0.015960796087150866,Glycerophospholipid Metabolism
+ACGAM1PPpp,0.0,Alternate Carbon Metabolism
+CMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SELtex,0.0,"Transport, Outer Membrane Porin"
+GLNS,9.047946672236984,Glutamate Metabolism
+DCYTtex,0.0,"Transport, Outer Membrane"
+ASNTRS,0.0,tRNA Charging
+CPGNUtex,0.0,Inorganic Ion Transport and Metabolism
+GALCTNLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+RNTR4c2,0.0,Nucleotide Salvage Pathway
+PE160abcpp,0.028667046654949346,"Transport, Inner Membrane"
+AKGt2rpp_reverse,0.0,"Transport, Inner Membrane"
+PGSA180,0.0,Glycerophospholipid Metabolism
+GLCNtex,0.0,"Transport, Outer Membrane Porin"
+UDPGALM,0.0,Cell Envelope Biosynthesis
+3HPPPNH,0.0,Alternate Carbon Metabolism
+ADNtex_reverse,0.0,"Transport, Outer Membrane"
+UACGAMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FE2tex,0.007301541302083488,"Transport, Outer Membrane Porin"
+ADNUC,0.0,Alternate Carbon Metabolism
+ACPPAT180,0.0,Glycerophospholipid Metabolism
+2AGPE120tipp,0.0,"Transport, Inner Membrane"
+EX_so4_LPAREN_e_RPAREN__reverse,0.22717178493157203,
+TARTRt7pp,0.0,"Transport, Inner Membrane"
+2AGPA161tipp,0.0,"Transport, Inner Membrane"
+EX_fe3_LPAREN_e_RPAREN_,0.0,
+CLPNH141pp,0.0,Glycerophospholipid Metabolism
+UAG2E,0.0,Cell Envelope Biosynthesis
+GLNTRS,0.0,tRNA Charging
+UMPK,0.3209937510405694,Nucleotide Salvage Pathway
+G1PPpp,0.0,Glycolysis/Gluconeogenesis
+MOX,0.0,Citric Acid Cycle
+ICHORSi,0.0,Cofactor and Prosthetic Group Biosynthesis
+URIH,0.0,Alternate Carbon Metabolism
+5MTRtex,0.0,"Transport, Outer Membrane Porin"
+AMPTASEPG,0.0,Arginine and Proline Metabolism
+PROGLYtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYBt2pp,0.0,"Transport, Inner Membrane"
+PGMT_reverse,0.1757472611173387,Alternate Carbon Metabolism
+NTD3pp,0.0,Nucleotide Salvage Pathway
+ACOAD3f,0.0,Membrane Lipid Metabolism
+12PPDRtex,0.0,"Transport, Outer Membrane Porin"
+MLDCP2Bpp,0.0,Murein Biosynthesis
+CRNDabcpp,0.0,"Transport, Inner Membrane"
+LACZpp,0.0,Alternate Carbon Metabolism
+NTD2pp,0.0,Nucleotide Salvage Pathway
+URIC,0.0,Unassigned
+PYDXNtex,0.0,"Transport, Outer Membrane Porin"
+GLUNpp,0.0,Glutamate Metabolism
+DALAtex,0.0,"Transport, Outer Membrane Porin"
+ALLPI,0.0,Alternate Carbon Metabolism
+HADPCOADH3,0.0,Alternate Carbon Metabolism
+EX_asp_DASH_L_LPAREN_e_RPAREN_,0.0,
+CTPS2,0.14011494612928224,Purine and Pyrimidine Biosynthesis
+EX_doxrbcn_LPAREN_e_RPAREN_,0.0,
+CRNCBCT_reverse,0.0,Oxidative Phosphorylation
+URIt2pp,0.0,"Transport, Inner Membrane"
+GTHRDabcpp,0.0,"Transport, Inner Membrane"
+PGPP180,0.0,Glycerophospholipid Metabolism
+ADNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+NAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYTK2_reverse,0.0,Nucleotide Salvage Pathway
+FE3DHBZR,0.0,Inorganic Ion Transport and Metabolism
+GALTptspp,0.0,"Transport, Inner Membrane"
+PHEt2rpp,0.0,"Transport, Inner Membrane"
+CPGNtonex,0.0,"Transport, Outer Membrane"
+FE3tex,0.006696610575751549,"Transport, Outer Membrane Porin"
+EX_taur_LPAREN_e_RPAREN_,0.0,
+EX_minohp_LPAREN_e_RPAREN_,0.0,
+ACGAptspp,0.0,"Transport, Inner Membrane"
+EX_ca2_LPAREN_e_RPAREN__reverse,0.004464407039288923,
+CS,4.306843738971514,Citric Acid Cycle
+GLYCtpp,0.0,"Transport, Inner Membrane"
+SFGTHi,0.0,Cofactor and Prosthetic Group Biosynthesis
+PPAKr_reverse,0.0,Alternate Carbon Metabolism
+ALAtex,0.0,"Transport, Outer Membrane Porin"
+NO2t2rpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+Zn2tex,0.00029209771420226396,"Transport, Outer Membrane Porin"
+GP4GH,0.0,Nucleotide Salvage Pathway
+EX_zn2_LPAREN_e_RPAREN_,0.0,
+COLIPAPabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+HCINNMtex,0.0,"Transport, Outer Membrane Porin"
+NMNN,0.0,Cofactor and Prosthetic Group Biosynthesis
+CPPPGO2,0.0,Cofactor and Prosthetic Group Biosynthesis
+ALAR_reverse,0.0,Alanine and Aspartate Metabolism
+FHL,0.0,Pyruvate Metabolism
+EX_xan_LPAREN_e_RPAREN_,0.0,
+CD2tpp,0.0,Inorganic Ion Transport and Metabolism
+FE3HOXabcpp,0.0,Inorganic Ion Transport and Metabolism
+THD2pp,0.0,Oxidative Phosphorylation
+ACMUMptspp,0.0,"Transport, Inner Membrane"
+FEOXAMUtpp,0.0,Inorganic Ion Transport and Metabolism
+DURIK1,0.0,Nucleotide Salvage Pathway
+ACGAL1Ptex,0.0,"Transport, Outer Membrane Porin"
+TSULtex,0.0,"Transport, Outer Membrane Porin"
+EX_tungs_LPAREN_e_RPAREN__reverse,0.0,
+3NTD9pp,0.0,Nucleotide Salvage Pathway
+MDDEP3pp,0.0,Murein Recycling
+ACACT2r,0.0,Membrane Lipid Metabolism
+FE3HOXR1,0.0,Inorganic Ion Transport and Metabolism
+TARTD,0.0,Alternate Carbon Metabolism
+FE3HOXR3,0.0,Inorganic Ion Transport and Metabolism
+FE3HOXR2,0.0,Inorganic Ion Transport and Metabolism
+PYDAMK,0.0,Cofactor and Prosthetic Group Biosynthesis
+METTRS,0.0,tRNA Charging
+TKT2_reverse,0.0,Pentose Phosphate Pathway
+GLCabcpp,0.0,"Transport, Inner Membrane"
+PA181abcpp,0.0,"Transport, Inner Membrane"
+FUSAtex,0.0,"Transport, Outer Membrane Porin"
+ACGAL1PPpp,0.0,Alternate Carbon Metabolism
+HG2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+O16GALFT,0.0,Lipopolysaccharide Biosynthesis / Recycling
+HKNTDH,0.0,Alternate Carbon Metabolism
+12DGR120tipp,0.0,"Transport, Inner Membrane"
+EX_3hpppn_LPAREN_e_RPAREN_,0.0,
+EX_LalaDgluMdap_LPAREN_e_RPAREN_,0.0,
+PTRCt2pp,0.0,"Transport, Inner Membrane"
+ACMANAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+UPLA4FNT,0.0,Lipopolysaccharide Biosynthesis / Recycling
+LPLIPAL2G180,0.0,Glycerophospholipid Metabolism
+LPLIPAL2G181,0.0,Glycerophospholipid Metabolism
+GUI2,0.0,Alternate Carbon Metabolism
+GUI1,0.0,Alternate Carbon Metabolism
+MCTP2App,0.0006067338322781593,Murein Biosynthesis
+GLUtex,0.0,"Transport, Outer Membrane Porin"
+EX_acgal_LPAREN_e_RPAREN_,0.0,
+MALTHXtexi,0.0,"Transport, Outer Membrane"
+THMDtex,0.0,"Transport, Outer Membrane Porin"
+NMNt7pp,0.0,"Transport, Inner Membrane"
+X5PL3E,0.0,Alternate Carbon Metabolism
+ARGORNt7pp_reverse,0.0,"Transport, Inner Membrane"
+AHCYSNS,0.0012080584476437221,Methionine Metabolism
+INDOLEtex,0.0,"Transport, Outer Membrane Porin"
+AGPAT140,0.0,Glycerophospholipid Metabolism
+AGPAT141,0.0,Glycerophospholipid Metabolism
+EX_spmd_LPAREN_e_RPAREN_,0.0,
+GTHRDabc2pp,0.0,"Transport, Inner Membrane"
+PPALtpp,0.0,"Transport, Inner Membrane"
+RPI_reverse,2.246811264126652,Pentose Phosphate Pathway
+ALLK,0.0,Alternate Carbon Metabolism
+LALDO3,0.0,Methylglyoxal Metabolism
+SLNTtpp,0.0,Inorganic Ion Transport and Metabolism
+EX_ser_DASH_D_LPAREN_e_RPAREN_,0.0,
+MNt2pp,0.0,"Transport, Inner Membrane"
+PLIPA1E160pp,0.0,Glycerophospholipid Metabolism
+EX_k_LPAREN_e_RPAREN_,0.0,
+CYTDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DGK1_reverse,0.0,Nucleotide Salvage Pathway
+ACNAMtex,0.0,"Transport, Outer Membrane"
+PTRCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CGLYtex,0.0,"Transport, Outer Membrane Porin"
+HYXNtpp,0.0,"Transport, Inner Membrane"
+2AGPA120tipp,0.0,"Transport, Inner Membrane"
+NDPK7_reverse,0.0,Nucleotide Salvage Pathway
+SUCptspp,0.0,"Transport, Inner Membrane"
+CPH4S,0.0,Cofactor and Prosthetic Group Biosynthesis
+HYD1pp,0.0,Oxidative Phosphorylation
+UDPGPpp,0.0,Alternate Carbon Metabolism
+CBItonex,0.0,"Transport, Outer Membrane"
+MOLYBDOPTERIN_1,0.00022177789411653373,Cofactor and Prosthetic Group Biosynthesis
+MOLYBDOPTERIN_2,6.310753084616813e-06,Cofactor and Prosthetic Group Biosynthesis
+GTPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+2DGULRGy,0.0,Alternate Carbon Metabolism
+2DGULRGx,0.0,Alternate Carbon Metabolism
+DOPAtex,0.0,"Transport, Outer Membrane Porin"
+2AGPG180tipp,0.0,"Transport, Inner Membrane"
+EX_fruur_LPAREN_e_RPAREN_,0.0,
+ALLULPE_reverse,0.0,Alternate Carbon Metabolism
+NDPK4,0.029711025522375957,Nucleotide Salvage Pathway
+FUMt2_2pp,0.0,"Transport, Inner Membrane"
+AGMtex,0.0,"Transport, Outer Membrane Porin"
+WCOS,0.0,Cofactor and Prosthetic Group Biosynthesis
+METS,0.1421226671463624,Methionine Metabolism
+UREAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MOLYBDOPTERIN_3,0.00044355578823306746,Cofactor and Prosthetic Group Biosynthesis
+O16AP1pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+ACOLIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+PROD2,0.0,Arginine and Proline Metabolism
+REPHACCOAI,0.0,Alternate Carbon Metabolism
+G3PStex,0.0,"Transport, Outer Membrane Porin"
+ENLIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+PSCLYStex,0.0,"Transport, Outer Membrane Porin"
+HOMtex,0.0,"Transport, Outer Membrane Porin"
+EX_manglyc_LPAREN_e_RPAREN_,0.0,
+PE120abcpp,0.0,"Transport, Inner Membrane"
+TAGURr,0.0,Alternate Carbon Metabolism
+EX_pacald_LPAREN_e_RPAREN_,0.0,
+EX_ins_LPAREN_e_RPAREN_,0.0,
+GLYCDx,0.0,Alternate Carbon Metabolism
+RBP4E,0.0,Alternate Carbon Metabolism
+MNLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CHTBStex,0.0,"Transport, Outer Membrane Porin"
+ARBt2rpp,0.0,"Transport, Inner Membrane"
+NH4tex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACOAD4f,0.0,Membrane Lipid Metabolism
+GALS3,0.0,Alternate Carbon Metabolism
+COFACTOR_8_amet,2.7046084648357773e-06,Cofactor and Prosthetic Group Biosynthesis
+DMStex,0.0,"Transport, Outer Membrane Porin"
+EX_enter_LPAREN_e_RPAREN_,0.0,
+EX_rfamp_LPAREN_e_RPAREN_,0.0,
+XYLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+THRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+XYLK,0.0,Alternate Carbon Metabolism
+PSERtex_reverse,0.0,"Transport, Outer Membrane Porin"
+AMPN,0.0,Nucleotide Salvage Pathway
+FE3HOXexs,0.0,Inorganic Ion Transport and Metabolism
+DXYLK,0.0,Cofactor and Prosthetic Group Biosynthesis
+3HCINNMH,0.0,Alternate Carbon Metabolism
+ORNabcpp,0.0,"Transport, Inner Membrane"
+PG160abcpp,0.009718559750309892,"Transport, Inner Membrane"
+FLVR,0.0,Cofactor and Prosthetic Group Biosynthesis
+NADPHQR3,0.0,Oxidative Phosphorylation
+NADPHQR4,0.0,Oxidative Phosphorylation
+EX_5mtr_LPAREN_e_RPAREN_,0.0060799598289508275,
+HG2tex,0.0,"Transport, Outer Membrane Porin"
+ADOCBLS,0.0,Cofactor and Prosthetic Group Biosynthesis
+DM_5DRIB,0.00040929741434514764,
+MLTGY3pp,0.0,Murein Recycling
+LADGMDH,0.0,Murein Recycling
+DDGALK,0.0,Alternate Carbon Metabolism
+CPGNabcpp,0.0,"Transport, Inner Membrane"
+ECAP1pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+ORNDC,0.0360740677039796,Arginine and Proline Metabolism
+O16A4COLIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+EAR140y,0.0,Cell Envelope Biosynthesis
+DCYTD,0.0,Nucleotide Salvage Pathway
+SELGTHR,0.0,Inorganic Ion Transport and Metabolism
+VPAMTr_reverse,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+AP5AH,0.0,Nucleotide Salvage Pathway
+AACPS7,0.0,Cell Envelope Biosynthesis
+IDONtex,0.0,"Transport, Outer Membrane Porin"
+GLCtex,0.0,"Transport, Outer Membrane Porin"
+AB6PGH,0.0,Alternate Carbon Metabolism
+BALAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+HCO3E_reverse,0.0,Unassigned
+RNDR2b,0.0,Nucleotide Salvage Pathway
+EX_3amp_LPAREN_e_RPAREN_,0.0,
+TYRtex,0.0,"Transport, Outer Membrane Porin"
+PRPPS_reverse,0.0,Histidine Metabolism
+HDCAtexi,0.0,"Transport, Outer Membrane"
+SBTptspp,0.0,"Transport, Inner Membrane"
+MALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MOBDtex,0.0001235104532275005,"Transport, Outer Membrane Porin"
+FACOAE100,0.0,Cell Envelope Biosynthesis
+ADD,0.0,Nucleotide Salvage Pathway
+COFACTOR_9_amet,0.0002010425625584844,Cofactor and Prosthetic Group Biosynthesis
+ADA,0.0,Nucleotide Salvage Pathway
+GALCTND,0.0,Alternate Carbon Metabolism
+GLCDpp,0.0,Oxidative Phosphorylation
+FDH4pp,0.0,Oxidative Phosphorylation
+EDTXS4,0.0,Lipopolysaccharide Biosynthesis / Recycling
+ALTRH,0.0,Alternate Carbon Metabolism
+EDTXS3,0.0,Lipopolysaccharide Biosynthesis / Recycling
+LALALGLUtex,0.0,"Transport, Outer Membrane Porin"
+G1Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLCRt2rpp_reverse,0.0,"Transport, Inner Membrane"
+FA120ACPHi,0.0,Cell Envelope Biosynthesis
+GTHPi,0.0,Unassigned
+FE3DHBZStonex,0.0,"Transport, Outer Membrane"
+EX_fru_LPAREN_e_RPAREN_,0.0,
+Kt3pp,0.0,Inorganic Ion Transport and Metabolism
+NDPK2_reverse,0.0,Nucleotide Salvage Pathway
+FACOAL160t2pp,0.0,Cell Envelope Biosynthesis
+ASPt2rpp,0.0,"Transport, Inner Membrane"
+MANAO_reverse,0.0,Alternate Carbon Metabolism
+O2tpp,18.0,Inorganic Ion Transport and Metabolism
+R5PPpp,0.0,Alternate Carbon Metabolism
+HPPPNt2rpp,0.0,"Transport, Inner Membrane"
+LIPOt2pp,0.0,"Transport, Inner Membrane"
+Ktex_reverse,0.0,"Transport, Outer Membrane Porin"
+SUCCtex,0.0,"Transport, Outer Membrane Porin"
+ALAt4pp,0.0,"Transport, Inner Membrane"
+ASPt2_3pp,0.0,"Transport, Inner Membrane"
+ACGALtex,0.0,"Transport, Outer Membrane Porin"
+ECA4COLIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+NO3tex,0.0,"Transport, Outer Membrane Porin"
+FE2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+OXAMTC,0.0,Unassigned
+ANHGMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+H2Stex_reverse,0.0,"Transport, Outer Membrane Porin"
+SPODM,0.0,Unassigned
+GLUabcpp,0.0,"Transport, Inner Membrane"
+TPRDCOAS,0.0,Cofactor and Prosthetic Group Biosynthesis
+NTD8,0.0,Nucleotide Salvage Pathway
+NTD9,0.0,Nucleotide Salvage Pathway
+NTD6,0.0,Nucleotide Salvage Pathway
+NTD7,0.0,Nucleotide Salvage Pathway
+NTD4,0.0,Nucleotide Salvage Pathway
+NTD5,0.0,Nucleotide Salvage Pathway
+NTD2,0.0,Nucleotide Salvage Pathway
+NTD3,0.0,Nucleotide Salvage Pathway
+NTD1,0.0,Nucleotide Salvage Pathway
+THMDt2rpp,0.0,"Transport, Inner Membrane"
+NAtex,0.0,"Transport, Outer Membrane Porin"
+METAT,0.007900161325802374,Methionine Metabolism
+GK1_reverse,0.0,Nucleotide Salvage Pathway
+GBBTNtex,0.0,"Transport, Outer Membrane Porin"
+PLIPA1A160pp,0.0,Glycerophospholipid Metabolism
+ACALDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+INStex,0.0,"Transport, Outer Membrane"
+DOXRBCNtpp,0.0,"Transport, Outer Membrane"
+RHCCE,0.0012080584476437221,Methionine Metabolism
+PPCK,0.0,Anaplerotic Reactions
+CTECOAI6,0.0,Membrane Lipid Metabolism
+CTECOAI7,0.0,Membrane Lipid Metabolism
+CMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GALTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_all_DASH_D_LPAREN_e_RPAREN_,0.0,
+PACALDtex,0.0,"Transport, Outer Membrane Porin"
+23CAMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CTECOAI8,0.0,Membrane Lipid Metabolism
+G6PDH2r,4.751250161734794,Pentose Phosphate Pathway
+HCYSMT,0.0,Methionine Metabolism
+NMNAT,0.0,Cofactor and Prosthetic Group Biosynthesis
+Kabcpp,0.0,Inorganic Ion Transport and Metabolism
+MELIBt2pp,0.0,"Transport, Inner Membrane"
+NTP10,0.0,Nucleotide Salvage Pathway
+H2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+MANGLYCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_LalaDglu_LPAREN_e_RPAREN_,0.0,
+NACODA,0.0,Arginine and Proline Metabolism
+DSERtex,0.0,"Transport, Outer Membrane Porin"
+HG2t3pp,0.0,Inorganic Ion Transport and Metabolism
+PYRt2rpp_reverse,0.0,"Transport, Inner Membrane"
+THRPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NI2t3pp,0.0,Inorganic Ion Transport and Metabolism
+GDPMNH,0.0,Cell Envelope Biosynthesis
+UM4PL,0.0,Murein Recycling
+ACMUMtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1A120pp,0.0,Glycerophospholipid Metabolism
+GDPMNP,0.0,Cell Envelope Biosynthesis
+MMETt2pp,0.0,"Transport, Inner Membrane"
+ADK4_reverse,0.0,Nucleotide Salvage Pathway
+DHACOAH,0.0,Alternate Carbon Metabolism
+MALDDH,0.0,Alternate Carbon Metabolism
+LALALGLUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PHETA1_reverse,0.16229544014940048,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+MN2tpp,0.0005932107899539804,Inorganic Ion Transport and Metabolism
+EX_cl_LPAREN_e_RPAREN_,0.0,
+PE180abcpp,0.0,"Transport, Inner Membrane"
+FOMETRi,0.0,Folate Metabolism
+ARBTNabcpp,0.0,"Transport, Inner Membrane"
+EX_nac_LPAREN_e_RPAREN_,0.0,
+EX_peamn_LPAREN_e_RPAREN_,0.0,
+EX_tmao_LPAREN_e_RPAREN_,0.0,
+FUCtpp_reverse,0.0,"Transport, Inner Membrane"
+PAPA160,0.0,Glycerophospholipid Metabolism
+PAPA161,0.0,Glycerophospholipid Metabolism
+EX_akg_LPAREN_e_RPAREN_,0.0,
+MALTPTabcpp,0.0,"Transport, Inner Membrane"
+ACACT3r,0.0,Membrane Lipid Metabolism
+MINOHPtexi,0.0,"Transport, Outer Membrane"
+RNTR3c2,0.0,Nucleotide Salvage Pathway
+PGPP120pp,0.0,Glycerophospholipid Metabolism
+FEOXAMtonex,0.0,"Transport, Outer Membrane"
+FMETTRS,0.0,tRNA Charging
+EX_glcur1p_LPAREN_e_RPAREN_,0.0,
+GPDDA3pp,0.0,Glycerophospholipid Metabolism
+PTRCORNt7pp,0.0,"Transport, Inner Membrane"
+ASCBtex_reverse,0.0,"Transport, Outer Membrane Porin"
+12DGR181tipp,0.0,"Transport, Inner Membrane"
+TYRt2rpp,0.0,"Transport, Inner Membrane"
+NTPP9,0.0,Nucleotide Salvage Pathway
+NTPP8,0.0,Nucleotide Salvage Pathway
+NTPP7,0.0,Nucleotide Salvage Pathway
+NTPP6,0.0,Nucleotide Salvage Pathway
+NTPP5,0.0,Nucleotide Salvage Pathway
+NTPP4,0.0,Nucleotide Salvage Pathway
+NTPP3,0.0,Nucleotide Salvage Pathway
+NTPP2,0.0,Nucleotide Salvage Pathway
+DM_4CRSOL,0.00020104256255279278,
+EX_chtbs_LPAREN_e_RPAREN_,0.0,
+ACOTA_reverse,0.29519358935834594,Arginine and Proline Metabolism
+COFACTOR_5,0.00010457819397365005,Cofactor and Prosthetic Group Biosynthesis
+FCLPA,0.0,Alternate Carbon Metabolism
+F6Pt6_2pp,0.0,"Transport, Inner Membrane"
+EX_din_LPAREN_e_RPAREN_,0.0,
+MAN6PI,0.0,Alternate Carbon Metabolism
+PPALtex,0.0,"Transport, Outer Membrane Porin"
+HPPPNDO,0.0,Alternate Carbon Metabolism
+DMSOR2pp,0.0,Oxidative Phosphorylation
+LCADi,0.0,Alternate Carbon Metabolism
+CHLt2pp,0.0,"Transport, Inner Membrane"
+MCITS,0.0,Alternate Carbon Metabolism
+FALDH2,0.0,Cofactor and Prosthetic Group Biosynthesis
+SPMDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MCITD,0.0,Alternate Carbon Metabolism
+FUMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ALAGLUE_reverse,0.0,Murein Recycling
+EX_quin_LPAREN_e_RPAREN_,0.0,
+HIStex,0.0,"Transport, Outer Membrane Porin"
+H2Otex_reverse,43.081117180366725,"Transport, Outer Membrane Porin"
+PA160abcpp,0.0,"Transport, Inner Membrane"
+3AMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+URAt2rpp,0.0,"Transport, Inner Membrane"
+SULRi,0.2234520467562679,Cysteine Metabolism
+DINStex,0.0,"Transport, Outer Membrane Porin"
+12PPDStpp_reverse,0.0,"Transport, Inner Membrane"
+PSSA180,0.0,Glycerophospholipid Metabolism
+RMPA_reverse,0.0,Alternate Carbon Metabolism
+SULFACtex,0.0,"Transport, Outer Membrane Porin"
+DRPA,0.0,Alternate Carbon Metabolism
+CLPNH140pp,0.0,Glycerophospholipid Metabolism
+OCTAtex,0.0,"Transport, Outer Membrane Porin"
+EX_pi_LPAREN_e_RPAREN__reverse,0.8358556399129329,
+DIMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACPPAT161,0.0,Glycerophospholipid Metabolism
+ACPPAT160,0.0,Glycerophospholipid Metabolism
+SO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+CD2tex,0.0,"Transport, Outer Membrane Porin"
+PNTOtex_reverse,0.0,"Transport, Outer Membrane Porin"
+H2O2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+URAtex,0.0,"Transport, Outer Membrane Porin"
+TRPS2,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+LPLIPAL1G161pp,0.0,Glycerophospholipid Metabolism
+GLYCAt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_gam6p_LPAREN_e_RPAREN_,0.0,
+GBBTNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_glyclt_LPAREN_e_RPAREN_,0.0,
+EX_fe2_LPAREN_e_RPAREN__reverse,0.007301541302083488,
+PE161abcpp,0.022296792184106146,"Transport, Inner Membrane"
+EAR141y,0.0,Cell Envelope Biosynthesis
+CRNCAL2,0.0,Oxidative Phosphorylation
+PPBNGS,0.0024125107506335133,Cofactor and Prosthetic Group Biosynthesis
+pyr_to_23dhmb,0.7658892219998863,"Valine, Leucine, and Isoleucine Metabolism"
+SULFACabcpp,0.0,"Transport, Inner Membrane"
+EX_melib_LPAREN_e_RPAREN_,0.0,
+MLTG3,0.0,Alternate Carbon Metabolism
+IPPMIa_reverse,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+MLTG2,0.0,Alternate Carbon Metabolism
+TAGURr_reverse,0.0,Alternate Carbon Metabolism
+TYRPpp,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+HISTRS,0.0,tRNA Charging
+CBPS,0.0,Arginine and Proline Metabolism
+MALDt2_2pp,0.0,"Transport, Inner Membrane"
+AGM3PA,0.0,Murein Recycling
+TYRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+AGM3PH,0.0,Murein Recycling
+EX_succ_LPAREN_e_RPAREN_,0.0,
+EX_cu2_LPAREN_e_RPAREN__reverse,0.0006076353684331046,
+TMDK1,0.0,Nucleotide Salvage Pathway
+EX_f6p_LPAREN_e_RPAREN_,0.0,
+LPLIPAL1A160pp,0.0,Glycerophospholipid Metabolism
+PGP140abcpp,0.0,"Transport, Inner Membrane"
+PHYTSpp,0.0,Alternate Carbon Metabolism
+12DGR141tipp,0.0,"Transport, Inner Membrane"
+ASPt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_phe_DASH_L_LPAREN_e_RPAREN_,0.0,
+LPLIPAL2ATG161,0.0,Glycerophospholipid Metabolism
+LPLIPAL2ATG160,0.0,Glycerophospholipid Metabolism
+DAPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLCURt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GLYC3Pabcpp,0.0,"Transport, Inner Membrane"
+ACOAD5f,0.0,Membrane Lipid Metabolism
+EX_pppn_LPAREN_e_RPAREN_,0.0,
+HOMt2pp,0.0,"Transport, Inner Membrane"
+PLIPA2G141pp,0.0,Glycerophospholipid Metabolism
+GMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TSULabcpp,0.0,Inorganic Ion Transport and Metabolism
+DHFR,0.02316677457362816,Cofactor and Prosthetic Group Biosynthesis
+LPLIPAL2ATE180,0.0,Glycerophospholipid Metabolism
+SUCMALtpp,0.0,"Transport, Inner Membrane"
+NH4tpp,9.471790372442172,Inorganic Ion Transport and Metabolism
+VALTA,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+TMAOR1,0.0,Oxidative Phosphorylation
+R5PP,0.0,Alternate Carbon Metabolism
+LPLIPAL2A120,0.0,Glycerophospholipid Metabolism
+CFAS160G,0.0,Glycerophospholipid Metabolism
+CFAS160E,0.0,Glycerophospholipid Metabolism
+ICHORS,0.0010052128127639639,Cofactor and Prosthetic Group Biosynthesis
+ADK4,0.0,Nucleotide Salvage Pathway
+ADK3,0.0,Nucleotide Salvage Pathway
+ACALDtpp,0.0,"Transport, Inner Membrane"
+PLIPA2E141pp,0.0,Glycerophospholipid Metabolism
+GLYALDtpp,0.0,"Transport, Inner Membrane"
+ALLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CRNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FEROpp,0.0,Inorganic Ion Transport and Metabolism
+ptrc_to_4abut_1,0.0,Arginine and Proline Metabolism
+PLIPA1G161pp,0.0,Glycerophospholipid Metabolism
+APG3PAT181,0.0,Glycerophospholipid Metabolism
+APG3PAT180,0.0,Glycerophospholipid Metabolism
+LALALGLUtpp,0.0,"Transport, Inner Membrane"
+XANtpp_reverse,0.0,"Transport, Inner Membrane"
+PA161abcpp,0.0,"Transport, Inner Membrane"
+PACALDt2rpp_reverse,0.0,"Transport, Inner Membrane"
+CRNCDH,0.0,Oxidative Phosphorylation
+PGPP141,0.0,Glycerophospholipid Metabolism
+PGPP140,0.0,Glycerophospholipid Metabolism
+CYTDt2rpp,0.0,"Transport, Inner Membrane"
+TDPADGAT,0.0,Cell Envelope Biosynthesis
+PUNP4_reverse,0.0,Nucleotide Salvage Pathway
+GLCP2,0.0,Glycolysis/Gluconeogenesis
+PG180abcpp,0.0,"Transport, Inner Membrane"
+M1PD,0.0,Alternate Carbon Metabolism
+RNDR3b,0.0,Nucleotide Salvage Pathway
+COtex,0.00020104256255279278,
+G3PCabcpp,0.0,"Transport, Inner Membrane"
+EX_cpgn_LPAREN_e_RPAREN_,0.0,
+FUM_reverse,0.0,Citric Acid Cycle
+ACONMT,0.0,Unassigned
+TRPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TREptspp,0.0,"Transport, Inner Membrane"
+GALCTtex,0.0,"Transport, Outer Membrane Porin"
+URAt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_acgam1p_LPAREN_e_RPAREN_,0.0,
+ALR2,0.0,Methylglyoxal Metabolism
+ENTERES,0.0,Inorganic Ion Transport and Metabolism
+TUNGStex,0.0,"Transport, Outer Membrane Porin"
+THMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACNAMt2pp,0.0,"Transport, Inner Membrane"
+FMNRx2,0.0,Cofactor and Prosthetic Group Biosynthesis
+ALLTNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+O16AT,0.0,Lipopolysaccharide Biosynthesis / Recycling
+DSBAO2,0.0,Unassigned
+DSBAO1,0.0,Unassigned
+5MTRtex_reverse,0.0060799598289508275,"Transport, Outer Membrane Porin"
+MINCYCtex,0.0,"Transport, Outer Membrane Porin"
+ASAD_reverse,0.9431348362067433,Threonine and Lysine Metabolism
+SO3tex,0.0,"Transport, Outer Membrane Porin"
+3OXCOAT,0.0,Alternate Carbon Metabolism
+DMSOR1pp,0.0,Oxidative Phosphorylation
+FBA3_reverse,0.0,Pentose Phosphate Pathway
+PLIPA1E161pp,0.0,Glycerophospholipid Metabolism
+2AGPE161tipp,0.0,"Transport, Inner Membrane"
+IDONtex_reverse,0.0,"Transport, Outer Membrane Porin"
+LCTStpp_reverse,0.0,"Transport, Inner Membrane"
+METDtex,0.0,"Transport, Outer Membrane Porin"
+TMAOtex,0.0,"Transport, Outer Membrane Porin"
+CYANtex,0.0,"Transport, Outer Membrane Porin"
+EX_tyrp_LPAREN_e_RPAREN_,0.0,
+MELIBtex_reverse,0.0,"Transport, Outer Membrane Porin"
+APG3PAT161,0.0,Glycerophospholipid Metabolism
+APG3PAT160,0.0,Glycerophospholipid Metabolism
+EX_ttdcea_LPAREN_e_RPAREN_,0.0,
+CYTDt2pp,0.0,"Transport, Inner Membrane"
+FEENTERabcpp,0.0,Inorganic Ion Transport and Metabolism
+EX_nmn_LPAREN_e_RPAREN_,0.0,
+PDE4,0.0,Nucleotide Salvage Pathway
+PDE1,0.0,Nucleotide Salvage Pathway
+PItex,0.8358556399129329,"Transport, Outer Membrane Porin"
+CYTK1,0.14766531142699518,Nucleotide Salvage Pathway
+CYTK2,0.0,Nucleotide Salvage Pathway
+VALt2rpp_reverse,0.0,"Transport, Inner Membrane"
+L_DASH_LACD2,0.0,Oxidative Phosphorylation
+L_DASH_LACD3,0.0,Oxidative Phosphorylation
+PHEtex,0.0,"Transport, Outer Membrane Porin"
+ME2,0.0,Anaplerotic Reactions
+ECA4OALpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+O16AP2pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+PUNP2_reverse,0.0,Nucleotide Salvage Pathway
+URItex_reverse,0.0,"Transport, Outer Membrane"
+NODOy,0.0,Nitrogen Metabolism
+2AGPE160tipp,0.0,"Transport, Inner Membrane"
+RMNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_novbcn_LPAREN_e_RPAREN_,0.0,
+EX_sel_LPAREN_e_RPAREN_,0.0,
+PUNP6_reverse,0.0,Nucleotide Salvage Pathway
+EX_4abut_LPAREN_e_RPAREN_,0.0,
+GLUt4pp,0.0,"Transport, Inner Membrane"
+SERt2rpp,0.0,"Transport, Inner Membrane"
+H2tpp,0.0,"Transport, Inner Membrane"
+DCTPD,0.0,Nucleotide Salvage Pathway
+ETHAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ZN2tpp,0.00029209771420226396,Inorganic Ion Transport and Metabolism
+SKMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CLPNS140pp,0.0,Glycerophospholipid Metabolism
+GLYC2Pabcpp,0.0,"Transport, Inner Membrane"
+XTSNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GDMANE,0.0,Cell Envelope Biosynthesis
+PGPP160pp,0.0,Glycerophospholipid Metabolism
+GLUABUTt7pp_reverse,0.0,"Transport, Inner Membrane"
+CD2abcpp,0.0,Inorganic Ion Transport and Metabolism
+ENO,14.47596868068785,Glycolysis/Gluconeogenesis
+RBP4E_reverse,0.0,Alternate Carbon Metabolism
+DHMPTR,0.0,Cofactor and Prosthetic Group Biosynthesis
+2AGPG160tipp,0.0,"Transport, Inner Membrane"
+O2Stex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_arbtn_LPAREN_e_RPAREN_,0.0,
+IPPMIb_reverse,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+ARGAGMt7pp,0.0,"Transport, Inner Membrane"
+CRNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+UREAtpp_reverse,0.0,"Transport, Inner Membrane"
+FADRx,0.0006986905200825758,Cofactor and Prosthetic Group Biosynthesis
+MSO3tex,0.0,"Transport, Outer Membrane Porin"
+4HOXPACDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MCTP1App,0.005456998345883653,Murein Biosynthesis
+ACPPAT120,0.0,Glycerophospholipid Metabolism
+12DGR140tipp,0.0,"Transport, Inner Membrane"
+5DGLCNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACOAD6f,0.0,Membrane Lipid Metabolism
+EX_acgam_LPAREN_e_RPAREN_,0.0,
+EX_sulfac_LPAREN_e_RPAREN_,0.0,
+TMAtex,0.0,"Transport, Outer Membrane Porin"
+MNNH,0.0,Alternate Carbon Metabolism
+glu_DASH_L_to_glu5sa,0.19364816300993176,Arginine and Proline Metabolism
+ACGAM1Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+DTARTD,0.0,Alternate Carbon Metabolism
+imp_to_amp,0.2617718410222261,Purine and Pyrimidine Biosynthesis
+XYLt2pp,0.0,"Transport, Inner Membrane"
+PUNP1_reverse,0.0076973156909396975,Nucleotide Salvage Pathway
+PETNT161pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+RBK_L1,0.0,Alternate Carbon Metabolism
+EX_lipoate_LPAREN_e_RPAREN_,0.0,
+AKGtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SBTPD,0.0,Alternate Carbon Metabolism
+LYSDC,0.0,Threonine and Lysine Metabolism
+UAG2E_reverse,0.0,Cell Envelope Biosynthesis
+LPLIPAL2ATE181,0.0,Glycerophospholipid Metabolism
+UDPG4E_reverse,0.0,Alternate Carbon Metabolism
+ADNCYC,0.0,Nucleotide Salvage Pathway
+QUIN2tpp,0.0,"Transport, Inner Membrane"
+CRNt7pp,0.0,"Transport, Inner Membrane"
+EX_zn2_LPAREN_e_RPAREN__reverse,0.00029209771420226396,
+GALCTNLtex,0.0,"Transport, Outer Membrane Porin"
+AMPTASECG,0.0,Cysteine Metabolism
+PDH,8.543437059155096,Glycolysis/Gluconeogenesis
+ALLtex,0.0,"Transport, Outer Membrane Porin"
+GLYCPHOSPHOLIPID_9,0.011561299651018002,Glycerophospholipid Metabolism
+GAM6Pt6_2pp,0.0,"Transport, Inner Membrane"
+GALUi,0.029393684795835227,Cell Envelope Biosynthesis
+G3PD2_reverse,0.14572791022997145,Alternate Carbon Metabolism
+GLYCPHOSPHOLIPID_1,0.02191904853518408,Glycerophospholipid Metabolism
+CLPNH181pp,0.0,Glycerophospholipid Metabolism
+GLYCPHOSPHOLIPID_3,0.014863626586582485,Glycerophospholipid Metabolism
+NI2tpp,0.0002767715995681945,Inorganic Ion Transport and Metabolism
+GLYCPHOSPHOLIPID_5,0.005958252448033217,Glycerophospholipid Metabolism
+ARBTtex,0.0,"Transport, Outer Membrane Porin"
+GLYCPHOSPHOLIPID_7,0.03981544274700242,Glycerophospholipid Metabolism
+GLYCPHOSPHOLIPID_6,0.030967766922369647,Glycerophospholipid Metabolism
+COFACTOR_11_amet,1.8030723098905181e-06,Cofactor and Prosthetic Group Biosynthesis
+EX_adn_LPAREN_e_RPAREN_,0.0,
+THRA2i,0.0,Threonine and Lysine Metabolism
+ASPTA_reverse,2.5697648006044806,Alanine and Aspartate Metabolism
+SDPTA_reverse,0.32547709033911215,Threonine and Lysine Metabolism
+URIK2,0.0,Nucleotide Salvage Pathway
+MLTP2_reverse,0.0,Alternate Carbon Metabolism
+LPLIPAL1G180pp,0.0,Glycerophospholipid Metabolism
+O16AP3pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+NADH17pp,0.0,Oxidative Phosphorylation
+UPPRT,0.0,Nucleotide Salvage Pathway
+PGPP120,0.0,Glycerophospholipid Metabolism
+AMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SLNTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GAPD_reverse,0.0,Glycolysis/Gluconeogenesis
+FEENTERR1,0.0,Inorganic Ion Transport and Metabolism
+FEENTERR2,0.0,Inorganic Ion Transport and Metabolism
+FEENTERR3,0.0,Inorganic Ion Transport and Metabolism
+FECRMR1,0.0,Inorganic Ion Transport and Metabolism
+FECRMR2,0.0,Inorganic Ion Transport and Metabolism
+FECRMR3,0.0,Inorganic Ion Transport and Metabolism
+APH180,0.0,Glycerophospholipid Metabolism
+APH181,0.0,Glycerophospholipid Metabolism
+23PDE2pp,0.0,Nucleotide Salvage Pathway
+UPLA4FNF,0.0,Lipopolysaccharide Biosynthesis / Recycling
+BSORy,0.0,Cofactor and Prosthetic Group Biosynthesis
+BSORx,0.0,Cofactor and Prosthetic Group Biosynthesis
+3UMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+POAACR,0.0,Nucleotide Salvage Pathway
+PLIPA1A120pp,0.0,Glycerophospholipid Metabolism
+APH160,0.0,Glycerophospholipid Metabolism
+APH161,0.0,Glycerophospholipid Metabolism
+LIPOPOLYSACCHARIDE_1,0.007348421198958807,Lipopolysaccharide Biosynthesis / Recycling
+BUTtex,0.0,"Transport, Outer Membrane Porin"
+LIPOPOLYSACCHARIDE_3,0.014696842397917614,Lipopolysaccharide Biosynthesis / Recycling
+LIPOPOLYSACCHARIDE_4,0.02204526359687642,Lipopolysaccharide Biosynthesis / Recycling
+HXAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+AACPS8,0.0,Cell Envelope Biosynthesis
+AACPS9,0.0,Cell Envelope Biosynthesis
+LPLIPAL2E120,0.0,Glycerophospholipid Metabolism
+FACOAE120,0.0,Cell Envelope Biosynthesis
+AACPS4,0.0,Cell Envelope Biosynthesis
+AACPS5,0.0,Cell Envelope Biosynthesis
+AACPS6,0.0,Cell Envelope Biosynthesis
+EX_cu_LPAREN_e_RPAREN_,0.0,
+AACPS1,0.0,Cell Envelope Biosynthesis
+AACPS2,0.0,Cell Envelope Biosynthesis
+AACPS3,0.0,Cell Envelope Biosynthesis
+DOXRBCNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+XMPtex,0.0,"Transport, Outer Membrane Porin"
+GALCTLO,0.0,Alternate Carbon Metabolism
+MG2tex,0.007440377886763223,"Transport, Outer Membrane Porin"
+ACCOAL,0.0,Alternate Carbon Metabolism
+CITL,0.0,Citric Acid Cycle
+QUIN2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+FORtppi,0.0,"Transport, Inner Membrane"
+aspsa_to_sl2a6o,0.32547709033911215,Threonine and Lysine Metabolism
+ACCOAC,1.9688548918872468,Membrane Lipid Metabolism
+EX_cbi_LPAREN_e_RPAREN_,0.0,
+EX_g6p_LPAREN_e_RPAREN_,0.0,
+AKGDH,3.3258407781124504,Citric Acid Cycle
+MANPGH,0.0,Alternate Carbon Metabolism
+MDDEP2pp,0.0,Murein Recycling
+ATPHs,0.0,Nucleotide Salvage Pathway
+MTHFC,0.763721027547235,Folate Metabolism
+XYLabcpp,0.0,"Transport, Inner Membrane"
+LCARR_reverse,0.0,Methylglyoxal Metabolism
+NADH18pp,0.0,Oxidative Phosphorylation
+UDCPDPS,4.958448852198857e-05,Cofactor and Prosthetic Group Biosynthesis
+MMETtex,0.0,"Transport, Outer Membrane Porin"
+COLIPAKpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+GALCTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+METSOX2abcpp,0.0,"Transport, Inner Membrane"
+VALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+RMNtpp,0.0,"Transport, Inner Membrane"
+G2PP,0.0,Alternate Carbon Metabolism
+PPGPPDP,0.0,Cofactor and Prosthetic Group Biosynthesis
+ALAt2pp,0.0,"Transport, Inner Membrane"
+RFAMPtex,0.0,"Transport, Outer Membrane"
+TRPS3,0.04979544798224644,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+OCTDPS,0.00060312768766407,Cofactor and Prosthetic Group Biosynthesis
+LIPAHT2ex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+EX_mso3_LPAREN_e_RPAREN_,0.0,
+EX_arbt_LPAREN_e_RPAREN_,0.0,
+MALt2_3pp,0.0,"Transport, Inner Membrane"
+MOCOS,0.00011719970014288368,Cofactor and Prosthetic Group Biosynthesis
+MALTPTtexi,0.0,"Transport, Outer Membrane"
+METSOX2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+SERTRS2,0.0,tRNA Charging
+DHAtpp,0.0,"Transport, Inner Membrane"
+GPDDA2pp,0.0,Glycerophospholipid Metabolism
+R5Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+AGMT,0.0,Arginine and Proline Metabolism
+EX_3hcinnm_LPAREN_e_RPAREN_,0.0,
+CPGNUtpp,0.0,Inorganic Ion Transport and Metabolism
+ACtex_reverse,1.6474617198986623,"Transport, Outer Membrane Porin"
+SUCRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TPI,7.312995677498229,Glycolysis/Gluconeogenesis
+EX_enlipa_LPAREN_e_RPAREN_,0.0,
+NO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+PGI_reverse,0.0,Glycolysis/Gluconeogenesis
+GLYCLTt4pp,0.0,"Transport, Inner Membrane"
+EX_pydxn_LPAREN_e_RPAREN_,0.0,
+FBA3,1.393849877209819,Pentose Phosphate Pathway
+MDDCP1pp,0.004911568972141771,Murein Biosynthesis
+FACOAL60t2pp,0.0,Cell Envelope Biosynthesis
+ULA4NFT,0.0,Lipopolysaccharide Biosynthesis / Recycling
+UDPKAAT,0.0,Lipopolysaccharide Biosynthesis / Recycling
+CYNTAH,0.0,Nitrogen Metabolism
+CYTDH,0.0,Alternate Carbon Metabolism
+THMDt2pp,0.0,"Transport, Inner Membrane"
+EX_lipa_cold_LPAREN_e_RPAREN_,0.0,
+CTBTt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_eca4colipa_LPAREN_e_RPAREN_,0.0,
+AGM4PCPpp,0.0,Murein Recycling
+CU2tpp,0.0006076353684331046,Inorganic Ion Transport and Metabolism
+EX_gthrd_LPAREN_e_RPAREN_,0.0,
+PAPA140,0.0,Glycerophospholipid Metabolism
+PAPA141,0.0,Glycerophospholipid Metabolism
+5DGLCNtex,0.0,"Transport, Outer Membrane Porin"
+ALLTNtex,0.0,"Transport, Outer Membrane Porin"
+G3PCtex,0.0,"Transport, Outer Membrane Porin"
+ALR4x,0.0,Glycerophospholipid Metabolism
+SULFACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYStex,0.0,"Transport, Outer Membrane Porin"
+QMO2,0.0,Oxidative Phosphorylation
+PAPA120pp,0.0,Glycerophospholipid Metabolism
+EX_agm_LPAREN_e_RPAREN_,0.0,
+DAMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_udpglcur_LPAREN_e_RPAREN_,0.0,
+GLNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+UMPSYN_aerobic,0.28878366729668514,Purine and Pyrimidine Biosynthesis
+PSD180,0.0,Glycerophospholipid Metabolism
+EX_o16a4colipa_LPAREN_e_RPAREN_,0.0,
+FORtex,0.0,"Transport, Outer Membrane Porin"
+SO4tex,0.22717178493157203,"Transport, Outer Membrane Porin"
+ARGDCpp,0.0,Arginine and Proline Metabolism
+SO2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+DAGK120,0.0,Glycerophospholipid Metabolism
+PYDXtpp,0.0,"Transport, Inner Membrane"
+UDPGtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CSNt2pp,0.0,"Transport, Inner Membrane"
+SUCCt2_2pp,0.0,"Transport, Inner Membrane"
+EX_galctn_DASH_L_LPAREN_e_RPAREN_,0.0,
+NTD5pp,0.0,Nucleotide Salvage Pathway
+PAPA160pp,0.0,Glycerophospholipid Metabolism
+GLUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+THRAi,0.0,Threonine and Lysine Metabolism
+GARFT,0.2884843572932256,Purine and Pyrimidine Biosynthesis
+G3PT,0.0,Alternate Carbon Metabolism
+GDPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYCAtex,0.0,"Transport, Outer Membrane Porin"
+ADOCBIK,0.0,Cofactor and Prosthetic Group Biosynthesis
+MALTHXabcpp,0.0,"Transport, Inner Membrane"
+2AGPG161tipp,0.0,"Transport, Inner Membrane"
+HXPRT,0.0,Nucleotide Salvage Pathway
+GDPDPK,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_cytd_LPAREN_e_RPAREN_,0.0,
+ACOAD2f,0.0,Membrane Lipid Metabolism
+GLCP,0.0,Glycolysis/Gluconeogenesis
+DDPGALA,0.0,Alternate Carbon Metabolism
+LALADGLUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CBIAT_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+QUIN2tpp_reverse,0.0,"Transport, Inner Membrane"
+DHAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ARBabcpp,0.0,"Transport, Inner Membrane"
+TRSARr,0.0,Alternate Carbon Metabolism
+PUNP5_reverse,0.0,Nucleotide Salvage Pathway
+MNtex,0.0005932107899539804,"Transport, Outer Membrane Porin"
+G3PEtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1A161pp,0.0,Glycerophospholipid Metabolism
+PUNP4,0.0,Nucleotide Salvage Pathway
+AACTOOR,0.0,Methylglyoxal Metabolism
+QMO3,0.0,Oxidative Phosphorylation
+FACOAL161t2pp,0.0,Cell Envelope Biosynthesis
+UACMAMO,0.0,Cell Envelope Biosynthesis
+26DAHtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PDX5POi,0.0,Cofactor and Prosthetic Group Biosynthesis
+CLPNS181pp_reverse,0.0,Glycerophospholipid Metabolism
+CFAS180E,0.0,Glycerophospholipid Metabolism
+ARBTNtonex,0.0,"Transport, Outer Membrane"
+PYRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ASO3tex,0.0,"Transport, Outer Membrane Porin"
+INSH,0.0,Nucleotide Salvage Pathway
+PLIPA2A120pp,0.0,Glycerophospholipid Metabolism
+INSK,0.0,Nucleotide Salvage Pathway
+TYRPtex,0.0,"Transport, Outer Membrane Porin"
+PYRt2rpp,0.0,"Transport, Inner Membrane"
+AMANAPEr,0.0,Alternate Carbon Metabolism
+EX_g3pe_LPAREN_e_RPAREN_,0.0,
+ACGALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GND,4.751250161734794,Pentose Phosphate Pathway
+ILETA_reverse,0.2545090657579763,"Valine, Leucine, and Isoleucine Metabolism"
+GNK,0.0,Alternate Carbon Metabolism
+NADH10,0.0,Oxidative Phosphorylation
+GLCNt2rpp,0.0,"Transport, Inner Membrane"
+LYSabcpp,0.0,"Transport, Inner Membrane"
+CLPNS180pp,0.0,Glycerophospholipid Metabolism
+SELNPS,0.0,Unassigned
+EX_cbl1_LPAREN_e_RPAREN__reverse,0.00020104256255279278,
+PLIPA2A161pp,0.0,Glycerophospholipid Metabolism
+QUIN2tex,0.0,"Transport, Outer Membrane Porin"
+PLIPA2E140pp,0.0,Glycerophospholipid Metabolism
+CLPNS161pp_reverse,0.0,Glycerophospholipid Metabolism
+EX_damp_LPAREN_e_RPAREN_,0.0,
+ACOAD7f,0.0,Membrane Lipid Metabolism
+CYTDt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_ag_LPAREN_e_RPAREN_,0.0,
+GLYtex,0.0,"Transport, Outer Membrane Porin"
+SELtpp,0.0,Inorganic Ion Transport and Metabolism
+ALAALAD,0.0,Murein Recycling
+ASTPathway,0.0,Arginine and Proline Metabolism
+ACONTa,4.306843738971514,Citric Acid Cycle
+DADK,0.0,Nucleotide Salvage Pathway
+2AGPE140tipp,0.0,"Transport, Inner Membrane"
+LPLIPAL2ATG141,0.0,Glycerophospholipid Metabolism
+LPLIPAL2ATG140,0.0,Glycerophospholipid Metabolism
+DADA,0.0,Nucleotide Salvage Pathway
+ALAALAr,0.021891100914380776,Cell Envelope Biosynthesis
+PSSA141,0.0,Glycerophospholipid Metabolism
+PSSA140,0.0,Glycerophospholipid Metabolism
+N2Otex_reverse,0.0,"Transport, Outer Membrane Porin"
+2AGPEAT120,0.0,Glycerophospholipid Metabolism
+EX_thymd_LPAREN_e_RPAREN_,0.0,
+EX_hg2_LPAREN_e_RPAREN_,0.0,
+PA180abcpp,0.0,"Transport, Inner Membrane"
+2AGPA140tipp,0.0,"Transport, Inner Membrane"
+MALt2_2pp,0.0,"Transport, Inner Membrane"
+NTPP10,0.0,Nucleotide Salvage Pathway
+HPYRI_reverse,0.0,Alternate Carbon Metabolism
+EX_colipap_LPAREN_e_RPAREN_,0.0,
+METSOX1tex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_duri_LPAREN_e_RPAREN_,0.0,
+NOVBCNtex,0.0,"Transport, Outer Membrane"
+GLYBabcpp,0.0,"Transport, Inner Membrane"
+GLYC3Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL2A140,0.0,Glycerophospholipid Metabolism
+LPLIPAL2A141,0.0,Glycerophospholipid Metabolism
+EX_cynt_LPAREN_e_RPAREN_,0.0,
+GLCRD,0.0,Alternate Carbon Metabolism
+EX_5dglcn_LPAREN_e_RPAREN_,0.0,
+SUCCt3pp,0.0,"Transport, Inner Membrane"
+23CUMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+UGLCURPpp,0.0,Alternate Carbon Metabolism
+EAR161y,0.0,Cell Envelope Biosynthesis
+ALLTN,0.0,Nitrogen Metabolism
+G6PDH2r_reverse,0.0,Pentose Phosphate Pathway
+3CMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DASYN180,0.0,Glycerophospholipid Metabolism
+ALAALAabcpp,0.0029705616305446287,"Transport, Inner Membrane"
+EX_ura_LPAREN_e_RPAREN_,0.0,
+EX_lac_DASH_L_LPAREN_e_RPAREN_,0.0,
+SERt4pp,0.004464407039288923,"Transport, Inner Membrane"
+NTD4pp,0.0,Nucleotide Salvage Pathway
+AGDC,0.0,Alternate Carbon Metabolism
+FCI,0.0,Alternate Carbon Metabolism
+TRPt2rpp,0.0,"Transport, Inner Membrane"
+PROtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PNTOtex,0.0,"Transport, Outer Membrane Porin"
+ASCBPL,0.0,Alternate Carbon Metabolism
+PSP_Lpp,0.0,Glycine and Serine Metabolism
+ASCBptspp,0.0,"Transport, Inner Membrane"
+PG120abcpp,0.0,"Transport, Inner Membrane"
+ETOHtex,0.0,"Transport, Outer Membrane Porin"
+EX_aso3_LPAREN_e_RPAREN_,0.0,
+EX_val_DASH_L_LPAREN_e_RPAREN_,0.0,
+EX_ala_DASH_B_LPAREN_e_RPAREN_,0.0,
+AGM3PApp,0.0,Murein Recycling
+XTSNt2rpp,0.0,"Transport, Inner Membrane"
+PLIPA2G140pp,0.0,Glycerophospholipid Metabolism
+VPAMTr,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+MALTTRtexi,0.0,"Transport, Outer Membrane"
+RNDR3,0.023090144000457974,Nucleotide Salvage Pathway
+RNDR2,0.023090144000457974,Nucleotide Salvage Pathway
+RNDR1,0.022362604323417152,Nucleotide Salvage Pathway
+PSCVT,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+MTHTHFSs,0.0012080584476437221,Methionine Metabolism
+RNDR1b,0.0,Nucleotide Salvage Pathway
+GMAND,0.0,Cell Envelope Biosynthesis
+PDXPP,0.0,Cofactor and Prosthetic Group Biosynthesis
+GALCTNLt2pp,0.0,"Transport, Inner Membrane"
+2AGPA160tipp,0.0,"Transport, Inner Membrane"
+K2L4Aabcpp,0.0,"Transport, Inner Membrane"
+DC6PH,0.0,Alternate Carbon Metabolism
+CHLabcpp,0.0,"Transport, Inner Membrane"
+GLYC3Pt6pp,0.0,"Transport, Inner Membrane"
+SPMDtex,0.0,"Transport, Outer Membrane Porin"
+RNTR2c2,0.0,Nucleotide Salvage Pathway
+ASNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_dgmp_LPAREN_e_RPAREN_,0.0,
+DSERDHr_reverse,0.0,Glycine and Serine Metabolism
+CYSDabcpp,0.0,"Transport, Inner Membrane"
+LCARS_reverse,0.0,Alternate Carbon Metabolism
+HPPPNtex,0.0,"Transport, Outer Membrane Porin"
+GDPtex,0.0,"Transport, Outer Membrane Porin"
+FACOAL180t2pp,0.0,Cell Envelope Biosynthesis
+LPLIPAL2ATE140,0.0,Glycerophospholipid Metabolism
+DOPAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+RFAMPtpp,0.0,"Transport, Outer Membrane"
+PYK,1.1213391250942086,Glycolysis/Gluconeogenesis
+CLPNS181pp,0.0010638126628354058,Glycerophospholipid Metabolism
+LA4NTpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+CHOLD,0.0,Unassigned
+PLIPA2A160pp,0.0,Glycerophospholipid Metabolism
+LEUt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_ttdca_LPAREN_e_RPAREN_,0.0,
+AM4PCP,0.0,Murein Recycling
+FRUpts2pp,0.0,"Transport, Inner Membrane"
+BUTSO3abcpp,0.0,"Transport, Inner Membrane"
+EX_skm_LPAREN_e_RPAREN_,0.0,
+ACONTb_reverse,0.0,Citric Acid Cycle
+MG2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+FA100ACPHi,0.0,Cell Envelope Biosynthesis
+FESD2s,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_ocdca_LPAREN_e_RPAREN_,0.0,
+ASPt2pp,0.0,"Transport, Inner Membrane"
+EX_dimp_LPAREN_e_RPAREN_,0.0,
+TDSR1,0.0,"Transport, Inner Membrane"
+TDSR2,0.0,"Transport, Inner Membrane"
+APG3PAT141,0.0,Glycerophospholipid Metabolism
+APG3PAT140,0.0,Glycerophospholipid Metabolism
+MICITDr_reverse,0.0,Alternate Carbon Metabolism
+NADH5,0.0,Oxidative Phosphorylation
+CU2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+LCARS,0.0,Alternate Carbon Metabolism
+CHORM,0.2832960167215334,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+BALAtex,0.0,"Transport, Outer Membrane Porin"
+DHACOAH_reverse,0.0,Alternate Carbon Metabolism
+PLIPA1E120pp,0.0,Glycerophospholipid Metabolism
+MAN6PI_reverse,0.0,Alternate Carbon Metabolism
+CHORS,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+FRULYStex,0.0,"Transport, Outer Membrane Porin"
+MCTP1Bpp,0.0012125661284013735,Murein Biosynthesis
+HYXNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+HCO3E,2.3608987072990626,Unassigned
+EX_3gmp_LPAREN_e_RPAREN_,0.0,
+AGPAT180,0.0,Glycerophospholipid Metabolism
+XANtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CHTBSptspp,0.0,"Transport, Inner Membrane"
+2AGPE180tipp,0.0,"Transport, Inner Membrane"
+N2Otpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+AM4PA,0.0,Murein Recycling
+AMANK,0.0,Alternate Carbon Metabolism
+3NTD7pp,0.0,Nucleotide Salvage Pathway
+TARTRtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1G140pp,0.0,Glycerophospholipid Metabolism
+THRt2pp,0.0,"Transport, Inner Membrane"
+GLCRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+3GMPtex,0.0,"Transport, Outer Membrane Porin"
+EX_slnt_LPAREN_e_RPAREN_,0.0,
+ACACT8r,0.0,Membrane Lipid Metabolism
+MNLtex,0.0,"Transport, Outer Membrane Porin"
+CELLENV_5,0.06442016748776842,Cell Envelope Biosynthesis
+CELLENV_4,0.15344866586092265,Cell Envelope Biosynthesis
+CELLENV_7,0.12889623021714347,Cell Envelope Biosynthesis
+ICDHyr,4.306843738971514,Citric Acid Cycle
+CELLENV_1,0.024861662544925407,Cell Envelope Biosynthesis
+CELLENV_3,0.10935813866716981,Cell Envelope Biosynthesis
+CELLENV_2,0.04383809707036816,Cell Envelope Biosynthesis
+hom_DASH_L_to_thr_DASH_L,0.47674313716891237,Threonine and Lysine Metabolism
+CLPNS160pp_reverse,0.0,Glycerophospholipid Metabolism
+CELLENV_8,0.007348421198958807,Cell Envelope Biosynthesis
+LIPACabcpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+THRabcpp,0.0,"Transport, Inner Membrane"
+PHEMEtiex,0.0,"Transport, Outer Membrane"
+MCPST,0.0,Cysteine Metabolism
+EX_gam_LPAREN_e_RPAREN_,0.0,
+FBP,0.0,Glycolysis/Gluconeogenesis
+HISabcpp,0.0,"Transport, Inner Membrane"
+LPLIPAL1E180pp,0.0,Glycerophospholipid Metabolism
+FEENTERtpp,0.0,"Transport, Inner Membrane"
+COBALT2tpp,2.1636867718686218e-05,Inorganic Ion Transport and Metabolism
+FBA,6.0669283114154995,Glycolysis/Gluconeogenesis
+FBA_reverse,0.0,Glycolysis/Gluconeogenesis
+2AGPE141tipp,0.0,"Transport, Inner Membrane"
+CBIAT,0.0,Cofactor and Prosthetic Group Biosynthesis
+CMtpp,0.0,"Transport, Outer Membrane"
+AMPtex,0.0,"Transport, Outer Membrane Porin"
+SELCYSS,0.0,tRNA Charging
+EX_pydam_LPAREN_e_RPAREN_,0.0,
+ACGAtex,0.0,"Transport, Outer Membrane Porin"
+ACOAD8f,0.0,Membrane Lipid Metabolism
+ARGTRS,0.0,tRNA Charging
+GLYC2Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+MDDEP4pp,0.0,Murein Recycling
+TGBPA_reverse,0.0,Alternate Carbon Metabolism
+PPKr_reverse,2.950783730377554,Oxidative Phosphorylation
+ACACtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1G181pp,0.0,Glycerophospholipid Metabolism
+EX_gmp_LPAREN_e_RPAREN_,0.0,
+TARTRDtex,0.0,"Transport, Outer Membrane Porin"
+GLUSy,7.481533012236506,Glutamate Metabolism
+GUAt2pp,0.0,"Transport, Inner Membrane"
+ICDHyr_reverse,0.0,Citric Acid Cycle
+TREtex_reverse,0.0,"Transport, Outer Membrane Porin"
+LSERDHr_reverse,0.0,Glycine and Serine Metabolism
+TUNGSabcpp,0.0,Inorganic Ion Transport and Metabolism
+PPND,0.1210005765721329,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+PLIPA2G181pp,0.0,Glycerophospholipid Metabolism
+A5PISO_reverse,0.0,Alternate Carbon Metabolism
+ACONTa_reverse,0.0,Citric Acid Cycle
+EX_rib_DASH_D_LPAREN_e_RPAREN_,0.0,
+ICL,0.0,Anaplerotic Reactions
+TRPAS2_reverse,0.04979544798224644,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+DGK1,0.0,Nucleotide Salvage Pathway
+ALAabcpp,0.0,"Transport, Inner Membrane"
+EX_gsn_LPAREN_e_RPAREN_,0.0,
+EX_acald_LPAREN_e_RPAREN_,0.0,
+EX_sucr_LPAREN_e_RPAREN_,0.0,
+EX_cys_DASH_L_LPAREN_e_RPAREN_,0.0,
+FALDtex,0.0,"Transport, Outer Membrane Porin"
+EX_fe3dcit_LPAREN_e_RPAREN_,0.0,
+PFK,6.0669283114154995,Glycolysis/Gluconeogenesis
+PFL,0.10154903249306256,Pyruvate Metabolism
+GRXR,0.0,Unassigned
+EX_23dappa_LPAREN_e_RPAREN_,0.0,
+PEAMNtex,0.0,"Transport, Outer Membrane Porin"
+FUCtpp,0.0,"Transport, Inner Membrane"
+DSERtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLUt2rpp,0.0,"Transport, Inner Membrane"
+ALLULPE,0.0,Alternate Carbon Metabolism
+EX_ile_DASH_L_LPAREN_e_RPAREN_,0.0,
+EX_tartr_DASH_D_LPAREN_e_RPAREN_,0.0,
+AADDGT,0.0,Cell Envelope Biosynthesis
+GUAPRT,0.0,Nucleotide Salvage Pathway
+O16A4Lpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+3pg_to_ser_DASH_L,1.4289645562813604,Glycine and Serine Metabolism
+GLYCLTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TYRTRS,0.0,tRNA Charging
+ARBTNtpp,0.0,Inorganic Ion Transport and Metabolism
+EX_hxa_LPAREN_e_RPAREN_,0.0,
+23CCMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PGK_reverse,15.90493323696921,Glycolysis/Gluconeogenesis
+FORCT,0.0,Alternate Carbon Metabolism
+ATPM,3.15,Unassigned
+TYRt2rpp_reverse,0.0,"Transport, Inner Membrane"
+3NTD4pp,0.0,Nucleotide Salvage Pathway
+UDPGALtex,0.0,"Transport, Outer Membrane Porin"
+APH140,0.0,Glycerophospholipid Metabolism
+APH141,0.0,Glycerophospholipid Metabolism
+FACOAE141,0.0,Cell Envelope Biosynthesis
+FACOAE140,0.0,Cell Envelope Biosynthesis
+BUTSO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+3HPPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FACOAL100t2pp,0.0,Cell Envelope Biosynthesis
+GLCRAL,0.0,Alternate Carbon Metabolism
+SHK3Dr_reverse,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+NNDMBRT,0.0,Cofactor and Prosthetic Group Biosynthesis
+DINSt2pp,0.0,"Transport, Inner Membrane"
+NACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PYNP2r,0.0,Nucleotide Salvage Pathway
+EX_etoh_LPAREN_e_RPAREN_,0.0,
+NI2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_acgal1p_LPAREN_e_RPAREN_,0.0,
+CDGR,0.0,Cofactor and Prosthetic Group Biosynthesis
+CDGS,0.0,Cofactor and Prosthetic Group Biosynthesis
+ACODA,0.29519358935834594,Arginine and Proline Metabolism
+EX_lipa_LPAREN_e_RPAREN_,0.0,
+2AGPGAT120,0.0,Glycerophospholipid Metabolism
+MEOHtex_reverse,1.8030723098905181e-06,"Transport, Outer Membrane Porin"
+DKGLCNR2x,0.0,Alternate Carbon Metabolism
+EX_ser_DASH_L_LPAREN_e_RPAREN_,0.0,
+NDPK1_reverse,0.0,Nucleotide Salvage Pathway
+PTAr_reverse,0.0,Pyruvate Metabolism
+ETOHtrpp_reverse,0.0,"Transport, Inner Membrane"
+PPAtex,0.0,"Transport, Outer Membrane Porin"
+GPDDA5pp,0.0,Glycerophospholipid Metabolism
+EX_dad_DASH_2_LPAREN_e_RPAREN_,0.0,
+TYRPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PROtex,0.0,"Transport, Outer Membrane Porin"
+MNLptspp,0.0,"Transport, Inner Membrane"
+NAt3_2pp,0.0,Inorganic Ion Transport and Metabolism
+D_DASH_LACt2pp_reverse,0.0,"Transport, Inner Membrane"
+GTPDPK,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_ala_DASH_L_LPAREN_e_RPAREN_,0.0,
+UGLT,0.0,Alternate Carbon Metabolism
+NMNtex,0.0,"Transport, Outer Membrane Porin"
+EX_fe2_LPAREN_e_RPAREN_,0.0,
+INSTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+5DGLCNR,0.0,Alternate Carbon Metabolism
+CYStex_reverse,0.0,"Transport, Outer Membrane Porin"
+FCLPA_reverse,0.0,Alternate Carbon Metabolism
+LSERDHr,0.0,Glycine and Serine Metabolism
+MICITDr,0.0,Alternate Carbon Metabolism
+PEAMNOpp,0.0,Nitrogen Metabolism
+FRULYSt2pp,0.0,"Transport, Inner Membrane"
+MG2uabcpp,0.0,Inorganic Ion Transport and Metabolism
+CSNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+G6Pt6_2pp,0.0,"Transport, Inner Membrane"
+EAR160y,0.0,Cell Envelope Biosynthesis
+METOX1s,0.0,Methionine Metabolism
+PPK2r,0.0,Oxidative Phosphorylation
+MANGLYCptspp,0.0,"Transport, Inner Membrane"
+GTHRDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DMSOtpp,0.0,"Transport, Inner Membrane"
+PAPA141pp,0.0,Glycerophospholipid Metabolism
+ABTA,0.0,Arginine and Proline Metabolism
+UDPKAAT_reverse,0.0,Lipopolysaccharide Biosynthesis / Recycling
+CADVtpp,0.0,"Transport, Inner Membrane"
+MLTGY2pp,0.0,Murein Recycling
+DHPPD,0.0,Alternate Carbon Metabolism
+CA2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+HCINNMt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GTHRDtex,0.0,"Transport, Outer Membrane Porin"
+EX_cit_LPAREN_e_RPAREN_,0.0,
+MLDEP1pp,0.0012125661284013735,Murein Recycling
+EX_lcts_LPAREN_e_RPAREN_,0.0,
+SUCCt2_3pp,0.0,"Transport, Inner Membrane"
+THYMt3pp,0.0,"Transport, Inner Membrane"
+EX_h2o2_LPAREN_e_RPAREN_,0.0,
+PPTtex,0.0,"Transport, Outer Membrane Porin"
+DCMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PAPA161pp,0.0,Glycerophospholipid Metabolism
+PG161abcpp,0.007559380659215997,"Transport, Inner Membrane"
+ASPtex,0.0,"Transport, Outer Membrane Porin"
+H2Otpp,0.0,"Transport, Inner Membrane"
+DALAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+HXAtex,0.0,"Transport, Outer Membrane Porin"
+ACNAMtex_reverse,0.0,"Transport, Outer Membrane"
+TMAOR1pp,0.0,Oxidative Phosphorylation
+DM_OXAM,0.0,
+SADT2,0.2234520467562679,Cysteine Metabolism
+ICHORS_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+HACD3,0.0,Membrane Lipid Metabolism
+MALtex,0.0,"Transport, Outer Membrane Porin"
+EX_no_LPAREN_e_RPAREN_,0.0,
+DAPabcpp,0.0,"Transport, Inner Membrane"
+NTP12,0.0,Nucleotide Salvage Pathway
+BTNt2ipp,0.0,"Transport, Inner Membrane"
+DHAD1,0.7658892219998863,"Valine, Leucine, and Isoleucine Metabolism"
+ADPT,0.0,Nucleotide Salvage Pathway
+SKMtex,0.0,"Transport, Outer Membrane Porin"
+THFSYN,0.0008041702502110115,Cofactor and Prosthetic Group Biosynthesis
+GLYCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_acac_LPAREN_e_RPAREN_,0.0,
+GLTPD,0.0,Alternate Carbon Metabolism
+FRULYSDG_reverse,0.0,Alternate Carbon Metabolism
+GLYCAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYt2pp,0.0,"Transport, Inner Membrane"
+TREtex,0.0,"Transport, Outer Membrane Porin"
+CO2tex,0.0,"Transport, Outer Membrane Porin"
+3OAS180,0.0,Cell Envelope Biosynthesis
+TCYNTtex,0.0,"Transport, Outer Membrane Porin"
+THFAT,0.0,Folate Metabolism
+COASYN,0.0005192848252493221,Cofactor and Prosthetic Group Biosynthesis
+AMALT4,0.0,Alternate Carbon Metabolism
+PROGLYtex,0.0,"Transport, Outer Membrane Porin"
+ARGDC,0.0,Arginine and Proline Metabolism
+CAT,0.0,Unassigned
+FA160ACPHi,0.0,Cell Envelope Biosynthesis
+VALTA_reverse,0.3706972423350114,"Valine, Leucine, and Isoleucine Metabolism"
+EX_thrp_LPAREN_e_RPAREN_,0.0,
+ILEtex,0.0,"Transport, Outer Membrane Porin"
+GUAtex_reverse,0.0,"Transport, Outer Membrane"
+HEX1,0.0,Glycolysis/Gluconeogenesis
+DAGK141,0.0,Glycerophospholipid Metabolism
+DAGK140,0.0,Glycerophospholipid Metabolism
+HEX4,0.0,Alternate Carbon Metabolism
+HEX7,0.0,Alternate Carbon Metabolism
+RIBtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MINCYCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PPNDH,0.16229544014940048,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+PGL,4.751250161734794,Pentose Phosphate Pathway
+PGM,0.0,Glycolysis/Gluconeogenesis
+PGK,0.0,Glycolysis/Gluconeogenesis
+PACALDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PGI,5.073002577147868,Glycolysis/Gluconeogenesis
+2AGPA141tipp,0.0,"Transport, Inner Membrane"
+DTMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+VALt2rpp,0.0,"Transport, Inner Membrane"
+ETOHtrpp,0.0,"Transport, Inner Membrane"
+ASPTRS,0.0,tRNA Charging
+CAt6pp,0.0,Inorganic Ion Transport and Metabolism
+EX_hdca_LPAREN_e_RPAREN_,0.0,
+S2FE2SR,0.0,Cofactor and Prosthetic Group Biosynthesis
+S2FE2SS,0.0,Cofactor and Prosthetic Group Biosynthesis
+S2FE2ST,0.0,Cofactor and Prosthetic Group Biosynthesis
+PPA,0.0,Anaplerotic Reactions
+EX_feoxam_DASH_un_LPAREN_e_RPAREN_,0.0,
+FDMO3,0.0,Inorganic Ion Transport and Metabolism
+FDMO2,0.0,Inorganic Ion Transport and Metabolism
+D_DASH_LACt2pp,0.0,"Transport, Inner Membrane"
+FTHFLi,0.0,Folate Metabolism
+FDMO6,0.0,Inorganic Ion Transport and Metabolism
+FDMO4,0.0,Inorganic Ion Transport and Metabolism
+FEENTERtex,0.0,Inorganic Ion Transport and Metabolism
+EX_g3pc_LPAREN_e_RPAREN_,0.0,
+BUTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+HPPPNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_mobd_LPAREN_e_RPAREN__reverse,0.0001235104532275005,
+AAMYLpp,0.0,Alternate Carbon Metabolism
+CO2tpp_reverse,19.836000016418005,"Transport, Inner Membrane"
+PYRtex,0.0,"Transport, Outer Membrane Porin"
+GALURt2rpp,0.0,"Transport, Inner Membrane"
+ALATA_L_reverse,0.49516422542290883,Alanine and Aspartate Metabolism
+UDCPDPpp,0.0,Cell Envelope Biosynthesis
+UDPACGALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MN6PP,0.0,Alternate Carbon Metabolism
+TARTRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CBL1abcpp,0.00020104256255279278,"Transport, Inner Membrane"
+PAPA180,0.0,Glycerophospholipid Metabolism
+PAPA181,0.0,Glycerophospholipid Metabolism
+NOVBCNtex_reverse,0.0,"Transport, Outer Membrane"
+ILEt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_gal_DASH_bD_LPAREN_e_RPAREN_,0.0,
+CYSSADS,0.0,Cysteine Metabolism
+LIPOPOLYSACCHARIDE_2,0.029393684795835227,Lipopolysaccharide Biosynthesis / Recycling
+CRNDt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GLCUR1Ptex,0.0,"Transport, Outer Membrane Porin"
+ALDD3y,0.0,Alternate Carbon Metabolism
+PAPSR,0.2234520467562679,Cysteine Metabolism
+5DOAN,0.00040929741434514764,Cofactor and Prosthetic Group Biosynthesis
+EX_gtp_LPAREN_e_RPAREN_,0.0,
+DURADx_reverse,0.0,Nucleotide Salvage Pathway
+PLIPA1A161pp,0.0,Glycerophospholipid Metabolism
+SUCCtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_g1p_LPAREN_e_RPAREN_,0.0,
+FA141ACPHi,0.0,Cell Envelope Biosynthesis
+SELGTHR3,0.0,Inorganic Ion Transport and Metabolism
+SELGTHR2,0.0,Inorganic Ion Transport and Metabolism
+UREAtex,0.0,"Transport, Outer Membrane Porin"
+FACOAL141t2pp,0.0,Cell Envelope Biosynthesis
+NTD7pp,0.0,Nucleotide Salvage Pathway
+PSCVT_reverse,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+TSULtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PHETA1,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+DAPtex,0.0,"Transport, Outer Membrane Porin"
+EX_gal1p_LPAREN_e_RPAREN_,0.0,
+EX_mal_DASH_D_LPAREN_e_RPAREN_,0.0,
+GLNtex,0.0,"Transport, Outer Membrane Porin"
+CRNabcpp,0.0,"Transport, Inner Membrane"
+ETOHtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DGSNtex,0.0,"Transport, Outer Membrane Porin"
+ACACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TTRCYCtpp,0.0,"Transport, Outer Membrane"
+CSNtex,0.0,"Transport, Outer Membrane Porin"
+PTRCtex,0.0,"Transport, Outer Membrane Porin"
+NTRIR3pp,0.0,Nitrogen Metabolism
+HXCT,0.0,Alternate Carbon Metabolism
+CO2tex_reverse,19.836000016418005,"Transport, Outer Membrane Porin"
+ILEtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_alaala_LPAREN_e_RPAREN_,0.0,
+EX_crn_DASH_D_LPAREN_e_RPAREN_,0.0,
+GLCptspp,10.0,"Transport, Inner Membrane"
+PLIPA2E160pp,0.0,Glycerophospholipid Metabolism
+EX_udpg_LPAREN_e_RPAREN_,0.0,
+PGPP141pp,0.0,Glycerophospholipid Metabolism
+EX_3cmp_LPAREN_e_RPAREN_,0.0,
+MTHFR2,0.1423237097089152,Folate Metabolism
+GPDDA2,0.0,Glycerophospholipid Metabolism
+G3PGtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_feoxam_LPAREN_e_RPAREN_,0.0,
+EX_acnam_LPAREN_e_RPAREN_,0.0,
+LCARR,0.0,Methylglyoxal Metabolism
+XYLtex,0.0,"Transport, Outer Membrane Porin"
+GUAtpp,0.0,"Transport, Inner Membrane"
+EX_mincyc_LPAREN_e_RPAREN_,0.0,
+SPMDAT1,0.0,Arginine and Proline Metabolism
+SPMDAT2,0.0,Arginine and Proline Metabolism
+12PPDStex_reverse,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL2A160,0.0,Glycerophospholipid Metabolism
+LPLIPAL2A161,0.0,Glycerophospholipid Metabolism
+PYDAMtex,0.0,"Transport, Outer Membrane Porin"
+PYAM5PO,0.0,Cofactor and Prosthetic Group Biosynthesis
+OPHHX3,0.0,Cofactor and Prosthetic Group Biosynthesis
+ILEt2rpp,0.0,"Transport, Inner Membrane"
+O2tex,18.0,"Transport, Outer Membrane Porin"
+CBL1tonex,0.00020104256255279278,"Transport, Outer Membrane"
+EX_ni2_LPAREN_e_RPAREN__reverse,0.0002767715995681945,
+ILETA,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+PHEtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ALPATG160pp,0.0,Unassigned
+FCI_reverse,0.0,Alternate Carbon Metabolism
+DMStex_reverse,0.0,"Transport, Outer Membrane Porin"
+CDAPPA141,0.0,Glycerophospholipid Metabolism
+CDAPPA140,0.0,Glycerophospholipid Metabolism
+NDPK3_reverse,0.0,Nucleotide Salvage Pathway
+g1p_to_glycogen,0.13900515512254466,Glycolysis/Gluconeogenesis
+EX_h_LPAREN_e_RPAREN_,9.653365122850433,
+DASYN140,0.0,Glycerophospholipid Metabolism
+DASYN141,0.0,Glycerophospholipid Metabolism
+HACD1,0.0,Membrane Lipid Metabolism
+DAMPtex,0.0,"Transport, Outer Membrane Porin"
+HACD2,0.0,Membrane Lipid Metabolism
+HACD5,0.0,Membrane Lipid Metabolism
+HACD4,0.0,Membrane Lipid Metabolism
+HACD7,0.0,Membrane Lipid Metabolism
+HACD6,0.0,Membrane Lipid Metabolism
+HACD8,0.0,Membrane Lipid Metabolism
+GAMAN6Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_galur_LPAREN_e_RPAREN_,0.0,
+AMALT3,0.0,Alternate Carbon Metabolism
+AMALT2,0.0,Alternate Carbon Metabolism
+AMALT1,0.0,Alternate Carbon Metabolism
+GLCRt2rpp,0.0,"Transport, Inner Membrane"
+NTPP1,0.0,Nucleotide Salvage Pathway
+NOtpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+PPM2,0.0,Alternate Carbon Metabolism
+GUR1PPpp,0.0,Alternate Carbon Metabolism
+2AGPA181tipp,0.0,"Transport, Inner Membrane"
+SPMDt3pp,0.0,"Transport, Inner Membrane"
+DOGULNR,0.0,Alternate Carbon Metabolism
+EX_fuc_DASH_L_LPAREN_e_RPAREN_,0.0,
+MALTtexi,0.0,"Transport, Outer Membrane"
+G2PPpp,0.0,Alternate Carbon Metabolism
+PSCLYSt2pp,0.0,"Transport, Inner Membrane"
+2AGPG140tipp,0.0,"Transport, Inner Membrane"
+EX_fusa_LPAREN_e_RPAREN_,0.0,
+EX_glu_DASH_L_LPAREN_e_RPAREN_,0.0,
+ADSK,0.2234520467562679,Cysteine Metabolism
+ACSERtpp,0.0,"Transport, Inner Membrane"
+G3PGtex,0.0,"Transport, Outer Membrane Porin"
+CLPNH161pp,0.0,Glycerophospholipid Metabolism
+LPLIPAL2ATE161,0.0,Glycerophospholipid Metabolism
+LPLIPAL2ATE160,0.0,Glycerophospholipid Metabolism
+GSPMDA,0.0,Arginine and Proline Metabolism
+PPPNtex,0.0,"Transport, Outer Membrane Porin"
+ALATA_L,0.0,Alanine and Aspartate Metabolism
+LPLIPAL1G141pp,0.0,Glycerophospholipid Metabolism
+MALTabcpp,0.0,"Transport, Inner Membrane"
+12PPDRtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SERTRS,0.0,tRNA Charging
+EX_2ddglcn_LPAREN_e_RPAREN_,0.0,
+GSPMDS,0.0,Arginine and Proline Metabolism
+LPLIPAL2A180,0.0,Glycerophospholipid Metabolism
+LPLIPAL2A181,0.0,Glycerophospholipid Metabolism
+ALATA_L2,0.0,Cofactor and Prosthetic Group Biosynthesis
+4PEPTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYTK1_reverse,0.0,Nucleotide Salvage Pathway
+TCYNTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NTD6pp,0.0,Nucleotide Salvage Pathway
+PACCOAE,0.0,Alternate Carbon Metabolism
+12PPDRtpp_reverse,0.0,"Transport, Inner Membrane"
+SLNTtex,0.0,"Transport, Outer Membrane Porin"
+MPTG,0.012127464356323624,Murein Biosynthesis
+GLYCK,0.0,Glyoxylate Metabolism
+G3PAT180,0.0,Glycerophospholipid Metabolism
+LPLIPAL2G120,0.0,Glycerophospholipid Metabolism
+GLYCL,0.0,Folate Metabolism
+MLDCP1App,0.0005454293737418817,Murein Biosynthesis
+3PEPTtex,0.0,"Transport, Outer Membrane Porin"
+CGLYabcpp,0.0,"Transport, Inner Membrane"
+FE3HOXUtex,0.0,Inorganic Ion Transport and Metabolism
+XYLI1,0.0,Alternate Carbon Metabolism
+I2FE2SS,0.00024611937030005575,Cofactor and Prosthetic Group Biosynthesis
+EX_g3ps_LPAREN_e_RPAREN_,0.0,
+XYLI2,0.0,Alternate Carbon Metabolism
+THRTRS,0.0,tRNA Charging
+I2FE2ST,2.1636867718686218e-05,Cofactor and Prosthetic Group Biosynthesis
+CRNDCAL2,0.0,Oxidative Phosphorylation
+LPLIPAL1E181pp,0.0,Glycerophospholipid Metabolism
+EX_galct_DASH_D_LPAREN_e_RPAREN_,0.0,
+GALURtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SERD_D,0.0,Glycine and Serine Metabolism
+PGPP140pp,0.0,Glycerophospholipid Metabolism
+OMMBLHX3,0.0,Cofactor and Prosthetic Group Biosynthesis
+VALtex,0.0,"Transport, Outer Membrane Porin"
+GUAD,0.0,Nucleotide Salvage Pathway
+ALDD19xr_reverse,0.0,Alternate Carbon Metabolism
+DSBGGT,0.0,Unassigned
+PACCOAL,0.0,Alternate Carbon Metabolism
+PPPGO,0.0,Cofactor and Prosthetic Group Biosynthesis
+MCITL2,0.0,Alternate Carbon Metabolism
+EX_cd2_LPAREN_e_RPAREN_,0.0,
+FEOXAMabcpp,0.0,Inorganic Ion Transport and Metabolism
+DHORDfum,0.0,Purine and Pyrimidine Biosynthesis
+AKGtex,0.0,"Transport, Outer Membrane Porin"
+EX_ala_DASH_D_LPAREN_e_RPAREN_,0.0,
+PTHRpp,0.0,Threonine and Lysine Metabolism
+CLt3_2pp,0.0022322035196444615,Inorganic Ion Transport and Metabolism
+NTD12pp,0.0,Nucleotide Salvage Pathway
+METtex,0.0,"Transport, Outer Membrane Porin"
+PIt2rpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+SUCASPtpp,0.0,"Transport, Inner Membrane"
+RPE,2.481589463761054,Pentose Phosphate Pathway
+PLIPA1E141pp,0.0,Glycerophospholipid Metabolism
+BETALDHx,0.0,Unassigned
+BETALDHy,0.0,Unassigned
+RPI,0.0,Pentose Phosphate Pathway
+CGLYtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NI2abcpp,0.0,Inorganic Ion Transport and Metabolism
+PLIPA2G180pp,0.0,Glycerophospholipid Metabolism
+CYStpp,0.0,"Transport, Inner Membrane"
+G3PEtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TARTt2_3pp,0.0,"Transport, Inner Membrane"
+G3PD2,0.0,Alternate Carbon Metabolism
+CO2tpp,0.0,"Transport, Inner Membrane"
+G3PD7,0.0,Oxidative Phosphorylation
+G3PD6,0.0,Oxidative Phosphorylation
+EX_btn_LPAREN_e_RPAREN_,0.0,
+CRNt8pp,0.0,"Transport, Inner Membrane"
+ASCBtex,0.0,"Transport, Outer Membrane Porin"
+RMPA,0.0,Alternate Carbon Metabolism
+GLXCL,0.0,Glyoxylate Metabolism
+GALKr_reverse,0.0,Alternate Carbon Metabolism
+EX_ca2_LPAREN_e_RPAREN_,0.0,
+TMDS,0.02236260432341715,Nucleotide Salvage Pathway
+PYDXNK,0.0,Cofactor and Prosthetic Group Biosynthesis
+GARFT_reverse,0.0,Purine and Pyrimidine Biosynthesis
+DDGLCNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+XYLI2_reverse,0.0,Alternate Carbon Metabolism
+GLYCLTDy,0.0,Glyoxylate Metabolism
+GLYCLTDx,0.0,Glyoxylate Metabolism
+LYXI,0.0,Alternate Carbon Metabolism
+CU1Opp,0.0,Inorganic Ion Transport and Metabolism
+12PPDStpp,0.0,"Transport, Inner Membrane"
+EX_ocdcea_LPAREN_e_RPAREN_,0.0,
+CLPNH180pp,0.0,Glycerophospholipid Metabolism
+PG140abcpp,0.0,"Transport, Inner Membrane"
+34dhpactex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYt2rpp,0.0,"Transport, Inner Membrane"
+NAMNPP,0.0,Cofactor and Prosthetic Group Biosynthesis
+BWCOGDS2,0.0,Cofactor and Prosthetic Group Biosynthesis
+BWCOGDS1,0.0,Cofactor and Prosthetic Group Biosynthesis
+FRUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SBTtex,0.0,"Transport, Outer Membrane Porin"
+NTPP11,0.0,Nucleotide Salvage Pathway
+EX_lac_DASH_D_LPAREN_e_RPAREN_,0.0,
+ACOTA,0.0,Arginine and Proline Metabolism
+TYMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DAAD,0.0,Alanine and Aspartate Metabolism
+FALGTHLs,0.0,Cofactor and Prosthetic Group Biosynthesis
+INSt2pp,0.0,"Transport, Inner Membrane"
+ALCD2x,0.0,Pyruvate Metabolism
+INDOLEtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_mn2_LPAREN_e_RPAREN__reverse,0.0005932107899539804,
+ATPS4rpp_reverse,0.0,Oxidative Phosphorylation
+FECRMexs,0.0,Inorganic Ion Transport and Metabolism
+ACANTHAT,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+CRNCDH_reverse,0.0,Oxidative Phosphorylation
+THIAMIN,0.00020104256255279278,Cofactor and Prosthetic Group Biosynthesis
+PPAKr,0.0,Alternate Carbon Metabolism
+EX_ddca_LPAREN_e_RPAREN_,0.0,
+EX_15dap_LPAREN_e_RPAREN_,0.0,
+GLNabcpp,0.0,"Transport, Inner Membrane"
+APG3PAT120,0.0,Glycerophospholipid Metabolism
+PE140abcpp,0.0,"Transport, Inner Membrane"
+DURItex_reverse,0.0,"Transport, Outer Membrane"
+IMPSYN_3,0.4750356276914567,Purine and Pyrimidine Biosynthesis
+HG2abcpp,0.0,Inorganic Ion Transport and Metabolism
+LYSt3pp,0.0,"Transport, Inner Membrane"
+EX_k_LPAREN_e_RPAREN__reverse,0.16740624861178516,
+3CMPtex,0.0,"Transport, Outer Membrane Porin"
+PYDXtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ARGSL_reverse,0.0,Arginine and Proline Metabolism
+PGP141abcpp,0.0,"Transport, Inner Membrane"
+UACGALPpp,0.0,Alternate Carbon Metabolism
+DADNtex,0.0,"Transport, Outer Membrane"
+DM_AMOB,1.8030723098905181e-06,
+GLYC2Ptex,0.0,"Transport, Outer Membrane Porin"
+SSALx,0.0,Arginine and Proline Metabolism
+LYStex_reverse,0.0,"Transport, Outer Membrane Porin"
+MEOHtex,0.0,"Transport, Outer Membrane Porin"
+OXCOAHDH,0.0,Alternate Carbon Metabolism
+SSALy,0.0,Arginine and Proline Metabolism
+TGBPA,0.0,Alternate Carbon Metabolism
+FALDH2_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+DM_AACALD,0.0,
+ENTERES2,0.0,Inorganic Ion Transport and Metabolism
+GPDDA4pp,0.0,Glycerophospholipid Metabolism
+PYDXNtpp,0.0,"Transport, Inner Membrane"
+GK1,0.21326378666923057,Nucleotide Salvage Pathway
+EX_cbl1_LPAREN_e_RPAREN_,0.0,
+ALAALAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+OCDCEAtexi,0.0,"Transport, Outer Membrane"
+FECRMUtex,0.0,Inorganic Ion Transport and Metabolism
+HYD2pp,0.0,Oxidative Phosphorylation
+FACOAE161,0.0,Cell Envelope Biosynthesis
+FACOAE160,0.0,Cell Envelope Biosynthesis
+COFACTOR_10,0.0006031276876583783,Cofactor and Prosthetic Group Biosynthesis
+APH120,0.0,Glycerophospholipid Metabolism
+GLYALDtex,0.0,"Transport, Outer Membrane Porin"
+MLTP1_reverse,0.0,Alternate Carbon Metabolism
+e4p_and_pep_to_3dhq,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+FECRMtonex,0.0,"Transport, Outer Membrane"
+ALDD2y,0.0,Alternate Carbon Metabolism
+ALDD2x,0.0,Alternate Carbon Metabolism
+URAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+G6Ptex,0.0,"Transport, Outer Membrane Porin"
+NO2tex,0.0,"Transport, Outer Membrane Porin"
+XPPT,0.0,Nucleotide Salvage Pathway
+GCALDD,0.0008041702502110115,Folate Metabolism
+23PDE4pp,0.0,Nucleotide Salvage Pathway
+PSERtex,0.0,"Transport, Outer Membrane Porin"
+ETHSO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+SERD_L,0.0,Glycine and Serine Metabolism
+PHETRS,0.0,tRNA Charging
+udp_to_dump_aerobic,0.02236260432341715,Nucleotide Salvage Pathway
+ALLTNt2rpp,0.0,"Transport, Inner Membrane"
+CYTDtex,0.0,"Transport, Outer Membrane Porin"
+EX_crn_LPAREN_e_RPAREN_,0.0,
+CHLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+2AGPGAT141,0.0,Glycerophospholipid Metabolism
+2AGPGAT140,0.0,Glycerophospholipid Metabolism
+FA140ACPHi,0.0,Cell Envelope Biosynthesis
+CU2abcpp,0.0,Inorganic Ion Transport and Metabolism
+H2tex,0.0,"Transport, Outer Membrane Porin"
+MELIBtex,0.0,"Transport, Outer Membrane Porin"
+EX_dca_LPAREN_e_RPAREN_,0.0,
+ACBIPGT,0.0,Cofactor and Prosthetic Group Biosynthesis
+NO3R2bpp,0.0,Nitrogen Metabolism
+TMK,0.0,Cofactor and Prosthetic Group Biosynthesis
+FESD1s,-8.409082458138428e-12,Cofactor and Prosthetic Group Biosynthesis
+FUMt2_3pp,0.0,"Transport, Inner Membrane"
+DHPTDCs2,0.0012080584476437221,Methionine Metabolism
+LDH_D_reverse,0.0,Pyruvate Metabolism
+EX_pydx_LPAREN_e_RPAREN_,0.0,
+DSBDR,0.0,Unassigned
+NTRIR2x,0.0,Oxidative Phosphorylation
+EX_dms_LPAREN_e_RPAREN_,0.0,
+FUSAtpp,0.0,"Transport, Outer Membrane"
+NO2t2rpp,0.0,Inorganic Ion Transport and Metabolism
+TALA,0.0,Pentose Phosphate Pathway
+MEOHtrpp,0.0,"Transport, Inner Membrane"
+GOFUCR,0.0,Cell Envelope Biosynthesis
+HSDy_reverse,0.6176577458676311,Threonine and Lysine Metabolism
+PG141abcpp,0.0,"Transport, Inner Membrane"
+NADH16pp,32.38204618158745,Oxidative Phosphorylation
+ARGt3pp,0.0,"Transport, Inner Membrane"
+TMAOR2pp,0.0,Oxidative Phosphorylation
+MALDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+LYXtex,0.0,"Transport, Outer Membrane Porin"
+PLIPA1G180pp,0.0,Glycerophospholipid Metabolism
+EX_galctn_DASH_D_LPAREN_e_RPAREN_,0.0,
+GLCNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PAPSR2,0.0,Cysteine Metabolism
+THIORDXi,0.0,Unassigned
+HKNDDH,0.0,Alternate Carbon Metabolism
+FACOAE181,0.0,Cell Envelope Biosynthesis
+FACOAE180,0.0,Cell Envelope Biosynthesis
+PUNP6,0.0,Nucleotide Salvage Pathway
+PUNP7,0.0,Nucleotide Salvage Pathway
+BUTt2rpp_reverse,0.0,"Transport, Inner Membrane"
+LPLIPAL1A180pp,0.0,Glycerophospholipid Metabolism
+PUNP2,0.0,Nucleotide Salvage Pathway
+5MTRtpp,0.0060799598289508275,"Transport, Inner Membrane"
+LPLIPAL2E180,0.0,Glycerophospholipid Metabolism
+EX_but_LPAREN_e_RPAREN_,0.0,
+EX_thym_LPAREN_e_RPAREN_,0.0,
+DHPTDNRN,0.0,Alternate Carbon Metabolism
+ASPO3,0.0,Cofactor and Prosthetic Group Biosynthesis
+ASPO4,0.0,Cofactor and Prosthetic Group Biosynthesis
+ASPO5,0.0,Cofactor and Prosthetic Group Biosynthesis
+DDGLCNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GLYt4pp,0.0,"Transport, Inner Membrane"
+CYTDK2,0.0,Nucleotide Salvage Pathway
+EX_udpgal_LPAREN_e_RPAREN_,0.0,
+PTRCORNt7pp_reverse,0.0,"Transport, Inner Membrane"
+MDH3,0.0,Citric Acid Cycle
+MDH2,0.0,Citric Acid Cycle
+EX_malthx_LPAREN_e_RPAREN_,0.0,
+EX_na1_LPAREN_e_RPAREN_,0.0,
+EX_gln_DASH_L_LPAREN_e_RPAREN_,0.0,
+PTRCabcpp,0.0,"Transport, Inner Membrane"
+EX_mal_DASH_L_LPAREN_e_RPAREN_,0.0,
+ASPt2_2pp,0.0,"Transport, Inner Membrane"
+EX_metsox_DASH_S_DASH_L_LPAREN_e_RPAREN_,0.0,
+F6Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+FORtex_reverse,0.0,"Transport, Outer Membrane Porin"
+R5Ptex,0.0,"Transport, Outer Membrane Porin"
+DMSOR2,0.0,Oxidative Phosphorylation
+DMSOR1,0.0,Oxidative Phosphorylation
+SUCDi,3.3269586829445825,Oxidative Phosphorylation
+NADTRHD,0.0,Oxidative Phosphorylation
+IPPS,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+COBALT2t3pp,0.0,Inorganic Ion Transport and Metabolism
+PGP160abcpp,0.0,"Transport, Inner Membrane"
+ARBtex,0.0,"Transport, Outer Membrane Porin"
+PG181abcpp,0.003895537725518465,"Transport, Inner Membrane"
+EX_ppt_LPAREN_e_RPAREN_,0.0,
+GAL1Ptex,0.0,"Transport, Outer Membrane Porin"
+AGM3Pt2pp,0.0,Murein Recycling
+3KGK,0.0,Alternate Carbon Metabolism
+GALURt2rpp_reverse,0.0,"Transport, Inner Membrane"
+VITB6,0.00020104256255279278,Cofactor and Prosthetic Group Biosynthesis
+EX_ac_LPAREN_e_RPAREN_,1.6474617198986623,
+EX_thm_LPAREN_e_RPAREN_,0.0,
+FRUURtex,0.0,"Transport, Outer Membrane Porin"
+PUNP7_reverse,0.0,Nucleotide Salvage Pathway
+MMCD,0.0,Alternate Carbon Metabolism
+TMAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GAL1PPpp,0.0,Alternate Carbon Metabolism
+EAR100y,0.0,Cell Envelope Biosynthesis
+NTPTP2,0.0,Nucleotide Salvage Pathway
+DAGK161,0.0,Glycerophospholipid Metabolism
+DAGK160,0.0,Glycerophospholipid Metabolism
+PSD120,0.0,Glycerophospholipid Metabolism
+DHPTPE_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+FEOXAMUtex,0.0,Inorganic Ion Transport and Metabolism
+CDAPPA120,0.0,Glycerophospholipid Metabolism
+ZN2abcpp,0.0,Inorganic Ion Transport and Metabolism
+NO2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+PPK2r_reverse,0.00020104256255279278,Oxidative Phosphorylation
+EX_acolipa_LPAREN_e_RPAREN_,0.0,
+CUt3,0.0,"Transport, Outer Membrane"
+METSOX1tex,0.0,"Transport, Outer Membrane Porin"
+EX_dha_LPAREN_e_RPAREN_,0.0,
+EX_fecrm_DASH_un_LPAREN_e_RPAREN_,0.0,
+TAURtex,0.0,"Transport, Outer Membrane Porin"
+2obut_and_pyr_to_3mop,0.2545090657579763,"Valine, Leucine, and Isoleucine Metabolism"
+BTNtex,0.0,"Transport, Outer Membrane Porin"
+LIPOtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_slnt_LPAREN_e_RPAREN__reverse,0.0,
+EX_tym_LPAREN_e_RPAREN_,0.0,
+ACNML,0.0,Alternate Carbon Metabolism
+NADN,0.0,Cofactor and Prosthetic Group Biosynthesis
+GALCTD,0.0,Alternate Carbon Metabolism
+TREH,0.0,Alternate Carbon Metabolism
+MACPD,0.0,Membrane Lipid Metabolism
+SPMDabcpp,0.0,"Transport, Inner Membrane"
+ALDD4,0.0,Alternate Carbon Metabolism
+LIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+EX_man_LPAREN_e_RPAREN_,0.0,
+GALTtex,0.0,"Transport, Outer Membrane Porin"
+EX_o2_LPAREN_e_RPAREN__reverse,18.0,
+CMtex,0.0,"Transport, Outer Membrane Porin"
+4PCP,0.0,Murein Recycling
+SO4tex_reverse,0.0,"Transport, Outer Membrane Porin"
+TKT2,1.0583459017554002,Pentose Phosphate Pathway
+TKT1,1.423243562005654,Pentose Phosphate Pathway
+HYXNtex,0.0,"Transport, Outer Membrane Porin"
+UDPGLCURtex,0.0,"Transport, Outer Membrane Porin"
+GLCATr,0.0,Alternate Carbon Metabolism
+O2tpp_reverse,0.0,Inorganic Ion Transport and Metabolism
+FE2t2pp,0.0,Inorganic Ion Transport and Metabolism
+EX_no3_LPAREN_e_RPAREN_,0.0,
+NTRIR4pp,0.0,Nitrogen Metabolism
+SERAT,0.2234520467562679,Cysteine Metabolism
+ASNtex,0.0,"Transport, Outer Membrane Porin"
+EX_cgly_LPAREN_e_RPAREN_,0.0,
+ADEt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GLYt2rpp_reverse,0.0,"Transport, Inner Membrane"
+MCITL2_reverse,0.0,Alternate Carbon Metabolism
+CRNDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYNTtex,0.0,"Transport, Outer Membrane Porin"
+ACM6PH,0.0,Alternate Carbon Metabolism
+ACALD,0.0,Pyruvate Metabolism
+MANtex_reverse,0.0,"Transport, Outer Membrane Porin"
+METDabcpp,0.0,"Transport, Inner Membrane"
+ARAI_reverse,0.0,Alternate Carbon Metabolism
+CBMKr_reverse,0.0,Unassigned
+ACt2rpp,0.0,"Transport, Inner Membrane"
+O16GLCT2,0.0,Lipopolysaccharide Biosynthesis / Recycling
+MDDCP5pp,0.0,Murein Biosynthesis
+23CCMPtex,0.0,"Transport, Outer Membrane Porin"
+O16GLCT1,0.0,Lipopolysaccharide Biosynthesis / Recycling
+GDPTPDP,0.0,Cofactor and Prosthetic Group Biosynthesis
+GLYCK2,0.0,Glycine and Serine Metabolism
+G6PDA,0.0,Alternate Carbon Metabolism
+SPODMpp,0.0,Unassigned
+MPTG2,0.0006067338322781593,Murein Biosynthesis
+MLTG5,0.0,Alternate Carbon Metabolism
+MLTG4,0.0,Alternate Carbon Metabolism
+ACACCT,0.0,Alternate Carbon Metabolism
+MLTG1,0.0,Alternate Carbon Metabolism
+LPLIPAL2ATG181,0.0,Glycerophospholipid Metabolism
+LPLIPAL2ATG180,0.0,Glycerophospholipid Metabolism
+EX_glyb_LPAREN_e_RPAREN_,0.0,
+DKGLCNR1,0.0,Alternate Carbon Metabolism
+HXAND,0.0,Nucleotide Salvage Pathway
+G1Ptex,0.0,"Transport, Outer Membrane Porin"
+EX_so4_LPAREN_e_RPAREN_,0.0,
+EX_halipa_LPAREN_e_RPAREN_,0.0,
+GLCRtex,0.0,"Transport, Outer Membrane Porin"
+H2St1pp,0.0,"Transport, Inner Membrane"
+G3PIabcpp,0.0,"Transport, Inner Membrane"
+FORCT_reverse,0.0,Alternate Carbon Metabolism
+LDH_D,0.0,Pyruvate Metabolism
+RBK,0.0,Alternate Carbon Metabolism
+EX_udpacgal_LPAREN_e_RPAREN_,0.0,
+ECAtpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+OMCDC,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+CBIuabcpp,0.0,"Transport, Inner Membrane"
+SHK3Dr,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+O16AUNDtpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+G3PD5,0.0,Oxidative Phosphorylation
+SARCOX,0.0,Glycine and Serine Metabolism
+ACGAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYANtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_gdp_LPAREN_e_RPAREN_,0.0,
+TYRTA,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+ACS,0.0,Pyruvate Metabolism
+URItex,0.0,"Transport, Outer Membrane"
+ME1,0.0,Anaplerotic Reactions
+METOX2s,0.0,Methionine Metabolism
+IMPtex,0.0,"Transport, Outer Membrane Porin"
+GALCTNt2pp,0.0,"Transport, Inner Membrane"
+EX_etha_LPAREN_e_RPAREN_,0.0,
+14GLUCANabcpp,0.0,"Transport, Inner Membrane"
+ASPT,0.0,Alanine and Aspartate Metabolism
+EX_gua_LPAREN_e_RPAREN_,0.0,
+FDMO,0.0,Inorganic Ion Transport and Metabolism
+EX_hom_DASH_L_LPAREN_e_RPAREN_,0.0,
+AGMt2pp,0.0,Murein Recycling
+PROGLYabcpp,0.0,"Transport, Inner Membrane"
+CLPNH160pp,0.0,Glycerophospholipid Metabolism
+PYDXPP,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_nh4_LPAREN_e_RPAREN__reverse,9.471790372442172,
+CYSDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+NHFRBO,0.0,Nitrogen Metabolism
+EAR60y,0.0,Cell Envelope Biosynthesis
+CDAPPA161,0.0,Glycerophospholipid Metabolism
+CDAPPA160,0.0,Glycerophospholipid Metabolism
+RMNtex,0.0,"Transport, Outer Membrane Porin"
+NTD1pp,0.0,Nucleotide Salvage Pathway
+MLDCP2App,0.0,Murein Biosynthesis
+AGPR_reverse,0.29519358935834594,Arginine and Proline Metabolism
+DASYN120,0.0,Glycerophospholipid Metabolism
+CYTBDpp,0.0,Oxidative Phosphorylation
+EX_23cump_LPAREN_e_RPAREN_,0.0,
+MTHFD,0.763721027547235,Folate Metabolism
+CLPNS141pp,0.0,Glycerophospholipid Metabolism
+OXDHCOAT,0.0,Alternate Carbon Metabolism
+TARTRDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TRPS1,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+CD2t3pp,0.0,Inorganic Ion Transport and Metabolism
+FE2t3pp,0.0,Inorganic Ion Transport and Metabolism
+DHAtex,0.0,"Transport, Outer Membrane Porin"
+DURIt2pp,0.0,"Transport, Inner Membrane"
+PPPNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DOXRBCNtex,0.0,"Transport, Outer Membrane Porin"
+EX_3ump_LPAREN_e_RPAREN_,0.0,
+2AGPEAT161,0.0,Glycerophospholipid Metabolism
+2AGPEAT160,0.0,Glycerophospholipid Metabolism
+TDP,0.0,Cofactor and Prosthetic Group Biosynthesis
+UACGAMPpp,0.0,Alternate Carbon Metabolism
+PPAt4pp,0.0,"Transport, Inner Membrane"
+DADNtex_reverse,0.0,"Transport, Outer Membrane"
+POR5_reverse,0.0,Pyruvate Metabolism
+ARGtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TYROXDApp,0.0,Nitrogen Metabolism
+COFACTOR_4,0.00022628557489126004,Cofactor and Prosthetic Group Biosynthesis
+EX_mn2_LPAREN_e_RPAREN_,0.0,
+COFACTOR_6,0.0008537547387388513,Cofactor and Prosthetic Group Biosynthesis
+COFACTOR_7,0.005973578562712812,Cofactor and Prosthetic Group Biosynthesis
+NADDP,0.0,Cofactor and Prosthetic Group Biosynthesis
+COFACTOR_1,0.004825021501267027,Cofactor and Prosthetic Group Biosynthesis
+COFACTOR_2,0.00040208512510558556,Cofactor and Prosthetic Group Biosynthesis
+CRNDtex,0.0,"Transport, Outer Membrane Porin"
+GTPtex,0.0,"Transport, Outer Membrane Porin"
+MAN6Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+NOVBCNtpp,0.0,"Transport, Outer Membrane"
+R1PK,0.0,Alternate Carbon Metabolism
+AOBUTDs,0.0,Threonine and Lysine Metabolism
+EX_acmum_LPAREN_e_RPAREN_,0.0,
+EAR181y,0.0,Cell Envelope Biosynthesis
+MDDCP4pp,0.004851166049760439,Murein Biosynthesis
+NTD9pp,0.0,Nucleotide Salvage Pathway
+CYANSTpp,0.0,Inorganic Ion Transport and Metabolism
+HSDy,0.0,Threonine and Lysine Metabolism
+XYLK2,0.0,Alternate Carbon Metabolism
+NOtpp,0.0,Inorganic Ion Transport and Metabolism
+TKT1_reverse,0.0,Pentose Phosphate Pathway
+FE2abcpp,0.0,Inorganic Ion Transport and Metabolism
+EX_lyx_DASH_L_LPAREN_e_RPAREN_,0.0,
+NMNDA,0.0,Cofactor and Prosthetic Group Biosynthesis
+ASO3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+THMDt2rpp_reverse,0.0,"Transport, Inner Membrane"
+DCMPtex,0.0,"Transport, Outer Membrane Porin"
+CDAPPA181,0.0,Glycerophospholipid Metabolism
+CDAPPA180,0.0,Glycerophospholipid Metabolism
+TYRTA_reverse,0.1210005765721329,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+FUCtex,0.0,"Transport, Outer Membrane Porin"
+PGMT,0.0,Alternate Carbon Metabolism
+EX_co2_LPAREN_e_RPAREN_,19.836000016418005,
+DHFR_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+ANHGMtex,0.0,"Transport, Outer Membrane Porin"
+EX_26dap_DASH_M_LPAREN_e_RPAREN_,0.0,
+EX_malt_LPAREN_e_RPAREN_,0.0,
+GLYALDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+GLYCLTtex,0.0,"Transport, Outer Membrane Porin"
+SUCTARTtpp,0.0,"Transport, Inner Membrane"
+ZNabcpp,0.0,Inorganic Ion Transport and Metabolism
+LPLIPAL2ATE141,0.0,Glycerophospholipid Metabolism
+EX_ttrcyc_LPAREN_e_RPAREN_,0.0,
+EX_g3pi_LPAREN_e_RPAREN_,0.0,
+DHPTDNR,0.0,Alternate Carbon Metabolism
+EX_pro_DASH_L_LPAREN_e_RPAREN_,0.0,
+ACGAL1Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+FRUURt2rpp,0.0,"Transport, Inner Membrane"
+ADNtex,0.0,"Transport, Outer Membrane"
+PYDXtex,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1E141pp,0.0,Glycerophospholipid Metabolism
+FACOAE60,0.0,Cell Envelope Biosynthesis
+DHBSH,0.0,Cofactor and Prosthetic Group Biosynthesis
+M1PD_reverse,0.0,Alternate Carbon Metabolism
+GLYOX3,0.0,Methylglyoxal Metabolism
+ACACT4r,0.0,Membrane Lipid Metabolism
+GLYCLTt2rpp_reverse,0.0,"Transport, Inner Membrane"
+PPTHpp,0.0,Unassigned
+EX_cobalt2_LPAREN_e_RPAREN__reverse,2.1636867718686218e-05,
+PLIPA1E180pp,0.0,Glycerophospholipid Metabolism
+METSOXR2,0.0,Methionine Metabolism
+ARGORNt7pp,0.0,"Transport, Inner Membrane"
+METSOXR1,0.0,Methionine Metabolism
+PLIPA1G140pp,0.0,Glycerophospholipid Metabolism
+DAPE_reverse,0.0,Threonine and Lysine Metabolism
+Ec_biomass_iJO1366_core_53p95M,0.0,
+FACOAL80t2pp,0.0,Cell Envelope Biosynthesis
+FACOAE80,0.0,Cell Envelope Biosynthesis
+TRE6PH,0.0,Alternate Carbon Metabolism
+TRE6PP,0.0,Alternate Carbon Metabolism
+TRE6PS,0.0,Alternate Carbon Metabolism
+THRt4pp,0.0,"Transport, Inner Membrane"
+RNDR4b,0.0,Nucleotide Salvage Pathway
+GALtex,0.0,"Transport, Outer Membrane Porin"
+SUCOAS_reverse,2.859360728531435,Citric Acid Cycle
+4PCPpp,0.0,Murein Recycling
+FRUptspp,0.0,"Transport, Inner Membrane"
+HEXt2rpp_reverse,0.0,"Transport, Inner Membrane"
+3OAR180,0.0,Cell Envelope Biosynthesis
+TMDPP,0.0,Nucleotide Salvage Pathway
+G3PAT140,0.0,Glycerophospholipid Metabolism
+G3PAT141,0.0,Glycerophospholipid Metabolism
+PEAMNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_glyald_LPAREN_e_RPAREN_,0.0,
+EX_glc_LPAREN_e_RPAREN__reverse,10.0,
+CITtex,0.0,"Transport, Outer Membrane Porin"
+RPE_reverse,0.0,Pentose Phosphate Pathway
+PTAr,1.1141192413861307,Pyruvate Metabolism
+GUACYC,0.0,Nucleotide Salvage Pathway
+4HTHRS,0.0,Cofactor and Prosthetic Group Biosynthesis
+PYDAMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CMPN,0.0,Nucleotide Salvage Pathway
+ALPATE160pp,0.0,Unassigned
+MMM,0.0,Alternate Carbon Metabolism
+DCYTtex_reverse,0.0,"Transport, Outer Membrane"
+PTA2,0.0,Alternate Carbon Metabolism
+EX_fe3dhbzs_LPAREN_e_RPAREN_,0.0,
+EX_thr_DASH_L_LPAREN_e_RPAREN_,0.0,
+XYLUt2pp,0.0,"Transport, Inner Membrane"
+HYD3pp,0.0,Oxidative Phosphorylation
+GLBRAN2,0.0,Glycolysis/Gluconeogenesis
+GHBDHx_reverse,0.0,Arginine and Proline Metabolism
+ALAt2rpp_reverse,0.0,"Transport, Inner Membrane"
+UDPGDC,0.0,Lipopolysaccharide Biosynthesis / Recycling
+NTD10pp,0.0,Nucleotide Salvage Pathway
+CITt7pp,0.0,"Transport, Inner Membrane"
+ORNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PROabcpp,0.0,"Transport, Inner Membrane"
+LPLIPAL1G120pp,0.0,Glycerophospholipid Metabolism
+G6Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+FE3DCITabcpp,0.0,Inorganic Ion Transport and Metabolism
+TAURabcpp,0.0,"Transport, Inner Membrane"
+NOtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_progly_LPAREN_e_RPAREN_,0.0,
+ASPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ADNt2rpp,0.0,"Transport, Inner Membrane"
+EX_cyan_LPAREN_e_RPAREN_,0.0,
+23PDE7pp,0.0,Nucleotide Salvage Pathway
+PLIPA2E181pp,0.0,Glycerophospholipid Metabolism
+ADK3_reverse,0.0,Nucleotide Salvage Pathway
+EAR80y,0.0,Cell Envelope Biosynthesis
+23CUMPtex,0.0,"Transport, Outer Membrane Porin"
+NDPK4_reverse,0.0,Nucleotide Salvage Pathway
+L_DASH_LACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PETNT181pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+MG2t3_2pp,0.007440377886763223,Inorganic Ion Transport and Metabolism
+PMANM,0.0,Alternate Carbon Metabolism
+GSNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PIt2rpp,0.8358556399129329,Inorganic Ion Transport and Metabolism
+ACMANAptspp,0.0,"Transport, Inner Membrane"
+GSNK,0.0,Nucleotide Salvage Pathway
+MDH,4.241546376813412,Citric Acid Cycle
+EX_gly_LPAREN_e_RPAREN_,0.0,
+QUINDH_reverse,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+NAt3_1p5pp,0.0,Inorganic Ion Transport and Metabolism
+EX_o2s_LPAREN_e_RPAREN_,0.0,
+NMNPtpp,0.0,"Transport, Inner Membrane"
+EX_cpgn_DASH_un_LPAREN_e_RPAREN_,0.0,
+ASPK,0.9431348362067433,Threonine and Lysine Metabolism
+EX_idon_DASH_L_LPAREN_e_RPAREN_,0.0,
+2AGPA180tipp,0.0,"Transport, Inner Membrane"
+EX_gbbtn_LPAREN_e_RPAREN_,0.0,
+EX_co_LPAREN_e_RPAREN_,0.00020104256255279278,
+EX_dcmp_LPAREN_e_RPAREN_,0.0,
+CYSTRS,0.0,tRNA Charging
+CYNTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_glcur_LPAREN_e_RPAREN_,0.0,
+PLIPA2G160pp,0.0,Glycerophospholipid Metabolism
+PPKr,0.0,Oxidative Phosphorylation
+PLIPA1G141pp,0.0,Glycerophospholipid Metabolism
+MOBDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+BTNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MG2tpp,0.0,Inorganic Ion Transport and Metabolism
+MAN6Pt6_2pp,0.0,"Transport, Inner Membrane"
+PLIPA1G181pp,0.0,Glycerophospholipid Metabolism
+ABUTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_for_LPAREN_e_RPAREN_,0.0,
+METSOX1abcpp,0.0,"Transport, Inner Membrane"
+LCTStex,0.0,"Transport, Outer Membrane Porin"
+EX_gal_LPAREN_e_RPAREN_,0.0,
+DURADx,0.0,Nucleotide Salvage Pathway
+FADRx2,0.0,Cofactor and Prosthetic Group Biosynthesis
+DGSNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DHNPTE_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_ade_LPAREN_e_RPAREN_,0.0,
+NADH9,0.0,Oxidative Phosphorylation
+XMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MALTATr,0.0,Alternate Carbon Metabolism
+DHNPTE,0.0,Cofactor and Prosthetic Group Biosynthesis
+EAR180x,0.0,Cell Envelope Biosynthesis
+EAR180y,0.0,Cell Envelope Biosynthesis
+CLPNH120pp,0.0,Glycerophospholipid Metabolism
+EX_glcn_LPAREN_e_RPAREN_,0.0,
+EX_h2s_LPAREN_e_RPAREN_,0.0,
+FE3HOXtonex,0.0,"Transport, Outer Membrane"
+FEOXAMR2,0.0,Inorganic Ion Transport and Metabolism
+FEOXAMR3,0.0,Inorganic Ion Transport and Metabolism
+EX_adocbl_LPAREN_e_RPAREN_,0.0,
+FEOXAMR1,0.0,Inorganic Ion Transport and Metabolism
+ACt4pp,0.0,"Transport, Inner Membrane"
+EX_csn_LPAREN_e_RPAREN_,0.0,
+NTP5,0.0,Nucleotide Salvage Pathway
+EX_isetac_LPAREN_e_RPAREN_,0.0,
+H2O2tex,0.0,"Transport, Outer Membrane Porin"
+imp_to_gmp,0.21326378666923057,Purine and Pyrimidine Biosynthesis
+PHEt2rpp_reverse,0.0,"Transport, Inner Membrane"
+OROTtex,0.0,"Transport, Outer Membrane Porin"
+GLYBtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MLTGY4pp,0.0,Murein Recycling
+ADPRDP,0.0,Nucleotide Salvage Pathway
+ACOATA,0.0,Membrane Lipid Metabolism
+SUCOAS,0.0,Citric Acid Cycle
+APCS,0.0,Arginine and Proline Metabolism
+TMAOR2,0.0,Oxidative Phosphorylation
+FE2tpp,0.007301541302083488,Inorganic Ion Transport and Metabolism
+PUNP3_reverse,0.0,Nucleotide Salvage Pathway
+INSTtex,0.0,"Transport, Outer Membrane Porin"
+CD2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_maltttr_LPAREN_e_RPAREN_,0.0,
+OCBT_reverse,0.0,Arginine and Proline Metabolism
+EX_dump_LPAREN_e_RPAREN_,0.0,
+ACACt2pp,0.0,"Transport, Inner Membrane"
+ICYSDS,0.0015912113134783823,Cofactor and Prosthetic Group Biosynthesis
+LPLIPAL1A140pp,0.0,Glycerophospholipid Metabolism
+HCYSMT2,0.0,Methionine Metabolism
+GHMT2r_reverse,0.0,Glycine and Serine Metabolism
+EX_o2_LPAREN_e_RPAREN_,0.0,
+MTHFC_reverse,0.0,Folate Metabolism
+CTBTabcpp,0.0,"Transport, Inner Membrane"
+DDCAtexi,0.0,"Transport, Outer Membrane"
+ALCD19_reverse,0.0,Alternate Carbon Metabolism
+NTP3pp,0.0,Nucleotide Salvage Pathway
+GLUABUTt7pp,0.0,"Transport, Inner Membrane"
+ASO3t8pp,0.0,"Transport, Inner Membrane"
+GLCURtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYSS,0.2234520467562679,Cysteine Metabolism
+2AGPGAT160,0.0,Glycerophospholipid Metabolism
+FEOXAMexs,0.0,Inorganic Ion Transport and Metabolism
+GUAtpp_reverse,0.0,"Transport, Inner Membrane"
+HEXt2rpp,0.0,"Transport, Inner Membrane"
+EX_acser_LPAREN_e_RPAREN_,0.0,
+ANHMK,0.0,Murein Recycling
+DIMPtex,0.0,"Transport, Outer Membrane Porin"
+CBMKr,0.5479031889510515,Unassigned
+ADK1,2.003021309087398,Nucleotide Salvage Pathway
+INSt2rpp,0.0,"Transport, Inner Membrane"
+DCAtex,0.0,"Transport, Outer Membrane Porin"
+ASNt2rpp,0.0,"Transport, Inner Membrane"
+NACtex,0.0,"Transport, Outer Membrane Porin"
+ACALDtex,0.0,"Transport, Outer Membrane Porin"
+GLYCtpp_reverse,0.005782452897818891,"Transport, Inner Membrane"
+GALCTt2rpp_reverse,0.0,"Transport, Inner Membrane"
+HOPNTAL,0.0,Alternate Carbon Metabolism
+CLIPAabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+GUI1_reverse,0.0,Alternate Carbon Metabolism
+EX_feenter_LPAREN_e_RPAREN_,0.0,
+OMPHHX3,0.0,Cofactor and Prosthetic Group Biosynthesis
+ALDD19xr,0.0,Alternate Carbon Metabolism
+IPDDI,0.0,Cofactor and Prosthetic Group Biosynthesis
+ACKr_reverse,1.1141192413861307,Pyruvate Metabolism
+LCTStpp,0.0,"Transport, Inner Membrane"
+DURIPP,0.0,Nucleotide Salvage Pathway
+G3PItex,0.0,"Transport, Outer Membrane Porin"
+DALAt2pp,0.02189110091438078,"Transport, Inner Membrane"
+SBTPD_reverse,0.0,Alternate Carbon Metabolism
+EX_imp_LPAREN_e_RPAREN_,0.0,
+DAPDC,0.30061542779418676,Threonine and Lysine Metabolism
+chor_and_prpp_to_3ig3p,0.04979544798224644,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+HISt2rpp_reverse,0.0,"Transport, Inner Membrane"
+ptrc_to_4abut_2,0.0,Alternate Carbon Metabolism
+TAURtex_reverse,0.0,"Transport, Outer Membrane Porin"
+MALDtex,0.0,"Transport, Outer Membrane Porin"
+ISETACtex,0.0,"Transport, Outer Membrane Porin"
+COtpp,0.00020104256255279278,
+SPMS,0.0060799598289508275,Arginine and Proline Metabolism
+UDPGLCURtex_reverse,0.0,"Transport, Outer Membrane Porin"
+Zn2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+HYXNtpp_reverse,0.0,"Transport, Inner Membrane"
+ATPS4rpp,57.97743436483862,Oxidative Phosphorylation
+PPPNt2rpp,0.0,"Transport, Inner Membrane"
+PYDAMtpp,0.0,"Transport, Inner Membrane"
+EX_h_LPAREN_e_RPAREN__reverse,0.0,
+ACGAM1Ptex,0.0,"Transport, Outer Membrane Porin"
+NTP3,0.0,Nucleotide Salvage Pathway
+NTP1,0.0,Nucleotide Salvage Pathway
+EX_urea_LPAREN_e_RPAREN_,0.0,
+DAGK181,0.0,Glycerophospholipid Metabolism
+EX_glyc_DASH_R_LPAREN_e_RPAREN_,0.0,
+MINCYCtpp,0.0,"Transport, Outer Membrane"
+PA120abcpp,0.0,"Transport, Inner Membrane"
+FUM,4.238687605657674,Citric Acid Cycle
+OCTNLL,0.0,Cofactor and Prosthetic Group Biosynthesis
+IDOND_reverse,0.0,Alternate Carbon Metabolism
+HOMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DAPE,0.32547709033911215,Threonine and Lysine Metabolism
+PROt4pp,0.0,"Transport, Inner Membrane"
+TDPAGTA,0.0,Cell Envelope Biosynthesis
+14GLUCANtexi,0.0,"Transport, Outer Membrane"
+NO3t7pp,0.0,Inorganic Ion Transport and Metabolism
+GLTPD_reverse,0.0,Alternate Carbon Metabolism
+ABUTtex,0.0,"Transport, Outer Membrane Porin"
+EX_3hpp_LPAREN_e_RPAREN_,0.0,
+FRULYSDG,0.0,Alternate Carbon Metabolism
+LYStex,0.0,"Transport, Outer Membrane Porin"
+GPDDA1pp,0.0,Glycerophospholipid Metabolism
+AGM4PApp,0.0,Murein Recycling
+EX_uri_LPAREN_e_RPAREN_,0.0,
+GLCATr_reverse,0.0,Alternate Carbon Metabolism
+GTHOXtex,0.0,"Transport, Outer Membrane Porin"
+GTHOr_reverse,0.0,Cofactor and Prosthetic Group Biosynthesis
+CCGS,0.0,Cofactor and Prosthetic Group Biosynthesis
+ACPS1,0.0,Cofactor and Prosthetic Group Biosynthesis
+IPPMIa,0.0,"Valine, Leucine, and Isoleucine Metabolism"
+LPLIPAL1A141pp,0.0,Glycerophospholipid Metabolism
+HCINNMt2rpp,0.0,"Transport, Inner Membrane"
+EX_mg2_LPAREN_e_RPAREN__reverse,0.007440377886763223,
+ACACT5r,0.0,Membrane Lipid Metabolism
+EX_metsox_DASH_R_DASH_L_LPAREN_e_RPAREN_,0.0,
+3HAD180,0.0,Cell Envelope Biosynthesis
+ALCD2x_reverse,0.0,Pyruvate Metabolism
+ASNNpp,0.0,Alanine and Aspartate Metabolism
+SERtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_pyr_LPAREN_e_RPAREN_,0.0,
+FRD2,0.0,Citric Acid Cycle
+FRD3,0.0,Citric Acid Cycle
+PACALDt2rpp,0.0,"Transport, Inner Membrane"
+DMSOtex,0.0,"Transport, Outer Membrane Porin"
+EX_mnl_LPAREN_e_RPAREN_,0.0,
+PLIPA1A180pp,0.0,Glycerophospholipid Metabolism
+ALAGLUE,0.0,Murein Recycling
+HISt2rpp,0.0,"Transport, Inner Membrane"
+F6Ptex,0.0,"Transport, Outer Membrane Porin"
+FE3DHBZSabcpp,0.0,Inorganic Ion Transport and Metabolism
+H2Otpp_reverse,43.09930837690121,"Transport, Inner Membrane"
+PGSA120,0.0,Glycerophospholipid Metabolism
+CELLENV_11,0.2823448960780661,Cell Envelope Biosynthesis
+CELLENV_10,0.11670655986612861,Cell Envelope Biosynthesis
+ASR,0.0,Inorganic Ion Transport and Metabolism
+FACOAL181t2pp,0.0,Cell Envelope Biosynthesis
+5DGLCNt2rpp,0.0,"Transport, Inner Membrane"
+OROTt2_2pp,0.0,"Transport, Inner Membrane"
+ALCD19,0.0,Alternate Carbon Metabolism
+ALLabcpp,0.0,"Transport, Inner Membrane"
+L_DASH_LACtex,0.0,"Transport, Outer Membrane Porin"
+FRULYSK,0.0,Alternate Carbon Metabolism
+CLtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_glyc3p_LPAREN_e_RPAREN_,0.0,
+FRULYSE,0.0,Alternate Carbon Metabolism
+L_DASH_LACt2rpp_reverse,0.0,"Transport, Inner Membrane"
+GLCt2pp,0.0,"Transport, Inner Membrane"
+TRPAS2,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+LIPAabcpp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+GALCTNtex,0.0,"Transport, Outer Membrane Porin"
+EX_ppal_LPAREN_e_RPAREN_,0.0,
+IMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+UGLT_reverse,0.0,Alternate Carbon Metabolism
+LEUabcpp,0.0,"Transport, Inner Membrane"
+HYPOE,0.0,Cofactor and Prosthetic Group Biosynthesis
+MAN6Ptex,0.0,"Transport, Outer Membrane Porin"
+GALM2pp,0.0,Alternate Carbon Metabolism
+ARGAGMt7pp_reverse,0.0,"Transport, Inner Membrane"
+L_DASH_LACt2rpp,0.0,"Transport, Inner Membrane"
+EX_pser_DASH_L_LPAREN_e_RPAREN_,0.0,
+ACPPAT181,0.0,Glycerophospholipid Metabolism
+EX_galt_LPAREN_e_RPAREN_,0.0,
+DADK_reverse,0.0,Nucleotide Salvage Pathway
+EX_no2_LPAREN_e_RPAREN_,0.0,
+PLIPA1E140pp,0.0,Glycerophospholipid Metabolism
+PLIPA2G120pp,0.0,Glycerophospholipid Metabolism
+GAMtex,0.0,"Transport, Outer Membrane Porin"
+EX_fe3_LPAREN_e_RPAREN__reverse,0.006696610575751549,
+CELLENV_6,0.282347600686531,Cell Envelope Biosynthesis
+DM_MTHTHF,0.0012080584476437221,
+EX_colipa_LPAREN_e_RPAREN_,0.0,
+NADPHQR2,0.0,Oxidative Phosphorylation
+EX_xmp_LPAREN_e_RPAREN_,0.0,
+COBALT2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+PGP120abcpp,0.0,"Transport, Inner Membrane"
+G3PStex_reverse,0.0,"Transport, Outer Membrane Porin"
+FALDtpp_reverse,0.0,"Transport, Inner Membrane"
+ACMAMUT,0.0,Cell Envelope Biosynthesis
+CYTD,0.0,Nucleotide Salvage Pathway
+3PEPTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_cu2_LPAREN_e_RPAREN_,0.0,
+NDPK8,0.022362604323417152,Nucleotide Salvage Pathway
+DSERDHr,0.0,Glycine and Serine Metabolism
+NDPK2,0.3602349152568717,Nucleotide Salvage Pathway
+NDPK3,0.12457516742653722,Nucleotide Salvage Pathway
+NDPK1,0.6753975304472666,Nucleotide Salvage Pathway
+TRDR,0.3143575434040181,Oxidative Phosphorylation
+NDPK7,0.023090144000457974,Nucleotide Salvage Pathway
+ADOCBLabcpp,0.0,"Transport, Inner Membrane"
+NDPK5,0.023090144000457974,Nucleotide Salvage Pathway
+GLYC3Ptex,0.0,"Transport, Outer Membrane Porin"
+CELLENV_9,0.14610024466196384,Cell Envelope Biosynthesis
+PLIPA2E180pp,0.0,Glycerophospholipid Metabolism
+CA2t3pp,0.0,Inorganic Ion Transport and Metabolism
+SUCFUMtpp,0.0,"Transport, Inner Membrane"
+GLCURtex,0.0,"Transport, Outer Membrane Porin"
+FA161ACPHi,0.0,Cell Envelope Biosynthesis
+CLPNS141pp_reverse,0.0,Glycerophospholipid Metabolism
+NI2tex,0.0002767715995681945,"Transport, Outer Membrane Porin"
+URAt2pp,0.0,"Transport, Inner Membrane"
+ASPabcpp,0.0,"Transport, Inner Membrane"
+ALLTAMH,0.0,Alternate Carbon Metabolism
+MAN1PT2,0.0,Cell Envelope Biosynthesis
+TALA_reverse,0.0,Pentose Phosphate Pathway
+2AGPGAT161,0.0,Glycerophospholipid Metabolism
+2AGPEAT141,0.0,Glycerophospholipid Metabolism
+2AGPEAT140,0.0,Glycerophospholipid Metabolism
+ACONIs_reverse,0.0,Unassigned
+ARBTNR2,0.0,Inorganic Ion Transport and Metabolism
+ARBTNR3,0.0,Inorganic Ion Transport and Metabolism
+THRPtex,0.0,"Transport, Outer Membrane Porin"
+ARBTNR1,0.0,Inorganic Ion Transport and Metabolism
+GHMT2r,0.9291276689673694,Glycine and Serine Metabolism
+MLDCP1Bpp,0.0,Murein Biosynthesis
+BWCOS,0.0,Cofactor and Prosthetic Group Biosynthesis
+N2Otpp,0.0,Inorganic Ion Transport and Metabolism
+EX_cmp_LPAREN_e_RPAREN_,0.0,
+MANtex,0.0,"Transport, Outer Membrane Porin"
+XYLUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ARGabcpp,0.0,"Transport, Inner Membrane"
+IPMD,0.39467269483962564,"Valine, Leucine, and Isoleucine Metabolism"
+LACZ,0.0,Alternate Carbon Metabolism
+LPLIPAL2ATE120,0.0,Glycerophospholipid Metabolism
+IPDPS,0.005119823823973961,Cofactor and Prosthetic Group Biosynthesis
+LIPAMPL,0.0,Cofactor and Prosthetic Group Biosynthesis
+EX_psclys_LPAREN_e_RPAREN_,0.0,
+PLIPA1E181pp,0.0,Glycerophospholipid Metabolism
+EX_met_DASH_L_LPAREN_e_RPAREN_,0.0,
+ACALD_reverse,0.0,Pyruvate Metabolism
+THMabcpp,0.0,"Transport, Inner Membrane"
+GAPD,15.90493323696921,Glycolysis/Gluconeogenesis
+DSBCGT,0.0,Unassigned
+LPLIPAL2G160,0.0,Glycerophospholipid Metabolism
+LPLIPAL2G161,0.0,Glycerophospholipid Metabolism
+INOSTt4pp,0.0,"Transport, Inner Membrane"
+GMPtex,0.0,"Transport, Outer Membrane Porin"
+ASPK_reverse,0.0,Threonine and Lysine Metabolism
+EAR40y,0.0,Cell Envelope Biosynthesis
+3HPPtex,0.0,"Transport, Outer Membrane Porin"
+EX_dtmp_LPAREN_e_RPAREN_,0.0,
+CU2tex,0.0006076353684331046,"Transport, Outer Membrane Porin"
+GMPR,0.0,Purine and Pyrimidine Biosynthesis
+PROt2rpp_reverse,0.0,"Transport, Inner Membrane"
+XANt2pp,0.0,"Transport, Inner Membrane"
+3NTD2pp,0.0,Nucleotide Salvage Pathway
+PPALtpp_reverse,0.0,"Transport, Inner Membrane"
+EX_co2_LPAREN_e_RPAREN__reverse,0.0,
+PA140abcpp,0.0,"Transport, Inner Membrane"
+DHPTPE,0.0,Cofactor and Prosthetic Group Biosynthesis
+THRD_L,0.2545090657579763,"Valine, Leucine, and Isoleucine Metabolism"
+FALDtpp,0.0,"Transport, Inner Membrane"
+SBTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+SO2tpp,0.0,Inorganic Ion Transport and Metabolism
+THRtex,0.0,"Transport, Outer Membrane Porin"
+NACtpp,0.0,"Transport, Inner Membrane"
+EX_23camp_LPAREN_e_RPAREN_,0.0,
+PAPA120,0.0,Glycerophospholipid Metabolism
+UMPK_reverse,0.0,Nucleotide Salvage Pathway
+MDH_reverse,0.0,Citric Acid Cycle
+AGM4PCP,0.0,Murein Recycling
+CYSabc2pp,0.0,"Transport, Inner Membrane"
+GHBDHx,0.0,Arginine and Proline Metabolism
+AKGt2rpp,0.0,"Transport, Inner Membrane"
+UGLYCH,0.0,Nitrogen Metabolism
+ARAI,0.0,Alternate Carbon Metabolism
+GTHSYN,0.00020104256255279278,Cofactor and Prosthetic Group Biosynthesis
+GALKr,0.0,Alternate Carbon Metabolism
+GLCUR1Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+ACACT6r,0.0,Membrane Lipid Metabolism
+MALS,0.0008041702502110115,Anaplerotic Reactions
+NTD11pp,0.0,Nucleotide Salvage Pathway
+ARBt3ipp,0.0,"Transport, Inner Membrane"
+XYLUtex,0.0,"Transport, Outer Membrane Porin"
+G3PItex_reverse,0.0,"Transport, Outer Membrane Porin"
+DINStex_reverse,0.0,"Transport, Outer Membrane Porin"
+MALt3pp,0.0,"Transport, Inner Membrane"
+LIPAHTex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+EX_lys_DASH_L_LPAREN_e_RPAREN_,0.0,
+ADK1_reverse,0.0,Nucleotide Salvage Pathway
+NTD8pp,0.0,Nucleotide Salvage Pathway
+EX_glc_LPAREN_e_RPAREN_,0.0,
+DTMPtex,0.0,"Transport, Outer Membrane Porin"
+ATHRDHr_reverse,0.0,Threonine and Lysine Metabolism
+ECOAH8,0.0,Membrane Lipid Metabolism
+ECOAH6,0.0,Membrane Lipid Metabolism
+ECOAH7,0.0,Membrane Lipid Metabolism
+ECOAH4,0.0,Membrane Lipid Metabolism
+ECOAH5,0.0,Membrane Lipid Metabolism
+ECOAH2,0.0,Membrane Lipid Metabolism
+ECOAH3,0.0,Membrane Lipid Metabolism
+ECOAH1,0.0,Membrane Lipid Metabolism
+OP4ENH,0.0,Alternate Carbon Metabolism
+FA80ACPHi,0.0,Cell Envelope Biosynthesis
+G3PAT120,0.0,Glycerophospholipid Metabolism
+ARBTptspp,0.0,"Transport, Inner Membrane"
+MNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PE181abcpp,0.011491881367087217,"Transport, Inner Membrane"
+SO2tex,0.0,"Transport, Outer Membrane Porin"
+TYMtex,0.0,"Transport, Outer Membrane Porin"
+ALLPI_reverse,0.0,Alternate Carbon Metabolism
+ADOCBLtonex,0.0,"Transport, Outer Membrane"
+MTHFD_reverse,0.0,Folate Metabolism
+A5PISO,0.02204526359687642,Alternate Carbon Metabolism
+ARGSL,0.25911952165436636,Arginine and Proline Metabolism
+LYSt2pp,0.0,"Transport, Inner Membrane"
+OBTFL,0.0,Alternate Carbon Metabolism
+EX_fum_LPAREN_e_RPAREN_,0.0,
+Ec_biomass_iJO1366_WT_53p95M,0.9015361549452591,
+DUMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FRUURt2rpp_reverse,0.0,"Transport, Inner Membrane"
+ARGSS,0.25911952165436636,Arginine and Proline Metabolism
+NO3R1pp,0.0,Oxidative Phosphorylation
+CRNDt2rpp,0.0,"Transport, Inner Membrane"
+CLPNS160pp,0.0026541224401588426,Glycerophospholipid Metabolism
+MG2t3_2pp_reverse,0.0,Inorganic Ion Transport and Metabolism
+PGP180abcpp,0.0,"Transport, Inner Membrane"
+FRULYSE_reverse,0.0,Alternate Carbon Metabolism
+CUtex_reverse,0.0,"Transport, Outer Membrane Porin"
+O2tex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_fe3hox_DASH_un_LPAREN_e_RPAREN_,0.0,
+4PEPTtex,0.0,"Transport, Outer Membrane Porin"
+GTPHs,0.0,Nucleotide Salvage Pathway
+EX_h2_LPAREN_e_RPAREN_,0.0,
+OCTAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+ASNN,0.0,Alanine and Aspartate Metabolism
+PLIPA1A140pp,0.0,Glycerophospholipid Metabolism
+DURIPP_reverse,0.0,Nucleotide Salvage Pathway
+PHEMEabcpp,0.0,"Transport, Inner Membrane"
+dhap_to_lac_DASH_D,0.0,Methylglyoxal Metabolism
+MLTGY1pp,0.0,Murein Recycling
+LPLIPAL1G160pp,0.0,Glycerophospholipid Metabolism
+CBMD,0.0,Nucleotide Salvage Pathway
+ADEtex,0.0,"Transport, Outer Membrane Porin"
+ADEtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FE3DCITtonex,0.0,"Transport, Outer Membrane"
+ACKr,0.0,Pyruvate Metabolism
+METtex_reverse,0.0,"Transport, Outer Membrane Porin"
+RIBtex,0.0,"Transport, Outer Membrane Porin"
+EX_orn_LPAREN_e_RPAREN_,0.0,
+EX_amp_LPAREN_e_RPAREN_,0.0,
+DGSNt2pp,0.0,"Transport, Inner Membrane"
+PPC,2.63711676366811,Anaplerotic Reactions
+EX_hxan_LPAREN_e_RPAREN_,0.0,
+FDH5pp,0.0,Oxidative Phosphorylation
+RZ5PP,0.0,Cofactor and Prosthetic Group Biosynthesis
+DGMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+12DGR180tipp,0.0,"Transport, Inner Membrane"
+URIt2rpp,0.0,"Transport, Inner Membrane"
+PPM,0.0,Alternate Carbon Metabolism
+PPS,0.0,Glycolysis/Gluconeogenesis
+EX_dgsn_LPAREN_e_RPAREN_,0.0,
+PGPP181pp,0.0,Glycerophospholipid Metabolism
+GPDDA4,0.0,Glycerophospholipid Metabolism
+GPDDA5,0.0,Glycerophospholipid Metabolism
+EX_dopa_LPAREN_e_RPAREN_,0.0,
+GPDDA1,0.0,Glycerophospholipid Metabolism
+ATHRDHr,0.0,Threonine and Lysine Metabolism
+GPDDA3,0.0,Glycerophospholipid Metabolism
+GLYCAt2rpp,0.0,"Transport, Inner Membrane"
+SKMt2pp,0.0,"Transport, Inner Membrane"
+OCDCAtexi,0.0,"Transport, Outer Membrane"
+XANtpp,0.0,"Transport, Inner Membrane"
+ENO_reverse,0.0,Glycolysis/Gluconeogenesis
+H2Otex,0.0,"Transport, Outer Membrane Porin"
+PLIPA2G161pp,0.0,Glycerophospholipid Metabolism
+ZN2t3pp,0.0,Inorganic Ion Transport and Metabolism
+RMI_reverse,0.0,Alternate Carbon Metabolism
+INStex_reverse,0.0,"Transport, Outer Membrane"
+SDPTA,0.0,Threonine and Lysine Metabolism
+POR5,0.005973578562712812,Pyruvate Metabolism
+XYLI1_reverse,0.0,Alternate Carbon Metabolism
+LIPOtex,0.0,"Transport, Outer Membrane Porin"
+CPGNR2,0.0,Inorganic Ion Transport and Metabolism
+CPGNR3,0.0,Inorganic Ion Transport and Metabolism
+CRNCBCT,0.0,Oxidative Phosphorylation
+CPGNR1,0.0,Inorganic Ion Transport and Metabolism
+BPNT,0.2234520467562679,Cysteine Metabolism
+EX_maltpt_LPAREN_e_RPAREN_,0.0,
+ETHSO3tex,0.0,"Transport, Outer Membrane Porin"
+FMNRx,0.0,Cofactor and Prosthetic Group Biosynthesis
+TRSARr_reverse,0.0,Alternate Carbon Metabolism
+3GMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+LPLIPAL1E160pp,0.0,Glycerophospholipid Metabolism
+PROTRS,0.0,tRNA Charging
+GLYTRS,0.0,tRNA Charging
+CA2tex,0.004464407039288923,"Transport, Outer Membrane Porin"
+LPLIPAL1A181pp,0.0,Glycerophospholipid Metabolism
+APPLDHr,0.0,Threonine and Lysine Metabolism
+HPPPNt2rpp_reverse,0.0,"Transport, Inner Membrane"
+PGP161abcpp,0.0,"Transport, Inner Membrane"
+FLVRx,0.0,Cofactor and Prosthetic Group Biosynthesis
+SULabcpp,0.0,Inorganic Ion Transport and Metabolism
+DURItex,0.0,"Transport, Outer Membrane"
+ThDPAT,0.0,Cofactor and Prosthetic Group Biosynthesis
+XTSNtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TUNGStex_reverse,0.0,"Transport, Outer Membrane Porin"
+GUI2_reverse,0.0,Alternate Carbon Metabolism
+UMPtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FADSYN_1,0.00040208512510558556,Cofactor and Prosthetic Group Biosynthesis
+FADSYN_2,0.0008041702502111711,Cofactor and Prosthetic Group Biosynthesis
+FADSYN_3,0.00020104256255279278,Cofactor and Prosthetic Group Biosynthesis
+BUTSO3tex,0.0,"Transport, Outer Membrane Porin"
+MDDEP1pp,0.0,Murein Recycling
+ILEabcpp,0.0,"Transport, Inner Membrane"
+CLPNS161pp,0.0020645177948246433,Glycerophospholipid Metabolism
+RFAMPtex_reverse,0.0,"Transport, Outer Membrane"
+TMAOtex_reverse,0.0,"Transport, Outer Membrane Porin"
+3UMPtex,0.0,"Transport, Outer Membrane Porin"
+METabcpp,0.0,"Transport, Inner Membrane"
+GAL1Ptex_reverse,0.0,"Transport, Outer Membrane Porin"
+RIBabcpp,0.0,"Transport, Inner Membrane"
+PLIPA2E161pp,0.0,Glycerophospholipid Metabolism
+LPLIPAL2E140,0.0,Glycerophospholipid Metabolism
+LPLIPAL2E141,0.0,Glycerophospholipid Metabolism
+MSO3abcpp,0.0,"Transport, Inner Membrane"
+EX_pheme_LPAREN_e_RPAREN_,0.0,
+NAt3pp,0.0,Inorganic Ion Transport and Metabolism
+2AGPGAT181,0.0,Glycerophospholipid Metabolism
+2AGPGAT180,0.0,Glycerophospholipid Metabolism
+CUtex,0.0,"Transport, Outer Membrane Porin"
+EX_tma_LPAREN_e_RPAREN_,0.0,
+METDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+PLIPA1A141pp,0.0,Glycerophospholipid Metabolism
+INDOLEt2rpp,0.0,"Transport, Inner Membrane"
+LEUTRS,0.0,tRNA Charging
+EX_asn_DASH_L_LPAREN_e_RPAREN_,0.0,
+4HOXPACDtex,0.0,"Transport, Outer Membrane Porin"
+GLUN,0.0,Glutamate Metabolism
+NH4tex,9.471790372442172,"Transport, Outer Membrane Porin"
+UACGAMtex,0.0,"Transport, Outer Membrane Porin"
+AGt3,0.0,Inorganic Ion Transport and Metabolism
+CAt6pp_reverse,0.004464407039288923,Inorganic Ion Transport and Metabolism
+AP4AS,0.0,Nucleotide Salvage Pathway
+MALTptspp,0.0,"Transport, Inner Membrane"
+EX_octa_LPAREN_e_RPAREN_,0.0,
+FRULYStex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYSabcpp,0.0,"Transport, Inner Membrane"
+AP4AH,0.0,Nucleotide Salvage Pathway
+GLYCLTt2rpp,0.0,"Transport, Inner Membrane"
+PYROX,0.0,Nucleotide Salvage Pathway
+PIuabcpp,0.0,Inorganic Ion Transport and Metabolism
+NO3R1bpp,0.0,Nitrogen Metabolism
+ETHAt2pp,0.0,"Transport, Inner Membrane"
+SHKK,0.3353029328918661,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+URDGLYCD,0.0,Alternate Carbon Metabolism
+URACPAH,0.0,Nucleotide Salvage Pathway
+PAPA140pp,0.0,Glycerophospholipid Metabolism
+5DGLCNR_reverse,0.0,Alternate Carbon Metabolism
+UREAtpp,0.0,"Transport, Inner Membrane"
+ETHAAL,0.0,Cell Envelope Biosynthesis
+PROt2rpp,0.0,"Transport, Inner Membrane"
+LALGP,0.0,Murein Recycling
+ECAP2pp,0.0,Lipopolysaccharide Biosynthesis / Recycling
+DUMPtex,0.0,"Transport, Outer Membrane Porin"
+GTHOXtex_reverse,0.0,"Transport, Outer Membrane Porin"
+EX_tartr_DASH_L_LPAREN_e_RPAREN_,0.0,
+ISETACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+Ktex,0.16740624861178516,"Transport, Outer Membrane Porin"
+DHAPT,0.0,Alternate Carbon Metabolism
+ABUTt2pp,0.0,"Transport, Inner Membrane"
+FEENTERexs,0.0,Inorganic Ion Transport and Metabolism
+FE3abcpp,0.006696610575751549,Inorganic Ion Transport and Metabolism
+XAND,0.0,Nucleotide Salvage Pathway
+EX_sel_LPAREN_e_RPAREN__reverse,0.0,
+G6PP,0.0,Glycolysis/Gluconeogenesis
+AGPR,0.0,Arginine and Proline Metabolism
+BUTt2rpp,0.0,"Transport, Inner Membrane"
+PPALtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CYSDtex,0.0,"Transport, Outer Membrane Porin"
+FALDtex_reverse,0.0,"Transport, Outer Membrane Porin"
+TRPt2rpp_reverse,0.0,"Transport, Inner Membrane"
+ALAR,0.021891100914380773,Alanine and Aspartate Metabolism
+EX_man6p_LPAREN_e_RPAREN_,0.0,
+EX_tyr_DASH_L_LPAREN_e_RPAREN_,0.0,
+CRNt2rpp,0.0,"Transport, Inner Membrane"
+GLUDC,0.0,Glutamate Metabolism
+CYANST,0.0,Unassigned
+F6PP,0.0,Alternate Carbon Metabolism
+GLUDy,0.0,Glutamate Metabolism
+GLYCPHOSPHOLIPID_4,0.04252906657338765,Glycerophospholipid Metabolism
+PGP181abcpp,0.0,"Transport, Inner Membrane"
+HCINNMtex_reverse,0.0,"Transport, Outer Membrane Porin"
+FLDR2,0.0,Unassigned
+PLIPA2A140pp,0.0,Glycerophospholipid Metabolism
+F6PA,0.0,Glycolysis/Gluconeogenesis
+FRUtex,0.0,"Transport, Outer Membrane Porin"
+UM3PL,0.0,Murein Recycling
+MI1PP,0.0,Cell Envelope Biosynthesis
+26DAHtex,0.0,"Transport, Outer Membrane Porin"
+INSt2rpp_reverse,0.0,"Transport, Inner Membrane"
+EX_chol_LPAREN_e_RPAREN_,0.0,
+ACGAMT,0.0,Cell Envelope Biosynthesis
+EX_kdo2lipid4_LPAREN_e_RPAREN_,0.0,
+FUMtex,0.0,"Transport, Outer Membrane Porin"
+glu_DASH_L_to_acg5p,0.29519358935834594,Arginine and Proline Metabolism
+DDPGALA_reverse,0.0,Alternate Carbon Metabolism
+PPPNDO,0.0,Alternate Carbon Metabolism
+ACACT7r,0.0,Membrane Lipid Metabolism
+DMSOtex_reverse,0.0,"Transport, Outer Membrane Porin"
+DAGK180,0.0,Glycerophospholipid Metabolism
+PLIPA2A181pp,0.0,Glycerophospholipid Metabolism
+ACGAMK,0.0,Murein Recycling
+MALTTTRtexi,0.0,"Transport, Outer Membrane"
+PPTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+IMPSYN_1,0.3922448579743687,Purine and Pyrimidine Biosynthesis
+G3PSabcpp,0.0,"Transport, Inner Membrane"
+IMPSYN_2,0.39204381541181593,Purine and Pyrimidine Biosynthesis
+N2Otex,0.0,"Transport, Outer Membrane Porin"
+EX_cobalt2_LPAREN_e_RPAREN_,0.0,
+DHCINDO,0.0,Alternate Carbon Metabolism
+R15BPK,0.0,Alternate Carbon Metabolism
+CINNDO,0.0,Alternate Carbon Metabolism
+HETZK,0.0,Cofactor and Prosthetic Group Biosynthesis
+K2L4Aabctex,0.0,Lipopolysaccharide Biosynthesis / Recycling
+EX_h2o_LPAREN_e_RPAREN_,43.081117180366725,
+ACALDtpp_reverse,0.0,"Transport, Inner Membrane"
+PGSA141,0.0,Glycerophospholipid Metabolism
+PGSA140,0.0,Glycerophospholipid Metabolism
+FE3tex_reverse,0.0,"Transport, Outer Membrane Porin"
+PE141abcpp,0.0,"Transport, Inner Membrane"
+D_DASH_LACtex_reverse,0.0,"Transport, Outer Membrane Porin"
+H2Stex,0.0,"Transport, Outer Membrane Porin"
+NODOx,0.0,Nitrogen Metabolism
+NNAM,0.0,Cofactor and Prosthetic Group Biosynthesis
+CYTBD2pp,0.0,Oxidative Phosphorylation
+ASAD,0.0,Threonine and Lysine Metabolism
+MANAO,0.0,Alternate Carbon Metabolism
+EX_12ppd_DASH_R_LPAREN_e_RPAREN_,0.0,
+HPYRRy,0.0,Alternate Carbon Metabolism
+HPYRRx,0.0,Alternate Carbon Metabolism
+CLPNS120pp,0.0,Glycerophospholipid Metabolism
+ADMDC,0.0060799598289508275,Arginine and Proline Metabolism
+OAADC,0.0,Pyruvate Metabolism
+PAPA180pp,0.0,Glycerophospholipid Metabolism
+IDOND,0.0,Alternate Carbon Metabolism
+UDPGD,0.0,Cell Envelope Biosynthesis
+EX_dmso_LPAREN_e_RPAREN_,0.0,
+CMPtex,0.0,"Transport, Outer Membrane Porin"
+HADPCOADH3_reverse,0.0,Alternate Carbon Metabolism
+EX_orot_LPAREN_e_RPAREN_,0.0,
+FECRMUtpp,0.0,Inorganic Ion Transport and Metabolism
+DDGLCNtex,0.0,"Transport, Outer Membrane Porin"
+TPI_reverse,0.0,Glycolysis/Gluconeogenesis
+MTAN,0.0060799598289508275,Arginine and Proline Metabolism
+EX_mg2_LPAREN_e_RPAREN_,0.0,
+MOBDabcpp,0.0001235104532275005,Inorganic Ion Transport and Metabolism
+H2SO,0.0,Inorganic Ion Transport and Metabolism
+EX_alltn_LPAREN_e_RPAREN_,0.0,
+MLDEP2pp,0.0,Murein Recycling
+FESR,-1.6818164916276857e-11,Cofactor and Prosthetic Group Biosynthesis
+APPLDHr_reverse,0.0,Threonine and Lysine Metabolism
+TTDCAtexi,0.0,"Transport, Outer Membrane"
+ILETRS,0.0,tRNA Charging
+AAMYL,0.0,Alternate Carbon Metabolism
+QUINDH,0.0,"Tyrosine, Tryptophan, and Phenylalanine Metabolism"
+EX_h2o_LPAREN_e_RPAREN__reverse,0.0,
+OROTtex_reverse,0.0,"Transport, Outer Membrane Porin"
+COBALT2tex,2.1636867718686218e-05,"Transport, Outer Membrane Porin"
+G3PGabcpp,0.0,"Transport, Inner Membrane"
+CHLtex,0.0,"Transport, Outer Membrane Porin"
+EX_so3_LPAREN_e_RPAREN_,0.0,
+MDDCP3pp,0.004851166049760439,Murein Biosynthesis
+EX_xylu_DASH_L_LPAREN_e_RPAREN_,0.0,
+PPAtex_reverse,0.0,"Transport, Outer Membrane Porin"
+CU1abcpp,0.0,Inorganic Ion Transport and Metabolism
+LCTSt3ipp,0.0,"Transport, Inner Membrane"
+SELR,0.0,Inorganic Ion Transport and Metabolism

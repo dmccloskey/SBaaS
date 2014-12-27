@@ -1,0 +1,11 @@
+id,experiment_id,model_id,sample_name_abbreviation,time_point,compartment_id,pH,temperature,temperature_units,ionic_strength,ionic_strength_units,used_,comment_
+6,ALEWt01,iJO1366,OxicEvo03Glc,0,p,7.00,310.15,K,0.2,M,t,
+7,ALEWt01,iJO1366,OxicEvo04Glc,0,p,7.00,310.15,K,0.2,M,t,
+8,ALEWt01,iJO1366,OxicEvo08Glc,0,p,7.00,310.15,K,0.2,M,t,
+9,ALEWt01,iJO1366,OxicEvo09Glc,0,p,7.00,310.15,K,0.2,M,t,
+10,ALEWt01,iJO1366,OxicWtGlc,0,p,7.00,310.15,K,0.2,M,t,
+11,ALEWt01,iJO1366,OxicEvo03Glc,0,e,7.00,310.15,K,0.2,M,t,
+12,ALEWt01,iJO1366,OxicEvo04Glc,0,e,7.00,310.15,K,0.2,M,t,
+13,ALEWt01,iJO1366,OxicEvo08Glc,0,e,7.00,310.15,K,0.2,M,t,
+14,ALEWt01,iJO1366,OxicEvo09Glc,0,e,7.00,310.15,K,0.2,M,t,
+15,ALEWt01,iJO1366,OxicWtGlc,0,e,7.00,310.15,K,0.2,M,t,

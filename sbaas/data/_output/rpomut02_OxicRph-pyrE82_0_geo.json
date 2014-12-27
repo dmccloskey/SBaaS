@@ -1,0 +1,548 @@
+{
+    "dttp": {
+        "concentration_var": 1.00704109028131, 
+        "concentration_units": "M", 
+        "concentration": 3.3074246181556e-05, 
+        "concentration_ub": 3.59038199891228e-05, 
+        "concentration_lb": 3.0467670593535e-05
+    }, 
+    "gdp": {
+        "concentration_var": 1.04220066896781, 
+        "concentration_units": "M", 
+        "concentration": 0.00012441112374414, 
+        "concentration_ub": 0.000151841058982263, 
+        "concentration_lb": 0.000101936378836028
+    }, 
+    "xan": {
+        "concentration_var": NaN, 
+        "concentration_units": "M", 
+        "concentration": NaN, 
+        "concentration_ub": NaN, 
+        "concentration_lb": NaN
+    }, 
+    "dump": {
+        "concentration_var": 1.02473390559658, 
+        "concentration_units": "M", 
+        "concentration": 2.4895742669646e-06, 
+        "concentration_ub": 2.90169780467924e-06, 
+        "concentration_lb": 2.13598398177009e-06
+    }, 
+    "skm": {
+        "concentration_var": 1.01876955350586, 
+        "concentration_units": "M", 
+        "concentration": 2.71938004057464e-06, 
+        "concentration_ub": 3.10819516146374e-06, 
+        "concentration_lb": 2.37920317770304e-06
+    }, 
+    "thym": {
+        "concentration_var": 1.06917580966918, 
+        "concentration_units": "M", 
+        "concentration": 1.30007816080462e-05, 
+        "concentration_ub": 1.67511051196594e-05, 
+        "concentration_lb": 1.00900998001467e-05
+    }, 
+    "acon-C": {
+        "concentration_var": 1.14785417169594, 
+        "concentration_units": "M", 
+        "concentration": 5.9331980764335e-05, 
+        "concentration_ub": 8.53758102304136e-05, 
+        "concentration_lb": 4.12328027332194e-05
+    }, 
+    "phe-L": {
+        "concentration_var": 2.88402835720874, 
+        "concentration_units": "M", 
+        "concentration": 1.9519310163883e-05, 
+        "concentration_ub": 5.35164717503162e-05, 
+        "concentration_lb": 7.1193682395853e-06
+    }, 
+    "glu-L": {
+        "concentration_var": 1.00382446898468, 
+        "concentration_units": "M", 
+        "concentration": 0.0146088080676738, 
+        "concentration_ub": 0.0155206633946102, 
+        "concentration_lb": 0.0137505252019217
+    }, 
+    "gln-L": {
+        "concentration_var": 1.00174988966748, 
+        "concentration_units": "M", 
+        "concentration": 0.00142113711787969, 
+        "concentration_ub": 0.00148058083978438, 
+        "concentration_lb": 0.00136407999721888
+    }, 
+    "gsn": {
+        "concentration_var": 1.09569023109913, 
+        "concentration_units": "M", 
+        "concentration": 1.10718338963317e-06, 
+        "concentration_ub": 1.48895129564479e-06, 
+        "concentration_lb": 8.23300978255795e-07
+    }, 
+    "met-L": {
+        "concentration_var": 1.02748955760217, 
+        "concentration_units": "M", 
+        "concentration": 2.5338985610492e-05, 
+        "concentration_ub": 2.97767406439719e-05, 
+        "concentration_lb": 2.15626081929387e-05
+    }, 
+    "r5p": {
+        "concentration_var": 1.01306975966767, 
+        "concentration_units": "M", 
+        "concentration": 2.81172428445436e-05, 
+        "concentration_ub": 3.14392180888616e-05, 
+        "concentration_lb": 2.5146278859242e-05
+    }, 
+    "dtmp": {
+        "concentration_var": 1.00531602253985, 
+        "concentration_units": "M", 
+        "concentration": 1.12481615180246e-05, 
+        "concentration_ub": 1.20801407489527e-05, 
+        "concentration_lb": 1.04734820698624e-05
+    }, 
+    "nadph": {
+        "concentration_var": 1.01392595950222, 
+        "concentration_units": "M", 
+        "concentration": 3.8025726479799e-06, 
+        "concentration_ub": 4.26706555798594e-06, 
+        "concentration_lb": 3.38864227574459e-06
+    }, 
+    "itp": {
+        "concentration_var": 1.03947650545402, 
+        "concentration_units": "M", 
+        "concentration": 3.8909290185669e-06, 
+        "concentration_ub": 4.71844618172765e-06, 
+        "concentration_lb": 3.20854112655847e-06
+    }, 
+    "ditp": {
+        "concentration_var": 1.12332995938874, 
+        "concentration_units": "M", 
+        "concentration": 1.11665962425393e-05, 
+        "concentration_ub": 1.55978094360767e-05, 
+        "concentration_lb": 7.99425535713275e-06
+    }, 
+    "glx": {
+        "concentration_var": 4.33277232416455, 
+        "concentration_units": "M", 
+        "concentration": 0.000361892816485862, 
+        "concentration_ub": 0.00118559645393472, 
+        "concentration_lb": 0.000110464576871348
+    }, 
+    "nadp": {
+        "concentration_var": 1.02879888780614, 
+        "concentration_units": "M", 
+        "concentration": 7.82664467824883e-05, 
+        "concentration_ub": 9.23188405623899e-05, 
+        "concentration_lb": 6.6353050521863e-05
+    }, 
+    "pep": {
+        "concentration_var": 1.0093879920457, 
+        "concentration_units": "M", 
+        "concentration": 2.58339484771973e-05, 
+        "concentration_ub": 2.84009202325786e-05, 
+        "concentration_lb": 2.34989883587265e-05
+    }, 
+    "adp": {
+        "concentration_var": 1.07966517137137, 
+        "concentration_units": "M", 
+        "concentration": 0.000186397867910019, 
+        "concentration_ub": 0.000244497575162025, 
+        "concentration_lb": 0.000142104334320602
+    }, 
+    "mal-L": {
+        "concentration_var": 1.00300156615017, 
+        "concentration_units": "M", 
+        "concentration": 0.00116398304045388, 
+        "concentration_ub": 0.00122813698545856, 
+        "concentration_lb": 0.00110318029218735
+    }, 
+    "damp": {
+        "concentration_var": 1.09087719020269, 
+        "concentration_units": "M", 
+        "concentration": 1.29249293769749e-06, 
+        "concentration_ub": 1.72564631178775e-06, 
+        "concentration_lb": 9.68065114262742e-07
+    }, 
+    "glyclt": {
+        "concentration_var": 1.83444016221818, 
+        "concentration_units": "M", 
+        "concentration": 9.23160008169072e-05, 
+        "concentration_ub": 0.00019806069795641, 
+        "concentration_lb": 4.30284457984836e-05
+    }, 
+    "asn-L": {
+        "concentration_var": 1.08570551232384, 
+        "concentration_units": "M", 
+        "concentration": 0.000207206970470933, 
+        "concentration_ub": 0.00027444222456642, 
+        "concentration_lb": 0.000156443596387448
+    }, 
+    "utp": {
+        "concentration_var": 1.00844381017421, 
+        "concentration_units": "M", 
+        "concentration": 0.000292240741842313, 
+        "concentration_ub": 0.000319718554681617, 
+        "concentration_lb": 0.000267124475392406
+    }, 
+    "gtp": {
+        "concentration_var": 1.00384432106606, 
+        "concentration_units": "M", 
+        "concentration": 0.000361725608961533, 
+        "concentration_ub": 0.000384364068750717, 
+        "concentration_lb": 0.000340420520065452
+    }, 
+    "imp": {
+        "concentration_var": 1.02790740363303, 
+        "concentration_units": "M", 
+        "concentration": 1.63245269328088e-05, 
+        "concentration_ub": 1.92066663946673e-05, 
+        "concentration_lb": 1.38748793832328e-05
+    }, 
+    "glyc3p": {
+        "concentration_var": 1.0885222018761, 
+        "concentration_units": "M", 
+        "concentration": 0.000114018019563638, 
+        "concentration_ub": 0.000151679863832762, 
+        "concentration_lb": 8.57075451989308e-05
+    }, 
+    "ade": {
+        "concentration_var": 1.03766044695737, 
+        "concentration_units": "M", 
+        "concentration": 3.55530031489661e-06, 
+        "concentration_ub": 4.29248713969416e-06, 
+        "concentration_lb": 2.94471711102309e-06
+    }, 
+    "dcmp": {
+        "concentration_var": 1.15138473669931, 
+        "concentration_units": "M", 
+        "concentration": 1.42235957436179e-06, 
+        "concentration_ub": 2.05497072634016e-06, 
+        "concentration_lb": 9.8449419879656e-07
+    }, 
+    "mmal": {
+        "concentration_var": 1.0123074911185, 
+        "concentration_units": "M", 
+        "concentration": 8.76684498005955e-06, 
+        "concentration_ub": 9.77047451234591e-06, 
+        "concentration_lb": 7.86630892975348e-06
+    }, 
+    "ura": {
+        "concentration_var": 2.08914720059099, 
+        "concentration_units": "M", 
+        "concentration": 1.44206784628999e-06, 
+        "concentration_ub": 3.34429556159425e-06, 
+        "concentration_lb": 6.21822932513805e-07
+    }, 
+    "gthrd": {
+        "concentration_var": 1.00403005689461, 
+        "concentration_units": "M", 
+        "concentration": 0.00345458193578404, 
+        "concentration_ub": 0.00371161353873407, 
+        "concentration_lb": 0.00321534993514326
+    }, 
+    "ser-L": {
+        "concentration_var": 1.10576908471438, 
+        "concentration_units": "M", 
+        "concentration": 0.000187459020523033, 
+        "concentration_ub": 0.000255775672896731, 
+        "concentration_lb": 0.000137389470927687
+    }, 
+    "f1p": {
+        "concentration_var": 1.00795347545087, 
+        "concentration_units": "M", 
+        "concentration": 6.43611892116617e-05, 
+        "concentration_ub": 7.02272475870106e-05, 
+        "concentration_lb": 5.8985120719803e-05
+    }, 
+    "s7p": {
+        "concentration_var": 1.14747465962043, 
+        "concentration_units": "M", 
+        "concentration": 3.52881392853315e-05, 
+        "concentration_ub": 5.07557363032917e-05, 
+        "concentration_lb": 2.45342273586562e-05
+    }, 
+    "thr-L": {
+        "concentration_var": 1.04239771870228, 
+        "concentration_units": "M", 
+        "concentration": 0.00026854878597362, 
+        "concentration_ub": 0.00032790713094798, 
+        "concentration_lb": 0.000219935596519083
+    }, 
+    "dctp": {
+        "concentration_var": 1.00640490673152, 
+        "concentration_units": "M", 
+        "concentration": 2.45936003600783e-05, 
+        "concentration_ub": 2.65968066715615e-05, 
+        "concentration_lb": 2.27412706397558e-05
+    }, 
+    "trp-L": {
+        "concentration_var": 1.38661734137637, 
+        "concentration_units": "M", 
+        "concentration": 4.82276887092614e-06, 
+        "concentration_ub": 8.44552553979812e-06, 
+        "concentration_lb": 2.75401447461967e-06
+    }, 
+    "udp": {
+        "concentration_var": 1.06081478050557, 
+        "concentration_units": "M", 
+        "concentration": 9.15467413486909e-05, 
+        "concentration_ub": 0.000116159707091976, 
+        "concentration_lb": 7.2148992635873e-05
+    }, 
+    "nadh": {
+        "concentration_var": 1.31484763100787, 
+        "concentration_units": "M", 
+        "concentration": 3.81798087426469e-06, 
+        "concentration_ub": 6.37536517653941e-06, 
+        "concentration_lb": 2.28645380344526e-06
+    }, 
+    "accoa": {
+        "concentration_var": 1.10731620024678, 
+        "concentration_units": "M", 
+        "concentration": 0.00202216821924513, 
+        "concentration_ub": 0.00276506458512829, 
+        "concentration_lb": 0.00147886755662718
+    }, 
+    "hxan": {
+        "concentration_var": 1.27220901798541, 
+        "concentration_units": "M", 
+        "concentration": 2.57361769242744e-07, 
+        "concentration_ub": 4.16271247661863e-07, 
+        "concentration_lb": 1.5911519385446e-07
+    }, 
+    "gthox": {
+        "concentration_var": 1.03446924485266, 
+        "concentration_units": "M", 
+        "concentration": 0.000377899001163552, 
+        "concentration_ub": 0.000452611193383877, 
+        "concentration_lb": 0.000315519494806859
+    }, 
+    "datp": {
+        "concentration_var": 1.00371082462214, 
+        "concentration_units": "M", 
+        "concentration": 2.89494389559272e-05, 
+        "concentration_ub": 3.07285982516576e-05, 
+        "concentration_lb": 2.72732914466004e-05
+    }, 
+    "tyr-L": {
+        "concentration_var": 1.01197005965854, 
+        "concentration_units": "M", 
+        "concentration": 2.69214440087724e-05, 
+        "concentration_ub": 2.995882575133e-05, 
+        "concentration_lb": 2.41920078421396e-05
+    }, 
+    "23dpg": {
+        "concentration_var": 1.09264099944662, 
+        "concentration_units": "M", 
+        "concentration": 1.60433317664622e-05, 
+        "concentration_ub": 2.14772424355828e-05, 
+        "concentration_lb": 1.19842430861767e-05
+    }, 
+    "lac-L": {
+        "concentration_var": 1.02220994646644, 
+        "concentration_units": "M", 
+        "concentration": 0.000372286148614936, 
+        "concentration_ub": 0.000430484306281759, 
+        "concentration_lb": 0.000321955932952939
+    }, 
+    "icit": {
+        "concentration_var": 1.18362122857032, 
+        "concentration_units": "M", 
+        "concentration": 5.16299122509826e-06, 
+        "concentration_ub": 7.72056584754215e-06, 
+        "concentration_lb": 3.45265864145538e-06
+    }, 
+    "f6p": {
+        "concentration_var": 1.0106655463777, 
+        "concentration_units": "M", 
+        "concentration": 0.000535456102573653, 
+        "concentration_ub": 0.000592327237349297, 
+        "concentration_lb": 0.000484045337956138
+    }, 
+    "amp": {
+        "concentration_var": 1.01981453127308, 
+        "concentration_units": "M", 
+        "concentration": 5.7668238085632e-05, 
+        "concentration_ub": 6.61535967423432e-05, 
+        "concentration_lb": 5.02712754508855e-05
+    }, 
+    "ins": {
+        "concentration_var": 1.21349024500674, 
+        "concentration_units": "M", 
+        "concentration": 1.38859605798035e-06, 
+        "concentration_ub": 2.13695649144285e-06, 
+        "concentration_lb": 9.02310842527579e-07
+    }, 
+    "gam6p": {
+        "concentration_var": 1.02505925052524, 
+        "concentration_units": "M", 
+        "concentration": 7.25219604742091e-05, 
+        "concentration_ub": 8.46111129236551e-05, 
+        "concentration_lb": 6.21600942156186e-05
+    }, 
+    "fad": {
+        "concentration_var": 1.11568321136601, 
+        "concentration_units": "M", 
+        "concentration": 2.08175004185953e-05, 
+        "concentration_ub": 2.8790191618181e-05, 
+        "concentration_lb": 1.50526376977827e-05
+    }, 
+    "ump": {
+        "concentration_var": 1.01331481934761, 
+        "concentration_units": "M", 
+        "concentration": 6.8260163984707e-05, 
+        "concentration_ub": 7.64039717169632e-05, 
+        "concentration_lb": 6.09843949537064e-05
+    }, 
+    "udpg": {
+        "concentration_var": 1.01084659613625, 
+        "concentration_units": "M", 
+        "concentration": 0.00040776016547327, 
+        "concentration_ub": 0.000451451558649741, 
+        "concentration_lb": 0.000368297216746987
+    }, 
+    "Pool_2pg_3pg": {
+        "concentration_var": 1.00027680074976, 
+        "concentration_units": "M", 
+        "concentration": 0.000386341408299518, 
+        "concentration_ub": 0.000392691733640744, 
+        "concentration_lb": 0.00038009377580483
+    }, 
+    "fum": {
+        "concentration_var": 1.05945625861468, 
+        "concentration_units": "M", 
+        "concentration": 0.000201986391688635, 
+        "concentration_ub": 0.000255626713639871, 
+        "concentration_lb": 0.000159601873554076
+    }, 
+    "ctp": {
+        "concentration_var": 1.04433758119527, 
+        "concentration_units": "M", 
+        "concentration": 7.35406405895583e-05, 
+        "concentration_ub": 9.01935429464832e-05, 
+        "concentration_lb": 5.99624501005752e-05
+    }, 
+    "nad": {
+        "concentration_var": 1.00350908756256, 
+        "concentration_units": "M", 
+        "concentration": 0.000396930861800064, 
+        "concentration_ub": 0.000420634414909313, 
+        "concentration_lb": 0.000374563049205827
+    }, 
+    "phpyr": {
+        "concentration_var": 1.12532828499604, 
+        "concentration_units": "M", 
+        "concentration": 0.000161374003316418, 
+        "concentration_ub": 0.000225985855739808, 
+        "concentration_lb": 0.000115235393211292
+    }, 
+    "camp": {
+        "concentration_var": 1.46558916808369, 
+        "concentration_units": "M", 
+        "concentration": 3.6853307327101e-06, 
+        "concentration_ub": 6.75487523472376e-06, 
+        "concentration_lb": 2.01064596125186e-06
+    }, 
+    "succ": {
+        "concentration_var": 1.01789344530031, 
+        "concentration_units": "M", 
+        "concentration": 0.00033150960810257, 
+        "concentration_ub": 0.000377725237757282, 
+        "concentration_lb": 0.000290948576581313
+    }, 
+    "udpglcur": {
+        "concentration_var": 1.01895634116703, 
+        "concentration_units": "M", 
+        "concentration": 6.87725425470305e-05, 
+        "concentration_ub": 7.86572659849092e-05, 
+        "concentration_lb": 6.01300153159472e-05
+    }, 
+    "dcdp": {
+        "concentration_var": 1.06183927729301, 
+        "concentration_units": "M", 
+        "concentration": 1.79629758858466e-05, 
+        "concentration_ub": 2.28366769945398e-05, 
+        "concentration_lb": 1.41293981936451e-05
+    }, 
+    "coa": {
+        "concentration_var": 1.03043371976849, 
+        "concentration_units": "M", 
+        "concentration": 0.00020119460472903, 
+        "concentration_ub": 0.000238401552647422, 
+        "concentration_lb": 0.000169794485491193
+    }, 
+    "fdp": {
+        "concentration_var": 1.00151086235803, 
+        "concentration_units": "M", 
+        "concentration": 0.00115179512119008, 
+        "concentration_ub": 0.0011964989378038, 
+        "concentration_lb": 0.00110876153691564
+    }, 
+    "chor": {
+        "concentration_var": 1.21632708006362, 
+        "concentration_units": "M", 
+        "concentration": 0.00472734761879203, 
+        "concentration_ub": 0.00729396233710546, 
+        "concentration_lb": 0.00306387865415921
+    }, 
+    "g1p": {
+        "concentration_var": 1.17021788686318, 
+        "concentration_units": "M", 
+        "concentration": 6.75227182055304e-05, 
+        "concentration_ub": 9.95845029347339e-05, 
+        "concentration_lb": 4.57834034362914e-05
+    }, 
+    "atp": {
+        "concentration_var": 1.00502906612885, 
+        "concentration_units": "M", 
+        "concentration": 0.00284925697922552, 
+        "concentration_ub": 0.00305405037722316, 
+        "concentration_lb": 0.00265819627410558
+    }, 
+    "cit": {
+        "concentration_var": 1.8226470330996, 
+        "concentration_units": "M", 
+        "concentration": 0.00095402331910133, 
+        "concentration_ub": 0.00203851359021066, 
+        "concentration_lb": 0.000446482426097077
+    }, 
+    "adpglc": {
+        "concentration_var": 1.05721386692171, 
+        "concentration_units": "M", 
+        "concentration": 3.06861644905516e-06, 
+        "concentration_ub": 3.8666337701678e-06, 
+        "concentration_lb": 2.43529836832809e-06
+    }, 
+    "g6p": {
+        "concentration_var": 1.01189278520109, 
+        "concentration_units": "M", 
+        "concentration": 0.000567723883918437, 
+        "concentration_ub": 0.000631559667878064, 
+        "concentration_lb": 0.000510340391833988
+    }, 
+    "citr-L": {
+        "concentration_var": 1.0215895835778, 
+        "concentration_units": "M", 
+        "concentration": 3.16363479346964e-05, 
+        "concentration_ub": 3.65080846793807e-05, 
+        "concentration_lb": 2.74147088086064e-05
+    }, 
+    "akg": {
+        "concentration_var": 1.14232224722448, 
+        "concentration_units": "M", 
+        "concentration": 3.23885779966193e-05, 
+        "concentration_ub": 4.63067907620315e-05, 
+        "concentration_lb": 2.26536965179461e-05
+    }, 
+    "dadp": {
+        "concentration_var": 1.03320433602454, 
+        "concentration_units": "M", 
+        "concentration": 1.31165236596586e-05, 
+        "concentration_ub": 1.56581671914819e-05, 
+        "concentration_lb": 1.09874413020686e-05
+    }, 
+    "cmp": {
+        "concentration_var": 1.01010312061598, 
+        "concentration_units": "M", 
+        "concentration": 4.87166171963928e-05, 
+        "concentration_ub": 5.37464025464052e-05, 
+        "concentration_lb": 4.41575375953903e-05
+    }
+}

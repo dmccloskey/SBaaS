@@ -1,0 +1,899 @@
+mapping_id,rxn_id_modified,rxn_id,rxn_description,used_,comments_,reactants_elements_tracked,products_elements_tracked,reactants_trackedids,reactants_mapping,products_trackedids,products_mapping
+full01,ABTA,ABTA,,TRUE,individual,C,C,1*4abut_c+1*akg_c,abcd+efghi,1*glu_DASH_L_c+1*sucsal_c,efghi+abcd
+full01,ACKr,ACKr,,TRUE,individual,C,C,1*ac_c,ab,1*actp_c,ab
+full01,ACKr_reverse,ACKr_reverse,,TRUE,individual,C,C,1*actp_c,ab,1*ac_c,ab
+full01,ACODA,ACODA,,TRUE,individual,C,C,1*acorn_c,abcdefg,1*ac_c+1*orn_c,fg+abcde
+full01,ACOTA,ACOTA,,TRUE,individual,C,C,1*acorn_c+1*akg_c,abcdefg+hijkl,1*acg5sa_c+1*glu_DASH_L_c,abcdefg+hijkl
+full01,ACOTA_reverse,ACOTA_reverse,,TRUE,individual,C,C,1*acg5sa_c+1*glu_DASH_L_c,abcdefg+hijkl,1*acorn_c+1*akg_c,abcdefg+hijkl
+full01,ACS,ACS,,TRUE,individual,C,C,1*ac_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab
+full01,ACS_coaNEG,ACS,,FALSE,individual,C,C,1*ac_c,ab,1*accoa_c,ab
+full01,ACt2rpp,ACt2rpp,,TRUE,individual,C,C,1*ac_p,ab,1*ac_c,ab
+full01,ACtex,ACtex,,TRUE,individual,C,C,1*ac_e,ab,1*ac_p,ab
+full01,ACt2rpp_reverse,ACt2rpp_reverse,,TRUE,individual,C,C,1*ac_c,ab,1*ac_p,ab
+full01,Actex_reverse,Actex_reverse,,TRUE,individual,C,C,1*ac_p,ab,1*ac_e,ab
+full01,ACALD_reverse,ACALD_reverse,,TRUE,individual,C,C,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab,1*acald_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU
+full01,ACALD_reverse_coaNEG,ACALD_reverse,,FALSE,individual,C,C,1*accoa_c,ab,1*acald_c,ab
+full01,ALCD2x,ALCD2x,,TRUE,individual,C,C,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab,1*coa_c+1*etoh_c,ABCDEFGHIJKLMNOPQRSTU+ab
+full01,ALCD2x_coaNEG,ALCD2x,,FALSE,individual,C,C,1*accoa_c,ab,1*etoh_c,ab
+full01,ACALD,ACALD,,TRUE,individual,C,C,1*acald_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab
+full01,ACALD_coaNEG,ACALD,,FALSE,individual,C,C,1*acald_c,ab,1*accoa_c,ab
+full01,ALCD2x_reverse,ALCD2x_reverse,,TRUE,individual,C,C,1*etoh_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab
+full01,ALCD2x_reverse_coaNEG,ALCD2x_reverse,,FALSE,individual,C,C,1*etoh_c,ab,1*accoa_c,ab
+full01,ADK1_Abbreviated,ADK1,,FALSE,modified,C,C,1*amp_c+1*atp_c,abcdefghij+klmnopqrst,1*adp_c+1*adp_c,abcdefghij+klmnopqrst
+full01,ADK1,ADK1,,TRUE,modified,C,C,1*amp_c+1*atp_c,abcdefghij+klmnopqrst,1*adp_c+1*adp_c,abcdefghij+klmnopqrst
+full01,ADK3_Abbreviated,ADK3,,FALSE,modified,C,C,1*amp_c+1*gtp_c,abcdefghij+klmnopqrst,1*adp_c+1*gdp_c,abcdefghij+klmnopqrst
+full01,ADK3,ADK3,,TRUE,modified,C,C,1*amp_c+1*gtp_c,abcdefghij+klmnopqrst,1*adp_c+1*gdp_c,abcdefghij+klmnopqrst
+full01,AGPR,AGPR,,TRUE,individual,C,C,1*acg5sa_c,abcdefg,1*acg5p_c,abcdefg
+full01,AGPR_reverse,AGPR_reverse,,TRUE,individual,C,C,1*acg5p_c,abcdefg,1*acg5sa_c,abcdefg
+full01,ALAR,ALAR,,TRUE,individual,C,C,1*ala_DASH_L_c,abc,1*ala_DASH_D_c,abc
+full01,ALAR_reverse,ALAR_reverse,,TRUE,individual,C,C,1*ala_DASH_D_c,abc,1*ala_DASH_L_c,abc
+full01,ALATA_L,ALATA_L,,TRUE,individual,C,C,1*akg_c+1*ala_DASH_L_c,abcde+fgh,1*glu_DASH_L_c+1*pyr_c,abcde+fgh
+full01,ALATA_L_reverse,ALATA_L_reverse,,TRUE,individual,C,C,1*glu_DASH_L_c+1*pyr_c,abcde+fgh,1*akg_c+1*ala_DASH_L_c,abcde+fgh
+full01,ALDD2x,ALDD2x,,TRUE,individual,C,C,1*acald_c,ab,1*ac_c,ab
+full01,ARGSL,ARGSL,,TRUE,individual,C,C,1*argsuc_c,abcdefghij,1*arg_DASH_L_c+0.5*fum_c+0.5*fum_c,abcdef+jghi+ihgj
+full01,ARGSL_reverse,ARGSL_reverse,,TRUE,individual,C,C,1*arg_DASH_L_c+0.5*fum_c+0.5*fum_c,abcdef+jghi+ihgj,1*argsuc_c,abcdefghij
+full01,ARGSS,ARGSS,,TRUE,individual,C,C,1*asp_DASH_L_c+1*citr_DASH_L_c,abcd+efghij,1*argsuc_c,efghijbcda
+full01,ASAD,ASAD,,TRUE,individual,C,C,1*aspsa_c,abcd,1*4pasp_c,abcd
+full01,ASAD_reverse,ASAD_reverse,,TRUE,individual,C,C,1*4pasp_c,abcd,1*aspsa_c,abcd
+full01,ASNN,ASNN,,TRUE,individual,C,C,1*asn_DASH_L_c,abcd,1*asp_DASH_L_c,abcd
+full01,ASNS1,ASNS1,,TRUE,individual,C,C,1*asp_DASH_L_c+1*gln_DASH_L_c,abcd+efghi,1*asn_DASH_L_c+1*glu_DASH_L_c,abcd+efghi
+full01,ASNS2,ASNS2,,TRUE,individual,C,C,1*asp_DASH_L_c,abcd,1*asn_DASH_L_c,abcd
+full01,ASPK,ASPK,,TRUE,individual,C,C,1*asp_DASH_L_c,abcd,1*4pasp_c,abcd
+full01,ASPK_reverse,ASPK_reverse,,TRUE,individual,C,C,1*4pasp_c,abcd,1*asp_DASH_L_c,abcd
+full01,ASPTA,ASPTA,,TRUE,individual,C,C,1*akg_c+1*asp_DASH_L_c,abcde+fghi,1*glu_DASH_L_c+1*oaa_c,abcde+fghi
+full01,ASPTA_reverse,ASPTA_reverse,,TRUE,individual,C,C,1*glu_DASH_L_c+1*oaa_c,abcde+fghi,1*akg_c+1*asp_DASH_L_c,abcde+fghi
+full01,ATPS4rpp_Abbreviated,ATPS4rpp,,FALSE,modified,C,C,1*adp_c,abcdefghij,1*atp_c,abcdefghij
+full01,ATPS4rpp,ATPS4rpp,,TRUE,modified,C,C,1*adp_c,abcdefghij,1*atp_c,abcdefghij
+full01,CBPS,CBPS,,TRUE,individual,C,C,1*gln_DASH_L_c+1*hco3_c,abcde+f,1*cbp_c+1*glu_DASH_L_c,f+abcde
+full01,CHORM,CHORM,,TRUE,individual,C,C,1*chor_c,abcdefghij,1*pphn_c,ihjbcdefga
+full01,CHORS,CHORS,,TRUE,individual,C,C,1*3psme_c,abcdefghij,1*chor_c,abgfedchij
+full01,CO2tex,CO2tex,,TRUE,individual,C,C,1*co2_e,a,1*co2_p,a
+full01,CO2tpp,CO2tpp,,TRUE,individual,C,C,1*co2_p,a,1*co2_c,a
+full01,CO2tex_reverse,CO2tex_reverse,,TRUE,individual,C,C,1*co2_p,a,1*co2_e,a
+full01,CO2tpp_reverse,CO2tpp_reverse,,TRUE,individual,C,C,1*co2_c,a,1*co2_p,a
+full01,COASYN_Abbreviated,COASYN,"[ASP1DC,MOHMT,DPR,PANTS,PNTK,PPNCL2,PPCDC,PTPATi,DPCOAK]",FALSE,combo,C,C,1*3mob_c+1*mlthf_c+1*asp_DASH_L_c+1*cys_DASH_L_c,abcde+f+ghij+klm,1*co2_c+1*co2_c,g+k
+full01,COASYN,COASYN,"[ASP1DC,MOHMT,DPR,PANTS,PNTK,PPNCL2,PPCDC,PTPATi,DPCOAK]",TRUE,combo,C,C,1*3mob_c+1*mlthf_c+1*asp_DASH_L_c+1*cys_DASH_L_c+1*atp_c,abcde+f+ghij+klm+123456789n,1*coa_c+1*co2_c+1*co2_c,123456789nfedcbajihlm+g+k
+full01,ADSL1r,ADSL1r,,TRUE,added imp_to_amp,C,C,1*dcamp_c,abcdefghijklmn,1*amp_c+0.5*fum_c+0.5*fum_c,abcdefghij+klmn+nmlk
+full01,ADSS,ADSS,,TRUE,added imp_to_amp,C,C,1*imp_c+1*asp_DASH_L_c,abcdefghij+klmn,1*dcamp_c,abcdefghijklmn
+full01,imp_to_amp_Abbreviated,imp_to_amp,"[ADSS,ADSL1r]",FALSE,combo,C,C,1*imp_c+1*asp_DASH_L_c,abcdefghij+klmn,1*amp_c+0.5*fum_c+0.5*fum_c,abcdefghij+klmn+nmlk
+full01,imp_to_amp,imp_to_amp,"[ADSS,ADSL1r]",TRUE,combo,C,C,1*imp_c+1*asp_DASH_L_c,abcdefghij+klmn,1*amp_c+0.5*fum_c+0.5*fum_c,abcdefghij+klmn+nmlk
+full01,imp_to_gmp_Abbreviated,imp_to_gmp,"[IMPD,GMPS2]",FALSE,combo,C,C,1*imp_c,abcdefghij,1*gmp_c,abcdefghij
+full01,imp_to_gmp,imp_to_gmp,"[IMPD,GMPS2]",TRUE,combo,C,C,1*imp_c,abcdefghij,1*gmp_c,abcdefghij
+full01,chor_and_prpp_to_3ig3p,chor_and_prpp_to_3ig3p,"[ANS,ANPRT,PRAIi,IGPS]",TRUE,combo,C,C,1*chor_c+1*gln_DASH_L_c+1*prpp_c,abcdefghij+klmno+pqrst,1*3ig3p_c+1*co2_c+1*glu_DASH_L_c+1*pyr_c,tsrqbgfedcp+a+klmno+ihj
+full01,ptrc_to_4abut_1,ptrc_to_4abut_1,"[PTRCTA,ABUTD]",TRUE,combo,C,C,1*akg_c+0.5*ptrc_c+0.5*ptrc_c,abcde+fghi+ihgf,1*4abut_c+1*glu_DASH_L_c,fghi+abcde
+full01,ptrc_to_4abut_2,ptrc_to_4abut_2,"[GGPTRCS,GGPTRCO,GGGABADr,GGGABAH]",TRUE,combo added ptrc_to_4abut_2,C,C,0.5*ptrc_c+0.5*ptrc_c,abcd+dcba,1*4abut_c,abcd
+full01,CYSTL,CYSTL,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,C,C,1*cyst_DASH_L_c,abcdefg,1*pyr_c+1*hcys_DASH_L_c+1*nh4_c,abcd+gfe
+full01,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,"[HSST,SHSL1,CYSTL]",TRUE,combo,C,C,1*cys_DASH_L_c+1*hom_DASH_L_c+1*succoa_c,bcd+efgh+ABCDEFGHIJKLMNOPQRSTUijkl,1*coa_c+1*hcys_DASH_L_c+1*pyr_c+0.5*succ_c+0.5*succ_c,ABCDEFGHIJKLMNOPQRSTU+efgh+bcd+ijkl+lkji
+full01,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L_coaNEG,hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L,"[HSST,SHSL1,CYSTL]",FALSE,combo,C,C,1*cys_DASH_L_c+1*hom_DASH_L_c+1*succoa_c,bcd+efgh+ijkl,1*hcys_DASH_L_c+1*pyr_c+0.5*succ_c+0.5*succ_c,efgh+bcd+ijkl+lkji
+full01,HSST,HSST,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,C,C,1*succoa_c+1*hom_DASH_L_c,ABCDEFGHIJKLMNOPQRSTUabcd+efgh,1*coa_c+1*suchms_c,ABCDEFGHIJKLMNOPQRSTU+efghabcd
+full01,HSST_coaNEG,HSST,,FALSE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,C,C,1*succoa_c+1*hom_DASH_L_c,abcd+efgh,1*suchms_c,efghabcd
+full01,METS,METS,,TRUE,individual,C,C,1*hcys_DASH_L_c+1*5mthf_c,abcd+e,1*met_DASH_L_c,abcde
+full01,SHSL1,SHSL1,,TRUE,added hom_DASH_L_and_cyst_DASH_L_to_met_DASH_L,C,C,1*suchms_c+1*cys_DASH_L_c,abcdefg+ijk,0.5*succ_c+0.5*succ_c+1*cyst_DASH_L_c,efgh+hgfe+abcdkji
+full01,e4p_and_pep_to_3dhq,e4p_and_pep_to_3dhq,"[DDPA,DHQS]",TRUE,combo,C,C,1*e4p_c+1*pep_c,abcd+efg,1*3dhq_c,efdcbag
+full01,aspsa_to_sl2a6o,aspsa_to_sl2a6o,"[DHDPS,DHDPRy,THDPS]",TRUE,combo,C,C,1*aspsa_c+1*pyr_c+1*succoa_c,abcd+efg+ABCDEFGHIJKLMNOPQRSTUhijk,1*coa_c+1*sl2a6o_c,ABCDEFGHIJKLMNOPQRSTU+abcdgfehijk
+full01,aspsa_to_sl2a6o_coaNEG,aspsa_to_sl2a6o,"[DHDPS,DHDPRy,THDPS]",FALSE,combo,C,C,1*aspsa_c+1*pyr_c+1*succoa_c,abcd+efg+hijk,1*sl2a6o_c,abcdgfehijk
+full01,glu_DASH_L_to_acg5p_coaNEG,glu_DASH_L_to_acg5p,"[ACGS,ACGK]",FALSE,combo,C,C,1*accoa_c+1*glu_DASH_L_c,ab+cdefg,1*acg5p_c,cdefgab
+full01,glu_DASH_L_to_acg5p,glu_DASH_L_to_acg5p,"[ACGS,ACGK]",TRUE,combo,C,C,1*accoa_c+1*glu_DASH_L_c,ABCDEFGHIJKLMNOPQRSTUab+cdefg,1*acg5p_c+1*coa_c,cdefgab+ABCDEFGHIJKLMNOPQRSTU
+full01,glu_DASH_L_to_glu5sa,glu_DASH_L_to_glu5sa,"[GLU5K,G5SD]",TRUE,combo,C,C,1*glu_DASH_L_c,abcde,1*glu5sa_c,abcde
+full01,g1p_to_glycogen,g1p_to_glycogen,"[GLGC,GLCS1]",TRUE,combo,C,C,1*g1p_c,abcdef,1*glycogen_c,abcdef
+full01,thr_DASH_L_to_gly,thr_DASH_L_to_gly,"[THRD,GLYAT]",TRUE,combo,C,C,1*coa_c+1*thr_DASH_L_c,ABCDEFGHIJKLMNOPQRSTU+abcd,1*accoa_c+1*gly_c,ABCDEFGHIJKLMNOPQRSTUcd+ab
+full01,thr_DASH_L_to_gly_coaNEG,thr_DASH_L_to_gly,"[THRD,GLYAT]",FALSE,combo,C,C,1*thr_DASH_L_c,abcd,1*accoa_c+1*gly_c,cd+ab
+full01,dhap_to_lac_DASH_D,dhap_to_lac_DASH_D,"[MGSA,LGTHL,GLYOX]",TRUE,combo,C,C,1*dhap_c,abc,1*lac_DASH_D_c,cba
+full01,2obut_and_pyr_to_3mop,2obut_and_pyr_to_3mop,"[ACHBS,KARA2,DHAD2]",TRUE,combo,C,C,1*2obut_c+1*pyr_c,abcd+efg,1*3mop_c+1*co2_c,abfcdg+e
+full01,hom_DASH_L_to_thr_DASH_L,hom_DASH_L_to_thr_DASH_L,"[HSK,THRS]",TRUE,combo,C,C,1*hom_DASH_L_c,abcd,1*thr_DASH_L_c,abcd
+full01,3pg_to_ser_DASH_L,3pg_to_ser_DASH_L,"[PGCD,PSERT,PSP_L]",TRUE,combo,C,C,1*3pg_c+1*glu_DASH_L_c,abc+defgh,1*akg_c+1*ser_DASH_L_c,defgh+abc
+full01,pyr_to_23dhmb,pyr_to_23dhmb,"[ACLS,KARA1]",TRUE,combo,C,C,1*pyr_c+1*pyr_c,abc+def,1*23dhmb_c+1*co2_c,debcf+a
+full01,5MTRtex_reverse,5MTRtex_reverse,,TRUE,individual,C,C,1*5mtr_p,abcdef,1*5mtr_e,abcdef
+full01,5MTRtpp,5MTRtpp,,TRUE,individual,C,C,1*5mtr_c,abcdef,1*5mtr_p,abcdef
+full01,ADMDC_ametNEG,ADMDC,,FALSE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,C,C,,,,
+full01,ADMDC,ADMDC,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,C,C,1*amet_c,123456789Aabcde,1*ametam_c+1*co2_c,123456789Abcde+a
+full01,EX_5mtr_LPAREN_e_RPAREN_,EX_5mtr_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*5mtr_e,abcdef,,
+full01,met_DASH_L_and_ptrc_to_spmd_and_5mta,met_DASH_L_and_ptrc_to_spmd_and_5mta,"[METAT,ADMDC,SPMS]",TRUE,combo,C,C,1*met_DASH_L_c+1*atp_c+0.5*ptrc_c+0.5*ptrc_c,abcde+fghij12345+klmn+nmlk,1*co2_c+1*5mta_c+1*spmd_c+1*ade_c,a+fghije+klmndcb+12345
+full01,METAT_ametNEG,METAT,,FALSE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,C,C,1*met_DASH_L_c,abcde,,
+full01,METAT,METAT,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,C,C,1*met_DASH_L_c+1*atp_c,abcde+123456789A,1*amet_c,123456789Aabcde
+full01,MTAN,MTAN,,TRUE,individual,C,C,1*5mta_c,123456789Aa,1*ade_c+1*5mtr_c,6789A+12345a
+full01,SPMS,SPMS,,TRUE,added met_DASH_L_and_ptrc_to_spmd_and_5mta,C,C,1*ametam_c+0.5*ptrc_c+0.5*ptrc_c,123456789Aabcd+efgh+hgfe,1*spmd_c+1*5mta_c,efghabc+123456789Ad
+full01,CS,CS,,TRUE,individual,C,C,1*accoa_c+1*oaa_c,ABCDEFGHIJKLMNOPQRSTUab+cdef,1*cit_c+1*coa_c,fedbac+ABCDEFGHIJKLMNOPQRSTU
+full01,CS_coaNEG,CS,,FALSE,individual,C,C,1*accoa_c+1*oaa_c,ab+cdef,1*cit_c,fedbac
+full01,CTPS2_Abbreviated,CTPS2,,FALSE,modified CTPSYN,C,C,1*gln_DASH_L_c,abcde,1*glu_DASH_L_c,abcde
+full01,CTPS2,CTPS2,,TRUE,modified CTPSYN,C,C,1*gln_DASH_L_c+1*utp_c,abcde+fghijklmn,1*glu_DASH_L_c+1*ctp_c,abcde+fghijklmn
+full01,CYSDS,CYSDS,,TRUE,individual,C,C,1*cys_DASH_L_c,abc,1*pyr_c,abc
+full01,CYSS,CYSS,,TRUE,individual,C,C,1*acser_c,abcde,1*ac_c+1*cys_DASH_L_c,de+abc
+full01,CYTK1_Abbreviated,CYTK1,,FALSE,modified,C,C,,,,
+full01,CYTK1,CYTK1,,TRUE,modified,C,C,1*atp_c+1*cmp_c,abcdefghij+klmnopqrs,1*adp_c+1*cdp_c,abcdefghij+klmnopqrs
+full01,DAPDC,DAPDC,,TRUE,individual,C,C,0.5*26dap_DASH_M_c+0.5*26dap_DASH_M_c,abcdefg+gfedcba,1*co2_c+1*lys_DASH_L_c,g+abcdef
+full01,DAPE,DAPE,,TRUE,individual,C,C,1*26dap_DASH_LL_c,abcdefg,0.5*26dap_DASH_M_c+0.5*26dap_DASH_M_c,abcdefg+gfedcba
+full01,DAPE_reverse,DAPE_reverse,,TRUE,individual,C,C,0.5*26dap_DASH_M_c+0.5*26dap_DASH_M_c,abcdefg+gfedcba,1*26dap_DASH_LL_c,abcdefg
+full01,DHAD1,DHAD1,,TRUE,individual,C,C,1*23dhmb_c,abcde,1*3mob_c,abcde
+full01,DHAPT,DHAPT,,TRUE,individual,C,C,0.5*dha_c+0.5*dha_c+1*pep_c,abc+cba+def,1*dhap_c+1*pyr_c,abc+def
+full01,DHQTi,DHQTi,,TRUE,individual,C,C,1*3dhq_c,abcdefg,1*3dhsk_c,abcdefg
+full01,DHQTi_reverse,DHQTi_reverse,,TRUE,individual,C,C,1*3dhsk_c,abcdefg,1*3dhq_c,abcdefg
+full01,D_DASH_LACt2pp,D_DASH_LACt2pp,,TRUE,individual,C,C,1*lac_DASH_D_p,abc,1*lac_DASH_D_c,abc
+full01,D_DASH_LACtex,D_DASH_LACtex,,TRUE,individual,C,C,1*lac_DASH_D_e,abc,1*lac_DASH_D_p,abc
+full01,D_DASH_LACt2pp_reverse,D_DASH_LACt2pp_reverse,,TRUE,individual,C,C,1*lac_DASH_D_c,abc,1*lac_DASH_D_p,abc
+full01,D_DASH_LACtex_reverse,D_DASH_LACtex_reverse,,TRUE,individual,C,C,1*lac_DASH_D_p,abc,1*lac_DASH_D_e,abc
+full01,dtmp_to_dttp,dtmp_to_dttp,"[DTMPK,NDPK4]",TRUE,combo; cannot be lumped,C,C,1*dtmp_c,abcdefghij,1*dttp_c,abcdefghij
+full01,DTMPK_Abbreviated,DTMPK,,FALSE,added dtmp_to_dttp,C,C,,,,
+full01,DTMPK,DTMPK,,TRUE,added dtmp_to_dttp,C,C,1*dtmp_c,abcdefghij,1*dtdp_c,abcdefghij
+full01,NDPK4_Abbreviated,NDPK4,,FALSE,added dtmp_to_dttp,C,C,,,,
+full01,NDPK4,NDPK4,,TRUE,added dtmp_to_dttp,C,C,1*dtdp_c,abcdefghij,1*dttp_c,abcdefghij
+full01,TMDS_Abbreviated,TMDS,,FALSE,combo,C,C,,,,
+full01,TMDS,TMDS,,TRUE,combo,C,C,1*dump_c+1*mlthf_c,abcdefghi+j,1*dtmp_c,abcdefghij
+full01,udp_to_dump_aerobic_Abbreviated,udp_to_dump_aerobic,"['RNDR4','NDPK6','DUTPDP']",FALSE,combo,C,C,,,,
+full01,udp_to_dump_aerobic,udp_to_dump_aerobic,"['RNDR4','NDPK6','DUTPDP']",TRUE,combo,C,C,1*udp_c,abcdefghi,1*dump_c,abcdefghi
+full01,utp_to_dump_anaerobic_Abbreviated,utp_to_dump_anaerobic,"['RNTR4c2','DUTPDP']",FALSE,combo,C,C,,,,
+full01,utp_to_dump_anaerobic,utp_to_dump_anaerobic,"['RNTR4c2','DUTPDP']",TRUE,combo,C,C,1*utp_c,abcdefghi,1*dump_c,abcdefghi
+full01,EDA,EDA,,TRUE,individual,C,C,1*2ddg6p_c,abcdef,1*g3p_c+1*pyr_c,def+abc
+full01,EDD,EDD,,TRUE,individual,C,C,1*6pgc_c,abcdef,1*2ddg6p_c,abcdef
+full01,ENO,ENO,,TRUE,individual,C,C,1*2pg_c,abc,1*pep_c,abc
+full01,ENO_reverse,ENO_reverse,,TRUE,individual,C,C,1*pep_c,abc,1*2pg_c,abc
+full01,ETOHtex,ETOHtex,,TRUE,individual,C,C,1*etoh_e,ab,1*etoh_p,ab
+full01,ETOHtrpp,ETOHtrpp,,TRUE,individual,C,C,1*etoh_p,ab,1*etoh_c,ab
+full01,ETOHtex_reverse,ETOHtex_reverse,,TRUE,individual,C,C,1*etoh_p,ab,1*etoh_e,ab
+full01,ETOHtrpp_reverse,ETOHtrpp_reverse,,TRUE,individual,C,C,1*etoh_c,ab,1*etoh_p,ab
+full01,EX_ac_LPAREN_e_RPAREN_,EX_ac_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*ac_e,ab,,
+full01,EX_co2_LPAREN_e_RPAREN_,EX_co2_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*co2_e,a,,
+full01,EX_etoh_LPAREN_e_RPAREN_,EX_etoh_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*etoh_e,ab,,
+full01,EX_for_LPAREN_e_RPAREN_,EX_for_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*for_e,a,,
+full01,EX_fum_LPAREN_e_RPAREN_,EX_fum_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*fum_e,abcd,,
+full01,EX_glc_LPAREN_e_RPAREN_,EX_glc_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*glc_DASH_D_e,abcdef,,
+full01,EX_glyc_LPAREN_e_RPAREN_,EX_glyc_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*glyc_e,abc,,
+full01,EX_lac_DASH_D_LPAREN_e_RPAREN_,EX_lac_DASH_D_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*lac_DASH_D_e,abc,,
+full01,EX_lac_DASH_L_LPAREN_e_RPAREN_,EX_lac_DASH_L_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*lac_DASH_L_e,abc,,
+full01,EX_pyr_LPAREN_e_RPAREN_,EX_pyr_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*pyr_e,abc,,
+full01,EX_succ_LPAREN_e_RPAREN_,EX_succ_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*succ_e,abcd,,
+full01,F6PA,F6PA,,TRUE,individual,C,C,1*f6p_c,abcdef,0.5*dha_c+0.5*dha_c+1*g3p_c,abc+cba+def
+full01,F6PA_reverse,F6PA_reverse,,TRUE,individual,C,C,0.5*dha_c+0.5*dha_c+1*g3p_c,abc+cba+def,1*f6p_c,abcdef
+full01,APRAUR,APRAUR,,TRUE,added FADSYN,C,C,1*5apru_c,abcdefghi,1*5aprbu_c,abcdefghi
+full01,DB4PS,DB4PS,,TRUE,added FADSYN,C,C,1*ru5p_DASH_D_c,abcde,1*db4p_c+1*for_c,bcde+a
+full01,DHPPDA2,DHPPDA2,,TRUE,added FADSYN,C,C,1*25drapp_c,abcdefghi,1*5apru_c,abcdefghi
+full01,FADSYN,FADSYN,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,DB4PS,RBFSa,RBFSb,RBFK,FMNAT]",TRUE,combo,C,C,,,,
+full01,FADSYN_1_Abbreviated,FADSYN_1,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,RBFSb]",FALSE,combo,C,C,1*gtp_c,abcdefghij,1*for_c,j
+full01,FADSYN_1,FADSYN_1,"[GTPCII2,DHPPDA2,APRAUR,PMDPHT,RBFSb]",TRUE,combo,C,C,1*gtp_c+1*ru5p_DASH_D_c,abcdefghij+klmno,1*4r5au_c+1*for_c+1*db4p_c+1*for_c,abcdefghi+j+lmno+k
+full01,FADSYN_2,FADSYN_2,"[RBFSa,DB4PS]",TRUE,combo,C,C,1*ru5p_DASH_D_c,abcde,1*for_c,a
+full01,FADSYN_3_Abbreviated,FADSYN_3,"[RBFK,FMNAT]",FALSE,combo,C,C,,,,
+full01,FADSYN_3,FADSYN_3,"[RBFK,FMNAT]",TRUE,combo,C,C,1*ribflv_c+1*atp_c,abcdefghijklmnopq+ABCDEFGHIJ,1*fad_c,abcdefghijklmnopqABCDEFGHIJ
+full01,FMNAT,FMNAT,,TRUE,added FADSYN,C,C,1*fmn_c+1*atp_c,abcdefghijklmnopq+ABCDEFGHIJ,1*fad_c,abcdefghijklmnopqABCDEFGHIJ
+full01,GTPCII2,GTPCII2,,TRUE,added FADSYN,C,C,1*gtp_c,abcdefghij,1*25drapp_c+1*for_c,abcdefghi+j
+full01,PMDPHT,PMDPHT,,TRUE,added FADSYN,C,C,1*5aprbu_c,abcdefghi,1*4r5au_c,abcdefghi
+full01,RBFK,RBFK,,TRUE,added FADSYN,C,C,1*ribflv_c,abcdefghijklmnopq,1*fmn_c,abcdefghijklmnopq
+full01,RBFSa,RBFSa,,TRUE,added FADSYN,C,C,1*4r5au_c+1*db4p_c,abcdefghi+jklm,0.5*dmlz_c+0.5*dmlz_c,abcdefghijklm+abcdefghimlkj
+full01,RBFSb,RBFSb,,TRUE,added FADSYN,C,C,2*dmlz_c,abcdefghijklm+ABCDEFGHIJKLM,0.5*4r5au_c+0.5*ribflv+0.5*4r5au_c+0.5*ribflv,abcdefghi+ABCDEFGHIJKLMjklm+ABCDEFGHI+abcdefghiJKLM
+full01,FBA,FBA,,TRUE,individual,C,C,1*fdp_c,abcdef,1*dhap_c+1*g3p_c,abc+def
+full01,FBA_reverse,FBA_reverse,,TRUE,individual,C,C,1*dhap_c+1*g3p_c,abc+def,1*fdp_c,abcdef
+full01,FBP,FBP,,TRUE,individual,C,C,1*fdp_c,abcdef,1*f6p_c,abcdef
+full01,FDH2,FDH2,,TRUE,individual,C,C,1*for_c,a,1*co2_c,a
+full01,FDH3,FDH3,,TRUE,individual,C,C,1*for_c,a,1*co2_c,a
+full01,FHL,FHL,,TRUE,individual,C,C,1*for_c,a,1*co2_c,a
+full01,FORt2pp,FORt2pp,,TRUE,individual,C,C,1*for_p,a,1*for_c,a
+full01,FORtex,FORtex,,TRUE,individual,C,C,1*for_e,a,1*for_p,a
+full01,FORt2pp_reverse,FORt2pp_reverse,,TRUE,individual,C,C,1*for_c,a,1*for_p,a
+full01,FORtex_reverse,FORtex_reverse,,TRUE,individual,C,C,1*for_p,a,1*for_e,a
+full01,FRD2,FRD2,,TRUE,individual,C,C,1*fum_c,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,FRD3,FRD3,,TRUE,individual,C,C,1*fum_c,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,FTHFD,FTHFD,,TRUE,individual,C,C,1*10fthf_c,a,1*for_c,a
+full01,FUMt2_2pp,FUMt2_2pp,,TRUE,individual,C,C,1*fum_p,abcd,0.5*fum_c+0.5*fum_c,abcd+dcba
+full01,FUMt2_3pp,FUMt2_3pp,,TRUE,individual,C,C,1*fum_p,abcd,0.5*fum_c+0.5*fum_c,abcd+dcba
+full01,G1PPpp,G1PPpp,,TRUE,individual,C,C,1*g1p_c,abcdef,1*glc_DASH_D_c,abcdef
+full01,G3PD2,G3PD2,,TRUE,individual,C,C,1*glyc3p_c,abc,1*dhap_c,abc
+full01,G3PD2_reverse,G3PD2_reverse,,TRUE,individual,C,C,1*dhap_c,abc,1*glyc3p_c,abc
+full01,G3PD5,G3PD5,,TRUE,individual,C,C,1*glyc3p_c,abc,1*dhap_c,abc
+full01,G3PD6,G3PD6,,TRUE,individual,C,C,1*glyc3p_c,abc,1*dhap_c,abc
+full01,G3PD7,G3PD7,,TRUE,individual,C,C,1*glyc3p_c,abc,1*dhap_c,abc
+full01,G3PT,G3PT,,TRUE,individual,C,C,1*glyc3p_c,def,0.5*glyc_c+0.5*glyc_c,def+fed
+full01,G5SADs,G5SADs,,TRUE,individual,C,C,1*glu5sa_c,abcde,1*1pyr5c_c,abcde
+full01,G6PDH2r,G6PDH2r,,TRUE,individual,C,C,1*g6p_c,abcdef,1*6pgl_c,abcdef
+full01,G6PDH2r_reverse,G6PDH2r_reverse,,TRUE,individual,C,C,1*6pgl_c,abcdef,1*g6p_c,abcdef
+full01,GAPD,GAPD,,TRUE,individual,C,C,1*g3p_c,abc,1*13dpg_c,abc
+full01,GAPD_reverse,GAPD_reverse,,TRUE,individual,C,C,1*13dpg_c,abc,1*g3p_c,abc
+full01,GHMT2r,GHMT2r,,TRUE,individual,C,C,1*ser_DASH_L_c,abc,1*gly_c+1*mlthf_c,ab+c
+full01,GHMT2r_reverse,GHMT2r_reverse,,TRUE,individual,C,C,1*gly_c+1*mlthf_c,ab+c,1*ser_DASH_L_c,abc
+full01,GK1_Abbreviated,GK1,,FALSE,modified,C,C,1*atp_c+1*gmp_c,abcdefghij+klmnopqrst,1*adp_c+1*gdp_c,abcdefghij+klmnopqrst
+full01,GK1,GK1,,TRUE,modified,C,C,1*atp_c+1*gmp_c,abcdefghij+klmnopqrst,1*adp_c+1*gdp_c,abcdefghij+klmnopqrst
+full01,GLCP_Abbreviated,GLCP,,FALSE,individual,C,C,,,,
+full01,GLCP,GLCP,,TRUE,individual,C,C,1*glycogen_c,abcdef,1*g1p_c,abcdef
+full01,GLCptspp,GLCptspp,,TRUE,individual,C,C,1*glc_DASH_D_e+1*pep_c,abcdef+ghi,1*g6p_c+1*pyr_c,abcdef+ghi
+full01,GLNS,GLNS,,TRUE,individual,C,C,1*glu_DASH_L_c,abcde,1*gln_DASH_L_c,abcde
+full01,GLUDC,GLUDC,,TRUE,individual,C,C,1*glu_DASH_L_c,abcde,1*4abut_c+1*co2_c,edcb+a
+full01,GLUDy,GLUDy,,TRUE,individual,C,C,1*glu_DASH_L_c,abcde,1*akg_c,abcde
+full01,GLUDy_reverse,GLUDy_reverse,,TRUE,individual,C,C,1*akg_c,abcde,1*glu_DASH_L_c,abcde
+full01,GLUN,GLUN,,TRUE,individual,C,C,1*gln_DASH_L_c,abcde,1*glu_DASH_L_c,abcde
+full01,GLUSy,GLUSy,,TRUE,individual,C,C,1*akg_c+1*gln_DASH_L_c,abcde+fghij,1*glu_DASH_L_c+1*glu_DASH_L_c,abcde+fghij
+full01,GLXCL,GLXCL,,TRUE,individual,C,C,1*glx_c+1*glx_c,ab+cd,1*2h3oppan_c+1*co2_c,abd+c
+full01,GLYCDx,GLYCDx,,TRUE,individual,C,C,1*glyc_c,abc,0.5*dha_c+0.5*dha_c,abc+cba
+full01,GLYCK,GLYCK,,TRUE,individual,C,C,1*glyc_DASH_R_c,abc,1*3pg_c,abc
+full01,GLYCL,GLYCL,,TRUE,individual,C,C,1*gly_c,ab,1*co2_c+1*mlthf_c,a+b
+full01,GLYCLTDx,GLYCLTDx,,TRUE,individual,C,C,1*glx_c,ab,1*glyclt_c,ab
+full01,GLYCLTDy,GLYCLTDy,,TRUE,individual,C,C,1*glx_c,ab,1*glyclt_c,ab
+full01,GLYCtex,GLYCtex,,TRUE,individual,C,C,1*glyc_e,abc,0.5*glyc_p+0.5*glyc_p,abc+cba
+full01,GLYCtpp,GLYCtpp,,TRUE,individual,C,C,1*glyc_p,abc,0.5*glyc_c+0.5*glyc_c,abc+cba
+full01,GLYCtex_reverse,GLYCtex_reverse,,TRUE,individual,C,C,1*glyc_p,abc,0.5*glyc_e+0.5*glyc_e,abc+cba
+full01,GLYCtpp_reverse,GLYCtpp_reverse,,TRUE,individual,C,C,1*glyc_c,abc,0.5*glyc_p+0.5*glyc_p,abc+cba
+full01,GLYCTO2,GLYCTO2,,TRUE,individual,C,C,1*glyclt_c,ab,1*glx_c,ab
+full01,GLYCTO3,GLYCTO3,,TRUE,individual,C,C,1*glyclt_c,ab,1*glx_c,ab
+full01,GLYCTO4,GLYCTO4,,TRUE,individual,C,C,1*glyclt_c,ab,1*glx_c,ab
+full01,GLYK,GLYK,,TRUE,individual,C,C,0.5*glyc_c+0.5*glyc_c,abc+cba,1*glyc3p_c,abc
+full01,GND,GND,,TRUE,individual,C,C,1*6pgc_c,abcdef,1*co2_c+1*ru5p_DASH_D_c,a+bcdef
+full01,GTHOr_Abbreviated,GTHOr,,FALSE,add glutathione synthesis,C,C,,,,
+full01,GTHOr,GTHOr,,TRUE,add glutathione synthesis,C,C,1*gthox_c,abcdefghijklmnopqrst,1*gthrd_c+1*gthrd_c,abcdefghij+klmnopqrst
+full01,GTHOr_reverse_Abbreviated,GTHOr_reverse,,FALSE,add glutathione synthesis,C,C,,,,
+full01,GTHOr_reverse,GTHOr_reverse,,TRUE,add glutathione synthesis,C,C,1*gthrd_c+1*gthrd_c,abcdefghij+klmnopqrst,1*gthox_c,abcdefghijklmnopqrst
+full01,GLUCYS,GLUCYS,,TRUE,added GTHSYN,C,C,1*glu_DASH_L_c+1*cys_DASH_L_c,abcde+fgh,1*glucys_c,abcdegfh
+full01,GTHS,GTHS,,TRUE,added GTHSYN,C,C,1*glucys_c+1*gly_c,abcdefgh+ij,1*gthrd_c,abcdefgjih
+full01,GTHSYN,GTHSYN,"[GLUCYS,GTHS]",TRUE,combo,C,C,1*glu_DASH_L_c+1*cys_DASH_L_c+1*gly_c,abcde+fgh+ij,,
+full01,HCO3E,HCO3E,,TRUE,individual,C,C,1*co2_c,a,1*hco3_c,a
+full01,HCO3E_reverse,HCO3E_reverse,,TRUE,individual,C,C,1*hco3_c,a,1*co2_c,a
+full01,HEX1,HEX1,,TRUE,individual,C,C,1*glc_DASH_D_c,abcdef,1*g6p_c,abcdef
+full01,prpp_to_his_DASH_L,prpp_to_his_DASH_L,"[ATPPRT,PRATPP,PRAMPC,PRMICI,IG3PS,IGPDH,HSTPT,HISTP,HISTD]",TRUE,combo,C,C,1*atp_c+1*gln_DASH_L_c+1*prpp_c,123456789a+bcdef+ghijk,1*aicar_c+1*akg_c+1*his_DASH_L_c,12345789a+bcdef+kjihg6
+full01,HSDy,HSDy,,TRUE,individual,C,C,1*hom_DASH_L_c,abcd,1*aspsa_c,abcd
+full01,HSDy_reverse,HSDy_reverse,,TRUE,individual,C,C,1*aspsa_c,abcd,1*hom_DASH_L_c,abcd
+full01,ICDHyr,ICDHyr,,TRUE,individual,C,C,1*icit_c,abcdef,1*akg_c+1*co2_c,abcde+f
+full01,ICDHyr_reverse,ICDHyr_reverse,,TRUE,individual,C,C,1*akg_c+1*co2_c,abcde+f,1*icit_c,abcdef
+full01,ICL,ICL,,TRUE,individual,C,C,1*icit_c,abcdef,1*glx_c+0.5*succ_c+0.5*succ_c,ab+fcde+edcf
+full01,ILETA,ILETA,,TRUE,individual,C,C,1*akg_c+1*ile_DASH_L_c,abcde+fghijk,1*3mop_c+1*glu_DASH_L_c,fghijk+abcde
+full01,ILETA_reverse,ILETA_reverse,,TRUE,individual,C,C,1*3mop_c+1*glu_DASH_L_c,fghijk+abcde,1*akg_c+1*ile_DASH_L_c,abcde+fghijk
+full01,ADSL2r,ADSL2r,,TRUE,added IMPSYN1,C,C,1*25aics_c,abcdefghijklm,1*aicar_c+0.5*fum_c+0.5*fum_c,abcdefghi+jklm+mlkj
+full01,AICART,AICART,,TRUE,added IMPSYN1,C,C,1*aicar_c+1*10fthf_c,abcdefghi+j,1*fprica_c,abcdejfghi
+full01,AIRC2,AIRC2,,TRUE,added IMPSYN1,C,C,1*air_c+1*hco3,abcdefgh+i,1*5caiz_c,abcdefgih
+full01,AIRC3_reverse,AIRC3_reverse,,TRUE,added IMPSYN1,C,C,1*5caiz_c,abcdefghi,1*5aizc_c,abcdefghi
+full01,GARFT,GARFT,,TRUE,added IMPSYN1,C,C,1*gar_c+1*10fthf_c,abcdefg+h,1*fgam_c,abcdefgh
+full01,GART,GART,,TRUE,added IMPSYN1,C,C,1*gar_c+1*for_c,abcdefg+h,1*fgam_c,abcdefgh
+full01,GLUPRT,GLUPRT,,TRUE,added IMPSYN1,C,C,1*prpp_c,abcde,1*pram_c,abcde
+full01,IMPC_reverse,IMPC_reverse,,TRUE,added IMPSYN1,C,C,1*fprica_c,abcdefghij,1*imp_c,abcdefghij
+full01,IMPSYN_1,IMPSYN_1,"[GLUPRT,PRAGSr,PRFGS,PRAIS]",TRUE,combo,C,C,1*prpp_c+1*gly_c+1*fgam_c,abcde+fg+hijklmno,1*gar_c+1*air_c,abcdefg+hijklmno
+full01,IMPSYN_2,IMPSYN_2,"[AIRC2,AIRC3_reverse,PRASCSi,ADSL2r]",TRUE,combo,C,C,1*air_c+1*hco3+1*asp_DASH_L_c,abcdefgh+i+jklm,1*aicar_c+0.5*fum_c+0.5*fum_c,abcdefghi+jklm+mlkj
+full01,IMPSYN_3,IMPSYN_3,"[AICART,IMPC_reverse]",TRUE,combo,C,C,1*aicar_c+1*10fthf_c,abcdefghi+j,1*imp_c,abcdejfghi
+full01,PRAGSr,PRAGSr,,TRUE,added IMPSYN1,C,C,1*pram_c+1*gly_c,abcde+fg,1*gar_c,abcdefg
+full01,PRAGSr_reverse,PRAGSr_reverse,,TRUE,added IMPSYN1,C,C,1*gar_c,abcdefg,1*pram_c+1*gly_c,abcde+fg
+full01,PRAIS,PRAIS,,TRUE,added IMPSYN1,C,C,1*fpram_c,abcdefgh,1*air_c,abcdefgh
+full01,PRASCSi,PRASCSi,,TRUE,added IMPSYN1,C,C,1*5aizc_c+1*asp_DASH_L_c,abcdefghi+jklm,1*25aics_c,abcdefghijklm
+full01,PRFGS,PRFGS,,TRUE,added IMPSYN1,C,C,1*fgam_c,abcdefgh,1*fpram_c,abcdefgh
+full01,IPMD,IPMD,,TRUE,individual,C,C,1*3c2hmp_c,abcdefg,1*3c4mop_c,abcdefg
+full01,IPPMIa,IPPMIa,,TRUE,individual,C,C,1*3c2hmp_c,abcdefg,1*2ippm_c,abcdefg
+full01,IPPMIa_reverse,IPPMIa_reverse,,TRUE,individual,C,C,1*2ippm_c,abcdefg,1*3c2hmp_c,abcdefg
+full01,IPPMIb,IPPMIb,,TRUE,individual,C,C,1*2ippm_c,abcdefg,1*3c3hmp_c,abcdefg
+full01,IPPMIb_reverse,IPPMIb_reverse,,TRUE,individual,C,C,1*3c3hmp_c,abcdefg,1*2ippm_c,abcdefg
+full01,IPPS,IPPS,,TRUE,individual,C,C,1*3mob_c+1*accoa_c,abcde+ABCDEFGHIJKLMNOPQRSTUfg,1*3c3hmp_c+1*coa_c,fgbcdae+ABCDEFGHIJKLMNOPQRSTU
+full01,IPPS_coaNEG,IPPS,,FALSE,individual,C,C,1*3mob_c+1*accoa_c,abcde+fg,1*3c3hmp_c,fgbcdae
+full01,LDH_D,LDH_D,,TRUE,individual,C,C,1*lac_DASH_D_c,abc,1*pyr_c,abc
+full01,LDH_D_reverse,LDH_D_reverse,,TRUE,individual,C,C,1*pyr_c,abc,1*lac_DASH_D_c,abc
+full01,LDH_D2,LDH_D2,,TRUE,individual,C,C,1*lac_DASH_D_c,abc,1*pyr_c,abc
+full01,LEUTAi,LEUTAi,,TRUE,individual,C,C,1*4mop_c+1*glu_DASH_L_c,abcdef+ghijk,1*akg_c+1*leu_DASH_L_c,ghijk+abcdef
+full01,L_DASH_LACD2,L_DASH_LACD2,,TRUE,individual,C,C,1*lac_DASH_L_c,abc,1*pyr_c,abc
+full01,L_DASH_LACD3,L_DASH_LACD3,,TRUE,individual,C,C,1*lac_DASH_L_c,abc,1*pyr_c,abc
+full01,L_DASH_LACt2rpp,L_DASH_LACt2rpp,,TRUE,individual,C,C,1*lac_DASH_L_p,abc,1*lac_DASH_L_c,abc
+full01,L_DASH_LACtex,L_DASH_LACtex,,TRUE,individual,C,C,1*lac_DASH_L_e,abc,1*lac_DASH_L_p,abc
+full01,L_DASH_LACt2rpp_reverse,L_DASH_LACt2rpp_reverse,,TRUE,individual,C,C,1*lac_DASH_L_c,abc,1*lac_DASH_L_p,abc
+full01,L_DASH_LACtex_reverse,L_DASH_LACtex_reverse,,TRUE,individual,C,C,1*lac_DASH_L_p,abc,1*lac_DASH_L_e,abc
+full01,MALS,MALS,,TRUE,individual,C,C,1*accoa_c+1*glx_c,ABCDEFGHIJKLMNOPQRSTUab+cd,1*coa_c+1*mal_DASH_L_c,ABCDEFGHIJKLMNOPQRSTU+cdba
+full01,MALS_coaNEG,MALS,,FALSE,individual,C,C,1*accoa_c+1*glx_c,ab+cd,1*mal_DASH_L_c,cdba
+full01,MDH,MDH,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*oaa_c,abcd
+full01,MDH_reverse,MDH_reverse,,TRUE,individual,C,C,1*oaa_c,abcd,1*mal_DASH_L_c,abcd
+full01,MDH2,MDH2,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*oaa_c,abcd
+full01,MDH3,MDH3,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*oaa_c,abcd
+full01,ME1,ME1,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*co2_c+1*pyr_c,d+abc
+full01,ME2,ME2,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*co2_c+1*pyr_c,d+abc
+full01,MTHFC,MTHFC,,TRUE,individual,C,C,1*methf_c,a,1*10fthf_c,a
+full01,MTHFC_reverse,MTHFC_reverse,,TRUE,individual,C,C,1*10fthf_c,a,1*methf_c,a
+full01,MTHFD,MTHFD,,TRUE,individual,C,C,1*mlthf_c,a,1*methf_c,a
+full01,MTHFD_reverse,MTHFD_reverse,,TRUE,individual,C,C,1*methf_c,a,1*mlthf_c,a
+full01,MTHFR2,MTHFR2,,TRUE,individual,C,C,1*mlthf_c,a,1*5mthf_c,a
+full01,NACODA,NACODA,,TRUE,individual,C,C,1*acg5sa_c,abcdefg,1*ac_c+1*glu5sa_c,fg+abcde
+full01,ASPO6,ASPO6,,TRUE,add NADSYN_aerobic,C,C,1*asp_DASH_L_c,abcd,1*iasp_c,abcd
+full01,NADK,NADK,,TRUE,add NADSYN_aerobic,C,C,1*nad_c,abcdefghijklmnopqrstu,1*nadp_c,abcdefghijklmnopqrstu
+full01,NADS1,NADS1,,TRUE,add NADSYN_aerobic,C,C,1*dnad_c,abcdefghijklmnopqrstu,1*nad_c,abcdefghijklmnopqrstu
+full01,NADSYN_aerobic_Abbreviated,NADSYN_aerobic,"[ASPO6,QULNS,NNDPR,NNATr,NADS1,NADK]",FALSE,combo,C,C,1*dhap_c+1*prpp_c+1*asp_DASH_L_c,abc+defgh+ijkl,1*co2_c,i
+full01,NADSYN_aerobic,NADSYN_aerobic,"[ASPO6,QULNS,NNDPR,NNATr,NADS1,NADK]",TRUE,combo,C,C,1*dhap_c+1*prpp_c+1*asp_DASH_L_c+1*atp_c,abc+defgh+ijkl+123456789A,1*nad_c+1*co2_c,defghjklabc123456789A+i
+full01,NNATr,NNATr,,TRUE,add NADSYN_aerobic,C,C,1*nicrnt_c+1*atp_c,abcdefghijk+lmnopqrstuv,1*dnad_c,abcdefghijklmnopqrstu
+full01,NNDPR,NNDPR,,TRUE,add NADSYN_aerobic,C,C,1*quln_c+1*prpp_c,abcdefg+ABCDE,1*nicrnt_c+1*co2_c,ABCDEbcdefg+a
+full01,QULNS,QULNS,,TRUE,add NADSYN_aerobic,C,C,1*iasp_c+1*dhap_c,abcd+efg,1*quln_c,abcdefg
+full01,ASPO5,ASPO5,,TRUE,add NADSYN_anaerobic,C,C,1*asp_DASH_L_c+1*fum_c,abcd+efgh,1*iasp_c+0.5*succ_c+0.5*succ_c,abcd+efgh+hgfe
+full01,NADK,NADK,,TRUE,add NADSYN_anaerobic,C,C,1*nad_c,abcdefghijklmnopqrstu,1*nadp_c,abcdefghijklmnopqrstu
+full01,NADS1,NADS1,,TRUE,add NADSYN_anaerobic,C,C,1*dnad_c,abcdefghijklmnopqrstu,1*nad_c,abcdefghijklmnopqrstu
+full01,NADSYN_anaerobic,NADSYN_anaerobic,"[ASPO5,QULNS,NNDPR,NNATr,NADS1,NADK]",TRUE,combo,C,C,,,,
+full01,NNATr,NNATr,,TRUE,add NADSYN_anaerobic,C,C,1*nicrnt_c+1*atp_c,abcdefghijk+lmnopqrstuv,1*dnad_c,abcdefghijklmnopqrstu
+full01,NNDPR,NNDPR,,TRUE,add NADSYN_anaerobic,C,C,1*quln_c+1*prpp_c,abcdefg+ABCDE,1*nicrnt_c+1*co2_c,ABCDEbcdefg+a
+full01,QULNS,QULNS,,TRUE,add NADSYN_anaerobic,C,C,1*iasp_c+1*dhap_c,abcd+efg,1*quln_c,abcdefg
+full01,NDPK1_Abbreviated,NDPK1,,FALSE,modified,C,C,1*atp_c+1*gdp_c,abcdefghij+klmnopqrst,1*adp_c+1*gtp_c,abcdefghij+klmnopqrst
+full01,NDPK1,NDPK1,,TRUE,modified,C,C,1*atp_c+1*gdp_c,abcdefghij+klmnopqrst,1*adp_c+1*gtp_c,abcdefghij+klmnopqrst
+full01,NDPK2_Abbreviated,NDPK2,,FALSE,modified,C,C,,,,
+full01,NDPK2,NDPK2,,TRUE,modified,C,C,1*atp_c+1*udp_c,abcdefghij+klmnopqrs,1*adp_c+1*utp_c,abcdefghij+klmnopqrs
+full01,NDPK3_Abbreviated,NDPK3,,FALSE,modified,C,C,,,,
+full01,NDPK3,NDPK3,,TRUE,modified,C,C,1*atp_c+1*cdp_c,abcdefghij+klmnopqrs,1*adp_c+1*ctp_c,abcdefghij+klmnopqrs
+full01,5DGLCNR,5DGLCNR,,FALSE,not included; growth on L-idonate,C,C,1*5dglcn_c,abcdef,1*glcn_c,abcdef
+full01,5DGLCNR_reverse,5DGLCNR_reverse,,FALSE,not included; growth on L-idonate,C,C,1*glcn_c,abcdef,1*5dglcn_c,abcdef
+full01,A5PISO,A5PISO,,TRUE,individual,C,C,1*ru5p_DASH_D_c,abcde,1*ara5p_c,abcde
+full01,A5PISO,A5PISO,,TRUE,individual,C,C,1*ru5p_DASH_D_c,abcde,1*ara5p_c,abcde
+full01,A5PISO_reverse,A5PISO_reverse,,TRUE,individual,C,C,1*ara5p_c,abcde,1*ru5p_DASH_D_c,abcde
+full01,A5PISO_reverse,A5PISO_reverse,,TRUE,individual,C,C,1*ara5p_c,abcde,1*ru5p_DASH_D_c,abcde
+full01,ACCOAC,ACCOAC,,TRUE,individual,C,C,1*hco3_c+1*accoa_c,a+ABCDEFGHIJKLMNOPQRSTUbc,1*malcoa_c,ABCDEFGHIJKLMNOPQRSTUbca
+full01,ACCOAC_coaNEG,ACCOAC,,FALSE,individual,C,C,1*hco3_c+1*accoa_c,a+bc,1*malcoa_c,bca
+full01,ACCOAL,ACCOAL,,TRUE,individual; growth on proprionate,C,C,1*ppa_c,abc,1*ppcoa_c,abc
+full01,ACGAMK,ACGAMK,,TRUE,individual,C,C,,,,
+full01,ACM6PH,ACM6PH,,FALSE,not included; growth on acmum6p,C,C,,,,
+full01,ADK1_reverse_Abbreviated,ADK1_reverse,,FALSE,individual,C,C,,,,
+full01,ADK1_reverse,ADK1_reverse,,TRUE,individual,C,C,1*adp_c+1*adp_c,abcdefghij+klmnopqrst,1*amp_c+1*atp_c,abcdefghij+klmnopqrst
+full01,ADK3_reverse_Abbreviated,ADK3_reverse,,FALSE,individual,C,C,,,,
+full01,ADK3_reverse,ADK3_reverse,,TRUE,individual,C,C,1*gdp_c+1*adp_c,abcdefghij+klmnopqrst,1*gtp_c+1*amp_c,abcdefghij+klmnopqrst
+full01,ADK4_reverse_Abbreviated,ADK4_reverse,,FALSE,individual,C,C,,,,
+full01,ADK4_reverse,ADK4_reverse,,TRUE,individual,C,C,1*idp_c+1*adp_c,abcdefghij+klmnopqrst,1*amp_c+1*itp_c,klmnopqrst+abcdefghij
+full01,ADNCYC_Abbreviated,ADNCYC,adenylate cyclase,FALSE,individual,C,C,,,,
+full01,ADNCYC,ADNCYC,adenylate cyclase,TRUE,individual,C,C,1*atp_c,abcdefghij,1*camp_c,abcdefghij
+full01,ADNK1_Abbreviated,ADNK1,adenosine kinase,FALSE,individual,C,C,,,,
+full01,ADNK1,ADNK1,adenosine kinase,TRUE,individual,C,C,1*adn_c+1*atp_c,abcdefghij+klmnopqrst,1*adp_c+1*amp_c,abcdefghij+klmnopqrst
+full01,ADNUC,ADNUC,,FALSE,not included; growth on acmum6p,C,C,,,,
+full01,ADPRDP_Abbreviated,ADPRDP,,FALSE,add NADSALVAGE,C,C,,,,
+full01,ADPRDP,ADPRDP,,TRUE,add NADSALVAGE,C,C,1*adprib_c,abcdefghijklmno,1*r5p_c+1*amp_c,abcde+fghijklmno
+full01,ADPT_Abbreviated,ADPT,,FALSE,individual,C,C,1*prpp_c,abcde,,
+full01,ADPT,ADPT,,TRUE,individual,C,C,1*ade_c+1*prpp_c,abcde+fghij,1*amp_c,abcdefghij
+full01,AGDC,AGDC,,FALSE,not included; growth on acmum6p,C,C,,,,
+full01,AHCYSNS,AHCYSNS,,TRUE,individual,C,C,1*ahcys_c,123456789Aabcd,,
+full01,ALAALAr,ALAALAr,,TRUE,individual,C,C,1*ala_DASH_D_c+1*ala_DASH_D_c,abc+def,,
+full01,ALCD19,ALCD19,,TRUE,individual,C,C,1*glyald_c,abc,1*glyc_c,abc
+full01,ALCD19_reverse,ALCD19_reverse,,TRUE,individual,C,C,1*glyc_c,abc,1*glyald_c,abc
+full01,ALDD19xr,ALDD19xr,,FALSE,not included; growth on 2-phenylethylamine,C,C,,,,
+full01,ALDD19xr_reverse,ALDD19xr_reverse,,FALSE,not included; growth on 2-phenylethylamine,C,C,,,,
+full01,ALDD2y,ALDD2y,,TRUE,individual,C,C,1*acald_c,ab,1*ac_c,ab
+full01,ALLPI,ALLPI,,FALSE,not included; growth on allose,C,C,1*all6p_c,abcdef,1*allul6p_c,abcdef
+full01,ALLPI_reverse,ALLPI_reverse,,FALSE,not included; growth on allose,C,C,1*allul6p_c,abcdef,1*all6p_c,abcdef
+full01,ALLULPE,ALLULPE,,FALSE,not included; growth on allose,C,C,1*allul6p_c,abcdef,1*f6p_c,abcdef
+full01,ALLULPE_reverse,ALLULPE_reverse,,FALSE,not included; growth on allose,C,C,1*f6p_c,abcdef,1*allul6p_c,abcdef
+full01,AMANAPEr,AMANAPEr,,FALSE,not included; growth on acmum6p,C,C,,,,
+full01,AMANAPEr_reverse,AMANAPEr_reverse,,FALSE,not included; growth on acmum6p,C,C,,,,
+full01,AMPN_Abbreviated,AMPN,AMP nucleosidase,FALSE,individual,C,C,,,,
+full01,AMPN,AMPN,AMP nucleosidase,TRUE,individual,C,C,1*amp_c,abcdefghij,1*ade_c+1*r5p_c,abcde+fghij
+full01,ARAI,ARAI,,FALSE,not included; growth on L-arabinose,C,C,,,,
+full01,ARAI_reverse,ARAI_reverse,,FALSE,not included; growth on L-arabinose,C,C,1*rbl_DASH_L_c,abcdef,1*arab_DASH_L_c,abcdef
+full01,ASPT,ASPT,L-aspartase,TRUE,individual,C,C,1*asp_DASH_L_c,abcd,0.5*fum_c+0.5*fum_c,abcd+dcba
+full01,AST,AST,Arginine succinyltransferase,TRUE,individual,C,C,,,,
+full01,ASTPathway_Abbreviated,ASTPathway,"['AST','SADH','SGDS','SGSAD','SOTA']",FALSE,individual,C,C,1*arg_DASH_L_c+1*akg_c+1*succoa_c,abcdef+ghijk+mnop,0.5*succ_c+0.5*succ_c+1*glu_DASH_L_c+1*glu_DASH_L_c+1*co2_c,mnop+ponm+ghijk+abcde+f
+full01,ASTPathway,ASTPathway,"['AST','SADH','SGDS','SGSAD','SOTA']",TRUE,individual,C,C,1*arg_DASH_L_c+1*akg_c+1*succoa_c,abcdef+ghijk+ABCDEFGHIJKLMNOPQRSTUmnop,1*coa_c+0.5*succ_c+0.5*succ_c+1*glu_DASH_L_c+1*glu_DASH_L_c+1*co2_c,ABCDEFGHIJKLMNOPQRSTU+mnop+ponm+abcde+ghijk+f
+full01,ATPS4rpp_reverse,ATPS4rpp_reverse,,TRUE,individual,C,C,1*atp_c,abcdefghij,1*adp_c,abcdefghij
+full01,CBMKr,CBMKr,Carbamate kinase,TRUE,individual,C,C,1*co2_c,a,1*cbp_c,a
+full01,CELLENV_1,CELLENV_1,"['UAMAGS','UAPGR','UAGPT3','PAPPT3','GLUR','reverse','UAGCVT','UAMAS','UDCPDP','UGMDDS','UAAGDS']",TRUE,combo,C,C,1*ala_DASH_L_c+1*pep_c+1*glu_DASH_L_c+1*26dap_DASH_M_c,abc+def+ghijk+lmnopqr,,
+full01,CELLENV_10,CELLENV_10,"['3HAD140','EAR140x']",TRUE,combo,C,C,,,,
+full01,CELLENV_11,CELLENV_11,"['3OAR100','3HAD100','3OAS100']",TRUE,combo,C,C,,,,
+full01,CELLENV_2,CELLENV_2,"['3HAD181','3OAR181','3OAS181','EAR181x']",TRUE,combo,C,C,,,,
+full01,CELLENV_3,CELLENV_3,"['3HAD160','3OAR160','EAR160x','3OAS160']",TRUE,combo,C,C,,,,
+full01,CELLENV_4,CELLENV_4,"['EAR120x','3OAR120','3HAD120','3OAS120','EAR100x']",TRUE,combo,C,C,,,,
+full01,CELLENV_5,CELLENV_5,"['G1PACT','UAGDP','PGAMT','reverse','GF6PTA']",TRUE,combo,C,C,1*f6p_c+1*gln_DASH_L_c,abcdef+ghijk,1*glu_DASH_L_c,ghijk
+full01,CELLENV_6,CELLENV_6,"['3OAR40','EAR40x','3OAS60','3OAR60','3HAD80','3OAS80','3OAR80','EAR60x','3HAD60','EAR80x','3HAD40']",TRUE,combo,C,C,,,,
+full01,CELLENV_7,CELLENV_7,"['3HAD161','EAR161x','3OAS161','3OAR161','3OAS141','3HAD141','3OAR121','EAR121x','3HAD121','EAR141x','T2DECAI','3OAR141','3OAS121']",TRUE,combo,C,C,,,,
+full01,CELLENV_8,CELLENV_8,"['TDPGDH','TDPDRR','TDPDRE','G1PTT']",TRUE,combo,C,C,1*g1p_c,abcdef,,
+full01,CELLENV_9,CELLENV_9,"['3OAS140','3OAR140']",TRUE,combo,C,C,,,,
+full01,CHRPL_Abbreviated,CHRPL,,FALSE,individual,C,C,1*chor_c,abcdefghij,1*pyr_c,ihj
+full01,CHRPL,CHRPL,,TRUE,individual,C,C,1*chor_c,abcdefghij,1*4hbz_c+1*pyr_c,abcdefg+ihj
+full01,CITL,CITL,Citrate lyase,TRUE,individual,C,C,1*cit_c,abcdef,0.5*ac_c+0.5*ac_c+0.5*oaa_c+0.5*oaa_c,ab+ed+fcde+fdba
+full01,CLPNS160pp,CLPNS160pp,,TRUE,individual,C,C,1*pg160_p,abc,0.5*glyc_p+0.5*glyc_p,abc+cba
+full01,CLPNS161pp,CLPNS161pp,,TRUE,individual,C,C,1*pg161_p,abc,0.5*glyc_p+0.5*glyc_p,abc+cba
+full01,CLPNS181pp,CLPNS181pp,,TRUE,individual,C,C,1*pg181_p,abc,0.5*glyc_p+0.5*glyc_p,abc+cba
+full01,CMPN_Abbreviated,CMPN,CMP nucleosidase,FALSE,individual,C,C,,,,
+full01,CMPN,CMPN,CMP nucleosidase,TRUE,individual,C,C,1*cmp_c,abcdefghi,1*csn_c+1*r5p_c,fghi+abcde
+full01,COFACTOR_1,COFACTOR_1,"['GLUTRR','G1SAT','GLUTRS']",TRUE,combo,C,C,1*glu_DASH_L_c,abcde,,
+full01,COFACTOR_10,COFACTOR_10,"['SERASr','DHBD','UPP3S','HMBS','ICHORT','DHBS']",TRUE,combo,C,C,1*ichor_c+1*ser_DASH_L_c,abcdefghij+klm,1*pyr_c,ihj
+full01,COFACTOR_11,COFACTOR_11,"['PMEACPE','EGMEACPR','DBTS','AOXSr2','I2FE2SR','OPMEACPD','MALCOAMT','AMAOTr','OPMEACPS','OPMEACPR','OGMEACPD','OGMEACPR','OGMEACPS','EPMEACPR','BTS5']",TRUE,combo,C,C,1*amet_c+1*amet_c+1*amet_c+1*ala_DASH_L_c,123456789Aabcde+123456789Aabcde+123456789Aabcde+fgh,1*ahcys_c+1*met_DASH_L_c1*co2_c,123456789Aabcd+abcde+f
+full01,COFACTOR_11_ametNEG,COFACTOR_11,"['PMEACPE','EGMEACPR','DBTS','AOXSr2','I2FE2SR','OPMEACPD','MALCOAMT','AMAOTr','OPMEACPS','OPMEACPR','OGMEACPD','OGMEACPR','OGMEACPS','EPMEACPR','BTS5']",FALSE,combo,C,C,1*ala_DASH_L_c,abc,1*co2_c,a
+full01,COFACTOR_2,COFACTOR_2,"['DHNAOT4','UPPDC1','DHNCOAT','DHNCOAS','SEPHCHCS','SUCBZS','SUCBZL','PPPGO3','FCLT','CPPPGO','SHCHCS3']",TRUE,combo,C,C,1*akg_c+1*ichor_c+3*fum_c,abcde+fghijklmno+pqrs,1.5*succ_c+1.5*succ_c+1*co2_c+1*pyr_c,pqrs+srqp+a+nom
+full01,COFACTOR_3,COFACTOR_3,"['TYRL','AMMQLT8','HEMEOS','UPP3MT','SHCHD2','SHCHF','ENTCS','CBLAT']",TRUE,combo,C,C,1*amet_c+1*tyr_DASH_L_c,123456789Aabcde+fghijklmn,1*met_DASH_L_c,abcde
+full01,COFACTOR_3_ametNEG,COFACTOR_3,"['TYRL','AMMQLT8','HEMEOS','UPP3MT','SHCHD2','SHCHF','ENTCS','CBLAT']",FALSE,combo,C,C,1*tyr_DASH_L_c,fghijklmn,,
+full01,COFACTOR_4,COFACTOR_4,"['I4FE4ST','I4FE4SR','I2FE2SS2']",TRUE,combo,C,C,,,,
+full01,COFACTOR_5,COFACTOR_5,"['BMOGDS1','BMOGDS2','BMOCOS']",TRUE,combo,C,C,,,,
+full01,COFACTOR_6,COFACTOR_6,"['DMPPS','GRTT','DMATT']",TRUE,combo,C,C,,,,
+full01,COFACTOR_7,COFACTOR_7,"['MECDPS','DXPRIi','MEPCT','CDPMEK','MECDPDH5']",TRUE,combo,C,C,,,,
+full01,COFACTOR_8,COFACTOR_8,"['LIPOS','LIPOCT']",TRUE,combo,C,C,2*amet_c,123456789Aabcde,2*met_DASH_L_c,abcde
+full01,COFACTOR_8_ametNEG,COFACTOR_8,"['LIPOS','LIPOCT']",FALSE,combo,C,C,,,,
+full01,COFACTOR_9,COFACTOR_9,"['OMMBLHX','OMPHHX','OPHHX','HBZOPT','DMQMT','CHRPL','OMBZLM','OPHBDC','OHPHM']",TRUE,combo,C,C,3*amet_c+1*chor_c,123456789Aabcde+fghijklmno,3*ahcys_c+1*co2_c+1*pyr_c,123456789Aabcd+f+nmo
+full01,COFACTOR_9_ametNEG,COFACTOR_9,"['OMMBLHX','OMPHHX','OPHHX','HBZOPT','DMQMT','CHRPL','OMBZLM','OPHBDC','OHPHM']",FALSE,combo,C,C,1*chor_c,abcdefghij,1*co2_c+1*pyr_c,a+ihj
+full01,COtex,COtex,,TRUE,individual,C,C,1*co_p,a,1*co_e,a
+full01,COtex_reverse,COtex_reverse,,TRUE,individual,C,C,1*co_e,a,1*co_p,a
+full01,COtpp,COtpp,,TRUE,individual,C,C,1*co_c,a,1*co_p,a
+full01,COtpp_reverse,COtpp_reverse,,TRUE,individual,C,C,1*co_p,a,1*co_c,a
+full01,CYTDH,CYTDH,,TRUE,individual,C,C,,,,
+full01,CYTDK2_Abbreviated,CYTDK2,cytidine kinase (GTP),FALSE,individual,C,C,,,,
+full01,CYTDK2,CYTDK2,cytidine kinase (GTP),TRUE,individual,C,C,1*cytd_c+1*gtp_c,abcdefghi+jklmnopqrs,1*cmp_c+1*gdp_c,abcdefghi+jklmnopqrs
+full01,CYTK1_reverse_Abbreviated,CYTK1_reverse,,FALSE,individual,C,C,,,,
+full01,CYTK1_reverse,CYTK1_reverse,,TRUE,individual,C,C,1*cdp_c+1*adp_c,abcdefghi+jklmnopqrs,1*atp_c+1*cmp_c,jklmnopqrs+abcdefghi
+full01,CYTK2_Abbreviated,CYTK2,cytidylate kinase (dCMP),FALSE,individual,C,C,,,,
+full01,CYTK2,CYTK2,cytidylate kinase (dCMP),TRUE,individual,C,C,1*atp_c+1*dcmp_c,abcdefghij+klmnopqrs,1*adp_c+1*dcdp_c,abcdefghij+klmnopqrs
+full01,CYTK2_reverse_Abbreviated,CYTK2_reverse,,FALSE,individual,C,C,,,,
+full01,CYTK2_reverse,CYTK2_reverse,,TRUE,individual,C,C,1*adp_c+1*dcdp_c,abcdefghij+klmnopqrs,1*dcmp_c+1*atp_c,klmnopqrs+abcdefghij
+full01,DAAD,DAAD,,TRUE,individual,C,C,1*ala_DASH_D_c,abc,1*pyr_c,abc
+full01,DALAt2pp,DALAt2pp,,TRUE,individual,C,C,1*ala_DASH_D_p,abc,1*ala_DASH_D_c,abc
+full01,DDPGALA,DDPGALA,,FALSE,not included; growth on D-galactonate,C,C,,,,
+full01,DDPGALA_reverse,DDPGALA_reverse,,FALSE,not included; growth on D-galactonate,C,C,,,,
+full01,DHACOAH,DHACOAH,,FALSE,not included; involved in phenylacetate catabolism,C,C,,,,
+full01,DHACOAH_reverse,DHACOAH_reverse,,FALSE,not included; involved in phenylacetate catabolism,C,C,,,,
+full01,DRPA,DRPA,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,C,C,,,,
+full01,DSERDHr,DSERDHr,,TRUE,individual,C,C,1*ser_DASH_D_c,abc,1*2amsa_c,abc
+full01,DSERDHr_reverse,DSERDHr_reverse,,TRUE,individual,C,C,1*2amsa_c,abc,1*ser_DASH_D_c,abc
+full01,DTMPK_reverse_Abbreviated,DTMPK_reverse,,FALSE,individual,C,C,,,,
+full01,DTMPK_reverse,DTMPK_reverse,,TRUE,individual,C,C,1*dtdp_c+1*adp_c,abcdefghij+klmnopqrst,1*dtmp_c+1*atp_c,abcdefghij+klmnopqrst
+full01,DXPS_Abbreviated,DXPS,,FALSE,individual,C,C,1*pyr_c+1*g3p_c,abc+def,1*co2_c,a
+full01,DXPS,DXPS,,TRUE,individual,C,C,1*pyr_c+1*g3p_c,abc+def,1*dxyl5p_c+1*co2_c,cbdef+a
+full01,Ec_biomass_iJO1366_WT_53p95M,Ec_biomass_iJO1366_WT_53p95M,,TRUE,,C,C,0.000223*ribflv_c+0.006744*spmd_c+0.149336*met_DASH_L_c+0.024805*datp_c+0.499149*ala_DASH_L_c+0.133993*tyr_DASH_L_c+0.209684*ser_DASH_L_c+0.234232*asn_DASH_L_c+0.000223*10fthf_c+0.003805*pg161_p+0.004439*pg161_c+0.129799*ctp_c+0.255712*glu_DASH_L_c+54.119975*atp_c+0.000168*coa_c+0.000279*accoa_c+0.000223*5mthf_c+0.000223*mlthf_c+0.209121*gtp_c+0.000223*fad_c+0.03327*ptrc_c+0.140101*utp_c+0.004892*pg160_p+0.255712*gln_DASH_L_c+0.005707*pg160_c+0.088988*cys_DASH_L_c+0.214798*pro_DASH_L_c+0.595297*gly_c+0.411184*val_DASH_L_c+0.180021*phe_DASH_L_c+0.234232*asp_DASH_L_c+0.000223*chor_c+3.10E-05*malcoa_c+0.333448*lys_DASH_L_c+0.282306*ile_DASH_L_c+0.001961*pg181_p+0.025612*dgtp_c+0.28742*arg_DASH_L_c+0.002288*pg181_c+0.024805*dttp_c+0.437778*leu_DASH_L_c+9.80E-05*succoa_c+0.025612*dctp_c+0.092056*his_DASH_L_c+0.246506*thr_DASH_L_c+0.055234*trp_DASH_L_c+0.000223*amet_c,abcdefghijklmnopq+abcdefg+hijkl+ABCDEFGHIJ+mno+pqrstuvwx+yz1+2345+6+789+ABC+ABCDEFGHIJ+DEFGH+ABCDEFGHIJ+ABCDEFGHIJKLMNOPQRSTU+ABCDEFGHIJKLMNOPQRSTUIJ+K+L+ABCDEFGHIJ+abcdefghijklmnopqABCDEFGHIJ+MNOP+ABCDEFGHIJ+QRS+TUVWX+Y12+345+6789a+bc+defgh+ijklmnopq+rstu+vwxyz12345+ABCDEFGHIJKLMNOPQRSTU678+9ABCDE+FGHIJK+LMN+ABCDEFGHIJ+OPQRST+UVW+ABCDEFGHIJ+XYZ123+ABCDEFGHIJKLMNOPQRSTU4567+ABCDEFGHIJ+89abcd+efgh+ijklmnopqrs+123456789Aabcde,,
+full01,Ec_biomass_iJO1366_WT_53p95M_ametNEG_coaNEG_ntpNEG,Ec_biomass_iJO1366_WT_53p95M,,FALSE,"individual; FAD, atp, gtp, utp not included",C,C,0.006744*spmd_c+0.149336*met_DASH_L_c+0.499149*ala_DASH_L_c+0.133993*tyr_DASH_L_c+0.209684*ser_DASH_L_c+0.234232*asn_DASH_L_c+0.000223*10fthf_c+0.003805*pg161_p+0.004439*pg161_c+0.255712*glu_DASH_L_c+0.000279*accoa_c+0.000223*5mthf_c+0.000223*mlthf_c+0.03327*ptrc_c+0.004892*pg160_p+0.255712*gln_DASH_L_c+0.005707*pg160_c+0.088988*cys_DASH_L_c+0.214798*pro_DASH_L_c+0.595297*gly_c+0.411184*val_DASH_L_c+0.180021*phe_DASH_L_c+0.234232*asp_DASH_L_c+0.000223*chor_c+3.10E-05*malcoa_c+0.333448*lys_DASH_L_c+0.282306*ile_DASH_L_c+0.001961*pg181_p+0.28742*arg_DASH_L_c+0.002288*pg181_c+0.437778*leu_DASH_L_c+9.80E-05*succoa_c+0.092056*his_DASH_L_c+0.246506*thr_DASH_L_c+0.055234*trp_DASH_L_c,abcdefg+hijkl+mno+pqrstuvwx+yz1+2345+6+789+ABC+DEFGH+IJ+K+L+MNOP+QRS+TUVWX+Y12+345+6789a+bc+defgh+ijklmnopq+rstu+vwxyz12345+678+9ABCDE+FGHIJK+LMN+OPQRST+UVW+XYZ123+4567+89abcd+efgh+ijklmnopqrs,,
+full01,Ec_biomass_iJO1366_WT_53p95M_ametNEG_coaNEG,Ec_biomass_iJO1366_WT_53p95M,,FALSE,"individual; FAD, utp, coa not included",C,C,0.006744*spmd_c+0.149336*met_DASH_L_c+0.499149*ala_DASH_L_c+0.133993*tyr_DASH_L_c+0.209684*ser_DASH_L_c+0.234232*asn_DASH_L_c+0.000223*10fthf_c+0.003805*pg161_p+0.004439*pg161_c+0.255712*glu_DASH_L_c+0.000279*accoa_c+0.000223*5mthf_c+0.000223*mlthf_c+0.03327*ptrc_c+0.004892*pg160_p+0.255712*gln_DASH_L_c+0.005707*pg160_c+0.088988*cys_DASH_L_c+0.214798*pro_DASH_L_c+0.595297*gly_c+0.411184*val_DASH_L_c+0.180021*phe_DASH_L_c+0.234232*asp_DASH_L_c+0.000223*chor_c+3.10E-05*malcoa_c+0.333448*lys_DASH_L_c+0.282306*ile_DASH_L_c+0.001961*pg181_p+0.28742*arg_DASH_L_c+0.002288*pg181_c+0.437778*leu_DASH_L_c+9.80E-05*succoa_c+0.092056*his_DASH_L_c+0.246506*thr_DASH_L_c+0.055234*trp_DASH_L_c+0.000223+amet_c+54.119975*atp_c+0.209121*gtp_c,abcdefg+hijkl+mno+pqrstuvwx+yz1+2345+6+789+ABC+DEFGH+IJ+K+L+MNOP+QRS+TUVWX+Y12+345+6789a+bc+defgh+ijklmnopq+rstu+vwxyz12345+678+9ABCDE+FGHIJK+LMN+OPQRST+UVW+XYZ123+4567+89abcd+efgh+ijklmnopqrs+123456789Aabcde+ABCDEFGHIJ+ABCDEFGHIJ,,
+full01,EX_co_LPAREN_e_RPAREN_,EX_co_LPAREN_e_RPAREN_,,TRUE,individual,C,C,1*co_e,a,,
+full01,F6PP,F6PP,,TRUE,individual,C,C,1*f6p_c,abcdef,1*fru_c,abcdef
+full01,FBA3,FBA3,"Sedoheptulose 1,7-bisphosphate D-glyceraldehyde-3-phosphate-lyase",TRUE,individual,C,C,1*s17bp_c,abcdefg,1*dhap_c+1*e4p_c,abc+defg
+full01,FBA3_reverse,FBA3_reverse,,TRUE,individual,C,C,1*e4p_c+1*dhap_c,abcd+efg,1*s17bp_c,gfeabcd
+full01,FCI,FCI,,FALSE,not included; growth on L-fucose,C,C,1*fuc_DASH_L_c,abcdef,1*fcl_DASH_L_c,abcdef
+full01,FCI_reverse,FCI_reverse,,FALSE,not included; growth on L-fucose,C,C,1*fcl_DASH_L_c,abcdef,1*fuc_DASH_L_c,abcdef
+full01,FCLPA,FCLPA,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FCLPA_reverse,FCLPA_reverse,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FOMETRi,FOMETRi,,TRUE,individual,C,C,1*5fthf_c,a,1*methf_c,a
+full01,FORCT,FORCT,,FALSE,not included; oxalate-induced acid response (J Bacteriol. 2013 Apr;195(7):1446-55. doi: 10.1128/JB.01936-12. Epub 2013 Jan 18.),C,C,,,,
+full01,FORCT_reverse,FORCT_reverse,,FALSE,not included; oxalate-induced acid response (J Bacteriol. 2013 Apr;195(7):1446-55. doi: 10.1128/JB.01936-12. Epub 2013 Jan 18.),C,C,,,,
+full01,FRULYSDG,FRULYSDG,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FRULYSDG_reverse,FRULYSDG_reverse,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FRULYSE,FRULYSE,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FRULYSE_reverse,FRULYSE_reverse,,FALSE,not included; growth on psicoselysine,C,C,,,,
+full01,FTHFLi,FTHFLi,formate-tetrahydrofolate ligase,TRUE,individual,C,C,1*for_c,a,1*10fthf_c,a
+full01,G6PDA,G6PDA,,TRUE,individual,C,C,1*gam6p_c,abcdef,1*f6p_c,abcdef
+full01,G6PP,G6PP,glucose-6-phosphate phosphatase,TRUE,individual,C,C,1*g6p_c,abcdef,1*glc_DASH_D_c,abcdef
+full01,GALKr,GALKr,,TRUE,individual,C,C,1*gal_c,abcdef,1*gal1p_c,abcdef
+full01,GALKr_reverse,GALKr_reverse,,TRUE,individual,C,C,1*gal1p_c,abcdef,1*gal_c,abcdef
+full01,GALUi,GALUi,,TRUE,individual,C,C,1*utp_c+1*g1p_c,abcdefghi+jklmno,1*udpg_c,abcdefghijklmno
+full01,GARFT_reverse,GARFT_reverse,,TRUE,individual,C,C,1*fgam_c,abcdefgh,1*gar_c+1*10fthf_c,abcdefg+h
+full01,GK1_reverse_Abbreviated,GK1_reverse,,FALSE,individual,C,C,,,,
+full01,GK1_reverse,GK1_reverse,,TRUE,individual,C,C,1*gdp_c+1*adp_c,abcdefghij+klmnopqrst,1*gmp_c+1*atp_c,abcdefghij+klmnopqrst
+full01,GLBRAN2,GLBRAN2,"1,4-alpha-glucan branching enzyme (glycogen -> bglycogen)",TRUE,individual,C,C,,,,
+full01,GLCATr,GLCATr,,TRUE,individual,C,C,1*glc_DASH_D_c+1*accoa_c,abcdef+ABCDEFGHIJKLMNOPQRSTUgh,1*acglc_DASH_D_c+1*coa_c,abcdefgh+ABCDEFGHIJKLMNOPQRSTU
+full01,GLCATr_coaNEG,GLCATr,,FALSE,individual,C,C,1*glc_DASH_D_c+1*accoa_c,abcdef+gh,1*acglc_DASH_D_c,abcdefgh
+full01,GLCATr_reverse,GLCATr_reverse,,TRUE,individual,C,C,1*acglc_DASH_D_c+1*coa_c,abcdefgh+ABCDEFGHIJKLMNOPQRSTU,1*glc_DASH_D_c+1*accoa_c,abcdef+ABCDEFGHIJKLMNOPQRSTUgh
+full01,GLCATr_reverse_coaNEG,GLCATr_reverse,,FALSE,individual,C,C,1*acglc_DASH_D_c,abcdefgh,1*glc_DASH_D_c+1*accoa_c,abcdef+gh
+full01,GLCP2,GLCP2,glycogen phosphorylase,TRUE,individual,C,C,,,,
+full01,GLCtexi,GLCtexi,D-glucose transport via diffusion (extracellular to periplasm) irreversible,TRUE,individual,C,C,1*glc_DASH_D_e,abcdef,1*glc_DASH_D_p,abcdef
+full01,GLDBRAN2,GLDBRAN2,glycogen debranching enzyme (bglycogen -> glycogen),TRUE,individual,C,C,,,,
+full01,GLTPD,GLTPD,,FALSE,not included; growth on galactitol,C,C,,,,
+full01,GLTPD_reverse,GLTPD_reverse,,FALSE,not included; growth on galactitol,C,C,,,,
+full01,GLUt2rpp_reverse,GLUt2rpp_reverse,,TRUE,individual,C,C,1*glu_DASH_L_c,abcde,1*glu_DASH_L_p,abcde
+full01,GLUt4pp,GLUt4pp,Na+/glutamate symport (periplasm),TRUE,individual,C,C,1*glu_DASH_L_p,abcde,1*glu_DASH_L_c,abcde
+full01,GLYCK2,GLYCK2,glycerate kinase,TRUE,individual,C,C,1*glyc_DASH_R_c,abc,1*2pg_c,abc
+full01,GLYCPHOSPHOLIPID_1,GLYCPHOSPHOLIPID_1,"['DASYN181','AGPAT181','G3PAT181']",TRUE,combo,C,C,1*glyc3p_c,abc,,
+full01,GLYCPHOSPHOLIPID_2,GLYCPHOSPHOLIPID_2,"['PSSA181','PSD181']",TRUE,combo,C,C,1*ser_DASH_L_c,abc,1*co2_c,a
+full01,GLYCPHOSPHOLIPID_3,GLYCPHOSPHOLIPID_3,"['PGSA160','PGPP160']",TRUE,combo,C,C,1*glyc3p_c,abc,1*pg160_c,abc
+full01,GLYCPHOSPHOLIPID_4,GLYCPHOSPHOLIPID_4,"['DASYN161','AGPAT161','G3PAT161']",TRUE,combo,C,C,1*glyc3p_c,abc,,
+full01,GLYCPHOSPHOLIPID_5,GLYCPHOSPHOLIPID_5,"['PGSA181','PGPP181']",TRUE,combo,C,C,1*glyc3p_c,abc,1*pg181_c,abc
+full01,GLYCPHOSPHOLIPID_6,GLYCPHOSPHOLIPID_6,"['PSD161','PSSA161']",TRUE,combo,C,C,1*ser_DASH_L_c,abc,1*co2_c,a
+full01,GLYCPHOSPHOLIPID_7,GLYCPHOSPHOLIPID_7,"['PSSA160','PSD160']",TRUE,combo,C,C,1*ser_DASH_L_c,abc,1*co2_c,a
+full01,GLYCPHOSPHOLIPID_8,GLYCPHOSPHOLIPID_8,"['DASYN160','AGPAT160','G3PAT160']",TRUE,combo,C,C,1*glyc3p_c,abc,,
+full01,GLYCPHOSPHOLIPID_9,GLYCPHOSPHOLIPID_9,"['PGSA161','PGPP161']",TRUE,combo,C,C,1*glyc3p_c,abc,1*pg161_c,abc
+full01,GMPR_Abbreviated,GMPR,GMP reductase,FALSE,individual,C,C,,,,
+full01,GMPR,GMPR,GMP reductase,TRUE,individual,C,C,1*gmp_c,abcdefghij,1*imp_c,abcdefghij
+full01,GSNK_Abbreviated,GSNK,guanosine kinase,FALSE,individual,C,C,,,,
+full01,GSNK,GSNK,guanosine kinase,TRUE,individual,C,C,1*atp_c+1*gsn_c,abcdefghij+klmnopqrst,1*adp_c+1*gmp_c,abcdefghij+klmnopqrst
+full01,GUACYC_Abbreviated,GUACYC,guanylate cyclase,FALSE,individual,C,C,,,,
+full01,GUACYC,GUACYC,guanylate cyclase,TRUE,individual,C,C,1*gtp_c,abcdefghij,1*35cgmp_c,abcdefghij
+full01,GUAPRT_Abbreviated,GUAPRT,,FALSE,individual,C,C,1*prpp_c,abcde,,
+full01,GUAPRT,GUAPRT,,TRUE,individual,C,C,1*gua_c+1*prpp_c,abcde+fghij,1*gmp_c,abcdefghij
+full01,GUI1,GUI1,,FALSE,not included; growth on glucuronate and galacturonate,C,C,1*glcur_c,abcdef,1*fruur_c,abcdef
+full01,GUI1_reverse,GUI1_reverse,,FALSE,not included; growth on glucuronate and galacturonate,C,C,1*fruur_c,abcdef,1*glcur_c,abcdef
+full01,GUI2,GUI2,,FALSE,not included; growth on glucuronate and galacturonate,C,C,1*galur_c,abcdef,1*tagur_c,abcdef
+full01,GUI2_reverse,GUI2_reverse,,FALSE,not included; growth on glucuronate and galacturonate,C,C,1*tagur_c,abcdef,1*galur_c,abcdef
+full01,HADPCOADH3,HADPCOADH3,,FALSE,not included; involved in phenylacetate catabolism,C,C,,,,
+full01,HADPCOADH3_reverse,HADPCOADH3_reverse,,FALSE,not included; involved in phenylacetate catabolism,C,C,,,,
+full01,HBZOPT,HBZOPT,,TRUE,individual,C,C,1*4hbz_c,abcdefg,,
+full01,HBZOPT_Abbreviated,HBZOPT,,FALSE,individual,C,C,,,,
+full01,HCYSMT,HCYSMT,homocysteine S-methyltransferase,TRUE,individual,C,C,1*amet_c+1*hcys_DASH_L_c,123456789Aabcde+fghi,1*ahcys_c+1*met_DASH_L_c,123456789Aabcd+fghie
+full01,HCYSMT_ametNEG,HCYSMT,homocysteine S-methyltransferase,FALSE,individual; Incorrect,C,C,1*hcys_DASH_L_c,abcde,1*met_DASH_L_c,abcde
+full01,HEX4,HEX4,,TRUE,individual,C,C,1*man_c,abcdef,1*man6p_c,abcdef
+full01,HEX7,HEX7,,TRUE,individual,C,C,1*fru_c,abcdef,1*f6p_c,abcdef
+full01,HPYRI,HPYRI,,TRUE,individual,C,C,1*hpyr_c,abc,1*2h3oppan_c,abc
+full01,HPYRI_reverse,HPYRI_reverse,,TRUE,individual,C,C,1*2h3oppan_c,abc,1*hpyr_c,abc
+full01,HPYRRx,HPYRRx,,TRUE,individual,C,C,1*hpyr_c,abc,1*glyc_DASH_R_c,abc
+full01,HPYRRy,HPYRRy,,TRUE,individual,C,C,1*hpyr_c,abc,1*glyc_DASH_R_c,abc
+full01,HXPRT_Abbreviated,HXPRT,,FALSE,individual,C,C,1*prpp_c,abcde,,
+full01,HXPRT,HXPRT,,TRUE,individual,C,C,1*hxan_c+1*prpp_c,abcde+fghij,1*imp_c,abcdefghij
+full01,ICHORSi,ICHORSi,,TRUE,individual,C,C,1*chor_c,abcdefghij,1*ichor_c,abcdefghij
+full01,ICHORT_Abbreviated,ICHORT,,FALSE,individual,C,C,1*ichor_c,abcdefghij,1*pyr_c,ihj
+full01,ICHORT,ICHORT,,TRUE,individual,C,C,1*ichor_c,abcdefghij,1*23ddhb_c+1*pyr_c,abcdefg+ihj
+full01,ICYSDS,ICYSDS,,TRUE,individual,C,C,1*cys_DASH_L_c,abc,1*ala_DASH_L_c,abc
+full01,IDOND,IDOND,,FALSE,not included; growth on L-idonate,C,C,,,,
+full01,IDOND_reverse,IDOND_reverse,,FALSE,not included; growth on L-idonate,C,C,,,,
+full01,IDOND2,IDOND2,,FALSE,not included; growth on L-idonate,C,C,,,,
+full01,INSH_Abbreviated,INSH,Inosine hydrolase,FALSE,individual,C,C,,,,
+full01,INSH,INSH,Inosine hydrolase,TRUE,individual,C,C,1*ins_c,abcdefghij,1*hxan_c+1*rib_DASH_D_c,abcde+fghij
+full01,INSK_Abbreviated,INSK,insosine kinase,FALSE,individual,C,C,,,,
+full01,INSK,INSK,insosine kinase,TRUE,individual,C,C,1*atp_c+1*ins_c,abcdefghij+klmnopqrst,1*adp_c+1*imp_c,abcdefghij+klmnopqrst
+full01,KAS15,KAS15,,TRUE,individual,C,C,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab,1*coa_c,ABCDEFGHIJKLMNOPQRSTU
+full01,KAS15_coaNEG,KAS15,,FALSE,individual,C,C,1*accoa_c,ab,,
+full01,LCADi,LCADi,,TRUE,individual,C,C,1*lald_DASH_L_c,abc,1*lac_DASH_L_c,abc
+full01,LCARR,LCARR,"lacaldehyde reductase (R-propane-1,2-diol forming)",TRUE,individual,C,C,1*lald_DASH_D_c,abc,1*12ppd_DASH_R_c,abc
+full01,LCARR_reverse,LCARR_reverse,,TRUE,individual,C,C,1*12ppd_DASH_R_c,abc,1*lald_DASH_D_c,abc
+full01,LCARS,LCARS,,TRUE,individual,C,C,1*lald_DASH_L_c,abc,1*12ppd_DASH_S_c,abc
+full01,LCARS_reverse,LCARS_reverse,,TRUE,individual,C,C,1*12ppd_DASH_S_c,abc,1*lald_DASH_L_c,abc
+full01,LIPOPOLYSACCHARIDE_1,LIPOPOLYSACCHARIDE_1,"['COLIPAabcpp','COLIPAabctex','EDTXS1','EDTXS2','GALT1','GLCTR1','GLCTR2','GLCTR3','HEPK1','HEPK2','HEPT1','HEPT2','HEPT3','HEPT4','LPADSS','MOAT','MOAT2','MOAT3C','RHAT1','TDSK','USHD']",TRUE,combo,C,C,,,,
+full01,LIPOPOLYSACCHARIDE_2,LIPOPOLYSACCHARIDE_2,"['AGMHE','GMHEPAT','GMHEPK','GMHEPPA','S7PI']",TRUE,combo,C,C,1*s7p_c,abcdefg,,
+full01,LIPOPOLYSACCHARIDE_3,LIPOPOLYSACCHARIDE_3,"['U23GAAT','UHGADA','UAGAAT']",TRUE,combo,C,C,,,,
+full01,LIPOPOLYSACCHARIDE_4,LIPOPOLYSACCHARIDE_4,"['KDOPP','KDOCT2','KDOPS']",TRUE,combo,C,C,1*pep_c+1*ara5p_c,abc+defgh,,
+full01,LSERDHr,LSERDHr,L-serine dehydrogenase,TRUE,individual,C,C,1*ser_DASH_L_c,abc,,
+full01,LSERDHr_reverse,LSERDHr_reverse,,TRUE,individual,C,C,,,,
+full01,LSERDHr_reverse,LSERDHr_reverse,,TRUE,individual,C,C,1*2amsa_c,abc,1*ser_DASH_L_c,abc
+full01,M1PD,M1PD,,TRUE,individual,C,C,1*mnl1p_c,abcdef,1*f6p_c,abcdef
+full01,M1PD_reverse,M1PD_reverse,,TRUE,individual,C,C,1*f6p_c,abcdef,1*mnl1p_c,abcdef
+full01,MALTATr,MALTATr,,TRUE,individual,C,C,1*malt_c+1*accoa_c,abcdefghijkl+ABCDEFGHIJKLMNOPQRSTUmn,1*acmalt_c+1*coa_c,abcdefghijklmn+ABCDEFGHIJKLMNOPQRSTU
+full01,MALTATr_coaNEG,MALTATr,,FALSE,individual,C,C,1*malt_c+1*accoa_c,abcdefghijkl+mn,1*acmalt_c,abcdefghijklmn
+full01,MALTATr_reverse,MALTATr_reverse,,TRUE,individual,C,C,1*acmalt_c+1*coa_c,abcdefghijklmn+ABCDEFGHIJKLMNOPQRSTU,1*malt_c+1*accoa_c,abcdefghijkl+ABCDEFGHIJKLMNOPQRSTUmn
+full01,MALTATr_reverse_coaNEG,MALTATr_reverse,,FALSE,individual,C,C,1*acmalt_c,abcdefghijklmn,1*malt_c+1*accoa_c,abcdefghijkl+mn
+full01,MAN6PI,MAN6PI,,TRUE,individual,C,C,1*man6p_c,abcdef,1*f6p_c,abcdef
+full01,MAN6PI_reverse,MAN6PI_reverse,,TRUE,individual,C,C,1*f6p_c,abcdef,1*man6p_c,abcdef
+full01,MANAO,MANAO,,TRUE,individual,C,C,1*mana_c,abcdef,1*fruur_c,abcdef
+full01,MANAO_reverse,MANAO_reverse,,TRUE,individual,C,C,1*fruur_c,abcdef,1*mana_c,abcdef
+full01,MCITD,MCITD,,TRUE,individual,C,C,1*2mcit_c,abcdefg,1*2mcacn_c,abcdefg
+full01,MCITL2,MCITL2,,TRUE,individual,C,C,1*micit_c,abcdefg,0.5*succ_c+0.5*succ_c+1*pyr_c,edcf+fcde+abg
+full01,MCITL2_reverse,MCITL2_reverse,,TRUE,individual,C,C,0.5*succ_c+0.5*succ_c+1*pyr_c,edcf+fcde+abg,1*micit_c,abcdefg
+full01,MCITS,MCITS,,TRUE,individual,C,C,1*oaa_c+1*ppcoa_c,abcd+efg,1*2mcit_c,efbcdag
+full01,MCOATA,MCOATA,,TRUE,individual,C,C,1*malcoa_c,ABCDEFGHIJKLMNOPQRSTUabc,1*coa_c,ABCDEFGHIJKLMNOPQRSTU
+full01,MCOATA_coaNEG,MCOATA,,FALSE,individual,C,C,1*malcoa_c,abc,,
+full01,METOX1s,METOX1s,methionine oxidation (spontaneous),TRUE,individual,C,C,1*met_DASH_L_c,abcde,,
+full01,METOX2s,METOX2s,methionine oxidation 2 (spontaneous),TRUE,individual,C,C,1*met_DASH_L_c,abcde,,
+full01,MICITDr,MICITDr,,TRUE,individual,C,C,1*2mcacn_c,abcdefg,1*micit_c,abcdefg
+full01,MICITDr_reverse,MICITDr_reverse,,TRUE,individual,C,C,1*micit_c,abcdefg,1*2mcacn_c,abcdefg
+full01,MLTG3,MLTG3,,TRUE,individual,C,C,,,,
+full01,MLTG4,MLTG4,,TRUE,individual,C,C,,,,
+full01,MLTG5,MLTG5,,TRUE,individual,C,C,,,,
+full01,MLTP1,MLTP1,,TRUE,individual,C,C,,,,
+full01,MLTP1_reverse,MLTP1_reverse,,TRUE,individual,C,C,1*g1p_c,abcdef,,
+full01,MLTP2,MLTP2,,TRUE,individual,C,C,,,,
+full01,MLTP2_reverse,MLTP2_reverse,,TRUE,individual,C,C,1*g1p_c,abcdef,,
+full01,MLTP3,MLTP3,,TRUE,individual,C,C,,,,
+full01,MLTP3_reverse,MLTP3_reverse,,TRUE,individual,C,C,1*g1p_c,abcdef,,
+full01,MMCD,MMCD,,TRUE,individual,C,C,1*mmcoa_DASH_S_c,abcd,1*co2_c+1*ppcoa_c,d+abc
+full01,MMM,MMM,,TRUE,individual,C,C,1*succoa_c,ABCDEFGHIJKLMNOPQRSTUabcd,1*mmcoa_DASH_S_c,ABCDEFGHIJKLMNOPQRSTUabcd
+full01,MMM_coaNEG,MMM,,FALSE,individual,C,C,1*succoa_c,abcd,1*mmcoa_DASH_S_c,abcd
+full01,MN6PP,MN6PP,,TRUE,individual,C,C,1*man6p_c,abcdef,1*man_c,abcdef
+full01,MOLYBDOPTERIN_1,MOLYBDOPTERIN_1,"['MPTAT','MPTS','CPMPS']",TRUE,combo,C,C,,,,
+full01,MOLYBDOPTERIN_2,MOLYBDOPTERIN_2,"['MOCDS','MOGDS']",TRUE,combo,C,C,,,,
+full01,MOLYBDOPTERIN_3,MOLYBDOPTERIN_3,"['MOADSUx','MPTSS']",TRUE,combo,C,C,,,,
+full01,MOX,MOX,malate oxidase,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,1*oaa_c,abcd
+full01,MOX_reverse,MOX_reverse,,TRUE,individual,C,C,1*oaa_c,abcd,1*mal_DASH_L_c,abcd
+full01,NADDP_Abbreviated,NADDP,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NADDP,NADDP,,TRUE,add NADSALVAGE,C,C,1*nad_c,abcdefghijklmnopqrstu,1*nmn_c+1*amp_c,abcdefghijk+lmnopqrstu
+full01,NADN_Abbreviated,NADN,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NADN,NADN,,TRUE,add NADSALVAGE,C,C,1*nad_c,abcdefghijklmnopqrstu,1*adprib_c+1*ncam_c,abcdelmnopqrstu+fghijk
+full01,NADPPPS_Abbreviated,NADPPPS,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NADPPPS,NADPPPS,,TRUE,add NADSALVAGE,C,C,1*nadp_c,abcdefghijklmnopqrstu,1*nad_c,abcdefghijklmnopqrstu
+full01,NADSALVAGE,NADSALVAGE,"[NADPPPS,NADN,NNAM,NAMNPP,NMNN,NMNDA,NMNAT,NADDP,ADPRDP]",TRUE,combo,C,C,,,,
+full01,NAMNPP_Abbreviated,NAMNPP,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NAMNPP,NAMNPP,,TRUE,add NADSALVAGE,C,C,1*prpp_c+1*nac_c,abcde+fghijk,1*nicrnt_c,abcdefghijk
+full01,NDPK1_reverse_Abbreviated,NDPK1_reverse,,FALSE,individual,C,C,,,,
+full01,NDPK1_reverse,NDPK1_reverse,,TRUE,individual,C,C,1*gtp_c+1*adp_c,abcdefghij+klmnopqrst,1*gdp_c+1*atp_c,abcdefghij+klmnopqrst
+full01,NDPK2_reverse_Abbreviated,NDPK2_reverse,,FALSE,individual,C,C,,,,
+full01,NDPK2_reverse,NDPK2_reverse,,TRUE,individual,C,C,1*utp_c+1*adp_c,abcdefghi+jklmnopqrs,1*udp_c+1*atp_c,abcdefghi+jklmnopqrs
+full01,NDPK3_reverse_Abbreviated,NDPK3_reverse,,FALSE,individual,C,C,,,,
+full01,NDPK3_reverse,NDPK3_reverse,,TRUE,individual,C,C,1*ctp_c+1*adp_c,abcdefghi+jklmnopqrs,1*cdp_c+1*atp_c,abcdefghi+jklmnopqrs
+full01,NDPK4_reverse_Abbreviated,NDPK4_reverse,,FALSE,individual,C,C,,,,
+full01,NDPK4_reverse,NDPK4_reverse,,TRUE,individual,C,C,1*dttp_c+1*adp_c,abcdefghij+klmnopqrst,1*dtdp_c+1*atp_c,abcdefghij+klmnopqrst
+full01,NMNAT_Abbreviated,NMNAT,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NMNAT,NMNAT,,TRUE,add NADSALVAGE,C,C,1*nmn_c+1*atp_c,abcdefghijk+lmnopqrstu,1*nad_c,abcdefghijklmnopqrstu
+full01,NMNDA_Abbreviated,NMNDA,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NMNDA,NMNDA,,TRUE,add NADSALVAGE,C,C,1*nmn_c,abcdefghijk,1*nicrnt_c,abcdefghijk
+full01,NMNN_Abbreviated,NMNN,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NMNN,NMNN,,TRUE,add NADSALVAGE,C,C,1*nmn_c,abcdefghijk,1*r5p_c+1*ncam_c,abcde+fghijk
+full01,NNAM_Abbreviated,NNAM,,FALSE,add NADSALVAGE,C,C,,,,
+full01,NNAM,NNAM,,TRUE,add NADSALVAGE,C,C,1*ncam_c,abcdef,1*nac_c,abcdef
+full01,NTD1_Abbreviated,NTD1,,FALSE,,C,C,,,,
+full01,NTD1,NTD1,5'-nucleotidase (dUMP),TRUE,individual,C,C,1*dump_c,abcdefghi,1*duri_c,abcdefghi
+full01,NTD10_Abbreviated,NTD10,,FALSE,,C,C,,,,
+full01,NTD10,NTD10,5'-nucleotidase (XMP),TRUE,individual,C,C,1*xmp_c,abcdefghij,1*xtsn_c,abcdefghij
+full01,NTD11_Abbreviated,NTD11,,FALSE,,C,C,,,,
+full01,NTD11,NTD11,5'-nucleotidase (IMP),TRUE,individual,C,C,1*imp_c,abcdefghij,1*ins_c,abcdefghij
+full01,NTD12_Abbreviated,NTD12,,FALSE,,C,C,,,,
+full01,NTD12,NTD12,5'-nucleotidase (dIMP),TRUE,individual,C,C,1*dimp_c,abcdefghij,1*din_c,abcdefghij
+full01,NTD2_Abbreviated,NTD2,,FALSE,,C,C,,,,
+full01,NTD2,NTD2,5'-nucleotidase (UMP),TRUE,individual,C,C,1*ump_c,abcdefghi,1*uri_c,abcdefghi
+full01,NTD3_Abbreviated,NTD3,,FALSE,,C,C,,,,
+full01,NTD3,NTD3,5'-nucleotidase (dCMP),TRUE,individual,C,C,1*dcmp_c,abcdefghi,1*dcyt_c,abcdefghi
+full01,NTD4_Abbreviated,NTD4,,FALSE,,C,C,,,,
+full01,NTD4,NTD4,5'-nucleotidase (CMP),TRUE,individual,C,C,1*cmp_c,abcdefghi,1*cytd_c,abcdefghi
+full01,NTD5_Abbreviated,NTD5,,FALSE,,C,C,,,,
+full01,NTD5,NTD5,5'-nucleotidase (dTMP),TRUE,individual,C,C,1*dtmp_c,abcdefghij,1*thymd_c,abcdefghij
+full01,NTD6_Abbreviated,NTD6,,FALSE,,C,C,,,,
+full01,NTD6,NTD6,5'-nucleotidase (dAMP),TRUE,individual,C,C,1*damp_c,abcdefghij,,
+full01,NTD7_Abbreviated,NTD7,,FALSE,,C,C,,,,
+full01,NTD7,NTD7,5'-nucleotidase (AMP),TRUE,individual,C,C,1*amp_c,abcdefghi,1*adn_c,abcdefghi
+full01,NTD8_Abbreviated,NTD8,,FALSE,,C,C,,,,
+full01,NTD8,NTD8,5'-nucleotidase (dGMP),TRUE,individual,C,C,1*dgmp_c,abcdefghij,1*dgsn_c,abcdefghij
+full01,NTD9_Abbreviated,NTD9,,FALSE,,C,C,,,,
+full01,NTD9,NTD9,5'-nucleotidase (GMP),TRUE,individual,C,C,1*gmp_c,abcdefghij,1*gsn_c,abcdefghij
+full01,NTP1_Abbreviated,NTP1,,FALSE,,C,C,,,,
+full01,NTP1,NTP1,nucleoside-triphosphatase (ATP),TRUE,individual,C,C,1*atp_c,abcdefghij,1*adp_c,abcdefghij
+full01,NTP10_Abbreviated,NTP10,,FALSE,,C,C,,,,
+full01,NTP10,NTP10,nucleoside-triphosphatase (ITP),TRUE,individual,C,C,1*itp_c,abcdefghij,1*idp_c,abcdefghij
+full01,NTP11_Abbreviated,NTP11,,FALSE,,C,C,,,,
+full01,NTP11,NTP11,nucleoside-triphosphatase (dITP),TRUE,individual,C,C,1*ditp_c,abcdefghij,1*didp_c,abcdefghij
+full01,NTP12_Abbreviated,NTP12,,FALSE,,C,C,,,,
+full01,NTP12,NTP12,nucleoside-triphosphatase (XTP),TRUE,individual,C,C,1*xtp_c,abcdefghij,1*xdp_c,abcdefghij
+full01,NTP3_Abbreviated,NTP3,,FALSE,,C,C,,,,
+full01,NTP3,NTP3,nucleoside-triphosphatase (GTP),TRUE,individual,C,C,1*gtp_c,abcdefghij,1*gdp_c,abcdefghij
+full01,NTP5_Abbreviated,NTP5,,FALSE,,C,C,,,,
+full01,NTP5,NTP5,nucleoside-triphosphatase (CTP),TRUE,individual,C,C,1*ctp_c,abcdefghi,1*cdp_c,abcdefghi
+full01,NTPP1_Abbreviated,NTPP1,,FALSE,,C,C,,,,
+full01,NTPP1,NTPP1,Nucleoside triphosphate pyrophosphorylase (dgtp),TRUE,individual,C,C,1*dgtp_c,abcdefghij,1*dgmp_c,abcdefghij
+full01,NTPP10_Abbreviated,NTPP10,,FALSE,,C,C,,,,
+full01,NTPP10,NTPP10,Nucleoside triphosphate pyrophosphorylase (ditp),TRUE,individual,C,C,1*ditp_c,abcdefghij,1*dimp_c,abcdefghij
+full01,NTPP11_Abbreviated,NTPP11,,FALSE,,C,C,,,,
+full01,NTPP11,NTPP11,Nucleoside triphosphate pyrophosphorylase (xtp),TRUE,individual,C,C,1*xtp_c,abcdefghij,1*xmp_c,abcdefghij
+full01,NTPP2_Abbreviated,NTPP2,,FALSE,,C,C,,,,
+full01,NTPP2,NTPP2,Nucleoside triphosphate pyrophosphorylase (gtp),TRUE,individual,C,C,1*gtp_c,abcdefghij,1*gmp_c,abcdefghij
+full01,NTPP3_Abbreviated,NTPP3,,FALSE,,C,C,,,,
+full01,NTPP3,NTPP3,Nucleoside triphosphate pyrophosphorylase (dctp),TRUE,individual,C,C,1*dctp_c,abcdefghi,1*dcmp_c,abcdefghi
+full01,NTPP4_Abbreviated,NTPP4,,FALSE,,C,C,,,,
+full01,NTPP4,NTPP4,Nucleoside triphosphate pyrophosphorylase (ctp),TRUE,individual,C,C,1*ctp_c,abcdefghi,1*cmp_c,abcdefghi
+full01,NTPP5_Abbreviated,NTPP5,,FALSE,,C,C,,,,
+full01,NTPP5,NTPP5,Nucleoside triphosphate pyrophosphorylase (datp),TRUE,individual,C,C,1*datp_c,abcdefghij,1*damp_c,abcdefghij
+full01,NTPP7_Abbreviated,NTPP7,,FALSE,,C,C,,,,
+full01,NTPP7,NTPP7,Nucleoside triphosphate pyrophosphorylase (dttp),TRUE,individual,C,C,1*dttp_c,abcdefghij,1*dtmp_c,abcdefghij
+full01,NTPP8_Abbreviated,NTPP8,,FALSE,,C,C,,,,
+full01,NTPP8,NTPP8,Nucleoside triphosphate pyrophosphorylase (utp),TRUE,individual,C,C,1*utp_c,abcdefghi,1*ump_c,abcdefghi
+full01,NTPP9_Abbreviated,NTPP9,,FALSE,,C,C,,,,
+full01,NTPP9,NTPP9,Nucleoside triphosphate pyrophosphorylase (itp),TRUE,individual,C,C,1*itp_c,abcdefghij,1*imp_c,abcdefghij
+full01,NTPTP1_Abbreviated,NTPTP1,,FALSE,,C,C,,,,
+full01,NTPTP1,NTPTP1,Nucleoside triphosphate tripolyhydrolase,TRUE,individual,C,C,1*dgtp_c,abcdefghij,1*dgsn_c,abcdefghij
+full01,NTPTP2_Abbreviated,NTPTP2,,FALSE,,C,C,,,,
+full01,NTPTP2,NTPTP2,Nucleoside triphosphate tripolyhydrolase,TRUE,individual,C,C,1*gtp_c,abcdefghij,1*gsn_c,abcdefghij
+full01,OAADC,OAADC,,TRUE,individual,C,C,1*oaa_c,abcd,1*pyr_c+1*co2_c,abc+d
+full01,OBTFL,OBTFL,,TRUE,individual,C,C,1*2obut_c,abcd,1*for_c+1*ppcoa_c,a+bcd
+full01,PDE1_Abbreviated,PDE1,"3',5'-cyclic-nucleotide phosphodiesterase",FALSE,,C,C,,,,
+full01,PDE1,PDE1,"3',5'-cyclic-nucleotide phosphodiesterase",TRUE,individual,C,C,1*camp_c,abcdefghij,1*amp_c,abcdefghij
+full01,PDE4_Abbreviated,PDE4,"3',5'-cyclic-nucleotide phosphodiesterase",FALSE,,C,C,,,,
+full01,PDE4,PDE4,"3',5'-cyclic-nucleotide phosphodiesterase",TRUE,individual,C,C,1*35cgmp_c,abcdefghij,1*gmp_c,abcdefghij
+full01,PE160abcpp,PE160abcpp,,TRUE,individual,C,C,,,,
+full01,PE161abcpp,PE161abcpp,,TRUE,individual,C,C,,,,
+full01,PE181abcpp,PE181abcpp,,TRUE,individual,C,C,,,,
+full01,PFK_3,PFK_3,phosphofructokinase (s7p),TRUE,individual,C,C,1*s7p_c,abcdefg,1*s17bp_c,abcdefg
+full01,PG160abcpp,PG160abcpp,,TRUE,individual,C,C,1*pg160_c,abc,1*pg160_p,abc
+full01,PG161abcpp,PG161abcpp,,TRUE,individual,C,C,1*pg161_c,abc,1*pg161_p,abc
+full01,PG181abcpp,PG181abcpp,,TRUE,individual,C,C,1*pg181_c,abc,1*pg181_p,abc
+full01,PMANM,PMANM,,TRUE,individual,C,C,1*man1p_c,abcdef,1*man6p_c,abcdef
+full01,PMANM_reverse,PMANM_reverse,,TRUE,individual,C,C,1*man6p_c,abcdef,1*man1p_c,abcdef
+full01,POR5,POR5,pyruvate synthase,TRUE,individual,C,C,1*coa_c+1*pyr_c,ABCDEFGHIJKLMNOPQRSTU+abc,1*accoa_c+1*co2_c,ABCDEFGHIJKLMNOPQRSTUbc+a
+full01,POR5_coaNEG,POR5,pyruvate synthase,FALSE,individual,C,C,1*pyr_c,abc,1*accoa_c+1*co2_c,bc+a
+full01,POR5_reverse,POR5_reverse,,TRUE,individual,C,C,1*accoa_c+1*co2_c,ABCDEFGHIJKLMNOPQRSTUab+c,1*coa_c+1*pyr_c,ABCDEFGHIJKLMNOPQRSTU+cab
+full01,POR5_reverse_coaNEG,POR5_reverse,,FALSE,individual,C,C,1*accoa_c+1*co2_c,ab+c,1*pyr_c,cab
+full01,PPAKr,PPAKr,,TRUE,individual,C,C,1*ppap_c,abc,1*ppa_c,abc
+full01,PPAKr_reverse,PPAKr_reverse,,TRUE,individual,C,C,1*ppa_c,abc,1*ppap_c,abc
+full01,PPCSCT,PPCSCT,,TRUE,individual,C,C,0.5*succ_c+0.5*succ_c+1*ppcoa_c,abcd+dcba+ABCDEFGHIJKLMNOPQRSTUefg,1*ppa_c+1*succoa_c,efg+ABCDEFGHIJKLMNOPQRSTUabcd
+full01,PPCSCT_coaNEG,PPCSCT,,FALSE,individual,C,C,0.5*succ_c+0.5*succ_c+1*ppcoa_c,abcd+dcba+efg,1*ppa_c+1*succoa_c,efg+abcd
+full01,PPM,PPM,,TRUE,individual,C,C,1*r1p_c,abcde,1*r5p_c,abcde
+full01,PPM,PPM,,TRUE,individual,C,C,1*r1p_c,abcde,1*r5p_c,abcde
+full01,PPM_reverse,PPM_reverse,,TRUE,individual,C,C,1*r5p_c,abcde,1*r1p_c,abcde
+full01,PPM_reverse,PPM_reverse,,TRUE,individual,C,C,1*r5p_c,abcde,1*r1p_c,abcde
+full01,PPM2,PPM2,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,C,C,1*2dr1p_c,abcde,1*2dr5p_c,abcde
+full01,PPM2_reverse,PPM2_reverse,,FALSE,not included; growth on pyrimidine deoxyribonucleoside,C,C,1*2dr5p_c,abcde,1*2dr1p_c,abcde
+full01,PTA2,PTA2,,TRUE,individual,C,C,1*ppcoa_c,abc,1*ppap_c,abc
+full01,PUNP1_Abbreviated,PUNP1,,FALSE,individual,C,C,,,,
+full01,PUNP1,PUNP1,,TRUE,individual,C,C,1*adn_c,abcdefghij,1*ade_c+1*r1p_c,fghij+abcde
+full01,PUNP1_reverse_Abbreviated,PUNP1_reverse,,FALSE,individual,C,C,1*r1p_c,abcde,,
+full01,PUNP1_reverse,PUNP1_reverse,,TRUE,individual,C,C,1*ade_c+1*r1p_c,abcde+fghij,1*adn_c,abcdefghij
+full01,PUNP3_Abbreviated,PUNP3,,FALSE,individual,C,C,,,,
+full01,PUNP3,PUNP3,,TRUE,individual,C,C,1*gsn_c,abcdefghij,1*gua_c+1*r1p_c,fghij+abcde
+full01,PUNP3_reverse_Abbreviated,PUNP3_reverse,,FALSE,individual,C,C,1*r1p_c,abcde,,
+full01,PUNP3_reverse,PUNP3_reverse,,TRUE,individual,C,C,1*gua_c+1*r1p_c,abcde+fghij,1*gsn_c,abcdefghij
+full01,PUNP5_Abbreviated,PUNP5,,FALSE,individual,C,C,,,,
+full01,PUNP5,PUNP5,,TRUE,individual,C,C,1*ins_c,abcdefghij,1*hxan_c+1*r1p_c,fghij+abcde
+full01,PUNP5_reverse_Abbreviated,PUNP5_reverse,,FALSE,individual,C,C,1*r1p_c,abcde,,
+full01,PUNP5_reverse,PUNP5_reverse,,TRUE,individual,C,C,1*hxan_c+1*r1p_c,abcde+fghij,1*ins_c,abcdefghij
+full01,PUNP7_Abbreviated,PUNP7,,FALSE,individual,C,C,,,,
+full01,PUNP7,PUNP7,,TRUE,individual,C,C,1*xtsn_c,abcdefghij,1*r1p_c+1*xan_c,abcde+fghij
+full01,PUNP7_reverse,PUNP7_reverse,,TRUE,individual,C,C,1*r1p_c,abcde,,
+full01,PUNP7_reverse,PUNP7_reverse,,TRUE,individual,C,C,1*r1p_c+1*xan_c,abcde+fghij,1*xtsn_c,abcdefghij
+full01,PYNP2r_Abbreviated,PYNP2r,,FALSE,individual,C,C,,,,
+full01,PYNP2r,PYNP2r,,TRUE,individual,C,C,1*uri_c,abcdefghi,1*ura_c+1*r1p_c,fghi+abcde
+full01,PYNP2r_reverse_Abbreviated,PYNP2r_reverse,,FALSE,individual,C,C,1*r1p_c,abcde,,
+full01,PYNP2r_reverse,PYNP2r_reverse,,TRUE,individual,C,C,1*ura_c+1*r1p_c,abcd+efghi,1*uri_c,abcdefghi
+full01,R15BPK,R15BPK,,TRUE,individual,C,C,1*r15bp_c,abcde,1*prpp_c,abcde
+full01,R1PK,R1PK,,TRUE,individual,C,C,1*r1p_c,abcde,1*r15bp_c,abcde
+full01,R5PP,R5PP,,TRUE,individual,C,C,1*r5p_c,abcde,1*rib_DASH_D_c,abcde
+full01,RBK,RBK,,TRUE,individual,C,C,1*rib_DASH_D_c,abcde,1*r5p_c,abcde
+full01,RBP4E,RBP4E,,TRUE,individual,C,C,1*ru5p_DASH_L_c,abcde,1*xu5p_DASH_D_c,abcde
+full01,RBP4E_reverse,RBP4E_reverse,,TRUE,individual,C,C,1*xu5p_DASH_D_c,abcde,1*ru5p_DASH_L_c,abcde
+full01,REPHACCOAI,REPHACCOAI,,FALSE,not included,C,C,,,,
+full01,REPHACCOAI_reverse,REPHACCOAI_reverse,,FALSE,not included,C,C,,,,
+full01,RMI,RMI,,FALSE,not included; growth on L-rhamnose,C,C,1*rmn_c,abcdef,1*rml_c,abcdef
+full01,RMI_reverse,RMI_reverse,,FALSE,not included; growth on L-rhamnose,C,C,1*rml_c,abcdef,1*rmn_c,abcdef
+full01,RMPA,RMPA,,FALSE,not included; growth on L-rhamnose,C,C,,,,
+full01,RMPA_reverse,RMPA_reverse,,FALSE,not included; growth on L-rhamnose,C,C,,,,
+full01,RNDR1_Abbreviated,RNDR1,ribonucleoside-diphosphate reductase (ADP),FALSE,individual,C,C,,,,
+full01,RNDR1,RNDR1,ribonucleoside-diphosphate reductase (ADP),TRUE,individual,C,C,1*adp_c,abcdefghij,1*dadp_c,abcdefghij
+full01,RNDR1b_Abbreviated,RNDR1b,ribonucleoside-diphosphate reductase (ADP) (glutaredoxin),FALSE,individual,C,C,,,,
+full01,RNDR1b,RNDR1b,ribonucleoside-diphosphate reductase (ADP) (glutaredoxin),TRUE,individual,C,C,1*adp_c,abcdefghij,1*dadp_c,abcdefghij
+full01,RNDR2_Abbreviated,RNDR2,ribonucleoside-diphosphate reductase (GDP),FALSE,individual,C,C,,,,
+full01,RNDR2,RNDR2,ribonucleoside-diphosphate reductase (GDP),TRUE,individual,C,C,1*gdp_c,abcdefghij,1*dgdp_c,abcdefghij
+full01,RNDR2b_Abbreviated,RNDR2b,ribonucleoside-diphosphate reductase (GDP) (glutaredoxin),FALSE,individual,C,C,,,,
+full01,RNDR2b,RNDR2b,ribonucleoside-diphosphate reductase (GDP) (glutaredoxin),TRUE,individual,C,C,1*gdp_c,abcdefghij,1*dgdp_c,abcdefghij
+full01,RNDR3_Abbreviated,RNDR3,ribonucleoside-diphosphate reductase (CDP),FALSE,individual,C,C,,,,
+full01,RNDR3,RNDR3,ribonucleoside-diphosphate reductase (CDP),TRUE,individual,C,C,1*cdp_c,abcdefghij,1*dcdp_c,abcdefghij
+full01,RNDR3b_Abbreviated,RNDR3b,ribonucleoside-diphosphate reductase (CDP) (glutaredoxin),FALSE,individual,C,C,,,,
+full01,RNDR3b,RNDR3b,ribonucleoside-diphosphate reductase (CDP) (glutaredoxin),TRUE,individual,C,C,1*cdp_c,abcdefghij,1*dcdp_c,abcdefghij
+full01,RNDR4_Abbreviated,RNDR4,ribonucleoside-diphosphate reductase (UDP),FALSE,individual,C,C,,,,
+full01,RNDR4,RNDR4,ribonucleoside-diphosphate reductase (UDP),TRUE,individual,C,C,1*udp_c,abcdefghi,1*dudp_c,abcdefghi
+full01,RNDR4b_Abbreviated,RNDR4b,ribonucleoside-diphosphate reductase (UDP) (glutaredoxin),FALSE,individual,C,C,,,,
+full01,RNDR4b,RNDR4b,ribonucleoside-diphosphate reductase (UDP) (glutaredoxin),TRUE,individual,C,C,1*udp_c,abcdefghi,1*dudp_c,abcdefghi
+full01,RNTR1c2_Abbreviated,RNTR1c2,ribonucleoside-triphosphate reductase (ATP) (flavodoxin),FALSE,individual,C,C,,,,
+full01,RNTR1c2,RNTR1c2,ribonucleoside-triphosphate reductase (ATP) (flavodoxin),TRUE,individual,C,C,1*atp_c,abcdefghij,1*datp_c,abcdefghij
+full01,RNTR2c2_Abbreviated,RNTR2c2,ribonucleoside-triphosphate reductase (GTP) (flavodoxin),FALSE,individual,C,C,,,,
+full01,RNTR2c2,RNTR2c2,ribonucleoside-triphosphate reductase (GTP) (flavodoxin),TRUE,individual,C,C,1*gtp_c,abcdefghij,1*dgtp_c,abcdefghij
+full01,RNTR3c2_Abbreviated,RNTR3c2,ribonucleoside-triphosphate reductase (CTP) (flavodoxin),FALSE,individual,C,C,,,,
+full01,RNTR3c2,RNTR3c2,ribonucleoside-triphosphate reductase (CTP) (flavodoxin),TRUE,individual,C,C,1*ctp_c,abcdefghi,1*dctp_c,abcdefghi
+full01,RNTR4c2_Abbreviated,RNTR4c2,ribonucleoside-triphosphate reductase (UTP) (flavodoxin),FALSE,individual,C,C,,,,
+full01,RNTR4c2,RNTR4c2,ribonucleoside-triphosphate reductase (UTP) (flavodoxin),TRUE,individual,C,C,1*utp_c,abcdefghi,1*dutp_c,abcdefghi
+full01,SADH,SADH,Succinylarginine dihydrolase,TRUE,individual,C,C,,,,
+full01,SBTPD,SBTPD,,FALSE,not included; growth on Sorbitol,C,C,1*sbt6p_c,abcdef,1*f6p_c,abcdef
+full01,SBTPD_reverse,SBTPD_reverse,,FALSE,not included; growth on Sorbitol,C,C,1*f6p_c,abcdef,1*sbt6p_c,abcdef
+full01,SERD_D,SERD_D,,TRUE,individual,C,C,1*ser_DASH_D_c,abc,1*pyr_c,abc
+full01,SGDS,SGDS,Succinylglutamate desuccinylase,TRUE,individual,C,C,,,,
+full01,SGSAD,SGSAD,Succinylglutamic semialdehyde dehydrogenase,TRUE,individual,C,C,,,,
+full01,SOTA,SOTA,Succinylornithine transaminase,TRUE,individual,C,C,,,,
+full01,TAGURr,TAGURr,,FALSE,not included; growth on galacturonate,C,C,,,,
+full01,TAGURr_reverse,TAGURr_reverse,,FALSE,not included; growth on galacturonate,C,C,,,,
+full01,TGBPA,TGBPA,,FALSE,not included; growth on galactitol,C,C,,,,
+full01,TGBPA_reverse,TGBPA_reverse,,FALSE,not included; growth on galactitol,C,C,,,,
+full01,THFAT,THFAT,,TRUE,individual,C,C,1*methf_c,a,1*5fthf_c,a
+full01,THIAMIN,THIAMIN,"['AMPMS3','PMPK','THZPSN3','TMPPP','TMPK']",TRUE,combo,C,C,1*air_c+1*amet_c,abcdefgh+123456789Aijklm,1*met_DASH_L_c+1*co_c+1*for_c,ijklm+d+f
+full01,THIAMIN_ametNEG,THIAMIN,"['AMPMS3','PMPK','THZPSN3','TMPPP','TMPK']",FALSE,combo,C,C,1*air_c,abcdefgh,1*co_c+1*for_c,d+f
+full01,THRt2rpp_reverse,THRt2rpp_reverse,,TRUE,individual,C,C,1*thr_DASH_L_c,abcd,1*thr_DASH_L_p,abcd
+full01,THRt4pp,THRt4pp,,TRUE,individual,C,C,1*thr_DASH_L_p,abcd,1*thr_DASH_L_c,abcd
+full01,TMDK1_Abbreviated,TMDK1,thymidine kinase (ATP:thymidine),FALSE,individual,C,C,,,,
+full01,TMDK1,TMDK1,thymidine kinase (ATP:thymidine),TRUE,individual,C,C,1*atp_c+1*thymd_c,abcdefghij+klmnopqrst,1*adp_c+1*dtmp_c,abcdefghij+klmnopqrst
+full01,TRE6PH,TRE6PH,,TRUE,individual,C,C,1*tre6p_c,abcdefghijkl,1*g6p_c+1*glc_DASH_D_c,abcdef+ghijkl
+full01,TRE6PP,TRE6PP,,TRUE,individual,C,C,1*tre6p_c,abcdefghijkl,1*tre_c,abcdefghijkl
+full01,TRE6PS,TRE6PS,,TRUE,individual,C,C,1*g6p_c+1*udpg_c,abcdef+ghijklmnopqrstu,1*tre6p_c+1*udp_c,abcdefghijkl+mnopqrstu
+full01,TREH,TREH,,TRUE,individual,C,C,1*tre_c,abcdefghijkl,1*glc_DASH_D_c+1*glc_DASH_D_c,abcdef+ghijkl
+full01,TRSARr_reverse,TRSARr_reverse,,TRUE,individual,C,C,1*glyc_DASH_R_c,abc,1*2h3oppan_c,abc
+full01,UDPG4E,UDPG4E,,TRUE,individual,C,C,1*udpg_c,abcdefghijklmno,1*udpgal_c,abcdefghijklmno
+full01,UDPG4E_reverse,UDPG4E_reverse,,TRUE,individual,C,C,1*udpgal_c,abcdefghijklmno,1*udpg_c,abcdefghijklmno
+full01,UGLT,UGLT,,TRUE,individual,C,C,1*udpg_c+1*gal1p_c,abcdefghijklmno+pqrstu,1*udpgal_c+1*g1p_c,abcdefghipqrstu+jklmno
+full01,UGLT_reverse,UGLT_reverse,,TRUE,individual,C,C,1*udpgal_c+1*g1p_c,abcdefghijklmno+pqrstu,1*udpg_c+1*gal1p_c,abcdefghipqrstu+jklmno
+full01,UMPK_reverse_Abbreviated,UMPK_reverse,,FALSE,individual,C,C,,,,
+full01,UMPK_reverse,UMPK_reverse,,TRUE,individual,C,C,1*udp_c+1*adp_c,abcdefghi+jklmnopqrs,1*ump_c+1*atp_c,abcdefghi+jklmnopqrs
+full01,UPPRT_Abbreviated,UPPRT,,FALSE,individual,C,C,1*prpp_c,abcde,,
+full01,UPPRT,UPPRT,,TRUE,individual,C,C,1*ura_c+1*prpp_c,abcd+efghi,1*ump_c,abcdefghi
+full01,URIH,URIH,,TRUE,individual,C,C,,,,
+full01,URIK2_Abbreviated,URIK2,uridine kinase (GTP:Uridine),FALSE,individual,C,C,,,,
+full01,URIK2,URIK2,uridine kinase (GTP:Uridine),TRUE,individual,C,C,1*gtp_c+1*uri_c,abcdefghij+klmnopqrs,1*gdp_c+1*ump_c,abcdefghij+klmnopqrs
+full01,VITB6,VITB6,"['E4PD','PERD','OHPBAT','PDX5PS','PDX5PO2']",TRUE,combo,C,C,1*e4p_c+1*glu_DASH_L_c,abcd+efghi,1*akg_c+1*co2_c,efghi+a
+full01,VPAMTr,VPAMTr,Valine-pyruvate aminotransferase,TRUE,individual,C,C,1*3mob_c+1*ala_DASH_L_c,abcde+fgh,1*pyr_c+1*val_DASH_L_c,fgh+abcde
+full01,VPAMTr_reverse,VPAMTr_reverse,,TRUE,individual,C,C,1*pyr_c+1*val_DASH_L_c,abc+defgh,1*3mob_c+1*ala_DASH_L_c,defgh+abc
+full01,XPPT_Abbreviated,XPPT,,FALSE,individual,C,C,1*prpp_c,abcde,,
+full01,XPPT,XPPT,,TRUE,individual,C,C,1*xan_c+1*prpp_c,abcde+fghij,1*xmp_c,abcdefghij
+full01,XTSNH_Abbreviated,XTSNH,Xanthosine hydrolase,FALSE,individual,C,C,,,,
+full01,XTSNH,XTSNH,Xanthosine hydrolase,TRUE,individual,C,C,1*xtsn_c,abcdefghij,1*rib_DASH_D_c+1*xan_c,abcde+fghij
+full01,XYLI1,XYLI1,,TRUE,individual,C,C,1*xyl_DASH_D_c,abcde,1*xylu_DASH_D_c,abcde
+full01,XYLI1_reverse,XYLI1_reverse,,TRUE,individual,C,C,1*xylu_DASH_D_c,abcde,1*xyl_DASH_D_c,abcde
+full01,XYLI2,XYLI2,,TRUE,individual,C,C,1*glc_DASH_D_c,abcdef,1*fru_c,abcdef
+full01,XYLI2_reverse,XYLI2_reverse,,TRUE,individual,C,C,1*fru_c,abcdef,1*glc_DASH_D_c,abcdef
+full01,NTPP6_Abbreviated,NTPP6,,FALSE,modified,C,C,,,,
+full01,NTPP6,NTPP6,,TRUE,modified,C,C,1*atp_c,abcdefghij,1*amp_c,abcdefghij
+full01,OCBT,OCBT,,TRUE,individual,C,C,1*cbp_c+1*orn_c,a+bcdef,1*citr_DASH_L_c,bcdefa
+full01,OCBT_reverse,OCBT_reverse,,TRUE,individual,C,C,1*citr_DASH_L_c,bcdefa,1*cbp_c+1*orn_c,a+bcdef
+full01,OMCDC,OMCDC,,TRUE,individual,C,C,1*3c4mop_c,abcdefg,1*4mop_c+1*co2_c,abcdeg+f
+full01,ORNDC,ORNDC,,TRUE,individual,C,C,1*orn_c,abcde,1*co2_c+0.5*ptrc_c+0.5*ptrc_c,a+bcde+edcb
+full01,P5CD,P5CD,,TRUE,individual,C,C,1*1pyr5c_c,abcde,1*glu_DASH_L_c,abcde
+full01,P5CR,P5CR,,TRUE,individual,C,C,1*1pyr5c_c,abcde,1*pro_DASH_L_c,abcde
+full01,PDH,PDH,,TRUE,individual,C,C,1*coa_c+1*pyr_c,ABCDEFGHIJKLMNOPQRSTU+abc,1*accoa_c+1*co2_c,ABCDEFGHIJKLMNOPQRSTUbc+a
+full01,PDH_coaNEG,PDH,,FALSE,individual,C,C,1*pyr_c,abc,1*accoa_c+1*co2_c,bc+a
+full01,PFK,PFK,,TRUE,individual,C,C,1*f6p_c,abcdef,1*fdp_c,abcdef
+full01,PFL,PFL,,TRUE,individual,C,C,1*coa_c+1*pyr_c,ABCDEFGHIJKLMNOPQRSTU+abc,1*accoa_c+1*for_c,ABCDEFGHIJKLMNOPQRSTUbc+a
+full01,PFL_coaNEG,PFL,,FALSE,individual,C,C,1*pyr_c,abc,1*accoa_c+1*for_c,bc+a
+full01,PGI,PGI,,TRUE,individual,C,C,1*g6p_c,abcdef,1*f6p_c,abcdef
+full01,PGI_reverse,PGI_reverse,,TRUE,individual,C,C,1*f6p_c,abcdef,1*g6p_c,abcdef
+full01,PGK,PGK,,TRUE,individual,C,C,1*3pg_c,abc,1*13dpg_c,abc
+full01,PGK_reverse,PGK_reverse,,TRUE,individual,C,C,1*13dpg_c,abc,1*3pg_c,abc
+full01,PGL,PGL,,TRUE,individual,C,C,1*6pgl_c,abcdef,1*6pgc_c,abcdef
+full01,PGM,PGM,,TRUE,individual,C,C,1*2pg_c,abc,1*3pg_c,abc
+full01,PGM_reverse,PGM_reverse,,TRUE,individual,C,C,1*3pg_c,abc,1*2pg_c,abc
+full01,PGMT,PGMT,,TRUE,individual,C,C,1*g1p_c,abcdef,1*g6p_c,abcdef
+full01,PGMT_reverse,PGMT_reverse,,TRUE,individual,C,C,1*g6p_c,abcdef,1*g1p_c,abcdef
+full01,PHETA1,PHETA1,,TRUE,individual,C,C,1*akg_c+1*phe_DASH_L_c,abcde+fghijklmn,1*glu_DASH_L_c+0.5*phpyr_c+0.5*phpyr_c,abcde+fghijklmn+fghinmlkj
+full01,PHETA1_reverse,PHETA1_reverse,,TRUE,individual,C,C,1*glu_DASH_L_c+0.5*phpyr_c+0.5*phpyr_c,abcde+fghijklmn+fghinmlkj,1*akg_c+1*phe_DASH_L_c,abcde+fghijklmn
+full01,POX,POX,,TRUE,individual,C,C,1*pyr_c,abc,1*ac_c+1*co2_c,bc+a
+full01,PPC,PPC,,TRUE,individual,C,C,1*co2_c+1*pep_c,a+bcd,1*oaa_c,bcda
+full01,PPCK,PPCK,,TRUE,individual,C,C,1*oaa_c,abcd,1*co2_c+1*pep_c,d+abc
+full01,PPND,PPND,,TRUE,individual,C,C,1*pphn_c,abcdefghij,0.5*34hpp_c+0.5*34hpp_c+1*co2_c,abcdefghi+abcdihgfe+j
+full01,PPNDH,PPNDH,,TRUE,individual,C,C,1*pphn_c,abcdefghij,1*co2_c+0.5*phpyr_c+0.5*phpyr_c,j+abcdefghi+abcdihgfe
+full01,PPS,PPS,,TRUE,individual,C,C,1*pyr_c,abc,1*pep_c,abc
+full01,PROD2,PROD2,,TRUE,individual,C,C,1*pro_DASH_L_c,abcde,1*1pyr5c_c,abcde
+full01,PRPPS,PRPPS,,TRUE,individual,C,C,1*r5p_c,abcde,1*prpp_c,abcde
+full01,PRPPS_reverse,PRPPS_reverse,,TRUE,individual,C,C,1*prpp_c,abcde,1*r5p_c,abcde
+full01,PSCVT,PSCVT,,TRUE,individual,C,C,1*pep_c+1*skm5p_c,abc+defghij,1*3psme_c,defghijbac
+full01,PSCVT_reverse,PSCVT_reverse,,TRUE,individual,C,C,1*3psme_c,defghijbac,1*pep_c+1*skm5p_c,abc+defghij
+full01,PTAr,PTAr,,TRUE,individual,C,C,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab,1*actp_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU
+full01,PTAr_coaNEG,PTAr,,FALSE,individual,C,C,1*accoa_c,ab,1*actp_c,ab
+full01,PTAr_reverse,PTAr_reverse,,TRUE,individual,C,C,1*actp_c+1*coa_c,ab+ABCDEFGHIJKLMNOPQRSTU,1*accoa_c,ABCDEFGHIJKLMNOPQRSTUab
+full01,PTAr_reverse_coaNEG,PTAr_reverse,,FALSE,individual,C,C,1*actp_c,ab,1*accoa_c,ab
+full01,PYK,PYK,,TRUE,individual,C,C,1*pep_c,abc,1*pyr_c,abc
+full01,PYRt2rpp,PYRt2rpp,,TRUE,individual,C,C,1*pyr_p,abc,1*pyr_c,abc
+full01,PYRtex,PYRtex,,TRUE,individual,C,C,1*pyr_p,abc,1*pyr_e,abc
+full01,PYRt2rpp_reverse,PYRt2rpp_reverse,,TRUE,individual,C,C,1*pyr_c,abc,1*pyr_p,abc
+full01,PYRtex_reverse,PYRtex_reverse,,TRUE,individual,C,C,1*pyr_e,abc,1*pyr_p,abc
+full01,ACONTa,ACONTa,,TRUE,individual,C,C,1*cit_c,abcdef,1*acon_DASH_C_c,abcdef
+full01,ACONTb,ACONTb,,TRUE,individual,C,C,1*acon_DASH_C_c,abcdef,1*icit_c,abcdef
+full01,ACONTa_reverse,ACONTa_reverse,,TRUE,individual,C,C,1*acon_DASH_C_c,abcdef,1*cit_c,abcdef
+full01,ACONTb_reverse,ACONTb_reverse,,TRUE,individual,C,C,1*icit_c,abcdef,1*acon_DASH_C_c,abcdef
+full01,FUM,FUM,,TRUE,individual,C,C,0.5*fum_c+0.5*fum_c,abcd+dcba,1*mal_DASH_L_c,abcd
+full01,FUMtex,FUMtex,,TRUE,individual,C,C,1*fum_e,abcd,1*fum_p,abcd
+full01,FUM_reverse,FUM_reverse,,TRUE,individual,C,C,1*mal_DASH_L_c,abcd,0.5*fum_c+0.5*fum_c,abcd+dcba
+full01,RPE,RPE,,TRUE,individual,C,C,1*ru5p_DASH_D_c,abcde,1*xu5p_DASH_D_c,abcde
+full01,RPE_reverse,RPE_reverse,,TRUE,individual,C,C,1*xu5p_DASH_D_c,abcde,1*ru5p_DASH_D_c,abcde
+full01,RPI,RPI,,TRUE,individual,C,C,1*r5p_c,abcde,1*ru5p_DASH_D_c,abcde
+full01,RPI_reverse,RPI_reverse,,TRUE,individual,C,C,1*ru5p_DASH_D_c,abcde,1*r5p_c,abcde
+full01,SDPDS,SDPDS,,TRUE,individual,C,C,1*sl26da_c,abcdefghijk,0.5*26dap_DASH_LL_c+0.5*26dap_DASH_LL_c+0.5*succ_c+0.5*succ_c,abcdefg+gfedcba+hijk+kjih
+full01,SDPTA,SDPTA,,TRUE,individual,C,C,1*akg_c+1*sl26da_c,abcde+fghijklmnop,1*glu_DASH_L_c+1*sl2a6o_c,abcde+fghijklmnop
+full01,SDPTA_reverse,SDPTA_reverse,,TRUE,individual,C,C,1*glu_DASH_L_c+1*sl2a6o_c,abcde+fghijklmnop,1*akg_c+1*sl26da_c,abcde+fghijklmnop
+full01,SERAT,SERAT,,TRUE,individual,C,C,1*accoa_c+1*ser_DASH_L_c,ABCDEFGHIJKLMNOPQRSTUab+cde,1*acser_c+1*coa_c,cdeab+ABCDEFGHIJKLMNOPQRSTU
+full01,SERAT_coaNEG,SERAT,,FALSE,individual,C,C,1*accoa_c+1*ser_DASH_L_c,ab+cde,1*acser_c,cdeab
+full01,SERAT_reverse,SERAT_reverse,,TRUE,individual,C,C,1*acser_c+1*coa_c,cdeab+ABCDEFGHIJKLMNOPQRSTU,1*accoa_c+1*ser_DASH_L_c,ABCDEFGHIJKLMNOPQRSTUab+cde
+full01,SERAT_reverse_coaNEG,SERAT_reverse,,FALSE,individual,C,C,1*acser_c,cdeab,1*accoa_c+1*ser_DASH_L_c,ab+cde
+full01,SERD_L,SERD_L,,TRUE,individual,C,C,1*ser_DASH_L_c,abc,1*pyr_c,abc
+full01,SHK3Dr,SHK3Dr,,TRUE,individual,C,C,1*3dhsk_c,abcdefg,1*skm_c,abcdefg
+full01,SHK3Dr_reverse,SHK3Dr_reverse,,TRUE,individual,C,C,1*skm_c,abcdefg,1*3dhsk_c,abcdefg
+full01,SHKK,SHKK,,TRUE,individual,C,C,1*skm_c,abcdefg,1*skm5p_c,abcdefg
+full01,SSALx,SSALx,,TRUE,individual,C,C,1*sucsal_c,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,SSALy,SSALy,,TRUE,individual,C,C,1*sucsal_c,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,SUCASPtpp,SUCASPtpp,,TRUE,individual,C,C,1*succ_c+1*asp_DASH_L_p,abcd+efgh,0.5*succ_p+0.5*succ_p+1*asp_DASH_L_c,abcd+abcd+efgh
+full01,SUCDi,SUCDi,,TRUE,individual,C,C,1*succ_c,abcd,0.5*fum_c+0.5*fum_c,abcd+dcba
+full01,SUCCt2_2pp,SUCCt2_2pp,,TRUE,individual,C,C,1*succ_p,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,SUCCt2_3pp,SUCCt2_3pp,,TRUE,individual,C,C,1*succ_p,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,SUCCt3pp,SUCCt3pp,,TRUE,individual,C,C,1*succ_c,abcd,0.5*succ_p+0.5*succ_p,abcd+dcba
+full01,SUCCtex,SUCCtex,,TRUE,individual,C,C,1*succ_e,abcd,1*succ_p,abcd
+full01,SUCFUMtpp,SUCFUMtpp,,TRUE,individual,C,C,1*fum_p+1*succ_c,abcd+efgh,0.5*fum_c+0.5*fum_c+0.5*succ_p+0.5*succ_p,abcd+dcba+efgh+hgfe
+full01,SUCCtex_reverse,SUCCtex_reverse,,TRUE,individual,C,C,1*succ_p,abcd,1*succ_e,abcd
+full01,SUCFUMtpp_reverse,SUCFUMtpp_reverse,,TRUE,individual,C,C,1*fum_c+1*succ_p,abcd+efgh,0.5*fum_p+0.5*fum_p+0.5*succ_c+0.5*succ_c,abcd+dcba+efgh+hgfe
+full01,SUCOAS,SUCOAS,,TRUE,individual,C,C,1*coa_c+0.5*succ_c+0.5*succ_c,ABCDEFGHIJKLMNOPQRSTU+abcd+dcba,1*succoa_c,ABCDEFGHIJKLMNOPQRSTUabcd
+full01,SUCOAS_coaNEG,SUCOAS,,FALSE,individual,C,C,0.5*succ_c+0.5*succ_c,abcd+dcba,1*succoa_c,abcd
+full01,SUCOAS_reverse,SUCOAS_reverse,,TRUE,individual,C,C,1*succoa_c,ABCDEFGHIJKLMNOPQRSTUabcd,1*coa_c+0.5*succ_c+0.5*succ_c,ABCDEFGHIJKLMNOPQRSTU+abcd+dcba
+full01,SUCOAS_reverse_coaNEG,SUCOAS_reverse,,FALSE,individual,C,C,1*succoa_c,abcd,0.5*succ_c+0.5*succ_c,abcd+dcba
+full01,TALA,TALA,,TRUE,individual,C,C,1*g3p_c+1*s7p_c,abc+defghij,1*e4p_c+1*f6p_c,ghij+defabc
+full01,TALA_reverse,TALA_reverse,,TRUE,individual,C,C,1*e4p_c+1*f6p_c,ghij+defabc,1*g3p_c+1*s7p_c,abc+defghij
+full01,AKGDH,AKGDH,,TRUE,individual,C,C,1*akg_c+1*coa_c,abcde+ABCDEFGHIJKLMNOPQRSTU,1*co2_c+1*succoa_c,a+ABCDEFGHIJKLMNOPQRSTUbcde
+full01,AKGDH_coaNEG,AKGDH,,FALSE,individual,C,C,1*akg_c,abcde,1*co2_c+1*succoa_c,a+bcde
+full01,ADCL,ADCL,,TRUE,added THFSYN,C,C,1*4adcho_c,abcdefghij,1*pyr_c+1*4abz_c,ihj+abcdefg
+full01,ADCS,ADCS,,TRUE,added THFSYN,C,C,1*chor_c+1*gln_DASH_L_c,abcdefghij+klmno,1*glu_DASH_L_c+1*4adcho_c,klmno+abcdefghij
+full01,DHFR,DHFR,,TRUE,added THFSYN,C,C,,,,
+full01,DHFR_reverse,DHFR_reverse,,TRUE,added THFSYN,C,C,,,,
+full01,DHFS,DHFS,,TRUE,added THFSYN,C,C,1*dhpt_c+1*glu_DASH_L_c,abcdefghijklmn+opqrs,1*dhf_c,abcdefghijklmnopqrs
+full01,DHNPA2r,DHNPA2r,,TRUE,added THFSYN,C,C,1*dhnpt_c,abcdefghi,1*6hmhpt_c+1*gcald_c,abcfghi+de
+full01,DHPS2,DHPS2,,TRUE,added THFSYN,C,C,1*6hmhptpp_c+1*4abz_c,abcdefg+hijklmn,1*dhpt_c,abcdefghijklmn
+full01,DNMPPA,DNMPPA,,TRUE,added THFSYN,C,C,1*dhpmp_c,abcdefghi,1*dhnpt_c,abcdefghi
+full01,DNTPPA,DNTPPA,,TRUE,added THFSYN,C,C,1*ahdt_c,abcdefghi,1*dhpmp_c,abcdefghi
+full01,GCALDD,GCALDD,,TRUE,added THFSYN,C,C,1*gcald_c,ab,1*glyclt_c,ab
+full01,GTPCI,GTPCI,,TRUE,added THFSYN,C,C,1*gtp_c,abcdefghij,1*for_c+1*ahdt_c,j+abcdefghi
+full01,HPPK2,HPPK2,,TRUE,added THFSYN,C,C,1*6hmhpt_c,abcdefg,1*6hmhptpp_c,abcdefg
+full01,THFSYN,THFSYN,"[GTPCI,DNTPPA,DNMPPA,DHNPA2r,HPPK2,ADCS,ADCL,DHPS2,DHFS]",TRUE,combo,C,C,1*gln_DASH_L_c+1*gtp_c+1*chor_c,abcde+qrstu6789f+ghijklmnop,1*for_c+1*gcald_c+1*pyr_c,f+tu+onp
+full01,THFSYN_Test,THFSYN_Test,"[GTPCI,DNTPPA,DNMPPA,DHNPA2r,HPPK2,ADCS,ADCL,DHPS2,DHFS]",TRUE,combo,C,C,1*glu_DASH_L_c+1*gtp_c+1*chor_c+1*gln_DASH_L_c,abcde+qrstu6789f+ghijklmnop+ABCDE,1*for_c+1*gcald_c+1*pyr_c+1*glu_DASH_L_c,f+tu+onp+ABCDE
+full01,THRAi,THRAi,,TRUE,individual,C,C,1*thr_DASH_L_c,abcd,1*acald_c+1*gly_c,cd+ab
+full01,THRA2i,THRA2i,,TRUE,individual,C,C,1*acald_c+1*gly_c,cd+ab,1*thr_DASH_L_c,abcd
+full01,THRD_L,THRD_L,,TRUE,individual,C,C,1*thr_DASH_L_c,abcd,1*2obut_c,abcd
+full01,TKT1,TKT1,,TRUE,individual,C,C,1*r5p_c+1*xu5p_DASH_D_c,abcde+fghij,1*g3p_c+1*s7p_c,hij+fgabcde
+full01,TKT1_reverse,TKT1_reverse,,TRUE,individual,C,C,1*g3p_c+1*s7p_c,hij+fgabcde,1*r5p_c+1*xu5p_DASH_D_c,abcde+fghij
+full01,TKT2,TKT2,,TRUE,individual,C,C,1*e4p_c+1*xu5p_DASH_D_c,abcd+efghi,1*f6p_c+1*g3p_c,efabcd+ghi
+full01,TKT2_reverse,TKT2_reverse,,TRUE,individual,C,C,1*f6p_c+1*g3p_c,efabcd+ghi,1*e4p_c+1*xu5p_DASH_D_c,abcd+efghi
+full01,TPI,TPI,,TRUE,individual,C,C,1*dhap_c,abc,1*g3p_c,cba
+full01,TPI_reverse,TPI_reverse,,TRUE,individual,C,C,1*g3p_c,cba,1*dhap_c,abc
+full01,TRPAS2,TRPAS2,,TRUE,individual,C,C,1*trp_DASH_L_c,abcdefghijk,1*indole_c+1*pyr_c,kdefghij+abc
+full01,TRPAS2_reverse,TRPAS2_reverse,,TRUE,individual,C,C,1*indole_c+1*pyr_c,kdefghij+abc,1*trp_DASH_L_c,abcdefghijk
+full01,TRPS1,TRPS1,,TRUE,individual,C,C,1*3ig3p_c+1*ser_DASH_L_c,abcdefghijk+lmn,1*g3p_c+1*trp_DASH_L_c,cba+lmndefghijk
+full01,TRPS2,TRPS2,,TRUE,individual,C,C,1*indole_c+1*ser_DASH_L_c,abcdefgh+ijk,1*trp_DASH_L_c,ijkbcdefgha
+full01,TRPS3,TRPS3,,TRUE,individual,C,C,1*3ig3p_c,abcdefghijk,1*g3p_c+1*indole_c,cba+kdefghij
+full01,TRSARr,TRSARr,,TRUE,individual,C,C,1*2h3oppan_c,abc,1*glyc_DASH_R_c,abc
+full01,TYRTA,TYRTA,,TRUE,individual,C,C,1*akg_c+1*tyr_DASH_L_c,abcde+fghijklmn,0.5*34hpp_c+0.5*34hpp_c+1*glu_DASH_L_c,fghijklmn+fghinmlkj+abcde
+full01,TYRTA_reverse,TYRTA_reverse,,TRUE,individual,C,C,0.5*34hpp_c+0.5*34hpp_c+1*glu_DASH_L_c,fghijklmn+fghinmlkj+abcde,1*akg_c+1*tyr_DASH_L_c,abcde+fghijklmn
+full01,UMPK_Abbreviated,UMPK,,FALSE,modified,C,C,1*atp_c+1*ump_c,abcdefghij+klmnopqrs,1*adp_c+1*udp_c,abcdefghij+klmnopqrs
+full01,UMPK,UMPK,,TRUE,modified,C,C,1*atp_c+1*ump_c,abcdefghij+klmnopqrs,1*adp_c+1*udp_c,abcdefghij+klmnopqrs
+full01,ASPCT,ASPCT,,TRUE,added UMPSYN_aerobic,C,C,1*cbp_c+1*asp_DASH_L_c,a+bcde,1*cbasp_c,cdeab
+full01,DHORD2,DHORD2,,TRUE,added UMPSYN_aerobic,C,C,1*dhorS_c,abcde,1*orot_c,abcde
+full01,DHORTS,DHORTS,,TRUE,added UMPSYN_aerobic,C,C,1*cbasp_c,abcde,1*dhorS_c,abcde
+full01,OMPDC,OMPDC,,TRUE,added UMPSYN_aerobic,C,C,1*orot5p_c,abcdefghij,1*ump_c+1*co2_c,abcdefghi+j
+full01,ORPT,ORPT,,TRUE,added UMPSYN_aerobic,C,C,1*orot_c+1*prpp_c,abcde+fghijfghijabcde,1*orot5p_c,
+full01,UMPSYN_aerobic,UMPSYN_aerobic,"[ASPCT,DHORTS,DHORD2,ORPT,OMPDC]",TRUE,combo,C,C,1*cbp_c+1*prpp_c+1*asp_DASH_L_c,a+bcdef+ghij,1*ump_c+1*co2_c+,bcdefahij+g
+full01,ASPCT,ASPCT,,TRUE,added UMPSYN_anaerobic,C,C,1*cbp_c+1*asp_DASH_L_c,a+bcde,1*cbasp_c,cdeab
+full01,DHORD5,DHORD5,,TRUE,added UMPSYN_anaerobic,C,C,1*dhorS_c,abcde,1*orot_c,abcde
+full01,DHORTS,DHORTS,,TRUE,added UMPSYN_anaerobic,C,C,1*cbasp_c,abcde,1*dhorS_c,abcde
+full01,OMPDC,OMPDC,,TRUE,added UMPSYN_anaerobic,C,C,1*orot5p_c,abcdefghij,1*ump_c+1*co2_c,abcdefghi+j
+full01,ORPT,ORPT,,TRUE,added UMPSYN_anaerobic,C,C,1*orot_c+1*prpp_c,abcde+fghijfghijabcde,1*orot5p_c,
+full01,UMPSYN_anaerobic,UMPSYN_anaerobic,"[ASPCT,DHORTS,DHORD5,ORPT,OMPDC]",TRUE,combo,C,C,1*cbp_c+1*prpp_c+1*asp_DASH_L_c,a+bcdef+ghij,1*ump_c+1*co2_c+,bcdefahij+g
+full01,VALTA,VALTA,,TRUE,individual,C,C,1*akg_c+1*val_DASH_L_c,abcde+fghij,1*3mob_c+1*glu_DASH_L_c,fghij+abcde
+full01,VALTA_reverse,VALTA_reverse,,TRUE,individual,C,C,1*3mob_c+1*glu_DASH_L_c,fghij+abcde,1*akg_c+1*val_DASH_L_c,abcde+fghij
+full01,Htex,Htex,,TRUE,individual,C,C,,,,
