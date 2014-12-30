@@ -15,7 +15,7 @@ from sqlalchemy.schema import CreateTable, DropTable
 import json
 #import simplejson
 
-import metabolomics_settings as settings
+import sbaas_settings as settings
 
 Base = declarative_base()
 
@@ -31,9 +31,9 @@ def make_table(table_name):
 
 
 class _Session(_SA_Session):
-    """an sqlalchemy session object to interact with the OME database
+    """an sqlalchemy session object to interact with the SBaaS database
 
-    This object can used to make queries against the ome database. For
+    This object can used to make queries against the SBaaS database. For
     example, a query without using any ORM looks like this
     >>> session = Session()
     >>> session.execute("SELECT name from genes where bnum='b0001'").fetchone()
@@ -73,15 +73,6 @@ def get_or_create(session, class_type, **kwargs):
         session.add(result)
         session.commit()
     return result
-
-
-#def reload_tables(module_name=None):
-#    if module_name == 'experimental':
-#        system("%s < %sdatabase/schemas/ome_experimental_data.sql > psql.log 2>&1" % (settings.psql_full, settings.trn_directory))
-#        import pymongo
-#        connection = pymongo.Connection()
-#        genome_data = connection.genome_database.genome_data
-#        genome_data.drop()
 
 Session = sessionmaker(bind=engine, class_=_Session)
 

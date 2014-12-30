@@ -485,7 +485,13 @@ class sample(Base):
     #JSON representation
 #sample_storage
 class sample_storage(Base):
-    __table__ = make_table('sample_storage')
+    #__table__ = make_table('sample_storage')
+    __tablename__ = 'sample_storage'
+    sample_id=Column(String(500),nullable=False, primary_key=True)
+    sample_label=Column(String(50))
+    ph=Column(Float)
+    box=Column(Integer)
+    pos=Column(Integer)
 
     def __init__(self,sample_id_I,sample_label_I,ph_I,box_I,pos_I):
         self.sample_id = sample_id_I

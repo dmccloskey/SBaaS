@@ -3,7 +3,7 @@ from stage01_ale_query import *
 from stage01_ale_io import *
 
 class stage01_ale_execute():
-    '''class for physiological analysis analysis'''
+    '''class for ale analysis'''
     def __init__(self):
         self.session = Session();
         self.stage01_ale_query = stage01_ale_query();
@@ -42,6 +42,11 @@ class stage01_ale_execute():
                         True, None);
                 self.session.add(row);
         self.session.commit();
+    #internal:
+    def find_jumps(self,x_fit_I,y_fit_I):
+        '''Determine jumps based on changes in the growth trajectory
+        TODO:'''
+        return;
     #table initializations:
     def drop_dataStage01(self):
         try:

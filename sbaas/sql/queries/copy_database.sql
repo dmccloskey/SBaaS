@@ -1,1 +1,0 @@
-﻿CREATE DATABASE metabolomics_141226 WITH TEMPLATE metabolomics OWNER postgres;

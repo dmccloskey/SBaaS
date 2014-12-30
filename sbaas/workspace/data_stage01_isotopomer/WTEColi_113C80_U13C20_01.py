@@ -169,7 +169,8 @@ def data_stage02():
     irm.add_balanceProducts('frdp_c');irm.update_reactionMapping();irm.clear_reactionMapping();
     irm.get_reactionMapping('full04','VITB6');irm.add_balanceProducts('e4p_c',unbalanced_met_positions_tracked_I=[1,2,3]);irm.add_balanceProducts('dxyl5p_c');irm.update_reactionMapping();irm.clear_reactionMapping();
     irm.get_reactionMapping('full04','MOLYBDOPTERIN_1');irm.add_balanceProducts('gtp_c');irm.update_reactionMapping();irm.clear_reactionMapping();
-    irm.get_reactionMapping('full04','MOLYBDOPTERIN_1');irm.add_balanceProducts('gtp_c');irm.add_balanceProducts('ctp_c');irm.update_reactionMapping();irm.clear_reactionMapping();
+    irm.get_reactionMapping('full04','MOLYBDOPTERIN_2');irm.add_balanceProducts('gtp_c');irm.add_balanceProducts('ctp_c');irm.update_reactionMapping();irm.clear_reactionMapping();
+    irm.get_reactionMapping('full04','KAS15');irm.add_balanceProducts('malACP_c',unbalanced_met_positions_tracked_I=[0,1]);irm.update_reactionMapping();irm.clear_reactionMapping();
 
     '''import iJS2012'''
     #data_io.import_dataStage02IsotopomerModelAndAtomMappingReactions_mat(model_id_I='iJS2012',mapping_id_I='iJS2012_01', date_I='120101', model_mat_I='data\iJS2012_centralMets.mat',model_mat_name_I='iJS2012');

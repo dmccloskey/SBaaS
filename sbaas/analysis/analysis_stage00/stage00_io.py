@@ -522,10 +522,10 @@ class stage00_io(base_analysis):
                                         'internal_standard_id':d['is_id']});
         # add data to the database:
         self.update_sampleDescription(sampleDescription_data);
-        #self.update_samplePhysiologicalParameters(samplePhysiologicalParameters_data); #todo
-        #self.update_sampleStorage(sampleStorage_data); #todo
+        self.update_samplePhysiologicalParameters(samplePhysiologicalParameters_data);
+        self.update_sampleStorage(sampleStorage_data);
         self.update_sample(sample_data);
-        #self.update_experiment(experiment_data); #todo
+        self.update_experiment(experiment_data);
         # deallocate memory
         data.clear_data();
 
@@ -989,3 +989,74 @@ class stage00_io(base_analysis):
         # write acquisition method to file
         export = base_exportData(data);
         export.write_dict2csv(filename);
+
+    def update_samplePhysiologicalParameters(self,data_I):
+        '''update rows of sample_physiologicalparameters'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(sample_physiologicalparameters).filter(
+                           sample_physiologicalparameters.sample_id==d['sample_id']).update(
+                            {
+                            'growth_condition_short':d['growth_condition_short'],
+                            'growth_condition_long':d['growth_condition_long'],
+                            'media_short':d['media_short'],
+                            'media_long':d['media_long'],
+                            'isoxic':d['isoxic'],
+                            'temperature':d['temperature'],
+                            'supplementation':d['supplementation'],
+                            'od600':d['od600'],
+                            'vcd':d['vcd'],
+                            'culture_density':d['culture_density'],
+                            'culture_volume_sampled':d['culture_volume_sampled'],
+                            'cells':d['cells'],
+                            'dcw':d['dcw'],
+                            'wcw':d['wcw'],
+                            'vcd_units':d['vcd_units'],
+                            'culture_density_units':d['culture_density_units'],
+                            'culture_volume_sampled_units':d['culture_volume_sampled_units'],
+                            'dcw_units':d['dcw_units'],
+                            'wcw_units':d['wcw_units']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def update_sampleStorage(self,data_I):
+        '''update rows of sample_storage'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(sample_storage).filter(
+                           sample_storage.sample_id==d['sample_id']).update(
+                            {
+                            'sample_label':d['sample_label'],
+                            'ph':d['ph'],
+                            'box':d['box'],
+                            'pos':d['pos']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def update_experiment(self,data_I):
+        '''update rows of experiment'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(experiment).filter(
+                           experiment.sample_name==d['sample_name'],
+                           experiment.id==d['id']).update(
+                            {#'wid ':d['wid '],
+                            'exp_type_id':d['exp_type_id'],
+                            #'id':d['id'],
+                            #'sample_name':d['sample_name'],
+                            'experimentor_id':d['experimentor_id'],
+                            'extraction_method_id':d['extraction_method_id'],
+                            'acquisition_method_id':d['acquisition_method_id'],
+                            'quantitation_method_id':d['quantitation_method_id'],
+                            'internal_standard_id':d['internal_standard_id']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();

@@ -4228,11 +4228,11 @@ class stage02_isotopomer_reactionMapping():
                 self.reactionMapping['products_positions_tracked'][cnt]=met_data['met_atompositions'];
     def add_balanceProducts(self,unbalanced_met_I,unbalanced_met_position_I=None,unbalanced_met_positions_tracked_I=[]):
         '''Add psuedo metabolites to the product in order to elementally balance the tracked reaction'''
-        balance_met = self.reactionMapping['rxn_id'] + '_' + unbalanced_met_I + '.balance';
         # find the position of the tracked metabolite
         if self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I):
             if unbalanced_met_position_I: unbalanced_met_pos = unbalanced_met_position_I;
             else: unbalanced_met_pos = self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I);
+            balance_met = self.reactionMapping['rxn_id'] + '_' + unbalanced_met_I + '_' + str(unbalanced_met_pos) + '.balance';
             # extract out mapping, positions, and elements
             reactant_mapping = self.reactionMapping['reactants_metaboliteMappings'][unbalanced_met_pos].convert_stringMapping2ArrayMapping();
             reactant_positions_tracked = self.reactionMapping['reactants_positions_tracked'][unbalanced_met_pos];

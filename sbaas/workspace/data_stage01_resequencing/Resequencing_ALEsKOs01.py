@@ -113,9 +113,9 @@ def data_stage00():
 
 def data_stage01():
 
-    ma = stage01_resequencing_execute();
-    #ma.drop_dataStage01();
-    ma.initialize_dataStage01();
+    execute01 = stage01_resequencing_execute();
+    #execute01.drop_dataStage01();
+    execute01.initialize_dataStage01();
 
     '''data import'''
     io = stage01_resequencing_io();
@@ -138,14 +138,14 @@ def data_stage01():
     #io.import_dataStage01ResequencingLineage_update('data\\_input\\140823_Resequencing_ALEsKOs01_lineage_update01.csv');
 
     '''data analysis'''
-    #ma.reset_dataStage01_filtered('ALEsKOs01');
-    #ma.execute_filterMutations_population('ALEsKOs01');
-    #ma.reset_dataStage01_lineage('ALEsKOs01')
-    #ma.execute_analyzeLineage_population('ALEsKOs01',
+    #execute01.reset_dataStage01_filtered('ALEsKOs01');
+    #execute01.execute_filterMutations_population('ALEsKOs01');
+    #execute01.reset_dataStage01_lineage('ALEsKOs01')
+    #execute01.execute_analyzeLineage_population('ALEsKOs01',
     #                                     strain_lineages());
-    #ma.execute_annotateMutations_lineage('ALEsKOs01');
-    #ma.reset_dataStage01_endpoints('ALEsKOs01')
-    #ma.execute_analyzeEndpointReplicates_population('ALEsKOs01',
+    #execute01.execute_annotateMutations_lineage('ALEsKOs01');
+    #execute01.reset_dataStage01_endpoints('ALEsKOs01')
+    #execute01.execute_analyzeEndpointReplicates_population('ALEsKOs01',
     #                                     {"evo04pgi":["140807_11_OxicEvo04pgiEvo01EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04pgiEvo02EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04pgiEvo03EPEcoliGlcM9_Broth-1",
     #                                                  "140807_11_OxicEvo04pgiEvo04EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04pgiEvo05EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04pgiEvo06EPEcoliGlcM9_Broth-1",
     #                                                  "140807_11_OxicEvo04pgiEvo07EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04pgiEvo08EPEcoliGlcM9_Broth-1"],
@@ -158,8 +158,8 @@ def data_stage01():
     #                                                "140807_11_OxicEvo04gndEvo03EPEcoliGlcM9_Broth-1"],
     #                                    "evo04sdh":["140807_11_OxicEvo04sdhCBEvo01EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04sdhCBEvo02EPEcoliGlcM9_Broth-1",
     #                                                "140807_11_OxicEvo04sdhCBEvo03EPEcoliGlcM9_Broth-1"]});
-    #ma.execute_annotateMutations_endpoints('ALEsKOs01');
-    #ma.execute_annotateFilteredMutations('ALEsKOs01');
+    #execute01.execute_annotateMutations_endpoints('ALEsKOs01');
+    #execute01.execute_annotateFilteredMutations('ALEsKOs01');
 
     '''data export'''
     mutation_id_base = ['MOB_insA-/-uspC_1977510',

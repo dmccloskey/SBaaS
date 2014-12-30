@@ -58,7 +58,6 @@
     <Compile Include="analysis\analysis_stage02_isotopomer\iterations.py" />
     <Compile Include="analysis\analysis_stage02_isotopomer\reduce_model.py" />
     <Compile Include="analysis\analysis_stage02_isotopomer\sampling.py" />
-    <Compile Include="analysis\analysis_stage02_isotopomer\stage02_isotopomer_dependencies_v1.py" />
     <Compile Include="analysis\analysis_stage02_isotopomer\stage02_isotopomer_dependencies.py" />
     <Compile Include="analysis\analysis_stage02_isotopomer\stage02_isotopomer_execute.py" />
     <Compile Include="analysis\analysis_stage02_isotopomer\stage02_isotopomer_io.py" />
@@ -86,7 +85,7 @@
     <Compile Include="models\models_stage01_quantification.py" />
     <Compile Include="models\models_base.py" />
     <Compile Include="models\models_stage00.py" />
-    <Compile Include="models\metabolomics_settings.py" />
+    <Compile Include="models\sbaas_settings.py" />
     <Compile Include="models\models_stage01_resequencing.py" />
     <Compile Include="models\models_stage01_ale.py">
       <SubType>Code</SubType>
@@ -118,11 +117,21 @@
     <Compile Include="resources\r.py" />
     <Compile Include="resources\__init__.py" />
     <Compile Include="sbaas.py" />
-    <Compile Include="sql\views\viewsImplementation.py" />
+    <Compile Include="tests\analysis_ale.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tests\analysis_physiology.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tests\analysis_resequencing.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tests\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="visualization\appdirs.py" />
     <Compile Include="resources\heatmap.py" />
     <Compile Include="visualization\server.py" />
-    <Compile Include="visualization\simpleServer.py" />
     <Compile Include="visualization\urls.py" />
     <Compile Include="visualization\version.py" />
     <Compile Include="visualization\visualization.py" />
@@ -201,10 +210,9 @@
     <Folder Include="data" />
     <Folder Include="models" />
     <Folder Include="analysis\" />
+    <Folder Include="tests\" />
     <Folder Include="visualization\" />
     <Folder Include="resources\" />
-    <Folder Include="sql\queries\" />
-    <Folder Include="sql\views\" />
     <Folder Include="visualization\css\" />
     <Folder Include="visualization\data\" />
     <Folder Include="visualization\data\ALEsKOs01\ale\" />
@@ -255,10 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="analysis\analysis_stage04\analysis_stage04.txt" />
-    <Content Include="sql\views\acquisition_method.sql" />
-    <Content Include="sql\_initialize_metabolomics.sql" />
-    <Content Include="sql\views\calibrator_mix_storage.sql" />
-    <Content Include="sql\views\QC_lloq_uloq.sql" />
     <Content Include="visualization\css\barchart.css" />
     <Content Include="visualization\css\boxandwhiskers.css" />
     <Content Include="visualization\css\heatmap_expression.css" />
