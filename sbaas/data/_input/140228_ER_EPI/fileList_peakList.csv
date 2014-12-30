@@ -1,5 +1,0 @@
-experiment_id,sample_name,filename,met_id,scan_type,precursor_formula
-WTEColi12C01,140221_0_OxicWTEcoliGlcM9_ERQC-3-10x,3_fdp_339_ER.txt,fdp,ER,C6H13O12P2-
-WTEColi12C01,140221_0_OxicWTEcoliGlcM9_ERQC-1-10x,1_ser-L_104_ER.txt,ser-L,ER,C3H6NO3-
-WTEColi12C01,140221_0_OxicWTEcoliGlcM9_ERQC-2-10x,2_ser-L_104_ER.txt,ser-L,ER,C3H6NO3-
-WTEColi12C01,140221_0_OxicWTEcoliGlcM9_ERQC-3-10x,3_ser-L_104_ER.txt,ser-L,ER,C3H6NO3-

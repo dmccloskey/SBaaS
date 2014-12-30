@@ -1,6 +1,0 @@
-rxn_id_INCA,rxn_equation_INCA,lower_bound,upper_bound,used_,comment_,subsystem,objective_coefficient,gpr,genes,flux_units,fixed,free,weight,reversibility
-EX_lac_DASH_D_LPAREN_e_RPAREN_,lac_DASH_D_e (abc) --> ,0,0,TRUE,add in to iDM2014 from iJO1366 and remove 'EX_lac_DASH_L_LPAREN_e_RPAREN_',"""""",0,"""""",{},mmol*gDW-1*hr-1,,,,FALSE
-D_DASH_LACt2pp,h_p + lac_DASH_D_p (abc) -> lac_DASH_D_c (abc) + h_c,0,1000,TRUE,add in to iDM2014,"Transport, Inner Membrane",0,(b3603 or b2975),"{b2975,b3603}",mmol*gDW-1*hr-1,,,,FALSE
-D_DASH_LACt2pp_reverse,lac_DASH_D_c (abc) + h_c -> h_p + lac_DASH_D_p (abc),0,1000,TRUE,add in to iDM2014,"Transport, Inner Membrane",0,(b3603 or b2975),"{b2975,b3603}",mmol*gDW-1*hr-1,,,,FALSE
-D_DASH_LACtex,lac_DASH_D_e (abc) -> lac_DASH_D_p (abc),0,1000,TRUE,add in to iDM2014,"Transport, Outer Membrane Porin",0,(b0241 or b0929 or b1377 or b2215),"{b2215,b0929,b1377,b0241}",mmol*gDW-1*hr-1,,,,FALSE
-D_DASH_LACtex_reverse,lac_DASH_D_p (abc) -> lac_DASH_D_e (abc),0,1000,TRUE,add in to iDM2014,"Transport, Outer Membrane Porin",0,(b0241 or b0929 or b1377 or b2215),"{b2215,b0929,b1377,b0241}",mmol*gDW-1*hr-1,,,,FALSE

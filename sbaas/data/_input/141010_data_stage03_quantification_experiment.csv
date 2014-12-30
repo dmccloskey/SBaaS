@@ -1,6 +1,0 @@
-id,experiment_id,model_id,sample_name_abbreviation,time_point,used_,comment_
-1,rpomut02,iJO1366,OxicRph-pyrE82,0,TRUE,
-2,rpomut02,iJO1366,OxicRpoBE546V,0,TRUE,
-3,rpomut02,iJO1366,OxicRpoBE672K,0,TRUE,
-4,rpomut02,iJO1366,OxicRpoBE672K-rph-pyrE82,0,TRUE,
-5,rpomut02,iJO1366,OxicWtGlc,0,TRUE,

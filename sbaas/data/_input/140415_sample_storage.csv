@@ -1,9 +1,0 @@
-sample_id,sample_label,ph,box,pos
-140221_0_OxicWTEcoliGlcM9_Broth-7,WT12C01,7,8,45
-140221_0_OxicWTEcoliGlcM9_Broth-8,WT12C02,7,8,46
-140221_0_OxicWTEcoliGlcM9_Broth-9,WT12C03,7,8,47
-140221_0_OxicWTEcoliGlcM9_Broth-10,WT12C01,7,8,45
-140221_0_OxicWTEcoliGlcM9_Broth-11,WT12C02,7,8,46
-140221_0_OxicWTEcoliGlcM9_Broth-12,WT12C03,7,8,47
-140415_Null_OxicWTEcoliGlcM9_Broth-9,Blank,7,,
-140415_Null_OxicWTEcoliGlcM9_Broth-12,Blank,7,,

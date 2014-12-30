@@ -1,8 +1,0 @@
-met_id,met_name,formula,hmdb,solubility,solubility_units,mass,cas_number,keggid,structure_file,structure_file_extention
-skm,Shikimate,C7H10O5,,,,,138-59-0,C00493,,
-chor,chorismate,C10H10O6,,,,,55508-12-8,C00251,,
-THF-2-ol,2-hydroxytetrahydrofuran,C4H8O2,,,,88.11,,,,
-cbp,Carbamoyl phosphate,CH4NO5P,http://hmdb.ca/metabolites/HMDB01096,,,140.982712,,C00169,,
-2mcit,2-Methylcitrate,C7H10O7,,,,,96-17-3,C02225,,
-4hdxbutn,4-Hydroxybutanoate,C4H8O3,,,,104.0473,591-81-1,C00989,,
-udpglcur,UDP-D-glucuronate,C15H22N2O18P2,,,,,,C00167,,

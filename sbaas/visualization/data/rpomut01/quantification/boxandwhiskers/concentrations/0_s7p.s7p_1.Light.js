@@ -1,1 +1,0 @@
-var data = {"labels": ["OxicRpoCGlc [mM]"], "data": [{"replicate": 0, "value": 0.0311066210227004, "condition": 0}, {"replicate": 1, "value": 0.0122540620644999, "condition": 0}, {"replicate": 2, "value": 0.0206574360488003, "condition": 0}], "options": {"row_axis_label": "concentration", "col_axis_label": "sample", "value_label": "mM"}}

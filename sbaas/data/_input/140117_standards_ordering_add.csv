@@ -1,9 +1,0 @@
-met_id,met_name,hillcrest,provider,provider_reference,price,amount,amount_units,purity,mw,notes,powderdate_received,powderdate_opened,order_standard,standards_storage,purchase
-skm,Shikimate,,Sigma-Aldrich,S5375,18.7,10,mg,0.99,174.15,,,,,,TRUE
-chor,chorismate,,Sigma-Aldrich,C1761,156.5,5,mg,0.8,226.18,,,,,,TRUE
-THF-2-ol,2-hydroxytetrahydrofuran,,Sigma-Aldrich,CDS007077,50.4,10,mg,0.98,88.11,,,,,,TRUE
-2mcit,2-Methylcitrate,TRUE,Hill Crest,Hill Crest,,,,,,,,,,,FALSE
-4hdxbutn,4-Hydroxybutanoate,TRUE,Hill Crest,Hill Crest,,,,,,,,,,,FALSE
-udpg,UDPglucose,,Sigma-Aldrich,U4625,610.27,10,mg,0.98,21.2,,,,,,TRUE
-udpgal,UDPgalactose,,Sigma-Aldrich,U4500,610.27,10,mg,0.97,98.1,Backordered,,,,,FALSE
-udpglcur,UDP-D-glucuronate,,Sigma-Aldrich,U6751,646.23,25,mg,0.98,64.8,,,,,,TRUE
