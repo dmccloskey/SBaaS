@@ -306,3 +306,8 @@ def data_stage02():
     '''data export'''
     qio02.export_samplingAnalysis_escher('ALEsKOs01',
                                          model_ids_dict_I=ex02.models);
+
+def _main_():
+    data_stage00();
+    data_stage01();
+    #data_stage02();

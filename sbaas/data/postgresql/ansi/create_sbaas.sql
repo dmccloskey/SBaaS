@@ -1,4 +1,4 @@
-﻿--
+--
 -- PostgreSQL database dump
 --
 
@@ -14,6 +14,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 DROP DATABASE sbaas;
+
 --
 -- TOC entry 3137 (class 1262 OID 112808)
 -- Name: metabolomics; Type: DATABASE; Schema: -; Owner: postgres

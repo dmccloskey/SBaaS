@@ -16,7 +16,7 @@ def data_stage01():
           'data\\tests\\analysis_ale\\ALEsKOs_trajectories.mat');
 
     '''data analysis'''
-    execute01.execute_findJumps('ALEsKOs01');
+    #execute01.execute_findJumps('ALEsKOs01');
 
     '''experiment data exports'''
     
@@ -28,4 +28,8 @@ def data_stage01():
                         fit_func_I='lowess',
                         json_var_name='data',
                         filename='visualization\\data\\ALEsKOs01\\ale\\scatterlineplot\\tpiA.js');
+
+def _main_():
+    data_stage00();
+    data_stage01();
     

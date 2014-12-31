@@ -1,4 +1,4 @@
-"""Module to implement ORM to the metabolomics database"""
+"""Module to implement ORM to the sbaas database"""
 
 from types import MethodType
 from os import system
@@ -15,7 +15,7 @@ from sqlalchemy.schema import CreateTable, DropTable
 import json
 #import simplejson
 
-import sbaas_settings as settings
+from data import sbaas_settings as settings
 
 Base = declarative_base()
 

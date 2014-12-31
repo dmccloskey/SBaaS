@@ -111,3 +111,8 @@ def data_stage02():
     ex02.execute_reduceResequencingPhysiology_population('ALEsKOs01',reduce_groupNames())
 
     io02.export_dataStage02ResequencingLineage_d3('ALEsKOs01');
+
+def _main_():
+    data_stage00();
+    data_stage01();
+    #data_stage02();

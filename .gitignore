@@ -2,6 +2,7 @@
 #####################
 *.sln
 *.suo
+obj/
 
 # vs project files #
 ####################
@@ -15,3 +16,12 @@ sbaas.py
 # local R dir #
 ###############
 dmccloskey-sbrg/
+
+# webserver data files #
+########################
+visualization/data/
+visualization/resources/
+
+# compile py files #
+####################
+*.pyc
