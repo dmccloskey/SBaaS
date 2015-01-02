@@ -32,9 +32,9 @@ def data_stage01():
                 'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-1',
                 'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-2',
                 'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-3',
-                'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-1',
-                'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-2',
-                'OxicEvo04tpiAEvo02EPEcoliGlc_Broth-3',
+                'OxicEvo04tpiAEvo03EPEcoliGlc_Broth-1',
+                'OxicEvo04tpiAEvo03EPEcoliGlc_Broth-2',
+                'OxicEvo04tpiAEvo03EPEcoliGlc_Broth-3',
                 'OxicEvo04tpiAEvo04EPEcoliGlc_Broth-1',
                 'OxicEvo04tpiAEvo04EPEcoliGlc_Broth-2',
                 'OxicEvo04tpiAEvo04EPEcoliGlc_Broth-3'
@@ -100,24 +100,24 @@ def data_stage01():
             '140807_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
             '140807_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
             '140807_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
             '140811_1_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
             '140811_2_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
             '140811_3_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
@@ -189,24 +189,24 @@ def data_stage01():
             '140807_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
             '140807_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
             '140807_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-2',
-            '140811_1_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_2_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_3_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_4_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_5_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
-            '140811_6_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-3',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-2',
+            '140811_1_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_2_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_3_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_4_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_5_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
+            '140811_6_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-3',
             '140811_1_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
             '140811_2_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
             '140811_3_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1',
@@ -248,15 +248,7 @@ def data_stage01():
                 'OxicEvo04tpiAEvo01EPEcoliGlc',
                 'OxicEvo04tpiAEvo02EPEcoliGlc',
                 'OxicEvo04tpiAEvo02EPEcoliGlc',
-                'OxicEvo04tpiAEvo04EPEcoliGlc',
-                'OxicEvo04gndEvo01EPEcoliGlc',
-                'OxicEvo04gndEvo02EPEcoliGlc',
-                'OxicEvo04gndEvo02EPEcoliGlc',
-                'OxicEvo04sdhCBEvo01EPEcoliGlc',
-                'OxicEvo04sdhCBEvo02EPEcoliGlc',
-                'OxicEvo04sdhCBEvo02EPEcoliGlc',
-                'OxicEvo04Evo01EPEcoliGlc',
-                'OxicEvo04Evo02EPEcoliGlc'];
+                'OxicEvo04tpiAEvo04EPEcoliGlc'];
     
     #Physiology starting and endpoint growth rates
     execute01.execute_calculateGrowthRates('ALEsKOs01',sample_names_short_calculateGrowthRates_QPR());
@@ -273,7 +265,7 @@ def data_stage01():
                                                     'OxicEvo04tpiAEvo02EPEcoliGlc',
                                                     'OxicEvo04tpiAEvo04EPEcoliGlc'],
                                                     #met_ids_exclude_I=['glc-D'],
-                                                    json_var_name='data_tpiA',
+                                                    json_var_name='data',
                                                  #filename='visualization\\data\\ALEsKOs01\\physiology\\barchart\\tpiA.csv');
                                                  filename='visualization\\data\\ALEsKOs01\\physiology\\barchart\\tpiA.js');
 
@@ -306,8 +298,11 @@ def data_stage02():
     '''data export'''
     qio02.export_samplingAnalysis_escher('ALEsKOs01',
                                          model_ids_dict_I=ex02.models);
-
-def _main_():
+    
+def run_all_tests():
+    print 'testing data_stage00_physiology...'
     data_stage00();
+    print 'testing data_stage01_physiology...'
     data_stage01();
+    #print 'testing data_stage02_physiology...'
     #data_stage02();

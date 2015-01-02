@@ -32,7 +32,7 @@ def data_stage00():
     
     '''data import'''
     execute00 = stage00_execute();
-    execute00.execute_makeExperimentFromSampleFile('data\\tests\\analysis_resequencing\\140823_Resequencing_ALEsKOs01_sampleFile01.csv',0,0);
+    execute00.execute_makeExperimentFromSampleFile('data\\tests\\analysis_resequencing\\140823_Resequencing_ALEsKOs01_sampleFile01.csv',0,[]);
 
 def data_stage01():
 
@@ -112,7 +112,10 @@ def data_stage02():
 
     io02.export_dataStage02ResequencingLineage_d3('ALEsKOs01');
 
-def _main_():
+def run_all_tests():
+    print 'testing data_stage00_resequencing...'
     data_stage00();
+    print 'testing data_stage01_resequencing...'
     data_stage01();
-    #data_stage02();
+    print 'testing data_stage02_resequencing...'
+    data_stage02();

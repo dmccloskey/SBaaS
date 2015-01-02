@@ -73,6 +73,9 @@ class urls():
 
         self._resources = {
             #local resources:
+            'logo1': 'resources/sbaas_metabolomics.png',
+            'logo2': 'resources/sbaas_fluxomics.png',
+            'logo3': 'resources/sbaas_resequencing.png',
             'logo': 'resources/analysis_workflow.png',
             'index_filter': 'resources/index_filter.js'
             }
@@ -81,7 +84,7 @@ class urls():
             'd3': 'lib/d3.min.js',
             'boot_js': 'lib/bootstrap-3.1.1.min.js',
             'boot_css': 'lib/bootstrap-3.1.1.min.css',
-            'jquery': 'lib/jquery-2.1.0.min.js',
+            'jquery': 'lib/jquery-2.1.3.min.js',
             'require_js': 'lib/require.min.js',
             'bacon': 'lib/bacon-0.7.12.min.js',
             'vkbeautify':'lib/vkbeautify.0.99.00.beta.js'
@@ -91,7 +94,7 @@ class urls():
             'd3': '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js',
             'boot_js': '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
             'boot_css': '//netdna.bootstrapcdn.com/bootswatch/3.1.1/simplex/bootstrap.min.css',
-            'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js',
+            'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
             'require_js': '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js',
             'bacon': '//cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.12/bacon.min.js',
             'prettify':'//cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js',

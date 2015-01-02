@@ -295,7 +295,8 @@ class stage02_resequencing_execute(stage01_resequencing_execute):
                     data_O_tmp['rate_ubs'] = [];
                     data_O_tmp['rate_units'] = [];
                     for gd in group_data:
-                        if gd['resequencing_id'] == mutation_id and gd['physiology_id'] == physiology_id:
+                        if gd.has_key('resequencing_id') and gd.has_key('physiology_id') and\
+                            gd['resequencing_id'] == mutation_id and gd['physiology_id'] == physiology_id:
                             data_O_tmp['sample_names'].append(gd['sample_name']);
                             data_O_tmp['sample_name_abbreviations'].append(gd['sample_name_abbreviation']);
                             data_O_tmp['mutation_frequencies'].append(gd['mutation_frequency']);

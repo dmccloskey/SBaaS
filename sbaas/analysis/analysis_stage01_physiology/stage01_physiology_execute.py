@@ -16,16 +16,19 @@ class stage01_physiology_execute():
         '''Calculate growth rates (hr-1) based on the sample time and measured OD600'''
 
         #query sample names
+        print 'executing calculating growth rates...'
         if sample_name_short_I:
             sample_name_short = sample_name_short_I;
         else:
             sample_name_short = [];
             sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentID(experiment_id_I,6)
         for sns in sample_name_short:
+            print 'calculating growth rates for sample_name_short ' + sns;
             #query met_ids
             met_ids = [];
             met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameShort(experiment_id_I,6,sns);
             for met in met_ids:
+                print 'calculating growth rates for met_id ' + met;
                 if met != 'biomass': continue;
                 #query time and OD600 values
                 time, OD600 = [], [];
@@ -53,6 +56,7 @@ class stage01_physiology_execute():
 
         data = [];
         #query sample_ids for the experiment that do not have an OD600 but have a time
+        print 'execute interpolate biomass from replicates...'
         if sample_ids_I:
             sample_ids = [];
             sample_ids = sample_ids_I;
@@ -60,6 +64,7 @@ class stage01_physiology_execute():
             sample_ids = [];
             sample_ids = self.stage01_physiology_query.get_sampleIDs_experimentIDAndSampleDescriptionNoOD600_samplePhysiologicalParameters(experiment_id_I,'Broth')
         for si in sample_ids:
+            print 'interpolating biomass from replicates for sample_id ' + si
             #query rate parameters for the sample_id
             slope, intercept, r2, rate, rate_units, p_value, std_err = None,None,None,None,None,None,None;
             slope, intercept, r2, rate, rate_units, p_value, std_err = self.stage01_physiology_query.get_rateData_experimentIDAndSampleIDAndMetID_dataStage01PhysiologyRates(experiment_id_I,si,'biomass');
@@ -78,17 +83,21 @@ class stage01_physiology_execute():
         self.stage01_physiology_query.update_data_samplePhysiologicalParameters(data)
     def execute_calculateRatesAverages(self,experiment_id_I,sample_name_abbreviations_I=[]):
         '''Calculate the average rates based on the rates of the replicates'''
+
         #query sample_name abbreviations
+        print 'execute calcute rates averages...'
         if sample_name_abbreviations_I:
             sample_name_abbreviations = sample_name_abbreviations_I;
         else:
             sample_name_abbreviations = [];
             sample_name_abbreviations = self.stage01_physiology_query.get_sampleNameAbbreviations_experimentID_dataStage01PhysiologyRates(experiment_id_I,6);
         for sna in sample_name_abbreviations:
+            print 'calculating rates averages for sample_name_abbreviation ' + sna;
             #query met_ids
             met_ids = [];
             met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameAbbreviation_dataStage01PhysiologyRates(experiment_id_I,6,sna)
             for met in met_ids:
+                print 'calculating rates averages for met_id ' +met;
                 #query sample names
                 sample_name_short = [];
                 sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentIDAndSampleNameAbbreviationAndMetID_dataStage01PhysiologyRates(experiment_id_I,6,sna,met)
@@ -122,6 +131,7 @@ class stage01_physiology_execute():
 
         data = [];
         #query sample_ids for the experiment that do not have an OD600 but have a time
+        print 'execute interoplate biomass from averages...'
         if sample_ids_I:
             sample_ids = [];
             sample_ids = sample_ids_I;
@@ -129,6 +139,7 @@ class stage01_physiology_execute():
             sample_ids = [];
             sample_ids = self.stage01_physiology_query.get_sampleIDs_experimentIDNoOD600_samplePhysiologicalParameters(experiment_id_I)
         for si in sample_ids:
+            print 'interpolating biomass from averages for sample_id' + si;
             #query rate parameters for the sample_id
             slope_average, intercept_average, rate_average, rate_units, rate_var = None,None,None,None,None;
             slope_average, intercept_average, rate_average, rate_units, rate_var = self.stage01_physiology_query.get_rateData_experimentIDAndSampleIDAndMetID_dataStage01PhysiologyRatesAverages(experiment_id_I,si,'biomass');
@@ -153,6 +164,7 @@ class stage01_physiology_execute():
 
         data = [];
         #query sample_ids for the experiment that do not have an OD600
+        print 'execute calculate biomass from broth averages...'
         if sample_ids_I:
             sample_ids = [];
             sample_ids = sample_ids_I;
@@ -160,6 +172,7 @@ class stage01_physiology_execute():
             sample_ids = [];
             sample_ids = self.stage01_physiology_query.get_sampleIDs_experimentIDAndSampleDescriptionNoOD600_samplePhysiologicalParameters(experiment_id_I,'Filtrate')
         for si in sample_ids:
+            print 'calculating biomass from broth averages for sample_id ' + si;
             #query physiological parameters for the sample_id
             pp = {};
             pp = self.stage01_physiology_query.get_physiologicalParameters_experimentIDAndSampleID_samplePhysiologicalParameters(experiment_id_I,si)
@@ -177,6 +190,7 @@ class stage01_physiology_execute():
         '''Calculate physiological parameters from the OD600 and volume sample'''
         data = [];
         #query sample_ids for the experiment that have an OD600, but do not have culture_density
+        print 'execute update physiological parameters from OD600...'
         if sample_ids_I:
             sample_ids = [];
             sample_ids = sample_ids_I;
@@ -184,6 +198,7 @@ class stage01_physiology_execute():
             sample_ids = [];
             sample_ids = self.stage01_physiology_query.get_sampleIDs_experimentIDWithOD600NoCultureDensity_samplePhysiologicalParameters(experiment_id_I)
         for si in sample_ids:
+            print 'updating physiological parameters from OD600 for sample_id ' + si;
             #Query sample_description
             desc = {};
             desc = self.stage01_physiology_query.get_description_experimentIDAndSampleID_sampleDescription(experiment_id_I,si)
@@ -217,16 +232,19 @@ class stage01_physiology_execute():
 
         data_O = [];
         #query sample names
+        print 'execute calculate uptake and secretion rates...'
         if sample_name_short_I:
             sample_name_short = sample_name_short_I;
         else:
             sample_name_short = [];
             sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentID(experiment_id_I,7)
         for sns in sample_name_short:
+            print 'calculating uptake and secretion rates for sample_name_short ' +sns;
             #query met_ids
             met_ids = [];
             met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameShort(experiment_id_I,7,sns);
             for met in met_ids:
+                print 'calculating uptake and secretion rates for met_id ' + met;
                 if met == 'biomass': continue; #ignore biomass (calculated previously)
                 #query time,conc (mM), and sample_ids
                 time, conc, sample_ids = [], [], []; #sorted by sample_date
