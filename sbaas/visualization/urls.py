@@ -73,10 +73,12 @@ class urls():
 
         self._resources = {
             #local resources:
-            'logo1': 'resources/sbaas_metabolomics.png',
-            'logo2': 'resources/sbaas_fluxomics.png',
-            'logo3': 'resources/sbaas_resequencing.png',
-            'logo': 'resources/analysis_workflow.png',
+            'logo1': 'resources/SBaaS-01.png',
+            'logo2': 'resources/SBaaS-02.png',
+            'logo3': 'resources/SBaaS-03.png',
+            'logo4': 'resources/SBaaS-04.png',
+            'logo5': 'resources/SBaaS-05.png',
+            'logo6': 'resources/SBaaS-06.png',
             'index_filter': 'resources/index_filter.js'
             }
     
@@ -101,7 +103,7 @@ class urls():
             }
 
         self._links = {
-            'github': '//github.com/sbrg/metabolomics',
+            'github': '//github.com/sbrg/sbaas',
             }
     
         # external dependencies

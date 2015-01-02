@@ -9,15 +9,17 @@ Getting started:
 ----------------
 1.	Install python, postgresql, R, and other dependencies
 
-2.	Build the sbaas database using the query 'data/postgresql/create_sbaas.sql'
+2.	Build the sbaas database.  Login to the local server and run the commands listed below to create the database, load the table schemas, and load the initial data.  If running a windows machine, use the scripts located in the "ansi" folder.  For all other machines, use the scripts located in the "utf-8" folder.  Replace the filepaths with those specific to your file directory.  If you are attempting to access the database as another user other than "postgres", use the desired user name in the commands listed below.
+	
+	a.	C:\path_to_posgresql\PostgreSQL\9.3\bin\psql -h localhost -p 5432 -f C:\path_to_github\GitHub\sbaas\sbaas\data\postgresql\ansi\create_sbaas.sql postgres postgres
+	
+	b.	C:\path_to_posgresql\PostgreSQL\9.3\bin\psql -h localhost -p 5432 -f C:\path_to_github\GitHub\sbaas\sbaas\data\postgresql\ansi\initialize_sbaas.sql sbaas postgres
+	
+	c.	C:\path_to_posgresql\PostgreSQL\9.3\bin\psql -h localhost -p 5432 -f C:\path_to_github\GitHub\sbaas\sbaas\data\postgresql\ansi\initialize_data_stage00_sbaas.sql sbaas postgres
 
-3.	Login to the newly created database and run the query 'data/posgresql/initialize_sbaas.sql'
+3.	Define the local user settings in the file data/sbaas_settings for use by the ORM
 
-4.	Load initial data required for analyses by running the query data/posgresql/initialize_data_stage00_sbaas.sql'
-
-5.	Define local user settings in the file data/sbaas_settings for use by the ORM
-
-6.	Run one or multiple of the desired tests
+4.	Run one or multiple of the desired tests provided
 
 Dependencies:
 ------------

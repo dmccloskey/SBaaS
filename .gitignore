@@ -17,11 +17,6 @@ sbaas.py
 ###############
 dmccloskey-sbrg/
 
-# webserver data files #
-########################
-visualization/data/
-visualization/resources/
-
 # compile py files #
 ####################
 *.pyc

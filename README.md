@@ -15,7 +15,7 @@ LIMS:
 	
 	b.	Sample extraction methods
 	
-	c.	Instrument acquisition methods
+	c.	Instrument acquisition methods and system suitability tests
 	
 	d.	Sample information and storage
 	
