@@ -2983,8 +2983,8 @@ class stage02_isotopomer_metaboliteMapping():
         '''Convert a string representation of a mapping to an array representation'''
         
         stringMapping = self.metaboliteMapping['met_mapping']
-        if '[' in reaction_mapping['reactants_mapping'][reactant_cnt]:
-            stringMapping = reaction_mapping['reactants_mapping'][reactant_cnt].split('][');
+        if '[' in self.metaboliteMapping['met_mapping']:
+            stringMapping = self.metaboliteMapping['met_mapping'].split('][');
             stringMapping = [m.replace('[','') for m in stringMapping];
             stringMapping = [m.replace(']','') for m in stringMapping];
         else:
@@ -4117,16 +4117,16 @@ class stage02_isotopomer_reactionMapping():
         self.make_reactantsAndProductsMetaboliteMappings();
     def make_reactantsAndProductsMetaboliteMappings(self):
         '''Make reactants and products metabolite mapping from atomMappingReaction information'''
-        for cnt,met in self.reactionMapping['reactants_tracked_id']:
+        for cnt,met in enumerate(self.reactionMapping['reactants_ids_tracked']):
             imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
                 met_id_I=met,
                 met_elements_I=self.reactionMapping['reactants_elements_tracked'][cnt],
-                met_atompositions_I=self.reactionMapping['reactants_elements_positions_tracked'][cnt],
+                met_atompositions_I=self.reactionMapping['reactants_positions_tracked'][cnt],
                 met_symmetry_elements_I=[],
                 met_symmetry_atompositions_I=[],
                 used__I=True,
                 comment__I=None,
-                met_mapping_I=reactionMapping['reactants_mapping'][cnt],
+                met_mapping_I=self.reactionMapping['reactants_mapping'][cnt],
                 base_met_ids_I=[],
                 base_met_elements_I=[],
                 base_met_atompositions_I=[],
@@ -4134,16 +4134,16 @@ class stage02_isotopomer_reactionMapping():
                 base_met_symmetry_atompositions_I=[],
                 base_met_indices_I=[]);
             self.reactionMapping['reactants_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-        for cnt,met in self.reactionMapping['products_tracked_id']:
+        for cnt,met in enumerate(self.reactionMapping['products_ids_tracked']):
             imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
                 met_id_I=met,
                 met_elements_I=self.reactionMapping['products_elements_tracked'][cnt],
-                met_atompositions_I=self.reactionMapping['products_elements_positions_tracked'][cnt],
+                met_atompositions_I=self.reactionMapping['products_positions_tracked'][cnt],
                 met_symmetry_elements_I=[],
                 met_symmetry_atompositions_I=[],
                 used__I=True,
                 comment__I=None,
-                met_mapping_I=reactionMapping['products_mapping'][cnt],
+                met_mapping_I=self.reactionMapping['products_mapping'][cnt],
                 base_met_ids_I=[],
                 base_met_elements_I=[],
                 base_met_atompositions_I=[],
@@ -4226,30 +4226,42 @@ class stage02_isotopomer_reactionMapping():
                 self.reactionMapping['products_elements_tracked'][cnt]=met_data['met_elements'];
             if len(met_data['met_atompositions'])!=len(self.reactionMapping['products_positions_tracked'][cnt]):
                 self.reactionMapping['products_positions_tracked'][cnt]=met_data['met_atompositions'];
-    def add_balanceProducts(self,unbalanced_met_I,unbalanced_met_position_I=None,unbalanced_met_positions_tracked_I=[]):
+    def add_balanceProducts(self,unbalanced_met_I,unbalanced_met_position_I=None,unbalanced_met_positions_tracked_I=[],make_lumped_unbalanced_met_I=True):
         '''Add psuedo metabolites to the product in order to elementally balance the tracked reaction'''
-        # find the position of the tracked metabolite
-        if self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I):
-            if unbalanced_met_position_I: unbalanced_met_pos = unbalanced_met_position_I;
-            else: unbalanced_met_pos = self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I);
-            balance_met = self.reactionMapping['rxn_id'] + '_' + unbalanced_met_I + '_' + str(unbalanced_met_pos) + '.balance';
-            # extract out mapping, positions, and elements
-            reactant_mapping = self.reactionMapping['reactants_metaboliteMappings'][unbalanced_met_pos].convert_stringMapping2ArrayMapping();
-            reactant_positions_tracked = self.reactionMapping['reactants_positions_tracked'][unbalanced_met_pos];
-            reactant_elements_tracked = self.reactionMapping['reactants_elements_tracked'][unbalanced_met_pos];
+        #Input:
+        #   unbalanced_met_I = reactant_id that is not elementally balanced
+        #   unbalanced_met_position_I = position of the reactant_id in the reactants_list
+        #   unbalanced_met_positions_tracked_I = positions of the elements that are not elementally balanced
+        #   make_lumped_unbalanced_met_I = boolean,
+        #                           True: automatically detect mappings that are not elemenally balanced and make an unbalanced product metabolite to balance all elementally unbalanced reactants
+        #                           False:  use user specifications
+
+        if make_lumped_unbalanced_met_I:
+            balance_met = self.reactionMapping['rxn_id'] + '_' + unbalanced_met_I + '.balance';
+            reactants_mappings = []; #list of a list
+            products_mappings = []; #list
+            # extract out reactants and products mappings
+            for imm in self.reactionMapping['reactants_metaboliteMappings']:
+                reactant_mapping=[];
+                reactant_mapping = imm.convert_stringMapping2ArrayMapping();
+                reactants_mappings.append(reactant_mapping);
+            for imm in self.reactionMapping['products_metaboliteMappings']:
+                product_mapping=[];
+                product_mapping = imm.convert_stringMapping2ArrayMapping();
+                products_mappings.extend(product_mapping);
+            # find unbalanced reactant_mappings and
             # make the product mapping, positions, and elements
             product_mapping = [];
             product_positions_tracked = [];
             product_elements_tracked = [];
-            if unbalanced_met_positions_tracked_I:
-                for pos_cnt,pos in enumerate(unbalanced_met_positions_tracked_I):
-                    product_mapping.append(reactant_mapping[pos]);
-                    product_positions_tracked.append(pos_cnt);
-                    product_elements_tracked.append(reactant_elements_tracked[pos]);
-            else:
-                product_mapping=reactant_mapping
-                product_positions_tracked=reactant_positions_tracked
-                product_elements_tracked=reactant_elements_tracked
+            product_cnt = 0;
+            for reactant_cnt,reactants_mapping in enumerate(reactants_mappings):
+                for element_cnt,reactant_mapping in enumerate(reactants_mapping):
+                    if not reactant_mapping in products_mappings:
+                        product_mapping.append(reactant_mapping);
+                        product_elements_tracked.append(self.reactionMapping['reactants_elements_tracked'][reactant_cnt][element_cnt]);
+                        product_positions_tracked.append(product_cnt);
+                        product_cnt += 1;
             imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
                 met_id_I=balance_met,
                 met_elements_I=product_elements_tracked,
@@ -4266,13 +4278,58 @@ class stage02_isotopomer_reactionMapping():
                 base_met_symmetry_atompositions_I=[],
                 base_met_indices_I=[]);
             # add balance metabolite to the products
-            self.reactionMapping['products_ids_tracked'].append(product_mapping);
-            self.reactionMapping['products_mappings'].append(imm.convert_arrayMapping2StringMapping);
+            self.reactionMapping['products_ids_tracked'].append(balance_met);
+            self.reactionMapping['products_mapping'].append(imm.convert_arrayMapping2StringMapping());
             self.reactionMapping['products_positions_tracked'].append(product_positions_tracked);
             self.reactionMapping['products_elements_tracked'].append(product_elements_tracked);
             self.reactionMapping['products_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
+        # use user specifications
         else:
-            print 'unbalanced metabolite not found!'
+            # find the position of the tracked metabolite
+            if self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I):
+                if unbalanced_met_position_I: unbalanced_met_pos = unbalanced_met_position_I;
+                else: unbalanced_met_pos = self.reactionMapping['reactants_ids_tracked'].index(unbalanced_met_I);
+                balance_met = self.reactionMapping['rxn_id'] + '_' + unbalanced_met_I + '_' + str(unbalanced_met_pos) + '.balance';
+                # extract out mapping, positions, and elements
+                reactant_mapping = self.reactionMapping['reactants_metaboliteMappings'][unbalanced_met_pos].convert_stringMapping2ArrayMapping();
+                reactant_positions_tracked = self.reactionMapping['reactants_positions_tracked'][unbalanced_met_pos];
+                reactant_elements_tracked = self.reactionMapping['reactants_elements_tracked'][unbalanced_met_pos];
+                # make the product mapping, positions, and elements
+                product_mapping = [];
+                product_positions_tracked = [];
+                product_elements_tracked = [];
+                if unbalanced_met_positions_tracked_I:
+                    for pos_cnt,pos in enumerate(unbalanced_met_positions_tracked_I):
+                        product_mapping.append(reactant_mapping[pos]);
+                        product_positions_tracked.append(pos_cnt);
+                        product_elements_tracked.append(reactant_elements_tracked[pos]);
+                else:
+                    product_mapping=reactant_mapping
+                    product_positions_tracked=reactant_positions_tracked
+                    product_elements_tracked=reactant_elements_tracked
+                imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
+                    met_id_I=balance_met,
+                    met_elements_I=product_elements_tracked,
+                    met_atompositions_I=product_positions_tracked,
+                    met_symmetry_elements_I=[],
+                    met_symmetry_atompositions_I=[],
+                    used__I=True,
+                    comment__I=None,
+                    met_mapping_I=product_mapping,
+                    base_met_ids_I=[],
+                    base_met_elements_I=[],
+                    base_met_atompositions_I=[],
+                    base_met_symmetry_elements_I=[],
+                    base_met_symmetry_atompositions_I=[],
+                    base_met_indices_I=[]);
+                # add balance metabolite to the products
+                self.reactionMapping['products_ids_tracked'].append(balance_met);
+                self.reactionMapping['products_mapping'].append(imm.convert_arrayMapping2StringMapping());
+                self.reactionMapping['products_positions_tracked'].append(product_positions_tracked);
+                self.reactionMapping['products_elements_tracked'].append(product_elements_tracked);
+                self.reactionMapping['products_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
+            else:
+                print 'unbalanced metabolite not found!'
     def check_elementalBalance(self):
         '''
         1. Check that the number of elements tracked in the reactant matches the number of elements tracked
@@ -4285,22 +4342,22 @@ class stage02_isotopomer_reactionMapping():
 
         #check reactants
         reactants_positions_tracked_cnt = 0;
-        for reactant_cnt,reactant in enumerate(reaction_mapping['reactants_ids_tracked']):
+        for reactant_cnt,reactant in enumerate(self.reactionMapping['reactants_ids_tracked']):
             print 'checking reactant ' + reactant;
             # check that the reactant positions == reactant elements
-            if len(reaction_mapping['reactants_positions_tracked'][reactant_cnt])!=len(reaction_mapping['reactants_elements_tracked'][reactant_cnt]):
+            if len(self.reactionMapping['reactants_positions_tracked'][reactant_cnt])!=len(self.reactionMapping['reactants_elements_tracked'][reactant_cnt]):
                 print 'inconsistent reactants_positions and reactants_elements';
                 continue;
-            reactants_positions_tracked_cnt += len(reaction_mapping['reactants_positions_tracked'][reactant_cnt]);
+            reactants_positions_tracked_cnt += len(self.reactionMapping['reactants_positions_tracked'][reactant_cnt]);
         #check products
         products_positions_tracked_cnt = 0;
-        for product_cnt,product in enumerate(reaction_mapping['products_ids_tracked']):
+        for product_cnt,product in enumerate(self.reactionMapping['products_ids_tracked']):
             print 'checking product ' + product;
             # check that the product positions == product elements
-            if len(reaction_mapping['products_positions_tracked'][product_cnt])!=len(reaction_mapping['products_elements_tracked'][product_cnt]):
+            if len(self.reactionMapping['products_positions_tracked'][product_cnt])!=len(self.reactionMapping['products_elements_tracked'][product_cnt]):
                 print 'inconsistent products_positions and products_elements';
                 continue;
-            products_positions_tracked_cnt += len(reaction_mapping['products_positions_tracked'][product_cnt]);
+            products_positions_tracked_cnt += len(self.reactionMapping['products_positions_tracked'][product_cnt]);
         #record
         if reactants_positions_tracked_cnt!=products_positions_tracked_cnt:
             return reactants_positions_tracked_cnt,products_positions_tracked_cnt;
@@ -4314,6 +4371,18 @@ class stage02_isotopomer_mappingUtilities():
         '''Make atom mapping metabolites from atom mapping reactions, QC atom mapping reactions;
         and create a new set of metabolite mappings that correspond to the current reaction mappings that need to be QC/QA'd'''
         
+        #Input:
+        #   experiment_id_I = experiment_id
+        #   model_id_I = model_id
+        #   mapping_id_rxns_I = reaction mapping id (#default atomMappingMetabolite mapping id to add new metabolites to)
+        #   mapping_id_mets_I = existing metabolite mappings to use when making the new metabolite mappings
+        #   mapping_id_new_I = name of mapping id for the new metabolite mappings
+
+        #Output:
+        #   default: new metabolite mappings will be added for the mapping id of the reactions
+        #            existing metabolite mappings will not be added
+        #   mapping_id_new_I != None: new metabolite mappings will be added for the mapping id specified
+
         #get model ids:
         if model_id_I:
             model_ids = model_id_I;
@@ -4364,7 +4433,17 @@ class stage02_isotopomer_mappingUtilities():
                 for d in data_O:
                     data_mets_cnt[d['met_id']] += 1;
                 # add data to the database
-                self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingMetabolites(data_O);
+                if mapping_id_new_I:
+                    self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingMetabolites(data_O);
+                else:
+                    data_add_O = [];
+                    for d in data_O:
+                        # check to see if the metabolite is already in the database
+                        mapping_row = {};
+                        mapping_row = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id_rxns,d['met_id']);
+                        if not mapping_row: data_add_O.append(d);
+                    self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingMetabolites(data_add_O);
+
     def make_missingReactionMappings(self,experiment_id_I,model_id_I=[],mapping_id_rxns_I=[],mapping_id_mets_I=[],mapping_id_new_I=None):
         '''Update missing reaction mappings for the current mapping from the matching metabolite mappings,
         and optionally, from the previous reaction mappings'''

@@ -1413,7 +1413,9 @@ class stage02_isotopomer_io(base_analysis):
         return model_data,reaction_data,metabolite_data
     def import_dataStage02IsotopomerModelAndAtomMappingReactions_INCA(self,model_id_I=None,mapping_id_I=None, date_I=None,
                                                                       model_INCA_I=None, model_rxn_conversion_I=None,
-                                                                      model_met_conversion_I=None,model_rxn_CBM_I=None):
+                                                                      model_met_conversion_I=None,model_rxn_CBM_I=None,
+                                                                      add_model_I = True, add_rxns_I = True,
+                                                                      add_mets_I = True, add_rxn_mappings_I=True):
         '''load and parse INCA isotopomer model (i.e., ecoli_inca01)'''
 
         '''DELETE previous uploads of ecoli_inca01:
@@ -1710,17 +1712,18 @@ class stage02_isotopomer_io(base_analysis):
         dataStage02IsotopomerModels_data,\
             dataStage02IsotopomerModelRxns_data,\
             dataStage02IsotopomerModelMets_data = self._parse_model_json(model_id_I, date_I, 'data\\cobra_model_tmp.json')
-        self.add_data_stage02_isotopomer_modelMetabolites(dataStage02IsotopomerModelMets_data);
+        if add_mets_I: self.add_data_stage02_isotopomer_modelMetabolites(dataStage02IsotopomerModelMets_data);
         #self.add_data_stage02_isotopomer_modelReactions(dataStage02IsotopomerModelRxns_data);
-        self.add_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
+        if add_model_I: self.add_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
 
         ## add modelReactions and modelMetabolites to the database
         #self.add_data_stage02_isotopomer_modelMetabolites(modelMetabolites);
-        self.add_data_stage02_isotopomer_modelReactions(modelReactions);
+        if add_rxns_I: self.add_data_stage02_isotopomer_modelReactions(modelReactions);
 
         #add atomMappingReactions to the database
-        self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions);
-        self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions_reverse);
+        if add_rxn_mappings_I: 
+            self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions);
+            self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions_reverse);
 
         print 'model and mapping added';
     def create_modelFromReactionsAndMetabolitesTables(self,rxns_table_I,mets_table_I):
