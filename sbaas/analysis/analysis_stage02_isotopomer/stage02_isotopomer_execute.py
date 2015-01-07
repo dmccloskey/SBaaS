@@ -304,17 +304,17 @@ class stage02_isotopomer_execute():
         # load the model
         if cobra_model_sbml:
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open('data\\cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.xml','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = create_cobra_model_from_sbml_file('data\\cobra_model_tmp.xml', print_time=True);
+                cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + 'cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open('data\\cobra_model_tmp.json','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.json','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = load_json_model('data\\cobra_model_tmp.json');
+                cobra_model = load_json_model(settings.workspace_data + 'cobra_model_tmp.json');
             else:
                 print 'file_type not supported'
         # implement optimal KOs and flux constraints:
@@ -335,27 +335,27 @@ class stage02_isotopomer_execute():
         #pfba = optimize_minimal_flux(cobra_model,True,solver='gurobi');
 
         return cobra_model;
-    def execute_makeModel(self,experiment_id_I,model_id_I=None,model_id_O=None,date_I=None,model_file_name_I=None,ko_list=[],flux_dict={},description=None):
-        '''make the model'''
+    def make_Model(self,model_id_I=None,model_id_O=None,date_I=None,model_file_name_I=None,ko_list=[],flux_dict={},description=None):
+        '''make a new model'''
 
         qio02 = stage02_isotopomer_io();
 
-        if model_id_I and model_id_O: #modify an existing model in the database
+        if model_id_I and model_id_O: #make a new model based off of a modification of an existing model in the database
             cobra_model_sbml = None;
             cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id_I);
             # write the model to a temporary file
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open('data\\cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.xml','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = create_cobra_model_from_sbml_file('data\\cobra_model_tmp.xml', print_time=True);
+                cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + 'cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open('data\\cobra_model_tmp.json','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.json','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = load_json_model('data\\cobra_model_tmp.json');
+                cobra_model = load_json_model(settings.workspace_data + 'cobra_model_tmp.json');
             else:
                 print 'file_type not supported'
             # Apply KOs, if any:
@@ -372,13 +372,19 @@ class stage02_isotopomer_execute():
             # test the model
             if self.test_model(cobra_model):
                 # write the model to a temporary file
-                with open('data\\cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.xml','wb') as file:
                     file.write(cobra_model);
                 # upload the model to the database
-                qio02.import_dataStage02Model_sbml(model_id_I, date_I, 'data\\cobra_model_tmp.xml');
+                qio02.import_dataStage02Model_sbml(model_id_I, date_I, settings.workspace_data + 'cobra_model_tmp.xml');
         elif model_file_name_I and model_id_O: #modify an existing model in not in the database
-            # Read in the sbml file and define the model conditions
-            cobra_model = create_cobra_model_from_sbml_file(model_file_name_I, print_time=True);
+            # check for the file type
+            if '.json' in model_file_name_I:
+                # Read in the sbml file and define the model conditions
+                cobra_model = load_json_model(model_file_name_I, print_time=True);
+            elif '.xml' in model_file_name_I:
+                # Read in the sbml file and define the model conditions
+                cobra_model = create_cobra_model_from_sbml_file(model_file_name_I, print_time=True);
+            else: print 'file type not supported'
             # Apply KOs, if any:
             for ko in ko_list:
                 cobra_model.reactions.get_by_id(ko).lower_bound = 0.0;
@@ -393,10 +399,20 @@ class stage02_isotopomer_execute():
             # test the model
             if self.test_model(cobra_model):
                 # write the model to a temporary file
-                with open('data\\cobra_model_tmp.xml','wb') as file:
-                    file.write(cobra_model);
+                filename = '';
+                if '.xml' in model_file_name_I:
+                    filename = settings.workspace_data + 'cobra_model_tmp.xml'
+                    with open(filename,'wb') as file:
+                        file.write(cobra_model);
+                        file.close()
+                elif '.json' in model_file_name_I:
+                    filename = settings.workspace_data + 'cobra_model_tmp.json';
+                    with open(filename,'wb') as file:
+                        file.write(cobra_model);
+                        file.close()
+                else: print 'file type not supported'
                 # upload the model to the database
-                qio02.import_dataStage02Model_sbml(model_id_I, date_I, 'data\\cobra_model_tmp.xml');
+                qio02.import_dataStage02Model_sbml(model_id_I, date_I, filename);
         else:
             print 'need to specify either an existing model_id or model_file_name!'
         return
@@ -741,8 +757,8 @@ class stage02_isotopomer_execute():
                             # get the MS data
                             experimentalMS_data =self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna,tp);
                             experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp));
-                            filename_mat = 'data\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.m';
-                            filename_json = 'data\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.json';
+                            filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.m';
+                            filename_json = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.json';
                             mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                             with open(filename_mat,'w') as f:
                                 f.write(mat_script);
@@ -750,8 +766,8 @@ class stage02_isotopomer_execute():
                         # get the MS data
                         experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna);
                         experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna);
-                        filename_mat = 'data\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.m';
-                        filename_json = 'data\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.json';
+                        filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.m';
+                        filename_json = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.json';
                         mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                         with open(filename_mat,'w') as f:
                             f.write(mat_script);
@@ -887,8 +903,6 @@ class stage02_isotopomer_execute():
             products_stoichiometry = abs(products_stoichiometry_I[product_cnt]);
             if product in products_ids_tracked_I:
                 for product_tracked_cnt, product_tracked in enumerate(products_ids_tracked_I):
-                    if not product_tracked in products_ids_I:
-                        print 'unaccounted for product_tracked: ' + product_tracked;
                     if product_tracked == product and \
                         products_stoichiometry == abs(products_stoichiometry_tracked_I[product_tracked_cnt]):
                         # if the tracked product matches and the stoichiometry aggrees, 
@@ -929,6 +943,26 @@ class stage02_isotopomer_execute():
                             rxn_equations_INCA += ') ';
                             rxn_equations_INCA += '+ ';
                             products_stoichiometry -= abs(products_stoichiometry_tracked_I[product_tracked_cnt])
+                    elif not product_tracked in products_ids_I:
+                        print 'unaccounted for product_tracked: ' + product_tracked;
+                        if '.balance' in product_tracked and not product_tracked in pseudo_mets:
+                            #add in the pseudo-metabolite used to complete the atom mapping
+                            rxn_equations_INCA += str(products_stoichiometry_tracked_I[product_tracked_cnt]) + '*' + product_tracked + ' ';
+                            rxn_equations_INCA += '(';
+                            if products_mapping_I[product_tracked_cnt]:
+                                products_mapping = products_mapping_I[product_tracked_cnt];
+                                if '[' in products_mapping_I[product_tracked_cnt]:
+                                    products_mapping = products_mapping_I[product_tracked_cnt].split('][');
+                                    products_mapping = [m.replace('[','') for m in products_mapping];
+                                    products_mapping = [m.replace(']','') for m in products_mapping];
+                                for mapping_cnt, mapping in enumerate(products_mapping):
+                                    rxn_equations_INCA += products_elements_tracked_I[product_tracked_cnt][mapping_cnt] + \
+                                        str(products_positions_tracked_I[product_tracked_cnt][mapping_cnt]+1) + \
+                                        ':' + mapping + ' ';
+                                rxn_equations_INCA = rxn_equations_INCA[:-1];
+                                rxn_equations_INCA += ') ';
+                                rxn_equations_INCA += '+ ';
+                                pseudo_mets.append(product_tracked); # only 1 unique pseudo_met per reaction
                 if products_stoichiometry>0.0:
                     rxn_equations_INCA += str(products_stoichiometry) + '*' + product + ' ';
                     rxn_equations_INCA += '+ ';
@@ -971,8 +1005,8 @@ class stage02_isotopomer_execute():
         rxn_ids_INCA = {};
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
             if rxn['rxn_id'] == 'Ec_biomass_iJO1366_WT_53p95M':
-                #tmp_script = tmp_script + "'" + self.biomass_INCA + "';...\n"
-                tmp_script = tmp_script + "'" + self.biomass_INCA_iJS2012 + "';...\n"
+                tmp_script = tmp_script + "'" + self.biomass_INCA + "';...\n"
+                #tmp_script = tmp_script + "'" + self.biomass_INCA_iJS2012 + "';...\n"
             else:
                 tmp_script = tmp_script + "'" + rxn['rxn_equation'] + "';...\n"
             rxn_ids_INCA[rxn['rxn_id']] = ('R'+str(rxn_cnt+1));
@@ -1057,7 +1091,7 @@ class stage02_isotopomer_execute():
         tmp_script = tmp_script + '];\n';
         tmp_script = tmp_script + 'm.rates.flx.fix = [...\n';
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            if rxn['flux_val']==rxn['upper_bound']==rxn['lower_bound']==0.0:
+            if rxn['flux_val']==0.0 and rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0:
                 tmp_script = tmp_script + '1' + ',...\n'
             else:
                 tmp_script = tmp_script + '0' + ',...\n'
@@ -1402,17 +1436,17 @@ class stage02_isotopomer_execute():
             cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id);
             # write the model to a temporary file
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open('data\\cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.xml','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = create_cobra_model_from_sbml_file('data\\cobra_model_tmp.xml', print_time=True);
+                cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + 'cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open('data\\cobra_model_tmp.json','wb') as file:
+                with open(settings.workspace_data + 'cobra_model_tmp.json','wb') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
-                cobra_model = load_json_model('data\\cobra_model_tmp.json');
+                cobra_model = load_json_model(settings.workspace_data + 'cobra_model_tmp.json');
             else:
                 print 'file_type not supported'
             self.models[model_id]=cobra_model;
@@ -1423,3 +1457,89 @@ class stage02_isotopomer_execute():
     def make_isotopomerParameterEstimation_Inca(self):
         '''Generate parameters for isotopomer parameter estimations (i.e. free fluxes) for INCA1.1'''
         return
+
+    def make_modelFromRxnsAndMetsTables(self,model_id_I=None,model_id_O=None,date_I=None,ko_list=[],flux_dict={},description=None):
+        '''make/update the model using the modelReactions and modelMetabolites table'''
+
+        qio02 = stage02_isotopomer_io();
+
+        if model_id_I and model_id_O: #make a new model based off of a modification of an existing model in the database
+            # get the model reactions and metabolites from the database
+            reactions = [];
+            metabolites = [];
+            reactions = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id_I);
+            metabolites = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id_I);
+            # creat the model
+            cobra_model = qio02.create_modelFromReactionsAndMetabolitesTables(reactions,metabolites)
+            # Apply KOs, if any:
+            for ko in ko_list:
+                cobra_model.reactions.get_by_id(ko).lower_bound = 0.0;
+                cobra_model.reactions.get_by_id(ko).upper_bound = 0.0;
+            # Apply flux constraints, if any:
+            for rxn,flux in flux_dict.iteritems():
+                cobra_model.reactions.get_by_id(rxn).lower_bound = flux['lb'];
+                cobra_model.reactions.get_by_id(rxn).upper_bound = flux['ub'];
+            # Change description, if any:
+            if description:
+                cobra_model.description = description;
+            # test the model
+            if self.test_model(cobra_model):
+                # write the model to a temporary file
+                save_json_model(cobra_model,settings.workspace_data+'\\cobra_model_tmp.json')
+                # add the model information to the database
+                dataStage02IsotopomerModelRxns_data = [];
+                dataStage02IsotopomerModelMets_data = [];
+                dataStage02IsotopomerModels_data,\
+                    dataStage02IsotopomerModelRxns_data,\
+                    dataStage02IsotopomerModelMets_data = qio02._parse_model_json(model_id_O, date_I, settings.workspace_data+'\\cobra_model_tmp.json')
+                qio02.add_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
+        elif model_id_I and not model_id_O:  #update an existing model in the database
+            # get the model reactions and metabolites from the database
+            reactions = [];
+            metabolites = [];
+            reactions = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id_I);
+            metabolites = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id_I);
+            # creat the model
+            cobra_model = qio02.create_modelFromReactionsAndMetabolitesTables(reactions,metabolites)
+            # Apply KOs, if any:
+            for ko in ko_list:
+                cobra_model.reactions.get_by_id(ko).lower_bound = 0.0;
+                cobra_model.reactions.get_by_id(ko).upper_bound = 0.0;
+            # Apply flux constraints, if any:
+            for rxn,flux in flux_dict.iteritems():
+                cobra_model.reactions.get_by_id(rxn).lower_bound = flux['lb'];
+                cobra_model.reactions.get_by_id(rxn).upper_bound = flux['ub'];
+            # Change description, if any:
+            if description:
+                cobra_model.description = description;
+            # test the model
+            if self.test_model(cobra_model):
+                # write the model to a temporary file
+                save_json_model(cobra_model,settings.workspace_data+'\\cobra_model_tmp.json')
+                # upload the model to the database
+                # add the model information to the database
+                dataStage02IsotopomerModelRxns_data = [];
+                dataStage02IsotopomerModelMets_data = [];
+                dataStage02IsotopomerModels_data,\
+                    dataStage02IsotopomerModelRxns_data,\
+                    dataStage02IsotopomerModelMets_data = qio02._parse_model_json(model_id_I, date_I, settings.workspace_data+'\\cobra_model_tmp.json')
+                qio02.update_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
+
+        else:
+            print 'need to specify either an existing model_id!'
+        return
+    
+    def test_model(self,cobra_model):
+        '''simulate a cobra model'''
+        
+        # Dependencies from cobra
+        from cobra.flux_analysis.parsimonious import optimize_minimal_flux
+
+        # test for a solution:
+        cobra_model.optimize(solver='gurobi');
+        if not cobra_model.solution.f:
+            print "model does not converge to a solution";
+            return False,
+        else:
+            print 'solution = ' + str(cobra_model.solution.f)
+            return True;

@@ -767,6 +767,24 @@ class stage02_isotopomer_query(base_analysis):
             return rows_O;
         except SQLAlchemyError as e:
             print(e);
+    # query metabolites from data_stage02_isotopomer_modelReactions
+    def get_metIDs_modelID_dataStage02IsotopomerModelReactions(self,model_id_I):
+        '''Querry metabolites by model_id that are used'''
+        try:
+            data = query_session.query(data_stage02_isotopomer_modelReactions.reactants_ids,
+                    data_stage02_isotopomer_modelReactions.products_ids).filter(
+                    data_stage02_isotopomer_modelReactions.model_id.like(model_id_I),
+                    data_stage02_isotopomer_modelReactions.used_.is_(True)).all();
+            mets_all = [];
+            mets_unique_O = [];
+            if data: 
+                for d in data:
+                    mets_all.extend(d.reactants_ids);
+                    mets_all.extend(d.products_ids);
+                mets_unique_O = list(set(mets_all));
+            return mets_unique_O;
+        except SQLAlchemyError as e:
+            print(e);
 
     ## Query from data_stage02_isotopomer_atomMappingReactions
     # query rows from data_stage02_isotopomer_atomMappingReactions
@@ -1435,6 +1453,21 @@ class stage02_isotopomer_query(base_analysis):
                             'used_':d.used_,
                             'comment_':d.comment_};
             return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+    # query metabolites from data_stage02_isotopomer_modelMetabolites
+    def get_metIDs_modelID_dataStage02IsotopomerModelMetabolites(self,model_id_I):
+        '''Querry rows by model_id that are used'''
+        try:
+            data = query_session.query(data_stage02_isotopomer_modelMetabolites.met_id).filter(
+                    data_stage02_isotopomer_modelMetabolites.model_id.like(model_id_I),
+                    data_stage02_isotopomer_modelMetabolites.used_.is_(True)).order_by(
+                    data_stage02_isotopomer_modelMetabolites.met_id.asc()).all();
+            mets_O = [];
+            if data: 
+                for d in data:
+                    mets_O.append(d.met_id);
+            return mets_O;
         except SQLAlchemyError as e:
             print(e);
 

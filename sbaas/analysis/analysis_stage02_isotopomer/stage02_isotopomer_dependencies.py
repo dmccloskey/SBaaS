@@ -4281,6 +4281,7 @@ class stage02_isotopomer_reactionMapping():
             self.reactionMapping['products_ids_tracked'].append(balance_met);
             self.reactionMapping['products_mapping'].append(imm.convert_arrayMapping2StringMapping());
             self.reactionMapping['products_positions_tracked'].append(product_positions_tracked);
+            self.reactionMapping['products_stoichiometry_tracked'].append(1);
             self.reactionMapping['products_elements_tracked'].append(product_elements_tracked);
             self.reactionMapping['products_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
         # use user specifications
@@ -4328,6 +4329,7 @@ class stage02_isotopomer_reactionMapping():
                 self.reactionMapping['products_positions_tracked'].append(product_positions_tracked);
                 self.reactionMapping['products_elements_tracked'].append(product_elements_tracked);
                 self.reactionMapping['products_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
+                self.reactionMapping['products_stoichiometry_tracked'].append(1);
             else:
                 print 'unbalanced metabolite not found!'
     def check_elementalBalance(self):
@@ -4443,7 +4445,6 @@ class stage02_isotopomer_mappingUtilities():
                         mapping_row = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id_rxns,d['met_id']);
                         if not mapping_row: data_add_O.append(d);
                     self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingMetabolites(data_add_O);
-
     def make_missingReactionMappings(self,experiment_id_I,model_id_I=[],mapping_id_rxns_I=[],mapping_id_mets_I=[],mapping_id_new_I=None):
         '''Update missing reaction mappings for the current mapping from the matching metabolite mappings,
         and optionally, from the previous reaction mappings'''

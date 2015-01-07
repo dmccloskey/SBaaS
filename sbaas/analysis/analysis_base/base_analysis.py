@@ -4,11 +4,12 @@ from math import log, sqrt, exp
 import csv
 from sys import exit
 import numpy
-#from numpy import zeros, average, array
-
+#ORM
 from models import *
 from sqlalchemy import func
 from sqlalchemy.exc import SQLAlchemyError
+#settings
+from data import sbaas_settings as settings
 
 class base_analysis():
     def __init__(self):

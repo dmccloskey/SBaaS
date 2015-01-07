@@ -475,7 +475,6 @@ class stage02_isotopomer_io(base_analysis):
                     print(e);
             self.session.commit();
     def update_data_stage02_isotopomer_models(self,data_I):
-        #TODO:
         '''update rows of data_stage02_isotopomer_models'''
         if data_I:
             for d in data_I:
@@ -1414,9 +1413,14 @@ class stage02_isotopomer_io(base_analysis):
     def import_dataStage02IsotopomerModelAndAtomMappingReactions_INCA(self,model_id_I=None,mapping_id_I=None, date_I=None,
                                                                       model_INCA_I=None, model_rxn_conversion_I=None,
                                                                       model_met_conversion_I=None,model_rxn_CBM_I=None,
+                                                                      element_tracked_I = 'C',
                                                                       add_model_I = True, add_rxns_I = True,
-                                                                      add_mets_I = True, add_rxn_mappings_I=True):
-        '''load and parse INCA isotopomer model (i.e., ecoli_inca01)'''
+                                                                      add_mets_I = True, add_rxn_mappings_I=True,
+                                                                      update_model_I = False, update_rxns_I = False,
+                                                                      update_mets_I = False, update_rxn_mappings_I=False,
+                                                                      addunique_mets_I = False):
+        '''load and parse INCA isotopomer model (i.e., ecoli_inca01)
+        TODO: add in ability to parse elements/mapping in use cases such as '(C1:a,C2:b1,C3:c2)' or '(C1:a,C2:b3,H1:d)' '''
 
         '''DELETE previous uploads of ecoli_inca01:
         DELETE FROM data_stage02_isotopomer_models WHERE model_id LIKE 'ecoli_inca01';
@@ -1586,7 +1590,7 @@ class stage02_isotopomer_io(base_analysis):
                     positions = [];
                     for pos,mapping in enumerate(rxn_mapping):
                         positions.append(pos);
-                        elements.append('C');
+                        elements.append(element_tracked_I);
                     atomMappingReactions_row['reactants_positions_tracked'].append(positions)
                     atomMappingReactions_row['reactants_elements_tracked'].append(elements)
                 #check for stoichiometry
@@ -1623,7 +1627,7 @@ class stage02_isotopomer_io(base_analysis):
                     positions = [];
                     for pos,mapping in enumerate(rxn_mapping):
                         positions.append(pos);
-                        elements.append('C');
+                        elements.append(element_tracked_I);
                     atomMappingReactions_row['products_positions_tracked'].append(positions)
                     atomMappingReactions_row['products_elements_tracked'].append(elements)
                 #check for stoichiometry
@@ -1704,26 +1708,54 @@ class stage02_isotopomer_io(base_analysis):
         #create the model from modelReactions and modelMetabolites
         cobra_model = self.create_modelFromReactionsAndMetabolitesTables(modelReactions,modelMetabolites)
         convert_to_irreversible(cobra_model);
-        save_json_model(cobra_model,'data\\cobra_model_tmp.json')
+        save_json_model(cobra_model,settings.workspace_data+'\\cobra_model_tmp.json')
 
         # add the model information to the database
         dataStage02IsotopomerModelRxns_data = [];
         dataStage02IsotopomerModelMets_data = [];
         dataStage02IsotopomerModels_data,\
             dataStage02IsotopomerModelRxns_data,\
-            dataStage02IsotopomerModelMets_data = self._parse_model_json(model_id_I, date_I, 'data\\cobra_model_tmp.json')
-        if add_mets_I: self.add_data_stage02_isotopomer_modelMetabolites(dataStage02IsotopomerModelMets_data);
-        #self.add_data_stage02_isotopomer_modelReactions(dataStage02IsotopomerModelRxns_data);
-        if add_model_I: self.add_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
+            dataStage02IsotopomerModelMets_data = self._parse_model_json(model_id_I, date_I, settings.workspace_data+'\\cobra_model_tmp.json')
 
-        ## add modelReactions and modelMetabolites to the database
-        #self.add_data_stage02_isotopomer_modelMetabolites(modelMetabolites);
+        # add modelReactions to the database
+        #if add_rxns_I: self.add_data_stage02_isotopomer_modelReactions(dataStage02IsotopomerModelRxns_data);
+        # add in equations to modelReactions:
+        for rxn1_cnt,rxn1 in enumerate(modelReactions):
+            for rxn2_cnt,rxn2 in enumerate(dataStage02IsotopomerModelRxns_data):
+                if rxn1['rxn_id']==rxn2['rxn_id']:
+                    modelReactions[rxn1_cnt]['equation'] = rxn2['equation'];
         if add_rxns_I: self.add_data_stage02_isotopomer_modelReactions(modelReactions);
+        elif update_rxns_I: self.update_data_stage02_isotopomer_modelReactions(modelReactions);
+        
+        # add modelMetabolites to the database
+        #self.add_data_stage02_isotopomer_modelMetabolites(modelMetabolites);
+        if add_mets_I: self.add_data_stage02_isotopomer_modelMetabolites(dataStage02IsotopomerModelMets_data);
+        elif update_mets_I: self.update_data_stage02_isotopomer_modelMetabolites(dataStage02IsotopomerModelMets_data);
+        elif addunique_mets_I: 
+            existing_mets = [];
+            existing_mets = self.stage02_isotopomer_query.get_metIDs_modelID_dataStage02IsotopomerModelMetabolites(model_id_I);
+            all_mets = self.stage02_isotopomer_query.get_metIDs_modelID_dataStage02IsotopomerModelReactions(model_id_I);
+            new_mets = [];
+            for met in all_mets:
+                if not met in existing_mets:
+                    new_mets.append(met);
+            new_mets_add = [];
+            for row in dataStage02IsotopomerModelMets_data:
+                if row['met_id'] in new_mets:
+                    new_mets_add.append(row);
+            self.add_data_stage02_isotopomer_modelMetabolites(new_mets_add);
+
+        # add model to the database
+        if add_model_I: self.add_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
+        elif update_model_I: self.update_data_stage02_isotopomer_models(dataStage02IsotopomerModels_data);
 
         #add atomMappingReactions to the database
         if add_rxn_mappings_I: 
             self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions);
             self.add_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions_reverse);
+        elif update_rxn_mappings_I: 
+            self.update_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions);
+            self.update_data_stage02_isotopomer_atomMappingReactions(atomMappingReactions_reverse);
 
         print 'model and mapping added';
     def create_modelFromReactionsAndMetabolitesTables(self,rxns_table_I,mets_table_I):
@@ -1788,6 +1820,7 @@ class stage02_isotopomer_io(base_analysis):
             cobra_model.add_reactions([rxn]);
             cobra_model.repair();
         return cobra_model
+
     # TODO:
     def export_data_stage02_isotopomer_models(self,model_id_I,filename_I):
         cobra_model_sbml = None;
@@ -1821,16 +1854,60 @@ class stage02_isotopomer_io(base_analysis):
         self.add_(data.data);
         data.clear_data();
         return
-    def import_isotopomerSimulationResults_INCA(self, filename):
+    def import_isotopomerSimulationResults_INCA(self, filename, model_rxn_conversion_I=None):
         '''import results from a fluxomics simulation using INCA1.1'''
         #TODO
         '''table adds'''
-        data = base_importData();
-        data.read_csv(filename);
-        data.format_data();
-        self.add_(data.data);
-        data.clear_data();
-        return
+        m = scipy.io.loadmat(filename)['m']; #model
+        f = scipy.io.loadmat(filename)['f']; #fit
+        s = scipy.io.loadmat(filename)['s']; #simulation
+        # extract out model information
+        m_ms_id = [];
+        m_ms_on = [];
+        for d in m['expts'][0][0][0]['data_ms'][0]['id']:
+            m_ms_id.append(d[0][0]);
+        for d in m['expts'][0][0][0]['data_ms'][0]['on']:
+            m_ms_on.append(d[0][0]);
+        # extract out sum of the squared residuals for the fragments
+        f_mnt_id = [];
+        f_mnt_sres = [];
+        for d in f['mnt'][0][0][0]['id']:
+            f_mnt_id.append(d[0]);
+        for d in f['mnt'][0][0][0]['sres']:
+            f_mnt_sres.append(d[0]);
+        # extract out the residuals of the fitted variable
+        f_mnt_res_val = [];
+        f_mnt_res_fit = [];
+        f_mnt_res_type = []; #Flux or MS
+        f_mnt_res_id = [];
+        f_mnt_res_std = [];
+        for d in f['mnt'][0][0][0]['res']: 
+            f_mnt_val.append([0][0]['val'][0]);
+            f_mnt_fit.append([0][0]['fit'][0]);
+            f_mnt_type.append([0][0]['type'][0]);
+            f_mnt_id.append([0][0]['id'][0]);
+            f_mnt_std.append([0][0]['std'][0]);
+        # extract out the fitted parameters
+        f_par_id = [];
+        f_par_val = [];
+        f_par_std = [];
+        f_par_type = []; # 'Net Flux'
+        f_par_lb = [];
+        f_par_ub = [];
+        for d in f['par'][0][0][0]['id']:
+            f_par_id.append(d[0])
+        for d in f['par'][0][0][0]['val']:
+            f_par_val.append(d[0])
+        for d in f['par'][0][0][0]['std']:
+            f_par_std.append(d[0])
+        for d in f['par'][0][0][0]['type']:
+            f_par_type.append(d[0])
+        for d in f['par'][0][0][0]['lb']:
+            f_par_lb.append(d[0])
+        for d in f['par'][0][0][0]['ub']:
+            f_par_ub.append(d[0])
+
+
     # Visualization
     def export_fluxomicsAnalysis_escher(self,experiment_id_I,model_ids_I=[],
                          model_ids_dict_I={},
