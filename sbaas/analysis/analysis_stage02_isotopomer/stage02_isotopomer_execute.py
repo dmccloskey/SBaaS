@@ -1,6 +1,7 @@
 '''isotopomer metabolomics analysis class'''
 
 from analysis.analysis_base import *
+from analysis.analysis_base.base_exportData import base_exportData
 from stage02_isotopomer_query import *
 from stage02_isotopomer_io import *
 from stage02_isotopomer_dependencies import *
@@ -288,7 +289,7 @@ class stage02_isotopomer_execute():
         except SQLAlchemyError as e:
             print(e);
     #analysis
-    def simulate_model(self,model_id_I,ko_list=[],flux_dict={},description=None):
+    def simulate_model(self,model_id_I,ko_list=[],flux_dict={},measured_flux_list=[],description=None):
         '''simulate a cobra model'''
         
         # Dependencies from cobra
@@ -324,6 +325,9 @@ class stage02_isotopomer_execute():
         for rxn,flux in flux_dict.iteritems():
             cobra_model.reactions.get_by_id(rxn).lower_bound = flux['lb'];
             cobra_model.reactions.get_by_id(rxn).upper_bound = flux['ub'];
+        for flux in measured_flux_list:
+            cobra_model.reactions.get_by_id(flux['rxn_id']).lower_bound = flux['flux_lb'];
+            cobra_model.reactions.get_by_id(flux['rxn_id']).upper_bound = flux['flux_ub'];
         # change description, if any:
         if description:
             cobra_model.description = description;
@@ -616,14 +620,21 @@ class stage02_isotopomer_execute():
                     None);
                 self.session.add(row);
         self.session.commit();
-    def execute_makeIsotopomerExperiment_INCA(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
+    def execute_makeIsotopomerExperiment_INCA(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
         '''export a fluxomics experimental data for simulation using INCA1.1'''
         #Input:
         #   stationary_I = boolean
         #                  indicates whether each time-point is written to a separate file, or part of a time-course
+        #   parallel_I = boolean
+        #                  indicates whether multiple tracers were used
 
-        #TODO: make sure that all reactions are ordered by rxn_id
-        #TODO: make sure all metabolites are ordered by met_id
+        # get the different simulations:
+        # get the sample name abbreviations
+        #if simulations_I:
+        #    simulations = simulations_I;
+        #else:
+        #    sample_abbreviations = [];
+        #    sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
         # get the sample name abbreviations
         if sample_name_abbreviations_I:
             sample_abbreviations = sample_name_abbreviations_I;
@@ -647,6 +658,16 @@ class stage02_isotopomer_execute():
                     mapping_ids = [];
                     mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,sna,model_id);
                 for mapping_id in mapping_ids:
+                    ## get the tracer_ids:
+                    #tracer_ids = self.stage02_isotopomer_query.get_tracerID__dataStage02IsotopomerExperiment(experiment_id_I,
+                    #for tracer_id in tracer_ids:
+                    #if parallel_I:
+                    #else:
+                    print 'Collecting and exporting tracer information for sample name abbreviation ' + sna;
+                    ## get substrate labeling (i.e. tracer) information
+                    tracers = [];
+                    tracers = self.stage02_isotopomer_query.get_rows_experimentID_dataStage02IsotopomerTracers(experiment_id_I);
+
                     # data containers
                     modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data = [],[],[],[];
                     
@@ -657,7 +678,7 @@ class stage02_isotopomer_execute():
                     modelReaction_data = [];
                     modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
                     #simulate the model
-                    cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,description_I);
+                    cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
                     for i,row in enumerate(modelReaction_data):
                         #get atom mapping data
                         atomMapping = {};
@@ -740,11 +761,6 @@ class stage02_isotopomer_execute():
                                 'met_symmetry_elements':None,
                                 'met_symmetry_atompositions':None});
 
-                    print 'Collecting and exporting tracer information for sample name abbreviation ' + sna;
-                    ## get substrate labeling (i.e. tracer) information
-                    tracers = [];
-                    tracers = self.stage02_isotopomer_query.get_rows_experimentID_dataStage02IsotopomerTracers(experiment_id_I);
-
                     ## dump the experiment to a matlab script to generate the matlab files in matlab
                     # Matlab script file to make the structures
                     if stationary_I:
@@ -758,19 +774,26 @@ class stage02_isotopomer_execute():
                             experimentalMS_data =self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna,tp);
                             experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp));
                             filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.m';
+                            filename_csv = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.csv';
                             filename_json = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.json';
+                            #mat_script,rxn_ids_INCA = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                             mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                             with open(filename_mat,'w') as f:
                                 f.write(mat_script);
+                            #exportData = base_exportData(rxn_ids_INCA);
+                            #exportData.write_dict2csv(filename_csv);
                     else:
                         # get the MS data
                         experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna);
                         experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna);
                         filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.m';
+                        filename_csv = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.csv';
                         filename_json = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.json';
                         mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                         with open(filename_mat,'w') as f:
                             f.write(mat_script);
+                        #exportData = base_exportData(rxn_ids_INCA);
+                        #exportData.write_dict2csv(filename_csv);
     #internal functions
     def make_isotopomerRxnEquations_INCA(self,reactants_ids_I = [],
                                         products_ids_I = [],
@@ -1003,41 +1026,19 @@ class stage02_isotopomer_execute():
         tmp_script = ''
         tmp_script = tmp_script + 'r = reaction({...\n';
         rxn_ids_INCA = {};
+        cnt = 0
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            if rxn['rxn_id'] == 'Ec_biomass_iJO1366_WT_53p95M':
-                tmp_script = tmp_script + "'" + self.biomass_INCA + "';...\n"
-                #tmp_script = tmp_script + "'" + self.biomass_INCA_iJS2012 + "';...\n"
+            if not(rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0):
+                rxn_ids_INCA[rxn['rxn_id']] = ('R'+str(cnt+1));
+                cnt+=1;
+                if rxn['rxn_id'] == 'Ec_biomass_iJO1366_WT_53p95M':
+                    tmp_script = tmp_script + "'" + self.biomass_INCA + "';...\n"
+                    #tmp_script = tmp_script + "'" + self.biomass_INCA_iJS2012 + "';...\n"
+                else:
+                    tmp_script = tmp_script + "'" + rxn['rxn_equation'] + "';...\n"
             else:
-                tmp_script = tmp_script + "'" + rxn['rxn_equation'] + "';...\n"
-            rxn_ids_INCA[rxn['rxn_id']] = ('R'+str(rxn_cnt+1));
+                print 'rxn_id ' + rxn['rxn_id'] + ' will be excluded from INCA' 
         tmp_script = tmp_script + '});\n';
-        mat_script = mat_script + tmp_script;
-
-        # write out the measured fragment information
-        # (actual MS measurements will be written to the script later)
-        fragments_all = [x['fragment_id'] for x in experimentalMS_data_I];
-        fragments = list(set(fragments_all));
-        fragments.sort();
-        mets_all = [x['met_id'] for x in experimentalMS_data_I];
-        mets = list(set(mets_all));
-        mets.sort();
-        times_all = [x['time_point'] for x in experimentalMS_data_I];
-        times = list(set(times_all));
-        times.sort();
-        
-        tmp_script = ''
-        tmp_script = tmp_script + 'd = msdata({...\n';
-        for fragment in fragments:
-            for ms_data in experimentalMS_data_I:
-                if ms_data['fragment_id'] == fragment:
-                    tmp_script = tmp_script + "'" + ms_data['fragment_id'] + ': ' + ms_data['met_id'] + ' @ ';
-                    for pos_cnt,pos in enumerate(ms_data['met_atompositions']):
-                            tmp_script = tmp_script + ms_data['met_elements'][pos_cnt] + str(pos+1) + ' ';
-                    tmp_script = tmp_script[:-1];
-                    tmp_script = tmp_script + "';\n"
-                    break;
-        tmp_script = tmp_script + '});\n';
-        tmp_script = tmp_script + 'd.mdvs = mdv;\n';
         mat_script = mat_script + tmp_script;
 
         # setup the model
@@ -1063,43 +1064,47 @@ class stage02_isotopomer_execute():
         tmp_script = ''
         tmp_script = tmp_script + 'm.rates.flx.lb = [...\n';
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            if measuredFluxes_data_I:
-                for flux in measuredFluxes_data_I:
-                    if rxn['rxn_id'] == flux['rxn_id']:
-                        tmp_script = tmp_script + str(flux['flux_lb']) + ',...\n'
-                        break;
-                    else:
-                        tmp_script = tmp_script + str(rxn['lower_bound']) + ',...\n'
-                        break;
-            else: tmp_script = tmp_script + str(rxn['lower_bound']) + ',...\n'
+            if not(rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0):
+                if measuredFluxes_data_I:
+                    for flux in measuredFluxes_data_I:
+                        if rxn['rxn_id'] == flux['rxn_id']:
+                            tmp_script = tmp_script + str(flux['flux_lb']) + ',...\n'
+                            break;
+                        else:
+                            tmp_script = tmp_script + str(rxn['lower_bound']) + ',...\n'
+                            break;
+                else: tmp_script = tmp_script + str(rxn['lower_bound']) + ',...\n'
         tmp_script = tmp_script + '];\n';
         tmp_script = tmp_script + 'm.rates.flx.ub = [...\n';
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            if measuredFluxes_data_I:
-                for flux in measuredFluxes_data_I:
-                    if rxn['rxn_id'] == flux['rxn_id']:
-                        tmp_script = tmp_script + str(flux['flux_ub']) + ',...\n'
-                        break;
-                    else:
-                        tmp_script = tmp_script + str(rxn['upper_bound']) + ',...\n'
-                        break;
-            else: tmp_script = tmp_script + str(rxn['upper_bound']) + ',...\n'
+            if not(rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0):
+                if measuredFluxes_data_I:
+                    for flux in measuredFluxes_data_I:
+                        if rxn['rxn_id'] == flux['rxn_id']:
+                            tmp_script = tmp_script + str(flux['flux_ub']) + ',...\n'
+                            break;
+                        else:
+                            tmp_script = tmp_script + str(rxn['upper_bound']) + ',...\n'
+                            break;
+                else: tmp_script = tmp_script + str(rxn['upper_bound']) + ',...\n'
         tmp_script = tmp_script + '];\n';
         tmp_script = tmp_script + 'm.rates.flx.val = [...\n';
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            tmp_script = tmp_script + str(rxn['flux_val']) + ',...\n'
+            if not(rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0):
+                tmp_script = tmp_script + str(rxn['flux_val']) + ',...\n'
         tmp_script = tmp_script + '];\n';
-        tmp_script = tmp_script + 'm.rates.flx.fix = [...\n';
-        for rxn_cnt,rxn in enumerate(modelReaction_data_I):
-            if rxn['flux_val']==0.0 and rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0:
-                tmp_script = tmp_script + '1' + ',...\n'
-            else:
-                tmp_script = tmp_script + '0' + ',...\n'
-        tmp_script = tmp_script + '];\n';
-        tmp_script = tmp_script + 'm.rates.flx.id = {...\n';
+        #tmp_script = tmp_script + 'm.rates.flx.fix = [...\n';
+        #for rxn_cnt,rxn in enumerate(modelReaction_data_I):
+        #    if rxn['flux_val']==0.0 and rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0:
+        #        tmp_script = tmp_script + '1' + ',...\n'
+        #    else:
+        #        tmp_script = tmp_script + '0' + ',...\n'
+        #tmp_script = tmp_script + '];\n';
+        tmp_script = tmp_script + 'm.rates.id = {...\n';
         for rxn_cnt,rxn in enumerate(modelReaction_data_I):
             #TODO check on how the reactions are named
-            tmp_script = tmp_script + "'" + rxn['rxn_id'] + "',...\n"
+            if not(rxn['upper_bound']==0.0 and rxn['lower_bound']==0.0):
+                tmp_script = tmp_script + "'" + rxn['rxn_id'] + "',...\n"
         tmp_script = tmp_script + '};\n';
         mat_script = mat_script + tmp_script;
 
@@ -1126,45 +1131,82 @@ class stage02_isotopomer_execute():
         #mat_script = mat_script + '];\n';
         
         ##2. Define the experiment
-        ## write substrate labeling (i.e. tracer) information
-        tmp_script = ''
-        tmp_script = tmp_script + 't = tracer({...\n';
-        for tracer in tracer_I:
-            tmp_script = tmp_script + "'" + tracer['met_name'] + ': ' + tracer['met_id'] + ' @ '
-            for cnt,met_atompositions in enumerate(tracer['met_atompositions']):
-                    tmp_script = tmp_script + tracer['met_elements'][cnt]+str(met_atompositions) + ' '
-            tmp_script = tmp_script[:-1]; #remove extra white space
-            tmp_script = tmp_script + "';...\n";
-        tmp_script = tmp_script + '});\n';
-        tmp_script = tmp_script + 't.frac = [';
-        for tracer in tracer_I:
-            tmp_script = tmp_script + str(tracer['ratio']) + ',';
-        tmp_script = tmp_script[:-1]; #remove extra ,
-        tmp_script = tmp_script + '];\n'; #remove extra ,
-        mat_script = mat_script + tmp_script;
+
+        # write out the measured fragment information
+        # (actual MS measurements will be written to the script later)
+        experiments_all = [x['experiment_id'] for x in experimentalMS_data_I];
+        experiments = list(set(experiments_all));
+        experiments.sort();
+        fragments_all = [x['fragment_id'] for x in experimentalMS_data_I];
+        fragments = list(set(fragments_all));
+        fragments.sort();
+        mets_all = [x['met_id'] for x in experimentalMS_data_I];
+        mets = list(set(mets_all));
+        mets.sort();
+        times_all = [x['time_point'] for x in experimentalMS_data_I];
+        times = list(set(times_all));
+        times.sort();
+        
+        for exp_cnt,experiment in enumerate(experiments):
+            tmp_script = ''
+            tmp_script = tmp_script + 'd = msdata({...\n';
+            for fragment in fragments:
+                for ms_data in experimentalMS_data_I:
+                    if ms_data['fragment_id'] == fragment and ms_data['experiment_id'] == experiment:
+                        tmp_script = tmp_script + "'" + ms_data['fragment_id'] + ': ' + ms_data['met_id'] + ' @ ';
+                        for pos_cnt,pos in enumerate(ms_data['met_atompositions']):
+                                tmp_script = tmp_script + ms_data['met_elements'][pos_cnt] + str(pos+1) + ' ';
+                        tmp_script = tmp_script[:-1];
+                        tmp_script = tmp_script + "';\n"
+                        break;
+            tmp_script = tmp_script + '});\n';
+            tmp_script = tmp_script + 'd.mdvs = mdv;\n';
+            mat_script = mat_script + tmp_script;
+
+            ## write substrate labeling (i.e. tracer) information
+            tmp_script = ''
+            tmp_script = tmp_script + 't = tracer({...\n';
+            for tracer in tracer_I:
+                if tracer['experiment_id'] == experiment:
+                    tmp_script = tmp_script + "'" + tracer['met_name'] + ': ' + tracer['met_id'] + '.EX' + ' @ '
+                    for cnt,met_atompositions in enumerate(tracer['met_atompositions']):
+                            tmp_script = tmp_script + tracer['met_elements'][cnt]+str(met_atompositions) + ' '
+                    tmp_script = tmp_script[:-1]; #remove extra white space
+                    tmp_script = tmp_script + "';...\n";
+            tmp_script = tmp_script + '});\n';
+            tmp_script = tmp_script + 't.frac = [';
+            for tracer in tracer_I:
+                if tracer['experiment_id'] == experiment:
+                    tmp_script = tmp_script + str(tracer['ratio']) + ',';
+            tmp_script = tmp_script[:-1]; #remove extra ,
+            tmp_script = tmp_script + '];\n'; #remove extra ,
+            mat_script = mat_script + tmp_script;
                     
-        ## write flux measurements
-        tmp_script = ''
-        tmp_script = tmp_script + "f = data('";
-        for flux in measuredFluxes_data_I:
-            # Temporary fix until reactions can be properly named
-            tmp_script = tmp_script + rxn_ids_INCA[flux['rxn_id']] + " ";
-            #tmp_script = tmp_script + flux['rxn_id'] + " ";
-        tmp_script = tmp_script[:-1]; #remove extra ,
-        tmp_script = tmp_script + "');\n";
-        tmp_script = tmp_script + 'f.val = [...\n';
-        for flux in measuredFluxes_data_I:
-            tmp_script = tmp_script + str(flux['flux_average']) + ',...\n';
-        tmp_script = tmp_script + '];\n';
-        tmp_script = tmp_script + 'f.std = [...\n';
-        for flux in measuredFluxes_data_I:
-            tmp_script = tmp_script + str(flux['flux_stdev']) + ',...\n';
-        tmp_script = tmp_script + '];\n';
-        tmp_script = tmp_script + 'x = experiment(t);\n'
-        tmp_script = tmp_script + 'x.data_flx = f;\n'
-        tmp_script = tmp_script + 'x.data_ms = d;\n'
-        tmp_script = tmp_script + 'm.expts = x;\n'
-        mat_script = mat_script + tmp_script;
+            ## write flux measurements
+            tmp_script = ''
+            tmp_script = tmp_script + "f = data('";
+            for flux in measuredFluxes_data_I:
+                if flux['experiment_id'] == experiment:
+                    ## Temporary fix until reactions can be properly named
+                    #tmp_script = tmp_script + rxn_ids_INCA[flux['rxn_id']] + " ";
+                    tmp_script = tmp_script + flux['rxn_id'] + " ";
+            tmp_script = tmp_script[:-1]; #remove extra ,
+            tmp_script = tmp_script + "');\n";
+            tmp_script = tmp_script + 'f.val = [...\n';
+            for flux in measuredFluxes_data_I:
+                if flux['experiment_id'] == experiment: tmp_script = tmp_script + str(flux['flux_average']) + ',...\n';
+            tmp_script = tmp_script + '];\n';
+            tmp_script = tmp_script + 'f.std = [...\n';
+            for flux in measuredFluxes_data_I:
+                if flux['experiment_id'] == experiment: tmp_script = tmp_script + str(flux['flux_stdev']) + ',...\n';
+            tmp_script = tmp_script + '];\n';
+
+            tmp_script = tmp_script + 'x = experiment(t);\n'
+            tmp_script = tmp_script + 'x.data_flx = f;\n'
+            tmp_script = tmp_script + 'x.data_ms = d;\n'
+            tmp_script = tmp_script + ('m.expts(%d) = x;\n' %(exp_cnt+1));
+            tmp_script = tmp_script + ("m.expts(%d).id = {'%s'};\n" %(exp_cnt+1,experiment));
+            mat_script = mat_script + tmp_script;
 
         # Specify simulation parameters (non-stationary only!)
         '''% simulate MS measurements
@@ -1176,37 +1218,58 @@ class stage02_isotopomer_execute():
         m.options.sim_ss = false;
         m.options.sim_sens = true;'''
 
-        # Add in ms data or Write ms data to separate file
         tmp_script = ''
-        for i,fragment in enumerate(fragments):
-            for j,time in enumerate(times):
-                # Pad the data file:
-                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(i+1,1,j+1,'NaN'));
-                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(i+1,1,j+1,'NaN'));
-                for ms_data in experimentalMS_data_I:
-                    if ms_data['fragment_id']==fragments[i] and \
-                        ms_data['time_point']==times[j]:
-                        for cnt,intensity in enumerate(ms_data['intensity_normalized_average']):
-                            # each column is a seperate time point
-                            # each row is a seperate mdv
-                            ave = ms_data['intensity_normalized_average'][cnt]
-                            stdev = ms_data['intensity_normalized_stdev'][cnt]
-                            # remove 0.0000 values and replace with NaN
-                            if ave < 1e-9: 
-                                ave = 'NaN';
-                                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(i+1,cnt+1,j+1,ave));
-                            else:
-                                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.val(%d,%d) = %f;\n' %(i+1,cnt+1,j+1,ave));
-                            if stdev < 1e-9:
-                                ave = 'NaN';
-                                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(i+1,cnt+1,j+1,stdev));
-                            else:
-                                tmp_script = tmp_script + ('m.expts.data_ms(%d).mdvs.std(%d,%d) = %f;\n' %(i+1,cnt+1,j+1,stdev));
+        tmp_script = tmp_script + 'm.options.fit_starts = 10;\n' #10 restarts during the estimation procedure
         mat_script = mat_script + tmp_script;
+
+        # Add in ms data or Write ms data to separate file
+        for exp_cnt,experiment in enumerate(experiments):
+            tmp_script = ''
+            for i,fragment in enumerate(fragments):
+                for j,time in enumerate(times):
+                    # Pad the data file:
+                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(exp_cnt+1,i+1,1,j+1,'NaN'));
+                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(exp_cnt+1,i+1,1,j+1,'NaN'));
+                    for ms_data in experimentalMS_data_I:
+                        if ms_data['fragment_id']==fragments[i] and \
+                            ms_data['time_point']==times[j] and \
+                            ms_data['experiment_id'] == experiment:
+                            for cnt,intensity in enumerate(ms_data['intensity_normalized_average']):
+                                # each column is a seperate time point
+                                # each row is a seperate mdv
+                                # Assign names and times
+                                name = fragment + '_' + str(cnt) + '_' + str(j) + '_' + str(experiment);
+                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.id(%d,%d) = {'%s'};\n" %(exp_cnt+1,i+1,1,j+1,name));
+                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.time(%d,%d) = %s;\n" %(exp_cnt+1,i+1,1,j+1,time));
+                                # Assign values
+                                ave = ms_data['intensity_normalized_average'][cnt]
+                                stdev = ms_data['intensity_normalized_stdev'][cnt]
+                                # remove 0.0000 values and replace with NaN
+                                if ave < 1e-9: 
+                                    ave = 'NaN';
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(exp_cnt+1,i+1,cnt+1,j+1,ave));
+                                else:
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %f;\n' %(exp_cnt+1,i+1,cnt+1,j+1,ave));
+                                if stdev < 1e-9:
+                                    # check if the ave is NaN
+                                    if ave=='NaN': stdev = 'NaN';
+                                    else: stdev = 0.0001;
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(exp_cnt+1,i+1,cnt+1,j+1,stdev));
+                                else:
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %f;\n' %(exp_cnt+1,i+1,cnt+1,j+1,stdev));
+            mat_script = mat_script + tmp_script;
+
         ## Simulate measurements
         #mat_script = mat_script + 's = simulate(m);\n';
         #mat_script = mat_script + '% m = sim2mod(m,s);\n';
         ## Simulate fluxes
+
+        ## Format rxn_ids_INCA
+        #rxn_ids_INCA_O = [];
+        #for k,v in rxn_ids_INCA.iteritems():
+        #    rxn_ids_INCA_O.append({'rxn_id_INCA':v,'rxn_id':k})
+        #return mat_script,rxn_ids_INCA_O;
+
         return mat_script;
     def make_missingReactionMappings_v1(self,experiment_id_I,mapping_id_new_I=None,model_id_I=[],mapping_id_I=[]):
         '''find reactions that contain a mapped metabolite that is present in the model, but not present in table atomMappingReactions;

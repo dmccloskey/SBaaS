@@ -1855,38 +1855,54 @@ class stage02_isotopomer_io(base_analysis):
         data.clear_data();
         return
     def import_isotopomerSimulationResults_INCA(self, filename, model_rxn_conversion_I=None):
-        '''import results from a fluxomics simulation using INCA1.1'''
+        '''import results from a fluxomics simulation using INCA1.3
+        Please reference the model, fitdata, and simdata class structures in the INCA documentation'''
         #TODO
         '''table adds'''
         m = scipy.io.loadmat(filename)['m']; #model
-        f = scipy.io.loadmat(filename)['f']; #fit
-        s = scipy.io.loadmat(filename)['s']; #simulation
+        f = scipy.io.loadmat(filename)['f']; #fitdata
+        s = scipy.io.loadmat(filename)['s']; #simdata
         # extract out model information
         m_ms_id = [];
         m_ms_on = [];
-        for d in m['expts'][0][0][0]['data_ms'][0]['id']:
-            m_ms_id.append(d[0][0]);
-        for d in m['expts'][0][0][0]['data_ms'][0]['on']:
-            m_ms_on.append(d[0][0]);
-        # extract out sum of the squared residuals for the fragments
+        m_ms_expt = [];
+        for exp in m['expts']:
+            exp_id = exp[0][0]['id'][0][0]
+            for d in exp[0][0]['data_ms'][0]['id'][0]:
+                m_ms_expt.append(exp_id);
+                m_ms_id.append(d[0]);
+                m_ms_on.append(bool(d[0][0]));
+        # extract out fit information
+        f_Echi2 = [];
+        f_alf = [];
+        f_chi2 = [];
+        f_dof = [];
+        # extract out sum of the squared residuals of the fitted measurements
         f_mnt_id = [];
         f_mnt_sres = [];
+        f_mnt_expt = [];
         for d in f['mnt'][0][0][0]['id']:
             f_mnt_id.append(d[0]);
         for d in f['mnt'][0][0][0]['sres']:
             f_mnt_sres.append(d[0]);
-        # extract out the residuals of the fitted variable
+        for d in f['mnt'][0][0][0]['expt']:
+            f_mnt_expt.append(d[0]);
+        # extract out the residuals of the fitted measurements
         f_mnt_res_val = [];
         f_mnt_res_fit = [];
         f_mnt_res_type = []; #Flux or MS
         f_mnt_res_id = [];
         f_mnt_res_std = [];
+        f_mnt_res_time = [];
+        f_mnt_res_expt = [];
         for d in f['mnt'][0][0][0]['res']: 
-            f_mnt_val.append([0][0]['val'][0]);
-            f_mnt_fit.append([0][0]['fit'][0]);
-            f_mnt_type.append([0][0]['type'][0]);
-            f_mnt_id.append([0][0]['id'][0]);
-            f_mnt_std.append([0][0]['std'][0]);
+            f_mnt_res_val.append([0][0]['val'][0]);
+            f_mnt_res_fit.append([0][0]['fit'][0]);
+            f_mnt_res_type.append([0][0]['type'][0]);
+            f_mnt_res_id.append([0][0]['id'][0]);
+            f_mnt_res_std.append([0][0]['std'][0]);
+            f_mnt_res_time.append([0][0]['time'][0]);
+            f_mnt_res_expt.append([0][0]['expt'][0]);
         # extract out the fitted parameters
         f_par_id = [];
         f_par_val = [];
@@ -1906,7 +1922,6 @@ class stage02_isotopomer_io(base_analysis):
             f_par_lb.append(d[0])
         for d in f['par'][0][0][0]['ub']:
             f_par_ub.append(d[0])
-
 
     # Visualization
     def export_fluxomicsAnalysis_escher(self,experiment_id_I,model_ids_I=[],

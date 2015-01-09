@@ -325,8 +325,9 @@ class stage00_execute():
         return;
 
     def execute_makeExperimentFromSampleFile(self, sample_fileName_I, nTechReps_I, dil_levels_I):
-        '''Populate experiment, samples,
-        sample_physiologicalparameters, sample_description, and sample_storage tables'''
+        '''Populate experiment, samples, sample_physiologicalparameters, sample_description, and sample_storage tables
+        NOTE: the sample_file should only contain samples for 1 experiment_id and 1 exp_type if multiple technical replicates
+              and/or dilutions are to be made'''
 
         # Input:
         #   sample_fileName_I = name of the .csv file with sample information
@@ -340,6 +341,17 @@ class stage00_execute():
             experiment_data = io.import_sampleFile_add(sample_fileName_I);
         #make technical replicates and dilutions
         if nTechReps_I>0 or len(dil_levels_I)>0:
+            # check that there is only 1 experiment_id and 1 exp_type
+            experiment_ids = [v['id'] for v in experiment_data];
+            experiment_ids_unique = list(set(experiment_ids));
+            exp_types = [v['exp_type_id'] for v in experiment_data];
+            exp_types_unique = list(set(exp_types));
+            if len(experiment_ids_unique)!=1 or len(exp_types_unique)!=1:
+                print 'More than 1 experiment_id and/or more than 1 exp_type found';
+                print 'This should be changed in future iterations';
+                print 'Technical replicates and dilutions will not be made';
+                return;
+            # make the technical replicates and dilutions
             sampleDescription_data,samplePhysiologicalParameters_data,\
                 sampleStorage_data,sample_data,\
                 experiment_data = self.make_techRepsAndDils(nTechReps_I, dil_levels_I,
@@ -387,218 +399,226 @@ class stage00_execute():
         # get the different metabolomics experiment ids:
         experiment_ids = [v['id'] for v in experiment_data_I];
         experiment_ids_unique = list(set(experiment_ids));
+        exp_types = [v['exp_type_id'] for v in experiment_data_I];
+        exp_types_unique = list(set(experiment_ids));
         for experiment_id in experiment_ids_unique:
-            # get the bioRep sample names for the experiment
-            sample_names = [v['sample_name'] for v in experiment_data_I];
-            ## query the maximum number of technical reps based on the experiment id
-            #nMaxBioReps = self.stage00_query.get_nMaxBioReps_sampleDescription(experiment_id); # breaks when the number of bio reps is not the same for all samples in an experiment
-            for row in sampleDescription_data_I:
-                # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
-                nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                for rep in range(1,nTechReps_I+1):
-                    # add techReps to sample Description
-                    # copy sample description fields to techReps
-                    sample_id_new = '';
-                    sample_id_list = row['sample_id'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
-                        sample_dil = sample_id_list[len(sample_id_list)-1]
-                        sample_id_list = sample_id_list[:-1]
-                    for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
-                    replicate_number = int(sample_id_list[len(sample_id_list)-1]);
-                    sample_id_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_id_new += '-' + sample_dil;
-                    sample_name_short_new = '';
-                    sample_name_short_list = row['sample_name_short'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_name_short_list[len(sample_name_short_list)-1]): 
-                        sample_dil = sample_name_short_list[len(sample_name_short_list)-1]
-                        sample_name_short_list = sample_name_short_list[:-1]
-                    for l in range(len(sample_name_short_list)-1):  sample_name_short_new += sample_name_short_list[l] + '-';
-                    sample_name_short_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_name_short_new += '-' + sample_dil;
-                    sampleDescription_data_O.append({'sample_id':sample_id_new, #change sample_id
-                                            'sample_name_short':sample_name_short_new, #change sample_name_short
-                                            'sample_name_abbreviation':row['sample_name_abbreviation'],
-                                            'sample_date':row['sample_date'],
-                                            'time_point':row['time_point'],
-                                            'sample_condition':row['sample_condition'],
-                                            'extraction_method_id':row['extraction_method_id'],
-                                            'biological_material':row['biological_material'],
-                                            'sample_description':row['sample_description'],
-                                            'sample_replicate':nMaxBioReps*rep + replicate_number,# modify sample_replicate_biological
-                                            'is_added':row['is_added'],
-                                            'is_added_units':row['is_added_units'],
-                                            'reconstitution_volume':row['reconstitution_volume'],
-                                            'reconstitution_volume_units':row['reconstitution_volume_units'],
-                                            'sample_replicate_biological':row['sample_replicate_biological'],
-                                            'istechnical':True,
-                                            'notes':row['notes']});# modify istech (True)
-            for row in samplePhysiologicalParameters_data_I:
-                # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
-                nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                for rep in range(1,nTechReps_I+1):
-                    # add techReps to physiological parameters
-                    # copy physiological parameters fields to techReps
-                    sample_id_new = '';
-                    sample_id_list = row['sample_id'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
-                        sample_dil = sample_id_list[len(sample_id_list)-1]
-                        sample_id_list = sample_id_list[:-1]
-                    for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
-                    replicate_number = int(sample_id_list[len(sample_id_list)-1]);
-                    sample_id_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_id_new += '-' + sample_dil;
-                    samplePhysiologicalParameters_data_O.append({'sample_id':sample_id_new,
-                                        'growth_condition_short':row['growth_condition_short'],
-                                        'growth_condition_long':row['growth_condition_long'],
-                                        'media_short':row['media_short'],
-                                        'media_long':row['media_long'],
-                                        'isoxic':row['isoxic'],
-                                        'temperature':row['temperature'],
-                                        'supplementation':row['supplementation'],
-                                        'od600':row['od600'],
-                                        'vcd':row['vcd'],
-                                        'culture_density':row['culture_density'],
-                                        'culture_volume_sampled':row['culture_volume_sampled'],
-                                        'cells':row['cells'],
-                                        'dcw':row['dcw'],
-                                        'wcw':row['wcw'],
-                                        'vcd_units':row['vcd_units'],
-                                        'culture_density_units':row['culture_density_units'],
-                                        'culture_volume_sampled_units':row['culture_volume_sampled_units'],
-                                        'dcw_units':row['dcw_units'],
-                                        'wcw_units':row['wcw_units']});
-            for row in sampleStorage_data_I:
-                # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
-                nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                for rep in range(1,nTechReps_I+1):
-                    # add techReps to storage
-                    # copy storage parameter fields to techReps
-                    # modify box/pos (point back to the biological replicate)
-                    sample_id_new = '';
-                    sample_id_list = row['sample_id'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
-                        sample_dil = sample_id_list[len(sample_id_list)-1]
-                        sample_id_list = sample_id_list[:-1]
-                    for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
-                    replicate_number = int(sample_id_list[len(sample_id_list)-1]);
-                    sample_id_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_id_new += '-' + sample_dil;
-                    sampleStorage_data_O.append({'sample_id':sample_id_new,
-                                        'sample_label':row['sample_label'],
-                                        'ph':row['ph'],
-                                        'box':row['box'],
-                                        'pos':row['pos']});
-            for row in sample_data_I:
-                # add techReps to sample
-                # copy sample fields to techReps
-                # add dilutions to sample
-                # copy sample fields for bio/techReps to dilutions
-                # modify sample_dilution field to reflect the dilution factor
+            for exp_type in exp_types_unique:
+                # get the bioRep sample names for the experiment
+                sample_names = [v['sample_name'] for v in experiment_data_I];
+                ## query the maximum number of technical reps based on the experiment id
+                #nMaxBioReps = self.stage00_query.get_nMaxBioReps_sampleDescription(experiment_id); # breaks when the number of bio reps is not the same for all samples in an experiment
+                for row in sampleDescription_data_I:
+                    # query the maximum number of technical reps based on the experiment id and sample name
+                    sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
+                    #nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation); # does not take into account exp_type
+                    nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(experiment_id,sample_name_abbreviation,exp_type);
+                    for rep in range(1,nTechReps_I+1):
+                        # add techReps to sample Description
+                        # copy sample description fields to techReps
+                        sample_id_new = '';
+                        sample_id_list = row['sample_id'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
+                            sample_dil = sample_id_list[len(sample_id_list)-1]
+                            sample_id_list = sample_id_list[:-1]
+                        for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
+                        replicate_number = int(sample_id_list[len(sample_id_list)-1]);
+                        sample_id_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_id_new += '-' + sample_dil;
+                        sample_name_short_new = '';
+                        sample_name_short_list = row['sample_name_short'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_name_short_list[len(sample_name_short_list)-1]): 
+                            sample_dil = sample_name_short_list[len(sample_name_short_list)-1]
+                            sample_name_short_list = sample_name_short_list[:-1]
+                        for l in range(len(sample_name_short_list)-1):  sample_name_short_new += sample_name_short_list[l] + '-';
+                        sample_name_short_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_name_short_new += '-' + sample_dil;
+                        sampleDescription_data_O.append({'sample_id':sample_id_new, #change sample_id
+                                                'sample_name_short':sample_name_short_new, #change sample_name_short
+                                                'sample_name_abbreviation':row['sample_name_abbreviation'],
+                                                'sample_date':row['sample_date'],
+                                                'time_point':row['time_point'],
+                                                'sample_condition':row['sample_condition'],
+                                                'extraction_method_id':row['extraction_method_id'],
+                                                'biological_material':row['biological_material'],
+                                                'sample_description':row['sample_description'],
+                                                'sample_replicate':nMaxBioReps*rep + replicate_number,# modify sample_replicate_biological
+                                                'is_added':row['is_added'],
+                                                'is_added_units':row['is_added_units'],
+                                                'reconstitution_volume':row['reconstitution_volume'],
+                                                'reconstitution_volume_units':row['reconstitution_volume_units'],
+                                                'sample_replicate_biological':row['sample_replicate_biological'],
+                                                'istechnical':True,
+                                                'notes':row['notes']});# modify istech (True)
+                for row in samplePhysiologicalParameters_data_I:
+                    # query the maximum number of technical reps based on the experiment id and sample name
+                    sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
+                    #nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation); # does not take into account exp_type
+                    nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(experiment_id,sample_name_abbreviation,exp_type);
+                    for rep in range(1,nTechReps_I+1):
+                        # add techReps to physiological parameters
+                        # copy physiological parameters fields to techReps
+                        sample_id_new = '';
+                        sample_id_list = row['sample_id'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
+                            sample_dil = sample_id_list[len(sample_id_list)-1]
+                            sample_id_list = sample_id_list[:-1]
+                        for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
+                        replicate_number = int(sample_id_list[len(sample_id_list)-1]);
+                        sample_id_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_id_new += '-' + sample_dil;
+                        samplePhysiologicalParameters_data_O.append({'sample_id':sample_id_new,
+                                            'growth_condition_short':row['growth_condition_short'],
+                                            'growth_condition_long':row['growth_condition_long'],
+                                            'media_short':row['media_short'],
+                                            'media_long':row['media_long'],
+                                            'isoxic':row['isoxic'],
+                                            'temperature':row['temperature'],
+                                            'supplementation':row['supplementation'],
+                                            'od600':row['od600'],
+                                            'vcd':row['vcd'],
+                                            'culture_density':row['culture_density'],
+                                            'culture_volume_sampled':row['culture_volume_sampled'],
+                                            'cells':row['cells'],
+                                            'dcw':row['dcw'],
+                                            'wcw':row['wcw'],
+                                            'vcd_units':row['vcd_units'],
+                                            'culture_density_units':row['culture_density_units'],
+                                            'culture_volume_sampled_units':row['culture_volume_sampled_units'],
+                                            'dcw_units':row['dcw_units'],
+                                            'wcw_units':row['wcw_units']});
+                for row in sampleStorage_data_I:
+                    # query the maximum number of technical reps based on the experiment id and sample name
+                    sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleID(experiment_id,row['sample_id']);
+                    #nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation); # does not take into account exp_type
+                    nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(experiment_id,sample_name_abbreviation,exp_type);
+                    for rep in range(1,nTechReps_I+1):
+                        # add techReps to storage
+                        # copy storage parameter fields to techReps
+                        # modify box/pos (point back to the biological replicate)
+                        sample_id_new = '';
+                        sample_id_list = row['sample_id'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
+                            sample_dil = sample_id_list[len(sample_id_list)-1]
+                            sample_id_list = sample_id_list[:-1]
+                        for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
+                        replicate_number = int(sample_id_list[len(sample_id_list)-1]);
+                        sample_id_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_id_new += '-' + sample_dil;
+                        sampleStorage_data_O.append({'sample_id':sample_id_new,
+                                            'sample_label':row['sample_label'],
+                                            'ph':row['ph'],
+                                            'box':row['box'],
+                                            'pos':row['pos']});
+                for row in sample_data_I:
+                    # add techReps to sample
+                    # copy sample fields to techReps
+                    # add dilutions to sample
+                    # copy sample fields for bio/techReps to dilutions
+                    # modify sample_dilution field to reflect the dilution factor
 
-                # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['sample_name']);
-                nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                for dil in dil_levels_I:
-                    sample_name_new_dil = copy(row['sample_name']);
-                    sample_name_new_dil += '-' + str(dil) + 'x';
-                    sample_data_O.append({'sample_name':sample_name_new_dil,
-                                    'sample_type':row['sample_type'],
-                                    'calibrator_id':None,
-                                    'calibrator_level':None,
-                                    'sample_id':row['sample_id'],
-                                    'sample_dilution':dil});
-                for rep in range(1,nTechReps_I+1):
-                    sample_id_new = '';
-                    sample_id_list = row['sample_id'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
-                        sample_dil = sample_id_list[len(sample_id_list)-1]
-                        sample_id_list = sample_id_list[:-1]
-                    for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
-                    replicate_number = int(sample_id_list[len(sample_id_list)-1]);
-                    sample_id_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_id_new += '-' + sample_dil;
-                    sample_name_new = '';
-                    sample_name_list = row['sample_name'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_name_list[len(sample_name_list)-1]): 
-                        sample_dil = sample_name_list[len(sample_name_list)-1]
-                        sample_name_list = sample_name_list[:-1]
-                    for l in range(len(sample_name_list)-1):  sample_name_new += sample_name_list[l] + '-';
-                    sample_name_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_name_new += '-' + sample_dil;
-                    sample_data_O.append({'sample_name':sample_name_new,
-                                        'sample_type':row['sample_type'],
-                                        'calibrator_id':None,
-                                        'calibrator_level':None,
-                                        'sample_id':sample_id_new,
-                                        'sample_dilution':row['sample_dilution']});
+                    # query the maximum number of technical reps based on the experiment id and sample name
+                    sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['sample_name']);
+                    #nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation); # does not take into account exp_type
+                    nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(experiment_id,sample_name_abbreviation,exp_type);
                     for dil in dil_levels_I:
-                        sample_name_new_dil = copy(sample_name_new);
+                        sample_name_new_dil = copy(row['sample_name']);
                         sample_name_new_dil += '-' + str(dil) + 'x';
                         sample_data_O.append({'sample_name':sample_name_new_dil,
                                         'sample_type':row['sample_type'],
                                         'calibrator_id':None,
                                         'calibrator_level':None,
-                                        'sample_id':sample_id_new,
+                                        'sample_id':row['sample_id'],
                                         'sample_dilution':dil});
+                    for rep in range(1,nTechReps_I+1):
+                        sample_id_new = '';
+                        sample_id_list = row['sample_id'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_id_list[len(sample_id_list)-1]): 
+                            sample_dil = sample_id_list[len(sample_id_list)-1]
+                            sample_id_list = sample_id_list[:-1]
+                        for l in range(len(sample_id_list)-1):  sample_id_new += sample_id_list[l] + '-';
+                        replicate_number = int(sample_id_list[len(sample_id_list)-1]);
+                        sample_id_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_id_new += '-' + sample_dil;
+                        sample_name_new = '';
+                        sample_name_list = row['sample_name'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_name_list[len(sample_name_list)-1]): 
+                            sample_dil = sample_name_list[len(sample_name_list)-1]
+                            sample_name_list = sample_name_list[:-1]
+                        for l in range(len(sample_name_list)-1):  sample_name_new += sample_name_list[l] + '-';
+                        sample_name_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_name_new += '-' + sample_dil;
+                        sample_data_O.append({'sample_name':sample_name_new,
+                                            'sample_type':row['sample_type'],
+                                            'calibrator_id':None,
+                                            'calibrator_level':None,
+                                            'sample_id':sample_id_new,
+                                            'sample_dilution':row['sample_dilution']});
+                        for dil in dil_levels_I:
+                            sample_name_new_dil = copy(sample_name_new);
+                            sample_name_new_dil += '-' + str(dil) + 'x';
+                            sample_data_O.append({'sample_name':sample_name_new_dil,
+                                            'sample_type':row['sample_type'],
+                                            'calibrator_id':None,
+                                            'calibrator_level':None,
+                                            'sample_id':sample_id_new,
+                                            'sample_dilution':dil});
                         
-            for row in experiment_data_I:
-                # query the maximum number of technical reps based on the experiment id and sample name
-                sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['sample_name']);
-                nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation);
-                # add techReps and dilutions to experiment
-                # copy experiment fields to techReps and dilutions
-                for dil in dil_levels_I:
-                    sample_name_new_dil = copy(row['sample_name']);
-                    sample_name_new_dil += '-' + str(dil) + 'x';
-                    experiment_data_O.append({'exp_type_id':row['exp_type_id'],
-                                        'id':row['id'],
-                                        'sample_name':sample_name_new_dil,
-                                        'experimentor_id':row['experimentor_id'],
-                                        'extraction_method_id':row['extraction_method_id'],
-                                        'acquisition_method_id':row['acquisition_method_id'],
-                                        'quantitation_method_id':row['quantitation_method_id'],
-                                        'internal_standard_id':row['internal_standard_id']});
-
-                for rep in range(1,nTechReps_I+1):
-                    sample_name_new = '';
-                    sample_name_list = row['sample_name'].split('-');
-                    sample_dil = None #check for something else besides the replicate number
-                    if any(let.isalpha() for let in sample_name_list[len(sample_name_list)-1]): 
-                        sample_dil = sample_name_list[len(sample_name_list)-1]
-                        sample_name_list = sample_name_list[:-1]
-                    for l in range(len(sample_name_list)-1):  sample_name_new += sample_name_list[l] + '-';
-                    replicate_number = int(sample_name_list[len(sample_name_list)-1]);
-                    sample_name_new += str(nMaxBioReps*rep + replicate_number);
-                    if sample_dil: sample_name_new += '-' + sample_dil;
-                    experiment_data_O.append({'exp_type_id':row['exp_type_id'],
-                                        'id':row['id'],
-                                        'sample_name':sample_name_new,
-                                        'experimentor_id':row['experimentor_id'],
-                                        'extraction_method_id':row['extraction_method_id'],
-                                        'acquisition_method_id':row['acquisition_method_id'],
-                                        'quantitation_method_id':row['quantitation_method_id'],
-                                        'internal_standard_id':row['internal_standard_id']});
-
+                for row in experiment_data_I:
+                    # query the maximum number of technical reps based on the experiment id and sample name
+                    sample_name_abbreviation = self.stage00_query.get_sampleNameAbbreviation_experimentIDAndSampleName(experiment_id,row['sample_name']);
+                    #nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(experiment_id,sample_name_abbreviation); # does not take into account exp_type
+                    nMaxBioReps = self.stage00_query.get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(experiment_id,sample_name_abbreviation,exp_type);
+                    # add techReps and dilutions to experiment
+                    # copy experiment fields to techReps and dilutions
                     for dil in dil_levels_I:
-                        sample_name_new_dil = copy(sample_name_new);
+                        sample_name_new_dil = copy(row['sample_name']);
                         sample_name_new_dil += '-' + str(dil) + 'x';
                         experiment_data_O.append({'exp_type_id':row['exp_type_id'],
-                                        'id':row['id'],
-                                        'sample_name':sample_name_new_dil,
-                                        'experimentor_id':row['experimentor_id'],
-                                        'extraction_method_id':row['extraction_method_id'],
-                                        'acquisition_method_id':row['acquisition_method_id'],
-                                        'quantitation_method_id':row['quantitation_method_id'],
-                                        'internal_standard_id':row['internal_standard_id']});
+                                            'id':row['id'],
+                                            'sample_name':sample_name_new_dil,
+                                            'experimentor_id':row['experimentor_id'],
+                                            'extraction_method_id':row['extraction_method_id'],
+                                            'acquisition_method_id':row['acquisition_method_id'],
+                                            'quantitation_method_id':row['quantitation_method_id'],
+                                            'internal_standard_id':row['internal_standard_id']});
+
+                    for rep in range(1,nTechReps_I+1):
+                        sample_name_new = '';
+                        sample_name_list = row['sample_name'].split('-');
+                        sample_dil = None #check for something else besides the replicate number
+                        if any(let.isalpha() for let in sample_name_list[len(sample_name_list)-1]): 
+                            sample_dil = sample_name_list[len(sample_name_list)-1]
+                            sample_name_list = sample_name_list[:-1]
+                        for l in range(len(sample_name_list)-1):  sample_name_new += sample_name_list[l] + '-';
+                        replicate_number = int(sample_name_list[len(sample_name_list)-1]);
+                        sample_name_new += str(nMaxBioReps*rep + replicate_number);
+                        if sample_dil: sample_name_new += '-' + sample_dil;
+                        experiment_data_O.append({'exp_type_id':row['exp_type_id'],
+                                            'id':row['id'],
+                                            'sample_name':sample_name_new,
+                                            'experimentor_id':row['experimentor_id'],
+                                            'extraction_method_id':row['extraction_method_id'],
+                                            'acquisition_method_id':row['acquisition_method_id'],
+                                            'quantitation_method_id':row['quantitation_method_id'],
+                                            'internal_standard_id':row['internal_standard_id']});
+
+                        for dil in dil_levels_I:
+                            sample_name_new_dil = copy(sample_name_new);
+                            sample_name_new_dil += '-' + str(dil) + 'x';
+                            experiment_data_O.append({'exp_type_id':row['exp_type_id'],
+                                            'id':row['id'],
+                                            'sample_name':sample_name_new_dil,
+                                            'experimentor_id':row['experimentor_id'],
+                                            'extraction_method_id':row['extraction_method_id'],
+                                            'acquisition_method_id':row['acquisition_method_id'],
+                                            'quantitation_method_id':row['quantitation_method_id'],
+                                            'internal_standard_id':row['internal_standard_id']});
 
         return sampleDescription_data_O, samplePhysiologicalParameters_data_O, sampleStorage_data_O, sample_data_O,experiment_data_O;
 

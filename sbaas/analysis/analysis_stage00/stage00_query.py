@@ -656,6 +656,30 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
+
+    def get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(self,experiment_id_I,sample_name_abbreviation_I,exp_type_I):
+        '''Query the maximum number of biological replicates corresponding to a given experiment'''
+        try:
+            bioReps = self.session.query(sample_description.sample_replicate).filter(
+                    experiment.id.like(experiment_id_I),
+                    experiment.exp_type_id.like(exp_type_I),
+                    experiment.sample_name.like(sample.sample_name),
+                    sample.sample_id.like(sample_description.sample_id),
+                    sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    sample_description.sample_description.like('Broth')
+                    #sample_description.istechnical != True
+                    ).group_by(
+                    sample_description.sample_replicate).order_by(
+                    sample_description.sample_replicate.desc()).all();
+            maxBioReps_O = 0;
+            if bioReps:
+                maxBioReps_O = max(bioReps[0]);
+            else: 
+                print 'no biological replicates found for experiment ' + experiment_id_I;
+                exit(-1);
+            return maxBioReps_O;
+        except SQLAlchemyError as e:
+            print(e);
        
     def get_sampleIDs_experimentID_experiment(self,experiment_id_I):
         '''Querry sample IDs that are used from the experiment'''
