@@ -787,6 +787,21 @@ class stage02_isotopomer_query(base_analysis):
             print(e);
 
     ## Query from data_stage02_isotopomer_atomMappingReactions
+    # query rxn_ids from data_stage02_isotopomer_atomMappingReactions
+    def get_rxnIDs_mappingID_dataStage02IsotopomerAtomMappingReactions(self,mapping_id_I):
+        '''Querry rows by mapping_id that are used'''
+        try:
+            data = query_session.query(data_stage02_isotopomer_atomMappingReactions.rxn_id).filter(
+                    data_stage02_isotopomer_atomMappingReactions.mapping_id.like(mapping_id_I),
+                    data_stage02_isotopomer_atomMappingReactions.used_.is_(True)).order_by(
+                    data_stage02_isotopomer_atomMappingReactions.rxn_id.asc()).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    rows_O.append(d.rxn_id);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
     # query rows from data_stage02_isotopomer_atomMappingReactions
     def get_rows_mappingID_dataStage02IsotopomerAtomMappingReactions(self,mapping_id_I):
         '''Querry rows by mapping_id that are used'''

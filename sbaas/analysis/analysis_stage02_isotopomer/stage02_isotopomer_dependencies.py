@@ -4384,12 +4384,13 @@ class stage02_isotopomer_reactionMapping():
         '''
         1. Check that the number of elements tracked in the reactant matches the number of elements tracked
         in the products
-        2. Check that the reactant positions tracked mactch the reactant elements tracked'''
+        2. Check that the reactant positions tracked match the reactant elements tracked'''
 
         #Output:
         #   reactants_positions_tracked_cnt
         #   products_positions_tracked_cnt
 
+        element_balance = True;
         #check reactants
         reactants_positions_tracked_cnt = 0;
         for reactant_cnt,reactant in enumerate(self.reactionMapping['reactants_ids_tracked']):
@@ -4413,6 +4414,143 @@ class stage02_isotopomer_reactionMapping():
             return reactants_positions_tracked_cnt,products_positions_tracked_cnt;
         else: 
             return reactants_positions_tracked_cnt,products_positions_tracked_cnt;
+    def check_reactionMapping(self):
+        '''
+        1. Check that the number of elements tracked in the reactant matches the number of elements tracked
+        in the products
+        2. Check that the reactant positions tracked match the reactant elements tracked
+        3. Check that the mappings are 1-to-1
+        4. Check that the elements/positions/mappings are of the same length
+        5. Check that the stoichiometry and ids tracked are of the same length'''
+
+        #Output:
+        #   reactants_positions_tracked_cnt
+        #   products_positions_tracked_cnt
+
+        #checks:
+        reactants_ids_stoichiometry_check = True;
+        reactants_elements_positions_check = True;
+        reactants_elements_mapping_check = True;
+        reactants_positions_mapping_check = True;
+        products_ids_stoichiometry_check = True;
+        products_elements_positions_check = True;
+        products_elements_mapping_check = True;
+        products_positions_mapping_check = True;
+        element_balance_check = True;
+        mapping_check = True;
+        #check reactants
+        reactants_positions_tracked_cnt = 0;
+        reactants_elements_tracked_cnt = 0;
+        reactants_mappings_cnt = 0;
+        reactants_stoichiometry_cnt = 0;
+        reactants_ids_cnt = 0;
+        reactants_mappings = [];
+        # check that the reactant stoichiometry == reactant ids
+        if len(self.reactionMapping['reactants_ids_tracked'])!=len(self.reactionMapping['reactants_stoichiometry_tracked']):
+            print 'inconsistent reactants_stoichiometry_tracked and reactants_ids_tracked';
+            reactants_ids_stoichiometry_check = False;
+        reactants_ids_cnt += len(self.reactionMapping['reactants_ids_tracked']);
+        reactants_stoichiometry_cnt += len(self.reactionMapping['reactants_stoichiometry_tracked']);
+        # check elemental balance
+        for reactant_cnt,reactant in enumerate(self.reactionMapping['reactants_ids_tracked']):
+            print 'checking reactant elemental balance ' + reactant;
+            reactant_mapping=[];
+            reactant_mapping = self.reactionMapping['reactants_metaboliteMappings'][reactant_cnt].convert_stringMapping2ArrayMapping();
+            # check that the reactant positions == reactant elements
+            if len(self.reactionMapping['reactants_positions_tracked'][reactant_cnt])!=len(self.reactionMapping['reactants_elements_tracked'][reactant_cnt]):
+                print 'inconsistent reactants_positions and reactants_elements';
+                reactants_elements_positions_check = False;
+            # check that the reactant positions == reactant mapping
+            if len(self.reactionMapping['reactants_positions_tracked'][reactant_cnt])!=len(reactant_mapping):
+                print 'inconsistent reactants_positions and reactants_mapping';
+                reactants_elements_mapping_check = False;
+            # check that the reactant elements == reactant mapping
+            if len(self.reactionMapping['reactants_elements_tracked'][reactant_cnt])!=len(reactant_mapping):
+                print 'inconsistent reactants_elements and reactants_mapping';
+                reactants_positions_mapping_check = False;
+            reactants_positions_tracked_cnt += len(self.reactionMapping['reactants_positions_tracked'][reactant_cnt]);
+            reactants_elements_tracked_cnt += len(self.reactionMapping['reactants_elements_tracked'][reactant_cnt]);
+            reactants_mappings_cnt += len(reactant_mapping);
+            reactants_mappings.append(reactant_mapping);
+        #check products
+        products_positions_tracked_cnt = 0;
+        products_elements_tracked_cnt = 0;
+        products_mappings_cnt = 0;
+        products_stoichiometry_cnt = 0;
+        products_ids_cnt = 0;
+        products_mappings = [];
+        # check that the product stoichiometry == product ids
+        if len(self.reactionMapping['products_ids_tracked'])!=len(self.reactionMapping['products_stoichiometry_tracked']):
+            print 'inconsistent products_stoichiometry_tracked and products_ids_tracked';
+            products_ids_stoichiometry_check = False;
+        products_ids_cnt += len(self.reactionMapping['products_ids_tracked']);
+        products_stoichiometry_cnt += len(self.reactionMapping['products_stoichiometry_tracked']);
+        # check elemental balance
+        for product_cnt,product in enumerate(self.reactionMapping['products_ids_tracked']):
+            print 'checking product elemental balance ' + product;
+            product_mapping=[];
+            product_mapping = self.reactionMapping['products_metaboliteMappings'][product_cnt].convert_stringMapping2ArrayMapping();
+            # check that the product positions == product elements
+            if len(self.reactionMapping['products_positions_tracked'][product_cnt])!=len(self.reactionMapping['products_elements_tracked'][product_cnt]):
+                print 'inconsistent products_positions and products_elements';
+                products_elements_positions_check = False;
+            # check that the product positions == product mapping
+            if len(self.reactionMapping['products_positions_tracked'][product_cnt])!=len(product_mapping):
+                print 'inconsistent products_positions and products_mapping';
+                products_elements_mapping_check = False;
+            # check that the product elements == product mapping
+            if len(self.reactionMapping['products_elements_tracked'][product_cnt])!=len(product_mapping):
+                print 'inconsistent products_elements and products_mapping';
+                products_positions_mapping_check = False;
+            products_positions_tracked_cnt += len(self.reactionMapping['products_positions_tracked'][product_cnt]);
+            products_elements_tracked_cnt += len(self.reactionMapping['products_elements_tracked'][product_cnt]);
+            products_mappings_cnt += len(product_mapping);
+            products_mappings.append(product_mapping);
+        #check elemental balance
+        if reactants_positions_tracked_cnt != products_positions_tracked_cnt:
+            print 'the length of reactants_positions_tracked does not match the length of products_positions_tracked';
+            element_balance_check = False;
+        if reactants_elements_tracked_cnt != products_elements_tracked_cnt:
+            print 'reactants_elements_tracked does not match the length of products_elements_tracked';
+            element_balance_check = False;
+        if reactants_mappings_cnt != products_mappings_cnt:
+            print 'the length of reactants_mapping does not match the length of products_mapping';
+            element_balance_check = False;
+        #check 1-to-1 mapping
+        reactants_mappings_list = [];
+        for reactants_mapping in reactants_mappings:
+            reactants_mappings_list.extend(reactants_mapping);
+        # check for duplicate reactant mappings
+        reactants_mappings_unique = list(set(reactants_mappings_list));
+        if len(reactants_mappings_list)!=len(reactants_mappings_unique):
+            print 'duplicate reactants_mappings found';
+            mapping_check = False;
+        products_mappings_list = [];
+        for products_mapping in products_mappings:
+            products_mappings_list.extend(products_mapping);
+        # check for duplicate product mappings
+        products_mappings_unique = list(set(products_mappings_list));
+        if len(products_mappings_list)!=len(products_mappings_unique):
+            print 'duplicate products_mappings found';
+            mapping_check = False;
+        # check that each product mapping has a matching reactant mapping, and vice versa
+        for reactant_cnt,reactant in enumerate(reactants_mappings):
+            print 'checking reactant mapping ' + self.reactionMapping['reactants_ids_tracked'][reactant_cnt];
+            for mapping_cnt,mapping in enumerate(reactant):
+                if not mapping in products_mappings_list:
+                    print 'no mapping found for reactant mapping ' + mapping + ' and position ' + str(mapping_cnt);
+                    mapping_check = False;
+        for product_cnt,product in enumerate(products_mappings):
+            print 'checking product mapping ' + self.reactionMapping['products_ids_tracked'][product_cnt];
+            for mapping_cnt,mapping in enumerate(product):
+                if not mapping in reactants_mappings_list:
+                    print 'no mapping found for product mapping ' + mapping + ' and position ' + str(mapping_cnt);
+                    mapping_check = False;
+        if not element_balance_check or not mapping_check:
+            print 'check reaction mapping';
+        return reactants_ids_stoichiometry_check,reactants_elements_positions_check,reactants_elements_mapping_check,reactants_positions_mapping_check,\
+                products_ids_stoichiometry_check,products_elements_positions_check,products_elements_mapping_check,products_positions_mapping_check,\
+                element_balance_check,mapping_check;
 
 class stage02_isotopomer_mappingUtilities():
     def __init__(self):
@@ -4851,6 +4989,42 @@ class stage02_isotopomer_mappingUtilities():
                         #unbalanced_rxns_O.append(reaction_mapping);
 
         return unbalanced_rxns_O;
+    def find_inconsistentReactionMappings(self,experiment_id_I,model_id_I=[],mapping_id_I=[]):
+        '''Find inconsistencies in the reaction mapping'''
+
+        #Output:
+        #   unbalanced_rxns_O = {rxn_id:{'n_products_elements_tracked':products_positions_tracked_cnt,
+        #                                                'n_reactants_elements_tracked':reactants_positions_tracked_cnt},...}
+        
+        irm = stage02_isotopomer_reactionMapping();
+        #get model ids:
+        if model_id_I:
+            model_ids = model_id_I;
+        else:
+            model_ids = [];
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+        for model_id in model_ids:
+            print 'checking model_id ' + model_id;
+            #get mapping ids
+            if mapping_id_I:
+                mapping_ids=mapping_id_I;
+            else:
+                mapping_ids=[];
+                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+            for mapping_cnt,mapping_id in enumerate(mapping_ids):
+                print 'checking mapping_id ' + mapping_id;
+                # get the reaction ids
+                reaction_ids = [];
+                reaction_ids = self.stage02_isotopomer_query.get_rxnIDs_mappingID_dataStage02IsotopomerAtomMappingReactions(mapping_id);
+                for reaction_cnt,reaction_id in enumerate(reaction_ids):
+                    print 'checking reaction ' + reaction_id;
+                    #check each reaction
+                    irm.get_reactionMapping(mapping_id,reaction_id);
+                    reactants_ids_stoichiometry_check,reactants_elements_positions_check,reactants_elements_mapping_check,reactants_positions_mapping_check,\
+                        products_ids_stoichiometry_check,products_elements_positions_check,products_elements_mapping_check,products_positions_mapping_check,\
+                        element_balance_check,mapping_check = irm.check_reactionMapping();
+                    #clear reaction
+                    irm.clear_reactionMapping();
 
 '''Unit tests for stage02_isotopomer_metaboliteMapping:
 from analysis.analysis_stage02_isotopomer.stage02_isotopomer_dependencies import stage02_isotopomer_metaboliteMapping

@@ -73,12 +73,13 @@ class urls():
 
         self._resources = {
             #local resources:
-            'logo1': 'resources/SBaaS-01.png',
-            'logo2': 'resources/SBaaS-02.png',
-            'logo3': 'resources/SBaaS-03.png',
-            'logo4': 'resources/SBaaS-04.png',
-            'logo5': 'resources/SBaaS-05.png',
-            'logo6': 'resources/SBaaS-06.png',
+            'logo1': 'resources/SBaaS_cloud.png',
+            'logo2': 'resources/SBaaS_pipelines.png',
+            'logo3': 'resources/SBaaS_carousel-01.png',
+            'logo4': 'resources/SBaaS_carousel-02.png',
+            'logo5': 'resources/SBaaS_carousel-03.png',
+            'logo6': 'resources/SBaaS_carousel-04.png',
+            'logo7': 'resources/SBaaS_carousel-05.png',
             'index_filter': 'resources/index_filter.js'
             }
     

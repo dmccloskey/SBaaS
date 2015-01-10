@@ -659,7 +659,7 @@ class stage02_isotopomer_execute():
                     mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,sna,model_id);
                 for mapping_id in mapping_ids:
                     ## get the tracer_ids:
-                    #tracer_ids = self.stage02_isotopomer_query.get_tracerID__dataStage02IsotopomerExperiment(experiment_id_I,
+                    #tracer_ids = self.stage02_isotopomer_query.get_tracerID__dataStage02IsotopomerExperiment(tracer_id_I,
                     #for tracer_id in tracer_ids:
                     #if parallel_I:
                     #else:
@@ -1134,6 +1134,9 @@ class stage02_isotopomer_execute():
 
         # write out the measured fragment information
         # (actual MS measurements will be written to the script later)
+        #snas_all = [x['sample_name_abbreviation'] for x in experimentalMS_data_I];
+        #snas = list(set(snas_all));
+        #snas.sort();
         experiments_all = [x['experiment_id'] for x in experimentalMS_data_I];
         experiments = list(set(experiments_all));
         experiments.sort();
@@ -1147,7 +1150,7 @@ class stage02_isotopomer_execute():
         times = list(set(times_all));
         times.sort();
         
-        for exp_cnt,experiment in enumerate(experiments):
+        for experiment_cnt,experiment in enumerate(experiments):
             tmp_script = ''
             tmp_script = tmp_script + 'd = msdata({...\n';
             for fragment in fragments:
@@ -1204,8 +1207,8 @@ class stage02_isotopomer_execute():
             tmp_script = tmp_script + 'x = experiment(t);\n'
             tmp_script = tmp_script + 'x.data_flx = f;\n'
             tmp_script = tmp_script + 'x.data_ms = d;\n'
-            tmp_script = tmp_script + ('m.expts(%d) = x;\n' %(exp_cnt+1));
-            tmp_script = tmp_script + ("m.expts(%d).id = {'%s'};\n" %(exp_cnt+1,experiment));
+            tmp_script = tmp_script + ('m.expts(%d) = x;\n' %(experiment_cnt+1));
+            tmp_script = tmp_script + ("m.expts(%d).id = {'%s'};\n" %(experiment_cnt+1,experiment));
             mat_script = mat_script + tmp_script;
 
         # Specify simulation parameters (non-stationary only!)
@@ -1223,13 +1226,13 @@ class stage02_isotopomer_execute():
         mat_script = mat_script + tmp_script;
 
         # Add in ms data or Write ms data to separate file
-        for exp_cnt,experiment in enumerate(experiments):
+        for experiment_cnt,experiment in enumerate(experiments):
             tmp_script = ''
             for i,fragment in enumerate(fragments):
                 for j,time in enumerate(times):
                     # Pad the data file:
-                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(exp_cnt+1,i+1,1,j+1,'NaN'));
-                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(exp_cnt+1,i+1,1,j+1,'NaN'));
+                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(experiment_cnt+1,i+1,1,j+1,'NaN'));
+                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(experiment_cnt+1,i+1,1,j+1,'NaN'));
                     for ms_data in experimentalMS_data_I:
                         if ms_data['fragment_id']==fragments[i] and \
                             ms_data['time_point']==times[j] and \
@@ -1239,24 +1242,24 @@ class stage02_isotopomer_execute():
                                 # each row is a seperate mdv
                                 # Assign names and times
                                 name = fragment + '_' + str(cnt) + '_' + str(j) + '_' + str(experiment);
-                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.id(%d,%d) = {'%s'};\n" %(exp_cnt+1,i+1,1,j+1,name));
-                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.time(%d,%d) = %s;\n" %(exp_cnt+1,i+1,1,j+1,time));
+                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.id(%d,%d) = {'%s'};\n" %(experiment_cnt+1,i+1,1,j+1,name));
+                                tmp_script = tmp_script + ("m.expts(%d).data_ms(%d).mdvs.time(%d,%d) = %s;\n" %(experiment_cnt+1,i+1,1,j+1,time));
                                 # Assign values
                                 ave = ms_data['intensity_normalized_average'][cnt]
                                 stdev = ms_data['intensity_normalized_stdev'][cnt]
                                 # remove 0.0000 values and replace with NaN
                                 if ave < 1e-9: 
                                     ave = 'NaN';
-                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(exp_cnt+1,i+1,cnt+1,j+1,ave));
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %s;\n' %(experiment_cnt+1,i+1,cnt+1,j+1,ave));
                                 else:
-                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %f;\n' %(exp_cnt+1,i+1,cnt+1,j+1,ave));
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.val(%d,%d) = %f;\n' %(experiment_cnt+1,i+1,cnt+1,j+1,ave));
                                 if stdev < 1e-9:
                                     # check if the ave is NaN
                                     if ave=='NaN': stdev = 'NaN';
                                     else: stdev = 0.0001;
-                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(exp_cnt+1,i+1,cnt+1,j+1,stdev));
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %s;\n' %(experiment_cnt+1,i+1,cnt+1,j+1,stdev));
                                 else:
-                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %f;\n' %(exp_cnt+1,i+1,cnt+1,j+1,stdev));
+                                    tmp_script = tmp_script + ('m.expts(%d).data_ms(%d).mdvs.std(%d,%d) = %f;\n' %(experiment_cnt+1,i+1,cnt+1,j+1,stdev));
             mat_script = mat_script + tmp_script;
 
         ## Simulate measurements
