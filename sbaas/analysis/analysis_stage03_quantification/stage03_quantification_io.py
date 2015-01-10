@@ -960,11 +960,11 @@ class stage03_quantification_io(base_analysis):
         data.clear_data();
 
     def add_dataStage03Experiment(self, data_I):
-        '''add rows of data_stage03_quantification_experiment'''
+        '''add rows of data_stage03_quantification_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage03_quantification_experiment(d['experiment_id'],
+                    data_add = data_stage03_quantification_simulation(d['experiment_id'],
                         d['model_id'],
                         d['sample_name_abbreviation'],
                         d['time_point'],
@@ -984,12 +984,12 @@ class stage03_quantification_io(base_analysis):
         data.clear_data();
 
     def update_dataStage03Experiment(self,data_I):
-        '''update rows of data_stage03_quantification_experiment'''
+        '''update rows of data_stage03_quantification_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage03_quantification_experiment).filter(
-                            data_stage03_quantification_experiment.id.like(d['id'])).update(
+                    data_update = self.session.query(data_stage03_quantification_simulation).filter(
+                            data_stage03_quantification_simulation.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -1084,7 +1084,7 @@ class stage03_quantification_io(base_analysis):
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationExperiment(experiment_id_I);
+            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationSimulation(experiment_id_I);
         for model_id in model_ids:
             filter_mi_str = 'model_id/'+ model_id;
             filter_O['model_id'].append(filter_mi_str);
@@ -1105,7 +1105,7 @@ class stage03_quantification_io(base_analysis):
                 time_points = time_points_I;
             else:
                 time_points = [];
-                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationExperiment(experiment_id_I,model_id);
+                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationSimulation(experiment_id_I,model_id);
             for tp in time_points:
                 filter_tp_str = 'model_id/'+ model_id +'/time_point/'+tp;
                 filter_O['time_point'].append(filter_tp_str);
@@ -1115,7 +1115,7 @@ class stage03_quantification_io(base_analysis):
                     sample_name_abbreviations = sample_name_abbreviations_I;
                 else:
                     sample_name_abbreviations = [];
-                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationExperiment(experiment_id_I,model_id,tp);
+                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationSimulation(experiment_id_I,model_id,tp);
                 for sna in sample_name_abbreviations:
                     filter_sna_str = 'model_id/'+ model_id +'/time_point/'+tp+'/sample/'+sna;
                     filter_O['sample'].append(filter_sna_str);
@@ -1174,7 +1174,7 @@ class stage03_quantification_io(base_analysis):
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationExperiment(experiment_id_I);
+            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationSimulation(experiment_id_I);
         for model_id in model_ids:
             filter_mi_str = 'model_id/'+ model_id;
             filter_O['model_id'].append(filter_mi_str);
@@ -1195,7 +1195,7 @@ class stage03_quantification_io(base_analysis):
                 time_points = time_points_I;
             else:
                 time_points = [];
-                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationExperiment(experiment_id_I,model_id);
+                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationSimulation(experiment_id_I,model_id);
             for tp in time_points:
                 filter_tp_str = 'model_id/'+ model_id +'/time_point/'+tp;
                 filter_O['time_point'].append(filter_tp_str);
@@ -1205,7 +1205,7 @@ class stage03_quantification_io(base_analysis):
                     sample_name_abbreviations = sample_name_abbreviations_I;
                 else:
                     sample_name_abbreviations = [];
-                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationExperiment(experiment_id_I,model_id,tp);
+                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationSimulation(experiment_id_I,model_id,tp);
                 sample_name_abbreviations = [sna for sna in sample_name_abbreviations if sna !=sample_name_abbreviation_base]
                 # get information about the sample to be compared
                 # get metabolomicsData
@@ -1272,7 +1272,7 @@ class stage03_quantification_io(base_analysis):
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationExperiment(experiment_id_I);
+            model_ids = self.stage03_quantification_query.get_modelID_experimentID_dataStage03QuantificationSimulation(experiment_id_I);
         for model_id in model_ids:
             print 'exporting thermodynamic analysis for model_id ' + model_id;
             # get the cobra model
@@ -1291,7 +1291,7 @@ class stage03_quantification_io(base_analysis):
                 time_points = time_points_I;
             else:
                 time_points = [];
-                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationExperiment(experiment_id_I,model_id);
+                time_points = self.stage03_quantification_query.get_timePoints_experimentIDAndModelID_dataStage03QuantificationSimulation(experiment_id_I,model_id);
             for tp in time_points:
                 print 'exporting thermodynamic analysis for time_point ' + tp;
                 # get sample_name_abbreviations
@@ -1299,7 +1299,7 @@ class stage03_quantification_io(base_analysis):
                     sample_name_abbreviations = sample_name_abbreviations_I;
                 else:
                     sample_name_abbreviations = [];
-                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationExperiment(experiment_id_I,model_id,tp);
+                    sample_name_abbreviations = self.stage03_quantification_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationSimulation(experiment_id_I,model_id,tp);
                 sample_name_abbreviations = [sna for sna in sample_name_abbreviations if sna !=sample_name_abbreviation_base]
                 # get information about the sample to be compared
                 concentrations_base = {};

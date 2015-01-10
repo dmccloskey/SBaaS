@@ -28,16 +28,16 @@ class stage03_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    ## Query from data_stage03_quantification_experiment
-    # query sample_name_abbreviations from data_stage03_quantification_experiment
-    def get_sampleNameAbbreviations_experimentID_dataStage03QuantificationExperiment(self,experiment_id_I):
+    ## Query from data_stage03_quantification_simulation
+    # query sample_name_abbreviations from data_stage03_quantification_simulation
+    def get_sampleNameAbbreviations_experimentID_dataStage03QuantificationSimulation(self,experiment_id_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.sample_name_abbreviation).filter(
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation).order_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.sample_name_abbreviation).filter(
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation).order_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -45,15 +45,15 @@ class stage03_quantification_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_sampleNameAbbreviations_experimentIDAndModelID_dataStage03QuantificationExperiment(self,experiment_id_I,model_id_I):
+    def get_sampleNameAbbreviations_experimentIDAndModelID_dataStage03QuantificationSimulation(self,experiment_id_I,model_id_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.sample_name_abbreviation).filter(
-                    data_stage03_quantification_experiment.model_id.like(model_id_I),
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation).order_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.sample_name_abbreviation).filter(
+                    data_stage03_quantification_simulation.model_id.like(model_id_I),
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation).order_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -61,16 +61,16 @@ class stage03_quantification_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationExperiment(self,experiment_id_I,model_id_I,time_point_I):
+    def get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage03QuantificationSimulation(self,experiment_id_I,model_id_I,time_point_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.sample_name_abbreviation).filter(
-                    data_stage03_quantification_experiment.model_id.like(model_id_I),
-                    data_stage03_quantification_experiment.time_point.like(time_point_I),
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation).order_by(
-                    data_stage03_quantification_experiment.sample_name_abbreviation.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.sample_name_abbreviation).filter(
+                    data_stage03_quantification_simulation.model_id.like(model_id_I),
+                    data_stage03_quantification_simulation.time_point.like(time_point_I),
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation).order_by(
+                    data_stage03_quantification_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -78,16 +78,16 @@ class stage03_quantification_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    # query time_points from data_stage03_quantification_experiment
-    def get_timePoints_experimentIDAndModelID_dataStage03QuantificationExperiment(self,experiment_id_I,model_id_I):
+    # query time_points from data_stage03_quantification_simulation
+    def get_timePoints_experimentIDAndModelID_dataStage03QuantificationSimulation(self,experiment_id_I,model_id_I):
         '''Querry time-points that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.time_point).filter(
-                    data_stage03_quantification_experiment.model_id.like(model_id_I),
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.time_point).order_by(
-                    data_stage03_quantification_experiment.time_point.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.time_point).filter(
+                    data_stage03_quantification_simulation.model_id.like(model_id_I),
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.time_point).order_by(
+                    data_stage03_quantification_simulation.time_point.asc()).all();
             time_points_O = [];
             if data: 
                 for d in data:
@@ -95,15 +95,15 @@ class stage03_quantification_query(base_analysis):
             return time_points_O;
         except SQLAlchemyError as e:
             print(e);
-    # query model_ids from data_stage03_quantification_experiment
-    def get_modelID_experimentID_dataStage03QuantificationExperiment(self,experiment_id_I):
+    # query model_ids from data_stage03_quantification_simulation
+    def get_modelID_experimentID_dataStage03QuantificationSimulation(self,experiment_id_I):
         '''Querry model_ids that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.model_id).filter(
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.model_id).order_by(
-                    data_stage03_quantification_experiment.model_id.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.model_id).filter(
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.model_id).order_by(
+                    data_stage03_quantification_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:
@@ -111,15 +111,15 @@ class stage03_quantification_query(base_analysis):
             return model_ids_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage03QuantificationExperiment(self,experiment_id_I,sample_name_abbreviation_I):
+    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage03QuantificationSimulation(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry model_ids for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = self.session.query(data_stage03_quantification_experiment.model_id).filter(
-                    data_stage03_quantification_experiment.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage03_quantification_experiment.experiment_id.like(experiment_id_I),
-                    data_stage03_quantification_experiment.used_.is_(True)).group_by(
-                    data_stage03_quantification_experiment.model_id).order_by(
-                    data_stage03_quantification_experiment.model_id.asc()).all();
+            data = self.session.query(data_stage03_quantification_simulation.model_id).filter(
+                    data_stage03_quantification_simulation.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage03_quantification_simulation.experiment_id.like(experiment_id_I),
+                    data_stage03_quantification_simulation.used_.is_(True)).group_by(
+                    data_stage03_quantification_simulation.model_id).order_by(
+                    data_stage03_quantification_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:

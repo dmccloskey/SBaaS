@@ -57,9 +57,9 @@ class data_stage02_physiology_simulatedData(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
 
-class data_stage02_physiology_experiment(Base):
-    __tablename__ = 'data_stage02_physiology_experiment'
-    id = Column(Integer, Sequence('data_stage02_physiology_experiment_id_seq'), primary_key=True)
+class data_stage02_physiology_simulation(Base):
+    __tablename__ = 'data_stage02_physiology_simulation'
+    id = Column(Integer, Sequence('data_stage02_physiology_simulation_id_seq'), primary_key=True)
     experiment_id = Column(String(50), primary_key=True)
     model_id = Column(String(50), primary_key=True)
     sample_name_abbreviation = Column(String(100), primary_key=True)
@@ -257,9 +257,9 @@ class data_stage02_physiology_modelMetabolites(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
 
-class data_stage02_physiology_experimentalFluxes(Base):
-    __tablename__ = 'data_stage02_physiology_experimentalFluxes'
-    id = Column(Integer, Sequence('data_stage02_physiology_experimentalFluxes_id_seq'), primary_key=True)
+class data_stage02_physiology_measuredFluxes(Base):
+    __tablename__ = 'data_stage02_physiology_measuredFluxes'
+    id = Column(Integer, Sequence('data_stage02_physiology_measuredFluxes_id_seq'), primary_key=True)
     experiment_id = Column(String(50), primary_key=True)
     model_id = Column(String(50))
     sample_name_abbreviation = Column(String(100), primary_key=True)

@@ -3,10 +3,10 @@ from models_base import *
 from sqlalchemy.orm import relationship
 
 # ORM classes
-class data_stage02_isotopomer_experiment(Base):
+class data_stage02_isotopomer_simulation(Base):
     # redundant? (i.e. a view of isotopomer calcFragments and calcFluxes)
-    __tablename__ = 'data_stage02_isotopomer_experiment'
-    id = Column(Integer, Sequence('data_stage02_isotopomer_experiment_id_seq'), primary_key=True)
+    __tablename__ = 'data_stage02_isotopomer_simulation'
+    id = Column(Integer, Sequence('data_stage02_isotopomer_simulation_id_seq'), primary_key=True)
     experiment_id = Column(String(50), primary_key=True)
     model_id = Column(String(50), primary_key=True)
     mapping_id = Column(String(100), primary_key=True)
@@ -412,9 +412,9 @@ class data_stage02_isotopomer_modelMetabolites(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
 
-class data_stage02_isotopomer_experimentalFluxes(Base):
-    __tablename__ = 'data_stage02_isotopomer_experimentalFluxes'
-    id = Column(Integer, Sequence('data_stage02_isotopomer_experimentalFluxes_id_seq'), primary_key=True)
+class data_stage02_isotopomer_measuredFluxes(Base):
+    __tablename__ = 'data_stage02_isotopomer_measuredFluxes'
+    id = Column(Integer, Sequence('data_stage02_isotopomer_measuredFluxes_id_seq'), primary_key=True)
     experiment_id = Column(String(50))
     model_id = Column(String(50))
     sample_name_abbreviation = Column(String(100))
@@ -470,9 +470,9 @@ class data_stage02_isotopomer_experimentalFluxes(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
     
-class data_stage02_isotopomer_experimentalPools(Base):
-    __tablename__ = 'data_stage02_isotopomer_experimentalPools'
-    id = Column(Integer, Sequence('data_stage02_isotopomer_experimentalPools_id_seq'), primary_key=True)
+class data_stage02_isotopomer_measuredPools(Base):
+    __tablename__ = 'data_stage02_isotopomer_measuredPools'
+    id = Column(Integer, Sequence('data_stage02_isotopomer_measuredPools_id_seq'), primary_key=True)
     experiment_id = Column(String(50))
     model_id = Column(String(50))
     sample_name_abbreviation = Column(String(100))
@@ -533,9 +533,9 @@ class data_stage02_isotopomer_experimentalPools(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
 
-class data_stage02_isotopomer_experimentalFragments(Base):
-    __tablename__ = 'data_stage02_isotopomer_experimentalFragments'
-    id = Column(Integer, Sequence('data_stage02_isotopomer_experimentalFragments_id_seq'), primary_key=True)
+class data_stage02_isotopomer_measuredFragments(Base):
+    __tablename__ = 'data_stage02_isotopomer_measuredFragments'
+    id = Column(Integer, Sequence('data_stage02_isotopomer_measuredFragments_id_seq'), primary_key=True)
     experiment_id = Column(String(50), primary_key=True)
     sample_name_abbreviation = Column(String(100), primary_key=True)
     time_point = Column(String(10), primary_key=True)

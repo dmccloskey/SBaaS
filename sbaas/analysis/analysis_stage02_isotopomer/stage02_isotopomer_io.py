@@ -22,19 +22,19 @@ class stage02_isotopomer_io(base_analysis):
         self.stage02_isotopomer_query = stage02_isotopomer_query();
         self.session = Session();
     
-    def import_data_stage02_isotopomer_experiment_add(self, filename):
+    def import_data_stage02_isotopomer_simulation_add(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.add_data_stage02_isotopomer_experiment(data.data);
+        self.add_data_stage02_isotopomer_simulation(data.data);
         data.clear_data();
-    def add_data_stage02_isotopomer_experiment(self, data_I):
-        '''add rows of data_stage02_isotopomer_experiment'''
+    def add_data_stage02_isotopomer_simulation(self, data_I):
+        '''add rows of data_stage02_isotopomer_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_isotopomer_experiment(d['experiment_id'],
+                    data_add = data_stage02_isotopomer_simulation(d['experiment_id'],
                             d['model_id'],
                             d['mapping_id'],
                             d['sample_name_abbreviation'],
@@ -191,12 +191,12 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def add_data_stage02_isotopomer_experimentalFluxes(self, data_I):
-        '''add rows of data_stage02_isotopomer_experimentalFluxes'''
+    def add_data_stage02_isotopomer_measuredFluxes(self, data_I):
+        '''add rows of data_stage02_isotopomer_measuredFluxes'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_isotopomer_experimentalFluxes(d['experiment_id'],
+                    data_add = data_stage02_isotopomer_measuredFluxes(d['experiment_id'],
                             d['model_id'],
                             d['sample_name_abbreviation'],
                             #d['time_point'],
@@ -212,12 +212,12 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def add_data_stage02_isotopomer_experimentalPools(self, data_I):
-        '''add rows of data_stage02_isotopomer_experimentalPools'''
+    def add_data_stage02_isotopomer_measuredPools(self, data_I):
+        '''add rows of data_stage02_isotopomer_measuredPools'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_isotopomer_experimentalPools(d['experiment_id'],
+                    data_add = data_stage02_isotopomer_measuredPools(d['experiment_id'],
                             d['model_id'],
                             d['sample_name_abbreviation'],
                             d['time_point'],
@@ -234,12 +234,12 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def add_data_stage02_isotopomer_experimentalFragments(self, data_I):
-        '''add rows of data_stage02_isotopomer_experimentalFragments'''
+    def add_data_stage02_isotopomer_measuredFragments(self, data_I):
+        '''add rows of data_stage02_isotopomer_measuredFragments'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_isotopomer_experimentalFragments(d['experiment_id'],
+                    data_add = data_stage02_isotopomer_measuredFragments(d['experiment_id'],
                                 d['sample_name_abbreviation'],
                                 d['time_point'],
                                 d['met_id'],
@@ -376,13 +376,13 @@ class stage02_isotopomer_io(base_analysis):
                     print(e);
             self.session.commit();
     # TODO: add filters for update queries:
-    def update_data_stage02_isotopomer_experiment(self,data_I):
+    def update_data_stage02_isotopomer_simulation(self,data_I):
         #TODO:
-        '''update rows of data_stage02_isotopomer_experiment'''
+        '''update rows of data_stage02_isotopomer_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_isotopomer_experiment).filter(
+                    data_update = self.session.query(data_stage02_isotopomer_simulation).filter(
                             #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
@@ -553,13 +553,13 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def update_data_stage02_isotopomer_experimentalFluxes(self,data_I):
+    def update_data_stage02_isotopomer_measuredFluxes(self,data_I):
         #TODO:
-        '''update rows of data_stage02_isotopomer_experimentalFluxes'''
+        '''update rows of data_stage02_isotopomer_measuredFluxes'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_isotopomer_experimentalFluxes).filter(
+                    data_update = self.session.query(data_stage02_isotopomer_measuredFluxes).filter(
                             #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
@@ -578,13 +578,13 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def update_data_stage02_isotopomer_experimentalPools(self,data_I):
+    def update_data_stage02_isotopomer_measuredPools(self,data_I):
         #TODO:
-        '''update rows of data_stage02_isotopomer_experimentalPools'''
+        '''update rows of data_stage02_isotopomer_measuredPools'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_isotopomer_experimentalPools).filter(
+                    data_update = self.session.query(data_stage02_isotopomer_measuredPools).filter(
                             #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
@@ -604,13 +604,13 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
-    def update_data_stage02_isotopomer_experimentalFragments(self,data_I):
+    def update_data_stage02_isotopomer_measuredFragments(self,data_I):
         #TODO:
-        '''update rows of data_stage02_isotopomer_experimentalFragments'''
+        '''update rows of data_stage02_isotopomer_measuredFragments'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_isotopomer_experimentalFragments).filter(
+                    data_update = self.session.query(data_stage02_isotopomer_measuredFragments).filter(
                             #sample.sample_name.like(d['sample_name'])
                             ).update(
                             {'experiment_id':d['experiment_id'],
@@ -1941,7 +1941,7 @@ class stage02_isotopomer_io(base_analysis):
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             filter_mi_str = 'model_id/'+ model_id.replace('_','');
             filter_O['model_id'].append(filter_mi_str);
@@ -1974,7 +1974,7 @@ class stage02_isotopomer_io(base_analysis):
                 mapping_ids = mapping_ids_I;
             else:
                 mapping_ids = [];
-                mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping in mapping_ids:
                 filter_mapping_str = 'model_id/'+ model_id.replace('_','') +'/mapping_id/'+mapping.replace('_','');
                 filter_O['mapping_id'].append(filter_mapping_str);
@@ -1984,7 +1984,7 @@ class stage02_isotopomer_io(base_analysis):
                     sample_name_abbreviations = sample_name_abbreviations_I;
                 else:
                     sample_name_abbreviations = [];
-                    sample_name_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndMappingID_dataStage02IsotopomerExperiment(experiment_id_I,model_id,mapping);
+                    sample_name_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentIDAndModelIDAndMappingID_dataStage02IsotopomerSimulation(experiment_id_I,model_id,mapping);
                 for sna in sample_name_abbreviations:
                     filter_sna_str = 'model_id/'+ model_id.replace('_','') +'/mapping_id/'+mapping.replace('_','')+'/sample/'+sna.replace('_','');
                     filter_O['sample'].append(filter_sna_str);

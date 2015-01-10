@@ -477,16 +477,16 @@ class stage02_isotopomer_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    ## Query from data_stage02_isotopomer_experiment
-    # query sample_name_abbreviations from data_stage02_isotopomer_experiment
-    def get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperiment(self,experiment_id_I):
+    ## Query from data_stage02_isotopomer_simulation
+    # query sample_name_abbreviations from data_stage02_isotopomer_simulation
+    def get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerSimulation(self,experiment_id_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.sample_name_abbreviation).filter(
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation).order_by(
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.sample_name_abbreviation).filter(
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation).order_by(
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -494,16 +494,16 @@ class stage02_isotopomer_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_sampleNameAbbreviations_experimentIDAndModelIDAndMappingID_dataStage02IsotopomerExperiment(self,experiment_id_I,model_id_I,mapping_id_I):
+    def get_sampleNameAbbreviations_experimentIDAndModelIDAndMappingID_dataStage02IsotopomerSimulation(self,experiment_id_I,model_id_I,mapping_id_I):
         '''Querry sample_name_abbreviations for the model_id and mapping that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.sample_name_abbreviation).filter(
-                    data_stage02_isotopomer_experiment.model_id.like(model_id_I),
-                    data_stage02_isotopomer_experiment.mapping_id.like(mapping_id_I),
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation).order_by(
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.sample_name_abbreviation).filter(
+                    data_stage02_isotopomer_simulation.model_id.like(model_id_I),
+                    data_stage02_isotopomer_simulation.mapping_id.like(mapping_id_I),
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation).order_by(
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -511,16 +511,16 @@ class stage02_isotopomer_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    # query model_ids from data_stage02_isotopomer_experiment
-    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02IsotopomerExperiment(self,experiment_id_I,sample_name_abbreviation_I):
+    # query model_ids from data_stage02_isotopomer_simulation
+    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02IsotopomerSimulation(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry model_ids for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.model_id).filter(
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.model_id).order_by(
-                    data_stage02_isotopomer_experiment.model_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.model_id).filter(
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.model_id).order_by(
+                    data_stage02_isotopomer_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:
@@ -528,14 +528,14 @@ class stage02_isotopomer_query(base_analysis):
             return model_ids_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_modelID_experimentID_dataStage02IsotopomerExperiment(self,experiment_id_I):
+    def get_modelID_experimentID_dataStage02IsotopomerSimulation(self,experiment_id_I):
         '''Querry model_ids that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.model_id).filter(
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.model_id).order_by(
-                    data_stage02_isotopomer_experiment.model_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.model_id).filter(
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.model_id).order_by(
+                    data_stage02_isotopomer_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:
@@ -543,17 +543,17 @@ class stage02_isotopomer_query(base_analysis):
             return model_ids_O;
         except SQLAlchemyError as e:
             print(e);
-    # query mapping_ids from data_stage02_isotopomer_experiment
-    def get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerExperiment(self,experiment_id_I,sample_name_abbreviation_I,model_id_I):
+    # query mapping_ids from data_stage02_isotopomer_simulation
+    def get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerSimulation(self,experiment_id_I,sample_name_abbreviation_I,model_id_I):
         '''Querry model_ids for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.mapping_id).filter(
-                    data_stage02_isotopomer_experiment.model_id.like(model_id_I),
-                    data_stage02_isotopomer_experiment.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.mapping_id).order_by(
-                    data_stage02_isotopomer_experiment.mapping_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.mapping_id).filter(
+                    data_stage02_isotopomer_simulation.model_id.like(model_id_I),
+                    data_stage02_isotopomer_simulation.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.mapping_id).order_by(
+                    data_stage02_isotopomer_simulation.mapping_id.asc()).all();
             mapping_ids_O = [];
             if data: 
                 for d in data:
@@ -561,15 +561,15 @@ class stage02_isotopomer_query(base_analysis):
             return mapping_ids_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(self,experiment_id_I,model_id_I):
+    def get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(self,experiment_id_I,model_id_I):
         '''Querry mapping_ids for the model_id that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experiment.mapping_id).filter(
-                    data_stage02_isotopomer_experiment.model_id.like(model_id_I),
-                    data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experiment.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experiment.mapping_id).order_by(
-                    data_stage02_isotopomer_experiment.mapping_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_simulation.mapping_id).filter(
+                    data_stage02_isotopomer_simulation.model_id.like(model_id_I),
+                    data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_simulation.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_simulation.mapping_id).order_by(
+                    data_stage02_isotopomer_simulation.mapping_id.asc()).all();
             mapping_ids_O = [];
             if data: 
                 for d in data:
@@ -578,17 +578,17 @@ class stage02_isotopomer_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    ## Query from data_stage02_isotopomer_experimentalFragments
-    # query sample_name_abbreviations from data_stage02_isotopomer_experimentalFragments
-    def get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperimentalFragments(self,experiment_id_I):
+    ## Query from data_stage02_isotopomer_measuredFragments
+    # query sample_name_abbreviations from data_stage02_isotopomer_measuredFragments
+    def get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I):
         '''Querry sample_name_abbreviations that are used from
         the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation).filter(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFragments.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation).order_by(
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_measuredFragments.sample_name_abbreviation).filter(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFragments.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation).order_by(
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -596,17 +596,17 @@ class stage02_isotopomer_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    # query timePoint from data_stage02_isotopomer_experimentalFragments
-    def get_timePoint_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(self,experiment_id_I,sample_name_abbreviation_I):
+    # query timePoint from data_stage02_isotopomer_measuredFragments
+    def get_timePoint_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry rows for the sample_name_abbreviation that are used from the experiment'''
         try:
             data = query_session.query(
-                    data_stage02_isotopomer_experimentalFragments.time_point).filter(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experimentalFragments.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experimentalFragments.time_point).order_by(
-                    data_stage02_isotopomer_experimentalFragments.time_point.asc()).all();
+                    data_stage02_isotopomer_measuredFragments.time_point).filter(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_measuredFragments.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_measuredFragments.time_point).order_by(
+                    data_stage02_isotopomer_measuredFragments.time_point.asc()).all();
             time_points_O = [];
             if data: 
                 for d in data:
@@ -614,44 +614,44 @@ class stage02_isotopomer_query(base_analysis):
             return time_points_O;
         except SQLAlchemyError as e:
             print(e);
-    # query row from data_stage02_isotopomer_experimentalFragments
-    def get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(self,experiment_id_I,sample_name_abbreviation_I):
+    # query row from data_stage02_isotopomer_measuredFragments
+    def get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry rows for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experimentalFragments.experiment_id,
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation,
-                    data_stage02_isotopomer_experimentalFragments.time_point,
-                    data_stage02_isotopomer_experimentalFragments.met_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_average,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_cv,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_stdev,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_units,
-                    data_stage02_isotopomer_experimentalFragments.scan_type,
-                    data_stage02_isotopomer_experimentalFragments.met_elements,
-                    data_stage02_isotopomer_experimentalFragments.met_atompositions).filter(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experimentalFragments.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id,
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation,
-                    data_stage02_isotopomer_experimentalFragments.time_point,
-                    data_stage02_isotopomer_experimentalFragments.met_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_average,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_cv,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_stdev,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_units,
-                    data_stage02_isotopomer_experimentalFragments.scan_type,
-                    data_stage02_isotopomer_experimentalFragments.met_elements,
-                    data_stage02_isotopomer_experimentalFragments.met_atompositions).order_by(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.asc(),
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.asc(),
-                    data_stage02_isotopomer_experimentalFragments.met_id.asc(),
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula.desc(),
-                    data_stage02_isotopomer_experimentalFragments.time_point.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).filter(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_measuredFragments.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).order_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.asc(),
+                    data_stage02_isotopomer_measuredFragments.met_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.fragment_formula.desc(),
+                    data_stage02_isotopomer_measuredFragments.time_point.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:
@@ -672,45 +672,45 @@ class stage02_isotopomer_query(base_analysis):
             return rows_O;
         except SQLAlchemyError as e:
             print(e);
-    # query row from data_stage02_isotopomer_experimentalFragments
-    def get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerExperimentalFragments(self,experiment_id_I,sample_name_abbreviation_I,time_point_I):
+    # query row from data_stage02_isotopomer_measuredFragments
+    def get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I,sample_name_abbreviation_I,time_point_I):
         '''Querry rows for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experimentalFragments.experiment_id,
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation,
-                    data_stage02_isotopomer_experimentalFragments.time_point,
-                    data_stage02_isotopomer_experimentalFragments.met_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_average,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_cv,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_stdev,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_units,
-                    data_stage02_isotopomer_experimentalFragments.scan_type,
-                    data_stage02_isotopomer_experimentalFragments.met_elements,
-                    data_stage02_isotopomer_experimentalFragments.met_atompositions).filter(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFragments.time_point.like(time_point_I),
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experimentalFragments.used_.is_(True)).group_by(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id,
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation,
-                    data_stage02_isotopomer_experimentalFragments.time_point,
-                    data_stage02_isotopomer_experimentalFragments.met_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_id,
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_average,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_cv,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_stdev,
-                    data_stage02_isotopomer_experimentalFragments.intensity_normalized_units,
-                    data_stage02_isotopomer_experimentalFragments.scan_type,
-                    data_stage02_isotopomer_experimentalFragments.met_elements,
-                    data_stage02_isotopomer_experimentalFragments.met_atompositions).order_by(
-                    data_stage02_isotopomer_experimentalFragments.experiment_id.asc(),
-                    data_stage02_isotopomer_experimentalFragments.sample_name_abbreviation.asc(),
-                    data_stage02_isotopomer_experimentalFragments.met_id.asc(),
-                    data_stage02_isotopomer_experimentalFragments.fragment_formula.desc(),
-                    data_stage02_isotopomer_experimentalFragments.time_point.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).filter(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFragments.time_point.like(time_point_I),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_measuredFragments.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).order_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.asc(),
+                    data_stage02_isotopomer_measuredFragments.met_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.fragment_formula.desc(),
+                    data_stage02_isotopomer_measuredFragments.time_point.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:
@@ -1244,17 +1244,17 @@ class stage02_isotopomer_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
             
-    ## Query from data_stage02_isotopomer_experimentalFluxes
-    # query rows from data_stage02_isotopomer_experimentalFluxes
-    def get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFluxes(self,experiment_id_I,sample_name_abbreviation_I):
+    ## Query from data_stage02_isotopomer_measuredFluxes
+    # query rows from data_stage02_isotopomer_measuredFluxes
+    def get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry rows by model_id that are used'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experimentalFluxes).filter(
-                    data_stage02_isotopomer_experimentalFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experimentalFluxes.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFluxes.used_.is_(True)).order_by(
-                    data_stage02_isotopomer_experimentalFluxes.model_id.asc(),
-                    data_stage02_isotopomer_experimentalFluxes.rxn_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_measuredFluxes).filter(
+                    data_stage02_isotopomer_measuredFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_measuredFluxes.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFluxes.used_.is_(True)).order_by(
+                    data_stage02_isotopomer_measuredFluxes.model_id.asc(),
+                    data_stage02_isotopomer_measuredFluxes.rxn_id.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:
@@ -1274,16 +1274,16 @@ class stage02_isotopomer_query(base_analysis):
             return rows_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFluxes(self,experiment_id_I,model_id_I,sample_name_abbreviation_I):
+    def get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(self,experiment_id_I,model_id_I,sample_name_abbreviation_I):
         '''Querry rows by model_id that are used'''
         try:
-            data = query_session.query(data_stage02_isotopomer_experimentalFluxes).filter(
-                    data_stage02_isotopomer_experimentalFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_isotopomer_experimentalFluxes.experiment_id.like(experiment_id_I),
-                    data_stage02_isotopomer_experimentalFluxes.model_id.like(model_id_I),
-                    data_stage02_isotopomer_experimentalFluxes.used_.is_(True)).order_by(
-                    data_stage02_isotopomer_experimentalFluxes.model_id.asc(),
-                    data_stage02_isotopomer_experimentalFluxes.rxn_id.asc()).all();
+            data = query_session.query(data_stage02_isotopomer_measuredFluxes).filter(
+                    data_stage02_isotopomer_measuredFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_isotopomer_measuredFluxes.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFluxes.model_id.like(model_id_I),
+                    data_stage02_isotopomer_measuredFluxes.used_.is_(True)).order_by(
+                    data_stage02_isotopomer_measuredFluxes.model_id.asc(),
+                    data_stage02_isotopomer_measuredFluxes.rxn_id.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:

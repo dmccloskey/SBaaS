@@ -275,17 +275,17 @@ def data_stage02():
 
     '''data import'''
     qio02 = stage02_physiology_io();
-    qio02.import_dataStage02PhysiologyExperiment_add('data\\tests\\analysis_physiology\\141020_data_stage02_physiology_experiment.csv');
+    qio02.import_dataStage02PhysiologySimulation_add('data\\tests\\analysis_physiology\\141020_data_stage02_physiology_simulation.csv');
     qio02.import_dataStage02PhysiologyModel_sbml('iJO1366','10/11/2011 0:00','data\\models\\iJO1366.xml')
 
     ex02.load_models('ALEsKOs01');
-    ex02.execute_makeExperimentalFluxes('ALEsKOs01',
+    ex02.execute_makeMeasuredFluxes('ALEsKOs01',
                                 {'glc-D':{'model_id':'iJO1366','rxn_id':'EX_glc_LPAREN_e_RPAREN_'},
                                 'ac':{'model_id':'iJO1366','rxn_id':'EX_ac_LPAREN_e_RPAREN_'},
                                 'succ':{'model_id':'iJO1366','rxn_id':'EX_succ_LPAREN_e_RPAREN_'},
                                 'lac-L':{'model_id':'iJO1366','rxn_id':'EX_lac_DASH_L_LPAREN_e_RPAREN_'},
                                 'biomass':{'model_id':'iJO1366','rxn_id':'Ec_biomass_iJO1366_WT_53p95M'}});
-    ex02.execute_addExperimentalFluxes('ALEsKOs01',ko_list={'iJO1366':{
+    ex02.execute_addMeasuredFluxes('ALEsKOs01',ko_list={'iJO1366':{
                                                     'OxicEvo04tpiAEcoliGlc':['TPI'],
                                                     'OxicEvo04tpiAEvo01EPEcoliGlc':['TPI'],
                                                     'OxicEvo04tpiAEvo02EPEcoliGlc':['TPI'],

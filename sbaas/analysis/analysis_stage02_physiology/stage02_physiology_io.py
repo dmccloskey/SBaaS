@@ -280,20 +280,20 @@ class stage02_physiology_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def import_dataStage02PhysiologyExperiment_add(self, filename):
+    def import_dataStage02PhysiologySimulation_add(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.add_dataStage02PhysiologyExperiment(data.data);
+        self.add_dataStage02PhysiologySimulation(data.data);
         data.clear_data();
 
-    def add_dataStage02PhysiologyExperiment(self, data_I):
-        '''add rows of data_stage02_physiology_experiment'''
+    def add_dataStage02PhysiologySimulation(self, data_I):
+        '''add rows of data_stage02_physiology_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_physiology_experiment(d['experiment_id'],
+                    data_add = data_stage02_physiology_simulation(d['experiment_id'],
                         d['model_id'],
                         d['sample_name_abbreviation'],
                         #d['time_point'],
@@ -304,21 +304,21 @@ class stage02_physiology_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def import_dataStage02PhysiologyExperiment_update(self, filename):
+    def import_dataStage02PhysiologySimulation_update(self, filename):
         '''table adds'''
         data = base_importData();
         data.read_csv(filename);
         data.format_data();
-        self.update_dataStage02PhysiologyExperiment(data.data);
+        self.update_dataStage02PhysiologySimulation(data.data);
         data.clear_data();
 
-    def update_dataStage02PhysiologyExperiment(self,data_I):
-        '''update rows of data_stage02_physiology_experiment'''
+    def update_dataStage02PhysiologySimulation(self,data_I):
+        '''update rows of data_stage02_physiology_simulation'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_physiology_experiment).filter(
-                            data_stage02_physiology_experiment.id.like(d['id'])).update(
+                    data_update = self.session.query(data_stage02_physiology_simulation).filter(
+                            data_stage02_physiology_simulation.id.like(d['id'])).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -336,12 +336,12 @@ class stage02_physiology_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def add_data_stage02PhysiologyExperimentalFluxes(self, data_I):
-        '''add rows of data_stage02_physiology_experimentalFluxes'''
+    def add_data_stage02PhysiologyMeasuredFluxes(self, data_I):
+        '''add rows of data_stage02_physiology_measuredFluxes'''
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_physiology_experimentalFluxes(d['experiment_id'],
+                    data_add = data_stage02_physiology_measuredFluxes(d['experiment_id'],
                             d['model_id'],
                             d['sample_name_abbreviation'],
                             #d['time_point'],
@@ -358,14 +358,14 @@ class stage02_physiology_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def update_data_stage02PhysiologyExperimentalFluxes(self,data_I):
+    def update_data_stage02PhysiologyMeasuredFluxes(self,data_I):
         #TODO:
-        '''update rows of data_stage02_physiology_experimentalFluxes'''
+        '''update rows of data_stage02_physiology_measuredFluxes'''
         if data_I:
             for d in data_I:
                 try:
-                    data_update = self.session.query(data_stage02_physiology_experimentalFluxes).filter(
-                            data_stage02_physiology_experimentalFluxes.id==d['id']
+                    data_update = self.session.query(data_stage02_physiology_measuredFluxes).filter(
+                            data_stage02_physiology_measuredFluxes.id==d['id']
                             ).update(
                             {'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
@@ -399,7 +399,7 @@ class stage02_physiology_io(base_analysis):
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             filter_mi_str = 'model_id/'+ model_id;
             filter_O['model_id'].append(filter_mi_str);
@@ -420,7 +420,7 @@ class stage02_physiology_io(base_analysis):
                 sample_name_abbreviations = sample_name_abbreviations_I;
             else:
                 sample_name_abbreviations = [];
-                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             for sna in sample_name_abbreviations:
                 filter_sna_str = 'model_id/'+ model_id +'/sample/'+sna;
                 filter_O['sample'].append(filter_sna_str);

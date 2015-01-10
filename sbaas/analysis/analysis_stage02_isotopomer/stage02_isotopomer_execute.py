@@ -239,9 +239,9 @@ class stage02_isotopomer_execute():
             data_stage02_isotopomer_models.__table__.drop(engine,True);
             data_stage02_isotopomer_modelReactions.__table__.drop(engine,True);
             data_stage02_isotopomer_modelMetabolites.__table__.drop(engine,True);
-            data_stage02_isotopomer_experimentalFluxes.__table__.drop(engine,True);
-            data_stage02_isotopomer_experimentalPools.__table__.drop(engine,True);
-            data_stage02_isotopomer_experimentalFragments.__table__.drop(engine,True);
+            data_stage02_isotopomer_measuredFluxes.__table__.drop(engine,True);
+            data_stage02_isotopomer_measuredPools.__table__.drop(engine,True);
+            data_stage02_isotopomer_measuredFragments.__table__.drop(engine,True);
             data_stage02_isotopomer_atomMappingReactions.__table__.drop(engine,True);
             data_stage02_isotopomer_atomMappingMetabolites.__table__.drop(engine,True);
         except SQLAlchemyError as e:
@@ -249,24 +249,24 @@ class stage02_isotopomer_execute():
     def reset_datastage02(self,experiment_id_I = None):
         try:
             if experiment_id_I:
-                reset = self.session.query(data_stage02_isotopomer_experiment).filter(data_stage02_isotopomer_experiment.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_simulation).filter(data_stage02_isotopomer_simulation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_tracers).filter(data_stage02_isotopomer_tracers.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_calcFluxes).filter(data_stage02_isotopomer_calcFluxes.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_calcFragments).filter(data_stage02_isotopomer_calcFragments.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalFluxes).filter(data_stage02_isotopomer_experimentalFluxes.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalPools).filter(data_stage02_isotopomer_experimentalPools.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalFragments).filter(data_stage02_isotopomer_experimentalFragments.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredFluxes).filter(data_stage02_isotopomer_measuredFluxes.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredPools).filter(data_stage02_isotopomer_measuredPools.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredFragments).filter(data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
-                reset = self.session.query(data_stage02_isotopomer_experiment).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_simulation).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_tracers).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_calcFluxes).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_calcFragments).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_models).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalFluxes).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredFluxes).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_modelMetabolites).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_modelReactions).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalPools).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_isotopomer_experimentalFragments).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredPools).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_isotopomer_measuredFragments).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_atomMappingReactions).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_isotopomer_atomMappingMetabolites).delete(synchronize_session=False);
             self.session.commit();
@@ -274,16 +274,16 @@ class stage02_isotopomer_execute():
             print(e);
     def initialize_datastage02(self):
         try:
-            data_stage02_isotopomer_experiment.__table__.create(engine,True);
+            data_stage02_isotopomer_simulation.__table__.create(engine,True);
             data_stage02_isotopomer_tracers.__table__.create(engine,True);
             data_stage02_isotopomer_calcFluxes.__table__.create(engine,True);
             data_stage02_isotopomer_calcFragments.__table__.create(engine,True);
             data_stage02_isotopomer_models.__table__.create(engine,True);
-            data_stage02_isotopomer_experimentalFluxes.__table__.create(engine,True);
+            data_stage02_isotopomer_measuredFluxes.__table__.create(engine,True);
             data_stage02_isotopomer_modelMetabolites.__table__.create(engine,True);
             data_stage02_isotopomer_modelReactions.__table__.create(engine,True);
-            data_stage02_isotopomer_experimentalPools.__table__.create(engine,True);
-            data_stage02_isotopomer_experimentalFragments.__table__.create(engine,True);
+            data_stage02_isotopomer_measuredPools.__table__.create(engine,True);
+            data_stage02_isotopomer_measuredFragments.__table__.create(engine,True);
             data_stage02_isotopomer_atomMappingReactions.__table__.create(engine,True);
             data_stage02_isotopomer_atomMappingMetabolites.__table__.create(engine,True);
         except SQLAlchemyError as e:
@@ -420,7 +420,7 @@ class stage02_isotopomer_execute():
         else:
             print 'need to specify either an existing model_id or model_file_name!'
         return
-    def execute_makeExperimentalFragments(self,experiment_id_I, sample_name_abbreviations_I = [], time_points_I = [], scan_types_I = [], met_ids_I = []):
+    def execute_makeMeasuredFragments(self,experiment_id_I, sample_name_abbreviations_I = [], time_points_I = [], scan_types_I = [], met_ids_I = []):
         '''Collect and format MS data from data_stage01_isotopomer_averagesNormSum for fluxomics simulation'''
         # get experiment information:
         met_id_conv_dict = {'Hexose_Pool_fru_glc-D':'glc-D',
@@ -529,7 +529,7 @@ class stage02_isotopomer_execute():
                             data_O.append(data_tmp);
                             #add data to the database
                             row = [];
-                            row = data_stage02_isotopomer_experimentalFragments(
+                            row = data_stage02_isotopomer_measuredFragments(
                                     experiment_id_I,
                                     sna,
                                     tp,
@@ -547,7 +547,7 @@ class stage02_isotopomer_execute():
                                     None);
                             self.session.add(row);
         self.session.commit();
-    def execute_makeExperimentalFluxes(self,experiment_id_I, metID2RxnID_I = {}, sample_name_abbreviations_I = [], met_ids_I = [],snaIsotopomer2snaPhysiology_I={}):
+    def execute_makeMeasuredFluxes(self,experiment_id_I, metID2RxnID_I = {}, sample_name_abbreviations_I = [], met_ids_I = [],snaIsotopomer2snaPhysiology_I={}):
         '''Collect and flux data from data_stage01_physiology_ratesAverages for fluxomics simulation'''
         #Input:
         #   metID2RxnID_I = e.g. {'glc-D':{'model_id':'140407_iDM2014','rxn_id':'EX_glc_LPAREN_e_RPAREN_'},
@@ -571,7 +571,7 @@ class stage02_isotopomer_execute():
             sample_name_abbreviations = sample_name_abbreviations_I;
         else:
             sample_name_abbreviations = [];
-            sample_name_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            sample_name_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for sna in sample_name_abbreviations:
             print 'Collecting experimental fluxes for sample name abbreviation ' + sna;
             query_sna = sna;
@@ -606,7 +606,7 @@ class stage02_isotopomer_execute():
                 data_O.append(data_tmp);
                 #add data to the database
                 row = [];
-                row = data_stage02_isotopomer_experimentalFluxes(
+                row = data_stage02_isotopomer_measuredFluxes(
                     experiment_id_I,
                     model_id,
                     sna,
@@ -620,7 +620,7 @@ class stage02_isotopomer_execute():
                     None);
                 self.session.add(row);
         self.session.commit();
-    def execute_makeIsotopomerExperiment_INCA(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
+    def execute_makeIsotopomerSimulation_INCA(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
         '''export a fluxomics experimental data for simulation using INCA1.1'''
         #Input:
         #   stationary_I = boolean
@@ -634,14 +634,14 @@ class stage02_isotopomer_execute():
         #    simulations = simulations_I;
         #else:
         #    sample_abbreviations = [];
-        #    sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+        #    sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         # get the sample name abbreviations
         if sample_name_abbreviations_I:
             sample_abbreviations = sample_name_abbreviations_I;
         else:
             sample_abbreviations = [];
-            sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
-            #sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerExperimentalFragments(experiment_id_I);
+            sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
+            #sample_abbreviations = self.stage02_isotopomer_query.get_sampleNameAbbreviations_experimentID_dataStage02IsotopomerMeasuredFragments(experiment_id_I);
         for sna_cnt,sna in enumerate(sample_abbreviations):
             print 'Collecting and writing experimental and model data for sample name abbreviation ' + sna;
             # get the model_ids
@@ -649,17 +649,17 @@ class stage02_isotopomer_execute():
                 model_ids = model_id_I;
             else:
                 model_ids = [];
-                model_ids = self.stage02_isotopomer_query.get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02IsotopomerExperiment(experiment_id_I,sna);
+                model_ids = self.stage02_isotopomer_query.get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02IsotopomerSimulation(experiment_id_I,sna);
             for model_id in model_ids:
                 # get the mapping_ids
                 if mapping_id_I:
                     mapping_ids =  mapping_id_I;
                 else:
                     mapping_ids = [];
-                    mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,sna,model_id);
+                    mapping_ids = self.stage02_isotopomer_query.get_mappingID_experimentIDAndSampleNameAbbreviationsAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,sna,model_id);
                 for mapping_id in mapping_ids:
                     ## get the tracer_ids:
-                    #tracer_ids = self.stage02_isotopomer_query.get_tracerID__dataStage02IsotopomerExperiment(tracer_id_I,
+                    #tracer_ids = self.stage02_isotopomer_query.get_tracerID__dataStage02IsotopomerSimulation(tracer_id_I,
                     #for tracer_id in tracer_ids:
                     #if parallel_I:
                     #else:
@@ -673,7 +673,7 @@ class stage02_isotopomer_execute():
                     
                     # get flux measurements
                     measuredFluxes_data = [];
-                    measuredFluxes_data = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFluxes(experiment_id_I,model_id,sna);
+                    measuredFluxes_data = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id_I,model_id,sna);
                     #get model reactions
                     modelReaction_data = [];
                     modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
@@ -768,10 +768,10 @@ class stage02_isotopomer_execute():
                             time_points = time_points_I;
                         else:
                             time_points = [];
-                            time_points = self.stage02_isotopomer_query.get_timePoint_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna);
+                            time_points = self.stage02_isotopomer_query.get_timePoint_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id_I,sna);
                         for tp in time_points:
                             # get the MS data
-                            experimentalMS_data =self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna,tp);
+                            experimentalMS_data =self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id_I,sna,tp);
                             experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp));
                             filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.m';
                             filename_csv = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '_' + re.sub(' ','',str(tp)) + '.csv';
@@ -784,7 +784,7 @@ class stage02_isotopomer_execute():
                             #exportData.write_dict2csv(filename_csv);
                     else:
                         # get the MS data
-                        experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerExperimentalFragments(experiment_id_I,sna);
+                        experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id_I,sna);
                         experiment_name = 'Isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna);
                         filename_mat = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.m';
                         filename_csv = settings.workspace_data + '\\_output\\' + 'isotopomer_' + re.sub('[.\/]','',experiment_id_I) + '_' + re.sub(' ','',sna) + '.csv';
@@ -1285,7 +1285,7 @@ class stage02_isotopomer_execute():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             #get all reactions in the model:
             reactions = [];
@@ -1295,7 +1295,7 @@ class stage02_isotopomer_execute():
                 mapping_ids=mapping_id_I;
             else:
                 mapping_ids=[];
-                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_id in mapping_ids:
                 missing_reactions_O = [];
                 missing_metabolites_O = [];
@@ -1443,7 +1443,7 @@ class stage02_isotopomer_execute():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             #get mapping ids
             if mapping_id_rxns_I and mapping_id_mets_I:
@@ -1453,7 +1453,7 @@ class stage02_isotopomer_execute():
                 mapping_ids_rxns=mapping_id_rxns_I;
             else:
                 mapping_ids_rxns=[];
-                mapping_ids_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id_rxns in enumerate(mapping_ids_rxns):
                 # get the metabolite mappings
                 if mapping_id_rxns_I and mapping_id_mets_I:
@@ -1495,7 +1495,7 @@ class stage02_isotopomer_execute():
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             # get the cobra model
             cobra_model_sbml = None;

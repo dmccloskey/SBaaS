@@ -4576,7 +4576,7 @@ class stage02_isotopomer_mappingUtilities():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             #get mapping ids
             if mapping_id_rxns_I and mapping_id_mets_I:
@@ -4586,7 +4586,7 @@ class stage02_isotopomer_mappingUtilities():
                 mapping_ids_rxns=mapping_id_rxns_I;
             else:
                 mapping_ids_rxns=[];
-                mapping_ids_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id_rxns in enumerate(mapping_ids_rxns):
                 # get the metabolite mappings
                 if mapping_id_rxns_I and mapping_id_mets_I:
@@ -4641,7 +4641,7 @@ class stage02_isotopomer_mappingUtilities():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             #get all reactions in the model:
             reactions = [];
@@ -4654,7 +4654,7 @@ class stage02_isotopomer_mappingUtilities():
                 mapping_ids_rxns=mapping_id_rxns_I;
             else:
                 mapping_rxns=[];
-                mapping_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_rxns=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id_rxns in enumerate(mapping_ids_rxns):
                 missing_reactions_O = [];
                 missing_metabolites_O = [];
@@ -4828,7 +4828,7 @@ class stage02_isotopomer_mappingUtilities():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             print 'checking model_id ' + model_id;
             #get mapping ids
@@ -4836,7 +4836,7 @@ class stage02_isotopomer_mappingUtilities():
                 mapping_ids=mapping_id_I;
             else:
                 mapping_ids=[];
-                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id in enumerate(mapping_ids):
                 print 'checking mapping_id ' + mapping_id;
                 # get the reaction mapping
@@ -4948,7 +4948,7 @@ class stage02_isotopomer_mappingUtilities():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             print 'checking model_id ' + model_id;
             #get mapping ids
@@ -4956,7 +4956,7 @@ class stage02_isotopomer_mappingUtilities():
                 mapping_ids=mapping_id_I;
             else:
                 mapping_ids=[];
-                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id in enumerate(mapping_ids):
                 print 'checking mapping_id ' + mapping_id;
                 # get the reaction mapping
@@ -5002,7 +5002,7 @@ class stage02_isotopomer_mappingUtilities():
             model_ids = model_id_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerExperiment(experiment_id_I);
+            model_ids = self.stage02_isotopomer_query.get_modelID_experimentID_dataStage02IsotopomerSimulation(experiment_id_I);
         for model_id in model_ids:
             print 'checking model_id ' + model_id;
             #get mapping ids
@@ -5010,7 +5010,7 @@ class stage02_isotopomer_mappingUtilities():
                 mapping_ids=mapping_id_I;
             else:
                 mapping_ids=[];
-                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerExperiment(experiment_id_I,model_id);
+                mapping_ids=self.stage02_isotopomer_query.get_mappingID_experimentIDAndModelID_dataStage02IsotopomerSimulation(experiment_id_I,model_id);
             for mapping_cnt,mapping_id in enumerate(mapping_ids):
                 print 'checking mapping_id ' + mapping_id;
                 # get the reaction ids

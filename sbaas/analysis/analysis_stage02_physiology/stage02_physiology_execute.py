@@ -77,7 +77,7 @@ class stage02_physiology_execute():
         else:
             print 'need to specify either an existing model_id or model_file_name!'
         return
-    def execute_addExperimentalFluxes(self,experiment_id_I, ko_list={}, flux_dict={}, model_ids_I=[], sample_name_abbreviations_I=[]):
+    def execute_addMeasuredFluxes(self,experiment_id_I, ko_list={}, flux_dict={}, model_ids_I=[], sample_name_abbreviations_I=[]):
         '''Add flux data for physiological simulation'''
         #Input:
             #flux_dict = {};
@@ -95,14 +95,14 @@ class stage02_physiology_execute():
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             # get sample names and sample name abbreviations
             if sample_name_abbreviations_I:
                 sample_name_abbreviations = sample_name_abbreviations_I;
             else:
                 sample_name_abbreviations = [];
-                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             for sna_cnt,sna in enumerate(sample_name_abbreviations):
                 print 'Adding experimental fluxes for sample name abbreviation ' + sna;
                 if flux_dict:
@@ -122,7 +122,7 @@ class stage02_physiology_execute():
                         data_O.append(data_tmp);
                         #add data to the database
                         row = [];
-                        row = data_stage02_physiology_experimentalFluxes(
+                        row = data_stage02_physiology_measuredFluxes(
                             experiment_id_I,
                             model_id,
                             sna,
@@ -152,7 +152,7 @@ class stage02_physiology_execute():
                         data_O.append(data_tmp);
                         #add data to the database
                         row = [];
-                        row = data_stage02_physiology_experimentalFluxes(
+                        row = data_stage02_physiology_measuredFluxes(
                             experiment_id_I,
                             model_id,
                             sna,
@@ -166,7 +166,7 @@ class stage02_physiology_execute():
                             None);
                         self.session.add(row);
         self.session.commit();
-    def execute_makeExperimentalFluxes(self,experiment_id_I, metID2RxnID_I = {}, sample_name_abbreviations_I = [], met_ids_I = []):
+    def execute_makeMeasuredFluxes(self,experiment_id_I, metID2RxnID_I = {}, sample_name_abbreviations_I = [], met_ids_I = []):
         '''Collect and flux data from data_stage01_physiology_ratesAverages for physiological simulation'''
         #Input:
         #   metID2RxnID_I = e.g. {'glc-D':{'model_id':'140407_iDM2014','rxn_id':'EX_glc_LPAREN_e_RPAREN_'},
@@ -181,7 +181,7 @@ class stage02_physiology_execute():
             sample_name_abbreviations = sample_name_abbreviations_I;
         else:
             sample_name_abbreviations = [];
-            sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for sna in sample_name_abbreviations:
             print 'Collecting experimental fluxes for sample name abbreviation ' + sna;
             # get met_ids
@@ -214,7 +214,7 @@ class stage02_physiology_execute():
                 data_O.append(data_tmp);
                 #add data to the database
                 row = [];
-                row = data_stage02_physiology_experimentalFluxes(
+                row = data_stage02_physiology_measuredFluxes(
                     experiment_id_I,
                     model_id,
                     sna,
@@ -239,7 +239,7 @@ class stage02_physiology_execute():
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             print 'executing sampling for model_id ' + model_id;
             # get the cobra model
@@ -249,14 +249,14 @@ class stage02_physiology_execute():
             #    time_points = time_points_I;
             #else:
             #    time_points = [];
-            #    time_points = self.stage02_physiology_query.get_timePoints_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+            #    time_points = self.stage02_physiology_query.get_timePoints_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             #for tp in time_points:
             # get sample_name_abbreviations
             if sample_name_abbreviations_I:
                 sample_name_abbreviations = sample_name_abbreviations_I;
             else:
                 sample_name_abbreviations = [];
-                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             for sna in sample_name_abbreviations:
                 print 'executing sampling for sample_name_abbreviation ' + sna;
                 # copy the model
@@ -266,7 +266,7 @@ class stage02_physiology_execute():
                     rxn_ids = rxn_ids_I;
                 else:
                     rxn_ids = [];
-                    rxn_ids = self.stage02_physiology_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyExperimentalFluxes(experiment_id_I,model_id,sna);
+                    rxn_ids = self.stage02_physiology_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyMeasuredFluxes(experiment_id_I,model_id,sna);
                 for rxn in rxn_ids:
                     # constrain the model
                     cobra_model_copy.reactions.get_by_id(rxn['rxn_id']).lower_bound = rxn['flux_lb'];
@@ -290,7 +290,7 @@ class stage02_physiology_execute():
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             print 'analyzing sampling points model_id ' + model_id;
             # get the cobra model
@@ -300,14 +300,14 @@ class stage02_physiology_execute():
             #    time_points = time_points_I;
             #else:
             #    time_points = [];
-            #    time_points = self.stage02_physiology_query.get_timePoints_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+            #    time_points = self.stage02_physiology_query.get_timePoints_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             #for tp in time_points:
             # get sample_name_abbreviations
             if sample_name_abbreviations_I:
                 sample_name_abbreviations = sample_name_abbreviations_I;
             else:
                 sample_name_abbreviations = [];
-                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologyExperiment(experiment_id_I,model_id);
+                sample_name_abbreviations = self.stage02_physiology_query.get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologySimulation(experiment_id_I,model_id);
             for sna in sample_name_abbreviations:
                 print 'analyzing sampling points for sample_name_abbreviation ' + sna;
                 # copy the model
@@ -317,7 +317,7 @@ class stage02_physiology_execute():
                     rxn_ids = rxn_ids_I;
                 else:
                     rxn_ids = [];
-                    rxn_ids = self.stage02_physiology_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyExperimentalFluxes(experiment_id_I,model_id,sna);
+                    rxn_ids = self.stage02_physiology_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyMeasuredFluxes(experiment_id_I,model_id,sna);
                 for rxn in rxn_ids:
                     # constrain the model
                     cobra_model_copy.reactions.get_by_id(rxn['rxn_id']).lower_bound = rxn['flux_lb'];
@@ -433,7 +433,7 @@ class stage02_physiology_execute():
             model_ids = model_ids_I;
         else:
             model_ids = [];
-            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologyExperiment(experiment_id_I);
+            model_ids = self.stage02_physiology_query.get_modelID_experimentID_dataStage02PhysiologySimulation(experiment_id_I);
         for model_id in model_ids:
             # get the cobra model
             cobra_model_sbml = None;
@@ -455,11 +455,11 @@ class stage02_physiology_execute():
     #table initializations:
     def drop_dataStage02(self):
         try:
-            data_stage02_physiology_experiment.__table__.drop(engine,True);
+            data_stage02_physiology_simulation.__table__.drop(engine,True);
             data_stage02_physiology_modelReactions.__table__.drop(engine,True);
             data_stage02_physiology_modelMetabolites.__table__.drop(engine,True);
             data_stage02_physiology_models.__table__.drop(engine,True);
-            data_stage02_physiology_experimentalFluxes.__table__.drop(engine,True);
+            data_stage02_physiology_measuredFluxes.__table__.drop(engine,True);
             data_stage02_physiology_simulatedData.__table__.drop(engine,True);
             data_stage02_physiology_sampledPoints.__table__.drop(engine,True);
             data_stage02_physiology_sampledData.__table__.drop(engine,True);
@@ -468,18 +468,18 @@ class stage02_physiology_execute():
     def reset_dataStage02(self,experiment_id_I = None):
         try:
             if experiment_id_I:
-                reset = self.session.query(data_stage02_physiology_experiment).filter(data_stage02_physiology_experiment.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_physiology_simulation).filter(data_stage02_physiology_simulation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_models).filter(data_stage02_physiology_models.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_physiology_experimentalFluxes).filter(data_stage02_physiology_experimentalFluxes.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_physiology_measuredFluxes).filter(data_stage02_physiology_measuredFluxes.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_simulatedData).filter(data_stage02_physiology_simulatedData.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_sampledPoints).filter(data_stage02_physiology_sampledPoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_sampledData).filter(data_stage02_physiology_sampledData.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_modelReactions).filter(data_stage02_physiology_modelReactions.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_modelMetabolites).filter(data_stage02_physiology_modelMetabolites.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
-                reset = self.session.query(data_stage02_physiology_experiment).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_physiology_simulation).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_models).delete(synchronize_session=False);
-                reset = self.session.query(data_stage02_physiology_experimentalFluxes).delete(synchronize_session=False);
+                reset = self.session.query(data_stage02_physiology_measuredFluxes).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_simulatedData).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_sampledPoints).delete(synchronize_session=False);
                 reset = self.session.query(data_stage02_physiology_sampledData).delete(synchronize_session=False);
@@ -490,9 +490,9 @@ class stage02_physiology_execute():
             print(e);
     def initialize_dataStage02(self):
         try:
-            data_stage02_physiology_experiment.__table__.create(engine,True);
+            data_stage02_physiology_simulation.__table__.create(engine,True);
             data_stage02_physiology_models.__table__.create(engine,True);
-            data_stage02_physiology_experimentalFluxes.__table__.create(engine,True);
+            data_stage02_physiology_measuredFluxes.__table__.create(engine,True);
             data_stage02_physiology_simulatedData.__table__.create(engine,True);
             data_stage02_physiology_sampledPoints.__table__.create(engine,True);
             data_stage02_physiology_sampledData.__table__.create(engine,True);

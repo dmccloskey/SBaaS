@@ -48,16 +48,16 @@ class stage02_physiology_query(stage01_physiology_query):
         except SQLAlchemyError as e:
             print(e);
 
-    ## Query from data_stage02_physiology_experiment
-    # query sample_name_abbreviations from data_stage02_physiology_experiment
-    def get_sampleNameAbbreviations_experimentID_dataStage02PhysiologyExperiment(self,experiment_id_I):
+    ## Query from data_stage02_physiology_simulation
+    # query sample_name_abbreviations from data_stage02_physiology_simulation
+    def get_sampleNameAbbreviations_experimentID_dataStage02PhysiologySimulation(self,experiment_id_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = self.session.query(data_stage02_physiology_experiment.sample_name_abbreviation).filter(
-                    data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experiment.used_.is_(True)).group_by(
-                    data_stage02_physiology_experiment.sample_name_abbreviation).order_by(
-                    data_stage02_physiology_experiment.sample_name_abbreviation.asc()).all();
+            data = self.session.query(data_stage02_physiology_simulation.sample_name_abbreviation).filter(
+                    data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_simulation.used_.is_(True)).group_by(
+                    data_stage02_physiology_simulation.sample_name_abbreviation).order_by(
+                    data_stage02_physiology_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -65,15 +65,15 @@ class stage02_physiology_query(stage01_physiology_query):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologyExperiment(self,experiment_id_I,model_id_I):
+    def get_sampleNameAbbreviations_experimentIDAndModelID_dataStage02PhysiologySimulation(self,experiment_id_I,model_id_I):
         '''Querry sample_name_abbreviations that are used from the experiment'''
         try:
-            data = self.session.query(data_stage02_physiology_experiment.sample_name_abbreviation).filter(
-                    data_stage02_physiology_experiment.model_id.like(model_id_I),
-                    data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experiment.used_.is_(True)).group_by(
-                    data_stage02_physiology_experiment.sample_name_abbreviation).order_by(
-                    data_stage02_physiology_experiment.sample_name_abbreviation.asc()).all();
+            data = self.session.query(data_stage02_physiology_simulation.sample_name_abbreviation).filter(
+                    data_stage02_physiology_simulation.model_id.like(model_id_I),
+                    data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_simulation.used_.is_(True)).group_by(
+                    data_stage02_physiology_simulation.sample_name_abbreviation).order_by(
+                    data_stage02_physiology_simulation.sample_name_abbreviation.asc()).all();
             sample_name_abbreviations_O = [];
             if data: 
                 for d in data:
@@ -81,16 +81,16 @@ class stage02_physiology_query(stage01_physiology_query):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-    #def get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage02PhysiologyExperiment(self,experiment_id_I,model_id_I,time_point_I):
+    #def get_sampleNameAbbreviations_experimentIDAndModelIDAndTimePoint_dataStage02PhysiologySimulation(self,experiment_id_I,model_id_I,time_point_I):
     #    '''Querry sample_name_abbreviations that are used from the experiment'''
     #    try:
-    #        data = self.session.query(data_stage02_physiology_experiment.sample_name_abbreviation).filter(
-    #                data_stage02_physiology_experiment.model_id.like(model_id_I),
-    #                data_stage02_physiology_experiment.time_point.like(time_point_I),
-    #                data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-    #                data_stage02_physiology_experiment.used_.is_(True)).group_by(
-    #                data_stage02_physiology_experiment.sample_name_abbreviation).order_by(
-    #                data_stage02_physiology_experiment.sample_name_abbreviation.asc()).all();
+    #        data = self.session.query(data_stage02_physiology_simulation.sample_name_abbreviation).filter(
+    #                data_stage02_physiology_simulation.model_id.like(model_id_I),
+    #                data_stage02_physiology_simulation.time_point.like(time_point_I),
+    #                data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+    #                data_stage02_physiology_simulation.used_.is_(True)).group_by(
+    #                data_stage02_physiology_simulation.sample_name_abbreviation).order_by(
+    #                data_stage02_physiology_simulation.sample_name_abbreviation.asc()).all();
     #        sample_name_abbreviations_O = [];
     #        if data: 
     #            for d in data:
@@ -98,16 +98,16 @@ class stage02_physiology_query(stage01_physiology_query):
     #        return sample_name_abbreviations_O;
     #    except SQLAlchemyError as e:
     #        print(e);
-    # query time_points from data_stage02_physiology_experiment
-    def get_timePoints_experimentIDAndModelID_dataStage02PhysiologyExperiment(self,experiment_id_I,model_id_I):
+    # query time_points from data_stage02_physiology_simulation
+    def get_timePoints_experimentIDAndModelID_dataStage02PhysiologySimulation(self,experiment_id_I,model_id_I):
         '''Querry time-points that are used from the experiment'''
         try:
-            data = self.session.query(data_stage02_physiology_experiment.time_point).filter(
-                    data_stage02_physiology_experiment.model_id.like(model_id_I),
-                    data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experiment.used_.is_(True)).group_by(
-                    data_stage02_physiology_experiment.time_point).order_by(
-                    data_stage02_physiology_experiment.time_point.asc()).all();
+            data = self.session.query(data_stage02_physiology_simulation.time_point).filter(
+                    data_stage02_physiology_simulation.model_id.like(model_id_I),
+                    data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_simulation.used_.is_(True)).group_by(
+                    data_stage02_physiology_simulation.time_point).order_by(
+                    data_stage02_physiology_simulation.time_point.asc()).all();
             time_points_O = [];
             if data: 
                 for d in data:
@@ -115,15 +115,15 @@ class stage02_physiology_query(stage01_physiology_query):
             return time_points_O;
         except SQLAlchemyError as e:
             print(e);
-    # query model_ids from data_stage02_physiology_experiment
-    def get_modelID_experimentID_dataStage02PhysiologyExperiment(self,experiment_id_I):
+    # query model_ids from data_stage02_physiology_simulation
+    def get_modelID_experimentID_dataStage02PhysiologySimulation(self,experiment_id_I):
         '''Querry model_ids that are used from the experiment'''
         try:
-            data = self.session.query(data_stage02_physiology_experiment.model_id).filter(
-                    data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experiment.used_.is_(True)).group_by(
-                    data_stage02_physiology_experiment.model_id).order_by(
-                    data_stage02_physiology_experiment.model_id.asc()).all();
+            data = self.session.query(data_stage02_physiology_simulation.model_id).filter(
+                    data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_simulation.used_.is_(True)).group_by(
+                    data_stage02_physiology_simulation.model_id).order_by(
+                    data_stage02_physiology_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:
@@ -131,15 +131,15 @@ class stage02_physiology_query(stage01_physiology_query):
             return model_ids_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02PhysiologyExperiment(self,experiment_id_I,sample_name_abbreviation_I):
+    def get_modelID_experimentIDAndSampleNameAbbreviations_dataStage02PhysiologySimulation(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry model_ids for the sample_name_abbreviation that are used from the experiment'''
         try:
-            data = self.session.query(data_stage02_physiology_experiment.model_id).filter(
-                    data_stage02_physiology_experiment.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_physiology_experiment.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experiment.used_.is_(True)).group_by(
-                    data_stage02_physiology_experiment.model_id).order_by(
-                    data_stage02_physiology_experiment.model_id.asc()).all();
+            data = self.session.query(data_stage02_physiology_simulation.model_id).filter(
+                    data_stage02_physiology_simulation.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_physiology_simulation.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_simulation.used_.is_(True)).group_by(
+                    data_stage02_physiology_simulation.model_id).order_by(
+                    data_stage02_physiology_simulation.model_id.asc()).all();
             model_ids_O = [];
             if data: 
                 for d in data:
@@ -172,17 +172,17 @@ class stage02_physiology_query(stage01_physiology_query):
         except SQLAlchemyError as e:
             print(e);
             
-    ## Query from data_stage02_physiology_experimentalFluxes
-    # query rows from data_stage02_physiology_experimentalFluxes
-    def get_rows_experimentIDAndSampleNameAbbreviation_dataStage02PhysiologyExperimentalFluxes(self,experiment_id_I,sample_name_abbreviation_I):
+    ## Query from data_stage02_physiology_measuredFluxes
+    # query rows from data_stage02_physiology_measuredFluxes
+    def get_rows_experimentIDAndSampleNameAbbreviation_dataStage02PhysiologyMeasuredFluxes(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry rows by model_id that are used'''
         try:
-            data = self.session.query(data_stage02_physiology_experimentalFluxes).filter(
-                    data_stage02_physiology_experimentalFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_physiology_experimentalFluxes.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experimentalFluxes.used_.is_(True)).order_by(
-                    data_stage02_physiology_experimentalFluxes.model_id.asc(),
-                    data_stage02_physiology_experimentalFluxes.rxn_id.asc()).all();
+            data = self.session.query(data_stage02_physiology_measuredFluxes).filter(
+                    data_stage02_physiology_measuredFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_physiology_measuredFluxes.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_measuredFluxes.used_.is_(True)).order_by(
+                    data_stage02_physiology_measuredFluxes.model_id.asc(),
+                    data_stage02_physiology_measuredFluxes.rxn_id.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:
@@ -202,16 +202,16 @@ class stage02_physiology_query(stage01_physiology_query):
             return rows_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyExperimentalFluxes(self,experiment_id_I,model_id_I,sample_name_abbreviation_I):
+    def get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02PhysiologyMeasuredFluxes(self,experiment_id_I,model_id_I,sample_name_abbreviation_I):
         '''Querry rows by model_id that are used'''
         try:
-            data = self.session.query(data_stage02_physiology_experimentalFluxes).filter(
-                    data_stage02_physiology_experimentalFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    data_stage02_physiology_experimentalFluxes.model_id.like(model_id_I),
-                    data_stage02_physiology_experimentalFluxes.experiment_id.like(experiment_id_I),
-                    data_stage02_physiology_experimentalFluxes.used_.is_(True)).order_by(
-                    data_stage02_physiology_experimentalFluxes.model_id.asc(),
-                    data_stage02_physiology_experimentalFluxes.rxn_id.asc()).all();
+            data = self.session.query(data_stage02_physiology_measuredFluxes).filter(
+                    data_stage02_physiology_measuredFluxes.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage02_physiology_measuredFluxes.model_id.like(model_id_I),
+                    data_stage02_physiology_measuredFluxes.experiment_id.like(experiment_id_I),
+                    data_stage02_physiology_measuredFluxes.used_.is_(True)).order_by(
+                    data_stage02_physiology_measuredFluxes.model_id.asc(),
+                    data_stage02_physiology_measuredFluxes.rxn_id.asc()).all();
             rows_O = [];
             if data: 
                 for d in data:

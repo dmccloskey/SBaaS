@@ -610,9 +610,9 @@ class data_stage03_quantification_metid2keggid(Base):
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
 
-class data_stage03_quantification_experiment(Base):
-    __tablename__ = 'data_stage03_quantification_experiment'
-    id = Column(Integer, Sequence('data_stage03_quantification_experiment_id_seq'), primary_key=True)
+class data_stage03_quantification_simulation(Base):
+    __tablename__ = 'data_stage03_quantification_simulation'
+    id = Column(Integer, Sequence('data_stage03_quantification_simulation_id_seq'), primary_key=True)
     experiment_id = Column(String(50), primary_key=True)
     model_id = Column(String(50), primary_key=True)
     sample_name_abbreviation = Column(String(100), primary_key=True)

@@ -1354,7 +1354,7 @@ class stage01_isotopomer_execute():
                                 row = data_stage01_isotopomer_spectrumAccuracyNormSum(experiment_id_I, sna, sample_types_lst[sna_cnt], tp, met,frag, accuracy, scan_type, True);
                                 self.session.add(row);
             self.session.commit();
-    def execute_makeIsotopomerExperiment_cobraMat(self,csource_name_I, csource_I, csource_mix_I, experiment_id_I, sample_name_abbreviations_I = None, time_points_I = None, met_ids_I = None, scan_types_I = None):
+    def execute_makeIsotopomerSimulation_cobraMat(self,csource_name_I, csource_I, csource_mix_I, experiment_id_I, sample_name_abbreviations_I = None, time_points_I = None, met_ids_I = None, scan_types_I = None):
         '''export a fluxomics experimental data for simulation using the cobra 2.0 fluxomics module'''
 
         # TODO:
