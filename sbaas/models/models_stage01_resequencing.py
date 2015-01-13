@@ -40,11 +40,15 @@ class data_stage01_resequencing_mutations(Base):
     
     __tablename__ = 'data_stage01_resequencing_mutations'
     id = Column(Integer, Sequence('data_stage01_resequencing_mutations_id_seq'), primary_key=True)
-    experiment_id = Column(String(50), primary_key=True)
-    sample_name = Column(String(100), primary_key=True)
-    mutation_id = Column(Integer, primary_key=True)
+    experiment_id = Column(String(50))
+    sample_name = Column(String(100))
+    mutation_id = Column(Integer)
     parent_ids = Column(postgresql.ARRAY(Integer))
     mutation_data = Column(postgresql.JSON)
+
+    __table_args__ = (
+            UniqueConstraint('experiment_id','sample_name','mutation_id'),
+            )
 
     def __init__(self, experiment_id_I,
                 sample_name_I,
@@ -70,10 +74,14 @@ class data_stage01_resequencing_evidence(Base):
     
     __tablename__ = 'data_stage01_resequencing_evidence'
     id = Column(Integer, Sequence('data_stage01_resequencing_evidence_id_seq'), primary_key=True)
-    experiment_id = Column(String(50), primary_key=True)
-    sample_name = Column(String(100), primary_key=True)
-    parent_id = Column(Integer, primary_key=True)
+    experiment_id = Column(String(50))
+    sample_name = Column(String(100))
+    parent_id = Column(Integer)
     evidence_data = Column(postgresql.JSON)
+
+    __table_args__ = (
+            UniqueConstraint('experiment_id','sample_name','parent_id'),
+            )
 
     def __init__(self, experiment_id_I,
             sample_name_I,
@@ -97,10 +105,14 @@ class data_stage01_resequencing_validation(Base):
     
     __tablename__ = 'data_stage01_resequencing_validation'
     id = Column(Integer, Sequence('data_stage01_resequencing_validation_id_seq'), primary_key=True)
-    experiment_id = Column(String(50), primary_key=True)
-    sample_name = Column(String(100), primary_key=True)
-    validation_id = Column(Integer, primary_key=True)
+    experiment_id = Column(String(50))
+    sample_name = Column(String(100))
+    validation_id = Column(Integer)
     validation_data = Column(postgresql.JSON)
+
+    __table_args__ = (
+            UniqueConstraint('experiment_id','sample_name','validation_id'),
+            )
 
     def __init__(self, experiment_id_I,
             sample_name_I,
@@ -124,11 +136,15 @@ class data_stage01_resequencing_mutationsFiltered(Base):
     
     __tablename__ = 'data_stage01_resequencing_mutationsFiltered'
     id = Column(Integer, Sequence('data_stage01_resequencing_mutationsFiltered_id_seq'), primary_key=True)
-    experiment_id = Column(String(50), primary_key=True)
-    sample_name = Column(String(100), primary_key=True)
-    mutation_id = Column(Integer, primary_key=True)
+    experiment_id = Column(String(50))
+    sample_name = Column(String(100))
+    mutation_id = Column(Integer)
     parent_ids = Column(postgresql.ARRAY(Integer))
     mutation_data = Column(postgresql.JSON)
+
+    __table_args__ = (
+            UniqueConstraint('experiment_id','sample_name','mutation_id'),
+            )
 
     def __init__(self, experiment_id_I,
                 sample_name_I,

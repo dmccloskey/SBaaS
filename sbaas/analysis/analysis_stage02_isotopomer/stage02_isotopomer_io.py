@@ -34,7 +34,8 @@ class stage02_isotopomer_io(base_analysis):
         if data_I:
             for d in data_I:
                 try:
-                    data_add = data_stage02_isotopomer_simulation(d['experiment_id'],
+                    data_add = data_stage02_isotopomer_simulation(d['simulation_id'],
+                            d['experiment_id'],
                             d['model_id'],
                             d['mapping_id'],
                             d['sample_name_abbreviation'],
@@ -375,6 +376,184 @@ class stage02_isotopomer_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
+    def add_data_stage02_isotopomer_fittedFluxes(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedFluxes'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedFluxes(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['rxn_id'],
+                    d['flux'],
+                    d['flux_stdev'],
+                    d['flux_lb'],
+                    d['flux_ub'],
+                    d['flux_units'],
+                    d['fit_alf'],
+                    d['fit_chi2s'],
+                    d['fit_cor'],
+                    d['fit_cov'],
+                    d['free'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_fittedData(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedData'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedData(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['fitted_echi2'],
+                    d['fitted_alf'],
+                    d['fitted_chi2'],
+                    d['fitted_dof'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_fittedMeasuredFluxes(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedMeasuredFluxes'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedMeasuredFluxes(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['rxn_id'],
+                    d['fitted_sres'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_fittedMeasuredFragments(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedMeasuredFragments'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedMeasuredFragments(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['met_id'],
+                    d['fragment_id'],
+                    d['fragment_formula'],
+                    d['fitted_sres'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_fittedMeasuredFluxResiduals(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedMeasuredFluxResiduals'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedMeasuredFluxResiduals(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['rxn_id'],
+                    d['res_data'],
+                    d['res_esens'],
+                    d['res_fit'],
+                    d['res_msens'],
+                    d['res_peak'],
+                    d['res_stdev'],
+                    d['res_val'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_fittedMeasuredFragmentResiduals(self, data_I):
+        '''add rows of data_stage02_isotopomer_fittedMeasuredFragmentResiduals'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_fittedMeasuredFragmentResiduals(d['simulation_id'],
+                    d['experiment_id'],
+                    d['model_id'],
+                    d['mapping_id'],
+                    d['sample_name_abbreviation'],
+                    d['time_point'],
+                    d['fragment_id'],
+                    d['fragment_formula'],
+                    d['fragment_mass'],
+                    d['res_data'],
+                    d['res_esens'],
+                    d['res_fit'],
+                    d['res_msens'],
+                    d['res_peak'],
+                    d['res_stdev'],
+                    d['res_val'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_data_stage02_isotopomer_simulationParameters(self, data_I):
+        '''add rows of data_stage02_isotopomer_simulationParameters'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage02_isotopomer_simulationParameters(d['simulation_id'],
+                    d['experiment_id'],
+                    d['cont_alpha'],
+                    d['cont_reltol'],
+                    d['cont_steps'],
+                    d['fit_nudge'],
+                    d['fit_reinit'],
+                    d['fit_reltol'],
+                    d['fit_starts'],
+                    d['fit_tau'],
+                    d['hpc_mcr'],
+                    d['hpc_on'],
+                    d['hpc_serve'],
+                    d['int_maxstep'],
+                    d['int_reltol'],
+                    d['int_senstol'],
+                    d['int_timeout'],
+                    d['int_tspan'],
+                    d['ms_correct'],
+                    d['oed_crit'],
+                    d['oed_reinit'],
+                    d['oed_tolf'],
+                    d['oed_tolx'],
+                    d['sim_more'],
+                    d['sim_na'],
+                    d['sim_sens'],
+                    d['sim_ss'],
+                    d['sim_tunit']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
     # TODO: add filters for update queries:
     def update_data_stage02_isotopomer_simulation(self,data_I):
         #TODO:
@@ -385,7 +564,9 @@ class stage02_isotopomer_io(base_analysis):
                     data_update = self.session.query(data_stage02_isotopomer_simulation).filter(
                             #sample.sample_name.like(d['sample_name'])
                             ).update(
-                            {'experiment_id':d['experiment_id'],
+                            {
+                            'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
                             'model_id':d['model_id'],
                             'mapping_id':d['mapping_id'],
                             'sample_name_abbreviation':d['sample_name_abbreviation'],
@@ -775,6 +956,212 @@ class stage02_isotopomer_io(base_analysis):
                             'base_met_atompositions':d['base_met_atompositions'],
                             'base_met_symmetry_elements':d['base_met_symmetry_elements'],
                             'base_met_symmetry_atompositions':d['base_met_symmetry_atompositions']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedFluxes(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedFluxes'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedFluxes).filter(
+                            #data_stage02_isotopomer_fittedFluxes.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'rxn_id':d['rxn_id'],
+                            'flux':d['flux'],
+                            'flux_stdev':d['flux_stdev'],
+                            'flux_lb':d['flux_lb'],
+                            'flux_ub':d['flux_ub'],
+                            'flux_units':d['flux_units'],
+                            'fit_alf':d['fit_alf'],
+                            'fit_chi2s':d['fit_chi2s'],
+                            'fit_cor':d['fit_cor'],
+                            'fit_cov':d['fit_cov'],
+                            'free':d['free'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedData(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedData'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedData).filter(
+                            #data_stage02_isotopomer_fittedData.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'fitted_echi2':d['fitted_echi2'],
+                            'fitted_alf':d['fitted_alf'],
+                            'fitted_chi2':d['fitted_chi2'],
+                            'fitted_dof':d['fitted_dof'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedMeasuredFluxes(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedMeasuredFluxes'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedMeasuredFluxes).filter(
+                            #data_stage02_isotopomer_fittedMeasuredFluxes.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'rxn_id':d['rxn_id'],
+                            'fitted_sres':d['fitted_sres'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedMeasuredFragments(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedMeasuredFragments'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedMeasuredFragments).filter(
+                            #data_stage02_isotopomer_fittedMeasuredFragments.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'met_id':d['met_id'],
+                            'fragment_id':d['fragment_id'],
+                            'fragment_formula':d['fragment_formula'],
+                            'fitted_sres':d['fitted_sres'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedMeasuredFluxResiduals(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedMeasuredFluxResiduals'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedMeasuredFluxResiduals).filter(
+                            #data_stage02_isotopomer_fittedMeasuredFluxResiduals.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'rxn_id':d['rxn_id'],
+                            'res_data':d['res_data'],
+                            'res_esens':d['res_esens'],
+                            'res_fit':d['res_fit'],
+                            'res_msens':d['res_msens'],
+                            'res_peak':d['res_peak'],
+                            'res_stdev':d['res_stdev'],
+                            'res_val':d['res_val'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_fittedMeasuredFragmentResiduals(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_fittedMeasuredFragmentResiduals'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_fittedMeasuredFragmentResiduals).filter(
+                            #data_stage02_isotopomer_fittedMeasuredFragmentResiduals.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'model_id':d['model_id'],
+                            'mapping_id':d['mapping_id'],
+                            'sample_name_abbreviation':d['sample_name_abbreviation'],
+                            'time_point':d['time_point'],
+                            'fragment_id':d['fragment_id'],
+                            'fragment_formula':d['fragment_formula'],
+                            'fragment_mass':d['fragment_mass'],
+                            'res_data':d['res_data'],
+                            'res_esens':d['res_esens'],
+                            'res_fit':d['res_fit'],
+                            'res_msens':d['res_msens'],
+                            'res_peak':d['res_peak'],
+                            'res_stdev':d['res_stdev'],
+                            'res_val':d['res_val'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_data_stage02_isotopomer_simulationParameters(self,data_I):
+        #TODO:
+        '''update rows of data_stage02_isotopomer_simulationParameters'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage02_isotopomer_simulationParameters).filter(
+                            #data_stage02_isotopomer_simulationParameters.sample_name.like(d['sample_name'])
+                            ).update(
+                            {'simulation_id':d['simulation_id'],
+                            'experiment_id':d['experiment_id'],
+                            'cont_alpha':d['cont_alpha'],
+                            'cont_reltol':d['cont_reltol'],
+                            'cont_steps':d['cont_steps'],
+                            'fit_nudge':d['fit_nudge'],
+                            'fit_reinit':d['fit_reinit'],
+                            'fit_reltol':d['fit_reltol'],
+                            'fit_starts':d['fit_starts'],
+                            'fit_tau':d['fit_tau'],
+                            'hpc_mcr':d['hpc_mcr'],
+                            'hpc_on':d['hpc_on'],
+                            'hpc_serve':d['hpc_serve'],
+                            'int_maxstep':d['int_maxstep'],
+                            'int_reltol':d['int_reltol'],
+                            'int_senstol':d['int_senstol'],
+                            'int_timeout':d['int_timeout'],
+                            'int_tspan':d['int_tspan'],
+                            'ms_correct':d['ms_correct'],
+                            'oed_crit':d['oed_crit'],
+                            'oed_reinit':d['oed_reinit'],
+                            'oed_tolf':d['oed_tolf'],
+                            'oed_tolx':d['oed_tolx'],
+                            'sim_more':d['sim_more'],
+                            'sim_na':d['sim_na'],
+                            'sim_sens':d['sim_sens'],
+                            'sim_ss':d['sim_ss'],
+                            'sim_tunit':d['sim_tunit']},
                             synchronize_session=False);
                 except SQLAlchemyError as e:
                     print(e);

@@ -4658,7 +4658,7 @@ class stage02_isotopomer_mappingUtilities():
             for mapping_cnt,mapping_id_rxns in enumerate(mapping_ids_rxns):
                 missing_reactions_O = [];
                 missing_metabolites_O = [];
-                for reaction in reactions:
+                for reaction_cnt,reaction in enumerate(reactions):
                     #get the current reaction mappings
                     mapping_rxns = [];
                     mapping_rxns = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id_rxns,reaction['rxn_id']);
@@ -4709,6 +4709,12 @@ class stage02_isotopomer_mappingUtilities():
                         tracked_reaction = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id_rxns,reaction['rxn_id']);
                         if tracked_reaction:
                             missing_reactants = [];
+                            # get the stoichiometry for each reactant
+                            tracked_reaction_reactant_ids_stoich = {};
+                            for tracked_reactant_id_cnt,tracked_reactant_id in enumerate(tracked_reaction['reactants_ids_tracked']):
+                                tracked_reaction_reactant_ids_stoich[tracked_reactant_id] = 0;
+                            for tracked_reactant_id_cnt,tracked_reactant_id in enumerate(tracked_reaction['reactants_ids_tracked']):
+                                tracked_reaction_reactant_ids_stoich[tracked_reactant_id] += abs(tracked_reaction['reactants_stoichiometry_tracked'][tracked_reactant_id_cnt]);
                             #copy existing data
                             data_tmp['reactants_ids_tracked'].extend(tracked_reaction['reactants_ids_tracked']);
                             data_tmp['reactants_stoichiometry_tracked'].extend(tracked_reaction['reactants_stoichiometry_tracked']);
@@ -4718,7 +4724,25 @@ class stage02_isotopomer_mappingUtilities():
                             data_tmp['rxn_description']=tracked_reaction['rxn_description'];
                             for tracked_reactant in tracked_reactants:
                                 if tracked_reactant['met_id'] in tracked_reaction['reactants_ids_tracked']:
-                                    continue;
+                                    # check for matching stoichiometry
+                                    reaction_stoich = 0;
+                                    for met_id_cnt,met_id in enumerate(reaction['reactants_ids']):
+                                        if met_id == tracked_reactant['met_id']:
+                                            reaction_stoich = abs(reaction['reactants_stoichiometry'][met_id_cnt]);
+                                            break;
+                                    unbalanced_stoich = reaction_stoich - tracked_reaction_reactant_ids_stoich[tracked_reactant['met_id']];
+                                    if tracked_reaction_reactant_ids_stoich[tracked_reactant['met_id']] != reaction_stoich:
+                                        for stoich_cnt in range(int(unbalanced_stoich)):
+                                            missing_reactants.append(tracked_reactant);
+                                            #add missing data
+                                            data_tmp['reactants_ids_tracked'].append(tracked_reactant['met_id']);
+                                            data_tmp['reactants_stoichiometry_tracked'].append(0);
+                                            data_tmp['reactants_mapping'].append('');
+                                            data_tmp['reactants_elements_tracked'].append(tracked_reactant['met_elements']);
+                                            data_tmp['reactants_positions_tracked'].append(tracked_reactant['met_atompositions']);
+                                            data_tmp['rxn_description']=tracked_reaction['rxn_description'];
+                                            data_tmp['used_']=False;
+                                            data_tmp['comment_']+=tracked_reactant['met_id']+',';
                                 else:
                                     missing_reactants.append(tracked_reactant);
                                     #add missing data
@@ -4731,6 +4755,12 @@ class stage02_isotopomer_mappingUtilities():
                                     data_tmp['used_']=False;
                                     data_tmp['comment_']+=tracked_reactant['met_id']+',';
                             missing_products = [];
+                            # get the stoichiometry for each product
+                            tracked_reaction_product_ids_stoich = {};
+                            for tracked_product_id_cnt,tracked_product_id in enumerate(tracked_reaction['products_ids_tracked']):
+                                tracked_reaction_product_ids_stoich[tracked_product_id] = 0;
+                            for tracked_product_id_cnt,tracked_product_id in enumerate(tracked_reaction['products_ids_tracked']):
+                                tracked_reaction_product_ids_stoich[tracked_product_id] += abs(tracked_reaction['products_stoichiometry_tracked'][tracked_product_id_cnt]);
                             #copy existing data
                             data_tmp['products_ids_tracked'].extend(tracked_reaction['products_ids_tracked']);
                             data_tmp['products_stoichiometry_tracked'].extend(tracked_reaction['products_stoichiometry_tracked']);
@@ -4740,7 +4770,25 @@ class stage02_isotopomer_mappingUtilities():
                             data_tmp['rxn_description']=tracked_reaction['rxn_description'];
                             for tracked_product in tracked_products:
                                 if tracked_product['met_id'] in tracked_reaction['products_ids_tracked']:
-                                    continue;
+                                    # check for matching stoichiometry
+                                    reaction_stoich = 0;
+                                    for met_id_cnt,met_id in enumerate(reaction['products_ids']):
+                                        if met_id == tracked_product['met_id']:
+                                            reaction_stoich = abs(reaction['products_stoichiometry'][met_id_cnt]);
+                                            break;
+                                    unbalanced_stoich = reaction_stoich - tracked_reaction_product_ids_stoich[tracked_product['met_id']];
+                                    if tracked_reaction_product_ids_stoich[tracked_product['met_id']] != reaction_stoich:
+                                        for stoich_cnt in range(int(unbalanced_stoich)):
+                                            missing_products.append(tracked_product);
+                                            #add missing data
+                                            data_tmp['products_ids_tracked'].append(tracked_product['met_id']);
+                                            data_tmp['products_stoichiometry_tracked'].append(0);
+                                            data_tmp['products_mapping'].append('');
+                                            data_tmp['products_elements_tracked'].append(tracked_product['met_elements']);
+                                            data_tmp['products_positions_tracked'].append(tracked_product['met_atompositions']);
+                                            data_tmp['rxn_description']=tracked_reaction['rxn_description'];
+                                            data_tmp['used_']=False;
+                                            data_tmp['comment_']+=tracked_product['met_id']+',';
                                 else:
                                     missing_products.append(tracked_product);
                                     #add missing data
@@ -4786,9 +4834,9 @@ class stage02_isotopomer_mappingUtilities():
                                 data_tmp['used_']=False;
                                 data_tmp['comment_']=reaction['rxn_id'];
                     data_O.append(data_tmp);
-                #self.print_missingReactionMappings(missing_reactions_O,missing_metabolites_O);
+                self.print_missingReactionMappings(missing_reactions_O,missing_metabolites_O);
         #add data to the database:
-        self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingReactions(data_O);
+        #self.stage02_isotopomer_query.add_data_dataStage02IsotopomerAtomMappingReactions(data_O);
     def print_missingReactionMappings(self,missing_reactions_I,missing_metabolites_I):
         '''print missing reaction mappings to the screen'''
         #missing reactions
@@ -4844,6 +4892,9 @@ class stage02_isotopomer_mappingUtilities():
                 reaction_mappings = self.stage02_isotopomer_query.get_rows_mappingID_dataStage02IsotopomerAtomMappingReactions(mapping_id);
                 for reaction_cnt,reaction_mapping in enumerate(reaction_mappings):
                     print 'checking reaction ' + reaction_mapping['rxn_id'];
+                    #debug:
+                    if reaction_mapping['rxn_id'] == 'COFACTOR_3':
+                        print 'check';
                     #check reactants
                     rxn_tmp = {};
                     rxn_tmp['mapping_id']=mapping_id
@@ -4864,9 +4915,9 @@ class stage02_isotopomer_mappingUtilities():
                     rxn_tmp['comment_']='Inconsistent metabolites found';
                     rxn_tmp['reactants_metaboliteMappings']=[]
                     rxn_tmp['products_metaboliteMappings']=[]
+                    bad_reactant = False;
                     for reactant_cnt,reactant in enumerate(reaction_mapping['reactants_ids_tracked']):
                         print 'checking reactant ' + reactant;
-                        bad_reactant = False;
                         # get the metabolite mapping
                         metabolite_mapping = {};
                         metabolite_mapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,reactant);
@@ -4898,9 +4949,9 @@ class stage02_isotopomer_mappingUtilities():
                             rxn_tmp['reactants_ids_tracked'].append(reactant);
                             rxn_tmp['reactants_stoichiometry_tracked'].append(reaction_mapping['reactants_stoichiometry_tracked'][reactant_cnt]);
                     #check products
+                    bad_product = False;
                     for product_cnt,product in enumerate(reaction_mapping['products_ids_tracked']):
                         print 'checking product ' + product;
-                        bad_product = False;
                         # get the metabolite mapping
                         metabolite_mapping = {};
                         metabolite_mapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,product);
