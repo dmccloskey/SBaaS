@@ -3197,20 +3197,23 @@ class stage02_isotopomer_reactionMapping():
             used__I=True,
             comment__I=None):
         
-        irm = stage02_isotopomer_reactionMapping();
-        if mapping_id_I: irm.reactionMapping['mapping_id']=mapping_id_I
-        if rxn_id_I: irm.reactionMapping['rxn_id']=rxn_id_I
-        if rxn_description_I: irm.reactionMapping['rxn_description']=rxn_description_I
-        if reactants_stoichiometry_tracked_I: irm.reactionMapping['reactants_stoichiometry_tracked']=reactants_stoichiometry_tracked_I
-        if products_stoichiometry_tracked_I: irm.reactionMapping['products_stoichiometry_tracked']=products_stoichiometry_tracked_I
-        if reactants_ids_tracked_I: irm.reactionMapping['reactants_ids_tracked']=reactants_ids_tracked_I
-        if products_ids_tracked_I: irm.reactionMapping['products_ids_tracked']=products_ids_tracked_I
-        if reactants_mapping_I: irm.reactionMapping['reactants_mapping']=reactants_mapping_I
-        if products_mapping_I: irm.reactionMapping['products_mapping']=products_mapping_I
-        if rxn_equation_I: irm.reactionMapping['rxn_equation']=rxn_equation_I
-        if used__I: irm.reactionMapping['used_']=used__I
-        if comment__I: irm.reactionMapping['comment_']=comment__I
-
+        irm = stage02_isotopomer_reactionMapping(
+            mapping_id_I=mapping_id_I,
+            rxn_id_I=rxn_id_I,
+            rxn_description_I=rxn_id_I,
+            reactants_stoichiometry_tracked_I=reactants_stoichiometry_tracked_I,
+            products_stoichiometry_tracked_I=products_stoichiometry_tracked_I,
+            reactants_ids_tracked_I=reactants_ids_tracked_I,
+            products_ids_tracked_I=products_ids_tracked_I,
+            reactants_mapping_I=reactants_mapping_I,
+            products_mapping_I=products_mapping_I,
+            rxn_equation_I=rxn_equation_I,
+            used__I=used__I,
+            comment__I=comment__I);
+        irm.reactionMapping['reactants_elements_tracked']=None;
+        irm.reactionMapping['reactants_positions_tracked']=None;
+        irm.reactionMapping['products_elements_tracked']=None;
+        irm.reactionMapping['products_positions_tracked']=None;
         irm.checkAndCorrect_elementsAndPositions();
         
         self.reactionMapping['mapping_id']=irm.reactionMapping['mapping_id']
