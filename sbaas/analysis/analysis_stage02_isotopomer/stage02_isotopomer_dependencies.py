@@ -3185,6 +3185,55 @@ class stage02_isotopomer_reactionMapping():
         self.products_base_met_symmetry_elements=[];
         self.products_base_met_symmetry_atompositions=[];
         self.products_base_met_indices=[];
+    def make_trackedCompoundReaction_fromRow(self,mapping_id_I,model_id_I,rxn_id_I,
+            rxn_description_I=None,
+            reactants_stoichiometry_tracked_I=[],
+            products_stoichiometry_tracked_I=[],
+            reactants_ids_tracked_I=[],
+            products_ids_tracked_I=[],
+            reactants_mapping_I=[],
+            products_mapping_I=[],
+            rxn_equation_I=None,
+            used__I=True,
+            comment__I=None):
+        
+        irm = stage02_isotopomer_reactionMapping();
+        if mapping_id_I: irm.reactionMapping['mapping_id']=mapping_id_I
+        if rxn_id_I: irm.reactionMapping['rxn_id']=rxn_id_I
+        if rxn_description_I: irm.reactionMapping['rxn_description']=rxn_description_I
+        if reactants_stoichiometry_tracked_I: irm.reactionMapping['reactants_stoichiometry_tracked']=reactants_stoichiometry_tracked_I
+        if products_stoichiometry_tracked_I: irm.reactionMapping['products_stoichiometry_tracked']=products_stoichiometry_tracked_I
+        if reactants_ids_tracked_I: irm.reactionMapping['reactants_ids_tracked']=reactants_ids_tracked_I
+        if products_ids_tracked_I: irm.reactionMapping['products_ids_tracked']=products_ids_tracked_I
+        if reactants_mapping_I: irm.reactionMapping['reactants_mapping']=reactants_mapping_I
+        if products_mapping_I: irm.reactionMapping['products_mapping']=products_mapping_I
+        if rxn_equation_I: irm.reactionMapping['rxn_equation']=rxn_equation_I
+        if used__I: irm.reactionMapping['used_']=used__I
+        if comment__I: irm.reactionMapping['comment_']=comment__I
+
+        irm.checkAndCorrect_elementsAndPositions();
+        
+        self.reactionMapping['mapping_id']=irm.reactionMapping['mapping_id']
+        self.reactionMapping['rxn_id']=irm.reactionMapping['rxn_id']
+        self.reactionMapping['rxn_description']=irm.reactionMapping['rxn_description']
+        self.reactionMapping['rxn_equation']=irm.reactionMapping['rxn_equation']
+        self.reactionMapping['used_']=irm.reactionMapping['used_']
+        self.reactionMapping['comment_']=irm.reactionMapping['comment_']
+        for reactant_id_cnt,reactant_id in enumerate(irm.reactionMapping['reactants_ids_tracked']):
+            self.reactionMapping['reactants_stoichiometry_tracked'].append(irm.reactionMapping['reactants_stoichiometry_tracked'][reactant_id_cnt])
+            self.reactionMapping['reactants_ids_tracked'].append(irm.reactionMapping['reactants_ids_tracked'][reactant_id_cnt])
+            self.reactionMapping['reactants_elements_tracked'].append(irm.reactionMapping['reactants_elements_tracked'][reactant_id_cnt])
+            self.reactionMapping['reactants_positions_tracked'].append(irm.reactionMapping['reactants_positions_tracked'][reactant_id_cnt])
+            self.reactionMapping['reactants_mapping'].append(irm.reactionMapping['reactants_mapping'][reactant_id_cnt])
+            self.reactionMapping['products_mapping'].append(irm.reactionMapping['products_mapping'][reactant_id_cnt])
+        for product_id_cnt,product_id in enumerate(irm.reactionMapping['products_ids_tracked']):
+            self.reactionMapping['products_stoichiometry_tracked'].append(irm.reactionMapping['products_stoichiometry_tracked'][product_id_cnt])
+            self.reactionMapping['products_ids_tracked'].append(irm.reactionMapping['products_ids_tracked'][product_id_cnt])
+            self.reactionMapping['products_elements_tracked'].append(irm.reactionMapping['products_elements_tracked'][product_id_cnt])
+            self.reactionMapping['products_positions_tracked'].append(irm.reactionMapping['products_positions_tracked'][product_id_cnt])
+            self.reactionMapping['products_mapping'].append(irm.reactionMapping['products_mapping'][product_id_cnt])
+
+        self.make_reactantsAndProductsMetaboliteMappings(reactionMapping_I=irm.reactionMapping);
     def make_trackedBinaryReaction(self,mapping_id_I,model_id_I,rxn_id_I,reactant_ids_elements_I,product_id_I):
         '''Make a binary reaction of the form A + B + ... = C'''
         #Input
@@ -3659,374 +3708,6 @@ class stage02_isotopomer_reactionMapping():
         reverse_reactionMapping['reactants_metaboliteMappings']=self.reactionMapping['products_metaboliteMappings']
         reverse_reactionMapping['products_metaboliteMappings']=self.reactionMapping['reactants_metaboliteMappings']
         self.reactionMapping = reverse_reactionMapping;
-    def add_trackedBinaryReaction_toReaction(self,model_id_I,reactant_ids_elements_I,product_id_I):
-        '''Add binary reaction to the current reaction'''
-        imm = stage02_isotopomer_metaboliteMapping();
-        imm_product = stage02_isotopomer_metaboliteMapping();
-        # get unique met_ids
-        reactant_ids_all = [];
-        for row in reactant_ids_elements_I:
-            for k,v in row.iteritems():
-                reactant_ids_all.append(k);
-        for k in self.reactionMapping['reactants_ids_tracked']:
-            reactant_ids_all.append(k);
-        reactant_ids_unique = list(set(reactant_ids_all))
-        reactant_ids_cnt = {};
-        for reactant_id in reactant_ids_unique:
-            reactant_ids_cnt[reactant_id] = 0;
-        # get all reactants_base_met_ids and reactants_base_indices:
-        reactants_base_met_ids = [];
-        reactants_base_indices = [];
-        for cnt,mm in enumerate(self.reactionMapping['reactants_metaboliteMappings']):
-            reactants_base_met_ids.extend(mm.metaboliteMapping['base_met_ids'])
-            reactants_base_indices.extend(self.reactionMapping['reactants_metaboliteMappings'][cnt].metaboliteMapping['base_met_indices'])
-        reactants_base_met_ids_I = [];
-        # get unique reactants_base_met_ids
-        reactants_base_met_ids_unique = list(set(reactants_base_met_ids));
-        reactants_base_met_ids_cnt = {};
-        for base_met_id in reactants_base_met_ids_unique:
-            reactants_base_met_ids_cnt[base_met_id]=0;
-        for cnt,base_met_id in enumerate(reactants_base_met_ids):
-            reactants_base_met_ids_cnt[base_met_id]=reactants_base_indices[cnt]+1
-        # make the reactants mapping
-        imm_product.metaboliteMapping['mapping_id'] = self.reactionMapping['mapping_id']
-        imm_product.metaboliteMapping['base_met_ids']=[];
-        imm_product.metaboliteMapping['base_met_elements']=[];
-        imm_product.metaboliteMapping['base_met_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_elements']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_indices']=[];
-        for row in reactant_ids_elements_I:
-            for k,v in row.iteritems():
-                imm.make_trackedMetabolite(self.reactionMapping['mapping_id'],model_id_I,{k:v},reactant_ids_cnt[k]);
-                # check that there are no duplicate met_id/met_index pairs
-                duplicates_found=False;
-                met_id_duplicate_found=[];
-                for cnt1,met_id1 in enumerate(imm.metaboliteMapping['base_met_ids']): # the current base_met_ids
-                    for cnt2,met_id2 in enumerate(reactants_base_met_ids + imm_product.metaboliteMapping['base_met_ids']): # reactant base_met_ids that are already a part of the reaction + 
-                                                                                                                           # base_met_ids that will be added to the reaction
-                        if met_id1==met_id2 and imm.metaboliteMapping['base_met_indices'][cnt1]==(reactants_base_indices + imm_product.metaboliteMapping['base_met_indices'])[cnt2]:
-                                                                            #the base_met_ids match and the base_indices_match
-                                                                            #need to increase the base_index +1 over the current index
-                            imm.metaboliteMapping['base_met_indices'][cnt1]=reactants_base_met_ids_cnt[met_id1];
-                            duplicates_found=True
-                            met_id_duplicate_found.append(met_id1)
-                # update met_mapping
-                imm.update_trackedMetabolite_fromBaseMetabolites(model_id_I);
-                if duplicates_found: 
-                    for k2 in met_id_duplicate_found:
-                        reactants_base_met_ids_cnt[k2]+=1;
-                self.reactionMapping['reactants_elements_tracked'].append(imm.metaboliteMapping['met_elements']);
-                self.reactionMapping['reactants_positions_tracked'].append(imm.metaboliteMapping['met_atompositions']);
-                self.reactionMapping['reactants_mapping'].append(imm.convert_arrayMapping2StringMapping());
-                self.reactionMapping['reactants_stoichiometry_tracked'].append(-1.0);
-                self.reactionMapping['reactants_ids_tracked'].append(k);
-                self.reactionMapping['reactants_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-                # copy out all of the base information
-                imm_product.metaboliteMapping['base_met_ids'].extend(imm.metaboliteMapping['base_met_ids']);
-                imm_product.metaboliteMapping['base_met_elements'].extend(imm.metaboliteMapping['base_met_elements']);
-                imm_product.metaboliteMapping['base_met_atompositions'].extend(imm.metaboliteMapping['base_met_atompositions']);
-                #imm_product.metaboliteMapping['base_met_symmetry_elements'].extend(imm.metaboliteMapping['base_met_symmetry_elements']);
-                #imm_product.metaboliteMapping['base_met_symmetry_atompositions'].extend(imm.metaboliteMapping['base_met_symmetry_atompositions']);
-                imm_product.metaboliteMapping['base_met_indices'].extend(imm.metaboliteMapping['base_met_indices']); 
-                imm.clear_metaboliteMapping();
-                reactant_ids_cnt[k]+=1
-        # add the products mapping
-        if product_id_I:
-            # make the compound product mapping
-            imm_product.update_trackedMetabolite_fromBaseMetabolites(model_id_I)
-            self.reactionMapping['products_elements_tracked'].append(imm_product.metaboliteMapping['met_elements']);
-            self.reactionMapping['products_positions_tracked'].append(imm_product.metaboliteMapping['met_atompositions']);
-            self.reactionMapping['products_mapping'].append(imm_product.convert_arrayMapping2StringMapping());
-            self.reactionMapping['products_stoichiometry_tracked'].append(1.0);
-            self.reactionMapping['products_ids_tracked'].append(product_id_I);
-            self.reactionMapping['products_metaboliteMappings'].append(copy(imm_product.copy_metaboliteMapping()));
-    def add_trackedBinaryReactionReverse_toReaction(self,model_id_I,reactant_id_I,product_ids_elements_I):
-        '''Add a binary reaction of the form C = A + B to the current reaction'''
-        imm = stage02_isotopomer_metaboliteMapping();
-        # get unique met_ids
-        product_ids_all = [];
-        for row in product_ids_elements_I:
-            for k,v in row.iteritems():
-                product_ids_all.append(k);
-        #for k in self.reactionMapping['products_ids_tracked']:
-        #    product_ids_all.append(k);
-        product_ids_unique = list(set(product_ids_all))
-        product_ids_cnt = {};
-        for product_id in product_ids_unique:
-            product_ids_cnt[product_id] = 0;
-        # add the product mappings
-        for row in product_ids_elements_I:
-            for k,v in row.iteritems():
-                imm.make_trackedMetabolite(mapping_id_I,model_id_I,{k:v},product_ids_cnt[k]);
-                self.reactionMapping['products_elements_tracked'].append(imm.metaboliteMapping['met_elements']);
-                self.reactionMapping['products_positions_tracked'].append(imm.metaboliteMapping['met_atompositions']);
-                self.reactionMapping['products_mapping'].append(imm.convert_arrayMapping2StringMapping());
-                self.reactionMapping['products_stoichiometry_tracked'].append(1.0);
-                self.reactionMapping['products_ids_tracked'].append(k);
-                self.reactionMapping['products_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-                imm.clear_metaboliteMapping();
-                product_ids_cnt[k]+=1
-        # add the reactant mapping
-        imm.make_compoundTrackedMetabolite(self.reactionMapping['mapping_id'],model_id_I,reactant_ids_elements_I,product_id_I);
-        self.reactionMapping['reactants_elements_tracked'].append(imm.metaboliteMapping['met_elements']);
-        self.reactionMapping['reactants_positions_tracked'].append(imm.metaboliteMapping['met_atompositions']);
-        self.reactionMapping['reactants_mapping'].append(imm.convert_arrayMapping2StringMapping());
-        self.reactionMapping['reactants_stoichiometry_tracked'].append(-1.0);
-        self.reactionMapping['reactants_ids_tracked'].append(reactant_id_I);
-        self.reactionMapping['reactants_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-        imm.clear_metaboliteMapping();
-    def add_trackedUnitaryReactions_toReaction(self,model_id_I,reactant_ids_elements_I,product_ids_I):
-        #Input
-        # reactant_ids_elements_I = [met_id:{elements=[string,...],stoichiometry:float}},..]
-        # product_ids_elements_I = [met_id,...]
-
-        # check input
-        if len(reactant_ids_elements_I)!=len(product_ids_I):
-            print "length of reactants_ids does not match the length of products_ids";
-            return;
-        imm = stage02_isotopomer_metaboliteMapping();
-        imm_product = stage02_isotopomer_metaboliteMapping();
-        # get unique met_ids
-        reactant_ids_all = [];
-        for row in reactant_ids_elements_I:
-            for k,v in row.iteritems():
-                reactant_ids_all.append(k);
-        for k in self.reactionMapping['reactants_ids_tracked']:
-            reactant_ids_all.append(k);
-        reactant_ids_unique = list(set(reactant_ids_all))
-        reactant_ids_cnt = {};
-        for reactant_id in reactant_ids_unique:
-            reactant_ids_cnt[reactant_id] = 0;
-        # get all reactants_base_met_ids and reactants_base_indices:
-        reactants_base_met_ids = [];
-        reactants_base_indices = [];
-        for cnt,mm in enumerate(self.reactionMapping['reactants_metaboliteMappings']):
-            reactants_base_met_ids.extend(mm.metaboliteMapping['base_met_ids'])
-            reactants_base_indices.extend(self.reactionMapping['reactants_metaboliteMappings'][cnt].metaboliteMapping['base_met_indices'])
-        reactants_base_met_ids_I = [];
-        # get unique reactants_base_met_ids
-        reactants_base_met_ids_unique = list(set(reactants_base_met_ids));
-        reactants_base_met_ids_cnt = {};
-        for base_met_id in reactants_base_met_ids_unique:
-            reactants_base_met_ids_cnt[base_met_id]=0;
-        for cnt,base_met_id in enumerate(reactants_base_met_ids):
-            reactants_base_met_ids_cnt[base_met_id]=reactants_base_indices[cnt]+1
-        # make the reactants mapping
-        imm_product.metaboliteMapping['mapping_id'] = self.reactionMapping['mapping_id']
-        imm_product.metaboliteMapping['base_met_ids']=[];
-        imm_product.metaboliteMapping['base_met_elements']=[];
-        imm_product.metaboliteMapping['base_met_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_elements']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_indices']=[];
-        for row in reactant_ids_elements_I:
-            for k,v in row.iteritems():
-                imm.make_trackedMetabolite(self.reactionMapping['mapping_id'],model_id_I,{k:v},reactant_ids_cnt[k]);
-                # check that there are no duplicate met_id/met_index pairs
-                duplicates_found=False;
-                met_id_duplicate_found=[];
-                for cnt1,met_id1 in enumerate(imm.metaboliteMapping['base_met_ids']): # the current base_met_ids
-                    for cnt2,met_id2 in enumerate(reactants_base_met_ids + imm_product.metaboliteMapping['base_met_ids']): # reactant base_met_ids that are already a part of the reaction + 
-                                                                                                                           # base_met_ids that will be added to the reaction
-                        if met_id1==met_id2 and imm.metaboliteMapping['base_met_indices'][cnt1]==(reactants_base_indices + imm_product.metaboliteMapping['base_met_indices'])[cnt2]:
-                                                                            #the base_met_ids match and the base_indices_match
-                                                                            #need to increase the base_index +1 over the current index
-                            imm.metaboliteMapping['base_met_indices'][cnt1]=reactants_base_met_ids_cnt[met_id1];
-                            duplicates_found=True
-                            met_id_duplicate_found.append(met_id1)
-                # update met_mapping
-                imm.update_trackedMetabolite_fromBaseMetabolites(model_id_I);
-                if duplicates_found: 
-                    for k2 in met_id_duplicate_found:
-                        reactants_base_met_ids_cnt[k2]+=1;
-                self.reactionMapping['reactants_elements_tracked'].append(imm.metaboliteMapping['met_elements']);
-                self.reactionMapping['reactants_positions_tracked'].append(imm.metaboliteMapping['met_atompositions']);
-                self.reactionMapping['reactants_mapping'].append(imm.convert_arrayMapping2StringMapping());
-                self.reactionMapping['reactants_stoichiometry_tracked'].append(-abs(1));
-                self.reactionMapping['reactants_ids_tracked'].append(k);
-                self.reactionMapping['reactants_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-                # copy out all of the base information
-                imm_product.metaboliteMapping['base_met_ids'].extend(imm.metaboliteMapping['base_met_ids']);
-                imm_product.metaboliteMapping['base_met_elements'].extend(imm.metaboliteMapping['base_met_elements']);
-                imm_product.metaboliteMapping['base_met_atompositions'].extend(imm.metaboliteMapping['base_met_atompositions']);
-                #imm_product.metaboliteMapping['base_met_symmetry_elements'].extend(imm.metaboliteMapping['base_met_symmetry_elements']);
-                #imm_product.metaboliteMapping['base_met_symmetry_atompositions'].extend(imm.metaboliteMapping['base_met_symmetry_atompositions']);
-                imm_product.metaboliteMapping['base_met_indices'].extend(imm.metaboliteMapping['base_met_indices']); 
-                imm.clear_metaboliteMapping();
-                reactant_ids_cnt[k]+=1
-        # make the products mapping
-        for product_cnt,product in enumerate(product_ids_I):
-            self.reactionMapping['products_elements_tracked'].append(self.reactionMapping['reactants_elements_tracked'][product_cnt+len(self.reactionMapping['reactants_elements_tracked'])-len(product_ids_I)]);
-            self.reactionMapping['products_positions_tracked'].append(self.reactionMapping['reactants_positions_tracked'][product_cnt+len(self.reactionMapping['reactants_positions_tracked'])-len(product_ids_I)]);
-            self.reactionMapping['products_mapping'].append(self.reactionMapping['reactants_mapping'][product_cnt+len(self.reactionMapping['reactants_mapping'])-len(product_ids_I)]);
-            self.reactionMapping['products_stoichiometry_tracked'].append(abs(self.reactionMapping['reactants_stoichiometry_tracked'][product_cnt+len(self.reactionMapping['reactants_stoichiometry_tracked'])-len(product_ids_I)]));
-            self.reactionMapping['products_ids_tracked'].append(product);
-            imm_tmp = self.reactionMapping['reactants_metaboliteMappings'][product_cnt+len(self.reactionMapping['reactants_metaboliteMappings'])-len(product_ids_I)].copy_metaboliteMapping();
-            imm_tmp.metaboliteMapping['met_id']=product; # change the name
-            self.reactionMapping['products_metaboliteMappings'].append(imm_tmp);
-    def add_trackedCompoundReaction_toReaction(self,model_id_I,reactant_ids_elements_I,base_reactant_positions_I,base_reactant_indices_I,compound_product_id_I,base_product_ids_elements_I,base_product_ids_O):
-        '''Make a compound tracked reaction
-        1. make compound product
-        2. remove specified base products from compound product
-        3. update the compound product
-        4. rename the base products
-        5. append base products to products list'''
-
-        #Input
-        # reactant_ids_elements_I = [{met_id:elements},...]
-        # base_reactant_positions_I = [{met_id_reactant:position},...] #Note: must be listed in order (positions of the reactant to be partitioned)
-        # base_reactant_indices_I = [{met_id_product:position in base_reactants_ids},...] #Note: must be listed in order (positions of the reactant to be partitioned)
-        # compound_product_id_I = met_id
-        # base_product_ids_elements_I = [{met_id:elements},...] #Note: must be listed in order
-        # base_product_ids_O = [met_id_new,...] #Note: must be listed in order
-
-        imm = stage02_isotopomer_metaboliteMapping();
-        imm_product = stage02_isotopomer_metaboliteMapping();
-        # get unique met_ids
-        reactant_ids_all = [];
-        for row in reactant_ids_elements_I:
-            for k,v in row.iteritems():
-                reactant_ids_all.append(k);
-        for k in self.reactionMapping['reactants_ids_tracked']:
-            reactant_ids_all.append(k);
-        reactant_ids_unique = list(set(reactant_ids_all))
-        reactant_ids_cnt = {};
-        for reactant_id in reactant_ids_unique:
-            reactant_ids_cnt[reactant_id] = 0;
-        # get all reactants_base_met_ids and reactants_base_indices:
-        reactants_base_met_ids = [];
-        reactants_base_indices = [];
-        for cnt,mm in enumerate(self.reactionMapping['reactants_metaboliteMappings']):
-            reactants_base_met_ids.extend(mm.metaboliteMapping['base_met_ids'])
-            reactants_base_indices.extend(self.reactionMapping['reactants_metaboliteMappings'][cnt].metaboliteMapping['base_met_indices'])
-        reactants_base_met_ids_I = [];
-        for row in base_reactant_indices_I:
-            for k,v in row.iteritems():
-                reactants_base_met_ids_I.append(k)
-        # get unique reactants_base_met_ids
-        reactants_base_met_ids_unique = list(set(reactants_base_met_ids+reactants_base_met_ids_I));
-        reactants_base_met_ids_cnt = {};
-        for base_met_id in reactants_base_met_ids_unique:
-            reactants_base_met_ids_cnt[base_met_id]=0;
-        for cnt,base_met_id in enumerate(reactants_base_met_ids):
-            reactants_base_met_ids_cnt[base_met_id]=reactants_base_indices[cnt]+1
-        # make the reactants mapping
-        reactants_stoichiometry_tracked_O = [];
-        reactants_ids_tracked_O = [];
-        reactants_elements_tracked_O = [];
-        reactants_positions_tracked_O = [];
-        reactants_mapping_O = [];
-        reactants_metaboliteMappings_O = [];
-        imm_product.metaboliteMapping['mapping_id'] = self.reactionMapping['mapping_id']
-        imm_product.metaboliteMapping['base_met_ids']=[];
-        imm_product.metaboliteMapping['base_met_elements']=[];
-        imm_product.metaboliteMapping['base_met_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_elements']=[];
-        imm_product.metaboliteMapping['base_met_symmetry_atompositions']=[];
-        imm_product.metaboliteMapping['base_met_indices']=[];
-        matched_cnt = 0;      
-        for row_cnt,row in enumerate(reactant_ids_elements_I):
-            for k,v in row.iteritems():
-                imm.make_trackedMetabolite(self.reactionMapping['mapping_id'],model_id_I,{k:v},reactant_ids_cnt[k]);
-                # update base_metabolites from the database for reactant that will be partitioned
-                base_found=False;
-                if matched_cnt < len(base_reactant_positions_I):
-                    for k1,v1 in base_reactant_positions_I[matched_cnt].iteritems(): #there will be only 1 key-value pair
-                        if k1 == k and row_cnt == v1:
-                            imm.get_baseMetabolites();
-                            imm.update_trackedMetabolite_fromBaseMetabolites(model_id_I);
-                            base_found=True;
-                            break;
-                # check that there are no duplicate met_id/met_index pairs
-                duplicates_found=False;
-                met_id_duplicate_found=[];
-                for cnt1,met_id1 in enumerate(imm.metaboliteMapping['base_met_ids']): # the current base_met_ids
-                    for cnt2,met_id2 in enumerate(reactants_base_met_ids + imm_product.metaboliteMapping['base_met_ids']): # reactant base_met_ids that are already a part of the reaction + 
-                                                                                                                           # base_met_ids that will be added to the reaction
-                        if met_id1==met_id2 and imm.metaboliteMapping['base_met_indices'][cnt1]==(reactants_base_indices + imm_product.metaboliteMapping['base_met_indices'])[cnt2]:
-                                                                            #the base_met_ids match and the base_indices_match
-                                                                            #need to increase the base_index +1 over the current index
-                            imm.metaboliteMapping['base_met_indices'][cnt1]=reactants_base_met_ids_cnt[met_id1];
-                            duplicates_found=True
-                            met_id_duplicate_found.append(met_id1)
-                # update the base_reactant_indices_I if the corresponding base_met_index was changed
-                if matched_cnt < len(base_reactant_positions_I):
-                    for k1,v1 in base_reactant_positions_I[matched_cnt].iteritems(): #there will be only 1 key-value pair
-                        if k1 == k and row_cnt == v1:
-                            for k2,v2 in base_reactant_indices_I[matched_cnt].iteritems():
-                                for cnt1,met_id1 in enumerate(imm.metaboliteMapping['base_met_ids']):
-                                    if k2==met_id1:
-                                        base_reactant_indices_I[matched_cnt][k2]=imm.metaboliteMapping['base_met_indices'][cnt1];
-                # update counter for matched input
-                if base_found: matched_cnt+=1;
-                # update met_mapping
-                imm.update_trackedMetabolite_fromBaseMetabolites(model_id_I);
-                if duplicates_found: 
-                    for k2 in met_id_duplicate_found:
-                        reactants_base_met_ids_cnt[k2]+=1;
-                reactants_elements_tracked_O.append(imm.metaboliteMapping['met_elements']);
-                reactants_positions_tracked_O.append(imm.metaboliteMapping['met_atompositions']);
-                reactants_mapping_O.append(imm.convert_arrayMapping2StringMapping());
-                reactants_stoichiometry_tracked_O.append(-1.0);
-                reactants_ids_tracked_O.append(k);
-                # copy out all of the base information
-                imm_product.metaboliteMapping['base_met_ids'].extend(imm.metaboliteMapping['base_met_ids']);
-                imm_product.metaboliteMapping['base_met_elements'].extend(imm.metaboliteMapping['base_met_elements']);
-                imm_product.metaboliteMapping['base_met_atompositions'].extend(imm.metaboliteMapping['base_met_atompositions']);
-                #imm_product.metaboliteMapping['base_met_symmetry_elements'].extend(imm.metaboliteMapping['base_met_symmetry_elements']);
-                #imm_product.metaboliteMapping['base_met_symmetry_atompositions'].extend(imm.metaboliteMapping['base_met_symmetry_atompositions']);
-                imm_product.metaboliteMapping['base_met_indices'].extend(imm.metaboliteMapping['base_met_indices']); 
-                #
-                reactants_metaboliteMappings_O.append(copy(imm.copy_metaboliteMapping()));  
-                imm.clear_metaboliteMapping()
-                reactant_ids_cnt[k]+=1
-        # make the initial compound product mapping
-        imm_product.update_trackedMetabolite_fromBaseMetabolites(model_id_I)
-        # extract out the products from the compound product
-        base_products = [];
-        for cnt,row in enumerate(base_product_ids_elements_I):
-            for k,v in row.iteritems():
-                base_products.append(imm_product.extract_baseMetabolite_fromMetabolite(model_id_I,{k:v},base_reactant_indices_I[cnt][k]));
-        # remove the base_products from the compound product
-        for cnt,row in enumerate(base_product_ids_elements_I):
-            for k,v in row.iteritems():
-                imm_product.remove_baseMetabolite_fromMetabolite(model_id_I,{k:v},met_id_O=compound_product_id_I,met_index_I=base_reactant_indices_I[cnt][k]);
-        # make the final products
-        if compound_product_id_I: imm_final_products = [imm_product];
-        else: imm_final_products = [];
-        for d in base_products:
-            imm_final_products.append(d);
-        if compound_product_id_I: imm_final_products_ids = [compound_product_id_I];
-        else: imm_final_products_ids = [];
-        for id in base_product_ids_O:
-            imm_final_products_ids.append(id);
-        products_stoichiometry_tracked_O = [];
-        products_ids_tracked_O = [];
-        products_elements_tracked_O = [];
-        products_positions_tracked_O = [];
-        products_mapping_O = [];
-        products_metaboliteMappings_O = [];
-        for cnt,d in enumerate(imm_final_products):
-            products_elements_tracked_O.append(d.metaboliteMapping['met_elements']);
-            products_positions_tracked_O.append(d.metaboliteMapping['met_atompositions']);
-            products_mapping_O.append(d.convert_arrayMapping2StringMapping());
-            products_stoichiometry_tracked_O.append(1.0);
-            products_ids_tracked_O.append(imm_final_products_ids[cnt]);
-            products_metaboliteMappings_O.append(copy(d.copy_metaboliteMapping()));
-        # save the reaction
-        self.reactionMapping['reactants_stoichiometry_tracked'].extend(reactants_stoichiometry_tracked_O)
-        self.reactionMapping['products_stoichiometry_tracked'].extend(products_stoichiometry_tracked_O)
-        self.reactionMapping['reactants_ids_tracked'].extend(reactants_ids_tracked_O)
-        self.reactionMapping['products_ids_tracked'].extend(products_ids_tracked_O)
-        self.reactionMapping['reactants_elements_tracked'].extend(reactants_elements_tracked_O)
-        self.reactionMapping['products_elements_tracked'].extend(products_elements_tracked_O)
-        self.reactionMapping['reactants_positions_tracked'].extend(reactants_positions_tracked_O)
-        self.reactionMapping['products_positions_tracked'].extend(products_positions_tracked_O)
-        self.reactionMapping['reactants_mapping'].extend(reactants_mapping_O)
-        self.reactionMapping['products_mapping'].extend(products_mapping_O)
-        self.reactionMapping['reactants_metaboliteMappings'].extend(reactants_metaboliteMappings_O)
-        self.reactionMapping['products_metaboliteMappings'].extend(products_metaboliteMappings_O)
     def add_reactionMapping(self,
             mapping_id_I=None,
             rxn_id_I=None,
@@ -4115,18 +3796,25 @@ class stage02_isotopomer_reactionMapping():
         self.reactionMapping['reactants_metaboliteMappings']=[]
         self.reactionMapping['products_metaboliteMappings']=[]
         self.make_reactantsAndProductsMetaboliteMappings();
-    def make_reactantsAndProductsMetaboliteMappings(self):
+    def make_reactantsAndProductsMetaboliteMappings(self,reactionMapping_I=None):
         '''Make reactants and products metabolite mapping from atomMappingReaction information'''
-        for cnt,met in enumerate(self.reactionMapping['reactants_ids_tracked']):
-            imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
+
+        #Input:
+        #   reactionMapping_I = row of atomMappingReactions
+        #                       default: None, user current self
+
+        if reactionMapping_I: reactionMapping_tmp = reactionMapping_I;
+        else: reactionMapping_tmp = reactionMapping_tmp;
+        for cnt,met in enumerate(reactionMapping_tmp['reactants_ids_tracked']):
+            imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=reactionMapping_tmp['mapping_id'],
                 met_id_I=met,
-                met_elements_I=self.reactionMapping['reactants_elements_tracked'][cnt],
-                met_atompositions_I=self.reactionMapping['reactants_positions_tracked'][cnt],
+                met_elements_I=reactionMapping_tmp['reactants_elements_tracked'][cnt],
+                met_atompositions_I=reactionMapping_tmp['reactants_positions_tracked'][cnt],
                 met_symmetry_elements_I=[],
                 met_symmetry_atompositions_I=[],
                 used__I=True,
                 comment__I=None,
-                met_mapping_I=self.reactionMapping['reactants_mapping'][cnt],
+                met_mapping_I=reactionMapping_tmp['reactants_mapping'][cnt],
                 base_met_ids_I=[],
                 base_met_elements_I=[],
                 base_met_atompositions_I=[],
@@ -4134,16 +3822,16 @@ class stage02_isotopomer_reactionMapping():
                 base_met_symmetry_atompositions_I=[],
                 base_met_indices_I=[]);
             self.reactionMapping['reactants_metaboliteMappings'].append(copy(imm.copy_metaboliteMapping()));
-        for cnt,met in enumerate(self.reactionMapping['products_ids_tracked']):
-            imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=self.reactionMapping['mapping_id'],
+        for cnt,met in enumerate(reactionMapping_tmp['products_ids_tracked']):
+            imm = stage02_isotopomer_metaboliteMapping(mapping_id_I=reactionMapping_tmp['mapping_id'],
                 met_id_I=met,
-                met_elements_I=self.reactionMapping['products_elements_tracked'][cnt],
-                met_atompositions_I=self.reactionMapping['products_positions_tracked'][cnt],
+                met_elements_I=reactionMapping_tmp['products_elements_tracked'][cnt],
+                met_atompositions_I=reactionMapping_tmp['products_positions_tracked'][cnt],
                 met_symmetry_elements_I=[],
                 met_symmetry_atompositions_I=[],
                 used__I=True,
                 comment__I=None,
-                met_mapping_I=self.reactionMapping['products_mapping'][cnt],
+                met_mapping_I=reactionMapping_tmp['products_mapping'][cnt],
                 base_met_ids_I=[],
                 base_met_elements_I=[],
                 base_met_atompositions_I=[],
