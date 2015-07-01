@@ -1817,7 +1817,7 @@ class stage01_isotopomer_execute():
                 intensityDict = {};
                 peakSpectrumMasses = list(peakSpectrum_theoretical[frag].keys());
                 for mass in peakSpectrumMasses:
-                    if frag in peakSpectrum and frag in peakSpectrum and mass in peakSpectrum[frag] and peakSpectrum[frag][mass] > 0.0: 
+                    if frag in peakSpectrum and frag in peakSpectrum and mass in peakSpectrum[frag] and peakSpectrum[frag][mass] and peakSpectrum[frag][mass] > 0.0: 
                         intensityDict[mass] = peakSpectrum[frag][mass];
                     else: 
                         intensityDict[mass] = 0.0;

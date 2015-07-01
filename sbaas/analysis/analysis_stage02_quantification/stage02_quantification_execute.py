@@ -1,15 +1,13 @@
 '''quantitative metabolomics analysis class'''
 
 from sbaas.analysis.analysis_base import *
-from .stage02_quantification_query import *
-from .stage02_quantification_io import *
+from .stage02_quantification_query import stage02_quantification_query
 from sbaas.resources.r import r_calculate
 from sbaas.resources.matplot import matplot
-import matplotlib.pyplot as plt
 from math import sqrt
 import copy
 
-class stage02_quantification_execute():
+class stage02_quantification_execute(base_analysis):
     '''class for quantitative metabolomics analysis'''
     def __init__(self,session_I=None):
         if session_I: self.session = session_I;

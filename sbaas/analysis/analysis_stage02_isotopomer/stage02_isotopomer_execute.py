@@ -545,8 +545,9 @@ class stage02_isotopomer_execute():
                 rxn_id = metID2RxnID_I[met]['rxn_id'];
                 # correct for glucose uptake
                 if rxn_id == 'EX_glc_LPAREN_e_RPAREN_' and correct_EX_glc_LPAREN_e_RPAREN_I:
-                    rate_lb = min([abs(x) for x in [rate_lb,rate_ub]]);
-                    rate_ub = max([abs(x) for x in [rate_lb,rate_ub]]);
+                    rate_lb_tmp,rate_ub_tmp = rate_lb,rate_ub;
+                    rate_lb = min([abs(x) for x in [rate_lb_tmp,rate_ub_tmp]]);
+                    rate_ub = max([abs(x) for x in [rate_lb_tmp,rate_ub_tmp]]);
                     rate_average = abs(rate_average);
                 # record the data
                 data_tmp = {'experiment_id':experiment_id_I,
@@ -1101,13 +1102,18 @@ class stage02_isotopomer_execute():
         # load the model
         if cobra_model_sbml:
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open(settings.workspace_data + '/cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.xml','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
                 cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + '/cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open(settings.workspace_data + '/cobra_model_tmp.json','wb') as file:
+                # check if the model has genes
+                a = json.loads(cobra_model_sbml['model_file']);
+                if not "genes" in a:
+                    a["genes"] = [];
+                    cobra_model_sbml['model_file'] = json.dumps(a);
+                with open(settings.workspace_data + '/cobra_model_tmp.json','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
@@ -1128,11 +1134,11 @@ class stage02_isotopomer_execute():
         if description:
             cobra_model.description = description;
         # test for a solution:
-        cobra_model.optimize(solver='gurobi');
+        cobra_model.optimize();
         if not cobra_model.solution.f:
             print("model does not converge to a solution");
         ##find minimal flux solution:
-        #pfba = optimize_minimal_flux(cobra_model,True,solver='gurobi');
+        #pfba = optimize_minimal_flux(cobra_model,True);
 
         return cobra_model;
     def make_Model(self,model_id_I=None,model_id_O=None,date_O=None,model_file_name_I=None,ko_list=[],flux_dict={},description=None):
@@ -1145,13 +1151,13 @@ class stage02_isotopomer_execute():
             cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id_I);
             # write the model to a temporary file
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open(settings.workspace_data + '/cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.xml','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
                 cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + '/cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open(settings.workspace_data + '/cobra_model_tmp.json','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.json','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
@@ -1172,7 +1178,7 @@ class stage02_isotopomer_execute():
             # test the model
             if self.test_model(cobra_model):
                 # write the model to a temporary file
-                with open(settings.workspace_data + '/cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.xml','w') as file:
                     file.write(cobra_model);
                 # upload the model to the database
                 qio02.import_dataStage02Model_sbml(model_id_O, date_O, settings.workspace_data + '/cobra_model_tmp.xml');
@@ -1202,12 +1208,12 @@ class stage02_isotopomer_execute():
                 filename = '';
                 if '.xml' in model_file_name_I:
                     filename = settings.workspace_data + '/cobra_model_tmp.xml'
-                    with open(filename,'wb') as file:
+                    with open(filename,'w') as file:
                         file.write(cobra_model);
                         file.close()
                 elif '.json' in model_file_name_I:
                     filename = settings.workspace_data + '/cobra_model_tmp.json';
-                    with open(filename,'wb') as file:
+                    with open(filename,'w') as file:
                         file.write(cobra_model);
                         file.close()
                 else: print('file type not supported')
@@ -1230,13 +1236,13 @@ class stage02_isotopomer_execute():
             cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id);
             # write the model to a temporary file
             if cobra_model_sbml['file_type'] == 'sbml':
-                with open(settings.workspace_data + '/cobra_model_tmp.xml','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.xml','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
                 cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + '/cobra_model_tmp.xml', print_time=True);
             elif cobra_model_sbml['file_type'] == 'json':
-                with open(settings.workspace_data + '/cobra_model_tmp.json','wb') as file:
+                with open(settings.workspace_data + '/cobra_model_tmp.json','w') as file:
                     file.write(cobra_model_sbml['model_file']);
                     file.close()
                 cobra_model = None;
@@ -1317,11 +1323,8 @@ class stage02_isotopomer_execute():
     def test_model(self,cobra_model):
         '''simulate a cobra model'''
         
-        # Dependencies from cobra
-        from cobra.flux_analysis.parsimonious import optimize_minimal_flux
-
         # test for a solution:
-        cobra_model.optimize(solver='gurobi');
+        cobra_model.optimize();
         if not cobra_model.solution.f:
             print("model does not converge to a solution");
             return False,
@@ -1482,7 +1485,7 @@ class stage02_isotopomer_execute():
         # substitute 0.0 for None
         if flux_average == 0.0:
             flux_average = None;
-        elif flux_average < flux_lb or flux_average > flux_ub:
+        elif flux_average and (flux_average < flux_lb or flux_average > flux_ub):
             flux_average = numpy.mean([flux_lb,flux_ub]);
         return flux_average,flux_stdev,flux_lb,flux_ub,flux_units
     def convert_fragmentAndElements2PositionAndElements(self,fragment_I,element_I):
@@ -3310,7 +3313,8 @@ class inca_api(stage02_isotopomer_execute):
                 modelReaction_data = [];
                 modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
                 #simulate the model
-                cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
+                cobra_model = None;
+                #cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
                 for i,row in enumerate(modelReaction_data):
                     #get atom mapping data
                     atomMapping = {};
@@ -3372,7 +3376,7 @@ class inca_api(stage02_isotopomer_execute):
                             modelReaction_data[i]['lower_bound'] = flux['lb'];
                             modelReaction_data[i]['upper_bound'] = flux['ub'];
                     # add in a flux_val field to supply an initial starting guess for the MFA solver
-                    if cobra_model.solution.f and row['rxn_id'] in cobra_model.solution.x_dict:
+                    if cobra_model and cobra_model.solution.f and row['rxn_id'] in cobra_model.solution.x_dict:
                         modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
                     else:
                         modelReaction_data[i]['flux_val'] = 0;

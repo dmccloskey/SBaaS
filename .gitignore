@@ -7,7 +7,7 @@ obj/
 # vs project files #
 ####################
 sbaas.pyproj
-sbaas.py
+main.py
 
 # log files #
 #############
@@ -16,6 +16,13 @@ sbaas.py
 # local R dir #
 ###############
 dmccloskey-sbrg/
+
+# local workspace dirs #
+########################
+visualization_data/
+visualization_resources/
+workspace/
+workspace_data/
 
 # compile py files #
 ####################

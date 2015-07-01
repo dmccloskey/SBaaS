@@ -1811,13 +1811,13 @@ class stage02_isotopomer_io(base_analysis):
         cobra_model_sbml = None; # get the cobra model
         cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels('140407_iDM2014');
         if cobra_model_sbml['file_type'] == 'sbml':
-            with open('data/cobra_model_tmp.xml','wb') as file:
+            with open('data/cobra_model_tmp.xml','w') as file:
                 file.write(cobra_model_sbml['model_file']);
                 file.close()
             cobra_model1 = None;
             cobra_model1 = create_cobra_model_from_sbml_file('data/cobra_model_tmp.xml', print_time=True);
         elif cobra_model_sbml['file_type'] == 'json':
-            with open('data/cobra_model_tmp.json','wb') as file:
+            with open('data/cobra_model_tmp.json','w') as file:
                 file.write(cobra_model_sbml['model_file']);
                 file.close()
             cobra_model1 = None;
@@ -2969,7 +2969,7 @@ class stage02_isotopomer_io(base_analysis):
         cobra_model_sbml = None;
         cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id_I);
         # write the model to a temporary file
-        with open(filename_I,'wb') as file:
+        with open(filename_I,'w') as file:
             file.write(cobra_model_sbml['sbml_file']);
     def export_isotopomerModel_cobraMAT(self, filename):
         '''export isotopomer model for fluxomics simulation using the cobratoolbox 2.0 fluxomics module'''
@@ -3070,13 +3070,13 @@ class stage02_isotopomer_io(base_analysis):
                 cobra_model_sbml = self.stage02_isotopomer_query.get_row_modelID_dataStage02IsotopomerModels(model_id);
                 # write the model to a temporary file
                 if cobra_model_sbml['file_type'] == 'sbml':
-                    with open(settings.workspace_data + '/cobra_model_tmp.xml','wb') as file:
+                    with open(settings.workspace_data + '/cobra_model_tmp.xml','w') as file:
                         file.write(cobra_model_sbml['model_file']);
                         file.close()
                     cobra_model = None;
                     cobra_model = create_cobra_model_from_sbml_file(settings.workspace_data + '/cobra_model_tmp.xml', print_time=True);
                 elif cobra_model_sbml['file_type'] == 'json':
-                    with open(settings.workspace_data + '/cobra_model_tmp.json','wb') as file:
+                    with open(settings.workspace_data + '/cobra_model_tmp.json','w') as file:
                         file.write(cobra_model_sbml['model_file']);
                         file.close()
                     cobra_model = None;
@@ -3141,7 +3141,7 @@ class stage02_isotopomer_io(base_analysis):
                         filter_O['map_id'].append(filter_map_str);
                         print('exporting fluxomics analysis for map_id ' + map_id);
                         # generate the map html using escher
-                        map_json = json.load(open(settings.sbaas + '/data/escher_maps/' + map_id + '.json','rb'));
+                        map_json = json.load(open(settings.sbaas + '/data/escher_maps/' + map_id + '.json','r'));
                         map = Builder(map_json=json.dumps(map_json), reaction_data=fluxes);
                         #html_file = map._get_html(scroll_behavior='zoom')
                         #html_file = map._get_html(menu='all',
@@ -3154,13 +3154,13 @@ class stage02_isotopomer_io(base_analysis):
                         #  # choose whether to enable keyboard shortcuts
                         #  enable_keys=True)
                         filename_str = filename[0] + '/' + experiment_id_I.replace('_','') + filename[1] + filename[2] + model_id.replace('_','') + '_' + mapping.replace('_','') + '_' + sna.replace('_','') + '_' + map_id.replace('_','') + '.html';
-                        #with open(filename_str,'wb') as file:
+                        #with open(filename_str,'w') as file:
                         #    file.write(html_file);
                         map.save_html(filename_str)
         # dump the filter data to a json file
         json_str = 'var ' + 'data_filter' + ' = ' + json.dumps(filter_O);
         filename_str = filename[0]+ '/' +experiment_id_I.replace('_','') + filename[1] + filename[2] + 'filter.js'
-        with open(filename_str,'wb') as file:
+        with open(filename_str,'w') as file:
             file.write(json_str);
     def export_dataStage02IsotopomerFittedNetFluxes_js(self,analysis_id_I = None, simulation_ids_I = [],data_dir_I="tmp"):
         '''Plot the flux precision for a given set of simulations and a given set of reactions
