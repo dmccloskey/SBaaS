@@ -9,6 +9,10 @@ obj/
 sbaas.pyproj
 main.py
 
+# settings files #
+##################
+sbaas_settings.py
+
 # log files #
 #############
 *.log

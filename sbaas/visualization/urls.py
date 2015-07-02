@@ -1,4 +1,7 @@
 from .version import __version__
+import os
+import re
+from os.path import dirname, realpath, join
 import json
 from data import sbaas_settings as settings
 
@@ -7,6 +10,8 @@ from data import sbaas_settings as settings
 class urls():
 
     def __init__(self):
+
+        self.root_directory = realpath(join(dirname(__file__), '..'))
 
         self._visualization_css = json.load(open(settings.visualization_resources+'/urls_visualization_css.json'));
 
