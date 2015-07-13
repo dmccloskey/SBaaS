@@ -201,54 +201,70 @@ class stage02_isotopomer_execute():
         self.session.commit();
     def update_datastage02_isotopomer_simulationID(self,simulation_id_new,simulation_id_old):
         '''Update the simulation ID'''
-        query_cmd = ('''UPDATE "data_stage02_isotopomer_simulationParameters"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedData"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedFluxes"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedFragments"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedMeasuredFluxResiduals"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedMeasuredFluxes"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedMeasuredFragmentResiduals"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedMeasuredFragments"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_fittedNetFluxes"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_simulation"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';
-                    UPDATE "data_stage02_isotopomer_analysis"
-                    SET simulation_id='%s'
-                    WHERE simulation_id LIKE '%s';''' 
-                      %(simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
-                        simulation_id_new,simulation_id_old,
+        try:
+            query_cmd = ('''UPDATE "data_stage02_isotopomer_simulationParameters"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedData"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedFluxes"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedFragments"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedMeasuredFluxResiduals"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedMeasuredFluxes"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedMeasuredFragmentResiduals"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedMeasuredFragments"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedNetFluxes"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_simulation"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_analysis"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';''' 
+                          %(simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                              ))
+
+            data = self.session.execute(query_cmd);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def update_datastage02_isotopomer_analysisID(self,analysis_id_new,analysis_id_old):
+        '''Update the analysis ID'''
+        try:
+            query_cmd = ('''UPDATE "data_stage02_isotopomer_analysis"
+                    SET analysis_id='%s'
+                    WHERE analysis_id LIKE '%s';''' 
+                      %(analysis_id_new,analysis_id_old
                           ))
 
-        data = self.session.execute(query_cmd);
-        self.session.commit();
+            data = self.session.execute(query_cmd);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
     def initialize_datastage02(self):
         try:
             data_stage02_isotopomer_simulation.__table__.create(engine,True);
@@ -1482,7 +1498,7 @@ class stage02_isotopomer_execute():
             flux_lb = lower_bound_I;
             flux_ub = upper_bound_I;
         # check the flux
-        # substitute 0.0 for None
+        # substitute 0.0 for None or change the flux average if it is not within the lb/ub
         if flux_average == 0.0:
             flux_average = None;
         elif flux_average and (flux_average < flux_lb or flux_average > flux_ub):

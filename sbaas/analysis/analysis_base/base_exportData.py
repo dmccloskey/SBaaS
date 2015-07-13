@@ -56,7 +56,7 @@ class base_exportData():
 
     def write_headersAndElements2csv(self,header_I,filename):
         # write data to csv file
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f);
             try:
                 writer.writerows(header_I);
@@ -66,7 +66,7 @@ class base_exportData():
 
     def write_headersAndElements2txt(self,header_I,filename):
         # write data to txt file
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f, delimiter='\t');
             try:
                 writer.writerows(header_I);
