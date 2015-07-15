@@ -453,6 +453,300 @@ class stage01_resequencing_io(base_analysis):
                 except SQLAlchemyError as e:
                     print(e);
             self.session.commit();
+    
+    def import_resequencingCoverageData_add(self, filename, 
+                                            #analysis_id,
+                                            experiment_id, sample_name,strand_start,strand_stop,scale_factor=True,downsample_factor=2000):
+        '''table adds
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+
+        #from sequencing_utilities.makegff import write_samfile_to_gff
+        from sequencing_utilities.coverage import extract_strandsFromGff
+
+        if '.bam' in filename:
+            #TODO convert .bam to .gff using makegff.py from sequencing_utilities
+            print('conversion of .bam to .gff not yet supported');
+            exit(2);
+            #filename_bam = filename;
+            #filename = filename.replace('.bam','.gff');
+            #extract_strandsFromGff(filename_bam,filename,separate_strand=False);
+        # convert strings to float and int
+        strand_start, strand_stop, scale_factor, downsample_factor = int(strand_start), int(strand_stop), bool(scale_factor), float(downsample_factor);        
+        # parse the gff file into pandas dataframes
+        plus,minus=extract_strandsFromGff(filename, strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
+        # split into seperate data structures based on the destined table add
+        coverage_data = [];
+        if not plus.empty:
+            for index,reads in plus.iteritems():
+                coverage_data.append({
+                                #'analysis_id':analysis_id,
+                                'experiment_id':experiment_id,
+                                'sample_name':sample_name,
+                                'data_dir':filename,
+                                'genome_chromosome':1, #default
+                                'genome_strand':'+',
+                                'genome_index':int(index),
+                                'strand_start':strand_start,
+                                'strand_stop':strand_stop,
+                                'reads':float(reads),
+                                'scale_factor':scale_factor,
+                                'downsample_factor':downsample_factor,
+                                'used_':True,
+                                'comment_':None});
+        if not minus.empty:
+            for index,reads in minus.iteritems():
+                coverage_data.append({
+                                #'analysis_id':analysis_id,
+                                'experiment_id':experiment_id,
+                                'sample_name':sample_name,
+                                'data_dir':filename,
+                                'genome_chromosome':1, #default
+                                'genome_strand':'-',
+                                'genome_index':int(index),
+                                'strand_start':strand_start,
+                                'strand_stop':strand_stop,
+                                'reads':float(reads),
+                                'scale_factor':scale_factor,
+                                'downsample_factor':downsample_factor,
+                                'used_':True,
+                                'comment_':None});
+        # add data to the database:
+        self.add_dataStage01ResequencingCoverage(coverage_data);
+
+    def add_dataStage01ResequencingCoverage(self, data_I):
+        '''add rows of data_stage01_resequencing_coverage'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_coverage(
+                    #d['analysis_id'],
+                    d['experiment_id'],
+                    d['sample_name'],
+                    d['data_dir'],
+                    d['genome_chromosome'],
+                    d['genome_strand'],
+                    d['genome_index'],
+                    d['strand_start'],
+                    d['strand_stop'],
+                    d['reads'],
+                    d['scale_factor'],
+                    d['downsample_factor'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_dataStage01ResequencingCoverageStats(self, data_I):
+        '''add rows of data_stage01_resequencing_coverageStats'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_coverageStats(
+                    #d['analysis_id'],
+                    d['experiment_id'],
+                    d['sample_name'],
+                    d['genome_chromosome'],
+                    d['genome_strand'],
+                    d['strand_start'],
+                    d['strand_stop'],
+                    d['reads_min'],
+                    d['reads_max'],
+                    d['reads_lb'],
+                    d['reads_ub'],
+                    d['reads_iq1'],
+                    d['reads_iq3'],
+                    d['reads_median'],
+                    d['reads_mean'],
+                    d['reads_var'],
+                    d['reads_n'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_dataStage01ResequencingAmplifications(self, data_I):
+        '''add rows of data_stage01_resequencing_amplifications'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_amplifications(
+                        #d['analysis_id'],
+                        d['experiment_id'],
+                        d['sample_name'],
+                        d['genome_chromosome'],
+                        d['genome_strand'],
+                        d['genome_index'],
+                        d['strand_start'],
+                        d['strand_stop'],
+                        d['reads'],
+                        d['reads_min'],
+                        d['reads_max'],
+                        d['indices_min'],
+                        d['consecutive_tol'],
+                        d['scale_factor'],
+                        d['downsample_factor'],
+                        d['amplification_start'],
+                        d['amplification_stop'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_dataStage01ResequencingAmplificationStats(self, data_I):
+        '''add rows of data_stage01_resequencing_amplificationStats'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_amplificationStats(
+                    #d['analysis_id'],
+                    d['experiment_id'],
+                    d['sample_name'],
+                    d['genome_chromosome'],
+                    d['genome_strand'],
+                    d['strand_start'],
+                    d['strand_stop'],
+                    d['reads_min'],
+                    d['reads_max'],
+                    d['reads_lb'],
+                    d['reads_ub'],
+                    d['reads_iq1'],
+                    d['reads_iq3'],
+                    d['reads_median'],
+                    d['reads_mean'],
+                    d['reads_var'],
+                    d['reads_n'],
+                    d['amplification_start'],
+                    d['amplification_stop'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_dataStage01ResequencingCoverage(self,data_I):
+        '''update rows of data_stage01_resequencing_coverage'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage01_resequencing_coverage).filter(
+                           data_stage01_resequencing_coverage.id==d['id']).update(
+                            {
+                                #'analysis_id':d['analysis_id'],
+                             'experiment_id':d['experiment_id'],
+                            'sample_name':d['sample_name'],
+                            'data_dir':d['data_dir'],
+                            'genome_chromosome':d['genome_chromosome'],
+                            'genome_strand':d['genome_strand'],
+                            'genome_index':d['genome_index'],
+                            'strand_start':d['strand_start'],
+                            'strand_stop':d['strand_stop'],
+                            'reads':d['reads'],
+                            'scale_factor':d['scale_factor'],
+                            'downsample_factor':d['downsample_factor'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_dataStage01ResequencingCoverageStats(self,data_I):
+        '''update rows of data_stage01_resequencing_coverageStats'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage01_resequencing_coverageStats).filter(
+                           data_stage01_resequencing_coverageStats.id==d['id']).update(
+                            {
+                                #'analysis_id':d['analysis_id'],
+                            'experiment_id':d['experiment_id'],
+                            'sample_name':d['sample_name'],
+                            'genome_chromosome':d['genome_chromosome'],
+                            'genome_strand':d['genome_strand'],
+                            'strand_start':d['strand_start'],
+                            'strand_stop':d['strand_stop'],
+                            'reads_min':d['reads_min'],
+                            'reads_max':d['reads_max'],
+                            'reads_lb':d['reads_lb'],
+                            'reads_ub':d['reads_ub'],
+                            'reads_iq1':d['reads_iq1'],
+                            'reads_iq3':d['reads_iq3'],
+                            'reads_median':d['reads_median'],
+                            'reads_mean':d['reads_mean'],
+                            'reads_var':d['reads_var'],
+                            'reads_n':d['reads_n'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_dataStage01ResequencingAmplifications(self,data_I):
+        '''update rows of data_stage01_resequencing_amplifications'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage01_resequencing_amplifications).filter(
+                           data_stage01_resequencing_amplifications.id==d['id']).update(
+                            {
+                            #'analysis_id':d['analysis_id'],
+                            'experiment_id':d['experiment_id'],
+                            'sample_name':d['sample_name'],
+                            'genome_chromosome':d['genome_chromosome'],
+                            'genome_strand':d['genome_strand'],
+                            'genome_index':d['genome_index'],
+                            'strand_start':d['strand_start'],
+                            'strand_stop':d['strand_stop'],
+                            'reads':d['reads'],
+                            'reads_min':d['reads_min'],
+                            'reads_max':d['reads_max'],
+                            'indices_min':d['indices_min'],
+                            'consecutive_tol':d['consecutive_tol'],
+                            'scale_factor':d['scale_factor'],
+                            'downsample_factor':d['downsample_factor'],
+                            'amplification_start':d['amplification_start'],
+                            'amplification_stop':d['amplification_stop'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def update_dataStage01ResequencingAmplificationStats(self,data_I):
+        '''update rows of data_stage01_resequencing_amplificationStats'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage01_resequencing_amplificationStats).filter(
+                           data_stage01_resequencing_amplificationStats.id==d['id']).update(
+                            {
+                            #'analysis_id':d['analysis_id'],
+                            'experiment_id':d['experiment_id'],
+                            'sample_name':d['sample_name'],
+                            'genome_chromosome':d['genome_chromosome'],
+                            'genome_strand':d['genome_strand'],
+                            'strand_start':d['strand_start'],
+                            'strand_stop':d['strand_stop'],
+                            'reads_min':d['reads_min'],
+                            'reads_max':d['reads_max'],
+                            'reads_lb':d['reads_lb'],
+                            'reads_ub':d['reads_ub'],
+                            'reads_iq1':d['reads_iq1'],
+                            'reads_iq3':d['reads_iq3'],
+                            'reads_median':d['reads_median'],
+                            'reads_mean':d['reads_mean'],
+                            'reads_var':d['reads_var'],
+                            'reads_n':d['reads_n'],
+                            'amplification_start':d['amplification_start'],
+                            'amplification_stop':d['amplification_stop'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
 
     def export_dataStage01ResequencingMutationsAnnotatedLineage_js(self,analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,data_dir_I="tmp"):
         '''export data_stage01_resequencing_mutationsAnnotated to js file'''
@@ -821,9 +1115,6 @@ class stage01_resequencing_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
-        tile2datamap_O = {"tile1":[0],"tile2":[0]};
-        
-        tile2datamap_O = {"tile1":[0],"tile2":[0]};
         
     def export_dataStage01ResequencingMutationsAnnotated_js(self,analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,data_dir_I="tmp"):
         '''export data_stage01_resequencing_mutationsAnnotated to js file'''
@@ -1160,3 +1451,138 @@ class stage01_resequencing_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
+
+    def export_dataStage01ResequencingAmplifications_js(self,analysis_id_I,data_dir_I="tmp"):
+        """export heatmap to js file"""
+
+        # get the analysis info
+        #analysis_info = {};
+        #analysis_info = self.stage01_resequencing_query.get_analysis_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
+        experiment_ids = []
+        lineage_names = []
+        sample_names = []
+        time_points = []
+        experiment_ids,lineage_names,sample_names,time_points = self.stage01_resequencing_query.get_experimentIDAndLineageNameAndSampleNameAndTimePoint_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
+        # convert time_point to intermediates
+        time_points_int = [int(x) for x in time_points];
+        intermediates,time_points,experiment_ids,sample_names,lineage_names = (list(t) for t in zip(*sorted(zip(time_points_int,time_points,experiment_ids,sample_names,lineage_names))))
+        intermediates = [i for i,x in enumerate(intermediates)];
+        #get the data for the analysis
+        data1_O = [];
+        data2_O = [];
+        for sn_cnt,sn in enumerate(sample_names):
+            data1_tmp = [];
+            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_ids[sn_cnt],sn);
+            data1_O.extend(data1_tmp);
+            data2_tmp = [];
+            data2_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplificationStats(experiment_ids[sn_cnt],sn);
+            data2_O.extend(data1_tmp);
+        # dump chart parameters to a js files
+        data1_keys = ['experiment_id',
+                    'sample_name',
+                    'genome_chromosome',
+                    'genome_strand',
+                    'amplification_start',
+                    'amplification_stop',
+                    ]
+        data1_nestkeys = ['sample_name'];
+        data1_keymap = {'xdata':'genome_index',
+                        'ydata':'reads',
+                        'serieslabel':'mutation_id',
+                        'featureslabel':'reads'};
+        data2_keys = ['experiment_id',
+                'sample_name',
+                'genome_chromosome',
+                'genome_strand',
+                'strand_start',
+                'strand_stop',
+                'reads_min',
+                'reads_max',
+                'reads_lb',
+                'reads_ub',
+                'reads_iq1',
+                'reads_iq3',
+                'reads_median',
+                'reads_mean',
+                'reads_var',
+                'reads_n',
+                'amplification_start',
+                'amplification_stop',
+                'used_',
+                'comment_'
+                    ]
+        data2_nestkeys = ['sample_name'];
+        data2_keymap = {'xdata':'genome_index',
+                        'ydata':'reads',
+                        'serieslabel':'mutation_id',
+                        'featureslabel':'reads'};
+        # make the data object
+        dataobject_O = [{"data":data1_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys},{"data":data2_O,"datakeys":data2_keys,"datanestkeys":data2_nestkeys}];
+        # make the tile parameter objects
+        formtileparameters_O = {'tileheader':'Filter menu','tiletype':'html','tileid':"filtermenu1",'rowid':"row1",'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-4"};
+        formparameters_O = {'htmlid':'filtermenuform1',"htmltype":'form_01',"formsubmitbuttonidtext":{'id':'submit1','text':'submit'},"formresetbuttonidtext":{'id':'reset1','text':'reset'},"formupdatebuttonidtext":{'id':'update1','text':'update'}};
+        formtileparameters_O.update(formparameters_O);
+        svgparameters_O = {"svgtype":'scatterlineplot2d_01',"svgkeymap":[data1_keymap,data1_keymap],
+                            'svgid':'svg1',
+                            "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
+                            "svgwidth":500,"svgheight":350,
+                            "svgx1axislabel":"intermediate","svgy1axislabel":"frequency",
+    						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
+        svgtileparameters_O = {'tileheader':'Population mutation frequency','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-8"};
+        svgtileparameters_O.update(svgparameters_O);
+        tableparameters_O = {"tabletype":'responsivetable_01',
+                    'tableid':'table1',
+                    "tablefilters":None,
+                    "tableclass":"table  table-condensed table-hover",
+    			    'tableformtileid':'filtermenu1','tableresetbuttonid':'reset1','tablesubmitbuttonid':'submit1'};
+        tabletileparameters_O = {'tileheader':'Population mutation frequency','tiletype':'table','tileid':"tile3",'rowid':"row2",'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
+        tabletileparameters_O.update(tableparameters_O);
+        parametersobject_O = [formtileparameters_O,svgtileparameters_O,tabletileparameters_O];
+        tile2datamap_O = {"filtermenu1":[0],"tile2":[0,0],"tile3":[1]};
+        # dump the data to a json file
+        data_str = 'var ' + 'data' + ' = ' + json.dumps(dataobject_O) + ';';
+        parameters_str = 'var ' + 'parameters' + ' = ' + json.dumps(parametersobject_O) + ';';
+        tile2datamap_str = 'var ' + 'tile2datamap' + ' = ' + json.dumps(tile2datamap_O) + ';';
+        if data_dir_I=='tmp':
+            filename_str = settings.visualization_data + '/tmp/ddt_data.js'
+        elif data_dir_I=='project':
+            filename_str = settings.visualization_data + '/project/' + analysis_id_I + '_data_stage01_resequencing_lineage' + '.js'
+        elif data_dir_I=='data_json':
+            data_json_O = data_str + '\n' + parameters_str + '\n' + tile2datamap_str;
+            return data_json_O;
+        with open(filename_str,'w') as file:
+            file.write(data_str);
+            file.write(parameters_str);
+            file.write(tile2datamap_str);
+
+    def export_dataStage01ResequencingCoverage_js(self,analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,data_dir_I="tmp"):
+        """export heatmap to js file"""
+
+        # get the analysis info
+        #analysis_info = {};
+        #analysis_info = self.stage01_resequencing_query.get_analysis_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
+        experiment_ids = []
+        lineage_names = []
+        sample_names = []
+        time_points = []
+        experiment_ids,lineage_names,sample_names,time_points = self.stage01_resequencing_query.get_experimentIDAndLineageNameAndSampleNameAndTimePoint_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
+        # convert time_point to intermediates
+        time_points_int = [int(x) for x in time_points];
+        intermediates,time_points,experiment_ids,sample_names,lineage_names = (list(t) for t in zip(*sorted(zip(time_points_int,time_points,experiment_ids,sample_names,lineage_names))))
+        intermediates = [i for i,x in enumerate(intermediates)];
+        #get the data for the analysis
+        data1_O = [];
+        data2_O = [];
+        for sn_cnt,sn in sample_names:
+            data1_tmp = [];
+            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_ids[sn_cnt],sn);
+            data1_O.extend(data1_tmp);
+            data2_tmp = [];
+            data2_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverageStats(experiment_ids[sn_cnt],sn);
+            data2_O.extend(data1_tmp);
+
+  
+  

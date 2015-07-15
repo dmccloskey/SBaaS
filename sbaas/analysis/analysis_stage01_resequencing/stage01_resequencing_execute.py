@@ -3,6 +3,7 @@
 from sbaas.analysis.analysis_base import *
 from .stage01_resequencing_query import *
 from .stage01_resequencing_io import *
+#from sbaas.resources.r import r_calculate
 
 class stage01_resequencing_execute():
     '''class for resequencing analysis'''
@@ -10,7 +11,9 @@ class stage01_resequencing_execute():
         if session_I: self.session = session_I;
         else: self.session = Session();
         self.stage01_resequencing_query = stage01_resequencing_query(self.session);
+        self.stage01_resequencing_io = stage01_resequencing_io(self.session);
         self.calculate = base_calculate();
+        #self.r_calc = r_calculate();
     #analysis
     def execute_filterMutations_population(self,experiment_id,p_value_criteria=0.01,quality_criteria=6.0,frequency_criteria=0.1,sample_names_I=None):
         '''Filter mutations that do not meet the desired criteria'''
@@ -479,230 +482,6 @@ class stage01_resequencing_execute():
         # update rows in the database
         io = stage01_resequencing_io();
         io.update_dataStage01ResequencingEndpoints(data_O);
-    #helper functions
-    def find_genesFromMutationPosition(self,mutation_position_I,record_I):
-        '''find genes at the position or closes to the position given the reference genome'''
-        #input:
-        # mutation_position_I = mutation position [int]
-        # record = genbank record [SeqRecord]
-        snp_records = {};
-        snp_records['gene'] = []
-        snp_records['db_xref'] = []
-        snp_records['locus_tag'] = []
-        snp_records['EC_number'] = []
-        snp_records['product'] = []
-        snp_records['location'] = []
-        # find features in the coding region of the genome that bracket the mutation position
-        for feature_cnt,feature in enumerate(record_I.features):
-            if mutation_position_I in feature and feature.type == 'gene':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-            elif mutation_position_I in feature and feature.type == 'CDS':
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'repeat_region':
-                snp_records['location'] = feature.qualifiers.get('note')
-            elif mutation_position_I in feature and feature.type == 'mobile_element':
-                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
-            elif mutation_position_I in feature and feature.type == 'misc_feature':
-                snp_records['location'] = feature.qualifiers.get('note')
-            elif mutation_position_I in feature and feature.type == 'mat_peptide':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'tRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'rRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'ncRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type != 'source':
-                print(feature)
-        if not snp_records['location']:
-            # no features in the coding region were found that bracket the mutation
-            # find features before and after the mutation position
-            start_prev = 0;
-            stop_prev = 0;
-            inter1_start = None;
-            inter1_stop = None;
-            inter2_start = None;
-            inter2_stop = None;
-            # pass 1: locate the start and stop positions of the features before and after the mutation
-            for feature_cnt,feature in enumerate(record_I.features):
-                start = feature.location.start.position
-                stop = feature.location.end.position
-                if mutation_position_I > stop_prev and mutation_position_I < start:
-                    inter1_start = start_prev;
-                    inter1_stop = stop_prev;
-                    inter2_start = start;
-                    inter2_stop = stop
-                    break;
-                start_prev = start;
-                stop_prev = stop;
-            if not inter1_start:
-                # the end of the genome was reached without finding features both before and after the mutation
-                # record the last entry
-                inter1_start = start_prev;
-                inter1_stop = stop_prev;
-                inter2_start = start;
-                inter2_stop = stop
-            # pass 2: record features before and after the mutation
-            for feature_cnt,feature in enumerate(record_I.features):
-                start = feature.location.start.position
-                stop = feature.location.end.position
-                if (inter1_start == start and inter1_stop == stop) or (inter2_start == start and inter2_stop == stop):
-                    if feature.type == 'gene':
-                        snp_records['gene'] += feature.qualifiers.get('gene')
-                        snp_records['db_xref'] += feature.qualifiers.get('db_xref')
-                        snp_records['locus_tag'] += feature.qualifiers.get('locus_tag')
-                    if feature.type == 'CDS':
-                        if feature.qualifiers.get('EC_number'):snp_records['EC_number'] += feature.qualifiers.get('EC_number')
-                        else:snp_records['EC_number'] += [None]
-                        if feature.qualifiers.get('product'):snp_records['product'] += feature.qualifiers.get('product')
-                        else:snp_records['product'] += [None]
-            for gene in snp_records['gene']:
-                snp_records['location'] += ['intergenic']
-        return snp_records;
-    def generate_httplink2gene_ecogene(self,ecogene_I):
-        '''Generate link to ecocyc using the ecogene accession number'''
-        ecogene_httplink = 'http://ecocyc.org/ECOLI/NEW-IMAGE?type=GENE&object='+ecogene_I;
-        return ecogene_httplink
-    #table initializations:
-    def drop_dataStage01(self):
-        try:
-            data_stage01_resequencing_evidence.__table__.drop(engine,True);
-            data_stage01_resequencing_mutations.__table__.drop(engine,True);
-            data_stage01_resequencing_metadata.__table__.drop(engine,True);
-            data_stage01_resequencing_validation.__table__.drop(engine,True);
-            data_stage01_resequencing_mutationsFiltered.__table__.drop(engine,True);
-            data_stage01_resequencing_lineage.__table__.drop(engine,True);
-            data_stage01_resequencing_endpoints.__table__.drop(engine,True);
-            data_stage01_resequencing_mutationsAnnotated.__table__.drop(engine,True);
-            data_stage01_resequencing_analysis.__table__.drop(engine,True);
-            data_stage01_resequencing_heatmap.__table__.drop(engine,True);
-            data_stage01_resequencing_dendrogram.__table__.drop(engine,True);
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
-        try:
-            if experiment_id_I:
-                reset = self.session.query(data_stage01_resequencing_metadata).filter(data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_mutations).filter(data_stage01_resequencing_mutations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_evidence).filter(data_stage01_resequencing_evidence.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_validation).filter(data_stage01_resequencing_validation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).filter(data_stage01_resequencing_mutationsFiltered.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                #reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                #reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).filter(data_stage01_resequencing_mutationsAnnotated.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-            elif analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_analysis).filter(data_stage01_resequencing_analysis.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_metadata).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_mutations).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_evidence).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_validation).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_lineage).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).delete(synchronize_session=False);
-                reset = self.session.query(data_stage01_resequencing_analysis).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_resequencing_heatmap(self,analysis_id_I = None):
-        try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_heatmap).filter(data_stage01_resequencing_heatmap.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_heatmap).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_resequencing_dendrogram(self,analysis_id_I = None):
-        try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_dendrogram).filter(data_stage01_resequencing_dendrogram.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_dendrogram).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def initialize_dataStage01(self):
-        try:
-            data_stage01_resequencing_metadata.__table__.create(engine,True);
-            data_stage01_resequencing_mutations.__table__.create(engine,True);
-            data_stage01_resequencing_evidence.__table__.create(engine,True);
-            data_stage01_resequencing_validation.__table__.create(engine,True);
-            data_stage01_resequencing_mutationsFiltered.__table__.create(engine,True);
-            data_stage01_resequencing_lineage.__table__.create(engine,True);
-            data_stage01_resequencing_endpoints.__table__.create(engine,True);
-            data_stage01_resequencing_mutationsAnnotated.__table__.create(engine,True);
-            data_stage01_resequencing_analysis.__table__.create(engine,True);
-            data_stage01_resequencing_heatmap.__table__.create(engine,True);
-            data_stage01_resequencing_dendrogram.__table__.create(engine,True);
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_filtered(self,experiment_id_I = None):
-        try:
-            if experiment_id_I:
-                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).filter(data_stage01_resequencing_mutationsFiltered.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_lineage(self,analysis_id_I = None):
-        try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_lineage).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_endpoints(self,analysis_id_I = None):
-        try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    #TODO:
     def execute_heatmap_lineage(self, analysis_id_I,
                 row_pdist_metric_I='euclidean',row_linkage_method_I='complete',
                 col_pdist_metric_I='euclidean',col_linkage_method_I='complete',
@@ -903,4 +682,685 @@ class stage01_resequencing_execute():
             'frequency',True, None);
         self.session.add(row);
         self.session.commit();
-                
+    #helper functions
+    def find_genesFromMutationPosition(self,mutation_position_I,record_I):
+        '''find genes at the position or closes to the position given the reference genome'''
+        #input:
+        # mutation_position_I = mutation position [int]
+        # record = genbank record [SeqRecord]
+        snp_records = {};
+        snp_records['gene'] = []
+        snp_records['db_xref'] = []
+        snp_records['locus_tag'] = []
+        snp_records['EC_number'] = []
+        snp_records['product'] = []
+        snp_records['location'] = []
+        # find features in the coding region of the genome that bracket the mutation position
+        for feature_cnt,feature in enumerate(record_I.features):
+            if mutation_position_I in feature and feature.type == 'gene':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+            elif mutation_position_I in feature and feature.type == 'CDS':
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif mutation_position_I in feature and feature.type == 'repeat_region':
+                snp_records['location'] = feature.qualifiers.get('note')
+            elif mutation_position_I in feature and feature.type == 'mobile_element':
+                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
+            elif mutation_position_I in feature and feature.type == 'misc_feature':
+                snp_records['location'] = feature.qualifiers.get('note')
+            elif mutation_position_I in feature and feature.type == 'mat_peptide':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif mutation_position_I in feature and feature.type == 'tRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif mutation_position_I in feature and feature.type == 'rRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif mutation_position_I in feature and feature.type == 'ncRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif mutation_position_I in feature and feature.type != 'source':
+                print(feature)
+        if not snp_records['location']:
+            # no features in the coding region were found that bracket the mutation
+            # find features before and after the mutation position
+            start_prev = 0;
+            stop_prev = 0;
+            inter1_start = None;
+            inter1_stop = None;
+            inter2_start = None;
+            inter2_stop = None;
+            # pass 1: locate the start and stop positions of the features before and after the mutation
+            for feature_cnt,feature in enumerate(record_I.features):
+                start = feature.location.start.position
+                stop = feature.location.end.position
+                if mutation_position_I > stop_prev and mutation_position_I < start:
+                    inter1_start = start_prev;
+                    inter1_stop = stop_prev;
+                    inter2_start = start;
+                    inter2_stop = stop
+                    break;
+                start_prev = start;
+                stop_prev = stop;
+            if not inter1_start:
+                # the end of the genome was reached without finding features both before and after the mutation
+                # record the last entry
+                inter1_start = start_prev;
+                inter1_stop = stop_prev;
+                inter2_start = start;
+                inter2_stop = stop
+            # pass 2: record features before and after the mutation
+            for feature_cnt,feature in enumerate(record_I.features):
+                start = feature.location.start.position
+                stop = feature.location.end.position
+                if (inter1_start == start and inter1_stop == stop) or (inter2_start == start and inter2_stop == stop):
+                    if feature.type == 'gene':
+                        snp_records['gene'] += feature.qualifiers.get('gene')
+                        snp_records['db_xref'] += feature.qualifiers.get('db_xref')
+                        snp_records['locus_tag'] += feature.qualifiers.get('locus_tag')
+                    if feature.type == 'CDS':
+                        if feature.qualifiers.get('EC_number'):snp_records['EC_number'] += feature.qualifiers.get('EC_number')
+                        else:snp_records['EC_number'] += [None]
+                        if feature.qualifiers.get('product'):snp_records['product'] += feature.qualifiers.get('product')
+                        else:snp_records['product'] += [None]
+            for gene in snp_records['gene']:
+                snp_records['location'] += ['intergenic']
+        return snp_records;
+    def generate_httplink2gene_ecogene(self,ecogene_I):
+        '''Generate link to ecocyc using the ecogene accession number'''
+        ecogene_httplink = 'http://ecocyc.org/ECOLI/NEW-IMAGE?type=GENE&object='+ecogene_I;
+        return ecogene_httplink
+    #table initializations:
+    def drop_dataStage01(self):
+        try:
+            data_stage01_resequencing_evidence.__table__.drop(engine,True);
+            data_stage01_resequencing_mutations.__table__.drop(engine,True);
+            data_stage01_resequencing_metadata.__table__.drop(engine,True);
+            data_stage01_resequencing_validation.__table__.drop(engine,True);
+            data_stage01_resequencing_mutationsFiltered.__table__.drop(engine,True);
+            data_stage01_resequencing_lineage.__table__.drop(engine,True);
+            data_stage01_resequencing_endpoints.__table__.drop(engine,True);
+            data_stage01_resequencing_mutationsAnnotated.__table__.drop(engine,True);
+            data_stage01_resequencing_analysis.__table__.drop(engine,True);
+            data_stage01_resequencing_heatmap.__table__.drop(engine,True);
+            data_stage01_resequencing_dendrogram.__table__.drop(engine,True);
+            data_stage01_resequencing_coverage.__table__.drop(engine,True);
+            data_stage01_resequencing_coverageStats.__table__.drop(engine,True);
+            data_stage01_resequencing_amplifications.__table__.drop(engine,True);
+            data_stage01_resequencing_amplificationStats.__table__.drop(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
+        try:
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_metadata).filter(data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutations).filter(data_stage01_resequencing_mutations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_evidence).filter(data_stage01_resequencing_evidence.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_validation).filter(data_stage01_resequencing_validation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).filter(data_stage01_resequencing_mutationsFiltered.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                #reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                #reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).filter(data_stage01_resequencing_mutationsAnnotated.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            elif analysis_id_I:
+                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_analysis).filter(data_stage01_resequencing_analysis.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_metadata).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutations).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_evidence).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_validation).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_lineage).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_analysis).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_resequencing_heatmap(self,analysis_id_I = None):
+        try:
+            if analysis_id_I:
+                reset = self.session.query(data_stage01_resequencing_heatmap).filter(data_stage01_resequencing_heatmap.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_heatmap).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_resequencing_dendrogram(self,analysis_id_I = None):
+        try:
+            if analysis_id_I:
+                reset = self.session.query(data_stage01_resequencing_dendrogram).filter(data_stage01_resequencing_dendrogram.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_dendrogram).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def initialize_dataStage01(self):
+        try:
+            data_stage01_resequencing_metadata.__table__.create(engine,True);
+            data_stage01_resequencing_mutations.__table__.create(engine,True);
+            data_stage01_resequencing_evidence.__table__.create(engine,True);
+            data_stage01_resequencing_validation.__table__.create(engine,True);
+            data_stage01_resequencing_mutationsFiltered.__table__.create(engine,True);
+            data_stage01_resequencing_lineage.__table__.create(engine,True);
+            data_stage01_resequencing_endpoints.__table__.create(engine,True);
+            data_stage01_resequencing_mutationsAnnotated.__table__.create(engine,True);
+            data_stage01_resequencing_analysis.__table__.create(engine,True);
+            data_stage01_resequencing_heatmap.__table__.create(engine,True);
+            data_stage01_resequencing_dendrogram.__table__.create(engine,True);
+            data_stage01_resequencing_coverage.__table__.create(engine,True);
+            data_stage01_resequencing_coverageStats.__table__.create(engine,True);
+            data_stage01_resequencing_amplifications.__table__.create(engine,True);
+            data_stage01_resequencing_amplificationStats.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_filtered(self,experiment_id_I = None):
+        try:
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).filter(data_stage01_resequencing_mutationsFiltered.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_mutationsFiltered).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_lineage(self,analysis_id_I = None):
+        try:
+            if analysis_id_I:
+                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_lineage).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_endpoints(self,analysis_id_I = None):
+        try:
+            if analysis_id_I:
+                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_resequencing_coverage(self,experiment_id_I = None, sample_names_I=[]):
+        try:
+            if experiment_id_I and sample_names_I:
+                for sn in sample_names_I:
+                    reset = self.session.query(data_stage01_resequencing_coverage).filter(
+                        data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_coverage.sample_name.like(sn)).delete(synchronize_session=False);
+                    reset = self.session.query(data_stage01_resequencing_coverageStats).filter(
+                        data_stage01_resequencing_coverageStats.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_coverageStats.sample_name.like(sn)).delete(synchronize_session=False);
+            elif experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_coverage).filter(data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_coverageStats).filter(data_stage01_resequencing_coverageStats.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_coverage).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_coverageStats).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_resequencing_amplifications(self,experiment_id_I = None, sample_names_I=[]):
+        try:
+            if experiment_id_I and sample_names_I:
+                for sn in sample_names_I:
+                    reset = self.session.query(data_stage01_resequencing_amplifications).filter(
+                        data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_amplifications.sample_name.like(sn)).delete(synchronize_session=False);
+                    reset = self.session.query(data_stage01_resequencing_amplificationStats).filter(
+                        data_stage01_resequencing_amplificationStats.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_amplificationStats.sample_name.like(sn)).delete(synchronize_session=False);
+            elif experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_amplifications).filter(data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_amplificationStats).filter(data_stage01_resequencing_amplificationStats.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_amplifications).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_amplificationStats).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    #TODO:
+    def execute_coverageStats_fromGff(self,analysis_id_I):
+        '''Calculate coverage statistics from gff file
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+        # get the analysis_info
+        analysis_rows = [];
+
+        # get the data
+        data_O = [];
+        for cnt,analysis in analysis_rows:
+            # get the sample_names
+            experiment_id = analysis['experiment_id'];
+            sn = analysis['sample_name'];
+        
+
+    #todo: template for amplification stats
+    def execute_coverageStats_fromTable(self,analysis_id_I):
+        '''Calculate coverage statistics'''
+        # get the analysis_info
+        analysis_rows = [];
+
+        # get the data
+        data_O = [];
+        for cnt,analysis in analysis_rows:
+            # get the sample_names
+            experiment_id = analysis['experiment_id'];
+            sn = analysis['sample_name'];
+            # get chromosomes
+            chromosomes = [];
+
+            for chromosome in chromosomes:
+                # get strands
+                strands = []
+
+                for strand in strands:
+                    # get the indices/reads and other information
+                    start,stop = None,None;
+                    
+                    data_indices,data_reads = [],[];
+
+                    # calculate the descriptive statistics
+                    data_TTest = {};
+                    data_TTest = self.r_calc.calculate_oneSampleTTest(data_reads, alternative_I = "two.sided", mu_I = 0, paired_I="FALSE", var_equal_I = "TRUE", ci_level_I = 0.95, padjusted_method_I = "bonferroni");
+                    # calculate the interquartile range
+                    min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+                    min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(data_reads);
+                    # record data for
+                    data_O.append({
+                        'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':chromosome,
+                        'genome_strand':strand,
+                        'strand_start':start,
+                        'strand_stop':stop,
+                        'reads_min':min_O,
+                        'reads_max':max_O,
+                        'reads_lb':data_TTest['ci_lb'],
+                        'reads_ub':data_TTest['ci_ub'],
+                        'reads_iq1':iq_1_O,
+                        'reads_iq3':iq_3_O,
+                        'reads_median':median_O,
+                        'reads_mean':data_TTest['mean'],
+                        'reads_var':data_TTest['var'],
+                        'reads_n':len(data_reads)
+                        })
+        self.stage01_resequencing_io.add_dataStage01ResequencingCoverageStats(data_O);
+
+    def execute_findAmplifications_fromGff(self,
+                #analysis_id_I,
+                experiment_id_I,
+                strand_start, strand_stop,
+                sample_names_I = [],
+                scale_factor=True, downsample_factor=0,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
+        '''Calculate coverage statistics from gff file
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+
+        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
+
+        # get the data
+        data_O = [];
+        
+        ## get the analysis_info
+        #analysis_rows = [];
+        # query information from coverage table
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names and experiment_ids
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+        #    filename = analysis['data_dir']
+        for cnt,sn in enumerate(sample_names):
+            # get the data_dir
+            filename = [];
+            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
+            # extract the strands
+            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
+            # find high coverage regions
+            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
+            # record high coverage regions
+            # + strand
+            iter = 0;
+            for index,reads in plus_high_regions.iteritems():
+                if index > plus_high_region_indices[iter]['stop']:
+                    iter+=1;
+                data_O.append({
+                #'analysis_id':analysis_id,
+                'experiment_id':experiment_id,
+                'sample_name':sn,
+                'genome_chromosome':1, #default
+                'genome_strand':'+',
+                'genome_index':int(index),
+                'strand_start':strand_start,
+                'strand_stop':strand_stop,
+                'reads':float(reads),
+                'reads_min':reads_min,
+                'reads_max':reads_max,
+                'indices_min':indices_min,
+                'consecutive_tol':consecutive_tol,
+                'scale_factor':scale_factor,
+                'downsample_factor':downsample_factor,
+                'amplification_start':int(plus_high_region_indices[iter]['start']),
+                'amplification_stop':int(plus_high_region_indices[iter]['stop']),
+                'used_':True,
+                'comment_':None
+                    });
+            # - strand
+            iter = 0;
+            for index,reads in minus_high_regions.iteritems():
+                if index > minus_high_region_indices[iter]['stop']:
+                    iter+=1;
+                data_O.append({
+                #'analysis_id':analysis_id,
+                'experiment_id':experiment_id,
+                'sample_name':sn,
+                'genome_chromosome':1, #default
+                'genome_strand':'-',
+                'genome_index':int(index),
+                'strand_start':strand_start,
+                'strand_stop':strand_stop,
+                'reads':float(reads),
+                'reads_min':reads_min,
+                'reads_max':reads_max,
+                'indices_min':indices_min,
+                'consecutive_tol':consecutive_tol,
+                'scale_factor':scale_factor,
+                'downsample_factor':downsample_factor,
+                'amplification_start':int(minus_high_region_indices[iter]['start']),
+                'amplification_stop':int(minus_high_region_indices[iter]['stop']),
+                'used_':True,
+                'comment_':None
+                    });
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
+
+    def execute_amplificationStats_fromTable(self,
+                #analysis_id_I,
+                experiment_id_I,
+                sample_names_I=[]):
+        '''Calculate coverage statistics'''
+
+        # get the data
+        data_O = [];
+
+        ## get the analysis_info
+        #analysis_rows = [];
+        ## query information from amplification table
+
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id_I);
+        for cnt,sn in enumerate(sample_names):
+            # get chromosomes
+            chromosomes = [];
+            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
+            for chromosome in chromosomes:
+                # get strands
+                strands = []
+                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
+                for strand in strands:
+                    # get the start and stop of the indices
+                    genomic_starts,genomic_stops = [],[]
+                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the start and stop regions
+                    starts,stops = [],[]
+                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the indices/reads and other information
+                    for start_cnt,start in enumerate(starts):
+                        data_indices,data_reads = [],[];
+                        data_indices,data_reads = self.stage01_resequencing_query.get_genomeIndexAndReads_experimentIDAndSampleNameAndChromosomeAndStrandAndAmplificationRegions_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand,start,stops[start_cnt]);
+                        # calculate using R
+                        #data_TTest = {};
+                        #data_TTest = self.r_calc.calculate_oneSampleTTest(data_reads, alternative_I = "two.sided", mu_I = 0, paired_I="FALSE", var_equal_I = "TRUE", ci_level_I = 0.95, padjusted_method_I = "bonferroni");
+                        # calculate using scipy
+                        data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(data_reads,confidence_I = 0.95);
+                        # calculate the interquartile range
+                        min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+                        min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(data_reads);
+                        # record data for
+                        data_O.append({
+                            #'analysis_id':analysis_id,
+                            'experiment_id':experiment_id_I,
+                            'sample_name':sn,
+                            'genome_chromosome':chromosome,
+                            'genome_strand':strand,
+                            'strand_start':genomic_starts[0],
+                            'strand_stop':genomic_stops[0],
+                            'reads_min':min_O,
+                            'reads_max':max_O,
+                            #'reads_lb':data_TTest['ci_lb'],
+                            #'reads_ub':data_TTest['ci_ub'],
+                            'reads_lb':data_lb_O,
+                            'reads_ub':data_ub_O,
+                            'reads_iq1':iq_1_O,
+                            'reads_iq3':iq_3_O,
+                            'reads_median':median_O,
+                            #'reads_mean':data_TTest['mean'],
+                            #'reads_var':data_TTest['var'],
+                            'reads_mean':data_ave_O,
+                            'reads_var':data_var_O,
+                            'reads_n':len(data_reads),
+                            'amplification_start':start,
+                            'amplification_stop':stops[start_cnt],
+                            'used_':True,
+                            'comment_':None
+                            })
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(data_O);
+
+    def execute_findAmplificationsAndCalculateStats_fromGff(self,
+                #analysis_id_I,
+                experiment_id_I,
+                strand_start, strand_stop,
+                sample_names_I = [],
+                scale_factor=True, downsample_factor=2000,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
+        '''Calculate coverage statistics from gff file
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+
+        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
+
+        # get the data
+        data_O = [];
+        stats_O = [];
+        ## get the analysis_info
+        #analysis_rows = [];
+        # query information from coverage table
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names and experiment_ids
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+        #    filename = analysis['data_dir']
+        for cnt,sn in enumerate(sample_names):
+            # get the data_dir
+            filename = [];
+            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
+            # extract the strands
+            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=0)
+            # find high coverage regions
+            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
+            # calculate stats on the high coverage regions
+            # + strand
+            for row in plus_high_region_indices:
+                plus_region = plus_high_regions[(plus_high_regions.index>=row['start']) & (plus_high_regions.index<=row['stop'])]
+                # calculate using scipy
+                data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
+                data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(plus_region.values,confidence_I = 0.95);
+                # calculate the interquartile range
+                min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+                min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(plus_region.values);
+                # record data
+                stats_O.append({
+                    #'analysis_id':analysis_id,
+                    'experiment_id':experiment_id_I,
+                    'sample_name':sn,
+                    'genome_chromosome':1,
+                    'genome_strand':'+',
+                    'strand_start':strand_start,
+                    'strand_stop':strand_stop,
+                    'reads_min':min_O,
+                    'reads_max':max_O,
+                    'reads_lb':data_lb_O,
+                    'reads_ub':data_ub_O,
+                    'reads_iq1':iq_1_O,
+                    'reads_iq3':iq_3_O,
+                    'reads_median':median_O,
+                    'reads_mean':data_ave_O,
+                    'reads_var':data_var_O,
+                    'reads_n':len(plus_region.values),
+                    'amplification_start':int(row['start']),
+                    'amplification_stop':int(row['stop']),
+                    'used_':True,
+                    'comment_':None
+                    })
+                # downsample
+                collapse_factor = None;
+                if downsample_factor > 1:
+                    collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
+                if collapse_factor and collapse_factor > 1:
+                    plus_region = plus_region.groupby(lambda x: x // collapse_factor).mean()
+                    plus_region.index *= collapse_factor
+                # record high coverage regions
+                for index,reads in plus_region.iteritems():
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'+',
+                        'genome_index':int(index),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':float(reads),
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':int(row['start']),
+                        'amplification_stop':int(row['stop']),
+                        'used_':True,
+                        'comment_':None
+                    });
+            # - strand
+            for row in minus_high_region_indices:
+                minus_region = minus_high_regions[(minus_high_regions.index>=row['start']) & (minus_high_regions.index<=row['stop'])]
+                # calculate using scipy
+                data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
+                data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(minus_region.values,confidence_I = 0.95);
+                # calculate the interquartile range
+                min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+                min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(minus_region.values);
+                # record data
+                stats_O.append({
+                    #'analysis_id':analysis_id,
+                    'experiment_id':experiment_id_I,
+                    'sample_name':sn,
+                    'genome_chromosome':1,
+                    'genome_strand':'-',
+                    'strand_start':strand_start,
+                    'strand_stop':strand_stop,
+                    'reads_min':min_O,
+                    'reads_max':max_O,
+                    'reads_lb':data_lb_O,
+                    'reads_ub':data_ub_O,
+                    'reads_iq1':iq_1_O,
+                    'reads_iq3':iq_3_O,
+                    'reads_median':median_O,
+                    'reads_mean':data_ave_O,
+                    'reads_var':data_var_O,
+                    'reads_n':len(minus_region.values),
+                    'amplification_start':int(row['start']),
+                    'amplification_stop':int(row['stop']),
+                    'used_':True,
+                    'comment_':None
+                    })
+                # downsample
+                collapse_factor = None;
+                if downsample_factor > 1:
+                    collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
+                if collapse_factor and collapse_factor > 1:
+                    minus_region = minus_region.groupby(lambda x: x // collapse_factor).mean()
+                    minus_region.index *= collapse_factor
+                # record high coverage regions
+                for index,reads in minus_region.iteritems():
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'-',
+                        'genome_index':int(index),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':float(reads),
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':int(row['start']),
+                        'amplification_stop':int(row['stop']),
+                        'used_':True,
+                        'comment_':None});
+
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(stats_O);

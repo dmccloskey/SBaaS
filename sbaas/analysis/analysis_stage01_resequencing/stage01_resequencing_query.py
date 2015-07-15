@@ -640,31 +640,237 @@ class stage01_resequencing_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    # query data from data_stage01_resequencing_heatmap
-    def get_rows_analysisID_dataStage01ResequencingHeatmap(self,analysis_id_I):
-        '''Query rows from data_stage01_resequencing_heatmap'''
+    # query data from data_stage01_resequencing_coverage
+    def get_sampleNames_experimentID_dataStage01ResequencingCoverage(self,experiment_id_I):
+        '''Query sample names by experiment_id from data_stage01_resequencing_coverage'''
         try:
-            data = self.session.query(data_stage01_resequencing_heatmap).filter(
-                    data_stage01_resequencing_heatmap.analysis_id.like(analysis_id_I),
-                    data_stage01_resequencing_heatmap.used_).all();
+            data = self.session.query(data_stage01_resequencing_coverage.sample_name).filter(
+                    data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_coverage.used_).group_by(
+                    data_stage01_resequencing_coverage.sample_name).order_by(
+                    data_stage01_resequencing_coverage.sample_name.asc()).all();
             data_O = [];
             for d in data: 
-                data_dict = {'analysis_id':d.analysis_id,
-                    'col_index':d.col_index,
-                    'row_index':d.row_index,
-                    'value':d.value,
-                    'col_leaves':d.col_leaves,
-                    'row_leaves':d.row_leaves,
-                    'col_label':d.col_label,
-                    'row_label':d.row_label,
-                    'col_pdist_metric':d.col_pdist_metric,
-                    'row_pdist_metric':d.row_pdist_metric,
-                    'col_linkage_method':d.col_linkage_method,
-                    'row_linkage_method':d.row_linkage_method,
-                    'value_units':d.value_units,
-                    'used_':d.used_,
-                    'comment_':d.comment_};
-                data_O.append(data_dict);
+                data_O.append(d.sample_name);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(self,experiment_id_I,sample_name_I):
+        '''Query data_dirs by experiment_id and sample_name from data_stage01_resequencing_coverage'''
+        try:
+            data = self.session.query(data_stage01_resequencing_coverage.data_dir).filter(
+                    data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_coverage.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_coverage.used_).group_by(
+                    data_stage01_resequencing_coverage.data_dir).order_by(
+                    data_stage01_resequencing_coverage.data_dir.asc()).all();
+            data_O = [];
+            for d in data: 
+                data_O.append(d.data_dir);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+
+    # query data from data_stage01_resequencing_amplifications
+    def get_sampleNames_experimentID_dataStage01ResequencingAmplifications(self,experiment_id_I):
+        '''Query sample names by experiment_id from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.sample_name).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.sample_name).order_by(
+                    data_stage01_resequencing_amplifications.sample_name.asc()).all();
+            data_O = [];
+            for d in data: 
+                data_O.append(d.sample_name);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I):
+        '''Query chromosomes by experiment_id and sample_name from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.genome_chromosome).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.genome_chromosome).order_by(
+                    data_stage01_resequencing_amplifications.genome_chromosome.asc()).all();
+            data_O = [];
+            for d in data: 
+                data_O.append(d.genome_chromosome);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I,chromosome_I):
+        '''Query strands by experiment_id and sample_name and chromosome from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.genome_strand).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.genome_chromosome==chromosome_I,
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.genome_strand).order_by(
+                    data_stage01_resequencing_amplifications.genome_strand.asc()).all();
+            data_O = [];
+            for d in data: 
+                data_O.append(d.genome_strand);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I,chromosome_I,strand_I):
+        '''Query start and stop by experiment_id and sample_name and chromosome and strand from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.strand_start,
+                    data_stage01_resequencing_amplifications.strand_stop).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.genome_chromosome==chromosome_I,
+                    data_stage01_resequencing_amplifications.genome_strand.like(strand_I),
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.strand_start,
+                    data_stage01_resequencing_amplifications.strand_stop).order_by(
+                    data_stage01_resequencing_amplifications.strand_start.asc()).all();
+            start_O = [];
+            stop_O = [];
+            for d in data: 
+                start_O.append(d.strand_start);
+                stop_O.append(d.strand_stop);
+            return start_O,stop_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_genomeIndexAndReads_experimentIDAndSampleNameAndChromosomeAndStrandAndStartAndStop_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I,chromosome_I,strand_I,start_I,stop_I):
+        '''Query index and reads by experiment_id and sample_name and chromosome and strand and start and stop from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.genome_index,
+                    data_stage01_resequencing_amplifications.reads).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.genome_chromosome==chromosome_I,
+                    data_stage01_resequencing_amplifications.genome_strand.like(strand_I),
+                    data_stage01_resequencing_amplifications.strand_start==start_I,
+                    data_stage01_resequencing_amplifications.strand_stop==stop_I,
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.genome_index,
+                    data_stage01_resequencing_amplifications.reads).order_by(
+                    data_stage01_resequencing_amplifications.genome_index.asc()).all();
+            genome_index_O = [];
+            reads_O = [];
+            for d in data: 
+                genome_index_O.append(d.genome_index);
+                reads_O.append(d.reads);
+            return genome_index_O,reads_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I,chromosome_I,strand_I):
+        '''Query start and stop by experiment_id and sample_name and chromosome and strand from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.amplification_start,
+                    data_stage01_resequencing_amplifications.amplification_stop).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.genome_chromosome==chromosome_I,
+                    data_stage01_resequencing_amplifications.genome_strand.like(strand_I),
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.amplification_start,
+                    data_stage01_resequencing_amplifications.amplification_stop).order_by(
+                    data_stage01_resequencing_amplifications.amplification_start.asc()).all();
+            start_O = [];
+            stop_O = [];
+            for d in data: 
+                start_O.append(d.amplification_start);
+                stop_O.append(d.amplification_stop);
+            return start_O,stop_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_genomeIndexAndReads_experimentIDAndSampleNameAndChromosomeAndStrandAndAmplificationRegions_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I,chromosome_I,strand_I,start_I,stop_I):
+        '''Query index and reads by experiment_id and sample_name and chromosome and strand and start and stop from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications.genome_index,
+                    data_stage01_resequencing_amplifications.reads).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.genome_chromosome==chromosome_I,
+                    data_stage01_resequencing_amplifications.genome_strand.like(strand_I),
+                    data_stage01_resequencing_amplifications.amplification_start==start_I,
+                    data_stage01_resequencing_amplifications.amplification_stop==stop_I,
+                    data_stage01_resequencing_amplifications.used_).group_by(
+                    data_stage01_resequencing_amplifications.genome_index,
+                    data_stage01_resequencing_amplifications.reads).order_by(
+                    data_stage01_resequencing_amplifications.genome_index.asc()).all();
+            genome_index_O = [];
+            reads_O = [];
+            for d in data: 
+                genome_index_O.append(d.genome_index);
+                reads_O.append(d.reads);
+            return genome_index_O,reads_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplifications(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'genome_index':d.genome_index,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads':d.reads,
+                'reads_min':d.reads_min,
+                'reads_max':d.reads_max,
+                'indices_min':d.indices_min,
+                'consecutive_tol':d.consecutive_tol,
+                'scale_factor':d.scale_factor,
+                'downsample_factor':d.downsample_factor,
+                'amplification_start':d.amplification_start,
+                'amplification_stop':d.amplification_stop,
+                'used_':d.used_,
+                'comment_':d.comment_});
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+            
+    # query data from data_stage01_resequencing_amplifications
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplificationStats(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_amplificationStats'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplificationStats).filter(
+                    data_stage01_resequencing_amplificationStats.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplificationStats.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplificationStats.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads_min':d.reads_min,
+                'reads_max':d.reads_max,
+                'reads_lb':d.reads_lb,
+                'reads_ub':d.reads_ub,
+                'reads_iq1':d.reads_iq1,
+                'reads_iq3':d.reads_iq3,
+                'reads_median':d.reads_median,
+                'reads_mean':d.reads_mean,
+                'reads_var':d.reads_var,
+                'reads_n':d.reads_n,
+                'amplification_start':d.amplification_start,
+                'amplification_stop':d.amplification_stop,
+                'used_':d.used_,
+                'comment_':d.comment_
+                    });
             return data_O;
         except SQLAlchemyError as e:
             print(e);

@@ -226,6 +226,12 @@ class stage02_isotopomer_execute():
                         UPDATE "data_stage02_isotopomer_fittedMeasuredFragments"
                         SET simulation_id='%s'
                         WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedNetFluxStatistics"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
+                        UPDATE "data_stage02_isotopomer_fittedFluxStatistics"
+                        SET simulation_id='%s'
+                        WHERE simulation_id LIKE '%s';
                         UPDATE "data_stage02_isotopomer_fittedNetFluxes"
                         SET simulation_id='%s'
                         WHERE simulation_id LIKE '%s';
@@ -236,6 +242,8 @@ class stage02_isotopomer_execute():
                         SET simulation_id='%s'
                         WHERE simulation_id LIKE '%s';''' 
                           %(simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
+                            simulation_id_new,simulation_id_old,
                             simulation_id_new,simulation_id_old,
                             simulation_id_new,simulation_id_old,
                             simulation_id_new,simulation_id_old,
