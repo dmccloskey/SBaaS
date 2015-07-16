@@ -85,6 +85,15 @@ d3_chart2d.prototype.add_chart2d2tile = function(){
     this.svgg = this.svgelement.select('g');
 
 };
+d3_chart2d.prototype.remove_chart2d = function(){
+    // remove chart2d from tileid
+    if (this.svgelement){
+        this.svgelement.remove();
+        this.svgelement = null;
+        this.svgenter = null;
+        this.svgg = null;
+    };
+};
 d3_chart2d.prototype.add_title = function (title_I) {
     // add chart title
     this.title = this.svgg.append("text")
@@ -403,6 +412,13 @@ d3_chart2d.prototype.add_x1x2axis = function () {
     this.svgg.select('g.x2axis')
             .transition()
             .call(this._x2axis);
+};
+d3_chart2d.prototype.set_x1axistickformat = function (x1axistickformat_I) {
+    //x1 axis format
+    //uses axis.tickFormat(d3.format())
+    if (typeof x1axistickformat_I !== "undefined"){var x1axistickformat = x1axistickformat_I;}
+    else {var x1axistickformat = null;}
+    this._x1axis.tickFormat(d3.format(x1axistickformat));
 };
 d3_chart2d.prototype.add_x2axis = function () {
     //add x2 axis
@@ -968,4 +984,43 @@ d3_chart2d.prototype.set_legendstyle = function () {
     };
     var selectorstyle = [{ 'selection': selector, 'style': style }]
     this.set_svggcss(selectorstyle);
+};
+d3_chart2d.prototype.set_x1axisticktextstyle = function (x1axisstyle_I) {
+    // custom css styles for x1 axis
+    // Input:
+    //  style = {}, e.g. 'font-size': '12px'
+    if (typeof x1axisstyle_I !== "undefined"){
+        var style = x1axisstyle_I;
+        var x1axisselector = '#' + this.id + 'x1axis' + ' g.tick text';
+        var selectorstyle = [{ 'selection': x1axisselector, 'style': style }]
+        this.set_svggcss(selectorstyle);
+    };
+};
+d3_chart2d.prototype.set_x1axistextstyle = function (x1axisstyle_I) {
+    //x1 axis format
+    //appends styles to x1axis text
+    if (typeof x1axistickformat_I !== "undefined"){var x1axistickformat = x1axistickformat_I;}
+    else {var x1axistickformat = null;}
+    this._x1axis.tickFormat(d3.format(x1axistickformat));
+};
+d3_chart2d.prototype.set_svggattr = function (selectionattr_I) {
+    //set custom css attributes to svgg
+    //Input:
+    // selectionattr_I = [{selection: string e.g., '.axis line, .axis path'
+    //                      attr: {key:,value} strings e.g., [{'transform','rotate(90)'}]
+    for (var i = 0; i < selectionattr_I.length; i++) {
+        this.svgg.selectAll(selectionattr_I[i].selection)
+            .attr(selectionattr_I[i].attr);
+    };
+};
+//todo:
+d3_chart2d.prototype.set_x1axisticktextattr = function (x1axistickattr_I) {
+    //x1 axis format
+    //appends attributes to x1axis text
+    if (typeof x1axistickattr_I !== "undefined"){
+        var x1axistickattr = x1axistickattr_I;
+        var x1axisselector = '#' + this.id + 'x1axis' + ' g.tick text';
+        var selectorattr = [{ 'selection': x1axisselector, 'attr': x1axistickattr }]
+        this.set_svggattr(selectorattr);
+        };
 };

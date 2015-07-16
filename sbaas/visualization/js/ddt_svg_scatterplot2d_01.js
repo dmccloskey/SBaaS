@@ -1,14 +1,14 @@
 "use strict";
 //var ddt_svg_scatterlot2d_01 = function () {
-function ddt_svg_scatterlot2d_01() {
+function ddt_svg_scatterplot2d_01() {
     // scatterplot
     // description:
     // generic scatter plot
     ddt_svg.call(this);
 };
-ddt_svg_scatterlot2d_01.prototype = Object.create(ddt_svg.prototype);
-ddt_svg_scatterlot2d_01.prototype.constructor = ddt_svg_scatterlot2d_01;
-ddt_svg_scatterlot2d_01.prototype.make_svg = function(data_I,parameters_I){
+ddt_svg_scatterplot2d_01.prototype = Object.create(ddt_svg.prototype);
+ddt_svg_scatterplot2d_01.prototype.constructor = ddt_svg_scatterplot2d_01;
+ddt_svg_scatterplot2d_01.prototype.make_svg = function(data_I,parameters_I){
 	// scatterlineplot definition
 
 	this.ddtsvg = new d3_chart2d();
@@ -37,9 +37,12 @@ ddt_svg_scatterlot2d_01.prototype.make_svg = function(data_I,parameters_I){
         this.set_x1domain();
         this.set_y1domain();
         this.set_x1axis();
+        this.set_x1axistickformat(parameters_I.svgx1axistickformat);
         this.set_y1axis();
         this.add_x1axis();
         this.add_y1axis();
+        this.set_x1axisticktextattr(parameters_I.svgx1axisticktextattr)
+        this.set_x1axisticktextstyle(parameters_I.svgx1axisticktextstyle)
         //this.set_x1axiszoom();
         //this.set_y1axiszoom();
         //this.add_zoom();

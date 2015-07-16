@@ -230,6 +230,6 @@ d3_svg.prototype.set_svgstyle = function () {
         //'border': '1px solid #ddd',
         '-webkit-overflow-scrolling': 'touch'
     };
-    var selectorstyle = [{ 'selection': selector1, 'style': style1 }]
+    var selectorstyle = [{ 'selection': selector1, 'style': style1 }];
     this.set_d3css(selectorstyle);
 };

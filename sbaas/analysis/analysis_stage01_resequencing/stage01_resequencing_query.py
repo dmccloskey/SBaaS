@@ -670,6 +670,97 @@ class stage01_resequencing_query(base_analysis):
             return data_O;
         except SQLAlchemyError as e:
             print(e);
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverage(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_coverage'''
+        try:
+            data = self.session.query(data_stage01_resequencing_coverage).filter(
+                    data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_coverage.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_coverage.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'data_dir':d.data_dir,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'genome_index':d.genome_index,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads':d.reads,
+                'scale_factor':d.scale_factor,
+                'downsample_factor':d.downsample_factor,
+                'used_':d.used_,
+                'comment_':d.comment_}
+                              );
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverage_visualization(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_coverage'''
+        try:
+            data = self.session.query(data_stage01_resequencing_coverage).filter(
+                    data_stage01_resequencing_coverage.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_coverage.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_coverage.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'data_dir':d.data_dir,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'genome_index':d.genome_index,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads':d.reads,
+                'scale_factor':d.scale_factor,
+                'downsample_factor':d.downsample_factor,
+                'used_':d.used_,
+                'comment_':d.comment_,
+                'sample_name_strand':"_".join([d.sample_name,d.genome_strand])}
+                              );
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+            
+    # query data from data_stage01_resequencing_coverageStats
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverageStats(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_coverageStats'''
+        try:
+            data = self.session.query(data_stage01_resequencing_coverageStats).filter(
+                    data_stage01_resequencing_coverageStats.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_coverageStats.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_coverageStats.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads_min':d.reads_min,
+                'reads_max':d.reads_max,
+                'reads_lb':d.reads_lb,
+                'reads_ub':d.reads_ub,
+                'reads_iq1':d.reads_iq1,
+                'reads_iq3':d.reads_iq3,
+                'reads_median':d.reads_median,
+                'reads_mean':d.reads_mean,
+                'reads_var':d.reads_var,
+                'reads_n':d.reads_n,
+                'used_':d.used_,
+                'comment_':d.comment_});
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
 
     # query data from data_stage01_resequencing_amplifications
     def get_sampleNames_experimentID_dataStage01ResequencingAmplifications(self,experiment_id_I):
@@ -834,6 +925,39 @@ class stage01_resequencing_query(base_analysis):
                 'amplification_stop':d.amplification_stop,
                 'used_':d.used_,
                 'comment_':d.comment_});
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplifications_visualization(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_amplifications'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplifications).filter(
+                    data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplifications.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplifications.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'genome_index':d.genome_index,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'reads':d.reads,
+                'reads_min':d.reads_min,
+                'reads_max':d.reads_max,
+                'indices_min':d.indices_min,
+                'consecutive_tol':d.consecutive_tol,
+                'scale_factor':d.scale_factor,
+                'downsample_factor':d.downsample_factor,
+                'amplification_start':d.amplification_start,
+                'amplification_stop':d.amplification_stop,
+                'used_':d.used_,
+                'comment_':d.comment_,
+                'sample_name_strand':"_".join([d.sample_name,d.genome_strand])});
             return data_O;
         except SQLAlchemyError as e:
             print(e);

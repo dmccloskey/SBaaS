@@ -484,7 +484,7 @@ class stage01_resequencing_io(base_analysis):
                                 'sample_name':sample_name,
                                 'data_dir':filename,
                                 'genome_chromosome':1, #default
-                                'genome_strand':'+',
+                                'genome_strand':'plus',
                                 'genome_index':int(index),
                                 'strand_start':strand_start,
                                 'strand_stop':strand_stop,
@@ -501,7 +501,7 @@ class stage01_resequencing_io(base_analysis):
                                 'sample_name':sample_name,
                                 'data_dir':filename,
                                 'genome_chromosome':1, #default
-                                'genome_strand':'-',
+                                'genome_strand':'minus',
                                 'genome_index':int(index),
                                 'strand_start':strand_start,
                                 'strand_stop':strand_stop,
@@ -1453,7 +1453,7 @@ class stage01_resequencing_io(base_analysis):
             file.write(tile2datamap_str);
 
     def export_dataStage01ResequencingAmplifications_js(self,analysis_id_I,data_dir_I="tmp"):
-        """export heatmap to js file"""
+        """export amplifications and statistics to js file"""
 
         # get the analysis info
         #analysis_info = {};
@@ -1472,11 +1472,11 @@ class stage01_resequencing_io(base_analysis):
         data2_O = [];
         for sn_cnt,sn in enumerate(sample_names):
             data1_tmp = [];
-            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_ids[sn_cnt],sn);
+            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplifications_visualization(experiment_ids[sn_cnt],sn);
             data1_O.extend(data1_tmp);
             data2_tmp = [];
             data2_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplificationStats(experiment_ids[sn_cnt],sn);
-            data2_O.extend(data1_tmp);
+            data2_O.extend(data2_tmp);
         # dump chart parameters to a js files
         data1_keys = ['experiment_id',
                     'sample_name',
@@ -1484,11 +1484,16 @@ class stage01_resequencing_io(base_analysis):
                     'genome_strand',
                     'amplification_start',
                     'amplification_stop',
+                    'sample_name_strand',
                     ]
-        data1_nestkeys = ['sample_name'];
+        data1_nestkeys = [
+                        #'sample_name',
+                        'genome_strand'
+                        ];
         data1_keymap = {'xdata':'genome_index',
                         'ydata':'reads',
-                        'serieslabel':'mutation_id',
+                        'serieslabel':'sample_name_strand',#custom for vis
+                        #'serieslabel':'genome_strand',
                         'featureslabel':'reads'};
         data2_keys = ['experiment_id',
                 'sample_name',
@@ -1514,7 +1519,7 @@ class stage01_resequencing_io(base_analysis):
         data2_nestkeys = ['sample_name'];
         data2_keymap = {'xdata':'genome_index',
                         'ydata':'reads',
-                        'serieslabel':'mutation_id',
+                        'serieslabel':'genome_strand',
                         'featureslabel':'reads'};
         # make the data object
         dataobject_O = [{"data":data1_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys},{"data":data2_O,"datakeys":data2_keys,"datanestkeys":data2_nestkeys}];
@@ -1523,13 +1528,19 @@ class stage01_resequencing_io(base_analysis):
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-4"};
         formparameters_O = {'htmlid':'filtermenuform1',"htmltype":'form_01',"formsubmitbuttonidtext":{'id':'submit1','text':'submit'},"formresetbuttonidtext":{'id':'reset1','text':'reset'},"formupdatebuttonidtext":{'id':'update1','text':'update'}};
         formtileparameters_O.update(formparameters_O);
-        svgparameters_O = {"svgtype":'scatterlineplot2d_01',"svgkeymap":[data1_keymap,data1_keymap],
+        svgparameters_O = {"svgtype":'scatterplot2d_01',"svgkeymap":[data1_keymap,data1_keymap],
                             'svgid':'svg1',
                             "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
                             "svgwidth":500,"svgheight":350,
-                            "svgx1axislabel":"intermediate","svgy1axislabel":"frequency",
-    						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
-        svgtileparameters_O = {'tileheader':'Population mutation frequency','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
+                            "svgx1axislabel":"index","svgy1axislabel":"reads",
+    						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1',
+                            "svgx1axistickformat":".2e",
+                            "svgx1axisticktextattr":{"transform":"matrix(0,1,-1,0,16,6)",
+                                                     #"transform":'rotate(90)',"transform":'translate(0,10)'
+                                                     },
+                            "svgx1axisticktextstyle":{"text-anchor":"start"}
+                            };
+        svgtileparameters_O = {'tileheader':'Amplifications','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-8"};
         svgtileparameters_O.update(svgparameters_O);
         tableparameters_O = {"tabletype":'responsivetable_01',
@@ -1537,7 +1548,7 @@ class stage01_resequencing_io(base_analysis):
                     "tablefilters":None,
                     "tableclass":"table  table-condensed table-hover",
     			    'tableformtileid':'filtermenu1','tableresetbuttonid':'reset1','tablesubmitbuttonid':'submit1'};
-        tabletileparameters_O = {'tileheader':'Population mutation frequency','tiletype':'table','tileid':"tile3",'rowid':"row2",'colid':"col1",
+        tabletileparameters_O = {'tileheader':'Amplification statistics','tiletype':'table','tileid':"tile3",'rowid':"row2",'colid':"col1",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
         tabletileparameters_O.update(tableparameters_O);
         parametersobject_O = [formtileparameters_O,svgtileparameters_O,tabletileparameters_O];
@@ -1558,7 +1569,7 @@ class stage01_resequencing_io(base_analysis):
             file.write(parameters_str);
             file.write(tile2datamap_str);
 
-    def export_dataStage01ResequencingCoverage_js(self,analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,data_dir_I="tmp"):
+    def export_dataStage01ResequencingCoverage_js(self,analysis_id_I,data_dir_I="tmp"):
         """export heatmap to js file"""
 
         # get the analysis info
@@ -1576,13 +1587,101 @@ class stage01_resequencing_io(base_analysis):
         #get the data for the analysis
         data1_O = [];
         data2_O = [];
-        for sn_cnt,sn in sample_names:
+        for sn_cnt,sn in enumerate(sample_names):
             data1_tmp = [];
-            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_ids[sn_cnt],sn);
+            data1_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverage_visualization(experiment_ids[sn_cnt],sn);
             data1_O.extend(data1_tmp);
             data2_tmp = [];
             data2_tmp = self.stage01_resequencing_query.get_rows_experimentIDAndSampleName_dataStage01ResequencingCoverageStats(experiment_ids[sn_cnt],sn);
-            data2_O.extend(data1_tmp);
+            data2_O.extend(data2_tmp);
+        # dump chart parameters to a js files
+        data1_keys = ['experiment_id',
+                    'sample_name',
+                    'genome_chromosome',
+                    'genome_strand',
+                    'sample_name_strand'
+                    ]
+        data1_nestkeys = [
+                        #'sample_name',
+                        'genome_strand'
+                        ];
+        data1_keymap = {'xdata':'genome_index',
+                        'ydata':'reads',
+                        'serieslabel':'sample_name_strand',#custom for vis
+                        'featureslabel':'reads'};
+        data2_keys = ['experiment_id',
+                'sample_name',
+                'genome_chromosome',
+                'genome_strand',
+                'strand_start',
+                'strand_stop',
+                'reads_min',
+                'reads_max',
+                'reads_lb',
+                'reads_ub',
+                'reads_iq1',
+                'reads_iq3',
+                'reads_median',
+                'reads_mean',
+                'reads_var',
+                'reads_n',
+                'amplification_start',
+                'amplification_stop',
+                'used_',
+                'comment_'
+                    ]
+        data2_nestkeys = ['sample_name'];
+        data2_keymap = {'xdata':'genome_index',
+                        'ydata':'reads',
+                        'serieslabel':'genome_strand',
+                        'featureslabel':'reads'};
+        # make the data object
+        dataobject_O = [{"data":data1_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys},{"data":data2_O,"datakeys":data2_keys,"datanestkeys":data2_nestkeys}];
+        # make the tile parameter objects
+        formtileparameters_O = {'tileheader':'Filter menu','tiletype':'html','tileid':"filtermenu1",'rowid':"row1",'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-4"};
+        formparameters_O = {'htmlid':'filtermenuform1',"htmltype":'form_01',"formsubmitbuttonidtext":{'id':'submit1','text':'submit'},"formresetbuttonidtext":{'id':'reset1','text':'reset'},"formupdatebuttonidtext":{'id':'update1','text':'update'}};
+        formtileparameters_O.update(formparameters_O);
+        svgparameters_O = {"svgtype":'scatterplot2d_01',"svgkeymap":[data1_keymap,data1_keymap],
+                            'svgid':'svg1',
+                            "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
+                            "svgwidth":500,"svgheight":350,
+                            "svgx1axislabel":"index","svgy1axislabel":"reads",
+    						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1',
+                            "svgx1axistickformat":".2e",
+                            "svgx1axisticktextattr":{"transform":"matrix(0,1,-1,0,16,6)",
+                                                     #"transform":'rotate(90)',"transform":'translate(0,10)'
+                                                     },
+                            "svgx1axisticktextstyle":{"text-anchor":"start"}
+                            };
+        svgtileparameters_O = {'tileheader':'Resequencing coverage','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-8"};
+        svgtileparameters_O.update(svgparameters_O);
+        tableparameters_O = {"tabletype":'responsivetable_01',
+                    'tableid':'table1',
+                    "tablefilters":None,
+                    "tableclass":"table  table-condensed table-hover",
+    			    'tableformtileid':'filtermenu1','tableresetbuttonid':'reset1','tablesubmitbuttonid':'submit1'};
+        tabletileparameters_O = {'tileheader':'Resequencing coverage statistics','tiletype':'table','tileid':"tile3",'rowid':"row2",'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
+        tabletileparameters_O.update(tableparameters_O);
+        parametersobject_O = [formtileparameters_O,svgtileparameters_O,tabletileparameters_O];
+        tile2datamap_O = {"filtermenu1":[0],"tile2":[0,0],"tile3":[1]};
+        # dump the data to a json file
+        data_str = 'var ' + 'data' + ' = ' + json.dumps(dataobject_O) + ';';
+        parameters_str = 'var ' + 'parameters' + ' = ' + json.dumps(parametersobject_O) + ';';
+        tile2datamap_str = 'var ' + 'tile2datamap' + ' = ' + json.dumps(tile2datamap_O) + ';';
+        if data_dir_I=='tmp':
+            filename_str = settings.visualization_data + '/tmp/ddt_data.js'
+        elif data_dir_I=='project':
+            filename_str = settings.visualization_data + '/project/' + analysis_id_I + '_data_stage01_resequencing_lineage' + '.js'
+        elif data_dir_I=='data_json':
+            data_json_O = data_str + '\n' + parameters_str + '\n' + tile2datamap_str;
+            return data_json_O;
+        with open(filename_str,'w') as file:
+            file.write(data_str);
+            file.write(parameters_str);
+            file.write(tile2datamap_str);
 
   
   

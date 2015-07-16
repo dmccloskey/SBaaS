@@ -553,7 +553,7 @@ class data_stage01_resequencing_coverage(Base):
     sample_name = Column(String(100))
     data_dir = Column(String(500)); #
     genome_chromosome = Column(Integer); # e.g., 1
-    genome_strand = Column(String(1)); # + or -
+    genome_strand = Column(String(25)); # plus or minus
     genome_index = Column(Integer);
     strand_start = Column(Integer);
     strand_stop = Column(Integer);
@@ -626,7 +626,7 @@ class data_stage01_resequencing_coverageStats(Base):
     experiment_id = Column(String(50))
     sample_name = Column(String(100))
     genome_chromosome = Column(Integer); # e.g., 1
-    genome_strand = Column(String(1)); # + or -
+    genome_strand = Column(String(25)); # plus or minus
     strand_start = Column(Integer);
     strand_stop = Column(Integer);
     reads_min = Column(Float);
@@ -720,7 +720,7 @@ class data_stage01_resequencing_amplifications(Base):
     experiment_id = Column(String(50))
     sample_name = Column(String(100))
     genome_chromosome = Column(Integer); # e.g., 1
-    genome_strand = Column(String(1)); # + or -
+    genome_strand = Column(String(25)); # plus or minus
     genome_index = Column(Integer);
     strand_start = Column(Integer);
     strand_stop = Column(Integer);
@@ -814,7 +814,7 @@ class data_stage01_resequencing_amplificationStats(Base):
     experiment_id = Column(String(50))
     sample_name = Column(String(100))
     genome_chromosome = Column(Integer); # e.g., 1
-    genome_strand = Column(String(1)); # + or -
+    genome_strand = Column(String(25)); # plus or minus
     strand_start = Column(Integer);
     strand_stop = Column(Integer);
     reads_min = Column(Float);

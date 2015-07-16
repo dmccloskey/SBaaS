@@ -55,9 +55,12 @@ ddt_svg_scatterlineplot2d_01.prototype.make_svg = function(data_I,parameters_I){
         this.set_x1domain();
         this.set_y1domain();
         this.set_x1axis();
+        this.set_x1axistickformat(parameters_I.svgx1axistickformat);
         this.set_y1axis();
         this.add_x1axis();
         this.add_y1axis();
+        this.set_x1axisticktextattr(parameters_I.svgx1axisticktextattr)
+        this.set_x1axisticktextstyle(parameters_I.svgx1axisticktextstyle)
         //this.set_x1axiszoom();
         //this.set_y1axiszoom();
         //this.add_zoom();

@@ -1232,11 +1232,15 @@ class stage01_resequencing_execute():
             filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
             # extract the strands
             plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=0)
+            # record the means for later use
+            plus_mean,minus_mean = plus.mean(),minus.mean();
+            plus_min,minus_min = plus.min(),minus.min();
+            plus_max,minus_max = plus.max(),minus.max();
             # find high coverage regions
             plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
             # calculate stats on the high coverage regions
             # + strand
-            for row in plus_high_region_indices:
+            for row_cnt,row in enumerate(plus_high_region_indices):
                 plus_region = plus_high_regions[(plus_high_regions.index>=row['start']) & (plus_high_regions.index<=row['stop'])]
                 # calculate using scipy
                 data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
@@ -1250,7 +1254,7 @@ class stage01_resequencing_execute():
                     'experiment_id':experiment_id_I,
                     'sample_name':sn,
                     'genome_chromosome':1,
-                    'genome_strand':'+',
+                    'genome_strand':'plus',
                     'strand_start':strand_start,
                     'strand_stop':strand_stop,
                     'reads_min':min_O,
@@ -1275,6 +1279,59 @@ class stage01_resequencing_execute():
                 if collapse_factor and collapse_factor > 1:
                     plus_region = plus_region.groupby(lambda x: x // collapse_factor).mean()
                     plus_region.index *= collapse_factor
+                # add mean to index before and after the amplification start and stop, respectively (for visualization)
+                if downsample_factor > 1 and row_cnt==0:
+                    #plus_region[strand_start]=plus_mean;
+                    #plus_region[strand_stop]=plus_mean;
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'plus_mean',
+                        #'genome_index':int(strand_start),
+                        'genome_index':int(row['start']-1),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':plus_mean,
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':strand_start,
+                        'amplification_stop':strand_stop,
+                        'used_':True,
+                        'comment_':'mean reads of the plus strand'
+                        });
+                if downsample_factor > 1 and row_cnt==len(plus_high_region_indices)-1:
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'plus_mean',
+                        #'genome_index':int(strand_stop),
+                        'genome_index':int(row['stop']+1),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':plus_mean,
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':strand_start,
+                        'amplification_stop':strand_stop,
+                        'used_':True,
+                        'comment_':'mean reads of the plus strand'
+                        });
+                ## add zeros to strand start and stop, respectively (for visualization)
+                #if downsample_factor > 1:
+                #    plus_region[row['start']-1]=plus_mean;
+                #    plus_region[row['stop']+1]=plus_mean;
                 # record high coverage regions
                 for index,reads in plus_region.iteritems():
                     data_O.append({
@@ -1282,7 +1339,7 @@ class stage01_resequencing_execute():
                         'experiment_id':experiment_id,
                         'sample_name':sn,
                         'genome_chromosome':1, #default
-                        'genome_strand':'+',
+                        'genome_strand':'plus',
                         'genome_index':int(index),
                         'strand_start':strand_start,
                         'strand_stop':strand_stop,
@@ -1299,7 +1356,7 @@ class stage01_resequencing_execute():
                         'comment_':None
                     });
             # - strand
-            for row in minus_high_region_indices:
+            for row_cnt,row in enumerate(minus_high_region_indices):
                 minus_region = minus_high_regions[(minus_high_regions.index>=row['start']) & (minus_high_regions.index<=row['stop'])]
                 # calculate using scipy
                 data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
@@ -1313,7 +1370,7 @@ class stage01_resequencing_execute():
                     'experiment_id':experiment_id_I,
                     'sample_name':sn,
                     'genome_chromosome':1,
-                    'genome_strand':'-',
+                    'genome_strand':'minus',
                     'strand_start':strand_start,
                     'strand_stop':strand_stop,
                     'reads_min':min_O,
@@ -1338,6 +1395,59 @@ class stage01_resequencing_execute():
                 if collapse_factor and collapse_factor > 1:
                     minus_region = minus_region.groupby(lambda x: x // collapse_factor).mean()
                     minus_region.index *= collapse_factor
+                # add mean to index before and after the amplification start and stop, respectively (for visualization)
+                if downsample_factor > 1 and row_cnt==0:
+                    #minus_region[strand_start]=minus_mean;
+                    #minus_region[strand_stop]=minus_mean;
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'minus_mean',
+                        #'genome_index':int(strand_start),
+                        'genome_index':int(row['start']-1),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':minus_mean,
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':strand_start,
+                        'amplification_stop':strand_stop,
+                        'used_':True,
+                        'comment_':'mean reads of the minus strand'
+                        });
+                if downsample_factor > 1 and row_cnt==len(minus_high_region_indices)-1:
+                    data_O.append({
+                        #'analysis_id':analysis_id,
+                        'experiment_id':experiment_id,
+                        'sample_name':sn,
+                        'genome_chromosome':1, #default
+                        'genome_strand':'minus_mean',
+                        #'genome_index':int(strand_stop),
+                        'genome_index':int(row['stop']+1),
+                        'strand_start':strand_start,
+                        'strand_stop':strand_stop,
+                        'reads':minus_mean,
+                        'reads_min':reads_min,
+                        'reads_max':reads_max,
+                        'indices_min':indices_min,
+                        'consecutive_tol':consecutive_tol,
+                        'scale_factor':scale_factor,
+                        'downsample_factor':downsample_factor,
+                        'amplification_start':strand_start,
+                        'amplification_stop':strand_stop,
+                        'used_':True,
+                        'comment_':'mean reads of the minus strand'
+                        });
+                ## add zeros to strand start and stop, respectively (for visualization)
+                #if downsample_factor > 1:
+                #    minus_region[row['start']-1]=minus_mean;
+                #    minus_region[row['stop']+1]=minus_mean;
                 # record high coverage regions
                 for index,reads in minus_region.iteritems():
                     data_O.append({
@@ -1345,7 +1455,7 @@ class stage01_resequencing_execute():
                         'experiment_id':experiment_id,
                         'sample_name':sn,
                         'genome_chromosome':1, #default
-                        'genome_strand':'-',
+                        'genome_strand':'minus',
                         'genome_index':int(index),
                         'strand_start':strand_start,
                         'strand_stop':strand_stop,
