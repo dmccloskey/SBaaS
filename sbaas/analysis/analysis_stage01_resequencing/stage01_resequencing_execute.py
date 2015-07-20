@@ -684,7 +684,7 @@ class stage01_resequencing_execute():
         self.session.commit();
     #helper functions
     def find_genesFromMutationPosition(self,mutation_position_I,record_I):
-        '''find genes at the position or closes to the position given the reference genome'''
+        '''find genes at the position or closest to the position given the reference genome'''
         #input:
         # mutation_position_I = mutation position [int]
         # record = genbank record [SeqRecord]
@@ -820,6 +820,7 @@ class stage01_resequencing_execute():
             data_stage01_resequencing_coverageStats.__table__.drop(engine,True);
             data_stage01_resequencing_amplifications.__table__.drop(engine,True);
             data_stage01_resequencing_amplificationStats.__table__.drop(engine,True);
+            data_stage01_resequencing_amplificationAnnotations.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
@@ -884,6 +885,7 @@ class stage01_resequencing_execute():
             data_stage01_resequencing_coverageStats.__table__.create(engine,True);
             data_stage01_resequencing_amplifications.__table__.create(engine,True);
             data_stage01_resequencing_amplificationStats.__table__.create(engine,True);
+            data_stage01_resequencing_amplificationAnnotations.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01_filtered(self,experiment_id_I = None):
@@ -942,12 +944,31 @@ class stage01_resequencing_execute():
                     reset = self.session.query(data_stage01_resequencing_amplificationStats).filter(
                         data_stage01_resequencing_amplificationStats.experiment_id.like(experiment_id_I),
                         data_stage01_resequencing_amplificationStats.sample_name.like(sn)).delete(synchronize_session=False);
+                    reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(
+                        data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_amplificationAnnotations.sample_name.like(sn)).delete(synchronize_session=False);
             elif experiment_id_I:
                 reset = self.session.query(data_stage01_resequencing_amplifications).filter(data_stage01_resequencing_amplifications.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_amplificationStats).filter(data_stage01_resequencing_amplificationStats.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
                 reset = self.session.query(data_stage01_resequencing_amplifications).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_amplificationStats).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_resequencing_amplificationAnnotations(self,experiment_id_I = None, sample_names_I=[]):
+        try:
+            if experiment_id_I and sample_names_I:
+                for sn in sample_names_I:
+                    reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(
+                        data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I),
+                        data_stage01_resequencing_amplificationAnnotations.sample_name.like(sn)).delete(synchronize_session=False);
+            elif experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
@@ -1474,3 +1495,167 @@ class stage01_resequencing_execute():
         # add data to the DB
         self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
         self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(stats_O);
+
+    def execute_annotateAmplifications(self,experiment_id_I,sample_names_I=[],ref_genome_I='data/U00096.2.gb'):
+        '''Annotate mutations for date_stage01_resequencing_endpoints
+        based on position, reference genome, and reference genome biologicalmaterial_id'''
+        
+        from Bio import SeqIO
+        from Bio import Entrez
+        record = SeqIO.read(ref_genome_I,'genbank')
+
+        print('Executing annotateAmplifications...')
+        data_O = [];
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id);
+        for cnt,sn in enumerate(sample_names):
+            print('annotating amplifications for sample_name ' + sn);
+            # get chromosomes
+            chromosomes = [];
+            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
+            for chromosome in chromosomes:
+                # get strands
+                strands = []
+                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
+                # remove visualization regions
+                strands = [s for s in strands if not 'mean' in s];
+                for strand in strands:
+                    # get the start and stop of the indices
+                    genomic_starts,genomic_stops = [],[]
+                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the start and stop regions
+                    starts,stops = [],[]
+                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    for start_cnt,start in enumerate(starts):
+                        # annotate each mutation based on the position
+                        annotations = [];
+                        annotations = self.find_genesInRegion(start,stops[start_cnt],record)
+                        for annotation in annotations:
+                            # record the data
+                            tmp = {
+                                'experiment_id':experiment_id,
+                                'sample_name':sn,
+                                'genome_chromosome':chromosome,
+                                'genome_strand':strand,
+                                'strand_start':genomic_starts[0],
+                                'strand_stop':genomic_stops[0],
+                                'amplification_start':start,
+                                'amplification_stop':stops[start_cnt],
+                                'used_':True,
+                                'comment_':None};
+                            tmp['amplification_genes'] = annotation['gene']
+                            tmp['amplification_locations'] = annotation['location']
+                            tmp['amplification_annotations'] = annotation['product']
+                            # generate a link to ecogene for the genes
+                            tmp['amplification_links'] = [];
+                            for bnumber in annotation['locus_tag']:
+                                if bnumber:
+                                    ecogenes = [];
+                                    ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences('MG1655',bnumber);
+                                    if ecogenes:
+                                        ecogene = ecogenes[0];
+                                        ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                                        tmp['amplification_links'].append(ecogene_link)
+                                    else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
+                            data_O.append(tmp);
+        # update rows in the database
+        io = stage01_resequencing_io();
+        io.add_dataStage01ResequencingAmplificationAnnotations(data_O);
+    def find_genesInRegion(self,start_I,stop_I,record_I):
+        '''find genes in the start and stop region of the genome'''
+        #input:
+        # mutation_position_I = mutation position [int]
+        # record = genbank record [SeqRecord]
+        data_O = [];
+        #extract all features within the start and stop region
+        features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]
+        for feature_cnt,feature in enumerate(features):
+            # initialize variables
+            if feature_cnt == 0:
+                feature_start_pos = feature.location.start.position;
+                feature_stop_pos = feature.location.end.position;
+                snp_records = {};
+                snp_records['gene'] = []
+                snp_records['db_xref'] = []
+                snp_records['locus_tag'] = []
+                snp_records['EC_number'] = []
+                snp_records['product'] = []
+                snp_records['location'] = []
+            # add complete snp_record to data_O
+            if feature_start_pos != feature.location.start.position or feature_stop_pos != feature.location.end.position:
+                data_O.append(snp_records);
+                feature_start_pos = feature.location.start.position;
+                feature_stop_pos = feature.location.end.position;
+                snp_records = {};
+                snp_records['gene'] = []
+                snp_records['db_xref'] = []
+                snp_records['locus_tag'] = []
+                snp_records['EC_number'] = []
+                snp_records['product'] = []
+                snp_records['location'] = []
+            # fill in snp_record (may require multiple passes through features)
+            if feature.type == 'gene':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+            elif feature.type == 'CDS':
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif feature.type == 'repeat_region':
+                snp_records['location'] = feature.qualifiers.get('note')
+            elif feature.type == 'mobile_element':
+                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
+            elif feature.type == 'misc_feature':
+                snp_records['location'] = feature.qualifiers.get('note')
+            elif feature.type == 'mat_peptide':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif feature.type == 'tRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif feature.type == 'rRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif feature.type == 'ncRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+            elif feature.type != 'source':
+                print(feature);
+            # add the final snp_record to data_O
+            if feature_cnt == len(features)-1:
+                data_O.append(snp_records);
+
+        return data_O;

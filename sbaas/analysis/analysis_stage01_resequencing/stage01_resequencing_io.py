@@ -254,149 +254,6 @@ class stage01_resequencing_io(base_analysis):
                     print(e);
             self.session.commit();
 
-    def export_dataStage01ResequencingLineage_d3(self, experiment_id, lineage_names,
-                                                 filename='visualization/data/ALEsKOs01/resequencing/heatmap/data.js',
-                                                 json_var_name='data',
-                                                 mutation_id_exclusion_list = []):
-        '''Export data for viewing using d3'''
-        #Input:
-        #   experiment_id
-        #   lineage_names = list of lineage_names to export
-        #Output:
-        #   
-        
-        intermediates_lineage = [];
-        mutation_data_lineage_all = [];
-        rows_lineage = [];
-        n_lineages = len(lineage_names)
-        cnt_sample_names = 0;
-        for lineage_name in lineage_names:
-            ## get ALL sample names by experiment_id and lineage name
-            #sample_names = [];
-            #sample_names = self.stage01_resequencing_query.get_sampleNames_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
-            # get ALL intermediates by experiment_id and lineage name
-            intermediates = [];
-            intermediates = self.stage01_resequencing_query.get_intermediates_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
-            intermediates_lineage.append(intermediates);
-            cnt_sample_names += len(intermediates)
-            # get ALL mutation data by experiment_id and lineage name
-            mutation_data = [];
-            mutation_data = self.stage01_resequencing_query.get_mutationData_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
-            mutation_data_lineage_all.extend(mutation_data);
-            # get ALL mutation frequencies by experiment_id and lineage name
-            rows = [];
-            rows = self.stage01_resequencing_query.get_row_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name)
-            rows_lineage.extend(rows);
-        mutation_data_lineage_unique = list(set(mutation_data_lineage_all));
-        mutation_data_lineage = [x for x in mutation_data_lineage_unique if not x in mutation_id_exclusion_list];
-        min_inter = min(intermediates_lineage)
-        max_inter = max(intermediates_lineage);
-        # generate the frequency matrix data structure (mutation x intermediate)
-        data_O = numpy.zeros((cnt_sample_names,len(mutation_data_lineage)));
-        labels_O = {};
-        labels_O['lineage']=[];
-        col_cnt = 0;
-        # order 2: groups each lineage by mutation (intermediate x mutation)
-        for lineage_name_cnt,lineage_name in enumerate(lineage_names): #all lineages for intermediate j / mutation i
-            for intermediate_cnt,intermediate in enumerate(intermediates_lineage[lineage_name_cnt]):
-                if intermediate_cnt == min(intermediates_lineage[lineage_name_cnt]):
-                    labels_O['lineage'].append(lineage_name+": "+"start"); # corresponding label from hierarchical clustering (in this case, arbitrary)
-                elif intermediate_cnt == max(intermediates_lineage[lineage_name_cnt]):
-                    labels_O['lineage'].append(lineage_name+": "+"end"); # corresponding label from hierarchical clustering (in this case, arbitrary)
-                else:
-                    labels_O['lineage'].append(lineage_name+": "+str(intermediate)); # corresponding label from hierarchical clustering (in this case, arbitrary)
-                for mutation_cnt,mutation in enumerate(mutation_data_lineage): #all mutations i for intermediate j
-                    for row in rows_lineage:
-                        if row['mutation_id'] == mutation and row['intermediate'] == intermediate and row['lineage_name'] == lineage_name:
-                            data_O[col_cnt,mutation_cnt] = row['mutation_frequency'];
-                            print(col_cnt,mutation_cnt)
-                col_cnt+=1;
-        # generate the clustering for the heatmap
-        json_O = {};
-        json_O = self.calculate.heatmap(data_O,labels_O['lineage'],mutation_data_lineage);
-        options_O = {};
-        options_O['row_axis_label'] = 'lineage_id';
-        options_O['col_axis_label'] = 'mutation_id';
-        options_O['value_label'] = 'population frequency';
-        options_O['domain'] = '2';
-        json_O.update(labels_O);
-        json_O['options'] = options_O;
-        # dump the data to a json file
-        json_str = 'var ' + json_var_name + ' = ' + json.dumps(json_O);
-        with open(filename,'w') as file:
-            file.write(json_str);
-
-    def export_dataStage01ResequencingMutationsAnnotated_d3(self,experiment_id,strain_lineage,mutation_id_exclusion_list=[],frequency_threshold=0.1):
-        '''Plot the mutation frequency accross the strain lineage for all filtered mutations'''
-        
-        print('Executing plotMutationFrequency_population...')
-        for analysis_id,strain in strain_lineage.items():
-            print('analyzing lineage ' + analysis_id);
-            intermediates = list(strain.keys());
-            intermediates.sort();
-            mutation_data_O = [];
-            mutation_ids = [];
-            for intermediate in intermediates:
-                print('analyzing intermediate ' + str(intermediate));
-                # query mutation data:
-                mutations = [];
-                mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(experiment_id,strain[intermediate]);
-                for end_cnt,mutation in enumerate(mutations):
-                    print('analyzing mutations')
-                    if mutation['mutation_position'] > 4000000: #ignore positions great than 4000000
-                        continue;
-                    if mutation['mutation_frequency']<frequency_threshold:
-                        continue;
-                    # mutation id
-                    mutation_genes_str = '';
-                    for gene in mutation['mutation_genes']:
-                        mutation_genes_str = mutation_genes_str + gene + '-/-'
-                    mutation_genes_str = mutation_genes_str[:-3];
-                    mutation_id = mutation_genes_str + '_' + mutation['mutation_type'] + '_' + str(mutation['mutation_position'])
-                    tmp = {};
-                    tmp.update(mutation);
-                    tmp.update({'mutation_id':mutation_id});
-                    mutation_data_O.append(tmp);
-                    mutation_ids.append(mutation_id);
-            mutation_ids_screened = [x for x in mutation_ids if x not in mutation_id_exclusion_list];
-            mutation_ids_unique = list(set(mutation_ids_screened));
-            data_O = [];
-            data_fitted_O = [];
-            for intermediate in intermediates:
-                for mutation_id in mutation_ids_unique:
-                    tmp = {};
-                    tmp_fitted = {};
-                    tmp['samples']=mutation_id
-                    tmp['x_data']=intermediate
-                    tmp['y_data']=0.0;
-                    tmp_fitted['samples']=mutation_id
-                    tmp_fitted['x_data_fitted']=intermediate
-                    tmp_fitted['y_data_fitted']=0.0;
-                    for mutation in mutation_data_O:
-                        if strain[intermediate] == mutation['sample_name'] and mutation_id == mutation['mutation_id']:
-                            tmp['y_data']=mutation['mutation_frequency'];
-                            tmp_fitted['y_data_fitted']=mutation['mutation_frequency'];
-                            break;
-                    data_O.append(tmp);
-                    data_fitted_O.append(tmp_fitted);
-            #Update js variable
-            options_O = {};
-            options_O['x_axis'] = [];
-            options_O['y_axis'] = [];
-            options_O['x_axis_label'] = 'lineage';
-            options_O['y_axis_label'] = 'frequency';
-            options_O['feature_name'] = 'mutation';
-            options_O['fit_function'] = 'linear';
-            json_O = {};
-            json_O['data'] = data_O;
-            json_O['data_fitted'] = data_fitted_O;
-            json_O['options'] = options_O;
-            # dump the data to a json file
-            json_str = 'var ' + 'data' + ' = ' + json.dumps(json_O);
-            filename_str = 'visualization/data/' + experiment_id + '/resequencing/scatterlineplot/' + analysis_id + '.js'
-            with open(filename_str,'w') as file:
-                file.write(json_str);
-
     def import_dataStage01ResequencingAnalysis_add(self, filename):
         '''table adds'''
         data = base_importData();
@@ -618,6 +475,31 @@ class stage01_resequencing_io(base_analysis):
                     d['reads_mean'],
                     d['reads_var'],
                     d['reads_n'],
+                    d['amplification_start'],
+                    d['amplification_stop'],
+                    d['used_'],
+                    d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+    def add_dataStage01ResequencingAmplificationAnnotations(self, data_I):
+        '''add rows of data_stage01_resequencing_amplificationAnnotations'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_amplificationAnnotations(
+                    #d['analysis_id'],
+                    d['experiment_id'],
+                    d['sample_name'],
+                    d['genome_chromosome'],
+                    d['genome_strand'],
+                    d['strand_start'],
+                    d['strand_stop'],
+                    d['amplification_annotations'],
+                    d['amplification_genes'],
+                    d['amplification_locations'],
+                    d['amplification_links'],
                     d['amplification_start'],
                     d['amplification_stop'],
                     d['used_'],
@@ -1683,5 +1565,148 @@ class stage01_resequencing_io(base_analysis):
             file.write(parameters_str);
             file.write(tile2datamap_str);
 
+    #Deprecated:
+    def export_dataStage01ResequencingLineage_d3(self, experiment_id, lineage_names,
+                                                 filename='visualization/data/ALEsKOs01/resequencing/heatmap/data.js',
+                                                 json_var_name='data',
+                                                 mutation_id_exclusion_list = []):
+        '''Export data for viewing using d3'''
+        #Input:
+        #   experiment_id
+        #   lineage_names = list of lineage_names to export
+        #Output:
+        #   
+        
+        intermediates_lineage = [];
+        mutation_data_lineage_all = [];
+        rows_lineage = [];
+        n_lineages = len(lineage_names)
+        cnt_sample_names = 0;
+        for lineage_name in lineage_names:
+            ## get ALL sample names by experiment_id and lineage name
+            #sample_names = [];
+            #sample_names = self.stage01_resequencing_query.get_sampleNames_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
+            # get ALL intermediates by experiment_id and lineage name
+            intermediates = [];
+            intermediates = self.stage01_resequencing_query.get_intermediates_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
+            intermediates_lineage.append(intermediates);
+            cnt_sample_names += len(intermediates)
+            # get ALL mutation data by experiment_id and lineage name
+            mutation_data = [];
+            mutation_data = self.stage01_resequencing_query.get_mutationData_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name);
+            mutation_data_lineage_all.extend(mutation_data);
+            # get ALL mutation frequencies by experiment_id and lineage name
+            rows = [];
+            rows = self.stage01_resequencing_query.get_row_experimentIDAndLineageName_dataStage01ResequencingLineage(experiment_id,lineage_name)
+            rows_lineage.extend(rows);
+        mutation_data_lineage_unique = list(set(mutation_data_lineage_all));
+        mutation_data_lineage = [x for x in mutation_data_lineage_unique if not x in mutation_id_exclusion_list];
+        min_inter = min(intermediates_lineage)
+        max_inter = max(intermediates_lineage);
+        # generate the frequency matrix data structure (mutation x intermediate)
+        data_O = numpy.zeros((cnt_sample_names,len(mutation_data_lineage)));
+        labels_O = {};
+        labels_O['lineage']=[];
+        col_cnt = 0;
+        # order 2: groups each lineage by mutation (intermediate x mutation)
+        for lineage_name_cnt,lineage_name in enumerate(lineage_names): #all lineages for intermediate j / mutation i
+            for intermediate_cnt,intermediate in enumerate(intermediates_lineage[lineage_name_cnt]):
+                if intermediate_cnt == min(intermediates_lineage[lineage_name_cnt]):
+                    labels_O['lineage'].append(lineage_name+": "+"start"); # corresponding label from hierarchical clustering (in this case, arbitrary)
+                elif intermediate_cnt == max(intermediates_lineage[lineage_name_cnt]):
+                    labels_O['lineage'].append(lineage_name+": "+"end"); # corresponding label from hierarchical clustering (in this case, arbitrary)
+                else:
+                    labels_O['lineage'].append(lineage_name+": "+str(intermediate)); # corresponding label from hierarchical clustering (in this case, arbitrary)
+                for mutation_cnt,mutation in enumerate(mutation_data_lineage): #all mutations i for intermediate j
+                    for row in rows_lineage:
+                        if row['mutation_id'] == mutation and row['intermediate'] == intermediate and row['lineage_name'] == lineage_name:
+                            data_O[col_cnt,mutation_cnt] = row['mutation_frequency'];
+                            print(col_cnt,mutation_cnt)
+                col_cnt+=1;
+        # generate the clustering for the heatmap
+        json_O = {};
+        json_O = self.calculate.heatmap(data_O,labels_O['lineage'],mutation_data_lineage);
+        options_O = {};
+        options_O['row_axis_label'] = 'lineage_id';
+        options_O['col_axis_label'] = 'mutation_id';
+        options_O['value_label'] = 'population frequency';
+        options_O['domain'] = '2';
+        json_O.update(labels_O);
+        json_O['options'] = options_O;
+        # dump the data to a json file
+        json_str = 'var ' + json_var_name + ' = ' + json.dumps(json_O);
+        with open(filename,'w') as file:
+            file.write(json_str);
+
+    def export_dataStage01ResequencingMutationsAnnotated_d3(self,experiment_id,strain_lineage,mutation_id_exclusion_list=[],frequency_threshold=0.1):
+        '''Plot the mutation frequency accross the strain lineage for all filtered mutations'''
+        
+        print('Executing plotMutationFrequency_population...')
+        for analysis_id,strain in strain_lineage.items():
+            print('analyzing lineage ' + analysis_id);
+            intermediates = list(strain.keys());
+            intermediates.sort();
+            mutation_data_O = [];
+            mutation_ids = [];
+            for intermediate in intermediates:
+                print('analyzing intermediate ' + str(intermediate));
+                # query mutation data:
+                mutations = [];
+                mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(experiment_id,strain[intermediate]);
+                for end_cnt,mutation in enumerate(mutations):
+                    print('analyzing mutations')
+                    if mutation['mutation_position'] > 4000000: #ignore positions great than 4000000
+                        continue;
+                    if mutation['mutation_frequency']<frequency_threshold:
+                        continue;
+                    # mutation id
+                    mutation_genes_str = '';
+                    for gene in mutation['mutation_genes']:
+                        mutation_genes_str = mutation_genes_str + gene + '-/-'
+                    mutation_genes_str = mutation_genes_str[:-3];
+                    mutation_id = mutation_genes_str + '_' + mutation['mutation_type'] + '_' + str(mutation['mutation_position'])
+                    tmp = {};
+                    tmp.update(mutation);
+                    tmp.update({'mutation_id':mutation_id});
+                    mutation_data_O.append(tmp);
+                    mutation_ids.append(mutation_id);
+            mutation_ids_screened = [x for x in mutation_ids if x not in mutation_id_exclusion_list];
+            mutation_ids_unique = list(set(mutation_ids_screened));
+            data_O = [];
+            data_fitted_O = [];
+            for intermediate in intermediates:
+                for mutation_id in mutation_ids_unique:
+                    tmp = {};
+                    tmp_fitted = {};
+                    tmp['samples']=mutation_id
+                    tmp['x_data']=intermediate
+                    tmp['y_data']=0.0;
+                    tmp_fitted['samples']=mutation_id
+                    tmp_fitted['x_data_fitted']=intermediate
+                    tmp_fitted['y_data_fitted']=0.0;
+                    for mutation in mutation_data_O:
+                        if strain[intermediate] == mutation['sample_name'] and mutation_id == mutation['mutation_id']:
+                            tmp['y_data']=mutation['mutation_frequency'];
+                            tmp_fitted['y_data_fitted']=mutation['mutation_frequency'];
+                            break;
+                    data_O.append(tmp);
+                    data_fitted_O.append(tmp_fitted);
+            #Update js variable
+            options_O = {};
+            options_O['x_axis'] = [];
+            options_O['y_axis'] = [];
+            options_O['x_axis_label'] = 'lineage';
+            options_O['y_axis_label'] = 'frequency';
+            options_O['feature_name'] = 'mutation';
+            options_O['fit_function'] = 'linear';
+            json_O = {};
+            json_O['data'] = data_O;
+            json_O['data_fitted'] = data_fitted_O;
+            json_O['options'] = options_O;
+            # dump the data to a json file
+            json_str = 'var ' + 'data' + ' = ' + json.dumps(json_O);
+            filename_str = 'visualization/data/' + experiment_id + '/resequencing/scatterlineplot/' + analysis_id + '.js'
+            with open(filename_str,'w') as file:
+                file.write(json_str);
   
   
