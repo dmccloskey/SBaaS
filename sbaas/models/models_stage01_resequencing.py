@@ -919,10 +919,13 @@ class data_stage01_resequencing_amplificationAnnotations(Base):
     genome_strand = Column(String(25)); # plus or minus
     strand_start = Column(Integer);
     strand_stop = Column(Integer);
-    amplification_annotations = Column(postgresql.ARRAY(String(500)))
-    amplification_genes = Column(postgresql.ARRAY(String(25)))
-    amplification_locations = Column(postgresql.ARRAY(String(100)))
-    amplification_links = Column(postgresql.ARRAY(String(500)))
+    feature_annotations = Column(postgresql.ARRAY(String(500)))
+    feature_genes = Column(postgresql.ARRAY(String(25)))
+    feature_locations = Column(postgresql.ARRAY(String(100)))
+    feature_links = Column(postgresql.ARRAY(String(500)))
+    feature_start = Column(Integer);
+    feature_stop = Column(Integer);
+    feature_types = Column(postgresql.ARRAY(String(500)));
     amplification_start = Column(Integer);
     amplification_stop = Column(Integer);
     used_ = Column(Boolean);
@@ -930,7 +933,10 @@ class data_stage01_resequencing_amplificationAnnotations(Base):
 
     __table_args__ = (
         #UniqueConstraint('analysis_id','experiment_id','sample_name','genome_chromosome','genome_strand','amplification_start','amplification_stop'),
-        UniqueConstraint('experiment_id','sample_name','genome_chromosome','genome_strand','amplification_start','amplification_stop','amplification_locations','amplification_genes'),
+        UniqueConstraint('experiment_id','sample_name','genome_chromosome','genome_strand','amplification_start','amplification_stop',
+                         'feature_locations','feature_genes','feature_annotations',
+                         'feature_start','feature_stop','feature_types'
+                         ),
             )
 
     def __init__(self,
@@ -941,10 +947,13 @@ class data_stage01_resequencing_amplificationAnnotations(Base):
         genome_strand_I,
         strand_start_I,
         strand_stop_I,
-        amplification_annotations_I,
-        amplification_genes_I,
-        amplification_locations_I,
-        amplification_links_I,
+        feature_annotations_I,
+        feature_genes_I,
+        feature_locations_I,
+        feature_links_I,
+        feature_start_I,
+        feature_stop_I,
+        feature_types_I,
         amplification_start_I,
         amplification_stop_I,
         used__I,
@@ -956,10 +965,13 @@ class data_stage01_resequencing_amplificationAnnotations(Base):
         self.genome_strand=genome_strand_I
         self.strand_start=strand_start_I
         self.strand_stop=strand_stop_I
-        self.amplification_annotations=amplification_annotations_I
-        self.amplification_genes=amplification_genes_I
-        self.amplification_locations=amplification_locations_I
-        self.amplification_links=amplification_links_I
+        self.feature_annotations=feature_annotations_I
+        self.feature_genes=feature_genes_I
+        self.feature_locations=feature_locations_I
+        self.feature_links=feature_links_I
+        self.feature_start=feature_start_I
+        self.feature_stop=feature_stop_I
+        self.feature_types=feature_types_I
         self.amplification_start=amplification_start_I
         self.amplification_stop=amplification_stop_I
         self.used_=used__I
@@ -974,10 +986,13 @@ class data_stage01_resequencing_amplificationAnnotations(Base):
                 'genome_strand':self.genome_strand,
                 'strand_start':self.strand_start,
                 'strand_stop':self.strand_stop,
-                'amplification_annotations':self.amplification_annotations,
-                'amplification_genes':self.amplification_genes,
-                'amplification_locations':self.amplification_locations,
-                'amplification_links':self.amplification_links,
+                'feature_annotations':self.feature_annotations,
+                'feature_genes':self.feature_genes,
+                'feature_locations':self.feature_locations,
+                'feature_links':self.feature_links,
+                'feature_start':self.feature_start,
+                'feature_stop':self.feature_stop,
+                'feature_types':self.feature_types,
                 'amplification_start':self.amplification_start,
                 'amplification_stop':self.amplification_stop,
                 'used_':self.used_,

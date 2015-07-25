@@ -1167,6 +1167,8 @@ class stage01_resequencing_execute():
                 # get strands
                 strands = []
                 strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
+                # remove visualization regions
+                strands = [s for s in strands if not 'mean' in s];
                 for strand in strands:
                     # get the start and stop of the indices
                     genomic_starts,genomic_stops = [],[]
@@ -1547,11 +1549,14 @@ class stage01_resequencing_execute():
                                 'amplification_stop':stops[start_cnt],
                                 'used_':True,
                                 'comment_':None};
-                            tmp['amplification_genes'] = annotation['gene']
-                            tmp['amplification_locations'] = annotation['location']
-                            tmp['amplification_annotations'] = annotation['product']
+                            tmp['feature_genes'] = annotation['gene']
+                            tmp['feature_locations'] = annotation['location']
+                            tmp['feature_annotations'] = annotation['product']
+                            tmp['feature_start'] = annotation['start'];
+                            tmp['feature_stop'] = annotation['stop'];
+                            tmp['feature_types'] = annotation['type']
                             # generate a link to ecogene for the genes
-                            tmp['amplification_links'] = [];
+                            tmp['feature_links'] = [];
                             for bnumber in annotation['locus_tag']:
                                 if bnumber:
                                     ecogenes = [];
@@ -1559,7 +1564,7 @@ class stage01_resequencing_execute():
                                     if ecogenes:
                                         ecogene = ecogenes[0];
                                         ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
-                                        tmp['amplification_links'].append(ecogene_link)
+                                        tmp['feature_links'].append(ecogene_link)
                                     else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                             data_O.append(tmp);
         # update rows in the database
@@ -1574,6 +1579,11 @@ class stage01_resequencing_execute():
         #extract all features within the start and stop region
         features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]
         for feature_cnt,feature in enumerate(features):
+            # NOTE:
+            # there are two records for each gene: one of type "gene" and another of type "CDS"
+            # sometimes there is also a third of type "mat_peptide" which has a different start/stop position
+            # this algorithm will combine the records for types "gene" and "CDS" as a single row
+            # and add mat_peptide as a second row (if desired)
             # initialize variables
             if feature_cnt == 0:
                 feature_start_pos = feature.location.start.position;
@@ -1585,8 +1595,12 @@ class stage01_resequencing_execute():
                 snp_records['EC_number'] = []
                 snp_records['product'] = []
                 snp_records['location'] = []
+                snp_records['start'] = None
+                snp_records['stop'] = None
+                snp_records['type'] = []
             # add complete snp_record to data_O
             if feature_start_pos != feature.location.start.position or feature_stop_pos != feature.location.end.position:
+                #snp_records['start'] should be in every record
                 data_O.append(snp_records);
                 feature_start_pos = feature.location.start.position;
                 feature_stop_pos = feature.location.end.position;
@@ -1597,23 +1611,41 @@ class stage01_resequencing_execute():
                 snp_records['EC_number'] = []
                 snp_records['product'] = []
                 snp_records['location'] = []
+                snp_records['start'] = None
+                snp_records['stop'] = None
+                snp_records['type'] = []
             # fill in snp_record (may require multiple passes through features)
             if feature.type == 'gene':
                 snp_records['gene'] = feature.qualifiers.get('gene')
                 snp_records['db_xref'] = feature.qualifiers.get('db_xref')
                 snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-            elif feature.type == 'CDS':
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'CDS': 
                 if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
                 else:snp_records['EC_number'] = [None];
                 if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
                 else:snp_records['product'] = [None];
                 snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'repeat_region':
                 snp_records['location'] = feature.qualifiers.get('note')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'mobile_element':
                 snp_records['location'] = feature.qualifiers.get('mobile_element_type')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'misc_feature':
                 snp_records['location'] = feature.qualifiers.get('note')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'mat_peptide':
                 snp_records['gene'] = feature.qualifiers.get('gene')
                 snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
@@ -1623,6 +1655,9 @@ class stage01_resequencing_execute():
                 if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
                 else:snp_records['product'] = [None];
                 snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'tRNA':
                 snp_records['gene'] = feature.qualifiers.get('gene')
                 snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
@@ -1632,6 +1667,9 @@ class stage01_resequencing_execute():
                 if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
                 else:snp_records['product'] = [None];
                 snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'rRNA':
                 snp_records['gene'] = feature.qualifiers.get('gene')
                 snp_records['db_xref'] = feature.qualifiers.get('db_xref')
@@ -1642,6 +1680,9 @@ class stage01_resequencing_execute():
                 if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
                 else:snp_records['product'] = [None];
                 snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type == 'ncRNA':
                 snp_records['gene'] = feature.qualifiers.get('gene')
                 snp_records['db_xref'] = feature.qualifiers.get('db_xref')
@@ -1652,6 +1693,9 @@ class stage01_resequencing_execute():
                 if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
                 else:snp_records['product'] = [None];
                 snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
             elif feature.type != 'source':
                 print(feature);
             # add the final snp_record to data_O

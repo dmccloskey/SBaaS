@@ -13,10 +13,10 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\component-contri
 #analysis_physiology.run_all_tests();
 #analysis_resequencing.run_all_tests();
 
-##Visualization tests:
-#from visualization.server import run
-#run();
-##run(port=8080,public=True);
+#Visualization tests:
+from visualization.server import run
+run();
+#run(port=8080,public=True);
 
 #Debug mode:
 from sbaas.analysis.analysis_stage01_resequencing import *
@@ -26,8 +26,8 @@ session = Session();
 ex01 = stage01_resequencing_execute(session);
 io01 = stage01_resequencing_io(session);
 
-# initialize the DB
-ex01.initialize_dataStage01();
+## initialize the DB
+#ex01.initialize_dataStage01();
 
 ## import the driver file
 #iobase = base_importData();
@@ -52,14 +52,14 @@ ex01.initialize_dataStage01();
 #        'ALEsKOs01',
 #        sample_names_I = ['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1']
 #        );
-ex01.execute_annotateAmplifications(
-        'ALEsKOs01',
-        sample_names_I = ['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1']
-        );
+#ex01.execute_annotateAmplifications(
+#        'ALEsKOs01',
+#        sample_names_I = ['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1']
+#        );
 #ex01.reset_dataStage01_resequencing_amplificationAnnotations(
 #        'ALEsKOs01',
 #        sample_names_I = ['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1']
 #        );
 # visualize the data
-#io01.export_dataStage01ResequencingAmplifications_js('evo04ptsHIcrrevo04',data_dir_I="tmp")
+io01.export_dataStage01ResequencingAmplifications_js('evo04ptsHIcrrevo01',data_dir_I="tmp")
 #io01.export_dataStage01ResequencingCoverage_js('evo04ptsHIcrrevo04',data_dir_I="tmp")

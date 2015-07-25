@@ -640,6 +640,36 @@ class stage01_resequencing_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
+    # query data from data_stage01_resequencing_heatmap
+    def get_rows_analysisID_dataStage01ResequencingHeatmap(self,analysis_id_I):
+        '''Query rows by analysisid and sample_name from data_stage01_resequencing_heatmap'''
+        try:
+            data = self.session.query(data_stage01_resequencing_heatmap).filter(
+                    data_stage01_resequencing_heatmap.analysis_id.like(analysis_id_I),
+                    data_stage01_resequencing_heatmap.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                'analysis_id':d.analysis_id,
+            'col_index':d.col_index,
+            'row_index':d.row_index,
+            'value':d.value,
+            'col_leaves':d.col_leaves,
+            'row_leaves':d.row_leaves,
+            'col_label':d.col_label,
+            'row_label':d.row_label,
+            'col_pdist_metric':d.col_pdist_metric,
+            'row_pdist_metric':d.row_pdist_metric,
+            'col_linkage_method':d.col_linkage_method,
+            'row_linkage_method':d.row_linkage_method,
+            'value_units':d.value_units,
+            'used_':d.used_,
+            'comment_':d.comment_}
+                              );
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+
     # query data from data_stage01_resequencing_coverage
     def get_sampleNames_experimentID_dataStage01ResequencingCoverage(self,experiment_id_I):
         '''Query sample names by experiment_id from data_stage01_resequencing_coverage'''
@@ -995,6 +1025,39 @@ class stage01_resequencing_query(base_analysis):
                 'used_':d.used_,
                 'comment_':d.comment_
                     });
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+            
+    # query data from data_stage01_resequencing_amplificationAnnotations
+    def get_rows_experimentIDAndSampleName_dataStage01ResequencingAmplificationAnnotations(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name from data_stage01_resequencing_amplificationAnnotations'''
+        try:
+            data = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(
+                    data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_amplificationAnnotations.sample_name.like(sample_name_I),
+                    data_stage01_resequencing_amplificationAnnotations.used_).all();
+            data_O = [];
+            for d in data: 
+                data_O.append({'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'genome_chromosome':d.genome_chromosome,
+                'genome_strand':d.genome_strand,
+                'strand_start':d.strand_start,
+                'strand_stop':d.strand_stop,
+                'feature_annotations':d.feature_annotations,
+                'feature_genes':d.feature_genes,
+                'feature_locations':d.feature_locations,
+                'feature_links':d.feature_links,
+                'feature_start':d.feature_start,
+                'feature_stop':d.feature_stop,
+                'feature_types':d.feature_types,
+                'amplification_start':d.amplification_start,
+                'amplification_stop':d.amplification_stop,
+                'used_':d.used_,
+                'comment_':d.comment_});
             return data_O;
         except SQLAlchemyError as e:
             print(e);
