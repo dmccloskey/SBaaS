@@ -633,6 +633,159 @@ class stage01_resequencing_io(base_analysis):
                     print(e);
             self.session.commit();
 
+    def import_dataStage01RNASequencingFpkmTracking_add(self, filename):
+        '''table adds'''
+        data = base_importData();
+        data.read_csv(filename);
+        data.format_data();
+        self.add_dataStage01RNASequencingFpkmTracking(data.data);
+        data.clear_data();
+
+    def add_dataStage01RNASequencingFpkmTracking(self, data_I):
+        '''add rows of data_stage01_rnasequencing_fpkmTracking'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_rnasequencing_fpkmTracking(d['experiment_id'],
+                            d['sample_name'],
+                            d['tracking_id'],
+                            d['class_code'],
+                            d['nearest_ref_id'],
+                            d['gene_id'],
+                            d['gene_short_name'],
+                            d['tss_id'],
+                            d['locus'],
+                            d['length'],
+                            d['coverage'],
+                            d['FPKM'],
+                            d['FPKM_conf_lo'],
+                            d['FPKM_conf_hi'],
+                            d['FPKM_status'],
+                            d['used_'],
+                            d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def import_dataStage01RNASequencingFpkmTracking_update(self, filename):
+        '''table adds'''
+        data = base_importData();
+        data.read_csv(filename);
+        data.format_data();
+        self.update_dataStage01RNASequencingFpkmTracking(data.data);
+        data.clear_data();
+
+    def update_dataStage01RNASequencingFpkmTracking(self,data_I):
+        '''update rows of data_stage01_resequencing_lineage'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_update = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(
+                           data_stage01_rnasequencing_fpkmTracking.id==d['id']).update(
+                            {'experiment_id':d['experiment_id'],
+                            'sample_name':d['sample_name'],
+                            'tracking_id':d['tracking_id'],
+                            'class_code':d['class_code'],
+                            'nearest_ref_id':d['nearest_ref_id'],
+                            'gene_id':d['gene_id'],
+                            'gene_short_name':d['gene_short_name'],
+                            'tss_id':d['tss_id'],
+                            'locus':d['locus'],
+                            'length':d['length'],
+                            'coverage':d['coverage'],
+                            'FPKM':d['FPKM'],
+                            'FPKM_conf_lo':d['FPKM_conf_lo'],
+                            'FPKM_conf_hi':d['FPKM_conf_hi'],
+                            'FPKM_status':d['FPKM_status'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def import_dataStage01RNASequencingGeneExpDiff_add(self, filename):
+        '''table adds'''
+        data = base_importData();
+        data.read_csv(filename);
+        data.format_data();
+        self.add_dataStage01RNASequencingGeneExpDiff(data.data);
+        data.clear_data();
+
+    def add_dataStage01RNASequencingGeneExpDiff(self, data_I):
+        '''add rows of data_stage01_rnasequencing_geneExpDiff'''
+        if data_I:
+            for d in data_I:
+                try:
+                    if d.has_key('log2(fold_change)'):
+                        d['fold_change_log2']=d['log2(fold_change)'];
+                    data_add = data_stage01_rnasequencing_geneExpDiff(
+                            d['analysis_id'],
+                            d['experiment_id'],
+                            d['sample_name_1'],
+                            d['sample_name_2'],
+                            d['test_id'],
+                            d['gene_id'],
+                            d['gene'],
+                            d['sample_1'],
+                            d['sample_2'],
+                            d['status'],
+                            d['value_1'],
+                            d['value_2'],
+                            d['fold_change_log2'],
+                            d['test_stat'],
+                            d['p_value'],
+                            d['q_value'],
+                            d['significant'],
+                            d['used_'],
+                            d['comment_']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def import_dataStage01RNASequencingGeneExpDiff_update(self, filename):
+        '''table adds'''
+        data = base_importData();
+        data.read_csv(filename);
+        data.format_data();
+        self.update_dataStage01RNASequencingGeneExpDiff(data.data);
+        data.clear_data();
+
+    def update_dataStage01RNASequencingGeneExpDiff(self,data_I):
+        '''update rows of data_stage01_resequencing_lineage'''
+        if data_I:
+            for d in data_I:
+                try:
+                    if d.has_key('log2(fold_change)'):
+                        d['fold_change_log2']=d['log2(fold_change)'];
+                    data_update = self.session.query(data_stage01_rnasequencing_geneExpDiff).filter(
+                           data_stage01_rnasequencing_geneExpDiff.id==d['id']).update(
+                            {'analysis_id':d['analysis_id'],
+                            'experiment_id':d['experiment_id'],
+                            'sample_name_1':d['sample_name_1'],
+                            'sample_name_2':d['sample_name_2'],
+                            'test_id':d['test_id'],
+                            'gene_id':d['gene_id'],
+                            'gene':d['gene'],
+                            'sample_1':d['sample_1'],
+                            'sample_2':d['sample_2'],
+                            'status':d['status'],
+                            'value_1':d['value_1'],
+                            'value_2':d['value_2'],
+                            'fold_change_log2':d['fold_change_log2'],
+                            'test_stat':d['test_stat'],
+                            'p_value':d['p_value'],
+                            'q_value':d['q_value'],
+                            'significant':d['significant'],
+                            'used_':d['used_'],
+                            'comment_':d['comment_']},
+                            synchronize_session=False);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
     def export_dataStage01ResequencingMutationsAnnotatedLineage_js(self,analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,data_dir_I="tmp"):
         '''export data_stage01_resequencing_mutationsAnnotated to js file'''
         

@@ -1812,28 +1812,6 @@ class stage02_isotopomer_execute():
                 split_units.append('split_fraction');
 
         return split,split_stdev,split_lb,split_ub,split_units
-    def convert_string2datetime_mdYHM(self,datetime_I):
-        '''convert string date time to datetime
-        e.g. time.strptime('4/15/2014 15:51','%m/%d/%Y %H:%M')'''
-
-        from time import mktime,strptime
-        from datetime import datetime
-
-        time_struct = strptime(datetime_I,'%m/%d/%Y %H:%M')
-        dt_O = datetime.fromtimestamp(mktime(time_struct))
-        
-        return dt_O
-    def convert_string2datetime(self,datetime_I):
-        '''convert string date time to datetime
-        e.g. time.strptime('2014-04-15 15:51:01','%Y/%m/%d %H:%M:%S')'''
-
-        from time import mktime,strptime
-        from datetime import datetime
-
-        time_struct = strptime(datetime_I,'%Y-%m-%d %H:%M:%S')
-        dt_O = datetime.fromtimestamp(mktime(time_struct))
-        
-        return dt_O
     #Visualization
     def plot_fluxPrecision(self,simulation_ids_I = [], rxn_ids_I = [], plot_by_rxn_id_I=True, individual_plots_I=True, exclude_I = {}, use_lbubAsErrorBars_I=True):
         '''Plot the flux precision for a given set of simulations and a given set of reactions
@@ -2203,7 +2181,111 @@ class stage02_isotopomer_execute():
                         mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                         with open(filename_mat,'w') as f:
                             f.write(mat_script);
-                            
+           
+    #TODO:
+    def determine_fluxDifferenceSignificance(self,flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2):
+        """determine whether the difference between two fluxes is signifcant based on the lb and ub"""
+        significant = False;
+        if flux_lb_1 < flux_lb_2 and flux_ub_1 < flux_lb_2:
+            significant = True;
+        elif flux_lb_1 > flux_ub_2 and flux_ub_1 > flux_ub_2:
+            significant = True;
+        else:
+            significant = False;
+        return significant;
+    def calculate_fluxDifference(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
+                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
+                                                                            criteria_I = 'flux_lb/flux_ub'):
+        """Calculate flux differences and deterimine if the differences are significant
+        Input:
+        flux_1 = data for flux 1 to be compared
+        ...
+        flux_2 = data for flux 2 to be compared
+        ... 
+        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
+                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
+
+        Output:
+        flux_diff = absolute flux difference, float
+        significant = boolean
+    
+        """
+        flux_diff = 0.0;
+        significant = False;
+        if criteria_I == 'flux_lb/flux_ub':
+            flux_mean_1 = mean([flux_lb_1,flux_ub_1]);
+            flux_mean_2 = mean([flux_lb_2,flux_ub_2]);
+            flux_diff = flux_mean_2 - flux_mean_1;
+            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
+        elif criteria_I == 'flux_mean/flux_stdev':
+            flux_diff = flux_2-flux_1;
+            flux_lb_1 = flux_1 - flux_stdev_1;
+            flux_lb_2 = flux_2 - flux_stdev_2;
+            flux_ub_1 = flux_1 + flux_stdev_1;
+            flux_ub_2 = flux_2 + flux_stdev_2;
+            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
+        else:
+            print('criteria not recognized!');
+        return flux_diff,significant;
+
+    def execute_findNetFluxSignificantDifferences(self,analysis_id_I, criteria_I = 'flux_lb/flux_ub',
+                                               simulation_ids_I=[],simulation_dateAndTimes_I = [],
+                                               rxn_ids_I = [],flux_units_I = []):
+        """Find fluxes that are significantly different
+        Input:
+        analysis_id_I = string,
+        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
+                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
+    
+        """
+        data_O = [];
+        # get the simulation_id and simulation_id dateAndTimes
+        if simulation_ids_I and simulation_dateAndTimes_I:
+            simulation_ids = simulation_ids_I;
+            simulation_dateAndTimes = simulation_dateAndTimes_I;
+        else:
+            simulation_ids = [];
+            simulation_ids_unique = [];
+            simulation_dateAndTimes = [];
+            # get the simulation the uniqueids
+            simulation_ids_unique = self.stage02_isotopomer_query.get_simulationID_analysisID_dataStage02IsotopomerAnalysis(analysis_id_I);
+            for simulation_id in simulation_ids_unique:
+                # get the simulation dateAndTimes
+                simulation_dateAndTimes_tmp = []
+                simulation_dateAndTimes_tmp = self.stage02_isotopomer_query.get_simulationDateAndTimes_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
+                simulation_ids_tmp = [simulation_id for x in simulation_dateAndTimes_tmp];
+                simulation_dateAndTimes.extend(simulation_dateAndTimes_tmp)
+                simulation_ids.extend(simulation_ids_tmp)
+        for simulation_cnt_1, simulation_id_1 in enumerate(simulation_ids):
+            # get the units
+            if flux_units_I:
+                flux_units = flux_units_I;
+            else:
+                flux_units = self.stage02_isotopomer_query.get_fluxUnits_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1])
+            for flux_unit in flux_units:    
+                # get the rxn_ids
+                if rxn_ids_I:
+                    rxn_ids = rxn_ids_I;
+                else:
+                    rxn_ids = [];
+                    rxn_ids = self.stage02_isotopomer_query.get_rxnIDs_simulationIDAndSimulationDateAndTimeAndFluxUnit_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit);
+                for rxn_id in rxn_ids:
+                    # get simulation_id_1 flux data
+                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=None,None,None,None,None;
+                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit,rxn_id)
+                    # TODO: add in a check
+                    for cnt,simulation_id_2 in simulation_ids[simulation_cnt_1:]: #prevents redundancy
+                        simulation_cnt_2 = simulation_cnt_1+cnt+1;
+                        # simulation_id_2 flux_data
+                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=None,None,None,None,None;
+                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_2,simulation_dateAndTimes[simulation_cnt_1],flux_unit,rxn_id)
+                        flux_diff,significant = None,False;
+                        flux_diff,significant = self.calculate_fluxDifference(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
+                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
+                                                                            criteria_I = criteria_I);
+                        # record the data
+                        data_O.append({});
+                                             
 class inca_api(stage02_isotopomer_execute):
 
     def write_isotopomerExperiment_INCA(self, modelReaction_data_I,modelMetabolite_data_I,

@@ -2003,6 +2003,23 @@ class stage02_isotopomer_query(base_analysis):
             return rxn_ids_O;
         except SQLAlchemyError as e:
             print(e);   
+    def get_rxnIDs_simulationIDAndSimulationDateAndTimeAndFluxUnit_dataStage02IsotopomerfittedNetFluxes(self,simulation_id_I,simulation_dateAndTime_I,flux_unit_I):
+        '''Query reaction ids that are used from the fitted fluxes'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedNetFluxes.rxn_id).filter(
+                    data_stage02_isotopomer_fittedNetFluxes.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedNetFluxes.flux_unit.like(flux_unit_I),
+                    data_stage02_isotopomer_fittedNetFluxes.simulation_dateAndTime==simulation_dateAndTime_I,
+                    data_stage02_isotopomer_fittedNetFluxes.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_fittedNetFluxes.rxn_id).order_by(
+                    data_stage02_isotopomer_fittedNetFluxes.rxn_id.asc()).all();
+            rxn_ids_O = [];
+            if data: 
+                for d in data:
+                    rxn_ids_O.append(d.rxn_id);
+            return rxn_ids_O;
+        except SQLAlchemyError as e:
+            print(e);   
     # query flux_units from data_stage02_isotopomer_fittedNetFluxes  
     def get_fluxUnits_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedNetFluxes(self,simulation_id_I,simulation_dateAndTime_I):
         '''Query flux_units that are used from data_stage02_isotopomer_fittedNetFluxes'''

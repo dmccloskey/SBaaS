@@ -38,4 +38,27 @@ class base_analysis():
         
         return time_str
 
+    def convert_string2datetime_mdYHM(self,datetime_I):
+        '''convert string date time to datetime
+        e.g. time.strptime('4/15/2014 15:51','%m/%d/%Y %H:%M')'''
+
+        from time import mktime,strptime
+        from datetime import datetime
+
+        time_struct = strptime(datetime_I,'%m/%d/%Y %H:%M')
+        dt_O = datetime.fromtimestamp(mktime(time_struct))
+        
+        return dt_O
+    def convert_string2datetime(self,datetime_I):
+        '''convert string date time to datetime
+        e.g. time.strptime('2014-04-15 15:51:01','%Y/%m/%d %H:%M:%S')'''
+
+        from time import mktime,strptime
+        from datetime import datetime
+
+        time_struct = strptime(datetime_I,'%Y-%m-%d %H:%M:%S')
+        dt_O = datetime.fromtimestamp(mktime(time_struct))
+        
+        return dt_O
+
     
