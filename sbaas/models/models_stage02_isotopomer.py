@@ -2085,56 +2085,62 @@ class data_stage02_isotopomer_fittedNetFluxDifferences(Base):
     simulation_dateAndTime_2 = Column(DateTime);
     rxn_id = Column(String(100))
     flux_difference = Column(Float);
+    flux_distance = Column(Float);
     significant = Column(Boolean);
+    significant_criteria = Column(String(100))
     flux_units = Column(String(50));
+    fold_change_geo = Column(Float);
     used_ = Column(Boolean);
     comment_ = Column(Text);
 
     __table_args__ = (
             #ForeignKeyConstraint(['simulation_id'], ['data_stage02_isotopomer_simulation.simulation_id']),
-            UniqueConstraint('analysis_id','simulation_id_1','simulation_dateAndTime_1','simulation_id_2','simulation_dateAndTime_2','rxn_id','simulation_dateAndTime_1','flux_units'),
+            UniqueConstraint('analysis_id','simulation_id_1','simulation_dateAndTime_1','simulation_id_2','simulation_dateAndTime_2','rxn_id','simulation_dateAndTime_1','flux_units','significant_criteria'),
             )
 
-    def __init__(self,simulation_id_I,
-        simulation_dateAndTime_I,
+    def __init__(self,
+        analysis_id_I,
+        simulation_id_1_I,
+        simulation_dateAndTime_1_I,
+        simulation_id_2_I,
+        simulation_dateAndTime_2_I,
         rxn_id_I,
-        flux_I,
-        flux_stdev_I,
-        flux_lb_I,
-        flux_ub_I,
+        flux_difference_I,
+        flux_distance_I,
+        significant_I,
+        significant_criteria_I,
         flux_units_I,
+        fold_change_geo_I,
         used__I,
         comment__I):
-        self.simulation_id=simulation_id_I
-        self.simulation_dateAndTime=simulation_dateAndTime_I
-        #self.experiment_id=experiment_id_I
-        #self.model_id=model_id_I
-        #self.mapping_id=mapping_id_I
-        #self.sample_name_abbreviation=sample_name_abbreviation_I
-        #self.time_point=time_point_I
+        self.analysis_id=analysis_id_I
+        self.simulation_id_1=simulation_id_1_I
+        self.simulation_dateAndTime_1=simulation_dateAndTime_1_I
+        self.simulation_id_2=simulation_id_2_I
+        self.simulation_dateAndTime_2=simulation_dateAndTime_2_I
         self.rxn_id=rxn_id_I
-        self.flux=flux_I
-        self.flux_stdev=flux_stdev_I
-        self.flux_lb=flux_lb_I
-        self.flux_ub=flux_ub_I
+        self.flux_difference=flux_difference_I
+        self.flux_distance=flux_distance_I
+        self.significant=significant_I
+        self.significant_criteria=significant_criteria_I
         self.flux_units=flux_units_I
+        self.fold_change_geo=fold_change_geo_I
         self.used_=used__I
         self.comment_=comment__I
 
     def __repr__dict__(self):
         return {'id':self.id,
-                'simulation_id':self.simulation_id,
-        'simulation_dateAndTime':self.simulation_dateAndTime,
-        #'experiment_id':self.experiment_id,
-        #'model_id':self.model_id,
-        #'mapping_id':self.mapping_id,
-        #'sample_name_abbreviation':self.sample_name_abbreviation,
-        #'time_point':self.time_point,
+        'analysis_id':self.analysis_id,
+        'simulation_id_1':self.simulation_id_1,
+        'simulation_dateAndTime_1':self.simulation_dateAndTime_1,
+        'simulation_id_2':self.simulation_id_2,
+        'simulation_dateAndTime_2':self.simulation_dateAndTime_2,
         'rxn_id':self.rxn_id,
-        'flux':self.flux,
-        'flux_stdev':self.flux_stdev,
-        'flux_lb':self.flux_lb,
-        'flux_ub':self.flux_ub,
+        'flux_difference':self.flux_difference,
+        'flux_distance':self.flux_distance,
+        'significant':self.significant,
+        'significant_criteria':self.significant_criteria,
         'flux_units':self.flux_units,
+        'fold_change_geo':self.fold_change_geo,
         'used_':self.used_,
         'comment_':self.comment_}
