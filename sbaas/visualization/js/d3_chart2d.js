@@ -131,13 +131,17 @@ d3_chart2d.prototype.set_x1range = function (scale_I) {
     } else if (scale_I === 'ordinal') {
         this.x1scale = d3.scale.ordinal();
     } else if (scale_I === 'ordinal-rangeRoundBands') {
-        this.x1scale = d3.scale.ordinal().rangeRoundBands([0, this.width], .1);;
+        this.x1scale = d3.scale.ordinal().rangeRoundBands([0, this.width], .1);
     };
 };
 d3_chart2d.prototype.set_y1range = function (scale_I) {
     // set y1-range of the plot
     if (scale_I === 'linear') {
         this.y1scale = d3.scale.linear().range([this.height, 0])
+    } else if (scale_I === 'ordinal') {
+        this.y1scale = d3.scale.ordinal();
+    } else if (scale_I === 'ordinal-rangeRoundBands') {
+        this.y1scale = d3.scale.ordinal().rangeRoundBands([this.height, 0], .1);
     };
 };
 d3_chart2d.prototype.set_x2range = function (scale_I) {
@@ -154,7 +158,12 @@ d3_chart2d.prototype.set_y2range = function (scale_I) {
     // set y1-range of the plot
     if (scale_I === 'linear') {
         this.y2scale = d3.scale.linear().range([this.height, 0])
-    }
+    } else if (scale_I === 'ordinal') {
+        this.y2scale = d3.scale.ordinal();
+    } else if (scale_I === 'ordinal-rangeRoundBands') {
+        //this.y2scale = d3.scale.ordinal().rangeRoundBands([this.height, 0], .1);
+        this.y2scale = d3.scale.ordinal().rangeRoundBands([0,this.height], .1);
+    };
 };
 d3_chart2d.prototype.add_data = function(data_I){
     //add data n
@@ -419,6 +428,13 @@ d3_chart2d.prototype.set_x1axistickformat = function (x1axistickformat_I) {
     if (typeof x1axistickformat_I !== "undefined"){var x1axistickformat = x1axistickformat_I;}
     else {var x1axistickformat = null;}
     this._x1axis.tickFormat(d3.format(x1axistickformat));
+};
+d3_chart2d.prototype.set_y1axistickformat = function (y1axistickformat_I) {
+    //y1 axis format
+    //uses axis.tickFormat(d3.format())
+    if (typeof y1axistickformat_I !== "undefined"){var y1axistickformat = y1axistickformat_I;}
+    else {var y1axistickformat = null;}
+    this._y1axis.tickFormat(d3.format(y1axistickformat));
 };
 d3_chart2d.prototype.add_x2axis = function () {
     //add x2 axis
@@ -996,13 +1012,6 @@ d3_chart2d.prototype.set_x1axisticktextstyle = function (x1axisstyle_I) {
         this.set_svggcss(selectorstyle);
     };
 };
-d3_chart2d.prototype.set_x1axistextstyle = function (x1axisstyle_I) {
-    //x1 axis format
-    //appends styles to x1axis text
-    if (typeof x1axistickformat_I !== "undefined"){var x1axistickformat = x1axistickformat_I;}
-    else {var x1axistickformat = null;}
-    this._x1axis.tickFormat(d3.format(x1axistickformat));
-};
 d3_chart2d.prototype.set_svggattr = function (selectionattr_I) {
     //set custom css attributes to svgg
     //Input:
@@ -1013,7 +1022,6 @@ d3_chart2d.prototype.set_svggattr = function (selectionattr_I) {
             .attr(selectionattr_I[i].attr);
     };
 };
-//todo:
 d3_chart2d.prototype.set_x1axisticktextattr = function (x1axistickattr_I) {
     //x1 axis format
     //appends attributes to x1axis text
@@ -1021,6 +1029,27 @@ d3_chart2d.prototype.set_x1axisticktextattr = function (x1axistickattr_I) {
         var x1axistickattr = x1axistickattr_I;
         var x1axisselector = '#' + this.id + 'x1axis' + ' g.tick text';
         var selectorattr = [{ 'selection': x1axisselector, 'attr': x1axistickattr }]
+        this.set_svggattr(selectorattr);
+        };
+};
+d3_chart2d.prototype.set_y1axisticktextstyle = function (y1axisstyle_I) {
+    // custom css styles for y1 axis
+    // Input:
+    //  style = {}, e.g. 'font-size': '12px'
+    if (typeof y1axisstyle_I !== "undefined"){
+        var style = y1axisstyle_I;
+        var y1axisselector = '#' + this.id + 'y1axis' + ' g.tick text';
+        var selectorstyle = [{ 'selection': y1axisselector, 'style': style }]
+        this.set_svggcss(selectorstyle);
+    };
+};
+d3_chart2d.prototype.set_y1axisticktextattr = function (y1axistickattr_I) {
+    //y1 axis format
+    //appends attributes to y1axis text
+    if (typeof y1axistickattr_I !== "undefined"){
+        var y1axistickattr = y1axistickattr_I;
+        var y1axisselector = '#' + this.id + 'y1axis' + ' g.tick text';
+        var selectorattr = [{ 'selection': y1axisselector, 'attr': y1axistickattr }]
         this.set_svggattr(selectorattr);
         };
 };

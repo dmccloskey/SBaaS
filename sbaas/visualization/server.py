@@ -262,6 +262,9 @@ class ProjectHandler(BaseHandler):
         elif table_id_I=='export_dataStage02IsotopomerFluxMap_js':
             io = stage02_isotopomer_io(session);
             data_json_O = io.export_dataStage02IsotopomerFluxMap_js(analysis_id_I,data_dir_I='data_json');
+        elif table_id_I=='export_dataStage02IsotopomerFittedNetFluxDifferences_js':
+            io = stage02_isotopomer_io(session);
+            data_json_O = io.export_dataStage02IsotopomerFittedNetFluxDifferences_js(analysis_id_I,data_dir_I='data_json');
         elif table_id_I=='export_dataStage02QuantificationPairWiseTest_js':
             io = stage02_quantification_io(session);
             data_json_O = io.export_dataStage02QuantificationPairWiseTest_js(analysis_id_I,data_dir_I='data_json');

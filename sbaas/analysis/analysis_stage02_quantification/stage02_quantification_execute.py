@@ -1013,7 +1013,7 @@ class stage02_quantification_execute(base_analysis):
                             True,None);
                     self.session.add(row2);
         self.session.commit();
-    def execute_pairwiseTTest(self,analysis_id_I,concentration_units_I=[],component_names_I=[]):
+    def execute_pairwiseTTest(self,analysis_id_I,concentration_units_I=[],component_names_I=[],redundancy_I=True):
         '''execute pairwiseTTest using R'''
 
         print('execute_pairwiseTTest...')
@@ -1048,8 +1048,11 @@ class stage02_quantification_execute(base_analysis):
                 sample_name_abbreviations = [];
                 sample_name_abbreviations = self.stage02_quantification_query.get_sampleNameAbbreviations_analysisIDAndUnitsAndComponentNames_dataStage02GlogNormalized(analysis_id_I,cu, cn)
                 for sna_1_cnt,sna_1 in enumerate(sample_name_abbreviations):
-                    for sna_2_cnt,sna_2 in enumerate(sample_name_abbreviations):
-                    #for sna_2_cnt,sna_2 in enumerate(sample_name_abbreviations[sna_1_cnt:]): #prevents redundancy
+                    if redundancy_I: list_2 = sample_name_abbreviations;
+                    else: list_2 = sample_name_abbreviations[sna_1+1:];
+                    for cnt,sna_2 in enumerate(list_2):
+                        if redundancy_I: sna_2_cnt = cnt;
+                        else: sna_2_cnt = sna_1_cnt+cnt+1;
                         if sna_1 != sna_2:
                             print('calculating pairwiseTTest for sample_name_abbreviations ' + sna_1 + ' vs. ' + sna_2);
                             # get data:

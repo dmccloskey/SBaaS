@@ -2271,7 +2271,8 @@ class stage02_isotopomer_execute(base_analysis):
     def execute_findNetFluxSignificantDifferences(self,analysis_id_I, criteria_I = 'flux_lb/flux_ub',
                                                simulation_ids_I=[],simulation_dateAndTimes_I = [],
                                                rxn_ids_I = [],flux_units_I = [],
-                                               control_simulation_id_I=None, control_simulation_dateAndTime_I=None):
+                                               control_simulation_id_I=None, control_simulation_dateAndTime_I=None,
+                                               redundancy_I=False):
         """Find fluxes that are significantly different
         Input:
         analysis_id_I = string,
@@ -2279,6 +2280,7 @@ class stage02_isotopomer_execute(base_analysis):
                              flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
         control_simulation_id_I = string, simulation_id to compare all other simulation_ids to
         simulation_dateAndTime_I =  string, simulation_dateAndTime to compare all other simulation_ids to
+        redundancy_I =  boolean, if true, all values with be compared, if false, only unique comparisons will be made
         """
         data_O = [];
         print('executing findNetFluxSignificantDifferences...')
@@ -2335,8 +2337,13 @@ class stage02_isotopomer_execute(base_analysis):
                     flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit,rxn_id);
                     if not self.check_criteria(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1, criteria_I):
                         continue;
-                    for cnt,simulation_id_2 in enumerate(simulation_ids[simulation_cnt_1+1:]): #prevents redundancy
-                        simulation_cnt_2 = simulation_cnt_1+cnt+1;
+                    if redundancy_I: list_2 = simulation_ids;
+                    else: list_2 = simulation_ids[simulation_cnt_1+1:];
+                    for cnt,simulation_id_2 in enumerate(list_2): #prevents redundancy
+                        if redundancy_I: simulation_cnt_2 = cnt;
+                        else: simulation_cnt_2 = simulation_cnt_1+cnt+1;
+                        if simulation_cnt_2 == simulation_cnt_1:
+                            continue;
                         # simulation_id_2 flux_data
                         flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=None,None,None,None,None;
                         flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_2,simulation_dateAndTimes[simulation_cnt_2],flux_unit,rxn_id);

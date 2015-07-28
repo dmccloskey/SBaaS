@@ -15,15 +15,6 @@ d3_svg.prototype.set_tileid = function (tileid_I) {
     // set svg tile id
     this.tileid = tileid_I;
 };
-d3_svg.prototype.set_updatecontainer = function (updatecontainer_I) {
-    // set container update status
-    // INPUT:
-    // boolean, if true, all function calls that re-render
-    //          the svg image will trigger an update call
-    //          to the container object, which will
-    //          propagate out to all other container tiles
-    this.containerupdate = containerupdate_I;
-};
 d3_svg.prototype.set_id = function (id_I) {
     // set svg id
     this.id = id_I;

@@ -1,6 +1,8 @@
 "use strict";
 //var ddt_tile = function(){
 function ddt_tile(){
+    // ddt_tile class
+    // a generic data driven tile
     this.parameters = {};
     this.tile = null;
 };
@@ -39,14 +41,17 @@ ddt_tile.prototype.update_tile = function(){
 };
 //var ddt_tile_svg = function () {
 function ddt_tile_svg() {
-    // form tile
+    // data driven svg tile
+	//1. defines the lookup table (get_svg) to instantiate the svg template object based on input
+	//2. defines the make_tile function that adds the svg template object to the tile and renders the object
+	//3. defines the update_tile function that updates the svg template object when the associated data is changed
     ddt_tile.call(this);
     this.ddtsvg = null;
 };
 ddt_tile_svg.prototype = Object.create(ddt_tile.prototype);
 ddt_tile_svg.prototype.constructor = ddt_tile_svg;
 ddt_tile_svg.prototype.make_tile = function(data_I,parameters_I){
-    // make chart2d tile
+    // make svg tile
     var header_I = parameters_I.tileheader;
     var svgtype_I = parameters_I.svgtype;
 
@@ -87,6 +92,8 @@ ddt_tile_svg.prototype.get_svg = function(svgtype_I){
         return new ddt_svg_scatterplot2d_01();
     } else if (svgtype_I=='verticalbarschart2d_01'){
         return new ddt_svg_verticalbarschart2d_01();
+    } else if (svgtype_I=='horizontalbarschart2d_01'){
+        return new ddt_svg_horizontalbarschart2d_01();
     } else if (svgtype_I=='boxandwhiskersplot2d_01'){
         return new ddt_svg_boxandwhiskersplot2d_01();
     } else if (svgtype_I=='volcanoplot2d_01'){
@@ -101,7 +108,11 @@ ddt_tile_svg.prototype.get_svg = function(svgtype_I){
 };
 //var ddt_tile_table = function () {
 function ddt_tile_table() {
-    // table tile
+    // data driven table tile
+	//1. defines the lookup table (get_table) to instantiate the table template object based on input
+	//2. defines the make_tile function that adds the table template object to the tile and renders the object
+	//3. defines the update_tile function that updates the table template object when the associated data is changed
+    
     ddt_tile.call(this);
     this.ddttable = null;
 };
@@ -149,14 +160,18 @@ ddt_tile_table.prototype.get_table = function(tabletype_I){
 };
 //var ddt_tile_html = function () {
 function ddt_tile_html() {
-    // html tile
+    // data driven html tile
+	//1. defines the lookup html (get_html) to instantiate the html template object based on input
+	//2. defines the make_tile function that adds the html template object to the tile and renders the object
+	//3. defines the update_tile function that updates the html template object when the associated data is changed
+    
     ddt_tile.call(this);
     this.ddthtml = null;
 };
 ddt_tile_html.prototype = Object.create(ddt_tile.prototype);
 ddt_tile_html.prototype.constructor = ddt_tile_html;
 ddt_tile_html.prototype.make_tile = function(data_I,parameters_I){
-    // make chart2d tile
+    // make html tile
     var header_I = parameters_I.tileheader;
     var htmltype_I = parameters_I.htmltype;
 

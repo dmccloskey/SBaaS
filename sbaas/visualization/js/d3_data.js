@@ -1,7 +1,11 @@
 "use strict";
 //var d3_data = function () {
 function d3_data() {
-    //data function
+    //the data object class
+    //to handle the filtering and manipulation
+    //of listed key-value paired data
+    //(e.g., from a database)
+
     this.keys = []; // list of columns that can be applied as nest keys and filters
     this.nestkey = ''; // key to apply to nest
     this.filters = {}; // {key1:[string1,string2,...],...}
