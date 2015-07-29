@@ -8,7 +8,9 @@ d3_chart2d.prototype.set_y1y2domain_horizontalbarschart = function () {
     this.y1scale.domain(nestdatafiltered.map(function (d) { return d.key; }));
     var y1scale = this.y1scale;
     var series_labels_unique = this.get_uniquelabels(listdatafiltered,series_label);
-    this.y2scale.domain(series_labels_unique).rangeRoundBands([0,y1scale.rangeBand()]);
+    //series_labels_unique.reverse();
+    this.y2scale.domain(series_labels_unique).rangeRoundBands([0,y1scale.rangeBand()]); // orders the data from bottom to top
+    //this.y2scale.domain(series_labels_unique).rangeRoundBands([y1scale.rangeBand(),0]); // orders the data from top to bottom
 };
 d3_chart2d.prototype.add_horizontalbarsdata1 = function () {
     //add horizontal bars to the chart
@@ -22,6 +24,7 @@ d3_chart2d.prototype.add_horizontalbarsdata1 = function () {
     var colorscale = this.colorscale;
     var id = this.id;
     var height = this.height;
+    var margintop = this.margin.top;
 
     this.barlabel = this.svgg.selectAll(".labels")
         .data(this.data1.nestdatafiltered)
@@ -29,14 +32,20 @@ d3_chart2d.prototype.add_horizontalbarsdata1 = function () {
     this.barlabel
         .transition()
         .attr("class", "labels")
-        .attr("transform", function (d) { return "translate(" + "0," + -y1scale(d.key) + ")"; });
+        .attr("transform", function (d) {
+            //return "translate(" + "0," + (height-y1scale(d.key)) + ")"; });
+            //return "translate(" + "0," + (y1scale(d.key)+margintop) + ")"; });
+            return "translate(" + "0," + (y1scale(d.key)) + ")"; });
 
     this.barlabel
         .exit().remove();
 
     this.barlabelenter = this.barlabel.enter().append("g")
         .attr("class", "labels")
-        .attr("transform", function (d) { return "translate(" + "0," + -y1scale(d.key) + ")"; });
+        .attr("transform", function (d) {
+            //return "translate(" + "0," + (height-y1scale(d.key)) + ")"; });
+            //return "translate(" + "0," + (y1scale(d.key)+margintop) + ")"; });
+            return "translate(" + "0," + (y1scale(d.key)) + ")"; });
 
     this.barsrect = this.barlabel.selectAll(".bars")
         .data(function (d) { return d.values; });
@@ -49,22 +58,34 @@ d3_chart2d.prototype.add_horizontalbarsdata1 = function () {
 //         .attr("y", function (d) { return y1scale(Math.max(d[y_data], 0)); })
 //         .attr("height", function (d) { return Math.abs(y1scale(d[y_data]) - y1scale(0)); })
 //         .style("fill", function (d) { return colorscale(d[series_label]); });
-        .attr("width", function (d) { return Math.abs(x1scale(d[x_data]) - x1scale(0)); })
-        .attr("y", function (d) { return height-y2scale(d[series_label])-y2scale.rangeBand(); })
-        .attr("x", function (d) { return x1scale(Math.min(d[x_data], 0)); })
+        .attr("width", function (d) { 
+                return Math.abs(x1scale(d[x_data]) - x1scale(0)); })
+        .attr("y", function (d) {
+            //return height-y2scale(d[series_label])-y2scale.rangeBand(); })
+            //return -y2scale(d[series_label])-y2scale.rangeBand(); })
+            return y2scale(d[series_label]); })
+        .attr("x", function (d) {
+            return x1scale(Math.min(d[x_data], 0)); })
         .attr("height", y2scale.rangeBand())
-        .style("fill", function (d) { return colorscale(d[series_label]); });
+        .style("fill", function (d) { 
+            return colorscale(d[series_label]); });
       
     this.barsrectenter = this.barsrect.enter()
         .append("rect")
         .attr("class", "bars");
 
     this.barsrectenter
-        .attr("width", function (d) { return Math.abs(x1scale(d[x_data]) - x1scale(0)); })
-        .attr("y", function (d) { return height-y2scale(d[series_label])-y2scale.rangeBand(); })
-        .attr("x", function (d) { return x1scale(Math.min(d[x_data], 0)); })
+        .attr("width", function (d) {
+            return Math.abs(x1scale(d[x_data]) - x1scale(0)); })
+        .attr("y", function (d) {
+            //return height-y2scale(d[series_label])-y2scale.rangeBand(); })
+            //return -y2scale(d[series_label])-y2scale.rangeBand(); })
+            return y2scale(d[series_label]); })
+        .attr("x", function (d) {
+            return x1scale(Math.min(d[x_data], 0)); })
         .attr("height", y2scale.rangeBand())
-        .style("fill", function (d) { return colorscale(d[series_label]); });
+        .style("fill", function (d) {
+            return colorscale(d[series_label]); });
 
 };
 d3_chart2d.prototype.add_horizontalbarsdata1tooltipandfill = function () {
@@ -142,8 +163,10 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
 //         .attr("x2", function (d) { return x2scale(d[series_label]) + x2scale.rangeBand(); })
 //         .attr("y1", function (d) { return y1scale(d[y_data_ub]); })
 //         .attr("y2", function (d) { return y1scale(d[y_data_ub]); })
-        .attr("y1", function (d) { return height-y2scale(d[series_label]); })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
+        .attr("y1", function (d) { return y2scale(d[series_label]); })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand(); })
+//         .attr("y1", function (d) { return height-y2scale(d[series_label]); })
+//         .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
         .attr("x1", function (d) { return x1scale(d[x_data_ub]); })
         .attr("x2", function (d) { return x1scale(d[x_data_ub]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });
@@ -154,8 +177,8 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
         .attr("class", "ublines");
 
     this.barsublinesenter
-        .attr("y1", function (d) { return height-y2scale(d[series_label]); })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
+        .attr("y1", function (d) { return y2scale(d[series_label]); })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand(); })
         .attr("x1", function (d) { return x1scale(d[x_data_ub]); })
         .attr("x2", function (d) { return x1scale(d[x_data_ub]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });
@@ -176,8 +199,10 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
 //         .attr("x2", function (d) { return x2scale(d[series_label]) + x2scale.rangeBand(); })
 //         .attr("y1", function (d) { return y1scale(d[y_data_lb]); })
 //         .attr("y2", function (d) { return y1scale(d[y_data_lb]); })
-        .attr("y1", function (d) { return height-y2scale(d[series_label]); })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
+        .attr("y1", function (d) { return y2scale(d[series_label]); })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand(); })
+//         .attr("y1", function (d) { return height-y2scale(d[series_label]); })
+//         .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
         .attr("x1", function (d) { return x1scale(d[x_data_lb]); })
         .attr("x2", function (d) { return x1scale(d[x_data_lb]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });
@@ -192,8 +217,8 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
         .attr("class", "lblines");
 
     this.barslblinesenter
-        .attr("y1", function (d) { return height-y2scale(d[series_label]); })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand(); })
+        .attr("y1", function (d) { return y2scale(d[series_label]); })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand(); })
         .attr("x1", function (d) { return x1scale(d[x_data_lb]); })
         .attr("x2", function (d) { return x1scale(d[x_data_lb]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });
@@ -214,8 +239,10 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
 //         .attr("x2", function (d) { return x2scale(d[series_label]) + x2scale.rangeBand()*0.5; })
 //         .attr("y1", function (d) { return y1scale(d[y_data_lb]); })
 //         .attr("y2", function (d) { return y1scale(d[y_data_ub]); })
-        .attr("y1", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
+        .attr("y1", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand()*0.5; })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand()*0.5; })
+//         .attr("y1", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
+//         .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
         .attr("x1", function (d) { return x1scale(d[x_data_lb]); })
         .attr("x2", function (d) { return x1scale(d[x_data_ub]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });
@@ -230,8 +257,8 @@ d3_chart2d.prototype.add_horizontalbarsdata1errorbars = function () {
         .attr("class", "lbubconnector");
 
     this.barslbubconnectorenter
-        .attr("y1", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
-        .attr("y2", function (d) { return height-y2scale(d[series_label]) - y2scale.rangeBand()*0.5; })
+        .attr("y1", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand()*0.5; })
+        .attr("y2", function (d) { return y2scale(d[series_label]) + y2scale.rangeBand()*0.5; })
         .attr("x1", function (d) { return x1scale(d[x_data_lb]); })
         .attr("x2", function (d) { return x1scale(d[x_data_ub]); })
         //.style("stroke", function (d) { return colorscale(d[series_label]); });

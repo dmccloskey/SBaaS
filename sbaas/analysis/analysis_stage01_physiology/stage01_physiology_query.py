@@ -435,6 +435,20 @@ class stage01_physiology_query(base_analysis):
             return sample_names_O;
         except SQLAlchemyError as e:
             print(e);
+    def get_sampleNameShort_experimentID_dataStage01PhysiologyRates(self,experiment_id_I):
+        '''Querry sample name short (i.e. unknowns) that are used from
+        the experiment'''
+        try:
+            sample_names = self.session.query(sample_description.sample_name_short).filter(
+                    data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
+                    data_stage01_physiology_rates.used_.is_(True)).group_by(
+                    sample_description.sample_name_short).order_by(
+                    sample_description.sample_name_short.asc()).all();
+            sample_names_O = [];
+            for sn in sample_names: sample_names_O.append(sn.sample_name_short);
+            return sample_names_O;
+        except SQLAlchemyError as e:
+            print(e);
     # query metIDs from data_stage01_physiology_rates
     def get_metIDs_experimentIDAndSampleNameAbbreviation_dataStage01PhysiologyRates(self,experiment_id_I,exp_type_I,sample_name_abbreviation_I):
         '''Querry met_ids that are used from
@@ -450,6 +464,21 @@ class stage01_physiology_query(base_analysis):
                     sample.sample_id.like(sample_description.sample_id),
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     sample_description.sample_name_short.like(data_stage01_physiology_rates.sample_name_short)).group_by(
+                    data_stage01_physiology_rates.met_id).order_by(
+                    data_stage01_physiology_rates.met_id.asc()).all();
+            met_ids_O = [];
+            for met in met_ids: met_ids_O.append(met.met_id);
+            return met_ids_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_metIDs_experimentIDAndSampleNameShort_dataStage01PhysiologyRates(self,experiment_id_I,sample_name_short_I):
+        '''Querry met_ids that are used from
+        the experiment'''
+        try:
+            met_ids = self.session.query(data_stage01_physiology_rates.met_id).filter(
+                    data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
+                    data_stage01_physiology_rates.used_.is_(True),
+                    data_stage01_physiology_rates.sample_name_abbreviation.like(sample_name_short_I)).group_by(
                     data_stage01_physiology_rates.met_id).order_by(
                     data_stage01_physiology_rates.met_id.asc()).all();
             met_ids_O = [];

@@ -80,6 +80,36 @@ class base_calculate():
         else:
             print('biomass conversion units do not match!')
             exit(-1);
+    def calculate_yield_growthRateAndUptakeRates(self,growthRate_ss_I,uptakeRate_ss_I,per_carbon_I=False):
+        '''Calculate the biomass yield
+        Input:
+        growthRate_ss_I = float, steady-state growth rate
+        uptakeRate_ss_I = [float,float,...], steady-state uptake rates for (e.g., 1 or more carbon sources)
+        per_carbon_I = normalize uptake rates to a per carbon basis (default=False), not yet implemented
+        
+        Output:
+        yield_ss_O = biomass yield 
+        description of biomass yield: "The biomass yield (Y_X/S_ss) was calculated as the quotient of the growth rate and the glucose uptake rates during the exponential growth phase"
+        '''
+
+        # check input
+        yield_ss_O = None;
+        if not growthRate_ss_I:
+            print('no growth rate has been supplied')
+            return yield_ss_O;
+        if not uptakeRate_ss_I:
+            print('no uptake rates have been supplied')
+            return yield_ss_O;
+        if not None in uptakeRate_ss_I or (not 0.0 in uptakeRate_ss_I and len(uptakeRate_ss_I)==1):
+            print('None or 0.0 values found in uptake rate')
+            return yield_ss_O;
+        # calculate yield
+        # TODO: implement on a per carbon basis
+        if per_carbon_I:
+            print('per carbon normaization not yet supported.  No normalization will be applied')
+        yield_ss_O = growthRate_ss_I/numpy.sum(uptakeRate_ss_I);
+
+        return yield_ss_O;
 
     # statistical analysis
     # calculate the geometric mean and variance:

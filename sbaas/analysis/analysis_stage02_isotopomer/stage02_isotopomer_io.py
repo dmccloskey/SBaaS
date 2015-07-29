@@ -3400,6 +3400,8 @@ class stage02_isotopomer_io(base_analysis):
             row['simulation_dateAndTime_1'] = self.convert_datetime2string(row['simulation_dateAndTime_1']);
             row['simulation_dateAndTime_2'] = self.convert_datetime2string(row['simulation_dateAndTime_2']);
             row['flux_units'] = row['flux_units'].replace('*','x');
+            if row['significant']: row['significant'] = 'Yes';
+            else: row['significant'] = 'No';
             data_O.append(row);
         # dump chart parameters to a js files
         data1_keys = ['simulation_id_1','simulation_dateAndTime_1','simulation_id_2','simulation_dateAndTime_2','rxn_id','flux_units','significant'

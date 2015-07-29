@@ -13,10 +13,10 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\component-contri
 #analysis_physiology.run_all_tests();
 #analysis_resequencing.run_all_tests();
 
-##Visualization tests:
-#from visualization.server import run
-#run();
-##run(port=8080,public=True);
+#Visualization tests:
+from visualization.server import run
+run();
+#run(port=8080,public=True);
 
 #Debug mode:
 from sbaas.analysis.analysis_stage02_isotopomer import *

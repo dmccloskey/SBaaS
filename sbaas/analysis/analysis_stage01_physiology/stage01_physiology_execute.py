@@ -342,3 +342,33 @@ class stage01_physiology_execute():
             data_stage01_physiology_analysis.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
+    #todo:
+    def execute_calculateYield(self,experiment_id_I,sample_name_short_I=[],uptake_mets_I=[]):
+        '''Calculate the yield from the growth rate and the uptake rates'''
+
+        #query sample_name abbreviations 
+        #query sample names
+        print('executing calculating yield...')
+        if sample_name_short_I:
+            sample_name_short = sample_name_short_I;
+        else:
+            sample_name_short = [];
+            sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentID_dataStage01PhysiologyRates(experiment_id_I)
+        for sns in sample_name_short:
+            print('calculating yield for sample_name_short ' + sns);
+            #query met_ids
+            met_ids = [];
+            met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameShort_dataStage01PhysiologyRates(experiment_id_I,sns);
+            # check for biomass
+            # check for uptake metabolites
+            for met in met_ids:
+                print('calculating rates averages for met_id ' +met);
+                #query sample names
+                #add rows to the data base
+                row = [];
+                row = data_stage01_physiology_rates(experiment_id_I, sns, met,
+                     slope, intercept, r2, slope, 'hr-1',
+                     p_value, std_err,
+                     True, None);
+                self.session.add(row);
+        self.session.commit();
