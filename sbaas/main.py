@@ -19,20 +19,62 @@ run();
 #run(port=8080,public=True);
 
 #Debug mode:
-from sbaas.analysis.analysis_stage02_isotopomer import *
+from sbaas.analysis.analysis_stage01_physiology import *
 from sbaas.models import *
 session = Session();
-ex02 = stage02_isotopomer_execute(session);
-io02 = stage02_isotopomer_io(session);
-ex02.initialize_datastage02();
-#ex02.reset_datastage02_isotopomer_fittedNetFluxDifferences('ALEWt01');
-ex02.reset_datastage02_isotopomer_fittedNetFluxDifferences('ALEWt01_evo');
-#ex02.execute_findNetFluxSignificantDifferences('ALEWt01',
-#                    control_simulation_id_I='WTEColi_113C80_U13C20_02_140407_iDM2014_full04_OxicWtGlc_0_pfl',
-#                    control_simulation_dateAndTime_I="2015-07-08 23:28:23");
-ex02.execute_findNetFluxSignificantDifferences('ALEWt01_evo',redundancy_I=True);
-# visualize the data
-#io02.export_dataStage02IsotopomerFittedNetFluxDifferences_js('ALEWt01');
+ex01 = stage01_physiology_execute(session);
+io01 = stage01_physiology_io(session);
+#io01.import_dataStage01PhysiologyRatesAverages_add(settings.workspace_data + '/_input/150728_Physiology_ALEWt01_dataStage01PhysiologyRatesAverages02.csv');
+#io01.import_dataStage01PhysiologyAnalysis_add(settings.workspace_data + '/_input/150728_Physiology_ALEWt01_dataStage01PhysiologyAnalysis.csv');
+## calculate the yield
+#ex01.execute_calculateYield('ALEsKOs01',
+#    sample_name_short_I=[
+#    "OxicEvo04EcoliGlc_Broth-4",
+#    "OxicEvo04EcoliGlc_Broth-5",
+#    "OxicEvo04EcoliGlc_Broth-6"
+#    ]
+#    );
+#def sample_names_abbreviation_exportRatesAverages_P():
+#    return [
+#        'OxicEvo04EcoliGlc',
+#            'OxicEvo04gndEcoliGlc',
+#            'OxicEvo04pgiEcoliGlc',
+#            'OxicEvo04ptsHIcrrEcoliGlc',
+#            'OxicEvo04sdhCBEcoliGlc',
+#            'OxicEvo04tpiAEcoliGlc',
+#            'OxicEvo04pgiEvo01EPEcoliGlc',
+#            'OxicEvo04pgiEvo02EPEcoliGlc',
+#            'OxicEvo04pgiEvo02EPEcoliGlc',
+#            'OxicEvo04pgiEvo04EPEcoliGlc',
+#            'OxicEvo04pgiEvo05EPEcoliGlc',
+#            'OxicEvo04pgiEvo06EPEcoliGlc',
+#            'OxicEvo04pgiEvo07EPEcoliGlc',
+#            'OxicEvo04pgiEvo08EPEcoliGlc',
+#            'OxicEvo04ptsHIcrrEvo01EPEcoliGlc',
+#            'OxicEvo04ptsHIcrrEvo02EPEcoliGlc',
+#            'OxicEvo04ptsHIcrrEvo02EPEcoliGlc',
+#            'OxicEvo04ptsHIcrrEvo04EPEcoliGlc',
+#            'OxicEvo04tpiAEvo01EPEcoliGlc',
+#            'OxicEvo04tpiAEvo02EPEcoliGlc',
+#            'OxicEvo04tpiAEvo02EPEcoliGlc',
+#            'OxicEvo04tpiAEvo04EPEcoliGlc',
+#            'OxicEvo04gndEvo01EPEcoliGlc',
+#            'OxicEvo04gndEvo02EPEcoliGlc',
+#            'OxicEvo04gndEvo02EPEcoliGlc',
+#            'OxicEvo04sdhCBEvo01EPEcoliGlc',
+#            'OxicEvo04sdhCBEvo02EPEcoliGlc',
+#            'OxicEvo04sdhCBEvo02EPEcoliGlc',
+#            'OxicEvo04Evo01EPEcoliGlc',
+#            'OxicEvo04Evo02EPEcoliGlc'
+#            ];
+## calculate the average yield
+#ex01.execute_calculateRatesAverages('ALEsKOs01',
+#    sample_name_abbreviations_I=sample_names_abbreviation_exportRatesAverages_P(),
+#    met_ids_I=[
+#    "yield_ss"
+#    ]
+#    );
+
 
 #from sbaas.analysis.analysis_stage01_resequencing import *
 #from sbaas.analysis.analysis_base.base_importData import base_importData

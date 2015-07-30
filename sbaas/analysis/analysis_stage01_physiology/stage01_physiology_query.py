@@ -478,7 +478,7 @@ class stage01_physiology_query(base_analysis):
             met_ids = self.session.query(data_stage01_physiology_rates.met_id).filter(
                     data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
                     data_stage01_physiology_rates.used_.is_(True),
-                    data_stage01_physiology_rates.sample_name_abbreviation.like(sample_name_short_I)).group_by(
+                    data_stage01_physiology_rates.sample_name_short.like(sample_name_short_I)).group_by(
                     data_stage01_physiology_rates.met_id).order_by(
                     data_stage01_physiology_rates.met_id.asc()).all();
             met_ids_O = [];

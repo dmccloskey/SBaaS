@@ -81,7 +81,7 @@ class base_calculate():
             print('biomass conversion units do not match!')
             exit(-1);
     def calculate_yield_growthRateAndUptakeRates(self,growthRate_ss_I,uptakeRate_ss_I,
-                                                 grateRate_units_I=None,uptakeRate_units_I=None,
+                                                 growthRate_units_I=None,uptakeRate_units_I=None,
                                                  per_carbon_I=False):
         '''Calculate the biomass yield
 
@@ -102,22 +102,28 @@ class base_calculate():
 
         # check input
         yield_ss_O = None;
+        yield_units_O = None;
         if not growthRate_ss_I:
             print('no growth rate has been supplied')
-            return yield_ss_O;
+            return yield_ss_O,yield_units_O;
         if not uptakeRate_ss_I:
             print('no uptake rates have been supplied')
-            return yield_ss_O;
-        if not None in uptakeRate_ss_I or (not 0.0 in uptakeRate_ss_I and len(uptakeRate_ss_I)==1):
+            return yield_ss_O,yield_units_O;
+        if None in uptakeRate_ss_I or (0.0 in uptakeRate_ss_I and len(uptakeRate_ss_I)<1):
             print('None or 0.0 values found in uptake rate')
-            return yield_ss_O;
+            return yield_ss_O,yield_units_O;
         # calculate yield
         # TODO: implement on a per carbon basis
         if per_carbon_I:
             print('per carbon normaization not yet supported.  No normalization will be applied')
         yield_ss_O = growthRate_ss_I/numpy.sum(uptakeRate_ss_I);
-
-        return yield_ss_O;
+        # determine the units
+        if not growthRate_units_I or not uptakeRate_units_I:
+            print('no growthRate or no uptakeRate units provided!')
+            return yield_ss_O,yield_units_O;
+        else:
+            yield_units_O = "%s*(%s)*-1" %(growthRate_units_I,uptakeRate_units_I);
+        return yield_ss_O,yield_units_O;
 
     # statistical analysis
     # calculate the geometric mean and variance:

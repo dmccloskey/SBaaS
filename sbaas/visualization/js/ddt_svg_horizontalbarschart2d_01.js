@@ -47,8 +47,8 @@ ddt_svg_horizontalbarschart2d_01.prototype.make_svg = function(data_I,parameters
     	};
         this.add_chart2d2tile();
         this.set_svgstyle();
-        this.set_y1range("ordinal-rangeRoundBands");
-        this.set_y2range("ordinal");
+        this.set_y1range("ordinal-rangeRoundBands",true);
+        this.set_y2range("ordinal",true);
         this.set_x1range("linear");
         this.set_y1y2domain_horizontalbarschart();
         this.set_x1domain();

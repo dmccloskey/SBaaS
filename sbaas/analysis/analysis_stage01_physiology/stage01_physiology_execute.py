@@ -84,7 +84,7 @@ class stage01_physiology_execute():
             pp['od600'] = biomass;
             data.append(pp);  
         self.stage01_physiology_query.update_data_samplePhysiologicalParameters(data)
-    def execute_calculateRatesAverages(self,experiment_id_I,sample_name_abbreviations_I=[]):
+    def execute_calculateRatesAverages(self,experiment_id_I,sample_name_abbreviations_I=[],met_ids_I=[]):
         '''Calculate the average rates based on the rates of the replicates'''
 
         #query sample_name abbreviations
@@ -97,8 +97,11 @@ class stage01_physiology_execute():
         for sna in sample_name_abbreviations:
             print('calculating rates averages for sample_name_abbreviation ' + sna);
             #query met_ids
-            met_ids = [];
-            met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameAbbreviation_dataStage01PhysiologyRates(experiment_id_I,6,sna)
+            if met_ids_I:
+                met_ids = met_ids_I;
+            else:
+                met_ids = [];
+                met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameAbbreviation_dataStage01PhysiologyRates(experiment_id_I,6,sna)
             for met in met_ids:
                 print('calculating rates averages for met_id ' +met);
                 #query sample names
@@ -109,16 +112,23 @@ class stage01_physiology_execute():
                     #query slope, intercept, and rate
                     slope, intercept, r2, rate, rate_units, p_value, std_err = None,None,None,None,None,None,None;
                     slope, intercept, r2, rate, rate_units, p_value, std_err = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,met);
-                    slopes.append(slope);
-                    intercepts.append(intercept);
-                    rates.append(rate);
-                    rates_units.append(rate_units);
-                    std_errs.append(std_err);
+                    if rate:
+                        slopes.append(slope);
+                        intercepts.append(intercept);
+                        rates.append(rate);
+                        rates_units.append(rate_units);
+                        std_errs.append(std_err);
                 #calculate the average, variance, and 95% confidence intervals
                 n = len(rates);
-                slopes_ave, slopes_var, slopes_lb, slopes_ub = self.calculate.calculate_ave_var(slopes);
-                intercepts_ave, intercepts_var, intercepts_lb, intercepts_ub = self.calculate.calculate_ave_var(intercepts);
-                rates_ave, rates_var, rates_lb, rates_ub = self.calculate.calculate_ave_var(rates);
+                slopes_ave, slopes_var, slopes_lb, slopes_ub = None,None,None,None;
+                intercepts_ave, intercepts_var, intercepts_lb = None,None,None;
+                rates_ave, rates_var, rates_lb, rates_ub = None, None, None, None;
+                if not None in slopes:
+                    slopes_ave, slopes_var, slopes_lb, slopes_ub = self.calculate.calculate_ave_var(slopes);
+                if not None in intercepts:
+                    intercepts_ave, intercepts_var, intercepts_lb, intercepts_ub = self.calculate.calculate_ave_var(intercepts);
+                if not None in rates:
+                    rates_ave, rates_var, rates_lb, rates_ub = self.calculate.calculate_ave_var(rates);
                 #add rows to the data base
                 row = [];
                 row = data_stage01_physiology_ratesAverages(experiment_id_I, sna,
@@ -334,25 +344,26 @@ class stage01_physiology_execute():
                 for umet in met_ids_nobiomass:
                     slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = None,None,None,None,None,None,None;
                     slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,umet);
-                    if rate_umet < 0.0: uptake_mets.append(rate_umet);
+                    if rate_umet < 0.0: uptake_rates.append(abs(rate_umet));
             else:
                 met_ids_nobiomass = [x for x in met_ids if x != 'biomass'];
                 for umet in met_ids_nobiomass:
                     slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = None,None,None,None,None,None,None;
                     slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,umet);
                     if rate_umet < 0.0:
-                        uptake_mets.append(rate_umet);
-                        uptake_mets.append(units_umet);
+                        uptake_rates.append(abs(rate_umet));
+                        uptake_units.append(units_umet);
             if not uptake_rates:
                 print('no uptake metabolites found!');
                 continue;
             # calculate the yield
             yield_ss = None;
-            yield_ss = self.calculate.calculate_yield_growthRateAndUptakeRates(rate_biomass,uptake_rates);
-            yield_ss_units = units_biomass + '*' + units_umet[0] + '-1';
+            yield_ss_units = None;
+            yield_ss,yield_ss_units = self.calculate.calculate_yield_growthRateAndUptakeRates(rate_biomass,uptake_rates);
+            yield_ss_units = 'gDCW*mmol-1 of glc-D'; # hard-coded value that needs to be updated
             #add rows to the data base
             row = None;
-            row = data_stage01_physiology_rates(experiment_id_I, sns, 'yield',
+            row = data_stage01_physiology_rates(experiment_id_I, sns, 'yield_ss',
                     None, None, None, yield_ss, yield_ss_units,
                     None, None,
                     True, None);

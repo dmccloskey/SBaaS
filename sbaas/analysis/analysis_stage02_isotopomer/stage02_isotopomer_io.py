@@ -3247,9 +3247,10 @@ class stage02_isotopomer_io(base_analysis):
             flux_data = [];
             flux_data = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
             for i,row in enumerate(flux_data):
-                row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
-                row['flux_units'] = row['flux_units'].replace('*','x');
-                data_O.append(row);
+                if row['flux']:
+                    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                    row['flux_units'] = row['flux_units'].replace('*','x');
+                    data_O.append(row);
         # dump chart parameters to a js files
         data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units'
                     ];
@@ -3308,11 +3309,14 @@ class stage02_isotopomer_io(base_analysis):
 
         # Get the flux information
         flux = [];
+        flux_tmp = [];
         #flux = self.stage02_isotopomer_query.get_rowsEscherFluxList_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id_I);
-        flux = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id_I);
-        for i,row in enumerate(flux):
-            flux[i]['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
-            flux[i]['flux_units'] = self.remove_jsRegularExpressions(row['flux_units']);
+        flux_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id_I);
+        for i,row in enumerate(flux_tmp):
+            if row['flux'] and row['flux'] < 10.0:
+                flux_tmp[i]['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                flux_tmp[i]['flux_units'] = self.remove_jsRegularExpressions(row['flux_units']);
+                flux.append(flux_tmp[i]);
         # Get the map information
         map = [];
         map = iomod.get_rows_modelID_modelsEschermaps('iJO1366');

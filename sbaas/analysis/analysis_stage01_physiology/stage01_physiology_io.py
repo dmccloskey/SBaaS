@@ -256,8 +256,10 @@ class stage01_physiology_io(base_analysis):
         svgparameters2_O = {"svgtype":'verticalbarschart2d_01',"svgkeymap":[data1_keymap],
                             'svgid':'svg2',
                   "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
-                  "svgwidth":500,"svgheight":350,"svgy1axislabel":"rate (hr-1)",
-                  "svgfilters":{'met_id':['biomass']}
+                  "svgwidth":500,"svgheight":350,
+                  "svgy1axislabel":"rate (hr-1)",
+                  #"svgy1axislabel":"rate (hr-1) or yield (gDCW*mmol of C-source)",
+                  "svgfilters":{'met_id':['biomass','yield_ss']}
                 };
         svgtileparameters2_O = {'tileheader':'Growth rate','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col1",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
