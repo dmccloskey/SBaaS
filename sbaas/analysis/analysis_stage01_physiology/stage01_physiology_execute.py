@@ -298,6 +298,66 @@ class stage01_physiology_execute():
             io.write_dict2csv(QC_filename_O,['sample_name_short','met_id','sample_id',
                                              'time [hr]','OD600','culture_density [gDW*L-1]',
                                              'concentration [mM]','growth_rate [hr-1]']);
+    def execute_calculateYield(self,experiment_id_I,sample_name_short_I=[],uptake_mets_I=[]):
+        '''Calculate the yield from the growth rate and the uptake rates'''
+        #TODO:test
+
+        #query sample names
+        print('executing calculating yield...')
+        if sample_name_short_I:
+            sample_name_short = sample_name_short_I;
+        else:
+            sample_name_short = [];
+            sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentID_dataStage01PhysiologyRates(experiment_id_I)
+        for sns in sample_name_short:
+            print('calculating yield for sample_name_short ' + sns);
+            #query met_ids
+            met_ids = [];
+            met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameShort_dataStage01PhysiologyRates(experiment_id_I,sns);
+            # check for biomass
+            if 'biomass' not in met_ids:
+                print('no growth rate found!');
+                continue;
+            # get the biomass physiological rates
+            slope_biomass, intercept_biomass, r2_biomass, rate_biomass, units_biomass, p_value_biomass, std_err_biomass = None,None,None,None,None,None,None;
+            slope_biomass, intercept_biomass, r2_biomass, rate_biomass, units_biomass, p_value_biomass, std_err_biomass = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,'biomass');
+            # check for uptake metabolites and get the uptake metabolite rates
+            uptake_rates = [];
+            uptake_units = [];
+            if uptake_mets_I:
+                met_ids_nobiomass = [];
+                for umet in uptake_mets_I:
+                    if umet in met_ids:
+                        met_ids_nobiomass.append(umet);
+                    else:
+                        print('met_id ' + umet + ' was not found!');
+                for umet in met_ids_nobiomass:
+                    slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = None,None,None,None,None,None,None;
+                    slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,umet);
+                    if rate_umet < 0.0: uptake_mets.append(rate_umet);
+            else:
+                met_ids_nobiomass = [x for x in met_ids if x != 'biomass'];
+                for umet in met_ids_nobiomass:
+                    slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = None,None,None,None,None,None,None;
+                    slope_umet, intercept_umet, r2_umet, rate_umet, units_umet, p_value_umet, std_err_umet = self.stage01_physiology_query.get_rateData_experimentIDAndSampleNameShortAndMetID_dataStage01PhysiologyRates(experiment_id_I,sns,umet);
+                    if rate_umet < 0.0:
+                        uptake_mets.append(rate_umet);
+                        uptake_mets.append(units_umet);
+            if not uptake_rates:
+                print('no uptake metabolites found!');
+                continue;
+            # calculate the yield
+            yield_ss = None;
+            yield_ss = self.calculate.calculate_yield_growthRateAndUptakeRates(rate_biomass,uptake_rates);
+            yield_ss_units = units_biomass + '*' + units_umet[0] + '-1';
+            #add rows to the data base
+            row = None;
+            row = data_stage01_physiology_rates(experiment_id_I, sns, 'yield',
+                    None, None, None, yield_ss, yield_ss_units,
+                    None, None,
+                    True, None);
+            self.session.add(row);
+        self.session.commit();
     #table initializations:
     def drop_dataStage01(self):
         try:
@@ -342,33 +402,3 @@ class stage01_physiology_execute():
             data_stage01_physiology_analysis.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
-    #todo:
-    def execute_calculateYield(self,experiment_id_I,sample_name_short_I=[],uptake_mets_I=[]):
-        '''Calculate the yield from the growth rate and the uptake rates'''
-
-        #query sample_name abbreviations 
-        #query sample names
-        print('executing calculating yield...')
-        if sample_name_short_I:
-            sample_name_short = sample_name_short_I;
-        else:
-            sample_name_short = [];
-            sample_name_short = self.stage01_physiology_query.get_sampleNameShort_experimentID_dataStage01PhysiologyRates(experiment_id_I)
-        for sns in sample_name_short:
-            print('calculating yield for sample_name_short ' + sns);
-            #query met_ids
-            met_ids = [];
-            met_ids = self.stage01_physiology_query.get_metIDs_experimentIDAndSampleNameShort_dataStage01PhysiologyRates(experiment_id_I,sns);
-            # check for biomass
-            # check for uptake metabolites
-            for met in met_ids:
-                print('calculating rates averages for met_id ' +met);
-                #query sample names
-                #add rows to the data base
-                row = [];
-                row = data_stage01_physiology_rates(experiment_id_I, sns, met,
-                     slope, intercept, r2, slope, 'hr-1',
-                     p_value, std_err,
-                     True, None);
-                self.session.add(row);
-        self.session.commit();

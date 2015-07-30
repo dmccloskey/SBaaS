@@ -104,9 +104,9 @@ class data_stage01_physiology_rates(Base):
 class data_stage01_physiology_ratesAverages(Base):
     __tablename__ = 'data_stage01_physiology_ratesAverages'
     id = Column(Integer, Sequence('data_stage01_physiology_ratesAverages_id_seq'), primary_key=True)
-    experiment_id = Column(String(50), primary_key=True)
+    experiment_id = Column(String(50))
     sample_name_abbreviation = Column(String(100))
-    met_id = Column(String(100), primary_key=True)
+    met_id = Column(String(100))
     n = Column(Integer)
     slope_average = Column(Float)
     intercept_average = Column(Float)

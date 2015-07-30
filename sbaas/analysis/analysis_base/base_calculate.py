@@ -80,16 +80,24 @@ class base_calculate():
         else:
             print('biomass conversion units do not match!')
             exit(-1);
-    def calculate_yield_growthRateAndUptakeRates(self,growthRate_ss_I,uptakeRate_ss_I,per_carbon_I=False):
+    def calculate_yield_growthRateAndUptakeRates(self,growthRate_ss_I,uptakeRate_ss_I,
+                                                 grateRate_units_I=None,uptakeRate_units_I=None,
+                                                 per_carbon_I=False):
         '''Calculate the biomass yield
+
+        TODO: automatically calculate the output units
+
         Input:
         growthRate_ss_I = float, steady-state growth rate
         uptakeRate_ss_I = [float,float,...], steady-state uptake rates for (e.g., 1 or more carbon sources)
+        growthRate_units_I = string, e.g., hr-1
+        uptakeRate_units_I = string, e.g., mmol*gDCW*hr-1
         per_carbon_I = normalize uptake rates to a per carbon basis (default=False), not yet implemented
         
         Output:
         yield_ss_O = biomass yield 
         description of biomass yield: "The biomass yield (Y_X/S_ss) was calculated as the quotient of the growth rate and the glucose uptake rates during the exponential growth phase"
+        yield_units_O = string, e.g.,mmol-1*gDCW-1
         '''
 
         # check input
