@@ -4,6 +4,11 @@ from sbaas.analysis.analysis_base import *
 from .stage01_resequencing_query import *
 from .stage01_resequencing_io import *
 #from sbaas.resources.r import r_calculate
+#TODO:test
+#from sequencing_analysis.genome_diff import genome_diff
+#from sequencing_analysis.mutations_lineage import mutations_lineage
+#from sequencing_analysis.mutations_endpoints import mutations_endpoints
+#from sequencing_analysis.mutations_heatmap import mutations_heatmap
 
 class stage01_resequencing_execute():
     '''class for resequencing analysis'''
@@ -20,6 +25,8 @@ class stage01_resequencing_execute():
 
         print('Executing filterMutations_population...')
         data_O = [];
+        #TODO: test
+        #genomediff = genome_diff();
         # query sample names from the experiment
         if sample_names_I:
             sample_names = sample_names_I;
@@ -30,7 +37,12 @@ class stage01_resequencing_execute():
             print('Filtering mutations for sample_name ' + sn);
             #query mutation data filtered by frequency
             data_mutations_list = [];
-            data_mutations_list = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutations(experiment_id,sn);
+            data_mutations_list = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutations(experiment_id,sn,frequency_criteria=frequency_criteria);
+            #TODO: test
+            #genomediff.mutations = data_mutations_list;
+            #genomediff.filter_mutations_population(p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria)
+            #data_O.extend(genomediff.mutationsFiltered);
+            #genomediff.clear_data();
             for data_mutations in data_mutations_list:
                 print('Filtering mutations for mutation id ' + str(data_mutations['mutation_id']));
                 #query data filtered by evidence-specific criteria
@@ -38,7 +50,8 @@ class stage01_resequencing_execute():
                 for pid in data_mutations['parent_ids']:
                     print('Filtering mutations for parent id ' + str(pid));
                     data_evidence_dict = {};
-                    data_evidence_dict = self.stage01_resequencing_query.get_evidence_experimentIDAndSampleNameAndParentID_dataStage01ResequencingEvidence(experiment_id,sn,pid);
+                    data_evidence_dict = self.stage01_resequencing_query.get_evidence_experimentIDAndSampleNameAndParentID_dataStage01ResequencingEvidence(experiment_id,sn,pid,
+                                                    p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria);
                     data_evidence_list.append(data_evidence_dict);
                 if data_evidence_list[0]: #check that filtered evidence was found
                     data_O.append(data_mutations);
@@ -124,18 +137,22 @@ class stage01_resequencing_execute():
         '''Analyze a strain lineage to identify the following:
         1. conserved mutations
         2. changes in frequency of mutations
-        3. hitch-hiker mutations'''
-        #Input:
-        #   experiment_id = experiment id
-        #   strain_lineage = {"lineage_name":{0:sample_name,1:sample_name,2:sample_name,...,n:sample_name}}
-        #                       where n is the end-point strain
-        #Output:
+        3. hitch-hiker mutations
 
-        #TODO: drive from analysis table
-        #TODO: convert time-point to lineage
-        #       lineage = [i for i,tp in enumerate(time_points)];
+        Input:
+           experiment_id = experiment id
+           strain_lineage = {"lineage_name":{0:sample_name,1:sample_name,2:sample_name,...,n:sample_name}}
+                               where n is the end-point strain
+        Output:
+
+        TODO: drive from analysis table
+        TODO: convert time-point to lineage
+               lineage = [i for i,tp in enumerate(time_points)];
+        '''
 
         print('Executing analyzeLineage_population...')
+        #TODO: test
+        #mutationslineage = mutations_lineage();
         data_O = [];
         for lineage_name,strain in strain_lineage.items():
             print('analyzing lineage ' + lineage_name);
@@ -151,6 +168,8 @@ class stage01_resequencing_execute():
                 # query intermediate data:
                 intermediate_mutations = [];
                 intermediate_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain[intermediate]);
+                # TODO: test
+                #data_O.append(mutationslineage._extract_mutationsLineage(end_mutations,intermediate_mutations));
                 for end_cnt,end_mutation in enumerate(end_mutations):
                     print('end mutation type/position ' + end_mutation['mutation_data']['type'] + '/' + str(end_mutation['mutation_data']['position']));
                     for inter_cnt,intermediate_mutation in enumerate(intermediate_mutations):
@@ -256,12 +275,16 @@ class stage01_resequencing_execute():
         #TODO: drive from analysis table
 
         print('Executing analyzeEndpointReplicates_population...')
+        #TODO: test
+        #mutationsendpoints = mutations_endpoints();
         data_O = [];
         for analysis_id,strains in end_points.items():
             print('analyzing endpoint ' + analysis_id);
             analyzed_strain1 = []; # strain1s that have been analyzed
             analyzed_mutation_pairs = []; # mutation pairs that have been analyzed
             matched_mutations = {};
+            #TODO: test
+            # data_O.append()
             for strain1 in strains:
                 # query strain 1 data:
                 strain1_mutations = [];
@@ -277,6 +300,25 @@ class stage01_resequencing_execute():
                     strain2_mutations = [];
                     strain2_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain2);
                     analyzed_strain2_mutations = []; # mutations from strain 2 that have been analyzed
+                    # TODO: test
+                    ## extract common mutations
+                    #analyzed_strain1_mutations_tmp = [];
+                    #analyzed_strain2_mutations_tmp = [];
+                    #matched_mutations_tmp = {}
+                    #data_tmp = [];
+                    #matched_mutations_tmp,\
+                    #    analyzed_strain1_mutations_tmp,\
+                    #    analyzed_strain2_mutations_tmp,\
+                    #    data_tmp = mutationsendpoints._extract_commonMutations(matched_mutations,\
+                    #        analyzed_strain1_mutations,\
+                    #        analyzed_strain2_mutations,\
+                    #        strain1_mutations,strain2_mutations);
+                
+                    #analyzed_strain1_mutations.extend(analyzed_strain1_mutations_tmp)
+                    #analyzed_strain2_mutations.extend(analyzed_strain2_mutations_tmp)
+                    #analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
+                    #matched_mutations.update(matched_mutations_tmp);
+                    #data_O.extend(data_tmp);
                     for strain1_mutation_cnt,strain1_mutation in enumerate(strain1_mutations):
                         print('strain1 mutation type/position ' + strain1_mutation['mutation_data']['type'] + '/' + str(strain1_mutation['mutation_data']['position']));
                         if strain2_cnt == 0: # record strain 1 mutations only once for all strain 2 mutations
@@ -356,6 +398,11 @@ class stage01_resequencing_execute():
                                 analyzed_strain2_mutations.append((strain2_mutation['mutation_data']['type'],strain2_mutation['mutation_data']['position']));
                     analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
                     strain2_cnt += 1;
+                #TODO: test
+                ## extract unique mutations
+                #data_tmp = [];
+                #data_tmp = mutationsendpoints._extract_uniqueMutations(analyzed_strain1_mutations,analyzed_strain2_mutations_all);
+                #data_O.extend(data_tmp);
                 # check for unique mutations and for conserved mutations
                 for analyzed_strain1_mutation in analyzed_strain1_mutations:
                     isUnique_bool = True;
@@ -380,11 +427,11 @@ class stage01_resequencing_execute():
                                 data_tmp['mutation_data'] = strain1_mutation['mutation_data'];
                                 data_tmp['isUnique'] = True;
                                 data_O.append(data_tmp);
-
-
         for d in data_O:
             row = [];
             row = data_stage01_resequencing_endpoints(d['experiment_id'],
+                #TODO: test
+                #d['endpoint_name'], #=analysis_id
                 d['analysis_id'],
                 d['sample_name'],
                 d['mutation_frequency'],
@@ -587,38 +634,50 @@ class stage01_resequencing_execute():
             'frequency',True, None);
         self.session.add(row);
         self.session.commit();
-    def execute_heatmap(self, analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,
+    def execute_heatmap(self, analysis_id_I,mutation_id_exclusion_list=[],frequency_threshold=0.1,max_position=4000000,
                 row_pdist_metric_I='euclidean',row_linkage_method_I='complete',
                 col_pdist_metric_I='euclidean',col_linkage_method_I='complete'):
         '''Execute hierarchical cluster on row and column data'''
 
         print('executing heatmap...');
+        #TODO: test
+        #  mutationsheatmap =  mutations_heatmap();
         # get the analysis information
         experiment_ids,sample_names = [],[];
         experiment_ids,sample_names = self.stage01_resequencing_query.get_experimentIDAndSampleName_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
-        # partition into variables:
-        mutation_data_O = [];
-        mutation_ids_all = [];
+        mutations_all = [];
         for sample_name_cnt,sample_name in enumerate(sample_names):
             # query mutation data:
             mutations = [];
             mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(experiment_ids[sample_name_cnt],sample_name);
-            for end_cnt,mutation in enumerate(mutations):
-                if mutation['mutation_position'] > 4000000: #ignore positions great than 4000000
-                    continue;
-                if mutation['mutation_frequency']<frequency_threshold:
-                    continue;
-                # mutation id
-                mutation_genes_str = '';
-                for gene in mutation['mutation_genes']:
-                    mutation_genes_str = mutation_genes_str + gene + '-/-'
-                mutation_genes_str = mutation_genes_str[:-3];
-                mutation_id = mutation['mutation_type'] + '_' + mutation_genes_str + '_' + str(mutation['mutation_position'])
-                tmp = {};
-                tmp.update(mutation);
-                tmp.update({'mutation_id':mutation_id});
-                mutation_data_O.append(tmp);
-                mutation_ids_all.append(mutation_id);
+            mutations_all.extend(mutations);
+        #TODO: test
+        #mutationsheatmap.mutations = mutations_all;
+        #mutationsheatmap.make_heatmap(self, mutation_id_exclusion_list=mutation_id_exclusion_list,max_position=max_position,
+                #row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
+                #col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I)
+        #heatmap_O = mutationsheatmap.heatmap;
+        #dendrogram_col_O = mutationsheatmap.dendrogram_col;
+        #dendrogram_row_O = mutationsheatmap.dendrogram_row;
+        # partition into variables:
+        mutation_data_O = [];
+        mutation_ids_all = [];
+        for end_cnt,mutation in enumerate(mutations_all):
+            if mutation['mutation_position'] > max_position: #ignore positions great than 4000000
+                continue;
+            if mutation['mutation_frequency'] < frequency_threshold:
+                continue;
+            # mutation id
+            mutation_genes_str = '';
+            for gene in mutation['mutation_genes']:
+                mutation_genes_str = mutation_genes_str + gene + '-/-'
+            mutation_genes_str = mutation_genes_str[:-3];
+            mutation_id = mutation['mutation_type'] + '_' + mutation_genes_str + '_' + str(mutation['mutation_position'])
+            tmp = {};
+            tmp.update(mutation);
+            tmp.update({'mutation_id':mutation_id});
+            mutation_data_O.append(tmp);
+            mutation_ids_all.append(mutation_id);
         mutation_ids_all_unique = list(set(mutation_ids_all));
         mutation_ids = [x for x in mutation_ids_all_unique if not x in mutation_id_exclusion_list];
         # generate the frequency matrix data structure (mutation x intermediate)
@@ -1598,10 +1657,11 @@ class stage01_resequencing_execute():
         io = stage01_resequencing_io();
         io.add_dataStage01ResequencingAmplificationAnnotations(data_O);
     def find_genesInRegion(self,start_I,stop_I,record_I):
-        '''find genes in the start and stop region of the genome'''
-        #input:
-        # mutation_position_I = mutation position [int]
-        # record = genbank record [SeqRecord]
+        '''find genes in the start and stop region of the genome
+        INPUT:
+        mutation_position_I = mutation position [int]
+        record_I = genbank record [SeqRecord]
+        '''
         data_O = [];
         #extract all features within the start and stop region
         features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]

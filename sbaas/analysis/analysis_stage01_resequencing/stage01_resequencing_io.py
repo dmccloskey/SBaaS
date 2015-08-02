@@ -3,6 +3,8 @@ from .stage01_resequencing_query import stage01_resequencing_query
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 from sbaas.analysis.analysis_stage01_resequencing import gdparse
 import json
+#TODO:test
+#from sequencing_analysis.genome_diff import genome_diff
 
 class stage01_resequencing_io(base_analysis):
     '''class for resequencing analysis'''
@@ -14,6 +16,11 @@ class stage01_resequencing_io(base_analysis):
     
     def import_resequencingData_add(self, filename, experiment_id, sample_name):
         '''table adds'''
+
+        #TODO: test
+        #genomediff = genome_diff();
+        #genomediff.import_gd(filename, experiment_id, sample_name)
+
         gd = gdparse.GDParser(file_handle=open(filename, 'rb'))
         # extract out ids
         mutation_ids = [];
@@ -58,6 +65,11 @@ class stage01_resequencing_io(base_analysis):
                                  'validation_data':gd.data['validation'][mid]});
                                  #'validation_data':json.dumps(gd.data['validation'][mid])});
         # add data to the database:
+        #TODO: test
+        #self.add_dataStage01ResequencingMetadata(genomediff.metadata);
+        #self.add_dataStage01ResequencingMutations(genomediff.mutations);
+        #self.add_dataStage01ResequencingEvidence(genomediff.evidence);
+        #self.add_dataStage01ResequencingValidation(genomediff.validation);
         self.add_dataStage01ResequencingMetadata(metadata);
         self.add_dataStage01ResequencingMutations(mutation_data);
         self.add_dataStage01ResequencingEvidence(evidence_data);

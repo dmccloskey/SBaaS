@@ -2,13 +2,12 @@ from sys import exit
 from math import log, sqrt, exp
 import csv
 import numpy
-from sbaas.analysis.analysis_base.base_analysis import base_analysis
 
 from rpy2.robjects.packages import importr
 import rpy2.robjects as robjects
 r = robjects.r
 
-class r_calculate(base_analysis):
+class r_calculate():
     def __init__(self):
         self.stats = importr('stats');
         self.tools = importr('tools');

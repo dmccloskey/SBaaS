@@ -128,8 +128,9 @@ class base_calculate():
     # statistical analysis
     # calculate the geometric mean and variance:
     def calculate_ave_var_geometric(self,data_I):
-        # calculate the geometric average and var of data
-        # with 95% confidence intervals
+        """ calculate the geometric average and var of data
+        with 95% confidence intervals
+        """
 
         try:
             data_ave_O = 0.0
@@ -161,8 +162,8 @@ class base_calculate():
             exit(-1);
     # calculate the mean and variance:
     def calculate_ave_var(self,data_I,confidence_I = 0.95):
-        # calculate the average and var of data
-        # with 95% confidence intervals
+        """calculate the average and var of data
+        with 95% confidence intervals"""
 
         try:
             data = numpy.array(data_I);
