@@ -1,14 +1,16 @@
 '''resequencing class'''
-
+from copy import copy
 from sbaas.analysis.analysis_base import *
 from .stage01_resequencing_query import *
 from .stage01_resequencing_io import *
 #from sbaas.resources.r import r_calculate
 #TODO:test
-#from sequencing_analysis.genome_diff import genome_diff
-#from sequencing_analysis.mutations_lineage import mutations_lineage
-#from sequencing_analysis.mutations_endpoints import mutations_endpoints
-#from sequencing_analysis.mutations_heatmap import mutations_heatmap
+from sequencing_analysis.genome_diff import genome_diff
+from sequencing_analysis.mutations_lineage import mutations_lineage
+from sequencing_analysis.mutations_endpoints import mutations_endpoints
+from sequencing_analysis.mutations_heatmap import mutations_heatmap
+from sequencing_analysis.gff_coverage import gff_coverage
+from sequencing_analysis.genome_annotations import genome_annotations
 
 class stage01_resequencing_execute():
     '''class for resequencing analysis'''
@@ -67,11 +69,14 @@ class stage01_resequencing_execute():
         #add data to the database table
         self.session.commit();
     def execute_annotateFilteredMutations(self,experiment_id,sample_names_I=[],
-                                                 ref_genome_I='data/U00096.2.gb'):
+                                                 ref_genome_I='data/U00096.2.gb',
+                                                 ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
 
         from Bio import SeqIO
         from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,'genbank')
+        record = SeqIO.read(ref_genome_I,ref_I)
+        #TODO: test
+        #genomeannotation = genome_annotations();
 
         print('Executing annotation of filtered mutations...')
         genotype_phenotype_O = [];
@@ -92,6 +97,8 @@ class stage01_resequencing_execute():
                 data_tmp = {};
                 # annotate each mutation based on the position
                 annotation = {};
+                #TODO: test
+                #annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
                 annotation = self.find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
                 data_tmp['mutation_genes'] = annotation['gene']
                 data_tmp['mutation_locations'] = annotation['location']
@@ -101,9 +108,11 @@ class stage01_resequencing_execute():
                 for bnumber in annotation['locus_tag']:
                     if bnumber:
                         ecogenes = [];
-                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences('MG1655',bnumber);
+                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
                         if ecogenes:
                             ecogene = ecogenes[0];
+                            #TODO: test
+                            #ecogene_link = genomeannotation._find_genesFromMutationPosition(ecogene['ecogene_accession_number']);
                             ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             data_tmp['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
@@ -169,7 +178,7 @@ class stage01_resequencing_execute():
                 intermediate_mutations = [];
                 intermediate_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain[intermediate]);
                 # TODO: test
-                #data_O.append(mutationslineage._extract_mutationsLineage(end_mutations,intermediate_mutations));
+                #data_O.extend(mutationslineage._extract_mutationsLineage(end_mutations,intermediate_mutations));
                 for end_cnt,end_mutation in enumerate(end_mutations):
                     print('end mutation type/position ' + end_mutation['mutation_data']['type'] + '/' + str(end_mutation['mutation_data']['position']));
                     for inter_cnt,intermediate_mutation in enumerate(intermediate_mutations):
@@ -283,8 +292,6 @@ class stage01_resequencing_execute():
             analyzed_strain1 = []; # strain1s that have been analyzed
             analyzed_mutation_pairs = []; # mutation pairs that have been analyzed
             matched_mutations = {};
-            #TODO: test
-            # data_O.append()
             for strain1 in strains:
                 # query strain 1 data:
                 strain1_mutations = [];
@@ -741,6 +748,552 @@ class stage01_resequencing_execute():
             'frequency',True, None);
         self.session.add(row);
         self.session.commit();
+    def execute_findAmplifications_fromGff(self,
+                #analysis_id_I,
+                experiment_id_I,
+                strand_start, strand_stop,
+                sample_names_I = [],
+                scale_factor=True, downsample_factor=0,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
+        '''Calculate coverage statistics from gff file
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+
+        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
+
+        # get the data
+        data_O = [];
+        # TODO: test
+        #gffcoverage = gff_coverage();
+        
+        ## get the analysis_info
+        #analysis_rows = [];
+        # query information from coverage table
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names and experiment_ids
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+        #    filename = analysis['data_dir']
+        for cnt,sn in enumerate(sample_names):
+            # get the data_dir
+            filename = [];
+            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
+            #TODO: test
+            #gffcoverage.find_amplifications_fromGff(filename[0],strand_start, strand_stop, experiment_id, sn, scale=scale_factor, downsample=downsample_factor)
+            #data_O.extend(copy(gffcoverage.amplifications))
+            #gffcoverage.clear_data();
+            # extract the strands
+            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
+            # find high coverage regions
+            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
+            # record high coverage regions
+            # + strand
+            iter = 0;
+            for index,reads in plus_high_regions.iteritems():
+                if index > plus_high_region_indices[iter]['stop']:
+                    iter+=1;
+                data_O.append({
+                #'analysis_id':analysis_id,
+                'experiment_id':experiment_id,
+                'sample_name':sn,
+                'genome_chromosome':1, #default
+                'genome_strand':'+',
+                'genome_index':int(index),
+                'strand_start':strand_start,
+                'strand_stop':strand_stop,
+                'reads':float(reads),
+                'reads_min':reads_min,
+                'reads_max':reads_max,
+                'indices_min':indices_min,
+                'consecutive_tol':consecutive_tol,
+                'scale_factor':scale_factor,
+                'downsample_factor':downsample_factor,
+                'amplification_start':int(plus_high_region_indices[iter]['start']),
+                'amplification_stop':int(plus_high_region_indices[iter]['stop']),
+                'used_':True,
+                'comment_':None
+                    });
+            # - strand
+            iter = 0;
+            for index,reads in minus_high_regions.iteritems():
+                if index > minus_high_region_indices[iter]['stop']:
+                    iter+=1;
+                data_O.append({
+                #'analysis_id':analysis_id,
+                'experiment_id':experiment_id,
+                'sample_name':sn,
+                'genome_chromosome':1, #default
+                'genome_strand':'-',
+                'genome_index':int(index),
+                'strand_start':strand_start,
+                'strand_stop':strand_stop,
+                'reads':float(reads),
+                'reads_min':reads_min,
+                'reads_max':reads_max,
+                'indices_min':indices_min,
+                'consecutive_tol':consecutive_tol,
+                'scale_factor':scale_factor,
+                'downsample_factor':downsample_factor,
+                'amplification_start':int(minus_high_region_indices[iter]['start']),
+                'amplification_stop':int(minus_high_region_indices[iter]['stop']),
+                'used_':True,
+                'comment_':None
+                    });
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
+    def execute_amplificationStats_fromTable(self,
+                #analysis_id_I,
+                experiment_id_I,
+                sample_names_I=[]):
+        '''Calculate coverage statistics'''
+
+        # get the data
+        data_O = [];
+
+        ## get the analysis_info
+        #analysis_rows = [];
+        ## query information from amplification table
+
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id_I);
+        for cnt,sn in enumerate(sample_names):
+            # get chromosomes
+            chromosomes = [];
+            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
+            for chromosome in chromosomes:
+                # get strands
+                strands = []
+                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
+                # remove visualization regions
+                strands = [s for s in strands if not 'mean' in s];
+                for strand in strands:
+                    # get the start and stop of the indices
+                    genomic_starts,genomic_stops = [],[]
+                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the start and stop regions
+                    starts,stops = [],[]
+                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the indices/reads and other information
+                    for start_cnt,start in enumerate(starts):
+                        data_indices,data_reads = [],[];
+                        data_indices,data_reads = self.stage01_resequencing_query.get_genomeIndexAndReads_experimentIDAndSampleNameAndChromosomeAndStrandAndAmplificationRegions_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand,start,stops[start_cnt]);
+                        # calculate using scipy
+                        data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(data_reads,confidence_I = 0.95);
+                        # calculate the interquartile range
+                        min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+                        min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(data_reads);
+                        # record data for
+                        data_O.append({
+                            #'analysis_id':analysis_id,
+                            'experiment_id':experiment_id_I,
+                            'sample_name':sn,
+                            'genome_chromosome':chromosome,
+                            'genome_strand':strand,
+                            'strand_start':genomic_starts[0],
+                            'strand_stop':genomic_stops[0],
+                            'reads_min':min_O,
+                            'reads_max':max_O,
+                            #'reads_lb':data_TTest['ci_lb'],
+                            #'reads_ub':data_TTest['ci_ub'],
+                            'reads_lb':data_lb_O,
+                            'reads_ub':data_ub_O,
+                            'reads_iq1':iq_1_O,
+                            'reads_iq3':iq_3_O,
+                            'reads_median':median_O,
+                            #'reads_mean':data_TTest['mean'],
+                            #'reads_var':data_TTest['var'],
+                            'reads_mean':data_ave_O,
+                            'reads_var':data_var_O,
+                            'reads_n':len(data_reads),
+                            'amplification_start':start,
+                            'amplification_stop':stops[start_cnt],
+                            'used_':True,
+                            'comment_':None
+                            })
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(data_O);
+    def execute_findAmplificationsAndCalculateStats_fromGff(self,
+                #analysis_id_I,
+                experiment_id_I,
+                strand_start, strand_stop,
+                sample_names_I = [],
+                scale_factor=True, downsample_factor=2000,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
+        '''Calculate coverage statistics from gff file
+        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
+
+        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
+
+        # get the data
+        data_O = [];
+        stats_O = [];
+
+        # TODO: test
+        gffcoverage = gff_coverage();
+
+        ## get the analysis_info
+        #analysis_rows = [];
+        # query information from coverage table
+
+        # get the sample_names
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
+        #for cnt,analysis in analysis_rows:
+        #    # get the sample_names and experiment_ids
+        #    experiment_id = analysis['experiment_id'];
+        #    sn = analysis['sample_name'];
+        #    filename = analysis['data_dir']
+        for cnt,sn in enumerate(sample_names):
+            # get the data_dir
+            filename = [];
+            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
+            #TODO: test
+            gffcoverage.findAndCalculate_amplificationStats_fromGff(filename[0],strand_start, strand_stop, experiment_id_I=experiment_id, sample_name_I=sn, scale_factor=scale_factor, downsample_factor=downsample_factor)
+            data_O.extend(copy(gffcoverage.amplifications));
+            stats_O.extend(copy(gffcoverage.amplificationStats));
+            gffcoverage.clear_data();
+            ## extract the strands
+            #plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=0)
+            ## record the means for later use
+            #plus_mean,minus_mean = plus.mean(),minus.mean();
+            #plus_min,minus_min = plus.min(),minus.min();
+            #plus_max,minus_max = plus.max(),minus.max();
+            ## find high coverage regions
+            #plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
+            ## calculate stats on the high coverage regions
+            ## + strand
+            #for row_cnt,row in enumerate(plus_high_region_indices):
+            #    plus_region = plus_high_regions[(plus_high_regions.index>=row['start']) & (plus_high_regions.index<=row['stop'])]
+            #    # calculate using scipy
+            #    data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
+            #    data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(plus_region.values,confidence_I = 0.95);
+            #    # calculate the interquartile range
+            #    min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+            #    min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(plus_region.values);
+            #    # record data
+            #    stats_O.append({
+            #        #'analysis_id':analysis_id,
+            #        'experiment_id':experiment_id_I,
+            #        'sample_name':sn,
+            #        'genome_chromosome':1,
+            #        'genome_strand':'plus',
+            #        'strand_start':strand_start,
+            #        'strand_stop':strand_stop,
+            #        'reads_min':min_O,
+            #        'reads_max':max_O,
+            #        'reads_lb':data_lb_O,
+            #        'reads_ub':data_ub_O,
+            #        'reads_iq1':iq_1_O,
+            #        'reads_iq3':iq_3_O,
+            #        'reads_median':median_O,
+            #        'reads_mean':data_ave_O,
+            #        'reads_var':data_var_O,
+            #        'reads_n':len(plus_region.values),
+            #        'amplification_start':int(row['start']),
+            #        'amplification_stop':int(row['stop']),
+            #        'used_':True,
+            #        'comment_':None
+            #        })
+            #    # downsample
+            #    collapse_factor = None;
+            #    if downsample_factor > 1:
+            #        collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
+            #    if collapse_factor and collapse_factor > 1:
+            #        plus_region = plus_region.groupby(lambda x: x // collapse_factor).mean()
+            #        plus_region.index *= collapse_factor
+            #    # add mean to index before and after the amplification start and stop, respectively (for visualization)
+            #    if downsample_factor > 1 and row_cnt==0:
+            #        #plus_region[strand_start]=plus_mean;
+            #        #plus_region[strand_stop]=plus_mean;
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'plus_mean',
+            #            #'genome_index':int(strand_start),
+            #            'genome_index':int(row['start']-1),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':plus_mean,
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':strand_start,
+            #            'amplification_stop':strand_stop,
+            #            'used_':True,
+            #            'comment_':'mean reads of the plus strand'
+            #            });
+            #    if downsample_factor > 1 and row_cnt==len(plus_high_region_indices)-1:
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'plus_mean',
+            #            #'genome_index':int(strand_stop),
+            #            'genome_index':int(row['stop']+1),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':plus_mean,
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':strand_start,
+            #            'amplification_stop':strand_stop,
+            #            'used_':True,
+            #            'comment_':'mean reads of the plus strand'
+            #            });
+            #    ## add zeros to strand start and stop, respectively (for visualization)
+            #    #if downsample_factor > 1:
+            #    #    plus_region[row['start']-1]=plus_mean;
+            #    #    plus_region[row['stop']+1]=plus_mean;
+            #    # record high coverage regions
+            #    for index,reads in plus_region.iteritems():
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'plus',
+            #            'genome_index':int(index),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':float(reads),
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':int(row['start']),
+            #            'amplification_stop':int(row['stop']),
+            #            'used_':True,
+            #            'comment_':None
+            #        });
+            ## - strand
+            #for row_cnt,row in enumerate(minus_high_region_indices):
+            #    minus_region = minus_high_regions[(minus_high_regions.index>=row['start']) & (minus_high_regions.index<=row['stop'])]
+            #    # calculate using scipy
+            #    data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
+            #    data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(minus_region.values,confidence_I = 0.95);
+            #    # calculate the interquartile range
+            #    min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
+            #    min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(minus_region.values);
+            #    # record data
+            #    stats_O.append({
+            #        #'analysis_id':analysis_id,
+            #        'experiment_id':experiment_id_I,
+            #        'sample_name':sn,
+            #        'genome_chromosome':1,
+            #        'genome_strand':'minus',
+            #        'strand_start':strand_start,
+            #        'strand_stop':strand_stop,
+            #        'reads_min':min_O,
+            #        'reads_max':max_O,
+            #        'reads_lb':data_lb_O,
+            #        'reads_ub':data_ub_O,
+            #        'reads_iq1':iq_1_O,
+            #        'reads_iq3':iq_3_O,
+            #        'reads_median':median_O,
+            #        'reads_mean':data_ave_O,
+            #        'reads_var':data_var_O,
+            #        'reads_n':len(minus_region.values),
+            #        'amplification_start':int(row['start']),
+            #        'amplification_stop':int(row['stop']),
+            #        'used_':True,
+            #        'comment_':None
+            #        })
+            #    # downsample
+            #    collapse_factor = None;
+            #    if downsample_factor > 1:
+            #        collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
+            #    if collapse_factor and collapse_factor > 1:
+            #        minus_region = minus_region.groupby(lambda x: x // collapse_factor).mean()
+            #        minus_region.index *= collapse_factor
+            #    # add mean to index before and after the amplification start and stop, respectively (for visualization)
+            #    if downsample_factor > 1 and row_cnt==0:
+            #        #minus_region[strand_start]=minus_mean;
+            #        #minus_region[strand_stop]=minus_mean;
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'minus_mean',
+            #            #'genome_index':int(strand_start),
+            #            'genome_index':int(row['start']-1),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':minus_mean,
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':strand_start,
+            #            'amplification_stop':strand_stop,
+            #            'used_':True,
+            #            'comment_':'mean reads of the minus strand'
+            #            });
+            #    if downsample_factor > 1 and row_cnt==len(minus_high_region_indices)-1:
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'minus_mean',
+            #            #'genome_index':int(strand_stop),
+            #            'genome_index':int(row['stop']+1),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':minus_mean,
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':strand_start,
+            #            'amplification_stop':strand_stop,
+            #            'used_':True,
+            #            'comment_':'mean reads of the minus strand'
+            #            });
+            #    ## add zeros to strand start and stop, respectively (for visualization)
+            #    #if downsample_factor > 1:
+            #    #    minus_region[row['start']-1]=minus_mean;
+            #    #    minus_region[row['stop']+1]=minus_mean;
+            #    # record high coverage regions
+            #    for index,reads in minus_region.iteritems():
+            #        data_O.append({
+            #            #'analysis_id':analysis_id,
+            #            'experiment_id':experiment_id,
+            #            'sample_name':sn,
+            #            'genome_chromosome':1, #default
+            #            'genome_strand':'minus',
+            #            'genome_index':int(index),
+            #            'strand_start':strand_start,
+            #            'strand_stop':strand_stop,
+            #            'reads':float(reads),
+            #            'reads_min':reads_min,
+            #            'reads_max':reads_max,
+            #            'indices_min':indices_min,
+            #            'consecutive_tol':consecutive_tol,
+            #            'scale_factor':scale_factor,
+            #            'downsample_factor':downsample_factor,
+            #            'amplification_start':int(row['start']),
+            #            'amplification_stop':int(row['stop']),
+            #            'used_':True,
+            #            'comment_':None});
+
+        # add data to the DB
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
+        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(stats_O);
+    def execute_annotateAmplifications(self,experiment_id_I,sample_names_I=[],ref_genome_I='data/U00096.2.gb',ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
+        '''Annotate mutations for date_stage01_resequencing_endpoints
+        based on position, reference genome, and reference genome biologicalmaterial_id'''
+        
+        from Bio import SeqIO
+        from Bio import Entrez
+        record = SeqIO.read(ref_genome_I,ref_I)
+
+        #TODO: test
+        #genomeannotation = genome_annotations();
+
+        print('Executing annotateAmplifications...')
+        data_O = [];
+        experiment_id = experiment_id_I;
+        if sample_names_I:
+            sample_names = sample_names_I;
+        else:
+            sample_names = [];
+            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id);
+        for cnt,sn in enumerate(sample_names):
+            print('annotating amplifications for sample_name ' + sn);
+            # get chromosomes
+            chromosomes = [];
+            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
+            for chromosome in chromosomes:
+                # get strands
+                strands = []
+                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
+                # remove visualization regions
+                strands = [s for s in strands if not 'mean' in s];
+                for strand in strands:
+                    # get the start and stop of the indices
+                    genomic_starts,genomic_stops = [],[]
+                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    # get the start and stop regions
+                    starts,stops = [],[]
+                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
+                    for start_cnt,start in enumerate(starts):
+                        # annotate each mutation based on the position
+                        annotations = [];
+                        # TODO: test
+                        #annotations = genomeannotation._find_genesInRegion(start,stops[start_cnt],record)
+                        annotations = self.find_genesInRegion(start,stops[start_cnt],record)
+                        for annotation in annotations:
+                            # record the data
+                            tmp = {
+                                'experiment_id':experiment_id,
+                                'sample_name':sn,
+                                'genome_chromosome':chromosome,
+                                'genome_strand':strand,
+                                'strand_start':genomic_starts[0],
+                                'strand_stop':genomic_stops[0],
+                                'amplification_start':start,
+                                'amplification_stop':stops[start_cnt],
+                                'used_':True,
+                                'comment_':None};
+                            tmp['feature_genes'] = annotation['gene']
+                            tmp['feature_locations'] = annotation['location']
+                            tmp['feature_annotations'] = annotation['product']
+                            tmp['feature_start'] = annotation['start'];
+                            tmp['feature_stop'] = annotation['stop'];
+                            tmp['feature_types'] = annotation['type']
+                            # generate a link to ecogene for the genes
+                            tmp['feature_links'] = [];
+                            for bnumber in annotation['locus_tag']:
+                                if bnumber:
+                                    ecogenes = [];
+                                    ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
+                                    if ecogenes:
+                                        ecogene = ecogenes[0];
+                                        # TODO: test
+                                        #ecogene_link = annotations._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                                        ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                                        tmp['feature_links'].append(ecogene_link)
+                                    else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
+                            data_O.append(tmp);
+        # update rows in the database
+        io = stage01_resequencing_io();
+        io.add_dataStage01ResequencingAmplificationAnnotations(data_O);
     #helper functions
     def find_genesFromMutationPosition(self,mutation_position_I,record_I):
         '''find genes at the position or closest to the position given the reference genome'''
@@ -861,6 +1414,140 @@ class stage01_resequencing_execute():
         '''Generate link to ecocyc using the ecogene accession number'''
         ecogene_httplink = 'http://ecocyc.org/ECOLI/NEW-IMAGE?type=GENE&object='+ecogene_I;
         return ecogene_httplink
+    def find_genesInRegion(self,start_I,stop_I,record_I):
+        '''find genes in the start and stop region of the genome
+        INPUT:
+        mutation_position_I = mutation position [int]
+        record_I = genbank record [SeqRecord]
+        '''
+        data_O = [];
+        #extract all features within the start and stop region
+        features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]
+        for feature_cnt,feature in enumerate(features):
+            # NOTE:
+            # there are two records for each gene: one of type "gene" and another of type "CDS"
+            # sometimes there is also a third of type "mat_peptide" which has a different start/stop position
+            # this algorithm will combine the records for types "gene" and "CDS" as a single row
+            # and add mat_peptide as a second row (if desired)
+            # initialize variables
+            if feature_cnt == 0:
+                feature_start_pos = feature.location.start.position;
+                feature_stop_pos = feature.location.end.position;
+                snp_records = {};
+                snp_records['gene'] = []
+                snp_records['db_xref'] = []
+                snp_records['locus_tag'] = []
+                snp_records['EC_number'] = []
+                snp_records['product'] = []
+                snp_records['location'] = []
+                snp_records['start'] = None
+                snp_records['stop'] = None
+                snp_records['type'] = []
+            # add complete snp_record to data_O
+            if feature_start_pos != feature.location.start.position or feature_stop_pos != feature.location.end.position:
+                #snp_records['start'] should be in every record
+                data_O.append(snp_records);
+                feature_start_pos = feature.location.start.position;
+                feature_stop_pos = feature.location.end.position;
+                snp_records = {};
+                snp_records['gene'] = []
+                snp_records['db_xref'] = []
+                snp_records['locus_tag'] = []
+                snp_records['EC_number'] = []
+                snp_records['product'] = []
+                snp_records['location'] = []
+                snp_records['start'] = None
+                snp_records['stop'] = None
+                snp_records['type'] = []
+            # fill in snp_record (may require multiple passes through features)
+            if feature.type == 'gene':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'CDS': 
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'repeat_region':
+                snp_records['location'] = feature.qualifiers.get('note')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'mobile_element':
+                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'misc_feature':
+                snp_records['location'] = feature.qualifiers.get('note')
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'mat_peptide':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'tRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'rRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type == 'ncRNA':
+                snp_records['gene'] = feature.qualifiers.get('gene')
+                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
+                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
+                #snp_records['location'] = feature.qualifiers.get('note')
+                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
+                else:snp_records['EC_number'] = [None];
+                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
+                else:snp_records['product'] = [None];
+                snp_records['location'] = ['coding'];
+                snp_records['start'] = feature.location.start.position;
+                snp_records['stop'] = feature.location.end.position;
+                snp_records['type'].append(feature.type)
+            elif feature.type != 'source':
+                print(feature);
+            # add the final snp_record to data_O
+            if feature_cnt == len(features)-1:
+                data_O.append(snp_records);
+
+        return data_O;
     #table initializations:
     def drop_dataStage01(self):
         try:
@@ -1059,18 +1746,29 @@ class stage01_resequencing_execute():
         except SQLAlchemyError as e:
             print(e);
     #TODO:
-    def execute_coverageStats_fromGff(self,analysis_id_I):
+    def execute_coverageStats_fromGff(self,analysis_id_I,strand_start,strand_stop,scale_factor=True,downsample_factor=0):
         '''Calculate coverage statistics from gff file
         NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
-        # get the analysis_info
-        analysis_rows = [];
+        
+        #TODO: test
+        gffcoverage=gff_coverage();
 
+        ## get the analysis_info
+        #analysis_rows = [];
+        #analysis_rows = self.stage01_resequencing_query.get_rows_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
         # get the data
         data_O = [];
         for cnt,analysis in analysis_rows:
             # get the sample_names
             experiment_id = analysis['experiment_id'];
             sn = analysis['sample_name'];
+            gff_file = analysis['data_dir'];
+            gffcoverage.calculate_coverageStats_fromGff(self,gff_file, 
+                strand_start,strand_stop,scale_factor=scale_factor,downsample_factor=downsample_factor,
+                experiment_id_I=experiment_id, sample_name_I=sn);
+            data_O.append(gffcoverage.coverageStats);      
+        #add data to the database
+        self.stage01_resequencing_io.add_dataStage01ResequencingCoverageStats(data_O);     
         
 
     #todo: template for amplification stats
@@ -1125,668 +1823,3 @@ class stage01_resequencing_execute():
                         'reads_n':len(data_reads)
                         })
         self.stage01_resequencing_io.add_dataStage01ResequencingCoverageStats(data_O);
-
-    def execute_findAmplifications_fromGff(self,
-                #analysis_id_I,
-                experiment_id_I,
-                strand_start, strand_stop,
-                sample_names_I = [],
-                scale_factor=True, downsample_factor=0,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
-        '''Calculate coverage statistics from gff file
-        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
-
-        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
-
-        # get the data
-        data_O = [];
-        
-        ## get the analysis_info
-        #analysis_rows = [];
-        # query information from coverage table
-
-        # get the sample_names
-        experiment_id = experiment_id_I;
-        if sample_names_I:
-            sample_names = sample_names_I;
-        else:
-            sample_names = [];
-            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
-        #for cnt,analysis in analysis_rows:
-        #    # get the sample_names and experiment_ids
-        #    experiment_id = analysis['experiment_id'];
-        #    sn = analysis['sample_name'];
-        #    filename = analysis['data_dir']
-        for cnt,sn in enumerate(sample_names):
-            # get the data_dir
-            filename = [];
-            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
-            # extract the strands
-            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
-            # find high coverage regions
-            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
-            # record high coverage regions
-            # + strand
-            iter = 0;
-            for index,reads in plus_high_regions.iteritems():
-                if index > plus_high_region_indices[iter]['stop']:
-                    iter+=1;
-                data_O.append({
-                #'analysis_id':analysis_id,
-                'experiment_id':experiment_id,
-                'sample_name':sn,
-                'genome_chromosome':1, #default
-                'genome_strand':'+',
-                'genome_index':int(index),
-                'strand_start':strand_start,
-                'strand_stop':strand_stop,
-                'reads':float(reads),
-                'reads_min':reads_min,
-                'reads_max':reads_max,
-                'indices_min':indices_min,
-                'consecutive_tol':consecutive_tol,
-                'scale_factor':scale_factor,
-                'downsample_factor':downsample_factor,
-                'amplification_start':int(plus_high_region_indices[iter]['start']),
-                'amplification_stop':int(plus_high_region_indices[iter]['stop']),
-                'used_':True,
-                'comment_':None
-                    });
-            # - strand
-            iter = 0;
-            for index,reads in minus_high_regions.iteritems():
-                if index > minus_high_region_indices[iter]['stop']:
-                    iter+=1;
-                data_O.append({
-                #'analysis_id':analysis_id,
-                'experiment_id':experiment_id,
-                'sample_name':sn,
-                'genome_chromosome':1, #default
-                'genome_strand':'-',
-                'genome_index':int(index),
-                'strand_start':strand_start,
-                'strand_stop':strand_stop,
-                'reads':float(reads),
-                'reads_min':reads_min,
-                'reads_max':reads_max,
-                'indices_min':indices_min,
-                'consecutive_tol':consecutive_tol,
-                'scale_factor':scale_factor,
-                'downsample_factor':downsample_factor,
-                'amplification_start':int(minus_high_region_indices[iter]['start']),
-                'amplification_stop':int(minus_high_region_indices[iter]['stop']),
-                'used_':True,
-                'comment_':None
-                    });
-        # add data to the DB
-        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
-
-    def execute_amplificationStats_fromTable(self,
-                #analysis_id_I,
-                experiment_id_I,
-                sample_names_I=[]):
-        '''Calculate coverage statistics'''
-
-        # get the data
-        data_O = [];
-
-        ## get the analysis_info
-        #analysis_rows = [];
-        ## query information from amplification table
-
-        #for cnt,analysis in analysis_rows:
-        #    # get the sample_names
-        #    experiment_id = analysis['experiment_id'];
-        #    sn = analysis['sample_name'];
-
-        # get the sample_names
-        experiment_id = experiment_id_I;
-        if sample_names_I:
-            sample_names = sample_names_I;
-        else:
-            sample_names = [];
-            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id_I);
-        for cnt,sn in enumerate(sample_names):
-            # get chromosomes
-            chromosomes = [];
-            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
-            for chromosome in chromosomes:
-                # get strands
-                strands = []
-                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
-                # remove visualization regions
-                strands = [s for s in strands if not 'mean' in s];
-                for strand in strands:
-                    # get the start and stop of the indices
-                    genomic_starts,genomic_stops = [],[]
-                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
-                    # get the start and stop regions
-                    starts,stops = [],[]
-                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
-                    # get the indices/reads and other information
-                    for start_cnt,start in enumerate(starts):
-                        data_indices,data_reads = [],[];
-                        data_indices,data_reads = self.stage01_resequencing_query.get_genomeIndexAndReads_experimentIDAndSampleNameAndChromosomeAndStrandAndAmplificationRegions_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand,start,stops[start_cnt]);
-                        # calculate using R
-                        #data_TTest = {};
-                        #data_TTest = self.r_calc.calculate_oneSampleTTest(data_reads, alternative_I = "two.sided", mu_I = 0, paired_I="FALSE", var_equal_I = "TRUE", ci_level_I = 0.95, padjusted_method_I = "bonferroni");
-                        # calculate using scipy
-                        data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(data_reads,confidence_I = 0.95);
-                        # calculate the interquartile range
-                        min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
-                        min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(data_reads);
-                        # record data for
-                        data_O.append({
-                            #'analysis_id':analysis_id,
-                            'experiment_id':experiment_id_I,
-                            'sample_name':sn,
-                            'genome_chromosome':chromosome,
-                            'genome_strand':strand,
-                            'strand_start':genomic_starts[0],
-                            'strand_stop':genomic_stops[0],
-                            'reads_min':min_O,
-                            'reads_max':max_O,
-                            #'reads_lb':data_TTest['ci_lb'],
-                            #'reads_ub':data_TTest['ci_ub'],
-                            'reads_lb':data_lb_O,
-                            'reads_ub':data_ub_O,
-                            'reads_iq1':iq_1_O,
-                            'reads_iq3':iq_3_O,
-                            'reads_median':median_O,
-                            #'reads_mean':data_TTest['mean'],
-                            #'reads_var':data_TTest['var'],
-                            'reads_mean':data_ave_O,
-                            'reads_var':data_var_O,
-                            'reads_n':len(data_reads),
-                            'amplification_start':start,
-                            'amplification_stop':stops[start_cnt],
-                            'used_':True,
-                            'comment_':None
-                            })
-        # add data to the DB
-        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(data_O);
-
-    def execute_findAmplificationsAndCalculateStats_fromGff(self,
-                #analysis_id_I,
-                experiment_id_I,
-                strand_start, strand_stop,
-                sample_names_I = [],
-                scale_factor=True, downsample_factor=2000,reads_min=1.5,reads_max=5.0, indices_min=200,consecutive_tol=10):
-        '''Calculate coverage statistics from gff file
-        NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
-
-        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
-
-        # get the data
-        data_O = [];
-        stats_O = [];
-        ## get the analysis_info
-        #analysis_rows = [];
-        # query information from coverage table
-
-        # get the sample_names
-        experiment_id = experiment_id_I;
-        if sample_names_I:
-            sample_names = sample_names_I;
-        else:
-            sample_names = [];
-            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingCoverage(experiment_id_I);
-        #for cnt,analysis in analysis_rows:
-        #    # get the sample_names and experiment_ids
-        #    experiment_id = analysis['experiment_id'];
-        #    sn = analysis['sample_name'];
-        #    filename = analysis['data_dir']
-        for cnt,sn in enumerate(sample_names):
-            # get the data_dir
-            filename = [];
-            filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
-            # extract the strands
-            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=0)
-            # record the means for later use
-            plus_mean,minus_mean = plus.mean(),minus.mean();
-            plus_min,minus_min = plus.min(),minus.min();
-            plus_max,minus_max = plus.max(),minus.max();
-            # find high coverage regions
-            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
-            # calculate stats on the high coverage regions
-            # + strand
-            for row_cnt,row in enumerate(plus_high_region_indices):
-                plus_region = plus_high_regions[(plus_high_regions.index>=row['start']) & (plus_high_regions.index<=row['stop'])]
-                # calculate using scipy
-                data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
-                data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(plus_region.values,confidence_I = 0.95);
-                # calculate the interquartile range
-                min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
-                min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(plus_region.values);
-                # record data
-                stats_O.append({
-                    #'analysis_id':analysis_id,
-                    'experiment_id':experiment_id_I,
-                    'sample_name':sn,
-                    'genome_chromosome':1,
-                    'genome_strand':'plus',
-                    'strand_start':strand_start,
-                    'strand_stop':strand_stop,
-                    'reads_min':min_O,
-                    'reads_max':max_O,
-                    'reads_lb':data_lb_O,
-                    'reads_ub':data_ub_O,
-                    'reads_iq1':iq_1_O,
-                    'reads_iq3':iq_3_O,
-                    'reads_median':median_O,
-                    'reads_mean':data_ave_O,
-                    'reads_var':data_var_O,
-                    'reads_n':len(plus_region.values),
-                    'amplification_start':int(row['start']),
-                    'amplification_stop':int(row['stop']),
-                    'used_':True,
-                    'comment_':None
-                    })
-                # downsample
-                collapse_factor = None;
-                if downsample_factor > 1:
-                    collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
-                if collapse_factor and collapse_factor > 1:
-                    plus_region = plus_region.groupby(lambda x: x // collapse_factor).mean()
-                    plus_region.index *= collapse_factor
-                # add mean to index before and after the amplification start and stop, respectively (for visualization)
-                if downsample_factor > 1 and row_cnt==0:
-                    #plus_region[strand_start]=plus_mean;
-                    #plus_region[strand_stop]=plus_mean;
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'plus_mean',
-                        #'genome_index':int(strand_start),
-                        'genome_index':int(row['start']-1),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':plus_mean,
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':strand_start,
-                        'amplification_stop':strand_stop,
-                        'used_':True,
-                        'comment_':'mean reads of the plus strand'
-                        });
-                if downsample_factor > 1 and row_cnt==len(plus_high_region_indices)-1:
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'plus_mean',
-                        #'genome_index':int(strand_stop),
-                        'genome_index':int(row['stop']+1),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':plus_mean,
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':strand_start,
-                        'amplification_stop':strand_stop,
-                        'used_':True,
-                        'comment_':'mean reads of the plus strand'
-                        });
-                ## add zeros to strand start and stop, respectively (for visualization)
-                #if downsample_factor > 1:
-                #    plus_region[row['start']-1]=plus_mean;
-                #    plus_region[row['stop']+1]=plus_mean;
-                # record high coverage regions
-                for index,reads in plus_region.iteritems():
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'plus',
-                        'genome_index':int(index),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':float(reads),
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':int(row['start']),
-                        'amplification_stop':int(row['stop']),
-                        'used_':True,
-                        'comment_':None
-                    });
-            # - strand
-            for row_cnt,row in enumerate(minus_high_region_indices):
-                minus_region = minus_high_regions[(minus_high_regions.index>=row['start']) & (minus_high_regions.index<=row['stop'])]
-                # calculate using scipy
-                data_ave_O, data_var_O, data_lb_O, data_ub_O = None, None, None, None;
-                data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(minus_region.values,confidence_I = 0.95);
-                # calculate the interquartile range
-                min_O, max_O, median_O, iq_1_O, iq_3_O = None, None, None, None, None;
-                min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(minus_region.values);
-                # record data
-                stats_O.append({
-                    #'analysis_id':analysis_id,
-                    'experiment_id':experiment_id_I,
-                    'sample_name':sn,
-                    'genome_chromosome':1,
-                    'genome_strand':'minus',
-                    'strand_start':strand_start,
-                    'strand_stop':strand_stop,
-                    'reads_min':min_O,
-                    'reads_max':max_O,
-                    'reads_lb':data_lb_O,
-                    'reads_ub':data_ub_O,
-                    'reads_iq1':iq_1_O,
-                    'reads_iq3':iq_3_O,
-                    'reads_median':median_O,
-                    'reads_mean':data_ave_O,
-                    'reads_var':data_var_O,
-                    'reads_n':len(minus_region.values),
-                    'amplification_start':int(row['start']),
-                    'amplification_stop':int(row['stop']),
-                    'used_':True,
-                    'comment_':None
-                    })
-                # downsample
-                collapse_factor = None;
-                if downsample_factor > 1:
-                    collapse_factor = int((row['stop'] - row['start']) / downsample_factor)
-                if collapse_factor and collapse_factor > 1:
-                    minus_region = minus_region.groupby(lambda x: x // collapse_factor).mean()
-                    minus_region.index *= collapse_factor
-                # add mean to index before and after the amplification start and stop, respectively (for visualization)
-                if downsample_factor > 1 and row_cnt==0:
-                    #minus_region[strand_start]=minus_mean;
-                    #minus_region[strand_stop]=minus_mean;
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'minus_mean',
-                        #'genome_index':int(strand_start),
-                        'genome_index':int(row['start']-1),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':minus_mean,
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':strand_start,
-                        'amplification_stop':strand_stop,
-                        'used_':True,
-                        'comment_':'mean reads of the minus strand'
-                        });
-                if downsample_factor > 1 and row_cnt==len(minus_high_region_indices)-1:
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'minus_mean',
-                        #'genome_index':int(strand_stop),
-                        'genome_index':int(row['stop']+1),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':minus_mean,
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':strand_start,
-                        'amplification_stop':strand_stop,
-                        'used_':True,
-                        'comment_':'mean reads of the minus strand'
-                        });
-                ## add zeros to strand start and stop, respectively (for visualization)
-                #if downsample_factor > 1:
-                #    minus_region[row['start']-1]=minus_mean;
-                #    minus_region[row['stop']+1]=minus_mean;
-                # record high coverage regions
-                for index,reads in minus_region.iteritems():
-                    data_O.append({
-                        #'analysis_id':analysis_id,
-                        'experiment_id':experiment_id,
-                        'sample_name':sn,
-                        'genome_chromosome':1, #default
-                        'genome_strand':'minus',
-                        'genome_index':int(index),
-                        'strand_start':strand_start,
-                        'strand_stop':strand_stop,
-                        'reads':float(reads),
-                        'reads_min':reads_min,
-                        'reads_max':reads_max,
-                        'indices_min':indices_min,
-                        'consecutive_tol':consecutive_tol,
-                        'scale_factor':scale_factor,
-                        'downsample_factor':downsample_factor,
-                        'amplification_start':int(row['start']),
-                        'amplification_stop':int(row['stop']),
-                        'used_':True,
-                        'comment_':None});
-
-        # add data to the DB
-        self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
-        self.stage01_resequencing_io.add_dataStage01ResequencingAmplificationStats(stats_O);
-
-    def execute_annotateAmplifications(self,experiment_id_I,sample_names_I=[],ref_genome_I='data/U00096.2.gb'):
-        '''Annotate mutations for date_stage01_resequencing_endpoints
-        based on position, reference genome, and reference genome biologicalmaterial_id'''
-        
-        from Bio import SeqIO
-        from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,'genbank')
-
-        print('Executing annotateAmplifications...')
-        data_O = [];
-        experiment_id = experiment_id_I;
-        if sample_names_I:
-            sample_names = sample_names_I;
-        else:
-            sample_names = [];
-            sample_names = self.stage01_resequencing_query.get_sampleNames_experimentID_dataStage01ResequencingAmplifications(experiment_id);
-        for cnt,sn in enumerate(sample_names):
-            print('annotating amplifications for sample_name ' + sn);
-            # get chromosomes
-            chromosomes = [];
-            chromosomes = self.stage01_resequencing_query.get_chromosomes_experimentIDAndSampleName_dataStage01ResequencingAmplifications(experiment_id_I,sn);
-            for chromosome in chromosomes:
-                # get strands
-                strands = []
-                strands = self.stage01_resequencing_query.get_strands_experimentIDAndSampleNameAndChromosome_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome);
-                # remove visualization regions
-                strands = [s for s in strands if not 'mean' in s];
-                for strand in strands:
-                    # get the start and stop of the indices
-                    genomic_starts,genomic_stops = [],[]
-                    genomic_starts,genomic_stops = self.stage01_resequencing_query.get_startAndStops_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
-                    # get the start and stop regions
-                    starts,stops = [],[]
-                    starts,stops = self.stage01_resequencing_query.get_amplificationRegions_experimentIDAndSampleNameAndChromosomeAndStrand_dataStage01ResequencingAmplifications(experiment_id_I,sn,chromosome,strand);
-                    for start_cnt,start in enumerate(starts):
-                        # annotate each mutation based on the position
-                        annotations = [];
-                        annotations = self.find_genesInRegion(start,stops[start_cnt],record)
-                        for annotation in annotations:
-                            # record the data
-                            tmp = {
-                                'experiment_id':experiment_id,
-                                'sample_name':sn,
-                                'genome_chromosome':chromosome,
-                                'genome_strand':strand,
-                                'strand_start':genomic_starts[0],
-                                'strand_stop':genomic_stops[0],
-                                'amplification_start':start,
-                                'amplification_stop':stops[start_cnt],
-                                'used_':True,
-                                'comment_':None};
-                            tmp['feature_genes'] = annotation['gene']
-                            tmp['feature_locations'] = annotation['location']
-                            tmp['feature_annotations'] = annotation['product']
-                            tmp['feature_start'] = annotation['start'];
-                            tmp['feature_stop'] = annotation['stop'];
-                            tmp['feature_types'] = annotation['type']
-                            # generate a link to ecogene for the genes
-                            tmp['feature_links'] = [];
-                            for bnumber in annotation['locus_tag']:
-                                if bnumber:
-                                    ecogenes = [];
-                                    ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences('MG1655',bnumber);
-                                    if ecogenes:
-                                        ecogene = ecogenes[0];
-                                        ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
-                                        tmp['feature_links'].append(ecogene_link)
-                                    else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
-                            data_O.append(tmp);
-        # update rows in the database
-        io = stage01_resequencing_io();
-        io.add_dataStage01ResequencingAmplificationAnnotations(data_O);
-    def find_genesInRegion(self,start_I,stop_I,record_I):
-        '''find genes in the start and stop region of the genome
-        INPUT:
-        mutation_position_I = mutation position [int]
-        record_I = genbank record [SeqRecord]
-        '''
-        data_O = [];
-        #extract all features within the start and stop region
-        features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]
-        for feature_cnt,feature in enumerate(features):
-            # NOTE:
-            # there are two records for each gene: one of type "gene" and another of type "CDS"
-            # sometimes there is also a third of type "mat_peptide" which has a different start/stop position
-            # this algorithm will combine the records for types "gene" and "CDS" as a single row
-            # and add mat_peptide as a second row (if desired)
-            # initialize variables
-            if feature_cnt == 0:
-                feature_start_pos = feature.location.start.position;
-                feature_stop_pos = feature.location.end.position;
-                snp_records = {};
-                snp_records['gene'] = []
-                snp_records['db_xref'] = []
-                snp_records['locus_tag'] = []
-                snp_records['EC_number'] = []
-                snp_records['product'] = []
-                snp_records['location'] = []
-                snp_records['start'] = None
-                snp_records['stop'] = None
-                snp_records['type'] = []
-            # add complete snp_record to data_O
-            if feature_start_pos != feature.location.start.position or feature_stop_pos != feature.location.end.position:
-                #snp_records['start'] should be in every record
-                data_O.append(snp_records);
-                feature_start_pos = feature.location.start.position;
-                feature_stop_pos = feature.location.end.position;
-                snp_records = {};
-                snp_records['gene'] = []
-                snp_records['db_xref'] = []
-                snp_records['locus_tag'] = []
-                snp_records['EC_number'] = []
-                snp_records['product'] = []
-                snp_records['location'] = []
-                snp_records['start'] = None
-                snp_records['stop'] = None
-                snp_records['type'] = []
-            # fill in snp_record (may require multiple passes through features)
-            if feature.type == 'gene':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'CDS': 
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'repeat_region':
-                snp_records['location'] = feature.qualifiers.get('note')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'mobile_element':
-                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'misc_feature':
-                snp_records['location'] = feature.qualifiers.get('note')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'mat_peptide':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'tRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'rRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'ncRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type != 'source':
-                print(feature);
-            # add the final snp_record to data_O
-            if feature_cnt == len(features)-1:
-                data_O.append(snp_records);
-
-        return data_O;

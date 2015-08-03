@@ -639,6 +639,25 @@ class stage01_resequencing_query(base_analysis):
             return  experiment_id_O,lineage_name_O,sample_name_O,time_point_O;
         except SQLAlchemyError as e:
             print(e);
+    def get_rows_analysisID_dataStage01ResequencingAnalysis(self,analysis_id_I):
+        '''Query rows that are used from the analysis'''
+        try:
+            data = self.session.query(data_stage01_resequencing_analysis).filter(
+                    data_stage01_resequencing_analysis.analysis_id.like(analysis_id_I),
+                    data_stage01_resequencing_analysis.used_.is_(True)).all();
+            analysis_O = [];
+            if data: 
+                for d in data:
+                    analysis_O.append({
+                        'analysis_id':d.analysis_id,
+                        'experiment_id':d.experiment_id,
+                        'lineage_name':d.lineage_name,
+                        'sample_name':d.sample_name,
+                        'analysis_type':d.analysis_type});
+                
+            return analysis_O;
+        except SQLAlchemyError as e:
+            print(e);
 
     # query data from data_stage01_resequencing_heatmap
     def get_rows_analysisID_dataStage01ResequencingHeatmap(self,analysis_id_I):
