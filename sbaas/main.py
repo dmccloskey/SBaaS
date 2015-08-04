@@ -16,10 +16,10 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilit
 #analysis_physiology.run_all_tests();
 #analysis_resequencing.run_all_tests();
 
-#Visualization tests:
-from visualization.server import run
-run();
-#run(port=8080,public=True);
+##Visualization tests:
+#from visualization.server import run
+#run();
+##run(port=8080,public=True);
 
 #Debug mode:
 #from sbaas.analysis.analysis_stage01_physiology import *
@@ -85,54 +85,8 @@ session = Session();
 ex01 = stage01_resequencing_execute(session);
 io01 = stage01_resequencing_io(session);
 
-#PASSED
-## reset imported coverage data
-#ex01.reset_dataStage01_resequencing_coverage(experiment_id_I='ALEsKOs01',
-#     sample_names_I=['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1'
-#    ]
-#     )
-## import the driver file
-#from io_utilities.base_importData import base_importData
-#iobase = base_importData();
-#iobase.read_csv(settings.workspace_data+'/_input/140823_Resequencing_ALEsKOs01_coverage01.csv');
-#fileList = iobase.data;
-## read in each data file
-#for file in fileList:
-#    print('importing coverage data for sample ' + file['sample_name']);
-#    io01.import_resequencingCoverageData_add(file['filename'],file['experiment_id'],file['sample_name'],file['strand_start'],file['strand_stop'],file['scale_factor'],file['downsample_factor']);
-##iobase.clear_data();
-## calculate the coverage statistics
-#ex01.execute_coverageStats_fromGff('ALEsKOs01',
-#    0, 4640000,
-#    sample_names_I = [
-#    '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
-#    ],
-#    scale_factor=False,downsample_factor=0)
-
-##Passed
-## find amplifications
-#ex01.reset_dataStage01_resequencing_amplifications('ALEsKOs01',
-#    sample_names_I = [
-#    '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1'
-#    ]
-#    )
-#ex01.execute_findAmplificationsAndCalculateStats_fromGff(
-#    #analysis_id_I,
-#    'ALEsKOs01',
-#    0, 4640000,
-#    sample_names_I = [
-#    '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
-#    ],
-#    scale_factor=True, downsample_factor=200,reads_min=1.25,reads_max=4.0, indices_min=5000,consecutive_tol=50
-#    );
-## annotate amplifications
-#ex01.execute_annotateAmplifications(
-#        'ALEsKOs01',
-#    sample_names_I = [
-#    '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
-#    ],
-#    ref_genome_I=settings.sbaas+'/sbaas/data/U00096.2.gb'
-#        );
+from sbaas.tests.analysis_resequencing import data_stage01
+data_stage01(session);
 
 ## initialize the DB
 #ex01.initialize_dataStage01();

@@ -43,6 +43,7 @@ def data_stage01(session):
     execute01 = stage01_resequencing_execute(session);
     #execute01.drop_dataStage01();
     execute01.initialize_dataStage01();
+    execute01.reset_dataStage01('ALEsKOs01');
 
     '''data import'''
     io = stage01_resequencing_io(session);
@@ -59,6 +60,9 @@ def data_stage01(session):
     '''data analysis'''
     execute01.reset_dataStage01_filtered('ALEsKOs01');
     execute01.execute_filterMutations_population('ALEsKOs01');
+    execute01.execute_annotateFilteredMutations('ALEsKOs01',
+                    ref_genome_I='data/U00096.2.gb',
+                    ref_I = 'genbank',biologicalmaterial_id_I='MG1655')
     execute01.reset_dataStage01_lineage('ALEsKOs01')
     execute01.execute_analyzeLineage_population('ALEsKOs01',
                                          strain_lineages());
@@ -71,32 +75,77 @@ def data_stage01(session):
     execute01.execute_annotateMutations_endpoints('ALEsKOs01');
     execute01.execute_annotateFilteredMutations('ALEsKOs01');
 
-    '''data export'''
-    mutation_id_base = ['MOB_insA-/-uspC_1977510',
-                        'SNP_ylbE_547694',
-                        'SNP_yifN_3957957',
-                        'DEL_corA_3999668',
-                        'MOB_tdk_1292255',
-                        'SNP_rpoB_4182566',
-                        'INS__4294403',
-                        'DEL_pyrE-/-rph_3813882',
-                        'SNP_wcaA_2130811']
-    io.export_dataStage01ResequencingLineage_d3('ALEsKOs01',
-                                                ['evo04tpiAevo01','evo04tpiAevo02','evo04tpiAevo03','evo04tpiAevo04'],
-                                                filename='visualization/data/ALEsKOs01/resequencing/heatmap/tpiA.js',
-                                                mutation_id_exclusion_list = mutation_id_base);
+    #'''data export'''
+    #mutation_id_base = ['MOB_insA-/-uspC_1977510',
+    #                    'SNP_ylbE_547694',
+    #                    'SNP_yifN_3957957',
+    #                    'DEL_corA_3999668',
+    #                    'MOB_tdk_1292255',
+    #                    'SNP_rpoB_4182566',
+    #                    'INS__4294403',
+    #                    'DEL_pyrE-/-rph_3813882',
+    #                    'SNP_wcaA_2130811']
+    #io.export_dataStage01ResequencingLineage_d3('ALEsKOs01',
+    #                                            ['evo04tpiAevo01','evo04tpiAevo02','evo04tpiAevo03','evo04tpiAevo04'],
+    #                                            filename='visualization/data/ALEsKOs01/resequencing/heatmap/tpiA.js',
+    #                                            mutation_id_exclusion_list = mutation_id_base);
 
-    io.export_dataStage01ResequencingMutationsAnnotated_d3('ALEsKOs01',
-                                         strain_lineages(),
-                                                mutation_id_exclusion_list = ['insA-/-uspC_MOB_1977510',
-                        'ylbE_SNP_547694',
-                        'yifN_SNP_3957957',
-                        'corA_DEL_3999668',
-                        'tdk_MOB_1292255',
-                        'rpoB_SNP_4182566',
-                        '_INS_4294403',
-                        'pyrE-/-rph_DEL_3813882',
-                        'wcaA_SNP_2130811']);
+    #io.export_dataStage01ResequencingMutationsAnnotated_d3('ALEsKOs01',
+    #                                     strain_lineages(),
+    #                                            mutation_id_exclusion_list = ['insA-/-uspC_MOB_1977510',
+    #                    'ylbE_SNP_547694',
+    #                    'yifN_SNP_3957957',
+    #                    'corA_DEL_3999668',
+    #                    'tdk_MOB_1292255',
+    #                    'rpoB_SNP_4182566',
+    #                    '_INS_4294403',
+    #                    'pyrE-/-rph_DEL_3813882',
+    #                    'wcaA_SNP_2130811']);
+
+    # reset imported coverage data
+    ex01.reset_dataStage01_resequencing_coverage(experiment_id_I='ALEsKOs01',
+         sample_names_I=['140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1'
+        ]
+         )
+    # import the driver file
+    iobase = base_importData();
+    iobase.read_csv(settings.workspace_data+'/_input/140823_Resequencing_ALEsKOs01_coverage01.csv');
+    fileList = iobase.data;
+    # read in each data file
+    for file in fileList:
+        print('importing coverage data for sample ' + file['sample_name']);
+        io01.import_resequencingCoverageData_add(file['filename'],file['experiment_id'],file['sample_name'],file['strand_start'],file['strand_stop'],file['scale_factor'],file['downsample_factor']);
+    #iobase.clear_data();
+    # calculate the coverage statistics
+    ex01.execute_coverageStats_fromGff('ALEsKOs01',
+        0, 4640000,
+        sample_names_I = [
+        '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
+        ],
+        scale_factor=False,downsample_factor=0)
+    # find amplifications
+    ex01.reset_dataStage01_resequencing_amplifications('ALEsKOs01',
+        sample_names_I = [
+        '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1'
+        ]
+        )
+    ex01.execute_findAmplificationsAndCalculateStats_fromGff(
+        #analysis_id_I,
+        'ALEsKOs01',
+        0, 4640000,
+        sample_names_I = [
+        '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
+        ],
+        scale_factor=True, downsample_factor=200,reads_min=1.25,reads_max=4.0, indices_min=5000,consecutive_tol=50
+        );
+    # annotate amplifications
+    ex01.execute_annotateAmplifications(
+            'ALEsKOs01',
+        sample_names_I = [
+        '140807_11_OxicEvo04ptsHIcrrEvo04EPEcoliGlcM9_Broth-1',
+        ],
+        ref_genome_I=settings.sbaas+'/sbaas/data/U00096.2.gb'
+            );
 
 def data_stage02(session):
     '''Note: Requires analysis_physiology'''

@@ -114,6 +114,64 @@ class stage01_resequencing_query(base_analysis):
             return data_filtered_dict;
         except SQLAlchemyError as e:
             print(e);
+    def get_evidence_experimentIDAndSampleName_dataStage01ResequencingEvidence(self,experiment_id_I,sample_name_I,
+              p_value_criteria=0.01,quality_criteria=6.0,frequency_criteria=0.1):
+        '''Query evidence data
+        NOTES:
+        1. JSON is not a standard type across databases, therefore the key/values of the JSON
+            object will be filtered post-query'''
+        #2 filter sample_names by evidence-specific criteria
+        try:
+            data = self.session.query(data_stage01_resequencing_evidence).filter(
+                    data_stage01_resequencing_evidence.experiment_id.like(experiment_id_I),
+                    data_stage01_resequencing_evidence.sample_name.like(sample_name_I)).all();
+            data_O = [];
+            for d in data: 
+                data_dict = {};
+                data_dict['experiment_id'] = d.experiment_id;
+                data_dict['sample_name'] = d.sample_name;
+                data_dict['parent_id'] = d.parent_id;
+                data_dict['evidence_data'] = d.evidence_data;
+                #data_dict['evidence_data'] = json.loads(d.evidence_data);
+                data_O.append(data_dict);
+            # filter:
+            data_filtered = [];
+            data_filtered_dict = {};
+            for d in data_O:
+                if d['evidence_data']['type'] == 'RA':
+                    #population only
+                    if 'quality' in d['evidence_data'] and \
+                        'bias_p_value' in d['evidence_data'] and \
+                        'fisher_strand_p_value' in d['evidence_data'] and \
+                        'frequency' in d['evidence_data'] and \
+                        d['evidence_data']['frequency'] >= frequency_criteria and \
+                        d['evidence_data']['quality'] >= quality_criteria and \
+                        d['evidence_data']['bias_p_value'] <= p_value_criteria and \
+                        d['evidence_data']['fisher_strand_p_value'] <= p_value_criteria:
+                        data_filtered_dict = d;
+                        data_filtered.append(d);
+                    #population and isolate
+                    elif 'quality' in d['evidence_data'] and \
+                        'frequency' in d['evidence_data'] and \
+                        d['evidence_data']['frequency'] >= frequency_criteria and \
+                        d['evidence_data']['quality'] >= quality_criteria:
+                        data_filtered_dict = d;
+                        data_filtered.append(d);
+                elif d['evidence_data']['type'] == 'JC':
+                    data_filtered_dict = d;
+                    data_filtered.append(d);
+                elif d['evidence_data']['type'] == 'MC':
+                    data_filtered_dict = d;
+                    data_filtered.append(d);
+                elif d['evidence_data']['type'] == 'UN':
+                    data_filtered_dict = d;
+                    data_filtered.append(d);
+                else:
+                    print('mutation evidence of type ' + d['evidence_data']['type'] +\
+                        ' has not yet been included in the filter criteria');
+            return data_filtered;
+        except SQLAlchemyError as e:
+            print(e);
             
     # query data from data_stage01_resequencing_mutationsFiltered
     def get_sampleNames_experimentID_dataStage01ResequencingMutationsFiltered(self,experiment_id_I):

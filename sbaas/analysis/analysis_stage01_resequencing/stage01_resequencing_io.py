@@ -17,63 +17,63 @@ class stage01_resequencing_io(base_analysis):
     def import_resequencingData_add(self, filename, experiment_id, sample_name):
         '''table adds'''
 
-        #TODO: test
-        #genomediff = genome_diff();
-        #genomediff.import_gd(filename, experiment_id, sample_name)
+        #TODO: test passed
+        genomediff = genome_diff();
+        genomediff.import_gd(filename, experiment_id, sample_name)
 
-        gd = gdparse.GDParser(file_handle=open(filename, 'rb'))
-        # extract out ids
-        mutation_ids = [];
-        mutation_ids = list(gd.data['mutation'].keys())
-        parent_ids = [];
-        for mid in mutation_ids:
-            parents = [];
-            parents = gd.data['mutation'][mid]['parent_ids'];
-            parent_ids.extend(parents);
-        # split into seperate data structures based on the destined table add
-        metadata = [];
-        mutation_data = [];
-        evidence_data = [];
-        validation_data = [];
-        if gd.metadata:
-            metadata.append({'experiment_id':experiment_id,
-                                 'sample_name':sample_name,
-                                 'genome_diff':gd.metadata['GENOME_DIFF'],
-                                 'refseq':gd.metadata['REFSEQ'],
-                                 'readseq':gd.metadata['READSEQ'],
-                                 'author':gd.metadata['AUTHOR']});
-        if gd.data['mutation']:
-            for mid in mutation_ids:
-                mutation_data.append({'experiment_id':experiment_id,
-                                 'sample_name':sample_name,
-                                 'mutation_id':mid,
-                                 'parent_ids':gd.data['mutation'][mid]['parent_ids'],
-                                 'mutation_data':gd.data['mutation'][mid]});
-                                 #'mutation_data':json.dumps(gd.data['mutation'][mid])});
-        if gd.data['evidence']:
-            for pid in parent_ids:
-                evidence_data.append({'experiment_id':experiment_id,
-                                 'sample_name':sample_name,
-                                 'parent_id':pid,
-                                 'evidence_data':gd.data['evidence'][pid]});
-                                 #'evidence_data':json.dumps(gd.data['evidence'][pid])});
-        if gd.data['validation']:
-            for mid in mutation_ids:
-                validation_data.append({'experiment_id':experiment_id,
-                                 'sample_name':sample_name,
-                                 'validation_id':mid,
-                                 'validation_data':gd.data['validation'][mid]});
-                                 #'validation_data':json.dumps(gd.data['validation'][mid])});
+        #gd = gdparse.GDParser(file_handle=open(filename, 'rb'))
+        ## extract out ids
+        #mutation_ids = [];
+        #mutation_ids = list(gd.data['mutation'].keys())
+        #parent_ids = [];
+        #for mid in mutation_ids:
+        #    parents = [];
+        #    parents = gd.data['mutation'][mid]['parent_ids'];
+        #    parent_ids.extend(parents);
+        ## split into seperate data structures based on the destined table add
+        #metadata = [];
+        #mutation_data = [];
+        #evidence_data = [];
+        #validation_data = [];
+        #if gd.metadata:
+        #    metadata.append({'experiment_id':experiment_id,
+        #                         'sample_name':sample_name,
+        #                         'genome_diff':gd.metadata['GENOME_DIFF'],
+        #                         'refseq':gd.metadata['REFSEQ'],
+        #                         'readseq':gd.metadata['READSEQ'],
+        #                         'author':gd.metadata['AUTHOR']});
+        #if gd.data['mutation']:
+        #    for mid in mutation_ids:
+        #        mutation_data.append({'experiment_id':experiment_id,
+        #                         'sample_name':sample_name,
+        #                         'mutation_id':mid,
+        #                         'parent_ids':gd.data['mutation'][mid]['parent_ids'],
+        #                         'mutation_data':gd.data['mutation'][mid]});
+        #                         #'mutation_data':json.dumps(gd.data['mutation'][mid])});
+        #if gd.data['evidence']:
+        #    for pid in parent_ids:
+        #        evidence_data.append({'experiment_id':experiment_id,
+        #                         'sample_name':sample_name,
+        #                         'parent_id':pid,
+        #                         'evidence_data':gd.data['evidence'][pid]});
+        #                         #'evidence_data':json.dumps(gd.data['evidence'][pid])});
+        #if gd.data['validation']:
+        #    for mid in mutation_ids:
+        #        validation_data.append({'experiment_id':experiment_id,
+        #                         'sample_name':sample_name,
+        #                         'validation_id':mid,
+        #                         'validation_data':gd.data['validation'][mid]});
+        #                         #'validation_data':json.dumps(gd.data['validation'][mid])});
         # add data to the database:
-        #TODO: test
-        #self.add_dataStage01ResequencingMetadata(genomediff.metadata);
-        #self.add_dataStage01ResequencingMutations(genomediff.mutations);
-        #self.add_dataStage01ResequencingEvidence(genomediff.evidence);
-        #self.add_dataStage01ResequencingValidation(genomediff.validation);
-        self.add_dataStage01ResequencingMetadata(metadata);
-        self.add_dataStage01ResequencingMutations(mutation_data);
-        self.add_dataStage01ResequencingEvidence(evidence_data);
-        self.add_dataStage01ResequencingValidation(validation_data);
+        #TODO: test passed
+        self.add_dataStage01ResequencingMetadata(genomediff.metadata);
+        self.add_dataStage01ResequencingMutations(genomediff.mutations);
+        self.add_dataStage01ResequencingEvidence(genomediff.evidence);
+        self.add_dataStage01ResequencingValidation(genomediff.validation);
+        #self.add_dataStage01ResequencingMetadata(metadata);
+        #self.add_dataStage01ResequencingMutations(mutation_data);
+        #self.add_dataStage01ResequencingEvidence(evidence_data);
+        #self.add_dataStage01ResequencingValidation(validation_data);
 
     def add_dataStage01ResequencingMutations(self, data_I):
         '''add rows of data_stage01_resequencing_mutations'''
@@ -81,6 +81,21 @@ class stage01_resequencing_io(base_analysis):
             for d in data_I:
                 try:
                     data_add = data_stage01_resequencing_mutations(d['experiment_id'],
+                                    d['sample_name'],
+                                    d['mutation_id'],
+                                    d['parent_ids'],
+                                    d['mutation_data']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
+    def add_dataStage01ResequencingMutationsFiltered(self, data_I):
+        '''add rows of data_stage01_resequencing_mutationsFiltered'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = data_stage01_resequencing_mutationsFiltered(d['experiment_id'],
                                     d['sample_name'],
                                     d['mutation_id'],
                                     d['parent_ids'],

@@ -27,8 +27,8 @@ class stage01_resequencing_execute():
 
         print('Executing filterMutations_population...')
         data_O = [];
-        #TODO: test
-        #genomediff = genome_diff();
+        #TODO: test passed
+        genomediff = genome_diff();
         # query sample names from the experiment
         if sample_names_I:
             sample_names = sample_names_I;
@@ -40,43 +40,48 @@ class stage01_resequencing_execute():
             #query mutation data filtered by frequency
             data_mutations_list = [];
             data_mutations_list = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutations(experiment_id,sn,frequency_criteria=frequency_criteria);
-            #TODO: test
-            #genomediff.mutations = data_mutations_list;
-            #genomediff.filter_mutations_population(p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria)
-            #data_O.extend(genomediff.mutationsFiltered);
-            #genomediff.clear_data();
-            for data_mutations in data_mutations_list:
-                print('Filtering mutations for mutation id ' + str(data_mutations['mutation_id']));
-                #query data filtered by evidence-specific criteria
-                data_evidence_list = [];
-                for pid in data_mutations['parent_ids']:
-                    print('Filtering mutations for parent id ' + str(pid));
-                    data_evidence_dict = {};
-                    data_evidence_dict = self.stage01_resequencing_query.get_evidence_experimentIDAndSampleNameAndParentID_dataStage01ResequencingEvidence(experiment_id,sn,pid,
+            #TODO: test passed (but some what trivial since we already filtered the data...);
+            data_evidence_list = [];
+            data_evidence_list = self.stage01_resequencing_query.get_evidence_experimentIDAndSampleName_dataStage01ResequencingEvidence(experiment_id,sn,
                                                     p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria);
-                    data_evidence_list.append(data_evidence_dict);
-                if data_evidence_list[0]: #check that filtered evidence was found
-                    data_O.append(data_mutations);
-                    #add data to the database table
-                    row = None;
-                    row = data_stage01_resequencing_mutationsFiltered(data_mutations['experiment_id'],
-                        data_mutations['sample_name'],
-                        data_mutations['mutation_id'],
-                        data_mutations['parent_ids'],
-                        data_mutations['mutation_data']);
-                        #json.dumps(data_mutations['mutation_data']));
-                    self.session.add(row);
+            genomediff.mutations = data_mutations_list;
+            genomediff.evidence = data_evidence_list;
+            genomediff.filter_mutations_population(p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria)
+            data_O.extend(copy(genomediff.mutationsFiltered));
+            genomediff.clear_data();
+            #for data_mutations in data_mutations_list:
+            #    print('Filtering mutations for mutation id ' + str(data_mutations['mutation_id']));
+            #    #query data filtered by evidence-specific criteria
+            #    data_evidence_list = [];
+            #    for pid in data_mutations['parent_ids']:
+            #        print('Filtering mutations for parent id ' + str(pid));
+            #        data_evidence_dict = {};
+            #        data_evidence_dict = self.stage01_resequencing_query.get_evidence_experimentIDAndSampleNameAndParentID_dataStage01ResequencingEvidence(experiment_id,sn,pid,
+            #                                        p_value_criteria=p_value_criteria,quality_criteria=quality_criteria,frequency_criteria=frequency_criteria);
+            #        data_evidence_list.append(data_evidence_dict);
+            #    if data_evidence_list[0]: #check that filtered evidence was found
+            #        data_O.append(data_mutations);
+            ##        #add data to the database table
+            ##        row = None;
+            ##        row = data_stage01_resequencing_mutationsFiltered(data_mutations['experiment_id'],
+            ##            data_mutations['sample_name'],
+            ##            data_mutations['mutation_id'],
+            ##            data_mutations['parent_ids'],
+            ##            data_mutations['mutation_data']);
+            ##            #json.dumps(data_mutations['mutation_data']));
+            ##        self.session.add(row);
         #add data to the database table
-        self.session.commit();
+        self.stage01_resequencing_io.add_dataStage01ResequencingMutationsFiltered(data_O);
+        #self.session.commit();
     def execute_annotateFilteredMutations(self,experiment_id,sample_names_I=[],
                                                  ref_genome_I='data/U00096.2.gb',
                                                  ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
 
-        from Bio import SeqIO
-        from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,ref_I)
-        #TODO: test
-        #genomeannotation = genome_annotations();
+        #from Bio import SeqIO
+        #from Bio import Entrez
+        #record = SeqIO.read(ref_genome_I,ref_I)
+        #TODO: test passed
+        genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotation of filtered mutations...')
         genotype_phenotype_O = [];
@@ -97,9 +102,9 @@ class stage01_resequencing_execute():
                 data_tmp = {};
                 # annotate each mutation based on the position
                 annotation = {};
-                #TODO: test
-                #annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
-                annotation = self.find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
+                #TODO: test passed
+                annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
+                #annotation = self.find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
                 data_tmp['mutation_genes'] = annotation['gene']
                 data_tmp['mutation_locations'] = annotation['location']
                 data_tmp['mutation_annotations'] = annotation['product']
@@ -111,9 +116,9 @@ class stage01_resequencing_execute():
                         ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
                         if ecogenes:
                             ecogene = ecogenes[0];
-                            #TODO: test
-                            #ecogene_link = genomeannotation._find_genesFromMutationPosition(ecogene['ecogene_accession_number']);
-                            ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                            #TODO: test passed
+                            ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                            #ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             data_tmp['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                 data_tmp['experiment_id'] = mutation['experiment_id'];
@@ -160,8 +165,8 @@ class stage01_resequencing_execute():
         '''
 
         print('Executing analyzeLineage_population...')
-        #TODO: test
-        #mutationslineage = mutations_lineage();
+        #TODO: test passed
+        mutationslineage = mutations_lineage();
         data_O = [];
         for lineage_name,strain in strain_lineage.items():
             print('analyzing lineage ' + lineage_name);
@@ -177,88 +182,88 @@ class stage01_resequencing_execute():
                 # query intermediate data:
                 intermediate_mutations = [];
                 intermediate_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain[intermediate]);
-                # TODO: test
-                #data_O.extend(mutationslineage._extract_mutationsLineage(end_mutations,intermediate_mutations));
-                for end_cnt,end_mutation in enumerate(end_mutations):
-                    print('end mutation type/position ' + end_mutation['mutation_data']['type'] + '/' + str(end_mutation['mutation_data']['position']));
-                    for inter_cnt,intermediate_mutation in enumerate(intermediate_mutations):
-                        print('intermediate mutation type/position ' + intermediate_mutation['mutation_data']['type'] + '/' + str(intermediate_mutation['mutation_data']['position']));
-                        if intermediate == 0 and inter_cnt == 0:
-                            #copy end_point data (only once per strain lineage)
-                            data_tmp = {};
-                            data_tmp['experiment_id'] = end_mutation['experiment_id'];
-                            data_tmp['sample_name'] = end_mutation['sample_name'];
-                            data_tmp['intermediate'] = end_point;
-                            frequency = 1.0;
-                            if 'frequency' in end_mutation['mutation_data']: frequency = end_mutation['mutation_data']['frequency'];
-                            data_tmp['mutation_frequency'] = frequency
-                            data_tmp['mutation_position'] = end_mutation['mutation_data']['position']
-                            data_tmp['mutation_type'] = end_mutation['mutation_data']['type']
-                            data_tmp['lineage_name'] = lineage_name;
-                            data_tmp['mutation_data'] = end_mutation['mutation_data'];
-                            data_O.append(data_tmp);
-                        # find the mutation in the intermediates
-                        # filter by mutation type-specific criteria
-                        match = {};
-                        if end_mutation['mutation_data']['type'] == 'SNP':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'SUB':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'DEL':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'INS':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'MOB':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['repeat_name']==intermediate_mutation['mutation_data']['repeat_name'] and \
-                                end_mutation['mutation_data']['strand']==intermediate_mutation['mutation_data']['strand'] and \
-                                end_mutation['mutation_data']['duplication_size']==intermediate_mutation['mutation_data']['duplication_size']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'AMP':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                                end_mutation['mutation_data']['new_copy_number']==intermediate_mutation['mutation_data']['new_copy_number']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'CON':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                                end_mutation['mutation_data']['region']==intermediate_mutation['mutation_data']['region']:
-                                match = intermediate_mutation;
-                        elif end_mutation['mutation_data']['type'] == 'INV':
-                            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
-                                match = intermediate_mutation;
-                        else:
-                            print('unknown mutation type');
-                        if match:
-                            data_tmp = {};
-                            data_tmp['experiment_id'] = match['experiment_id'];
-                            data_tmp['sample_name'] = match['sample_name'];
-                            data_tmp['intermediate'] = intermediate;
-                            frequency = 1.0;
-                            if 'frequency' in match['mutation_data']: frequency = match['mutation_data']['frequency'];
-                            data_tmp['mutation_frequency'] = frequency
-                            data_tmp['mutation_position'] = match['mutation_data']['position']
-                            data_tmp['mutation_type'] = match['mutation_data']['type']
-                            data_tmp['lineage_name'] = lineage_name;
-                            data_tmp['mutation_data'] = match['mutation_data'];
-                            data_O.append(data_tmp);
+                # TODO: test passed
+                data_O.extend(mutationslineage._extract_mutationsLineage(lineage_name,end_mutations,intermediate_mutations,intermediate,end_point));
+                #for end_cnt,end_mutation in enumerate(end_mutations):
+                #    print('end mutation type/position ' + end_mutation['mutation_data']['type'] + '/' + str(end_mutation['mutation_data']['position']));
+                #    for inter_cnt,intermediate_mutation in enumerate(intermediate_mutations):
+                #        print('intermediate mutation type/position ' + intermediate_mutation['mutation_data']['type'] + '/' + str(intermediate_mutation['mutation_data']['position']));
+                #        if intermediate == 0 and inter_cnt == 0:
+                #            #copy end_point data (only once per strain lineage)
+                #            data_tmp = {};
+                #            data_tmp['experiment_id'] = end_mutation['experiment_id'];
+                #            data_tmp['sample_name'] = end_mutation['sample_name'];
+                #            data_tmp['intermediate'] = end_point;
+                #            frequency = 1.0;
+                #            if 'frequency' in end_mutation['mutation_data']: frequency = end_mutation['mutation_data']['frequency'];
+                #            data_tmp['mutation_frequency'] = frequency
+                #            data_tmp['mutation_position'] = end_mutation['mutation_data']['position']
+                #            data_tmp['mutation_type'] = end_mutation['mutation_data']['type']
+                #            data_tmp['lineage_name'] = lineage_name;
+                #            data_tmp['mutation_data'] = end_mutation['mutation_data'];
+                #            data_O.append(data_tmp);
+                #        # find the mutation in the intermediates
+                #        # filter by mutation type-specific criteria
+                #        match = {};
+                #        if end_mutation['mutation_data']['type'] == 'SNP':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'SUB':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
+                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'DEL':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'INS':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'MOB':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['repeat_name']==intermediate_mutation['mutation_data']['repeat_name'] and \
+                #                end_mutation['mutation_data']['strand']==intermediate_mutation['mutation_data']['strand'] and \
+                #                end_mutation['mutation_data']['duplication_size']==intermediate_mutation['mutation_data']['duplication_size']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'AMP':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
+                #                end_mutation['mutation_data']['new_copy_number']==intermediate_mutation['mutation_data']['new_copy_number']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'CON':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
+                #                end_mutation['mutation_data']['region']==intermediate_mutation['mutation_data']['region']:
+                #                match = intermediate_mutation;
+                #        elif end_mutation['mutation_data']['type'] == 'INV':
+                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
+                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
+                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
+                #                match = intermediate_mutation;
+                #        else:
+                #            print('unknown mutation type');
+                #        if match:
+                #            data_tmp = {};
+                #            data_tmp['experiment_id'] = match['experiment_id'];
+                #            data_tmp['sample_name'] = match['sample_name'];
+                #            data_tmp['intermediate'] = intermediate;
+                #            frequency = 1.0;
+                #            if 'frequency' in match['mutation_data']: frequency = match['mutation_data']['frequency'];
+                #            data_tmp['mutation_frequency'] = frequency
+                #            data_tmp['mutation_position'] = match['mutation_data']['position']
+                #            data_tmp['mutation_type'] = match['mutation_data']['type']
+                #            data_tmp['lineage_name'] = lineage_name;
+                #            data_tmp['mutation_data'] = match['mutation_data'];
+                #            data_O.append(data_tmp);
         for d in data_O:
             row = [];
             row = data_stage01_resequencing_lineage(d['experiment_id'],
@@ -285,7 +290,7 @@ class stage01_resequencing_execute():
 
         print('Executing analyzeEndpointReplicates_population...')
         #TODO: test
-        #mutationsendpoints = mutations_endpoints();
+        mutationsendpoints = mutations_endpoints();
         data_O = [];
         for analysis_id,strains in end_points.items():
             print('analyzing endpoint ' + analysis_id);
@@ -308,138 +313,139 @@ class stage01_resequencing_execute():
                     strain2_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain2);
                     analyzed_strain2_mutations = []; # mutations from strain 2 that have been analyzed
                     # TODO: test
-                    ## extract common mutations
-                    #analyzed_strain1_mutations_tmp = [];
-                    #analyzed_strain2_mutations_tmp = [];
-                    #matched_mutations_tmp = {}
-                    #data_tmp = [];
-                    #matched_mutations_tmp,\
-                    #    analyzed_strain1_mutations_tmp,\
-                    #    analyzed_strain2_mutations_tmp,\
-                    #    data_tmp = mutationsendpoints._extract_commonMutations(matched_mutations,\
-                    #        analyzed_strain1_mutations,\
-                    #        analyzed_strain2_mutations,\
-                    #        strain1_mutations,strain2_mutations);
+                    # extract common mutations
+                    analyzed_strain1_mutations_tmp = [];
+                    analyzed_strain2_mutations_tmp = [];
+                    matched_mutations_tmp = {}
+                    data_tmp = [];
+                    matched_mutations_tmp,\
+                        analyzed_strain1_mutations_tmp,\
+                        analyzed_strain2_mutations_tmp,\
+                        data_tmp = mutationsendpoints._extract_commonMutations(matched_mutations,\
+                            analyzed_strain1_mutations,\
+                            analyzed_strain2_mutations,\
+                            strain1_mutations,strain2_mutations,
+                            strain1,strain2_cnt,analysis_id);
                 
-                    #analyzed_strain1_mutations.extend(analyzed_strain1_mutations_tmp)
-                    #analyzed_strain2_mutations.extend(analyzed_strain2_mutations_tmp)
-                    #analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
-                    #matched_mutations.update(matched_mutations_tmp);
-                    #data_O.extend(data_tmp);
-                    for strain1_mutation_cnt,strain1_mutation in enumerate(strain1_mutations):
-                        print('strain1 mutation type/position ' + strain1_mutation['mutation_data']['type'] + '/' + str(strain1_mutation['mutation_data']['position']));
-                        if strain2_cnt == 0: # record strain 1 mutations only once for all strain 2 mutations
-                            analyzed_strain1_mutations.append((strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position']));
-                        for strain2_mutation_cnt,strain2_mutation in enumerate(strain2_mutations):
-                            print('strain2 mutation type/position ' + strain2_mutation['mutation_data']['type'] + '/' + str(strain2_mutation['mutation_data']['position']));
-                            if strain2_mutation_cnt == 0 and \
-                                (strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position']) not in matched_mutations:
-                                matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] = 0;
-                            # find the mutations that are common to strain1 and strain2
-                            # filter by mutation type-specific criteria
-                            match = {};
-                            if strain1_mutation['mutation_data']['type'] == 'SNP':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'SUB':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
-                                    strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'DEL':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'INS':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'MOB':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['repeat_name']==strain2_mutation['mutation_data']['repeat_name'] and \
-                                    strain1_mutation['mutation_data']['strand']==strain2_mutation['mutation_data']['strand'] and \
-                                    strain1_mutation['mutation_data']['duplication_size']==strain2_mutation['mutation_data']['duplication_size']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'AMP':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
-                                    strain1_mutation['mutation_data']['new_copy_number']==strain2_mutation['mutation_data']['new_copy_number']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'CON':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
-                                    strain1_mutation['mutation_data']['region']==strain2_mutation['mutation_data']['region']:
-                                    match = strain1_mutation;
-                            elif strain1_mutation['mutation_data']['type'] == 'INV':
-                                if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
-                                    strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
-                                    strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size']:
-                                    match = strain1_mutation;
-                            else:
-                                print('unknown mutation type');
-                            if match and \
-                                 matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] == 0:
-                                # check that the mutation combination and pairs of strains have not already been analyzed
-                                data_tmp = {};
-                                data_tmp['experiment_id'] = match['experiment_id'];
-                                data_tmp['sample_name'] = match['sample_name'];
-                                frequency = 1.0;
-                                if 'frequency' in match['mutation_data']: frequency = match['mutation_data']['frequency'];
-                                data_tmp['mutation_frequency'] = frequency
-                                data_tmp['mutation_position'] = match['mutation_data']['position']
-                                data_tmp['mutation_type'] = match['mutation_data']['type']
-                                data_tmp['analysis_id'] = analysis_id;
-                                data_tmp['mutation_data'] = match['mutation_data'];
-                                data_tmp['isUnique'] = False;
-                                data_O.append(data_tmp);
-                                matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] += 1;
-                            if strain1_mutation_cnt == 0: # record strain 2 mutations only once for all strain 1 mutations
-                                analyzed_strain2_mutations.append((strain2_mutation['mutation_data']['type'],strain2_mutation['mutation_data']['position']));
+                    analyzed_strain1_mutations.extend(analyzed_strain1_mutations_tmp)
+                    analyzed_strain2_mutations.extend(analyzed_strain2_mutations_tmp)
                     analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
+                    matched_mutations.update(matched_mutations_tmp);
+                    data_O.extend(data_tmp);
+                    #for strain1_mutation_cnt,strain1_mutation in enumerate(strain1_mutations):
+                    #    print('strain1 mutation type/position ' + strain1_mutation['mutation_data']['type'] + '/' + str(strain1_mutation['mutation_data']['position']));
+                    #    if strain2_cnt == 0: # record strain 1 mutations only once for all strain 2 mutations
+                    #        analyzed_strain1_mutations.append((strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position']));
+                    #    for strain2_mutation_cnt,strain2_mutation in enumerate(strain2_mutations):
+                    #        print('strain2 mutation type/position ' + strain2_mutation['mutation_data']['type'] + '/' + str(strain2_mutation['mutation_data']['position']));
+                    #        if strain2_mutation_cnt == 0 and \
+                    #            (strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position']) not in matched_mutations:
+                    #            matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] = 0;
+                    #        # find the mutations that are common to strain1 and strain2
+                    #        # filter by mutation type-specific criteria
+                    #        match = {};
+                    #        if strain1_mutation['mutation_data']['type'] == 'SNP':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'SUB':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
+                    #                strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'DEL':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'INS':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['new_seq']==strain2_mutation['mutation_data']['new_seq']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'MOB':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['repeat_name']==strain2_mutation['mutation_data']['repeat_name'] and \
+                    #                strain1_mutation['mutation_data']['strand']==strain2_mutation['mutation_data']['strand'] and \
+                    #                strain1_mutation['mutation_data']['duplication_size']==strain2_mutation['mutation_data']['duplication_size']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'AMP':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
+                    #                strain1_mutation['mutation_data']['new_copy_number']==strain2_mutation['mutation_data']['new_copy_number']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'CON':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size'] and \
+                    #                strain1_mutation['mutation_data']['region']==strain2_mutation['mutation_data']['region']:
+                    #                match = strain1_mutation;
+                    #        elif strain1_mutation['mutation_data']['type'] == 'INV':
+                    #            if strain1_mutation['mutation_data']['type']==strain2_mutation['mutation_data']['type'] and \
+                    #                strain1_mutation['mutation_data']['position']==strain2_mutation['mutation_data']['position'] and \
+                    #                strain1_mutation['mutation_data']['size']==strain2_mutation['mutation_data']['size']:
+                    #                match = strain1_mutation;
+                    #        else:
+                    #            print('unknown mutation type');
+                    #        if match and \
+                    #             matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] == 0:
+                    #            # check that the mutation combination and pairs of strains have not already been analyzed
+                    #            data_tmp = {};
+                    #            data_tmp['experiment_id'] = match['experiment_id'];
+                    #            data_tmp['sample_name'] = match['sample_name'];
+                    #            frequency = 1.0;
+                    #            if 'frequency' in match['mutation_data']: frequency = match['mutation_data']['frequency'];
+                    #            data_tmp['mutation_frequency'] = frequency
+                    #            data_tmp['mutation_position'] = match['mutation_data']['position']
+                    #            data_tmp['mutation_type'] = match['mutation_data']['type']
+                    #            data_tmp['analysis_id'] = analysis_id;
+                    #            data_tmp['mutation_data'] = match['mutation_data'];
+                    #            data_tmp['isUnique'] = False;
+                    #            data_O.append(data_tmp);
+                    #            matched_mutations[(strain1,strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])] += 1;
+                    #        if strain1_mutation_cnt == 0: # record strain 2 mutations only once for all strain 1 mutations
+                    #            analyzed_strain2_mutations.append((strain2_mutation['mutation_data']['type'],strain2_mutation['mutation_data']['position']));
+                    #analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
                     strain2_cnt += 1;
                 #TODO: test
-                ## extract unique mutations
-                #data_tmp = [];
-                #data_tmp = mutationsendpoints._extract_uniqueMutations(analyzed_strain1_mutations,analyzed_strain2_mutations_all);
-                #data_O.extend(data_tmp);
-                # check for unique mutations and for conserved mutations
-                for analyzed_strain1_mutation in analyzed_strain1_mutations:
-                    isUnique_bool = True;
-                    isConserved_cnt = 0;
-                    for analyzed_strain2_mutations_cnt,analyzed_strain2_mutations in enumerate(analyzed_strain2_mutations_all):
-                        for analyzed_strain2_mutation in analyzed_strain2_mutations:
-                            if analyzed_strain1_mutation == analyzed_strain2_mutation:
-                                isUnique_bool = False;
-                                isConserved_cnt += 1;
-                    if isUnique_bool:
-                        for strain1_mutation_cnt,strain1_mutation in enumerate(strain1_mutations):
-                            if (strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])==analyzed_strain1_mutation:
-                                data_tmp = {};
-                                data_tmp['experiment_id'] = strain1_mutation['experiment_id'];
-                                data_tmp['sample_name'] = strain1_mutation['sample_name'];
-                                frequency = 1.0;
-                                if 'frequency' in strain1_mutation['mutation_data']: frequency = strain1_mutation['mutation_data']['frequency'];
-                                data_tmp['mutation_frequency'] = frequency
-                                data_tmp['mutation_position'] = strain1_mutation['mutation_data']['position']
-                                data_tmp['mutation_type'] = strain1_mutation['mutation_data']['type']
-                                data_tmp['analysis_id'] = analysis_id;
-                                data_tmp['mutation_data'] = strain1_mutation['mutation_data'];
-                                data_tmp['isUnique'] = True;
-                                data_O.append(data_tmp);
+                # extract unique mutations
+                data_tmp = [];
+                data_tmp = mutationsendpoints._extract_uniqueMutations(analyzed_strain1_mutations,analyzed_strain2_mutations_all,strain1_mutations,analysis_id);
+                data_O.extend(data_tmp);
+                ## check for unique mutations and for conserved mutations
+                #for analyzed_strain1_mutation in analyzed_strain1_mutations:
+                #    isUnique_bool = True;
+                #    isConserved_cnt = 0;
+                #    for analyzed_strain2_mutations_cnt,analyzed_strain2_mutations in enumerate(analyzed_strain2_mutations_all):
+                #        for analyzed_strain2_mutation in analyzed_strain2_mutations:
+                #            if analyzed_strain1_mutation == analyzed_strain2_mutation:
+                #                isUnique_bool = False;
+                #                isConserved_cnt += 1;
+                #    if isUnique_bool:
+                #        for strain1_mutation_cnt,strain1_mutation in enumerate(strain1_mutations):
+                #            if (strain1_mutation['mutation_data']['type'],strain1_mutation['mutation_data']['position'])==analyzed_strain1_mutation:
+                #                data_tmp = {};
+                #                data_tmp['experiment_id'] = strain1_mutation['experiment_id'];
+                #                data_tmp['sample_name'] = strain1_mutation['sample_name'];
+                #                frequency = 1.0;
+                #                if 'frequency' in strain1_mutation['mutation_data']: frequency = strain1_mutation['mutation_data']['frequency'];
+                #                data_tmp['mutation_frequency'] = frequency
+                #                data_tmp['mutation_position'] = strain1_mutation['mutation_data']['position']
+                #                data_tmp['mutation_type'] = strain1_mutation['mutation_data']['type']
+                #                data_tmp['analysis_id'] = analysis_id;
+                #                data_tmp['mutation_data'] = strain1_mutation['mutation_data'];
+                #                data_tmp['isUnique'] = True;
+                #                data_O.append(data_tmp);
         for d in data_O:
             row = [];
             row = data_stage01_resequencing_endpoints(d['experiment_id'],
                 #TODO: test
-                #d['endpoint_name'], #=analysis_id
-                d['analysis_id'],
+                d['endpoint_name'], #=analysis_id
+                #d['analysis_id'],
                 d['sample_name'],
                 d['mutation_frequency'],
                 d['mutation_type'],
@@ -450,13 +456,16 @@ class stage01_resequencing_execute():
                 None,None,None,None,None);
             self.session.add(row);
         self.session.commit();
-    def execute_annotateMutations_lineage(self,experiment_id,sample_names_I=[],ref_genome_I='data/U00096.2.gb'):
+    def execute_annotateMutations_lineage(self,experiment_id,sample_names_I=[],
+                                                 ref_genome_I='data/U00096.2.gb',
+                                                 ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
         '''Annotate mutations for date_stage01_resequencing_lineage
         based on position, reference genome, and reference genome biologicalmaterial_id'''
 
-        from Bio import SeqIO
-        from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,'genbank')
+        #from Bio import SeqIO
+        #from Bio import Entrez
+        #record = SeqIO.read(ref_genome_I,'genbank')
+        genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotateMutations_lineage...')
         data_O = [];
@@ -474,7 +483,8 @@ class stage01_resequencing_execute():
             for row in rows:
                 # annotate each mutation based on the position
                 annotation = {};
-                annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
+                annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
+                #annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
                 row['mutation_genes'] = annotation['gene']
                 row['mutation_locations'] = annotation['location']
                 row['mutation_annotations'] = annotation['product']
@@ -483,23 +493,27 @@ class stage01_resequencing_execute():
                 for bnumber in annotation['locus_tag']:
                     if bnumber:
                         ecogenes = [];
-                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences('MG1655',bnumber);
+                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
                         if ecogenes:
                             ecogene = ecogenes[0];
-                            ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                            ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
+                            #ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             row['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                 data_O.append(row);
         # update rows in the database
         io = stage01_resequencing_io();
         io.update_dataStage01ResequencingLineage(data_O);
-    def execute_annotateMutations_endpoints(self,experiment_id,sample_names_I=[],ref_genome_I='data/U00096.2.gb'):
+    def execute_annotateMutations_endpoints(self,experiment_id,sample_names_I=[],
+                                                 ref_genome_I='data/U00096.2.gb',
+                                                 ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
         '''Annotate mutations for date_stage01_resequencing_endpoints
         based on position, reference genome, and reference genome biologicalmaterial_id'''
         
-        from Bio import SeqIO
-        from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,'genbank')
+        #from Bio import SeqIO
+        #from Bio import Entrez
+        #record = SeqIO.read(ref_genome_I,'genbank')
+        genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotateMutations_endpoints...')
         data_O = [];
@@ -517,7 +531,8 @@ class stage01_resequencing_execute():
             for row in rows:
                 # annotate each mutation based on the position
                 annotation = {};
-                annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
+                annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
+                #annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
                 row['mutation_genes'] = annotation['gene']
                 row['mutation_locations'] = annotation['location']
                 row['mutation_annotations'] = annotation['product']
@@ -526,9 +541,10 @@ class stage01_resequencing_execute():
                 for bnumber in annotation['locus_tag']:
                     if bnumber:
                         ecogenes = [];
-                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences('MG1655',bnumber);
+                        ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
                         if ecogenes:
                             ecogene = ecogenes[0];
+                            ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             row['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
@@ -1330,8 +1346,8 @@ class stage01_resequencing_execute():
                 reset = self.session.query(data_stage01_resequencing_validation).filter(data_stage01_resequencing_validation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_mutationsFiltered).filter(data_stage01_resequencing_mutationsFiltered.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                #reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-                #reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).filter(data_stage01_resequencing_mutationsAnnotated.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).filter(data_stage01_resequencing_mutationsAnnotated.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             elif analysis_id_I:
                 reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_analysis).filter(data_stage01_resequencing_analysis.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
@@ -1388,6 +1404,21 @@ class stage01_resequencing_execute():
             data_stage01_rnasequencing_geneExpDiff.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
+    def reset_dataStage01_metadataAndmutationsAndEvidenceAndValidation(self,experiment_id_I = None):
+        try:
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_metadata).filter(data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutations).filter(data_stage01_resequencing_mutations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_evidence).filter(data_stage01_resequencing_evidence.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_validation).filter(data_stage01_resequencing_validation.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_metadata).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_mutations).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_evidence).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_resequencing_validation).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
     def reset_dataStage01_filtered(self,experiment_id_I = None):
         try:
             if experiment_id_I:
@@ -1397,19 +1428,19 @@ class stage01_resequencing_execute():
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
-    def reset_dataStage01_lineage(self,analysis_id_I = None):
+    def reset_dataStage01_lineage(self,experiment_id_I = None):
         try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_lineage).filter(data_stage01_resequencing_lineage.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
                 reset = self.session.query(data_stage01_resequencing_lineage).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
-    def reset_dataStage01_endpoints(self,analysis_id_I = None):
+    def reset_dataStage01_endpoints(self,experiment_id_I = None):
         try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_endpoints).filter(data_stage01_resequencing_endpoints.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
                 reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
             self.session.commit();
