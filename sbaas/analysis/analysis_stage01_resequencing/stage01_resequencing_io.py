@@ -3,7 +3,7 @@ from .stage01_resequencing_query import stage01_resequencing_query
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 from sbaas.analysis.analysis_stage01_resequencing import gdparse
 import json
-#TODO:test
+
 from sequencing_analysis.genome_diff import genome_diff
 
 class stage01_resequencing_io(base_analysis):
@@ -329,10 +329,6 @@ class stage01_resequencing_io(base_analysis):
         '''table adds
         NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
 
-        #from sequencing_utilities.makegff import write_samfile_to_gff
-        from sequencing_utilities.coverage import extract_strandsFromGff
-
-        #TODO: test
         from sequencing_analysis.gff_coverage import gff_coverage
         gffcoverage = gff_coverage();
         
@@ -346,46 +342,9 @@ class stage01_resequencing_io(base_analysis):
             #extract_strandsFromGff(filename_bam,filename,separate_strand=False);
         # convert strings to float and int
         strand_start, strand_stop, scale_factor, downsample_factor = int(strand_start), int(strand_stop), bool(scale_factor), float(downsample_factor);        
-        #TODO: test
+        # parse the gff file
         gffcoverage.extract_coverage_fromGff(filename, strand_start, strand_stop, scale_factor=scale_factor, downsample_factor=downsample_factor,experiment_id_I = experiment_id,sample_name_I=sample_name);
         coverage_data = gffcoverage.coverage;
-        ## parse the gff file into pandas dataframes
-        #plus,minus=extract_strandsFromGff(filename, strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
-        ## split into seperate data structures based on the destined table add
-        #if not plus.empty:
-        #    for index,reads in plus.iteritems():
-        #        coverage_data.append({
-        #                        #'analysis_id':analysis_id,
-        #                        'experiment_id':experiment_id,
-        #                        'sample_name':sample_name,
-        #                        'data_dir':filename,
-        #                        'genome_chromosome':1, #default
-        #                        'genome_strand':'plus',
-        #                        'genome_index':int(index),
-        #                        'strand_start':strand_start,
-        #                        'strand_stop':strand_stop,
-        #                        'reads':float(reads),
-        #                        'scale_factor':scale_factor,
-        #                        'downsample_factor':downsample_factor,
-        #                        'used_':True,
-        #                        'comment_':None});
-        #if not minus.empty:
-        #    for index,reads in minus.iteritems():
-        #        coverage_data.append({
-        #                        #'analysis_id':analysis_id,
-        #                        'experiment_id':experiment_id,
-        #                        'sample_name':sample_name,
-        #                        'data_dir':filename,
-        #                        'genome_chromosome':1, #default
-        #                        'genome_strand':'minus',
-        #                        'genome_index':int(index),
-        #                        'strand_start':strand_start,
-        #                        'strand_stop':strand_stop,
-        #                        'reads':float(reads),
-        #                        'scale_factor':scale_factor,
-        #                        'downsample_factor':downsample_factor,
-        #                        'used_':True,
-        #                        'comment_':None});
         # add data to the database:
         self.add_dataStage01ResequencingCoverage(coverage_data);
 
