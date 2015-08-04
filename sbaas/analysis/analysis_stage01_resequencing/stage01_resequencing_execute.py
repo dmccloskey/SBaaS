@@ -289,7 +289,7 @@ class stage01_resequencing_execute():
         #TODO: drive from analysis table
 
         print('Executing analyzeEndpointReplicates_population...')
-        #TODO: test
+        #TODO: test passed
         mutationsendpoints = mutations_endpoints();
         data_O = [];
         for analysis_id,strains in end_points.items():
@@ -312,7 +312,7 @@ class stage01_resequencing_execute():
                     strain2_mutations = [];
                     strain2_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain2);
                     analyzed_strain2_mutations = []; # mutations from strain 2 that have been analyzed
-                    # TODO: test
+                    # TODO: test passed
                     # extract common mutations
                     analyzed_strain1_mutations_tmp = [];
                     analyzed_strain2_mutations_tmp = [];
@@ -411,7 +411,7 @@ class stage01_resequencing_execute():
                     #            analyzed_strain2_mutations.append((strain2_mutation['mutation_data']['type'],strain2_mutation['mutation_data']['position']));
                     #analyzed_strain2_mutations_all.append(analyzed_strain2_mutations);
                     strain2_cnt += 1;
-                #TODO: test
+                #TODO: test passed
                 # extract unique mutations
                 data_tmp = [];
                 data_tmp = mutationsendpoints._extract_uniqueMutations(analyzed_strain1_mutations,analyzed_strain2_mutations_all,strain1_mutations,analysis_id);
