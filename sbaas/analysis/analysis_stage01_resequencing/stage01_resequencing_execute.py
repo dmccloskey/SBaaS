@@ -663,8 +663,8 @@ class stage01_resequencing_execute():
         '''Execute hierarchical cluster on row and column data'''
 
         print('executing heatmap...');
-        #TODO: test
-        #  mutationsheatmap =  mutations_heatmap();
+        #TODO: test passed
+        mutationsheatmap =  mutations_heatmap();
         # get the analysis information
         experiment_ids,sample_names = [],[];
         experiment_ids,sample_names = self.stage01_resequencing_query.get_experimentIDAndSampleName_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
@@ -674,52 +674,53 @@ class stage01_resequencing_execute():
             mutations = [];
             mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(experiment_ids[sample_name_cnt],sample_name);
             mutations_all.extend(mutations);
-        #TODO: test
-        #mutationsheatmap.mutations = mutations_all;
-        #mutationsheatmap.make_heatmap(self, mutation_id_exclusion_list=mutation_id_exclusion_list,max_position=max_position,
-                #row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
-                #col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I)
-        #heatmap_O = mutationsheatmap.heatmap;
-        #dendrogram_col_O = mutationsheatmap.dendrogram_col;
-        #dendrogram_row_O = mutationsheatmap.dendrogram_row;
-        # partition into variables:
-        mutation_data_O = [];
-        mutation_ids_all = [];
-        for end_cnt,mutation in enumerate(mutations_all):
-            if mutation['mutation_position'] > max_position: #ignore positions great than 4000000
-                continue;
-            if mutation['mutation_frequency'] < frequency_threshold:
-                continue;
-            # mutation id
-            mutation_genes_str = '';
-            for gene in mutation['mutation_genes']:
-                mutation_genes_str = mutation_genes_str + gene + '-/-'
-            mutation_genes_str = mutation_genes_str[:-3];
-            mutation_id = mutation['mutation_type'] + '_' + mutation_genes_str + '_' + str(mutation['mutation_position'])
-            tmp = {};
-            tmp.update(mutation);
-            tmp.update({'mutation_id':mutation_id});
-            mutation_data_O.append(tmp);
-            mutation_ids_all.append(mutation_id);
-        mutation_ids_all_unique = list(set(mutation_ids_all));
-        mutation_ids = [x for x in mutation_ids_all_unique if not x in mutation_id_exclusion_list];
-        # generate the frequency matrix data structure (mutation x intermediate)
-        data_O = numpy.zeros((len(sample_names),len(mutation_ids)));
-        samples=[];
-        # order 2: groups each sample by mutation (intermediate x mutation)
-        for sample_name_cnt,sample_name in enumerate(sample_names): #all samples for intermediate j / mutation i
-            samples.append(sample_name); # corresponding label from hierarchical clustering
-            for mutation_cnt,mutation in enumerate(mutation_ids): #all mutations i for intermediate j
-                for row in mutation_data_O:
-                    if row['mutation_id'] == mutation and row['sample_name'] == sample_name:
-                        data_O[sample_name_cnt,mutation_cnt] = row['mutation_frequency'];
-        # generate the clustering for the heatmap
-        heatmap_O = [];
-        dendrogram_col_O = {};
-        dendrogram_row_O = {};
-        heatmap_O,dendrogram_col_O,dendrogram_row_O = self.calculate.heatmap(data_O,samples,mutation_ids,
+        #TODO: test passed
+        mutationsheatmap.mutations = mutations_all;
+        mutationsheatmap.sample_names = sample_names;
+        mutationsheatmap.make_heatmap(mutation_id_exclusion_list=mutation_id_exclusion_list,max_position=max_position,
                 row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
-                col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I);
+                col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I)
+        heatmap_O = mutationsheatmap.heatmap;
+        dendrogram_col_O = mutationsheatmap.dendrogram_col;
+        dendrogram_row_O = mutationsheatmap.dendrogram_row;
+        ## partition into variables:
+        #mutation_data_O = [];
+        #mutation_ids_all = [];
+        #for end_cnt,mutation in enumerate(mutations_all):
+        #    if mutation['mutation_position'] > max_position: #ignore positions great than 4000000
+        #        continue;
+        #    if mutation['mutation_frequency'] < frequency_threshold:
+        #        continue;
+        #    # mutation id
+        #    mutation_genes_str = '';
+        #    for gene in mutation['mutation_genes']:
+        #        mutation_genes_str = mutation_genes_str + gene + '-/-'
+        #    mutation_genes_str = mutation_genes_str[:-3];
+        #    mutation_id = mutation['mutation_type'] + '_' + mutation_genes_str + '_' + str(mutation['mutation_position'])
+        #    tmp = {};
+        #    tmp.update(mutation);
+        #    tmp.update({'mutation_id':mutation_id});
+        #    mutation_data_O.append(tmp);
+        #    mutation_ids_all.append(mutation_id);
+        #mutation_ids_all_unique = list(set(mutation_ids_all));
+        #mutation_ids = [x for x in mutation_ids_all_unique if not x in mutation_id_exclusion_list];
+        ## generate the frequency matrix data structure (mutation x intermediate)
+        #data_O = numpy.zeros((len(sample_names),len(mutation_ids)));
+        #samples=[];
+        ## order 2: groups each sample by mutation (intermediate x mutation)
+        #for sample_name_cnt,sample_name in enumerate(sample_names): #all samples for intermediate j / mutation i
+        #    samples.append(sample_name); # corresponding label from hierarchical clustering
+        #    for mutation_cnt,mutation in enumerate(mutation_ids): #all mutations i for intermediate j
+        #        for row in mutation_data_O:
+        #            if row['mutation_id'] == mutation and row['sample_name'] == sample_name:
+        #                data_O[sample_name_cnt,mutation_cnt] = row['mutation_frequency'];
+        ## generate the clustering for the heatmap
+        #heatmap_O = [];
+        #dendrogram_col_O = {};
+        #dendrogram_row_O = {};
+        #heatmap_O,dendrogram_col_O,dendrogram_row_O = self.calculate.heatmap(data_O,samples,mutation_ids,
+        #        row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
+        #        col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I);
         # add data to to the database for the heatmap
         for d in heatmap_O:
             row = None;
@@ -1361,6 +1362,15 @@ class stage01_resequencing_execute():
                 reset = self.session.query(data_stage01_resequencing_endpoints).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_resequencing_analysis).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_mutationsAnnotated(self,experiment_id_I = None):
+        try:
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).filter(data_stage01_resequencing_mutationsAnnotated.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_resequencing_mutationsAnnotated).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
