@@ -92,6 +92,10 @@ from io_utilities.base_exportData import base_exportData
 # initialize the DB
 ex01.initialize_dataStage01();
 
+# upload the analysis file
+
+# upload the visualization file
+
 # import the driver file
 iobase = base_importData();
 iobase.read_csv(settings.workspace_data+'/_input/150806_RNASequencing_ALEsKOs01_genesFpkmTracking01.csv');
@@ -119,6 +123,3 @@ for file in fileList:
 iobase.clear_data();
 
 # export the volcano plot
-
-#io01.import_dataStage01RNASequencingFpkmTracking_add();
-#io01.import_dataStage01RNASequencingGeneExpDiff_add()
