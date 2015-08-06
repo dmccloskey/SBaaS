@@ -3,7 +3,9 @@
 from sbaas.analysis.analysis_base import *
 from .stage01_quantification_query import *
 from .stage01_quantification_io import *
+# Resources
 from sbaas.resources.matplot import matplot
+from calculate_utilities.r import r_calculate
 
 from time import mktime,strptime
 from datetime import datetime
@@ -667,8 +669,6 @@ class stage01_quantification_execute():
         self.session.commit();
     def execute_calculateMissingValues_replicates(self,experiment_id_I,sample_name_abbreviations_I=[]):
         '''calculate estimates for missing replicates values using AmeliaII from R'''
-
-        from resources.r import r_calculate
         
         r_calc = r_calculate();
 

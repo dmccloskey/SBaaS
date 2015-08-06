@@ -12,6 +12,7 @@ from numpy import histogram, mean, std, loadtxt
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import h5py
+# Resources
 from sbaas.resources.molmass import Formula
 # Dependencies from cobra
 from cobra.io.sbml import create_cobra_model_from_sbml_file

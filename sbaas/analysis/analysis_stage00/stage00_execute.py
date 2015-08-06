@@ -1,14 +1,15 @@
 from sbaas.analysis.analysis_base import *
 from .stage00_query import *
 from .stage00_io import *
-from sbaas.resources.molmass import Formula
 import re
 import io,os
+from copy import copy
+# resources
+from sbaas.resources.molmass import Formula
 from sbaas.resources.chemaxon import cxcalc_bin, RunCxcalc
 from sbaas.resources.molmass import Formula
-from copy import copy
 
-class stage00_execute():
+class stage00_execute(base_analysis):
     '''class for quantitative metabolomics analysis'''
     
     def __init__(self,session_I=None):

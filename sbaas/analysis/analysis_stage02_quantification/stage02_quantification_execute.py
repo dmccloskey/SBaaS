@@ -2,7 +2,7 @@
 
 from sbaas.analysis.analysis_base import *
 from .stage02_quantification_query import stage02_quantification_query
-from sbaas.resources.r import r_calculate
+from calculate_utilities.r import r_calculate
 from sbaas.resources.matplot import matplot
 from math import sqrt
 import copy

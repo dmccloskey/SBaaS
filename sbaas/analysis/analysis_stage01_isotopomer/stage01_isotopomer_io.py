@@ -1,5 +1,8 @@
 from sbaas.analysis.analysis_base import *
 from .stage01_isotopomer_query import stage01_isotopomer_query
+# Resources
+from io_utilities.base_importData import base_importData
+from io_utilities.base_exportData import base_exportData
 
 class stage01_isotopomer_io(base_analysis):
     def __init__(self,session_I=None):

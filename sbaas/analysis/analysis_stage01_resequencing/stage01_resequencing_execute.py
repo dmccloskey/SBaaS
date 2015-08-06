@@ -3,7 +3,9 @@ from copy import copy
 from sbaas.analysis.analysis_base import *
 from .stage01_resequencing_query import *
 from .stage01_resequencing_io import *
-#from sbaas.resources.r import r_calculate
+
+# resources
+#from calculate_utilities.r import r_calculate
 
 from sequencing_analysis.genome_diff import genome_diff
 from sequencing_analysis.mutations_lineage import mutations_lineage
@@ -27,7 +29,6 @@ class stage01_resequencing_execute():
 
         print('Executing filterMutations_population...')
         data_O = [];
-        #TODO: test passed
         genomediff = genome_diff();
         # query sample names from the experiment
         if sample_names_I:
@@ -77,10 +78,6 @@ class stage01_resequencing_execute():
                                                  ref_genome_I='data/U00096.2.gb',
                                                  ref_I = 'genbank',biologicalmaterial_id_I='MG1655'):
 
-        #from Bio import SeqIO
-        #from Bio import Entrez
-        #record = SeqIO.read(ref_genome_I,ref_I)
-        #TODO: test passed
         genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotation of filtered mutations...')
@@ -102,9 +99,7 @@ class stage01_resequencing_execute():
                 data_tmp = {};
                 # annotate each mutation based on the position
                 annotation = {};
-                #TODO: test passed
                 annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
-                #annotation = self.find_genesFromMutationPosition(mutation['mutation_data']['position'],record);
                 data_tmp['mutation_genes'] = annotation['gene']
                 data_tmp['mutation_locations'] = annotation['location']
                 data_tmp['mutation_annotations'] = annotation['product']
@@ -116,9 +111,7 @@ class stage01_resequencing_execute():
                         ecogenes = self.stage01_resequencing_query.get_ecogeneAccessionNumber_biologicalmaterialIDAndOrderedLocusName_biologicalMaterialGeneReferences(biologicalmaterial_id_I,bnumber);
                         if ecogenes:
                             ecogene = ecogenes[0];
-                            #TODO: test passed
                             ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
-                            #ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             data_tmp['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                 data_tmp['experiment_id'] = mutation['experiment_id'];
@@ -165,7 +158,6 @@ class stage01_resequencing_execute():
         '''
 
         print('Executing analyzeLineage_population...')
-        #TODO: test passed
         mutationslineage = mutations_lineage();
         data_O = [];
         for lineage_name,strain in strain_lineage.items():
@@ -182,88 +174,7 @@ class stage01_resequencing_execute():
                 # query intermediate data:
                 intermediate_mutations = [];
                 intermediate_mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsFiltered(experiment_id,strain[intermediate]);
-                # TODO: test passed
                 data_O.extend(mutationslineage._extract_mutationsLineage(lineage_name,end_mutations,intermediate_mutations,intermediate,end_point));
-                #for end_cnt,end_mutation in enumerate(end_mutations):
-                #    print('end mutation type/position ' + end_mutation['mutation_data']['type'] + '/' + str(end_mutation['mutation_data']['position']));
-                #    for inter_cnt,intermediate_mutation in enumerate(intermediate_mutations):
-                #        print('intermediate mutation type/position ' + intermediate_mutation['mutation_data']['type'] + '/' + str(intermediate_mutation['mutation_data']['position']));
-                #        if intermediate == 0 and inter_cnt == 0:
-                #            #copy end_point data (only once per strain lineage)
-                #            data_tmp = {};
-                #            data_tmp['experiment_id'] = end_mutation['experiment_id'];
-                #            data_tmp['sample_name'] = end_mutation['sample_name'];
-                #            data_tmp['intermediate'] = end_point;
-                #            frequency = 1.0;
-                #            if 'frequency' in end_mutation['mutation_data']: frequency = end_mutation['mutation_data']['frequency'];
-                #            data_tmp['mutation_frequency'] = frequency
-                #            data_tmp['mutation_position'] = end_mutation['mutation_data']['position']
-                #            data_tmp['mutation_type'] = end_mutation['mutation_data']['type']
-                #            data_tmp['lineage_name'] = lineage_name;
-                #            data_tmp['mutation_data'] = end_mutation['mutation_data'];
-                #            data_O.append(data_tmp);
-                #        # find the mutation in the intermediates
-                #        # filter by mutation type-specific criteria
-                #        match = {};
-                #        if end_mutation['mutation_data']['type'] == 'SNP':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'SUB':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'DEL':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'INS':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['new_seq']==intermediate_mutation['mutation_data']['new_seq']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'MOB':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['repeat_name']==intermediate_mutation['mutation_data']['repeat_name'] and \
-                #                end_mutation['mutation_data']['strand']==intermediate_mutation['mutation_data']['strand'] and \
-                #                end_mutation['mutation_data']['duplication_size']==intermediate_mutation['mutation_data']['duplication_size']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'AMP':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                #                end_mutation['mutation_data']['new_copy_number']==intermediate_mutation['mutation_data']['new_copy_number']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'CON':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size'] and \
-                #                end_mutation['mutation_data']['region']==intermediate_mutation['mutation_data']['region']:
-                #                match = intermediate_mutation;
-                #        elif end_mutation['mutation_data']['type'] == 'INV':
-                #            if end_mutation['mutation_data']['type']==intermediate_mutation['mutation_data']['type'] and \
-                #                end_mutation['mutation_data']['position']==intermediate_mutation['mutation_data']['position'] and \
-                #                end_mutation['mutation_data']['size']==intermediate_mutation['mutation_data']['size']:
-                #                match = intermediate_mutation;
-                #        else:
-                #            print('unknown mutation type');
-                #        if match:
-                #            data_tmp = {};
-                #            data_tmp['experiment_id'] = match['experiment_id'];
-                #            data_tmp['sample_name'] = match['sample_name'];
-                #            data_tmp['intermediate'] = intermediate;
-                #            frequency = 1.0;
-                #            if 'frequency' in match['mutation_data']: frequency = match['mutation_data']['frequency'];
-                #            data_tmp['mutation_frequency'] = frequency
-                #            data_tmp['mutation_position'] = match['mutation_data']['position']
-                #            data_tmp['mutation_type'] = match['mutation_data']['type']
-                #            data_tmp['lineage_name'] = lineage_name;
-                #            data_tmp['mutation_data'] = match['mutation_data'];
-                #            data_O.append(data_tmp);
         for d in data_O:
             row = [];
             row = data_stage01_resequencing_lineage(d['experiment_id'],
@@ -462,9 +373,6 @@ class stage01_resequencing_execute():
         '''Annotate mutations for date_stage01_resequencing_lineage
         based on position, reference genome, and reference genome biologicalmaterial_id'''
 
-        #from Bio import SeqIO
-        #from Bio import Entrez
-        #record = SeqIO.read(ref_genome_I,'genbank')
         genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotateMutations_lineage...')
@@ -484,7 +392,6 @@ class stage01_resequencing_execute():
                 # annotate each mutation based on the position
                 annotation = {};
                 annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
-                #annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
                 row['mutation_genes'] = annotation['gene']
                 row['mutation_locations'] = annotation['location']
                 row['mutation_annotations'] = annotation['product']
@@ -497,7 +404,6 @@ class stage01_resequencing_execute():
                         if ecogenes:
                             ecogene = ecogenes[0];
                             ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
-                            #ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             row['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                 data_O.append(row);
@@ -510,9 +416,6 @@ class stage01_resequencing_execute():
         '''Annotate mutations for date_stage01_resequencing_endpoints
         based on position, reference genome, and reference genome biologicalmaterial_id'''
         
-        #from Bio import SeqIO
-        #from Bio import Entrez
-        #record = SeqIO.read(ref_genome_I,'genbank')
         genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotateMutations_endpoints...')
@@ -532,7 +435,6 @@ class stage01_resequencing_execute():
                 # annotate each mutation based on the position
                 annotation = {};
                 annotation = genomeannotation._find_genesFromMutationPosition(mutation['mutation_data']['position']);
-                #annotation = self.find_genesFromMutationPosition(row['mutation_position'],record);
                 row['mutation_genes'] = annotation['gene']
                 row['mutation_locations'] = annotation['location']
                 row['mutation_annotations'] = annotation['product']
@@ -545,7 +447,6 @@ class stage01_resequencing_execute():
                         if ecogenes:
                             ecogene = ecogenes[0];
                             ecogene_link = genomeannotation._generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
-                            ecogene_link = self.generate_httplink2gene_ecogene(ecogene['ecogene_accession_number']);
                             row['mutation_links'].append(ecogene_link)
                         else: print('no ecogene_accession_number found for ordered_locus_location ' + bnumber);
                 data_O.append(row);
@@ -663,7 +564,6 @@ class stage01_resequencing_execute():
         '''Execute hierarchical cluster on row and column data'''
 
         print('executing heatmap...');
-        #TODO: test passed
         mutationsheatmap =  mutations_heatmap();
         # get the analysis information
         experiment_ids,sample_names = [],[];
@@ -674,7 +574,6 @@ class stage01_resequencing_execute():
             mutations = [];
             mutations = self.stage01_resequencing_query.get_mutations_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(experiment_ids[sample_name_cnt],sample_name);
             mutations_all.extend(mutations);
-        #TODO: test passed
         mutationsheatmap.mutations = mutations_all;
         mutationsheatmap.sample_names = sample_names;
         mutationsheatmap.make_heatmap(mutation_id_exclusion_list=mutation_id_exclusion_list,max_position=max_position,
@@ -683,44 +582,6 @@ class stage01_resequencing_execute():
         heatmap_O = mutationsheatmap.heatmap;
         dendrogram_col_O = mutationsheatmap.dendrogram_col;
         dendrogram_row_O = mutationsheatmap.dendrogram_row;
-        ## partition into variables:
-        #mutation_data_O = [];
-        #mutation_ids_all = [];
-        #for end_cnt,mutation in enumerate(mutations_all):
-        #    if mutation['mutation_position'] > max_position: #ignore positions great than 4000000
-        #        continue;
-        #    if mutation['mutation_frequency'] < frequency_threshold:
-        #        continue;
-        #    # mutation id
-        #    mutation_genes_str = '';
-        #    for gene in mutation['mutation_genes']:
-        #        mutation_genes_str = mutation_genes_str + gene + '-/-'
-        #    mutation_genes_str = mutation_genes_str[:-3];
-        #    mutation_id = mutation['mutation_type'] + '_' + mutation_genes_str + '_' + str(mutation['mutation_position'])
-        #    tmp = {};
-        #    tmp.update(mutation);
-        #    tmp.update({'mutation_id':mutation_id});
-        #    mutation_data_O.append(tmp);
-        #    mutation_ids_all.append(mutation_id);
-        #mutation_ids_all_unique = list(set(mutation_ids_all));
-        #mutation_ids = [x for x in mutation_ids_all_unique if not x in mutation_id_exclusion_list];
-        ## generate the frequency matrix data structure (mutation x intermediate)
-        #data_O = numpy.zeros((len(sample_names),len(mutation_ids)));
-        #samples=[];
-        ## order 2: groups each sample by mutation (intermediate x mutation)
-        #for sample_name_cnt,sample_name in enumerate(sample_names): #all samples for intermediate j / mutation i
-        #    samples.append(sample_name); # corresponding label from hierarchical clustering
-        #    for mutation_cnt,mutation in enumerate(mutation_ids): #all mutations i for intermediate j
-        #        for row in mutation_data_O:
-        #            if row['mutation_id'] == mutation and row['sample_name'] == sample_name:
-        #                data_O[sample_name_cnt,mutation_cnt] = row['mutation_frequency'];
-        ## generate the clustering for the heatmap
-        #heatmap_O = [];
-        #dendrogram_col_O = {};
-        #dendrogram_row_O = {};
-        #heatmap_O,dendrogram_col_O,dendrogram_row_O = self.calculate.heatmap(data_O,samples,mutation_ids,
-        #        row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
-        #        col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I);
         # add data to to the database for the heatmap
         for d in heatmap_O:
             row = None;
@@ -774,16 +635,12 @@ class stage01_resequencing_execute():
         '''Calculate coverage statistics from gff file
         NOTE: multiple chromosomes not yet supported in sequencing_utilities'''
 
-        from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
+        #from sequencing_utilities.coverage import extract_strandsFromGff,find_highCoverageRegions
 
         # get the data
         data_O = [];
         # TODO: test
-        #gffcoverage = gff_coverage();
-        
-        ## get the analysis_info
-        #analysis_rows = [];
-        # query information from coverage table
+        gffcoverage = gff_coverage();
 
         # get the sample_names
         experiment_id = experiment_id_I;
@@ -802,66 +659,66 @@ class stage01_resequencing_execute():
             filename = [];
             filename = self.stage01_resequencing_query.get_dataDirs_experimentIDAndSampleName_dataStage01ResequencingCoverage(experiment_id_I,sn);
             #TODO: test
-            #gffcoverage.find_amplifications_fromGff(filename[0],strand_start, strand_stop, experiment_id, sn, scale=scale_factor, downsample=downsample_factor)
-            #data_O.extend(copy(gffcoverage.amplifications))
-            #gffcoverage.clear_data();
-            # extract the strands
-            plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
-            # find high coverage regions
-            plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
-            # record high coverage regions
-            # + strand
-            iter = 0;
-            for index,reads in plus_high_regions.iteritems():
-                if index > plus_high_region_indices[iter]['stop']:
-                    iter+=1;
-                data_O.append({
-                #'analysis_id':analysis_id,
-                'experiment_id':experiment_id,
-                'sample_name':sn,
-                'genome_chromosome':1, #default
-                'genome_strand':'+',
-                'genome_index':int(index),
-                'strand_start':strand_start,
-                'strand_stop':strand_stop,
-                'reads':float(reads),
-                'reads_min':reads_min,
-                'reads_max':reads_max,
-                'indices_min':indices_min,
-                'consecutive_tol':consecutive_tol,
-                'scale_factor':scale_factor,
-                'downsample_factor':downsample_factor,
-                'amplification_start':int(plus_high_region_indices[iter]['start']),
-                'amplification_stop':int(plus_high_region_indices[iter]['stop']),
-                'used_':True,
-                'comment_':None
-                    });
-            # - strand
-            iter = 0;
-            for index,reads in minus_high_regions.iteritems():
-                if index > minus_high_region_indices[iter]['stop']:
-                    iter+=1;
-                data_O.append({
-                #'analysis_id':analysis_id,
-                'experiment_id':experiment_id,
-                'sample_name':sn,
-                'genome_chromosome':1, #default
-                'genome_strand':'-',
-                'genome_index':int(index),
-                'strand_start':strand_start,
-                'strand_stop':strand_stop,
-                'reads':float(reads),
-                'reads_min':reads_min,
-                'reads_max':reads_max,
-                'indices_min':indices_min,
-                'consecutive_tol':consecutive_tol,
-                'scale_factor':scale_factor,
-                'downsample_factor':downsample_factor,
-                'amplification_start':int(minus_high_region_indices[iter]['start']),
-                'amplification_stop':int(minus_high_region_indices[iter]['stop']),
-                'used_':True,
-                'comment_':None
-                    });
+            gffcoverage.find_amplifications_fromGff(filename[0],strand_start, strand_stop, experiment_id, sn, scale=scale_factor, downsample=downsample_factor)
+            data_O.extend(copy(gffcoverage.amplifications))
+            gffcoverage.clear_data();
+            ## extract the strands
+            #plus,minus=extract_strandsFromGff(filename[0], strand_start, strand_stop, scale=scale_factor, downsample=downsample_factor)
+            ## find high coverage regions
+            #plus_high_region_indices,minus_high_region_indices,plus_high_regions, minus_high_regions = find_highCoverageRegions(plus,minus,coverage_min=reads_min,coverage_max=reads_max,points_min=indices_min,consecutive_tol=consecutive_tol)
+            ## record high coverage regions
+            ## + strand
+            #iter = 0;
+            #for index,reads in plus_high_regions.iteritems():
+            #    if index > plus_high_region_indices[iter]['stop']:
+            #        iter+=1;
+            #    data_O.append({
+            #    #'analysis_id':analysis_id,
+            #    'experiment_id':experiment_id,
+            #    'sample_name':sn,
+            #    'genome_chromosome':1, #default
+            #    'genome_strand':'+',
+            #    'genome_index':int(index),
+            #    'strand_start':strand_start,
+            #    'strand_stop':strand_stop,
+            #    'reads':float(reads),
+            #    'reads_min':reads_min,
+            #    'reads_max':reads_max,
+            #    'indices_min':indices_min,
+            #    'consecutive_tol':consecutive_tol,
+            #    'scale_factor':scale_factor,
+            #    'downsample_factor':downsample_factor,
+            #    'amplification_start':int(plus_high_region_indices[iter]['start']),
+            #    'amplification_stop':int(plus_high_region_indices[iter]['stop']),
+            #    'used_':True,
+            #    'comment_':None
+            #        });
+            ## - strand
+            #iter = 0;
+            #for index,reads in minus_high_regions.iteritems():
+            #    if index > minus_high_region_indices[iter]['stop']:
+            #        iter+=1;
+            #    data_O.append({
+            #    #'analysis_id':analysis_id,
+            #    'experiment_id':experiment_id,
+            #    'sample_name':sn,
+            #    'genome_chromosome':1, #default
+            #    'genome_strand':'-',
+            #    'genome_index':int(index),
+            #    'strand_start':strand_start,
+            #    'strand_stop':strand_stop,
+            #    'reads':float(reads),
+            #    'reads_min':reads_min,
+            #    'reads_max':reads_max,
+            #    'indices_min':indices_min,
+            #    'consecutive_tol':consecutive_tol,
+            #    'scale_factor':scale_factor,
+            #    'downsample_factor':downsample_factor,
+            #    'amplification_start':int(minus_high_region_indices[iter]['start']),
+            #    'amplification_stop':int(minus_high_region_indices[iter]['stop']),
+            #    'used_':True,
+            #    'comment_':None
+            #        });
         # add data to the DB
         self.stage01_resequencing_io.add_dataStage01ResequencingAmplifications(data_O);
     def execute_amplificationStats_fromTable(self,
@@ -991,9 +848,9 @@ class stage01_resequencing_execute():
         '''Annotate mutations for date_stage01_resequencing_endpoints
         based on position, reference genome, and reference genome biologicalmaterial_id'''
         
-        from Bio import SeqIO
-        from Bio import Entrez
-        record = SeqIO.read(ref_genome_I,ref_I)
+        #from Bio import SeqIO
+        #from Bio import Entrez
+        #record = SeqIO.read(ref_genome_I,ref_I)
 
         genomeannotation = genome_annotations();
 
@@ -1026,7 +883,7 @@ class stage01_resequencing_execute():
                     for start_cnt,start in enumerate(starts):
                         # annotate each mutation based on the position
                         annotations = [];
-                        annotations = genomeannotation._find_genesInRegion(start,stops[start_cnt],record)
+                        annotations = genomeannotation._find_genesInRegion(start,stops[start_cnt])
                         for annotation in annotations:
                             # record the data
                             tmp = {
@@ -1061,260 +918,6 @@ class stage01_resequencing_execute():
         # update rows in the database
         io = stage01_resequencing_io();
         io.add_dataStage01ResequencingAmplificationAnnotations(data_O);
-    #helper functions
-    def find_genesFromMutationPosition(self,mutation_position_I,record_I):
-        '''find genes at the position or closest to the position given the reference genome'''
-        #input:
-        # mutation_position_I = mutation position [int]
-        # record = genbank record [SeqRecord]
-        snp_records = {};
-        snp_records['gene'] = []
-        snp_records['db_xref'] = []
-        snp_records['locus_tag'] = []
-        snp_records['EC_number'] = []
-        snp_records['product'] = []
-        snp_records['location'] = []
-        # find features in the coding region of the genome that bracket the mutation position
-        for feature_cnt,feature in enumerate(record_I.features):
-            if mutation_position_I in feature and feature.type == 'gene':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-            elif mutation_position_I in feature and feature.type == 'CDS':
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'repeat_region':
-                snp_records['location'] = feature.qualifiers.get('note')
-            elif mutation_position_I in feature and feature.type == 'mobile_element':
-                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
-            elif mutation_position_I in feature and feature.type == 'misc_feature':
-                snp_records['location'] = feature.qualifiers.get('note')
-            elif mutation_position_I in feature and feature.type == 'mat_peptide':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'tRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'rRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type == 'ncRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-            elif mutation_position_I in feature and feature.type != 'source':
-                print(feature)
-        if not snp_records['location']:
-            # no features in the coding region were found that bracket the mutation
-            # find features before and after the mutation position
-            start_prev = 0;
-            stop_prev = 0;
-            inter1_start = None;
-            inter1_stop = None;
-            inter2_start = None;
-            inter2_stop = None;
-            # pass 1: locate the start and stop positions of the features before and after the mutation
-            for feature_cnt,feature in enumerate(record_I.features):
-                start = feature.location.start.position
-                stop = feature.location.end.position
-                if mutation_position_I > stop_prev and mutation_position_I < start:
-                    inter1_start = start_prev;
-                    inter1_stop = stop_prev;
-                    inter2_start = start;
-                    inter2_stop = stop
-                    break;
-                start_prev = start;
-                stop_prev = stop;
-            if not inter1_start:
-                # the end of the genome was reached without finding features both before and after the mutation
-                # record the last entry
-                inter1_start = start_prev;
-                inter1_stop = stop_prev;
-                inter2_start = start;
-                inter2_stop = stop
-            # pass 2: record features before and after the mutation
-            for feature_cnt,feature in enumerate(record_I.features):
-                start = feature.location.start.position
-                stop = feature.location.end.position
-                if (inter1_start == start and inter1_stop == stop) or (inter2_start == start and inter2_stop == stop):
-                    if feature.type == 'gene':
-                        snp_records['gene'] += feature.qualifiers.get('gene')
-                        snp_records['db_xref'] += feature.qualifiers.get('db_xref')
-                        snp_records['locus_tag'] += feature.qualifiers.get('locus_tag')
-                    if feature.type == 'CDS':
-                        if feature.qualifiers.get('EC_number'):snp_records['EC_number'] += feature.qualifiers.get('EC_number')
-                        else:snp_records['EC_number'] += [None]
-                        if feature.qualifiers.get('product'):snp_records['product'] += feature.qualifiers.get('product')
-                        else:snp_records['product'] += [None]
-            for gene in snp_records['gene']:
-                snp_records['location'] += ['intergenic']
-        return snp_records;
-    def generate_httplink2gene_ecogene(self,ecogene_I):
-        '''Generate link to ecocyc using the ecogene accession number'''
-        ecogene_httplink = 'http://ecocyc.org/ECOLI/NEW-IMAGE?type=GENE&object='+ecogene_I;
-        return ecogene_httplink
-    def find_genesInRegion(self,start_I,stop_I,record_I):
-        '''find genes in the start and stop region of the genome
-        INPUT:
-        mutation_position_I = mutation position [int]
-        record_I = genbank record [SeqRecord]
-        '''
-        data_O = [];
-        #extract all features within the start and stop region
-        features = [f for f in record_I.features if start_I <= f.location.start.position and stop_I <= f.location.end.position]
-        for feature_cnt,feature in enumerate(features):
-            # NOTE:
-            # there are two records for each gene: one of type "gene" and another of type "CDS"
-            # sometimes there is also a third of type "mat_peptide" which has a different start/stop position
-            # this algorithm will combine the records for types "gene" and "CDS" as a single row
-            # and add mat_peptide as a second row (if desired)
-            # initialize variables
-            if feature_cnt == 0:
-                feature_start_pos = feature.location.start.position;
-                feature_stop_pos = feature.location.end.position;
-                snp_records = {};
-                snp_records['gene'] = []
-                snp_records['db_xref'] = []
-                snp_records['locus_tag'] = []
-                snp_records['EC_number'] = []
-                snp_records['product'] = []
-                snp_records['location'] = []
-                snp_records['start'] = None
-                snp_records['stop'] = None
-                snp_records['type'] = []
-            # add complete snp_record to data_O
-            if feature_start_pos != feature.location.start.position or feature_stop_pos != feature.location.end.position:
-                #snp_records['start'] should be in every record
-                data_O.append(snp_records);
-                feature_start_pos = feature.location.start.position;
-                feature_stop_pos = feature.location.end.position;
-                snp_records = {};
-                snp_records['gene'] = []
-                snp_records['db_xref'] = []
-                snp_records['locus_tag'] = []
-                snp_records['EC_number'] = []
-                snp_records['product'] = []
-                snp_records['location'] = []
-                snp_records['start'] = None
-                snp_records['stop'] = None
-                snp_records['type'] = []
-            # fill in snp_record (may require multiple passes through features)
-            if feature.type == 'gene':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'CDS': 
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'repeat_region':
-                snp_records['location'] = feature.qualifiers.get('note')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'mobile_element':
-                snp_records['location'] = feature.qualifiers.get('mobile_element_type')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'misc_feature':
-                snp_records['location'] = feature.qualifiers.get('note')
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'mat_peptide':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'tRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'rRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type == 'ncRNA':
-                snp_records['gene'] = feature.qualifiers.get('gene')
-                snp_records['db_xref'] = feature.qualifiers.get('db_xref')
-                snp_records['locus_tag'] = feature.qualifiers.get('locus_tag')
-                #snp_records['location'] = feature.qualifiers.get('note')
-                if feature.qualifiers.get('EC_number'):snp_records['EC_number'] = feature.qualifiers.get('EC_number')
-                else:snp_records['EC_number'] = [None];
-                if feature.qualifiers.get('product'):snp_records['product'] = feature.qualifiers.get('product')
-                else:snp_records['product'] = [None];
-                snp_records['location'] = ['coding'];
-                snp_records['start'] = feature.location.start.position;
-                snp_records['stop'] = feature.location.end.position;
-                snp_records['type'].append(feature.type)
-            elif feature.type != 'source':
-                print(feature);
-            # add the final snp_record to data_O
-            if feature_cnt == len(features)-1:
-                data_O.append(snp_records);
-
-        return data_O;
     #table initializations:
     def drop_dataStage01(self):
         try:

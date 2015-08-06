@@ -2,7 +2,10 @@
 
 from sbaas.analysis.analysis_base import *
 from sqlalchemy import func
-from sbaas.resources.r import robjects,importr
+# Resources
+from io_utilities.base_importData import base_importData
+from io_utilities.base_exportData import base_exportData
+from calculate_utilities.r import robjects,importr
 
 class stage01_quantification_QMethod(base_analysis):
 

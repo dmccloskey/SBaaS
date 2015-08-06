@@ -1,8 +1,10 @@
 from sbaas.analysis.analysis_stage00 import stage00_execute
 from sbaas.analysis.analysis_stage01_resequencing import stage01_resequencing_execute, stage01_resequencing_io
 from sbaas.analysis.analysis_stage02_resequencing import stage02_resequencing_execute, stage02_resequencing_io
-from sbaas.analysis.analysis_base.base_importData import base_importData
 from sbaas.models import *
+# Resources
+from io_utilities.base_importData import base_importData
+from io_utilities.base_exportData import base_exportData
 
 def strain_lineages():
     strain_lineages_O = {"evo04tpiAevo01":{0:"140401_0_OxicEvo04tpiAEcoliGlcM9_Broth-1",1:"140702_1_OxicEvo04tpiAEvo01J01EcoliGlcM9_Broth-1",2:"140702_3_OxicEvo04tpiAEvo01J03EcoliGlcM9_Broth-1",3:"140807_11_OxicEvo04tpiAEvo01EPEcoliGlcM9_Broth-1"},
