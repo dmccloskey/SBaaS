@@ -6,9 +6,6 @@ from .stage01_rnasequencing_io import *
 
 # resources
 
-from sequencing_analysis.genome_diff import genome_diff
-from sequencing_analysis.fpkms_lineage import fpkms_lineage
-from sequencing_analysis.fpkms_endpoints import fpkms_endpoints
 from sequencing_analysis.fpkms_heatmap import fpkms_heatmap
 from sequencing_analysis.gff_coverage import gff_coverage
 from sequencing_analysis.genome_annotations import genome_annotations
@@ -35,13 +32,13 @@ class stage01_rnasequencing_execute():
         experiment_ids,sample_names = self.stage01_rnasequencing_query.get_experimentIDAndSampleName_analysisID_dataStage01RNASequencingAnalysis(analysis_id_I);
         fpkms_all = [];
         for sample_name_cnt,sample_name in enumerate(sample_names):
-            # query mutation data:
+            # query fpkm data:
             fpkms = [];
-            fpkms = self.stage01_rnasequencing_query.get_fpkms_experimentIDAndSampleName_dataStage01RNASequencingMutationsAnnotated(experiment_ids[sample_name_cnt],sample_name);
+            fpkms = self.stage01_rnasequencing_query.get_rows_experimentIDAndSampleName_dataStage01RNASequencingGenesFpkmTracking(experiment_ids[sample_name_cnt],sample_name);
             fpkms_all.extend(fpkms);
         fpkmsheatmap.genesFpkmTracking = fpkms_all;
         fpkmsheatmap.sample_names = sample_names;
-        fpkmsheatmap.make_heatmap(gene_exclusion_list=gene_exclusion_list,max_position=max_position,
+        fpkmsheatmap.make_heatmap(gene_exclusion_list=gene_exclusion_list,
                 row_pdist_metric_I=row_pdist_metric_I,row_linkage_method_I=row_linkage_method_I,
                 col_pdist_metric_I=col_pdist_metric_I,col_linkage_method_I=col_linkage_method_I)
         heatmap_O = fpkmsheatmap.heatmap;
@@ -97,14 +94,14 @@ class stage01_rnasequencing_execute():
             data_stage01_rnasequencing_analysis.__table__.drop(engine,True);
             data_stage01_rnasequencing_heatmap.__table__.drop(engine,True);
             data_stage01_rnasequencing_dendrogram.__table__.drop(engine,True);
-            data_stage01_rnasequencing_fpkmTracking.__table__.drop(engine,True);
+            data_stage01_rnasequencing_genesFpkmTracking.__table__.drop(engine,True);
             data_stage01_rnasequencing_geneExpDiff.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
         try:
             if experiment_id_I:
-                reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(data_stage01_rnasequencing_fpkmTracking.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).filter(data_stage01_rnasequencing_genesFpkmTracking.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_rnasequencing_geneExpDiff).filter(data_stage01_rnasequencing_geneExpDiff.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             elif analysis_id_I:
                 reset = self.session.query(data_stage01_rnasequencing_analysis).filter(data_stage01_rnasequencing_analysis.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
@@ -145,21 +142,21 @@ class stage01_rnasequencing_execute():
             data_stage01_rnasequencing_analysis.__table__.create(engine,True);
             data_stage01_rnasequencing_heatmap.__table__.create(engine,True);
             data_stage01_rnasequencing_dendrogram.__table__.create(engine,True);
-            data_stage01_rnasequencing_fpkmTracking.__table__.create(engine,True);
+            data_stage01_rnasequencing_genesFpkmTracking.__table__.create(engine,True);
             data_stage01_rnasequencing_geneExpDiff.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
-    def reset_dataStage01_rnasequencing_fpkmTracking(self,experiment_id_I = None, sample_names_I=[]):
+    def reset_dataStage01_rnasequencing_genesFpkmTracking(self,experiment_id_I = None, sample_names_I=[]):
         try:
             if experiment_id_I and sample_names_I:
                 for sn in sample_names_I:
-                    reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(
-                        data_stage01_rnasequencing_fpkmTracking.experiment_id.like(experiment_id_I),
-                        data_stage01_rnasequencing_fpkmTracking.sample_name.like(sn)).delete(synchronize_session=False);
+                    reset = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).filter(
+                        data_stage01_rnasequencing_genesFpkmTracking.experiment_id.like(experiment_id_I),
+                        data_stage01_rnasequencing_genesFpkmTracking.sample_name.like(sn)).delete(synchronize_session=False);
             elif experiment_id_I:
-                reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(data_stage01_rnasequencing_fpkmTracking.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).filter(data_stage01_rnasequencing_genesFpkmTracking.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
-                reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).delete(synchronize_session=False);
+                reset = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);

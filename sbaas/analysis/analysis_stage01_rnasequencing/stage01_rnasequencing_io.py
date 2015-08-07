@@ -81,6 +81,10 @@ class stage01_rnasequencing_io(base_analysis):
         if data_I:
             for d in data_I:
                 try:
+                    if not 'used_' in d:
+                        d['used_'] = True;
+                    if not 'comment_' in d:
+                        d['comment_'] = None;
                     data_add = data_stage01_rnasequencing_genesFpkmTracking(d['experiment_id'],
                             d['sample_name'],
                             d['tracking_id'],
@@ -152,6 +156,10 @@ class stage01_rnasequencing_io(base_analysis):
         if data_I:
             for d in data_I:
                 try:
+                    if not 'used_' in d:
+                        d['used_'] = True;
+                    if not 'comment_' in d:
+                        d['comment_'] = None;
                     data_add = data_stage01_rnasequencing_geneExpDiff(
                             d['experiment_id_1'],
                             d['experiment_id_2'],

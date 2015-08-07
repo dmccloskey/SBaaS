@@ -277,6 +277,15 @@ class ProjectHandler(BaseHandler):
         elif table_id_I=='export_dataStage02QuantificationPca_js':
             io = stage02_quantification_io(session);
             data_json_O = io.export_dataStage02QuantificationPca_js(analysis_id_I,data_dir_I='data_json');
+        elif table_id_I=='export_dataStage01RNASequencingHeatmap_js':
+            io = stage01_rnasequencing_io(session);
+            data_json_O = io.export_dataStage01RNASequencingHeatmap_js(analysis_id_I,data_dir_I='data_json');
+        elif table_id_I=='export_dataStage01RNASequencingGeneExpDiff_js':
+            io = stage01_rnasequencing_io(session);
+            data_json_O = io.export_dataStage01RNASequencingGeneExpDiff_js(analysis_id_I,data_dir_I='data_json');
+        elif table_id_I=='export_dataStage01RNASequencingGenesFpkmTracking_js':
+            io = stage01_rnasequencing_io(session);
+            data_json_O = io.export_dataStage01RNASequencingGenesFpkmTracking_js(analysis_id_I,data_dir_I='data_json');
         elif table_id_I=='':
             io = stage02_quantification_io(session);
             data_json_O = io.export_dataStage01PhysiologyRatesAverages_js(analysis_id_I,data_dir_I='data_json');
