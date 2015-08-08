@@ -23,6 +23,7 @@ from sbaas.analysis.visualization import visualization_io
 from sbaas.analysis.analysis_stage01_ale import stage01_ale_io
 from sbaas.analysis.analysis_stage01_physiology import stage01_physiology_io
 from sbaas.analysis.analysis_stage01_resequencing import stage01_resequencing_io
+from sbaas.analysis.analysis_stage01_rnasequencing import stage01_rnasequencing_io
 from sbaas.analysis.analysis_stage02_isotopomer import stage02_isotopomer_io
 from sbaas.analysis.analysis_stage02_quantification import stage02_quantification_io
 from sbaas.analysis.analysis_stage02_resequencing import stage02_resequencing_io

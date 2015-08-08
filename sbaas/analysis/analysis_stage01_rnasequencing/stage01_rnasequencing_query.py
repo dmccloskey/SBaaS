@@ -230,24 +230,55 @@ class stage01_rnasequencing_query(base_analysis):
             for d in data: 
                 data_O.append({'id':d.id,
                 'analysis_id':d.analysis_id,
-            'col_index':d.col_index,
-            'row_index':d.row_index,
-            'value':d.value,
-            'col_leaves':d.col_leaves,
-            'row_leaves':d.row_leaves,
-            'col_label':d.col_label,
-            'row_label':d.row_label,
-            'col_pdist_metric':d.col_pdist_metric,
-            'row_pdist_metric':d.row_pdist_metric,
-            'col_linkage_method':d.col_linkage_method,
-            'row_linkage_method':d.row_linkage_method,
-            'value_units':d.value_units,
-            'used_':d.used_,
-            'comment_':d.comment_}
+                'col_index':d.col_index,
+                'row_index':d.row_index,
+                'value':d.value,
+                'col_leaves':d.col_leaves,
+                'row_leaves':d.row_leaves,
+                'col_label':d.col_label,
+                'row_label':d.row_label,
+                'col_pdist_metric':d.col_pdist_metric,
+                'row_pdist_metric':d.row_pdist_metric,
+                'col_linkage_method':d.col_linkage_method,
+                'row_linkage_method':d.row_linkage_method,
+                'value_units':d.value_units,
+                'used_':d.used_,
+                'comment_':d.comment_}
                               );
             return data_O;
         except SQLAlchemyError as e:
             print(e);
 
     # query data from data_stage01_rnasequencing_genesFpkmTracking
+    def get_rows_experimentIDAndSampleName_dataStage01RNASequencingGenesFpkmTracking(self,experiment_id_I,sample_name_I):
+        '''Query rows by experiment_id and sample_name'''
+        try:
+            data = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).filter(
+                    data_stage01_rnasequencing_genesFpkmTracking.experiment_id.like(experiment_id_I),
+                    data_stage01_rnasequencing_genesFpkmTracking.sample_name.like(sample_name_I)).all();
+            data_O = [];
+            for d in data: 
+                data_dict = {'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id':d.experiment_id,
+                'sample_name':d.sample_name,
+                'tracking_id':d.tracking_id,
+                'class_code':d.class_code,
+                'nearest_ref_id':d.nearest_ref_id,
+                'gene_id':d.gene_id,
+                'gene_short_name':d.gene_short_name,
+                'tss_id':d.tss_id,
+                'locus':d.locus,
+                'length':d.length,
+                'coverage':d.coverage,
+                'FPKM':d.FPKM,
+                'FPKM_conf_lo':d.FPKM_conf_lo,
+                'FPKM_conf_hi':d.FPKM_conf_hi,
+                'FPKM_status':d.FPKM_status,
+                'used_':d.used_,
+                'comment_':d.comment_};
+                data_O.append(data_dict);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);
     # query data from data_stage01_rnasequencing_geneExpDiff

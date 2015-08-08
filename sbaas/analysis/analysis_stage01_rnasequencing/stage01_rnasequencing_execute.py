@@ -19,7 +19,6 @@ class stage01_rnasequencing_execute():
         self.stage01_rnasequencing_io = stage01_rnasequencing_io(self.session);
         self.calculate = base_calculate();
     #analysis
-    #TODO: convert
     def execute_heatmap(self, analysis_id_I,gene_exclusion_list=[],
                 row_pdist_metric_I='euclidean',row_linkage_method_I='complete',
                 col_pdist_metric_I='euclidean',col_linkage_method_I='complete'):
@@ -62,31 +61,31 @@ class stage01_rnasequencing_execute():
                 d['row_linkage_method'],
                 'fpkm',True, None);
             self.session.add(row);
-        # add data to the database for the dendrograms
-        row = None;
-        row = data_stage01_rnasequencing_dendrogram(
-            analysis_id_I,
-            dendrogram_col_O['leaves'],
-            dendrogram_col_O['icoord'],
-            dendrogram_col_O['dcoord'],
-            dendrogram_col_O['ivl'],
-            dendrogram_col_O['colors'],
-            dendrogram_col_O['pdist_metric'],
-            dendrogram_col_O['pdist_metric'],
-            'fpkm',True, None);
-        self.session.add(row);
-        row = None;
-        row = data_stage01_rnasequencing_dendrogram(
-            analysis_id_I,
-            dendrogram_row_O['leaves'],
-            dendrogram_row_O['icoord'],
-            dendrogram_row_O['dcoord'],
-            dendrogram_row_O['ivl'],
-            dendrogram_row_O['colors'],
-            dendrogram_row_O['pdist_metric'],
-            dendrogram_row_O['pdist_metric'],
-            'fpkm',True, None);
-        self.session.add(row);
+        ## add data to the database for the dendrograms
+        #row = None;
+        #row = data_stage01_rnasequencing_dendrogram(
+        #    analysis_id_I,
+        #    dendrogram_col_O['leaves'],
+        #    dendrogram_col_O['icoord'],
+        #    dendrogram_col_O['dcoord'],
+        #    dendrogram_col_O['ivl'],
+        #    dendrogram_col_O['colors'],
+        #    dendrogram_col_O['pdist_metric'],
+        #    dendrogram_col_O['pdist_metric'],
+        #    'fpkm',True, None);
+        #self.session.add(row);
+        #row = None;
+        #row = data_stage01_rnasequencing_dendrogram(
+        #    analysis_id_I,
+        #    dendrogram_row_O['leaves'],
+        #    dendrogram_row_O['icoord'],
+        #    dendrogram_row_O['dcoord'],
+        #    dendrogram_row_O['ivl'],
+        #    dendrogram_row_O['colors'],
+        #    dendrogram_row_O['pdist_metric'],
+        #    dendrogram_row_O['pdist_metric'],
+        #    'fpkm',True, None);
+        #self.session.add(row);
         self.session.commit();
     #table initializations:
     def drop_dataStage01(self):

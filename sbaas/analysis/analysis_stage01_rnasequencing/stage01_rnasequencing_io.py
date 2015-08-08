@@ -173,7 +173,7 @@ class stage01_rnasequencing_io(base_analysis):
                             d['status'],
                             d['value_1'],
                             d['value_2'],
-                            d['fold_change_log2'],
+                            d['log2(fold_change)'],
                             d['test_stat'],
                             d['p_value'],
                             d['q_value'],
@@ -228,7 +228,6 @@ class stage01_rnasequencing_io(base_analysis):
         """export heatmap to js file"""
 
         #get the heatmap data for the analysis
-        # TODO
         data_O = self.stage01_rnasequencing_query.get_rows_analysisID_dataStage01RNASequencingHeatmap(analysis_id_I);
         # dump chart parameters to a js files
         data1_keys = [
@@ -341,24 +340,25 @@ class stage01_rnasequencing_io(base_analysis):
     def export_dataStage01RNASequencingGenesFpkmTracking_js(self,analysis_id_I,data_dir_I='tmp'):
         '''Export data for a box and whiskers plot'''
 
-        #get the analysis information
-        analysis_info = [];
-        #TODO
-        #analysis_info = genesFpkmTracking
-        #get the data for the analysis
+        # get the analysis information
+        experiment_ids,sample_names = [],[];
+        experiment_ids,sample_names = self.stage01_rnasequencing_query.get_experimentIDAndSampleName_analysisID_dataStage01RNASequencingAnalysis(analysis_id_I);
         data_O = [];
-        #TODO
-        #data_O = self.stage02_quantification_query.get_rows_analysisID_dataStage02QuantificationDescriptiveStats(analysis_id_I);
+        for sample_name_cnt,sample_name in enumerate(sample_names):
+            # query fpkm data:
+            fpkms = [];
+            fpkms = self.stage01_rnasequencing_query.get_rows_experimentIDAndSampleName_dataStage01RNASequencingGenesFpkmTracking(experiment_ids[sample_name_cnt],sample_name);
+            data_O.extend(fpkms);
         # dump chart parameters to a js files
-        data1_keys = ['analysis_id','experiment_id','sample_name','gene'
+        data1_keys = ['experiment_id','sample_name','gene_short_name'
                     ];
-        data1_nestkeys = ['gene'];
-        data1_keymap = {'xdata':'gene',
+        data1_nestkeys = ['gene_short_name'];
+        data1_keymap = {'xdata':'gene_short_name',
                         'ydata':'FPKM',
                         'ydatalb':'FPKM_conf_lo',
                         'ydataub':'FPKM_conf_hi',
                         'serieslabel':'sample_name',
-                        'featureslabel':'gene'};
+                        'featureslabel':'gene_short_name'};
         # make the data object
         dataobject_O = [{"data":data_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys}];
         # make the tile parameter objects

@@ -17,9 +17,9 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilit
 #analysis_physiology.run_all_tests();
 #analysis_resequencing.run_all_tests();
 
-##Visualization tests:
-#from visualization.server import run
-#run();
+#Visualization tests:
+from visualization.server import run
+run();
 #run(port=8080,public=True);
 
 #Debug mode:
@@ -111,17 +111,18 @@ from io_utilities.base_exportData import base_exportData
 #    io01.import_dataStage01RNASequencingGenesFpkmTracking_add(file['filename'],file['experiment_id'],file['sample_name']);
 #iobase.clear_data();
 
-# export replicate boxAndWhiskers plot
-analysis_ids = ['ALEsKOs01_0_11_evo04pgi',
-                'ALEsKOs01_0_evo04_0_11_evo04pgi'
-                ];
-# make the heatmap
-for analysis in analysis_ids:
-    ex01.execute_heatmap(analysis);
+## export replicate boxAndWhiskers plot
+#analysis_ids = [
+#    'ALEsKOs01_0_11_evo04pgi',
+#    'ALEsKOs01_0_evo04_0_11_evo04pgi'
+#                ];
+## make the heatmap
+#for analysis in analysis_ids:
+#    ex01.execute_heatmap(analysis);
 # export the heatmap
 
-# reset the previous imports
-ex01.reset_dataStage01_rnasequencing_geneExpDiff('ALEsKOs01');
+## reset the previous imports
+#ex01.reset_dataStage01_rnasequencing_geneExpDiff('ALEsKOs01');
 # import the driver file
 iobase = base_importData();
 iobase.read_csv(settings.workspace_data+'/_input/150806_RNASequencing_ALEsKOs01_geneExpDiff01.csv');
