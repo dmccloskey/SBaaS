@@ -809,6 +809,29 @@ class stage00_io(base_analysis):
         self.add_metabolomicsModels(data.data);
         data.clear_data();
 
+    def import_biologicalMaterialDescription_add(self, filename):
+        '''table adds'''
+        data = base_importData();
+        data.read_csv(filename);
+        data.format_data();
+        self.add_biologicalMaterialDescription(data.data);
+        data.clear_data();
+
+    def add_biologicalMaterialDescription(self, data_I):
+        '''add rows of biologicalMaterial_description'''
+        if data_I:
+            for d in data_I:
+                try:
+                    data_add = biologicalMaterial_description(
+                        d['biologicalmaterial_id'],
+                        d['biologicalmaterial_strain'],
+                        d['biologicalmaterial_description'],
+                        d['biologicalmaterial_notes']);
+                    self.session.add(data_add);
+                except SQLAlchemyError as e:
+                    print(e);
+            self.session.commit();
+
     def import_biologicalMaterialGeneReferences_add(self, filename):
         '''table adds'''
         data = base_importData();

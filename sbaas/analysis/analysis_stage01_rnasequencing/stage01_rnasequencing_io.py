@@ -281,18 +281,34 @@ class stage01_rnasequencing_io(base_analysis):
             file.write(parameters_str);
             file.write(tile2datamap_str);
         
-    def export_dataStage01RNASequencingGeneExpDiff_js(self,analysis_id_I,data_dir_I='tmp'):
+    def export_dataStage01RNASequencingGeneExpDiff_js(self,analysis_id_I,p_value_I=0.01,fold_change_log2_I=1.0,data_dir_I='tmp'):
         '''Export data for a volcano plot'''
         
-        #get the data for the analysis
+        # get the analysis information
+        experiment_ids,sample_name_abbreviations = [],[];
+        experiment_ids,sample_name_abbreviations = self.stage01_rnasequencing_query.get_experimentIDAndSampleNameAbbreviation_analysisID_dataStage01RNASequencingAnalysis(analysis_id_I);
         data_O = [];
-        data_O = self.geneExpDiff
+        for sample_name_abbreviation_cnt_1,sample_name_abbreviation_1 in enumerate(sample_name_abbreviations):
+            for sample_name_abbreviation_cnt_2,sample_name_abbreviation_2 in enumerate(sample_name_abbreviations):
+                if sample_name_abbreviation_cnt_1 != sample_name_abbreviation_cnt_2:
+                    # query geneExpDiff data:
+                    geneExpDiff_tmp = [];
+                    geneExpDiff_tmp = self.stage01_rnasequencing_query.get_rows_experimentIDsAndSampleNameAbbreviations_dataStage01RNASequencingGeneExpDiff(experiment_ids[sample_name_abbreviation_cnt_1],experiment_ids[sample_name_abbreviation_cnt_2],sample_name_abbreviation_1,sample_name_abbreviation_2);
+                    geneExpDiff = [];
+                    for d in geneExpDiff_tmp:
+                        if not 'p_value_negLog10' in d:
+                            d['p_value_negLog10']=-log(d['p_value'],10.0);
+                        if p_value_I and fold_change_log2_I and d['p_value'] and d['fold_change_log2'] and d['p_value']<=p_value_I and (d['fold_change_log2']>=fold_change_log2_I or d['fold_change_log2']<=-fold_change_log2_I):
+                            geneExpDiff.append(d);
+                        elif not p_value_I and not fold_change_log2_I and d['p_value'] and d['fold_change_log2']:
+                            geneExpDiff.append(d);
+                    data_O.extend(geneExpDiff);
         # make the data parameters
-        data1_keys = ['experiment_id_1','experiment_id_2','sample_name_abbreviation_1','sample_name_abbreviation_2','gene','log2(fold_change)','p_value'
+        data1_keys = ['experiment_id_1','experiment_id_2','sample_name_abbreviation_1','sample_name_abbreviation_2','gene','fold_change_log2','p_value_negLog10','significant'
                     ];
         data1_nestkeys = ['experiment_id_1'];
-        data1_keymap = {'ydata':'p_value',
-                        'xdata':'log2(fold_change)',
+        data1_keymap = {'ydata':'p_value_negLog10',
+                        'xdata':'fold_change_log2',
                         'serieslabel':'',
                         'featureslabel':'gene'};
         # make the data object

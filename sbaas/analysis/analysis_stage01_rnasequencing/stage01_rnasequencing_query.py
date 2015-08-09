@@ -255,7 +255,8 @@ class stage01_rnasequencing_query(base_analysis):
         try:
             data = self.session.query(data_stage01_rnasequencing_genesFpkmTracking).filter(
                     data_stage01_rnasequencing_genesFpkmTracking.experiment_id.like(experiment_id_I),
-                    data_stage01_rnasequencing_genesFpkmTracking.sample_name.like(sample_name_I)).all();
+                    data_stage01_rnasequencing_genesFpkmTracking.sample_name.like(sample_name_I),
+                    data_stage01_rnasequencing_genesFpkmTracking.used_).all();
             data_O = [];
             for d in data: 
                 data_dict = {'id':d.id,
@@ -282,3 +283,39 @@ class stage01_rnasequencing_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
     # query data from data_stage01_rnasequencing_geneExpDiff
+    def get_rows_experimentIDsAndSampleNameAbbreviations_dataStage01RNASequencingGeneExpDiff(self,experiment_id_1_I,experiment_id_2_I,sample_name_abbreviation_1_I,sample_name_abbreviation_2_I):
+        '''Query rows by experiment_ids 1 and 2 and sample_name_abbreviations 1 and 2'''
+        try:
+            data = self.session.query(data_stage01_rnasequencing_geneExpDiff).filter(
+                    data_stage01_rnasequencing_geneExpDiff.experiment_id_1.like(experiment_id_1_I),
+                    data_stage01_rnasequencing_geneExpDiff.experiment_id_2.like(experiment_id_2_I),
+                    data_stage01_rnasequencing_geneExpDiff.sample_name_abbreviation_1.like(sample_name_abbreviation_1_I),
+                    data_stage01_rnasequencing_geneExpDiff.sample_name_abbreviation_2.like(sample_name_abbreviation_2_I),
+                    data_stage01_rnasequencing_geneExpDiff.used_).all();
+            data_O = [];
+            for d in data: 
+                data_dict = {'id':d.id,
+                #'analysis_id':d.analysis_id,
+                'experiment_id_1':d.experiment_id_1,
+                'experiment_id_2':d.experiment_id_2,
+                'sample_name_abbreviation_1':d.sample_name_abbreviation_1,
+                'sample_name_abbreviation_2':d.sample_name_abbreviation_2,
+                'test_id':d.test_id,
+                'gene_id':d.gene_id,
+                'gene':d.gene,
+                'sample_1':d.sample_1,
+                'sample_2':d.sample_2,
+                'status':d.status,
+                'value_1':d.value_1,
+                'value_2':d.value_2,
+                'fold_change_log2':d.fold_change_log2,
+                'test_stat':d.test_stat,
+                'p_value':d.p_value,
+                'q_value':d.q_value,
+                'significant':d.significant,
+                'used_':d.used_,
+                'comment_':d.comment_};
+                data_O.append(data_dict);
+            return data_O;
+        except SQLAlchemyError as e:
+            print(e);

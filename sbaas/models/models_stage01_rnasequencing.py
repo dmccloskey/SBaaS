@@ -187,7 +187,6 @@ class data_stage01_rnasequencing_genesFpkmTracking(Base):
     #fpkm = fragments per kilobase of transcript
     __tablename__ = 'data_stage01_rnasequencing_genesFpkmTracking'
     id = Column(Integer, Sequence('data_stage01_rnasequencing_genesFpkmTracking_id_seq'), primary_key=True)
-    #analysis_id = Column(String(500))
     experiment_id = Column(String(50))
     sample_name = Column(String(100))
     tracking_id = Column(String(100))
@@ -212,7 +211,6 @@ class data_stage01_rnasequencing_genesFpkmTracking(Base):
             )
 
     def __init__(self,
-        #analysis_id_I,
         experiment_id_I,
         sample_name_I,
         tracking_id_I,
@@ -230,7 +228,6 @@ class data_stage01_rnasequencing_genesFpkmTracking(Base):
         FPKM_status_I,
         used__I,
         comment__I):
-        #self.analysis_id=analysis_id_I
         self.experiment_id=experiment_id_I
         self.sample_name=sample_name_I
         self.tracking_id=tracking_id_I
@@ -251,7 +248,6 @@ class data_stage01_rnasequencing_genesFpkmTracking(Base):
 
     def __repr__dict__(self):
         return {'id':self.id,
-                #'analysis_id':self.analysis_id,
                 'experiment_id':self.experiment_id,
                 'sample_name':self.sample_name,
                 'tracking_id':self.tracking_id,
@@ -277,6 +273,7 @@ class data_stage01_rnasequencing_geneExpDiff(Base):
     
     __tablename__ = 'data_stage01_rnasequencing_geneExpDif'
     id = Column(Integer, Sequence('data_stage01_rnasequencing_geneExpDif_id_seq'), primary_key=True)
+    #analysis_id = Column(String(500))
     experiment_id_1 = Column(String(50))
     experiment_id_2 = Column(String(50))
     sample_name_abbreviation_1 = Column(String(100))
@@ -303,6 +300,7 @@ class data_stage01_rnasequencing_geneExpDiff(Base):
             )
 
     def __init__(self,
+        #analysis_id_I,
         experiment_id_1_I,
         experiment_id_2_I,
         sample_name_abbreviation_1_I,
@@ -322,6 +320,7 @@ class data_stage01_rnasequencing_geneExpDiff(Base):
         significant_I,
         used__I,
         comment__I):
+        #self.analysis_id=analysis_id_I
         self.experiment_id_1=experiment_id_1_I
         self.experiment_id_2=experiment_id_2_I
         self.sample_name_abbreviation_1=sample_name_abbreviation_1_I
@@ -344,6 +343,7 @@ class data_stage01_rnasequencing_geneExpDiff(Base):
 
     def __repr__dict__(self):
         return {'id':self.id,
+                #'analysis_id':self.analysis_id,
                 'experiment_id_1':self.experiment_id_1,
                 'experiment_id_2':self.experiment_id_2,
                 'sample_name_abbreviation_1':self.sample_name_abbreviation_1,
