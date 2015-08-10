@@ -27,21 +27,19 @@ from sbaas.analysis.analysis_stage01_resequencing import *
 from sbaas.models import *
 session = Session();
 
-# Resources
-from io_utilities.base_importData import base_importData
-from io_utilities.base_exportData import base_exportData
-
 ex01 = stage01_resequencing_execute(session);
 io01 = stage01_resequencing_io(session);
 
-iobase = base_importData();
-iobase.read_csv(settings.workspace_data+'/_input/150808_Resequencing_ALEsKOsLegacy01_fileList01.csv');
-fileList = iobase.data;
-# read in each data file
-for file in fileList:
-    print('importing resequencing data for sample ' + file['sample_name']);
-    io01.import_resequencingData_add(file['filename'],file['experiment_id'],file['sample_name']);
-iobase.clear_data();
+analysis_ids = [
+    'ALEsKOsLegacy01_BOP27pgiEP',
+    'ALEsKOsLegacy01_BOP27pgiEP_ALEsKOs01_evo04pgiEP',
+    ];
+#analyze endpoints
+for analysis in analysis_ids:
+    ex01.reset_dataStage01_endpoints(analysis)
+    ex01.execute_analyzeEndpointReplicates_population(analysis_id_I=analysis);
+    ex01.execute_annotateMutations_endpoints(analysis);
+
 
 from sbaas.analysis.analysis_stage01_rnasequencing import *
 from sbaas.models import *
