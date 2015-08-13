@@ -365,7 +365,7 @@ class stage01_quantification_query(base_analysis):
                     data_stage01_quantification_MQResultsTable.component_group_name).all();
             if len(component_group_name)>1:
                 print('more than 1 component_group_name retrieved per component_name')
-            component_group_name_O = component_group_name[0];
+            component_group_name_O = component_group_name[0].component_group_name;
             return component_group_name_O;
         except SQLAlchemyError as e:
             print(e);

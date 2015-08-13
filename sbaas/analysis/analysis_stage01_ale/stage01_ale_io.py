@@ -305,7 +305,7 @@ class stage01_ale_io(base_analysis):
                             "svgwidth":500,"svgheight":350,
                             "svgx1axislabel":"time (days)","svgy1axislabel":"growth rate (hr-1)",
     						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
-        svgtileparameters_O = {'tileheader':'Population mutation frequency','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
+        svgtileparameters_O = {'tileheader':'ALE trajectories','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col2",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-8"};
         svgtileparameters_O.update(svgparameters_O);
         #tableparameters_O = {"tabletype":'responsivetable_01',

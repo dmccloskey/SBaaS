@@ -5,7 +5,7 @@ from sqlalchemy import func
 # Resources
 from io_utilities.base_importData import base_importData
 from io_utilities.base_exportData import base_exportData
-from calculate_utilities.r import robjects,importr
+#from calculate_utilities.r import robjects,importr
 
 class stage01_quantification_QMethod(base_analysis):
 

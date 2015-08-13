@@ -803,11 +803,7 @@ class stage01_resequencing_execute():
         '''Annotate mutations for date_stage01_resequencing_endpoints
         based on position, reference genome, and reference genome biologicalmaterial_id'''
         
-        #from Bio import SeqIO
-        #from Bio import Entrez
-        #record = SeqIO.read(ref_genome_I,ref_I)
-
-        genomeannotation = genome_annotations();
+        genomeannotation = genome_annotations(record_I=ref_genome_I,ref_I=ref_I);
 
         print('Executing annotateAmplifications...')
         data_O = [];

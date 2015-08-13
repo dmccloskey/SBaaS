@@ -23,34 +23,28 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilit
 ##run(port=8080,public=True);
 
 ##Debug mode:
-from sbaas.analysis.analysis_stage01_resequencing import *
+from sbaas.analysis.analysis_stage01_quantification import *
 from sbaas.models import *
-session = Session();
+session=Session();
+# initialize the io object
+qio01 = stage01_quantification_io();
+# initialize the execution object
+qe01 = stage01_quantification_execute();
+# check the precision of the QCs and accuracy of quantification across the batch
+qe01.execute_analyzeQCs('chemoCLim01');
+qe01.execute_checkCV_QCs('chemoCLim01');
 
-ex01 = stage01_resequencing_execute(session);
-io01 = stage01_resequencing_io(session);
-
-analysis_ids = [
-    'ALEsKOsLegacy01_BOP27pgiEP',
-    'ALEsKOsLegacy01_BOP27pgiEP_ALEsKOs01_evo04pgiEP',
-    ];
-#analyze endpoints
-for analysis in analysis_ids:
-    ex01.reset_dataStage01_endpoints(analysis)
-    ex01.execute_analyzeEndpointReplicates_population(analysis_id_I=analysis);
-    ex01.execute_annotateMutations_endpoints(analysis);
-
-
-from sbaas.analysis.analysis_stage01_rnasequencing import *
-from sbaas.models import *
-session = Session();
-ex01 = stage01_rnasequencing_execute(session);
-io01 = stage01_rnasequencing_io(session);
-from sbaas.analysis.visualization import *
-visio01 = visualization_io(session);
-# Resources
-from io_utilities.base_importData import base_importData
-from io_utilities.base_exportData import base_exportData
+## add as template for sequencing_analyis and add to tests
+#from sbaas.analysis.analysis_stage01_rnasequencing import *
+#from sbaas.models import *
+#session = Session();
+#ex01 = stage01_rnasequencing_execute(session);
+#io01 = stage01_rnasequencing_io(session);
+#from sbaas.analysis.visualization import *
+#visio01 = visualization_io(session);
+## Resources
+#from io_utilities.base_importData import base_importData
+#from io_utilities.base_exportData import base_exportData
 
 ## initialize the DB
 #ex01.initialize_dataStage01();
