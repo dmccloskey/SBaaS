@@ -552,6 +552,7 @@ class stage01_quantification_execute():
                 component_group_name = self.stage01_quantification_query.get_componentGroupName_experimentIDAndComponentName_dataStage01Normalized(experiment_id_I,cn);
                 # get time points
                 time_points = self.stage01_quantification_query.get_timePoint_experimentIDAndSampleNameAbbreviation_dataStage01Normalized(experiment_id_I,sna);
+                if not time_points: continue;
                 for tp in time_points:
                     print('analyzing averages for time_point ' + tp);
                     # get filtrate sample names
@@ -1411,6 +1412,13 @@ class stage01_quantification_execute():
             if experiment_id_I:
                 reset = self.session.query(data_stage01_quantification_physiologicalRatios_replicates).filter(data_stage01_quantification_physiologicalRatios_replicates.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_quantification_physiologicalRatios_averages).filter(data_stage01_quantification_physiologicalRatios_averages.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+                self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_datastage01_quantification_normalized(self,experiment_id_I):
+        try:
+            if experiment_id_I:
+                reset = self.session.query(data_stage01_quantification_normalized).filter(data_stage01_quantification_normalized.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 self.session.commit();
         except SQLAlchemyError as e:
             print(e);

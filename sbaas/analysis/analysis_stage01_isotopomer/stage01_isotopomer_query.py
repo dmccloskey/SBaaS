@@ -2021,7 +2021,7 @@ class stage01_isotopomer_query(base_analysis):
             if not sample_names:
                 print("no results found")
                 print("experiment_id_I	sample_name_abbreviation_I	met_id_I	time_point_I	sample_dilution_I")
-                print(experiment_id_I,sample_name_abbreviation_I,met_id_I,time_point_I,sample_dilution_I)
+                print(experiment_id_I,sample_name_abbreviation_I,met_id_I,time_point_I)
                 return sample_names_O,sample_replicates_O,sample_types_O;
             else:
                 for sn in sample_names:
@@ -2804,6 +2804,50 @@ class stage01_isotopomer_query(base_analysis):
                     data_stage01_isotopomer_normalized.time_point.like(time_point_I),
                     data_stage01_isotopomer_normalized.scan_type.like(scan_type_I),
                     data_stage01_isotopomer_normalized.replicate_number == replicate_number_I,
+                    data_stage01_isotopomer_normalized.used_.is_(True)).order_by(
+                    data_stage01_isotopomer_normalized.fragment_formula.asc(),
+                    data_stage01_isotopomer_normalized.fragment_mass.asc(),
+                    data_stage01_isotopomer_normalized.dilution.asc()).all();
+            fragment_formula = '';
+            fragment_formula_old = '';
+            data_O = {};
+            if not data:
+                print('No data found');
+                return data_O;
+            else:
+                mass_O = {};
+                for i,d in enumerate(data):
+                    if i==0:
+                        fragment_formula_old = d.fragment_formula;
+                        mass_O[d.fragment_mass] = d.intensity_normalized;
+                    fragment_formula = d.fragment_formula;
+                    if fragment_formula != fragment_formula_old:
+                        data_O[fragment_formula_old] = mass_O;
+                        fragment_formula_old = fragment_formula
+                        mass_O = {};
+                    elif i == len(data)-1 and fragment_formula == fragment_formula_old:
+                        mass_O[d.fragment_mass] = d.intensity_normalized;
+                        data_O[fragment_formula] = mass_O;
+                    mass_O[d.fragment_mass] = d.intensity_normalized;
+                return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_dataNormalized_experimentIDAndSampleAbbreviationAndTimePointAndScanTypeAndMetIDAndSampleName_dataStage01Normalized(self,experiment_id_I,sample_name_abbreviation_I,time_point_I,scan_type_I,met_id_I,sample_name_I):
+        '''Querry peak data that are used for the experiment, sample abbreviation, time point, scan type, met_id, and sample_name'''
+        try:
+            data = self.session.query(data_stage01_isotopomer_normalized.dilution,
+                    data_stage01_isotopomer_normalized.fragment_formula,
+                    data_stage01_isotopomer_normalized.fragment_mass,
+                    data_stage01_isotopomer_normalized.intensity_normalized,
+                    data_stage01_isotopomer_normalized.intensity_normalized_units,
+                    data_stage01_isotopomer_normalized.used_,
+                    data_stage01_isotopomer_normalized.comment_).filter(
+                    data_stage01_isotopomer_normalized.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage01_isotopomer_normalized.met_id.like(met_id_I),
+                    data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
+                    data_stage01_isotopomer_normalized.time_point.like(time_point_I),
+                    data_stage01_isotopomer_normalized.scan_type.like(scan_type_I),
+                    data_stage01_isotopomer_normalized.sample_name.like(sample_name_I),
                     data_stage01_isotopomer_normalized.used_.is_(True)).order_by(
                     data_stage01_isotopomer_normalized.fragment_formula.asc(),
                     data_stage01_isotopomer_normalized.fragment_mass.asc(),

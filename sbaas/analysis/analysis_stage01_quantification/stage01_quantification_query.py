@@ -950,9 +950,9 @@ class stage01_quantification_query(base_analysis):
                     data_stage01_quantification_normalized.component_name.like(component_name_I),
                     sample.sample_id.like(sample_description.sample_id),
                     sample.sample_name.like(data_stage01_quantification_normalized.sample_name),
-                    experiment.sample_name.like(sample.sample_name),
-                    experiment.id.like(experiment_id_I),
-                    experiment.exp_type_id == exp_type_I,
+                    #experiment.sample_name.like(sample.sample_name),  #not required so long as all sample_names are unique!
+                    #experiment.id.like(experiment_id_I),
+                    #experiment.exp_type_id == exp_type_I,
                     data_stage01_quantification_normalized.used_.is_(True)).group_by(
                     data_stage01_quantification_normalized.sample_name).order_by(
                     data_stage01_quantification_normalized.sample_name.asc()).all();
@@ -1041,6 +1041,20 @@ class stage01_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
     # query components from data_stage01_quantification_normalized
+    def get_componentsNames_experimentID_dataStage01Normalized(self,experiment_id_I):
+        '''Querry component names that are used and not internal standards from
+        the experiment id'''
+        try:
+            component_names = self.session.query(data_stage01_quantification_normalized.component_name).filter(
+                    data_stage01_quantification_normalized.experiment_id.like(experiment_id_I),                  
+                    data_stage01_quantification_normalized.used_.is_(True)).group_by(
+                    data_stage01_quantification_normalized.component_name).order_by(
+                    data_stage01_quantification_normalized.component_name.asc()).all();
+            component_names_O = [];
+            for cn in component_names: component_names_O.append(cn.component_name);
+            return component_names_O;
+        except SQLAlchemyError as e:
+            print(e);
     def get_componentsNames_experimentIDAndSampleID_dataStage01Normalized(self,experiment_id_I,sample_id_I):
         '''Querry component names that are used and not internal standards from
         the experiment and sample_id'''
@@ -1076,13 +1090,13 @@ class stage01_quantification_query(base_analysis):
         the experiment and sample abbreviation'''
         try:
             component_names = self.session.query(data_stage01_quantification_normalized.component_name).filter(
-                    sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     data_stage01_quantification_normalized.experiment_id.like(experiment_id_I),
                     data_stage01_quantification_normalized.sample_name.like(sample.sample_name),
-                    sample.sample_id.like(sample_description.sample_id),
-                    experiment.exp_type_id == exp_type_I,  
-                    experiment.id.like(experiment_id_I),
-                    experiment.sample_name.like(sample.sample_name),                
+                    #experiment.exp_type_id == exp_type_I,  #not required so long as all sample_names are unique!
+                    #experiment.id.like(experiment_id_I),
+                    #experiment.sample_name.like(sample.sample_name),  
+                    sample.sample_id.like(sample_description.sample_id),  
+                    sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),            
                     data_stage01_quantification_normalized.used_.is_(True)).group_by(
                     data_stage01_quantification_normalized.component_name).order_by(
                     data_stage01_quantification_normalized.component_name.asc()).all();
@@ -1130,9 +1144,9 @@ class stage01_quantification_query(base_analysis):
             time_points = self.session.query(sample_description.time_point).filter(
                     sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
                     data_stage01_quantification_normalized.experiment_id.like(experiment_id_I),
-                    experiment.exp_type_id == exp_type_I,
-                    experiment.id.like(experiment_id_I),
-                    experiment.sample_name.like(sample.sample_name),
+                    #experiment.exp_type_id == exp_type_I, #not required so long as all sample_names are unique!
+                    #experiment.id.like(experiment_id_I),
+                    #experiment.sample_name.like(sample.sample_name),
                     sample.sample_id.like(sample_description.sample_id),
                     data_stage01_quantification_normalized.used_.is_(True),
                     data_stage01_quantification_normalized.sample_name.like(sample.sample_name),

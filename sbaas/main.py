@@ -34,12 +34,13 @@ ex01 = stage01_isotopomer_execute(session);
 io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
     sample_name_abbreviations_I=[
     'OxicEvo04tpiAEvo01EPEcoli13CGlc',
-    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
+    #'OxicEvo04tpiAEvo02EPEcoli13CGlc'
     ],
     #met_ids_I=['g6p',
     #          'glu-L'
     #],
-    scan_types_I=['EPI']
+    #scan_types_I=['EPI'],
+    single_plot_I = False,
     );
 #ex01.plot_normalizedSpectrum('ALEsKOs01',
 #    sample_name_abbreviations_I=[
@@ -59,9 +60,15 @@ io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
 #qio01 = stage01_quantification_io();
 ## initialize the execution object
 #qe01 = stage01_quantification_execute();
-## check the precision of the QCs and accuracy of quantification across the batch
-#qe01.execute_analyzeQCs('chemoCLim01');
-#qe01.execute_checkCV_QCs('chemoCLim01');
+## calculate the averages of the data using the formula ave(broth)-ave(filtrate)
+#qe01.execute_analyzeAverages('chemoCLim01',
+#        #sample_name_abbreviations_I=[
+#        #'OxicWtGlcDil0p25',
+#        #'OxicWtGlcDil0p32',
+#        #'OxicWtGlcDil0p45',
+#        #'OxicWtGlcDil0p58'
+#        #]
+#        );
 
 ## add as template for sequencing_analyis and add to tests
 #from sbaas.analysis.analysis_stage01_rnasequencing import *

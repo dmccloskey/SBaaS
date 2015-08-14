@@ -695,14 +695,16 @@ class stage01_isotopomer_io(base_analysis):
                 print(e);
         self.session.commit();
 
-    def export_dataStage01IsotopomerNormalized_js(self,experiment_id_I,sample_names_I=[],sample_name_abbreviations_I=[],time_points_I=[],scan_types_I=[],met_ids_I=[],data_dir_I="tmp"):
+    def export_dataStage01IsotopomerNormalized_js(self,experiment_id_I,sample_names_I=[],sample_name_abbreviations_I=[],time_points_I=[],scan_types_I=[],met_ids_I=[],data_dir_I="tmp",
+                                                  single_plot_I = True):
         """Export data_stage01_isotopomer_normalized to js file"""
 
         mids = mass_isotopomer_distributions();
 
         # get the data
+        
         data_O = [];
-
+        sample_names_O = [];
         # get time points
         if time_points_I:
             time_points = time_points_I;
@@ -866,8 +868,6 @@ class stage01_isotopomer_io(base_analysis):
         #                        d['sample_fragment_id'] = self.make_sampleFragmentID(d['sample_name'],d['met_id'],d['fragment_formula'],d['fragment_mass']);
         #                    data_table_O.extend(data);
         # visualization parameters
-        data1_keys = ['sample_name',
-                      #'sample_type',
                       'met_id','time_point','fragment_formula','fragment_mass','scan_type','fragment_id'];
         data1_nestkeys = [
             #'fragment_id',
@@ -882,32 +882,19 @@ class stage01_isotopomer_io(base_analysis):
                 'featureslabel':'fragment_mass',
                 'ydata_lb':None,
                 'ydata_ub':None};
-        # make the data object
-        dataobject_O = [{"data":data_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys}];
         # make the tile parameter objects
         formtileparameters_O = {'tileheader':'Filter menu','tiletype':'html','tileid':"filtermenu1",'rowid':"row1",'colid':"col1",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
         formparameters_O = {'htmlid':'filtermenuform1',"htmltype":'form_01',"formsubmitbuttonidtext":{'id':'submit1','text':'submit'},"formresetbuttonidtext":{'id':'reset1','text':'reset'},"formupdatebuttonidtext":{'id':'update1','text':'update'}};
         formtileparameters_O.update(formparameters_O);
-        svgparameters1_O = {"svgtype":'verticalbarschart2d_01',"svgkeymap":[data1_keymap],
-                            'svgid':'svg1',
-                             "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
-                    "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)"                  
-                };
-        svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col1",
-            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
-        svgtileparameters1_O.update(svgparameters1_O);
         tableparameters1_O = {"tabletype":'responsivetable_01',
                     'tableid':'table1',
                     "tablefilters":None,
                     #"tableheaders":[],
                     "tableclass":"table  table-condensed table-hover",
     			    'tableformtileid':'tile1','tableresetbuttonid':'reset1','tablesubmitbuttonid':'submit1'};
-        tabletileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'table','tileid':"tile3",'rowid':"row1",'colid':"col1",
             'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
         tabletileparameters1_O.update(tableparameters1_O);
-        parametersobject_O = [formtileparameters_O,svgtileparameters1_O,tabletileparameters1_O];
-        tile2datamap_O = {"filtermenu1":[0],"tile2":[0],"tile3":[0]};
         # dump the data to a json file
         data_str = 'var ' + 'data' + ' = ' + json.dumps(dataobject_O) + ';';
         parameters_str = 'var ' + 'parameters' + ' = ' + json.dumps(parametersobject_O) + ';';
