@@ -885,6 +885,7 @@ class stage01_isotopomer_io(base_analysis):
                             data = self.stage01_isotopomer_query.get_rows_experimentIDAndSampleAbbreviationAndTimePointAndDilutionAndScanTypeAndMetID_dataStage01Normalized( \
                                     experiment_id_I,sna,tp,dil,scan_type,met);
                             for d in data:
+                                d['sample_name'] = d['sample_name_abbreviation']+"_"+str(d['replicate_number']);
                                 d['fragment_id'] = mids.make_fragmentID(d['met_id'],d['fragment_formula'],d['fragment_mass']);
                             data_table_O.extend(data);
         # visualization parameters
