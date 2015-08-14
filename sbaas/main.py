@@ -9,6 +9,8 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\component-contri
 sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\io_utilities')
 sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\sequencing_analysis')
 sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilities')
+sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\MDV_utilities')
+sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\molmass')
 
 
 ##Analysis tests:
@@ -23,16 +25,43 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilit
 ##run(port=8080,public=True);
 
 ##Debug mode:
-from sbaas.analysis.analysis_stage01_quantification import *
+from sbaas.analysis.analysis_stage01_isotopomer import *
 from sbaas.models import *
-session=Session();
-# initialize the io object
-qio01 = stage01_quantification_io();
-# initialize the execution object
-qe01 = stage01_quantification_execute();
-# check the precision of the QCs and accuracy of quantification across the batch
-qe01.execute_analyzeQCs('chemoCLim01');
-qe01.execute_checkCV_QCs('chemoCLim01');
+session = Session();
+io01 = stage01_isotopomer_io(session);
+ex01 = stage01_isotopomer_execute(session);
+#export spectrums to js
+io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
+    sample_name_abbreviations_I=[
+    'OxicEvo04tpiAEvo01EPEcoli13CGlc',
+    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
+    ],
+    #met_ids_I=['g6p',
+    #          'glu-L'
+    #],
+    scan_types_I=['EPI']
+    );
+#ex01.plot_normalizedSpectrum('ALEsKOs01',
+#    sample_name_abbreviations_I=[
+#    'OxicEvo04tpiAEvo01EPEcoli13CGlc',
+#    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
+#    ],
+#    #met_ids_I=['g6p',
+#    #          'glu-L'
+#    #],
+#    scan_types_I=['EPI']
+#    );
+
+#from sbaas.analysis.analysis_stage01_quantification import *
+#from sbaas.models import *
+#session=Session();
+## initialize the io object
+#qio01 = stage01_quantification_io();
+## initialize the execution object
+#qe01 = stage01_quantification_execute();
+## check the precision of the QCs and accuracy of quantification across the batch
+#qe01.execute_analyzeQCs('chemoCLim01');
+#qe01.execute_checkCV_QCs('chemoCLim01');
 
 ## add as template for sequencing_analyis and add to tests
 #from sbaas.analysis.analysis_stage01_rnasequencing import *

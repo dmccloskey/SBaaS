@@ -2274,6 +2274,22 @@ class stage01_isotopomer_query(base_analysis):
             return scan_types_O;
         except SQLAlchemyError as e:
             print(e);
+    def get_scanTypes_experimentIDAndSampleAbbreviations_dataStage01Normalized(self,experiment_id_I,sample_name_abbreviation_I):
+        '''Querry scan types that are used from the experiment for specific sample names'''
+        try:
+            scan_types = self.session.query(
+                    data_stage01_isotopomer_normalized.scan_type).filter(
+                    data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
+                    data_stage01_isotopomer_normalized.used_.is_(True),
+                    data_stage01_isotopomer_normalized.sample_name_abbreviation.like(sample_name_abbreviation_I)).group_by(
+                    data_stage01_isotopomer_normalized.scan_type).order_by(
+                    data_stage01_isotopomer_normalized.scan_type).all();
+            scan_types_O = [];
+            for st in scan_types:
+                scan_types_O.append(st[0]);
+            return scan_types_O;
+        except SQLAlchemyError as e:
+            print(e);
     # query met ids from data_stage01_isotopomer_normalized
     def get_metIDs_experimentIDAndSampleAbbreviationAndTimePointAndDilutionAndScanType_dataStage01Normalized(self,experiment_id_I,sample_name_abbreviation_I,time_point_I,dilution_I,scan_type_I):
         '''Querry met ids that are used for the experiment, sample abbreviation, time point, dilution, scan type'''
@@ -2572,7 +2588,7 @@ class stage01_isotopomer_query(base_analysis):
                 print(experiment_id_I,sample_name_abbreviation_I,time_point_I,scan_type_I,met_id_I);
             else:
                 for cn in replicate_numbers:
-                    replicate_numbers_O.append(cn[0]);
+                    replicate_numbers_O.append(cn.replicate_number);
                 return replicate_numbers_O;
         except SQLAlchemyError as e:
             print(e);
@@ -2822,6 +2838,29 @@ class stage01_isotopomer_query(base_analysis):
             data = self.session.query(data_stage01_isotopomer_normalized).filter(
                     data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
                     data_stage01_isotopomer_normalized.used_).order_by(
+                    data_stage01_isotopomer_normalized.fragment_formula.asc(),
+                    data_stage01_isotopomer_normalized.fragment_mass.asc(),
+                    data_stage01_isotopomer_normalized.sample_name.asc()).all();
+            data_O = [];
+            if not data:
+                return data_O;
+            else:
+                for d in data:
+                    data_O.append(d.__repr__dict__());
+                return data_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_rows_experimentIDAndSampleAbbreviationAndTimePointAndDilutionAndScanTypeAndMetID_dataStage01Normalized(self,experiment_id_I,sample_name_abbreviation_I,time_point_I,dilution_I,scan_type_I,met_id_I):
+        '''Querry rows that are used for the experiment, sample abbreviation, time point, dilution, scan type, and met_ids'''
+        try:
+            data = self.session.query(data_stage01_isotopomer_normalized).filter(
+                    data_stage01_isotopomer_normalized.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage01_isotopomer_normalized.experiment_id.like(experiment_id_I),
+                    data_stage01_isotopomer_normalized.time_point.like(time_point_I),
+                    data_stage01_isotopomer_normalized.dilution == dilution_I,
+                    data_stage01_isotopomer_normalized.scan_type.like(scan_type_I),
+                    data_stage01_isotopomer_normalized.met_id.like(met_id_I),
+                    data_stage01_isotopomer_normalized.used_.is_(True)).order_by(
                     data_stage01_isotopomer_normalized.fragment_formula.asc(),
                     data_stage01_isotopomer_normalized.fragment_mass.asc(),
                     data_stage01_isotopomer_normalized.sample_name.asc()).all();
