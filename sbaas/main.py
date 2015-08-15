@@ -31,10 +31,21 @@ session = Session();
 io01 = stage01_isotopomer_io(session);
 ex01 = stage01_isotopomer_execute(session);
 #export spectrums to js
-io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
+#io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
+#    sample_name_abbreviations_I=[
+#    #'OxicEvo04tpiAEvo01EPEcoli13CGlc',
+#    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
+#    ],
+#    #met_ids_I=['g6p',
+#    #          'glu-L'
+#    #],
+#    #scan_types_I=['EPI'],
+#    single_plot_I = False,
+#    );
+io01.export_dataStage01IsotopomerAveragesNormSum_js('ALEsKOs01',
     sample_name_abbreviations_I=[
     'OxicEvo04tpiAEvo01EPEcoli13CGlc',
-    #'OxicEvo04tpiAEvo02EPEcoli13CGlc'
+    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
     ],
     #met_ids_I=['g6p',
     #          'glu-L'

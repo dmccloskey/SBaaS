@@ -705,7 +705,6 @@ class stage01_isotopomer_io(base_analysis):
         
         data_O = [];
         sample_names_O = [];
-        sample_name_abbreviations_O = [];
         # get time points
         if time_points_I:
             time_points = time_points_I;
@@ -780,7 +779,6 @@ class stage01_isotopomer_io(base_analysis):
                             print('Plotting precursor and product spectrum for replicate_number ' + str(rep));
                             #print('Plotting precursor and product spectrum for sample_name ' + sn);
                             #sample_names_O.append(sn);
-                            sample_name_abbreviations_O.append(sna);
                             #get data
                             peakData_I = {};
                             peakData_I = self.stage01_isotopomer_query.get_dataNormalized_experimentIDAndSampleAbbreviationAndTimePointAndScanTypeAndMetIDAndReplicateNumber_dataStage01Normalized( \
@@ -820,14 +818,6 @@ class stage01_isotopomer_io(base_analysis):
         # record the unique sample names:
         sample_names_unique = list(set(sample_names_O));
         sample_names_unique.sort();
-        #sample_name_abbreviations_unique = list(set(sample_name_abbreviations_O));
-        #sample_name_abbreviations_unique.sort();
-        #sample_names_dict = {};
-        #for sna in sample_name_abbreviations_unique:
-        #    sample_names_dict[sna]=[];
-        #    for sn in sample_names_O:
-        #        if sna==sn[1] and not sn[0] in sample_names_dict[sna]:
-        #            sample_names_dict[sna].append(sn[0]);
 
         # get the table data
         data_table_O = [];
@@ -961,8 +951,7 @@ class stage01_isotopomer_io(base_analysis):
                 #'svgid':'svg1',
                 'svgid':'svg'+str(cnt),
                 "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
-                "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",
-                "svgfilters":{'sample_name':[sn]}               
+                "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",         
                     };
             svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg',
                 #'tileid':"tile2",
@@ -1007,3 +996,270 @@ class stage01_isotopomer_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
+    def export_dataStage01IsotopomerAveragesNormSum_js(self,experiment_id_I, time_points_I = None, sample_name_abbreviations_I = None, met_ids_I = None, scan_types_I = None,data_dir_I="tmp",
+                                                  single_plot_I = True):
+        '''Export data_stage01_isotopomer_averagesNormSum to js file'''
+        
+        mids = mass_isotopomer_distributions();
+        
+        print('plotting averagesNormSum...')
+        data_O = [];
+        # get time points
+        if time_points_I:
+            time_points = time_points_I;
+        else:
+            time_points = [];
+            time_points = self.stage01_isotopomer_query.get_timePoint_experimentID_dataStage01AveragesNormSum(experiment_id_I);
+        for tp in time_points:
+            print('Plotting product and precursor for time-point ' + str(tp));
+            # get sample names and sample name abbreviations
+            if sample_name_abbreviations_I:
+                sample_abbreviations = sample_name_abbreviations_I;
+                sample_types_lst = ['Unknown' for x in sample_abbreviations];
+            else:
+                sample_abbreviations = [];
+                sample_types = ['Unknown'];
+                sample_types_lst = [];
+                for st in sample_types:
+                    sample_abbreviations_tmp = [];
+                    sample_abbreviations_tmp = self.stage01_isotopomer_query.get_sampleNameAbbreviations_experimentIDAndSampleTypeAndTimePoint_dataStage01AveragesNormSum(experiment_id_I,st,tp);
+                    sample_abbreviations.extend(sample_abbreviations_tmp);
+                    sample_types_lst.extend([st for i in range(len(sample_abbreviations_tmp))]);
+            for sna_cnt,sna in enumerate(sample_abbreviations):
+                print('Plotting product and precursor for sample name abbreviation ' + sna);
+                # get the scan_types
+                if scan_types_I:
+                    scan_types = [];
+                    scan_types_tmp = [];
+                    scan_types_tmp = self.stage01_isotopomer_query.get_scanTypes_experimentIDAndTimePointAndSampleAbbreviationsAndSampleType_dataStage01AveragesNormSum(experiment_id_I,tp,sna,sample_types_lst[sna_cnt]);
+                    scan_types = [st for st in scan_types_tmp if st in scan_types_I];
+                else:
+                    scan_types = [];
+                    scan_types = self.stage01_isotopomer_query.get_scanTypes_experimentIDAndTimePointAndSampleAbbreviationsAndSampleType_dataStage01AveragesNormSum(experiment_id_I,tp,sna,sample_types_lst[sna_cnt]);
+                for scan_type in scan_types:
+                    print('Plotting product and precursor for scan type ' + scan_type)
+                    # met_ids
+                    if not met_ids_I:
+                        met_ids = [];
+                        met_ids = self.stage01_isotopomer_query.get_metIDs_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanType_dataStage01AveragesNormSum( \
+                                experiment_id_I,sna,tp,sample_types_lst[sna_cnt],scan_type);
+                    else:
+                        met_ids = met_ids_I;
+                    if not(met_ids): continue #no component information was found
+                    for met in met_ids:
+                        print('Plotting product and precursor for metabolite ' + met);
+                        # fragments
+                        fragment_formulas = [];
+                        fragment_formulas = self.stage01_isotopomer_query.get_fragmentFormula_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanTypeAndMetID_dataStage01AveragesNormSum( \
+                                experiment_id_I,sna,tp,sample_types_lst[sna_cnt],scan_type,met);
+                        for frag in fragment_formulas:
+                            print('Plotting product and precursor for fragment ' + frag);
+                            # data
+                            data_mat = [];
+                            data_mat_cv = [];
+                            data_masses = [];
+                            data_mat,data_mat_cv,data_masses = self.stage01_isotopomer_query.get_spectrum_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanTypeAndMetIDAndFragmentFormula_dataStage01AveragesNormSum( \
+                                experiment_id_I,sna,tp,sample_types_lst[sna_cnt],scan_type,met,frag);
+                            for i,d in enumerate(data_mat):
+                                stdev = 0.0;
+                                stderr = 0.0;
+                                lb = None;
+                                ub = None;
+                                if data_mat_cv[i]: 
+                                    stdev = data_mat[i]*data_mat_cv[i]/100;
+                                    lb = data_mat[i]-stdev;
+                                    ub = data_mat[i]+stdev;
+                                fragment_id = mids.make_fragmentID(met,frag,data_masses[i]);
+                                data_O.append({
+                                'experiment_id':experiment_id_I,
+                                'sample_name_abbreviation':sna,
+                                'sample_type':sample_types_lst[sna_cnt],
+                                'time_point':tp,
+                                'met_id':met,
+                                'fragment_formula':frag,
+                                'fragment_mass':data_masses[i],
+                                'fragment_id':fragment_id,
+                                'intensity_normalized_average':d,
+                                'intensity_normalized_cv':data_mat_cv[i],
+                                'intensity_normalized_lb':lb,
+                                'intensity_normalized_ub':ub,
+                                'intensity_normalized_units':"normSum",
+                                'scan_type':scan_type,
+                                'used_':True,
+                                'comment_':None})
+
+        print('tabulating averagesNormSum...')
+        data_table_O = [];
+        # get time points
+        if time_points_I:
+            time_points = time_points_I;
+        else:
+            time_points = [];
+            time_points = self.stage01_isotopomer_query.get_timePoint_experimentID_dataStage01AveragesNormSum(experiment_id_I);
+        for tp in time_points:
+            print('Tabulating product and precursor for time-point ' + str(tp));
+            # get sample names and sample name abbreviations
+            if sample_name_abbreviations_I:
+                sample_abbreviations = sample_name_abbreviations_I;
+                sample_types_lst = ['Unknown' for x in sample_abbreviations];
+            else:
+                sample_abbreviations = [];
+                sample_types = ['Unknown'];
+                sample_types_lst = [];
+                for st in sample_types:
+                    sample_abbreviations_tmp = [];
+                    sample_abbreviations_tmp = self.stage01_isotopomer_query.get_sampleNameAbbreviations_experimentIDAndSampleTypeAndTimePoint_dataStage01AveragesNormSum(experiment_id_I,st,tp);
+                    sample_abbreviations.extend(sample_abbreviations_tmp);
+                    sample_types_lst.extend([st for i in range(len(sample_abbreviations_tmp))]);
+            for sna_cnt,sna in enumerate(sample_abbreviations):
+                print('Tabulating product and precursor for sample name abbreviation ' + sna);
+                # get the scan_types
+                if scan_types_I:
+                    scan_types = [];
+                    scan_types_tmp = [];
+                    scan_types_tmp = self.stage01_isotopomer_query.get_scanTypes_experimentIDAndTimePointAndSampleAbbreviationsAndSampleType_dataStage01AveragesNormSum(experiment_id_I,tp,sna,sample_types_lst[sna_cnt]);
+                    scan_types = [st for st in scan_types_tmp if st in scan_types_I];
+                else:
+                    scan_types = [];
+                    scan_types = self.stage01_isotopomer_query.get_scanTypes_experimentIDAndTimePointAndSampleAbbreviationsAndSampleType_dataStage01AveragesNormSum(experiment_id_I,tp,sna,sample_types_lst[sna_cnt]);
+                for scan_type in scan_types:
+                    print('Tabulating product and precursor for scan type ' + scan_type)
+                    # met_ids
+                    if not met_ids_I:
+                        met_ids = [];
+                        met_ids = self.stage01_isotopomer_query.get_metIDs_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanType_dataStage01AveragesNormSum( \
+                                experiment_id_I,sna,tp,sample_types_lst[sna_cnt],scan_type);
+                    else:
+                        met_ids = met_ids_I;
+                    if not(met_ids): continue #no component information was found
+                    for met in met_ids:
+                        print('Tabulating product and precursor for metabolite ' + met);
+                        # get rows
+                        rows = [];
+                        rows = self.stage01_isotopomer_query.get_rows_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanTypeAndMetID_dataStage01AveragesNormSum( \
+                                experiment_id_I,sna,tp,sample_types_lst[sna_cnt],scan_type,met);
+                        if not rows: continue;
+                        for d in rows:
+                            d['fragment_id'] = mids.make_fragmentID(d['met_id'],d['fragment_formula'],d['fragment_mass']);
+                        data_table_O.extend(rows);
+
+        print('exporting averagesNormSum...');
+
+        # visualization parameters
+        data1_keys = ['sample_name_abbreviation',
+                      'sample_type',
+                      'met_id',
+                      'time_point',
+                      'fragment_formula',
+                      'fragment_mass',
+                      'scan_type',
+                      'fragment_id'
+                      ];
+        data1_nestkeys = [
+            #'fragment_id',
+            'fragment_mass'
+            ];
+        data1_keymap = {
+                #'xdata':'fragment_id',
+                'xdata':'fragment_mass',
+                'ydata':'intensity_normalized_average',
+                'serieslabel':'sample_name',
+                #'featureslabel':'fragment_id',
+                'featureslabel':'fragment_mass',
+                'ydata_lb':'intensity_normalized_lb',
+                'ydata_ub':'intensity_normalized_ub'};
+
+        # initialize the ddt objects
+        dataobject_O = [];
+        parametersobject_O = [];
+        tile2datamap_O = {};
+
+        # make the tile parameter objects
+        formtileparameters_O = {'tileheader':'Filter menu','tiletype':'html','tileid':"filtermenu1",'rowid':"row1",'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
+        formparameters_O = {'htmlid':'filtermenuform1',"htmltype":'form_01',"formsubmitbuttonidtext":{'id':'submit1','text':'submit'},"formresetbuttonidtext":{'id':'reset1','text':'reset'},"formupdatebuttonidtext":{'id':'update1','text':'update'}};
+        formtileparameters_O.update(formparameters_O);
+        dataobject_O.append({"data":data_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys});
+        parametersobject_O.append(formtileparameters_O);
+        tile2datamap_O.update({"filtermenu1":[0]});
+        if not single_plot_I:
+            rowcnt = 1;
+            colcnt = 1;
+            for cnt,sn in enumerate(sample_abbreviations):
+                svgtileid = "tilesvg"+str(cnt);
+                svgid = 'svg'+str(cnt);
+                iter=cnt+1; #start at 1
+                if (cnt % 2 == 0): 
+                    rowcnt = rowcnt+1;#even 
+                    colcnt = 1;
+                else:
+                    colcnt = colcnt+1;
+                # make the svg object
+                svgparameters1_O = {"svgtype":'verticalbarschart2d_01',"svgkeymap":[data1_keymap],
+                    #'svgid':'svg1',
+                    'svgid':'svg'+str(cnt),
+                    "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
+                    "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",
+                    "svgfilters":{'sample_name_abbreviation':[sn]}               
+                        };
+                svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg',
+                    'tileid':svgtileid,
+                    'rowid':"row"+str(rowcnt),
+                    'colid':"col"+str(colcnt),
+                    'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-6"};
+                svgtileparameters1_O.update(svgparameters1_O);
+                parametersobject_O.append(svgtileparameters1_O);
+                tile2datamap_O.update({svgtileid:[0]});
+        else:
+            cnt = 0;
+            svgtileid = "tilesvg"+str(cnt);
+            svgid = 'svg'+str(cnt);
+            rowcnt = 2;
+            colcnt = 1;
+            # make the svg object
+            svgparameters1_O = {"svgtype":'verticalbarschart2d_01',"svgkeymap":[data1_keymap],
+                'svgid':'svg'+str(cnt),
+                "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
+                "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",             
+                    };
+            svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg',
+                'tileid':svgtileid,
+                'rowid':"row"+str(rowcnt),
+                'colid':"col"+str(colcnt),
+                'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
+            svgtileparameters1_O.update(svgparameters1_O);
+            parametersobject_O.append(svgparameters1_O);
+            tile2datamap_O.update({svgtileid:[0]});
+
+        # make the table object
+        tableparameters1_O = {"tabletype":'responsivetable_01',
+                    'tableid':'table1',
+                    "tablefilters":None,
+                    #"tableheaders":[],
+                    "tableclass":"table  table-condensed table-hover",
+    			    'tableformtileid':'tile1','tableresetbuttonid':'reset1','tablesubmitbuttonid':'submit1'};
+        tabletileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'table','tileid':"tabletile1",
+            'rowid':"row100",
+            'colid':"col1",
+            'tileclass':"panel panel-default",'rowclass':"row",'colclass':"col-sm-12"};
+        tabletileparameters1_O.update(tableparameters1_O);
+        dataobject_O.append({"data":data_table_O,"datakeys":data1_keys,"datanestkeys":data1_nestkeys});
+        parametersobject_O.append(tabletileparameters1_O);
+        tile2datamap_O.update({"tabletile1":[1]})
+
+        # dump the data to a json file
+        data_str = 'var ' + 'data' + ' = ' + json.dumps(dataobject_O) + ';';
+        parameters_str = 'var ' + 'parameters' + ' = ' + json.dumps(parametersobject_O) + ';';
+        tile2datamap_str = 'var ' + 'tile2datamap' + ' = ' + json.dumps(tile2datamap_O) + ';';
+        if data_dir_I=='tmp':
+            filename_str = settings.visualization_data + '/tmp/ddt_data.js'
+        elif data_dir_I=='project':
+            filename_str = settings.visualization_data + '/project/' + analysis_id_I + '_data_stage01_isotopomer_normalized' + '.js'
+        elif data_dir_I=='data_json':
+            data_json_O = data_str + '\n' + parameters_str + '\n' + tile2datamap_str;
+            return data_json_O;
+        with open(filename_str,'w') as file:
+            file.write(data_str);
+            file.write(parameters_str);
+            file.write(tile2datamap_str);
+

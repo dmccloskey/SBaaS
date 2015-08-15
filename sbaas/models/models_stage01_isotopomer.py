@@ -130,7 +130,26 @@ class data_stage01_isotopomer_averages(Base):
 
 class data_stage01_isotopomer_averagesNormSum(Base):
     __tablename__ = 'data_stage01_isotopomer_averagesNormSum'
-    #id = Column(Integer, Sequence('data_stage01_isotopomer_averagesNormSum_id_seq'), primary_key=True)
+
+    #TODO:
+    #DROP SEQUENCE "data_stage01_isotopomer_averagesNormSum_fragment_mass_seq";
+
+    #CREATE SEQUENCE "data_stage01_isotopomer_averagesNormSum_id_seq"
+    #  INCREMENT 1
+    #  MINVALUE 1
+    #  MAXVALUE 9223372036854775807
+    #  START 1
+    #  CACHE 1;
+    #ALTER TABLE "data_stage01_isotopomer_averagesNormSum_id_seq"
+    #  OWNER TO postgres;
+
+    #ALTER TABLE data_stage01_isotopomer_averagesNormSum ADD COLUMN id integer;
+    #ALTER TABLE data_stage01_isotopomer_averagesNormSum ALTER COLUMN id SET NOT NULL;
+
+    #ALTER TABLE data_stage01_isotopomer_averagesNormSum
+    #  ADD CONSTRAINT data_stage01_isotopomer_averagesNormSum_id_key UNIQUE(id);
+
+    #id = Column(Integer, Sequence('data_stage01_isotopomer_averagesNormSum_id_seq'))
     experiment_id = Column(String(50))
     sample_name_abbreviation = Column(String(100))
     sample_type = Column(String(100))
@@ -149,7 +168,7 @@ class data_stage01_isotopomer_averagesNormSum(Base):
     comment_ = Column(Text);
 
     __table_args__ = (PrimaryKeyConstraint('experiment_id','sample_name_abbreviation','sample_type','met_id','time_point','fragment_formula','fragment_mass','scan_type'),
-                      #UniqueConstraint('experiment_id','sample_name_abbreviation','sample_type','met_id','time_point','fragment_formula','fragment_mass','scan_type'),
+                      #UniqueConstraint('id'),
             )
 
     def __init__(self, experiment_id_I, sample_name_abbreviation_I,  sample_type_I, time_point_I, met_id_I,fragment_formula_I, fragment_mass_I,
@@ -173,7 +192,8 @@ class data_stage01_isotopomer_averagesNormSum(Base):
         self.comment_ = comment_I;
 
     def __repr__dict__(self):
-        return {'id':self.id,
+        return {
+                #'id':self.id,
                 'experiment_id':self.experiment_id,
                 'sample_name_abbreviation':self.sample_name_abbreviation,
                 'sample_type':self.sample_type,

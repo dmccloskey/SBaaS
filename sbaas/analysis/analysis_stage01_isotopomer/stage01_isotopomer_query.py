@@ -3860,3 +3860,41 @@ class stage01_isotopomer_query(base_analysis):
                 return data_O;
         except SQLAlchemyError as e:
             print(e);
+    def get_rows_experimentIDAndSampleAbbreviationAndTimePointAndSampleTypeAndScanTypeAndMetID_dataStage01AveragesNormSum(self,experiment_id_I,sample_name_abbreviation_I,time_point_I,sample_type_I,scan_type_I,met_id_I):
+        '''Querry rows that are used for the experiment, sample abbreviation, time point, scan type, met id'''
+        try:
+            rows = self.session.query(data_stage01_isotopomer_averagesNormSum).filter(
+                    data_stage01_isotopomer_averagesNormSum.sample_name_abbreviation.like(sample_name_abbreviation_I),
+                    data_stage01_isotopomer_averagesNormSum.experiment_id.like(experiment_id_I),
+                    data_stage01_isotopomer_averagesNormSum.time_point.like(time_point_I),
+                    data_stage01_isotopomer_averagesNormSum.sample_type.like(sample_type_I),
+                    data_stage01_isotopomer_averagesNormSum.scan_type.like(scan_type_I),
+                    data_stage01_isotopomer_averagesNormSum.met_id.like(met_id_I),
+                    data_stage01_isotopomer_averagesNormSum.used_.is_(True)).all();
+            rows_O = [];
+            if not(rows):
+                print("no results found")
+                print("experiment_id_I	sample_name_abbreviation_I	time_point_I	scan_type_I met_id_I");
+                print(experiment_id_I,sample_name_abbreviation_I,time_point_I,scan_type_I,met_id_I);
+            else:
+                for d in rows:
+                    rows_O.append({
+                        #'id':d.id,
+                'experiment_id':d.experiment_id,
+                'sample_name_abbreviation':d.sample_name_abbreviation,
+                'sample_type':d.sample_type,
+                'time_point':d.time_point,
+                'met_id':d.met_id,
+                'fragment_formula':d.fragment_formula,
+                'fragment_mass':d.fragment_mass,
+                'intensity_normalized_average':d.intensity_normalized_average,
+                'intensity_normalized_cv':d.intensity_normalized_cv,
+                'intensity_normalized_units':d.intensity_normalized_units,
+                'intensity_theoretical':d.intensity_theoretical,
+                'abs_devFromTheoretical':d.abs_devFromTheoretical,
+                'scan_type':d.scan_type,
+                'used_':d.used_,
+                'comment_':d.comment_});
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
