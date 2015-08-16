@@ -893,8 +893,8 @@ class stage01_isotopomer_io(base_analysis):
                 'serieslabel':'sample_name',
                 #'featureslabel':'fragment_id',
                 'featureslabel':'fragment_mass',
-                'ydata_lb':None,
-                'ydata_ub':None};
+                'ydatalb':None,
+                'ydataub':None};
 
         # initialize the ddt objects
         dataobject_O = [];
@@ -1163,11 +1163,11 @@ class stage01_isotopomer_io(base_analysis):
                 #'xdata':'fragment_id',
                 'xdata':'fragment_mass',
                 'ydata':'intensity_normalized_average',
-                'serieslabel':'sample_name',
+                'serieslabel':'sample_name_abbreviation',
                 #'featureslabel':'fragment_id',
                 'featureslabel':'fragment_mass',
-                'ydata_lb':'intensity_normalized_lb',
-                'ydata_ub':'intensity_normalized_ub'};
+                'ydatalb':'intensity_normalized_lb',
+                'ydataub':'intensity_normalized_ub'};
 
         # initialize the ddt objects
         dataobject_O = [];
