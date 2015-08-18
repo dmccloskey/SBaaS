@@ -5,7 +5,7 @@ from .stage01_quantification_query import *
 from .stage01_quantification_io import *
 # Resources
 from sbaas.resources.matplot import matplot
-#from calculate_utilities.r import r_calculate
+from calculate_utilities.r import r_calculate
 
 from time import mktime,strptime
 from datetime import datetime

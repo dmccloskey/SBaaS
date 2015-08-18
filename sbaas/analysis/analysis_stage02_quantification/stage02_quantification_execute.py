@@ -884,13 +884,33 @@ class stage02_quantification_execute(base_analysis):
                             # call R
                             data_TTest = {};
                             data_TTest = self.r_calc.calculate_oneSampleTTest(data_1, alternative_I = "two.sided", mu_I = 0, paired_I="FALSE", var_equal_I = "TRUE", ci_level_I = 0.95, padjusted_method_I = "bonferroni");
-                            #TODO:
+                            if not data_TTest:
+                                # calculate the mean, var, and confidence interval manually
+                                data_ave_O, data_var_O, data_lb_O, data_ub_O = None,None,None,None;
+                                data_ave_O, data_var_O, data_lb_O, data_ub_O = self.calculate.calculate_ave_var(data_1,confidence_I = 0.95);
+                                if data_ave_O:
+                                    data_cv = sqrt(data_var_O)/data_ave_O*100;
+                                else:
+                                    data_cv = None;
+                                data_TTest = {};
+                                data_TTest['mean']=data_ave_O;
+                                data_TTest['var']=data_var_O;
+                                data_TTest['ci_lb']=data_lb_O;
+                                data_TTest['ci_ub']=data_ub_O;
+                                data_TTest['cv']=data_cv;
+                                data_TTest['n']=len(data_1);
+                                data_TTest['test_stat']=None;
+                                data_TTest['test_description']=None;
+                                data_TTest['pvalue']=None;
+                                data_TTest['pvalue_corrected']=None;
+                                data_TTest['pvalue_corrected_description']=None;
+                                data_TTest['ci_level']=0.95;
                             # calculate the interquartile range
                             min_O, max_O, median_O, iq_1_O, iq_3_O=self.calculate.calculate_interquartiles(data_1);
                             # record data for plotting
                             data_plot_mean.append(data_TTest['mean']);
                             data_plot_var.append(data_TTest['var']);
-                            data_plot_ci.append([data_TTest['ci_lb'],data_TTest['ci_lb']]);
+                            data_plot_ci.append([data_TTest['ci_lb'],data_TTest['ci_ub']]);
                             data_plot_data.append(data_1);
                             data_plot_sna.append(sna);
                             data_plot_component_names.append(cn);

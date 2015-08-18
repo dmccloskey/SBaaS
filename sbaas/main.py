@@ -12,58 +12,18 @@ sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\calculate_utilit
 sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\MDV_utilities')
 sys.path.append('C:\\Users\\dmccloskey-sbrg\\Documents\\GitHub\\molmass')
 
-
 ##Analysis tests:
 #from tests import analysis_ale, analysis_physiology, analysis_resequencing
 #analysis_ale.run_all_tests();
 #analysis_physiology.run_all_tests();
 #analysis_resequencing.run_all_tests();
 
-##Visualization tests:
-#from visualization.server import run
-#run();
-##run(port=8080,public=True);
+#Visualization tests:
+from visualization.server import run
+run();
+#run(port=8080,public=True);
 
 ##Debug mode:
-from sbaas.analysis.analysis_stage01_isotopomer import *
-from sbaas.models import *
-session = Session();
-io01 = stage01_isotopomer_io(session);
-ex01 = stage01_isotopomer_execute(session);
-#export spectrums to js
-#io01.export_dataStage01IsotopomerNormalized_js('ALEsKOs01',
-#    sample_name_abbreviations_I=[
-#    #'OxicEvo04tpiAEvo01EPEcoli13CGlc',
-#    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
-#    ],
-#    #met_ids_I=['g6p',
-#    #          'glu-L'
-#    #],
-#    #scan_types_I=['EPI'],
-#    single_plot_I = False,
-#    );
-io01.export_dataStage01IsotopomerAveragesNormSum_js('ALEsKOs01',
-    sample_name_abbreviations_I=[
-    'OxicEvo04tpiAEvo01EPEcoli13CGlc',
-    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
-    ],
-    #met_ids_I=['g6p',
-    #          'glu-L'
-    #],
-    #scan_types_I=['EPI'],
-    single_plot_I = False,
-    );
-#ex01.plot_normalizedSpectrum('ALEsKOs01',
-#    sample_name_abbreviations_I=[
-#    'OxicEvo04tpiAEvo01EPEcoli13CGlc',
-#    'OxicEvo04tpiAEvo02EPEcoli13CGlc'
-#    ],
-#    #met_ids_I=['g6p',
-#    #          'glu-L'
-#    #],
-#    scan_types_I=['EPI']
-#    );
-
 #from sbaas.analysis.analysis_stage01_quantification import *
 #from sbaas.models import *
 #session=Session();

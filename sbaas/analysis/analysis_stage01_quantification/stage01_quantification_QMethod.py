@@ -5,7 +5,7 @@ from sqlalchemy import func
 # Resources
 from io_utilities.base_importData import base_importData
 from io_utilities.base_exportData import base_exportData
-#from calculate_utilities.r import robjects,importr
+from calculate_utilities.r import robjects,importr
 
 class stage01_quantification_QMethod(base_analysis):
 
@@ -97,20 +97,20 @@ class stage01_quantification_QMethod(base_analysis):
     def calculate_regressionParameters(self, component_name_I, fit_I, weighting_I, use_area_I):
         '''calculate regression parameters for a given component
         from a specified quantitation method id
-        NOTE: intended to be used in a loop'''
-        # input:
-        #       component_name
-        #       calibrators_samples (class member) 
-        #       fit
-        #       weighting
-        #       use_area
-        # ouput:
-        #       slope
-        #       intercept
-        #       correlation
-        #       lloq
-        #       uloq
-        #       points
+        NOTE: intended to be used in a loop
+        input:
+            component_name
+            calibrators_samples (class member) 
+            fit
+            weighting
+            use_area
+        ouput:
+            slope
+            intercept
+            correlation
+            lloq
+            uloq
+            points'''
 
         # query calibrators for specific component_name from specific experiment_id
         if use_area_I:
