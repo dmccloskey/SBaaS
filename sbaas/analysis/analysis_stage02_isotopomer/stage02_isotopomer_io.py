@@ -3302,11 +3302,23 @@ class stage02_isotopomer_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
-    def export_dataStage02IsotopomerFluxMap_js(self,simulation_id_I = None,data_dir_I="tmp"):
+    def export_dataStage02IsotopomerFluxMap_js(self,analysis_id_I,simulation_id_I = None,data_dir_I="tmp"):
         '''Export flux map for viewing'''
 
         iomod = models_query(self.session);
-
+        # Get the simulation information
+        if simulation_id_I:
+            simulation_id = simulation_id_I;
+        else:
+            simulation_ids = [];
+            simulation_ids = self.stage02_isotopomer_query.get_simulationID_analysisID_dataStage02IsotopomerAnalysis(analysis_id_I);
+        if not simulation_ids:
+            print('No simulation found for the analysis_id ' + analysis_id_I);
+        elif len(simulation_ids)>1:
+            print('More than 1 simulation found for the analysis_id ' + analysis_id_I);
+            simulation_id_I = simulation_ids[0];
+        else:
+            simulation_id_I = simulation_ids[0];
         # Get the flux information
         flux = [];
         flux_tmp = [];

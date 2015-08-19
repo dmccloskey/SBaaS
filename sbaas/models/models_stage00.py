@@ -675,6 +675,7 @@ class quantitation_method(Base):
     lloq = Column(Float);
     uloq = Column(Float);
     points = Column(Integer)
+
     __table_args__ = (PrimaryKeyConstraint('id','component_name'),
             ForeignKeyConstraint(['id'],['quantitation_method_list.quantitation_method_id'], ondelete="CASCADE"),
             )

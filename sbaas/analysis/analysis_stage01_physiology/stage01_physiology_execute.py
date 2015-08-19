@@ -394,14 +394,41 @@ class stage01_physiology_execute():
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
-    def reset_dataStage01_physiology_rates(self,experiment_id_I = None):
+    def reset_dataStage01_physiology_rates(self,experiment_id_I = None,sample_name_short_I=[],met_id_I=[]):
         try:
-            if experiment_id_I:
-                reset = self.session.query(data_stage01_physiology_ratesAverages).filter(data_stage01_physiology_ratesAverages.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            if experiment_id_I and sample_name_short_I and met_id_I:
+                for sns in sample_name_short_I:
+                    for met in met_id_I:
+                        reset = self.session.query(data_stage01_physiology_rates).filter(data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
+                                                                                     data_stage01_physiology_rates.sample_name_short.like(sns),
+                                                                                     data_stage01_physiology_rates.met_id.like(met)).delete(synchronize_session=False);
+            elif experiment_id_I and sample_name_short_I:
+                for sns in sample_name_short_I:
+                    reset = self.session.query(data_stage01_physiology_rates).filter(data_stage01_physiology_rates.experiment_id.like(experiment_id_I),
+                                                                                     data_stage01_physiology_rates.sample_name_short.like(sns)).delete(synchronize_session=False);
+            elif experiment_id_I:
                 reset = self.session.query(data_stage01_physiology_rates).filter(data_stage01_physiology_rates.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
-                reset = self.session.query(data_stage01_physiology_ratesAverages).delete(synchronize_session=False);
                 reset = self.session.query(data_stage01_physiology_rates).delete(synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);
+    def reset_dataStage01_physiology_ratesAverages(self,experiment_id_I = None,sample_name_abbreviation_I=[],met_id_I=[]):
+        try:
+            if experiment_id_I and sample_name_abbreviation_I and met_id_I:
+                for sns in sample_name_short_I:
+                    for met in met_id_I:
+                        reset = self.session.query(data_stage01_physiology_ratesAverages).filter(data_stage01_physiology_ratesAverages.experiment_id.like(experiment_id_I),
+                                                                                             data_stage01_physiology_ratesAverages.sample_name_abbreviation.like(sna),
+                                                                                             data_stage01_physiology_ratesAverages.met_id.like(met)).delete(synchronize_session=False);
+            elif experiment_id_I and sample_name_abbreviation_I:
+                for sna in sample_name_abbreviation_I:
+                    reset = self.session.query(data_stage01_physiology_ratesAverages).filter(data_stage01_physiology_ratesAverages.experiment_id.like(experiment_id_I),
+                                                                                             data_stage01_physiology_ratesAverages.sample_name_abbreviation.like(sna)).delete(synchronize_session=False);
+            elif experiment_id_I:
+                reset = self.session.query(data_stage01_physiology_ratesAverages).filter(data_stage01_physiology_ratesAverages.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
+            else:
+                reset = self.session.query(data_stage01_physiology_ratesAverages).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);

@@ -237,8 +237,8 @@ class stage02_quantification_io(base_analysis):
                             'svgid':'svg1',
                              'svgcellsize':18,'svgmargin':{ 'top': 200, 'right': 50, 'bottom': 100, 'left': 200 },
                             'svgcolorscale':'quantile',
-                            'svgcolorcategory':'heatmap10',
-                            'svgcolordomain':[0,1],
+                            'svgcolorcategory':'heatmap21',
+                            'svgcolordomain':'min,0,max',
                             'svgcolordatalabel':'value',
                             'svgdatalisttileid':'tile1'};
         svgtileparameters_O = {'tileheader':'heatmap','tiletype':'svg','tileid':"tile2",'rowid':"row2",'colid':"col1",

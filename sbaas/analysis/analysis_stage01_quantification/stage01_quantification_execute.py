@@ -1813,8 +1813,6 @@ class stage01_quantification_execute():
                     ratios_den.append(ratio_den);
                 # plot the data
                 self.matplot.scatterLinePlot(k,k+'_denominator',k+'_numerator',ratios_den,ratios_num,sample_name_abbreviations);
-
-    #TODO:
     def execute_scatterLinePlot_peakInformation(self,experiment_id_I,sample_names_I=[],
                             sample_types_I=['Standard'],
                             component_names_I=[],

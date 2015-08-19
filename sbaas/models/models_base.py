@@ -29,6 +29,38 @@ def make_table(table_name):
     """function to create a table with the default parameters"""
     return Table(table_name, metadata, autoload=True);
 
+def initalize_database(database_I='sbaas',user_I='guest',password_I='guest',privileges_I=['ALL PRIVILEGES'],tables_I=['ALL TABLES'],schema_I='public'):
+    '''create a new database and user'''
+    engine = create_engine("postgres://postgres@/postgres")
+    conn = engine.connect();
+    conn.execute("commit");
+    create_database(conn,database_I);
+    create_user(conn,user_I,password_I,privileges_I,tables_I,schema_I);
+    conn.close();
+    
+def create_database(conn,database_I='sbaas'):
+    """create a new database"""
+    cmd = 'CREATE DATABASE "%s"' %(database_I);
+    conn.execute(cmd);
+
+def create_user(conn,user_I='guest',password_I='guest',privileges_I=['ALL PRIVILEGES'],tables_I=['ALL TABLES'],schema_I='public'):
+    '''create a new user
+    INPUT:
+    user_I = username
+    password_I = password
+    privileges_I = list of priveleges (e.g., ['SELECT','UPDATE','DELETE','INSERT']
+    tables_I = list of tables'''
+
+    privileges = ' '.join(privileges_I);
+    tables = ' '.join(tables_I);
+    cmd = "CREATE USER %s WITH PASSWORD %s" %(user_I,password_I);
+    conn.execute(cmd);
+    conn.commit();
+    cmd = 'GRANT %s SELECT ON %s IN SCHEMA %s TO %s' %(privileges,tables,schema_I,user_I);
+    conn.execute(cmd);
+    conn.commit();
+
+
 def select_table(session_I,select_cmd_I,from_cmd_I,where_cmd_I=None,group_by_cmd_I=None,order_by_cmd_I=None,
                  fetch_I = None, fetch_many_I = 10):
     '''SELECT query for a table
