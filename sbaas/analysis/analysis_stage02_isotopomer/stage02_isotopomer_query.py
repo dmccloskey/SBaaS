@@ -2037,7 +2037,48 @@ class stage02_isotopomer_query(base_analysis):
             return flux_units_O;
         except SQLAlchemyError as e:
             print(e);  
-    # query flux_average, flux_stdev, flux_lb, and flux_ub from data_stage02_isotopomer_fittedNetFluxes   
+    # query flux_average, flux_stdev, flux_lb, and flux_ub from data_stage02_isotopomer_fittedNetFluxes  
+    def get_fluxMinAndMax_simulationID_dataStage02IsotopomerfittedNetFluxes(self,simulation_id_I):
+        '''query the minimum and maximum flux from data_stage02_isotopomer_fittedNetFluxes'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedNetFluxes).filter(
+                    data_stage02_isotopomer_fittedNetFluxes.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedNetFluxes.used_.is_(True)).all();
+            fluxList_O=[];
+            min_flux_O=None;
+            max_flux_O=None;
+            if data: 
+                for d in data:
+                    fluxList_O.append(d.flux);
+                    fluxList_O.append(d.flux_lb);
+                    fluxList_O.append(d.flux_ub);
+                fluxList_O.sort();
+                min_flux_O = min(fluxList_O);
+                max_flux_O = max(fluxList_O)
+            return min_flux_O,max_flux_O;
+        except SQLAlchemyError as e:
+            print(e);   
+    def get_fluxMinAndMax_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedNetFluxes(self,simulation_id_I,simulation_dateAndTime_I):
+        '''query the minimum and maximum flux from data_stage02_isotopomer_fittedNetFluxes'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedNetFluxes).filter(
+                    data_stage02_isotopomer_fittedNetFluxes.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedNetFluxes.simulation_dateAndTime==simulation_dateAndTime_I,
+                    data_stage02_isotopomer_fittedNetFluxes.used_.is_(True)).all();
+            fluxList_O=[];
+            min_flux_O=None;
+            max_flux_O=None;
+            if data: 
+                for d in data:
+                    fluxList_O.append(d.flux);
+                    fluxList_O.append(d.flux_lb);
+                    fluxList_O.append(d.flux_ub);
+                fluxList_O.sort();
+                min_flux_O = min(fluxList_O);
+                max_flux_O = max(fluxList_O)
+            return min_flux_O,max_flux_O;
+        except SQLAlchemyError as e:
+            print(e);   
     def get_flux_simulationIDAndRxnID_dataStage02IsotopomerfittedNetFluxes(self,simulation_id_I,rxn_id_I):
         '''query flux_average, flux_stdev, flux_lb, and flux_ub from data_stage02_isotopomer_fittedNetFluxes'''
         try:

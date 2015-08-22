@@ -622,46 +622,19 @@ class stage02_isotopomer_execute(base_analysis):
                     None);
                 self.session.add(row);
         self.session.commit();
-    def execute_makeIsotopomerSimulation_INCA(self,simulation_id_I, stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
-        '''export a fluxomics experimental data for simulation using INCA'''
-        #Input:
-        #   stationary_I = boolean
-        #                  indicates whether each time-point is written to a separate file, or part of a time-course
-        #   parallel_I = boolean
-        #                  indicates whether multiple tracers were used
-
-        inca = inca_api();
-
-        # get simulation information
-        simulation_info = {};
-        simulation_info = self.stage02_isotopomer_query.get_simulation_simulationID_dataStage02IsotopomerSimulation(simulation_id_I);
-
-        # extract model/mapping info
-        if len(simulation_info['model_id'])>1 or len(simulation_info['mapping_id'])>1:
-            print('multiple model and mapping ids found for the simulation!');
-            print('only the first model/mapping id will be used');
-        # determine if the simulation is a parallel labeling experiment, non-stationary, or both
-        multiple_experiment_ids = False;
-        multiple_snas = False;
-        multiple_time_points = False;
-        if len(simulation_info['experiment_id'])>1 and len(simulation_info['sample_name_abbreviation'])>1:
-            print('multiple experiment_ids and sample_name_abbreviations found for the simulation!')
-            print('only 1 experiment_ids and with multiple sample_name_abbreviations or 1 sample_name_abbreviation with multiple experiments can be specified')
-        elif len(simulation_info['experiment_id'])>1:
-            multiple_experiment_ids = True;
-        elif len(simulation_info['sample_name_abbreviation'])>1:
-            multiple_snas = True;
-        if len(simulation_info['time_point'])>1:
-            multiple_time_points = True;
-
-        if parallel_I and multiple_experiment_ids:
-            inca.make_isotopomerSimulation_parallel_experimentID_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
-        elif parallel_I and multiple_snas:
-            inca.make_isotopomerSimulation_parallel_sna_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
-        else:
-            inca.make_isotopomerSimulation_individual_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
-    def execute_makeNetFluxes(self, simulation_id_I,simulation_dateAndTimes_I=[],normalize_rxn_id_I=None,convert_netRxn2IndividualRxns_I=False):
-        '''Determine the net flux through a reaction'''
+    def execute_makeNetFluxes(self, simulation_id_I,simulation_dateAndTimes_I=[],normalize_rxn_id_I=None,convert_netRxn2IndividualRxns_I=False,
+                              calculate_fluxStdevFromLBAndUB_I=True,calculate_fluxAverageFromLBAndUB_I=True,substitute_zeroFluxForNone_I=True,
+                              lower_bound_I=None,upper_bound_I=None):
+        '''Determine the net flux through a reaction
+        INPUT:
+        normalize_rxn_id_I = rxn_id to normalize all fluxes to
+        conver_netRxn2IndividualRxns_I = break apart lumped reactions into individual reactions
+        calculate_fluxStdevFromLBAndUB_I = substitute the calculated standard deviation with the lb/ub as follows:
+                            (flux_ub_I - flux_lb_I)/4
+        calculate_fluxAverageFromLBAndUB_I = calculate the flux average from the mean of the lb/ub
+        substitute_zeroFluxForNone_I = substitute 0.0 for None
+        lower_bound_I = lower bound for the reaction flux
+        upper_bound_I = upper bound for the reaction flux'''
         
         data_O = [];
         # simulation_dateAndTime
@@ -697,8 +670,11 @@ class stage02_isotopomer_execute(base_analysis):
                         rxn_pair = [];
                         rxn_pair.append(rxn);
             # query the maximum and minimum flux:
-            min_flux,max_flux=None,None
-            min_flux,max_flux = self.stage02_isotopomer_query.get_fluxMinAndMax_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedFluxes(simulation_id_I,simulation_dateAndTime);
+            if not lower_bound_I is None or not upper_bound_I is None:
+                min_flux,max_flux=lower_bound_I,upper_bound_I;
+            else:
+                min_flux,max_flux=None,None
+                min_flux,max_flux = self.stage02_isotopomer_query.get_fluxMinAndMax_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedFluxes(simulation_id_I,simulation_dateAndTime);
             # query the normalized rxn flux
             if normalize_rxn_id_I: 
                 flux_average_norm,flux_stdev_norm,flux_lb_norm,flux_ub_norm,flux_units_norm = None,None,None,None,None;
@@ -722,8 +698,8 @@ class stage02_isotopomer_execute(base_analysis):
                 flux_lb_2 = 0.0
                 flux_ub_1 = 0.0
                 flux_ub_2 = 0.0
-                flux_units_1 = None
-                flux_units_2 = None
+                flux_units_1 = ''
+                flux_units_2 = ''
                 # get the flux data
                 if v[0]:
                     flux_average_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1 = self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndRxnID_dataStage02IsotopomerfittedFluxes(simulation_id_I,simulation_dateAndTime,v[0]);
@@ -742,7 +718,9 @@ class stage02_isotopomer_execute(base_analysis):
                 flux_average,flux_stdev,flux_lb,flux_ub,flux_units = self.calculate_netFlux(flux_average_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
                           flux_average_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,min_flux,max_flux)
                 # correct the flux stdev
-                flux_stdev = self.correct_fluxStdev(flux_lb,flux_ub);
+                if calculate_fluxStdevFromLBAndUB_I: flux_stdev = self.calculate_fluxStdevFromLBAndUB(flux_lb,flux_ub);
+                if calculate_fluxAverageFromLBAndUB_I: flux_average = self.calculate_fluxAverageFromLBAndUB(flux_average,flux_lb,flux_ub);
+                if substitute_zeroFluxForNone_I: flux_average = self.substitute_zeroFluxForNone(flux_average);
                 # record net reaction flux
                 if convert_netRxn2IndividualRxns_I:
                     rxns_O,fluxes_O,fluxes_stdev_O,fluxes_lb_O,fluxes_ub_O,fluxes_units_O = self.convert_netRxn2IndividualRxns(k,flux_average,flux_stdev,flux_lb,flux_ub,flux_units);
@@ -1409,7 +1387,7 @@ class stage02_isotopomer_execute(base_analysis):
         else:
             observable = True;
         return observable;
-    def correct_fluxStdev(self,flux_lb_I,flux_ub_I):
+    def calculate_fluxStdevFromLBAndUB(self,flux_lb_I,flux_ub_I):
         '''Calculate the standard deviation based off of the 95% confidence intervals
         described in doi:0.1016/j.ymben.2013.08.006'''
         flux_stdev = 0.0;
@@ -1418,6 +1396,38 @@ class stage02_isotopomer_execute(base_analysis):
         except TypeError as te:
             print(te);
         return flux_stdev;
+    def calculate_fluxAverageFromLBAndUB(self,flux_I,flux_lb_I,flux_ub_I):
+        '''correct the flux average if it is not within the lb/ub'''
+        flux_average = flux_I;
+        if flux_average and (flux_average < flux_lb_I or flux_average > flux_ub_I):
+            flux_average = numpy.mean([flux_lb_I,flux_ub_I]);
+        return flux_average;
+    def substitute_zeroFluxForNone(self,flux_I):
+        '''substitute 0.0 for None'''
+        flux_average = flux_I;
+        if flux_average == 0.0:
+            flux_average = None;
+        return flux_average;
+    def calculate_fluxLBAndUBFromStdev(self,flux_I,flux_stdev_I):
+        '''Calculate the flux lb and ub using the stdev'''
+        
+        flux_lb,flux_ub = None,None;
+        if flux_I:
+            flux_lb = flux_I - flux_stdev_I;
+            flux_ub = flux_I + flux_stdev_I;
+        elif flux_I==0.0:
+            flux_lb = 0.0;
+            flux_ub = 0.0;
+        return flux_lb,flux_ub
+    def calculate_fluxAverageFromLBAndUB(self,flux_lb_I,flux_ub_I):
+        '''correct the flux average from the lb/ub'''
+
+        flux_average = None
+        flux_lb=flux_lb_I;
+        flux_ub=flux_ub_I;
+        if flux_lb and flux_ub:
+            flux_average = numpy.mean([flux_lb,flux_ub]);
+        return flux_average;
     def calculate_netFlux(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
                           flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
                           lower_bound_I=-1000.0,upper_bound_I=1000.0,tolerance_I=1e-4):
@@ -1430,14 +1440,23 @@ class stage02_isotopomer_execute(base_analysis):
         # calculate the net flux
         flux_average = flux_1-flux_2
         flux_stdev = sqrt(abs(flux_stdev_1*flux_stdev_1-flux_stdev_2*flux_stdev_2))
+        # check the bounds of the fluxes
+        flux_lb_1=self.adjust_fluxToRange(flux_lb_1,0.0,upper_bound_I);
+        flux_lb_2=self.adjust_fluxToRange(flux_lb_2,0.0,upper_bound_I);
+        flux_ub_1=self.adjust_fluxToRange(flux_ub_1,0.0,upper_bound_I);
+        flux_ub_2=self.adjust_fluxToRange(flux_ub_2,0.0,upper_bound_I);
+        #if flux_units_1=='' or not flux_units_2=='':
+        #    print('check');
         # flux 1 and 2 are observable
         if observable_1 and observable_2:
             # note that both fluxes cannot be unbounded
             if flux_1 > upper_bound_I-upper_bound_I*tolerance_I and flux_2 > upper_bound_I-upper_bound_I*tolerance_I:
                 print('both fluxes are unbounded')
-                flux_average = None;
-                flux_lb = lower_bound_I;
-                flux_ub = upper_bound_I;
+                #flux_average = None;
+                #flux_lb = lower_bound_I;
+                #flux_ub = upper_bound_I;
+                flux_lb = flux_lb_1-flux_lb_2
+                flux_ub = flux_ub_1-flux_ub_2
             elif flux_1 > upper_bound_I-upper_bound_I*tolerance_I: # flux 1 is unbounded
                 flux_lb = flux_lb_1-flux_2
                 flux_ub = flux_ub_1-0.0
@@ -1449,54 +1468,54 @@ class stage02_isotopomer_execute(base_analysis):
                 flux_ub = flux_ub_1-flux_ub_2
             flux_units = flux_units_1;
         # flux 1 is observable, flux 2 is not observable, and flux 2 exists
-        elif observable_1 and not observable_2 and flux_units_2:
+        elif observable_1 and not observable_2 and flux_units_2!='':
             flux_lb = flux_lb_1-flux_2
             flux_ub = flux_ub_1-0.0
             flux_units = flux_units_1;
         # flux 2 is observable, flux 1 is not observable, and flux 1 exists
-        elif observable_2 and not observable_1 and flux_units_1:
+        elif observable_2 and not observable_1 and flux_units_1!='':
             flux_lb = flux_1-flux_lb_2
             flux_ub = 0.0-flux_ub_2
             flux_units = flux_units_2;
         # flux 1 is observable, flux 2 is not observable, and there is no flux 2
-        elif observable_1 and not observable_2 and not flux_units_2:
+        elif observable_1 and not observable_2 and flux_units_2=='':
             flux_lb = flux_lb_1
             flux_ub = flux_ub_1
             flux_units = flux_units_1;
         # flux 2 is observable, flux 1 is not observable,, and there is no flux 1
-        elif observable_2 and not observable_1 and not flux_units_1:
+        elif observable_2 and not observable_1 and flux_units_1=='':
             flux_lb = -flux_lb_2
             flux_ub = -flux_ub_2
             flux_units = flux_units_2;
         # flux 1 is not observable, and there is no flux 2
-        elif not observable_1 and not flux_units_2:
+        elif not observable_1 and flux_units_2=='':
             flux_lb = flux_lb_1
             flux_ub = flux_ub_1
             flux_units = flux_units_1;
         # flux 2 is not observable,  and there is no flux 1
-        elif not observable_2 and not flux_units_1:
+        elif not observable_2 and flux_units_1=='':
             flux_lb = -flux_ub_2
             flux_ub = -flux_lb_2
             flux_units = flux_units_2;
         # flux 1 is observable, flux 2 is not observable, and flux 2 exists
-        elif not observable_1 and not observable_2 and flux_units_2:
+        elif not observable_1 and not observable_2 and flux_units_2!='':
             flux_lb = lower_bound_I
             flux_ub = upper_bound_I
             flux_units = flux_units_1;
         # flux 2 is observable, flux 1 is not observable, and flux 1 exists
-        elif not observable_2 and not observable_1 and flux_units_1:
+        elif not observable_2 and not observable_1 and flux_units_1!='':
             flux_lb = lower_bound_I
             flux_ub = upper_bound_I
             flux_units = flux_units_2;
         # flux 1 is not observable and there is no flux 2
-        elif not observable_1 and not flux_units_2:
+        elif not observable_1 and flux_units_2=='':
             flux_lb = flux_lb_1
             flux_ub = flux_ub_1
             #flux_lb = 0.0
             #flux_ub = upper_bound_I
             flux_units = flux_units_1;
         # flux 2 is not observable and there is no flux 1
-        elif not observable_2 and not flux_units_1:
+        elif not observable_2 and flux_units_1=='':
             flux_lb = -flux_ub_2
             flux_ub = -flux_lb_2
             #flux_lb = lower_bound_I
@@ -1513,25 +1532,49 @@ class stage02_isotopomer_execute(base_analysis):
         #    flux_ub = 0.0
         #    flux_units = flux_units_2;
         else:
-            flux_average = None;
+            #flux_average = None;
+            flux_average = 0.0;
             flux_lb = lower_bound_I
             flux_ub = upper_bound_I
             flux_units = 'mmol*gDCW-1*hr-1';
         # check the direction of the lower/upper bounds
+        flux_lb,flux_ub = self.correct_fluxLBAndUBDirection(flux_lb,flux_ub);
+        # check the bounds of the lb/ub
+        flux_lb,flux_ub = self.correct_fluxLBAndUBBounds(flux_lb,flux_ub,lower_bound_I,upper_bound_I);
+        # check the flux
+        ## substitute 0.0 for None or change the flux average if it is not within the lb/ub
+        #if flux_average == 0.0:
+        #    flux_average = None;
+        #elif flux_average and (flux_average < flux_lb or flux_average > flux_ub):
+        #    flux_average = numpy.mean([flux_lb,flux_ub]);
+        return flux_average,flux_stdev,flux_lb,flux_ub,flux_units
+    def correct_fluxLBAndUBDirection(self,flux_lb_I,flux_ub_I):
+        '''correct the lb/ub directions'''
+        flux_lb,flux_ub=flux_lb_I,flux_ub_I
         if flux_lb>flux_ub:
             flux_lb_tmp,flux_ub_tmp = flux_lb,flux_ub;
             flux_lb = flux_ub_tmp;
             flux_ub = flux_lb_tmp;
-        elif flux_lb==0.0 and flux_ub==0.0:
+        return flux_lb,flux_ub;
+    def adjust_fluxToRange(self,flux_I,lower_bound_I,upper_bound_I):
+        '''correct the bounds'''
+        flux = flux_I;
+        if flux < lower_bound_I:
+            flux = lower_bound_I;
+        elif flux > upper_bound_I:
+            flux = upper_bound_I;
+        return flux;
+    def correct_fluxLBAndUBBounds(self,flux_lb_I,flux_ub_I,lower_bound_I,upper_bound_I):
+        '''correct the lb/ub bounds'''
+        flux_lb,flux_ub=flux_lb_I,flux_ub_I
+        if flux_lb==0.0 and flux_ub==0.0:
             flux_lb = lower_bound_I;
             flux_ub = upper_bound_I;
-        # check the flux
-        # substitute 0.0 for None or change the flux average if it is not within the lb/ub
-        if flux_average == 0.0:
-            flux_average = None;
-        elif flux_average and (flux_average < flux_lb or flux_average > flux_ub):
-            flux_average = numpy.mean([flux_lb,flux_ub]);
-        return flux_average,flux_stdev,flux_lb,flux_ub,flux_units
+        #if flux_lb<lower_bound_I:
+        #    flux_lb = lower_bound_I;
+        #if flux_ub>upper_bound_I:
+        #    flux_ub = lower_bound_I;
+        return flux_lb,flux_ub;
     def convert_fragmentAndElements2PositionAndElements(self,fragment_I,element_I):
         '''convert boolean fragment array representation of tracked atom positions to a numerical array representation'''
         positions_O = [];
@@ -1724,7 +1767,7 @@ class stage02_isotopomer_execute(base_analysis):
                 flux_ub_denominator = flux_ub_2;
             ratio_lb=min([flux_lb_numerator/flux_lb_denominator,flux_ub_numerator/flux_ub_denominator])
             ratio_ub=max([flux_lb_numerator/flux_lb_denominator,flux_ub_numerator/flux_ub_denominator])
-            ratio_stdev=self.correct_fluxStdev(ratio_lb,ratio_ub);
+            ratio_stdev=self.calculate_fluxStdevFromLBAndUB(ratio_lb,ratio_ub);
             ratio_units=flux_units_1+'/'+flux_units_2;
         else:
             print('invalid flux_1 or flux_2')
@@ -1822,7 +1865,7 @@ class stage02_isotopomer_execute(base_analysis):
                     split_ub_tmp=flux_ub_1_I[cnt]/split_ub_total;
                 split_lb.append(min([split_lb_tmp,split_ub_tmp]))
                 split_ub.append(max([split_lb_tmp,split_ub_tmp]))
-                split_stdev.append(self.correct_fluxStdev(min([split_lb_tmp,split_ub_tmp]),max([split_lb_tmp,split_ub_tmp])));
+                split_stdev.append(self.calculate_fluxStdevFromLBAndUB(min([split_lb_tmp,split_ub_tmp]),max([split_lb_tmp,split_ub_tmp])));
                 split_units.append('split_fraction');
             else:
                 split.append(0.0);
@@ -2030,6 +2073,46 @@ class stage02_isotopomer_execute(base_analysis):
                 plot.boxAndWhiskersPlot(title_I,xticklabels_I,ylabel_I,xlabel_I,data_I=data_I,mean_I=mean_I,ci_I=ci_I)
         else: 
             return;
+    #INCA
+    def execute_makeIsotopomerSimulation_INCA(self,simulation_id_I, stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
+        '''export a fluxomics experimental data for simulation using INCA'''
+        #Input:
+        #   stationary_I = boolean
+        #                  indicates whether each time-point is written to a separate file, or part of a time-course
+        #   parallel_I = boolean
+        #                  indicates whether multiple tracers were used
+
+        inca = inca_api();
+
+        # get simulation information
+        simulation_info = {};
+        simulation_info = self.stage02_isotopomer_query.get_simulation_simulationID_dataStage02IsotopomerSimulation(simulation_id_I);
+
+        # extract model/mapping info
+        if len(simulation_info['model_id'])>1 or len(simulation_info['mapping_id'])>1:
+            print('multiple model and mapping ids found for the simulation!');
+            print('only the first model/mapping id will be used');
+        # determine if the simulation is a parallel labeling experiment, non-stationary, or both
+        multiple_experiment_ids = False;
+        multiple_snas = False;
+        multiple_time_points = False;
+        if len(simulation_info['experiment_id'])>1 and len(simulation_info['sample_name_abbreviation'])>1:
+            print('multiple experiment_ids and sample_name_abbreviations found for the simulation!')
+            print('only 1 experiment_ids and with multiple sample_name_abbreviations or 1 sample_name_abbreviation with multiple experiments can be specified')
+        elif len(simulation_info['experiment_id'])>1:
+            multiple_experiment_ids = True;
+        elif len(simulation_info['sample_name_abbreviation'])>1:
+            multiple_snas = True;
+        if len(simulation_info['time_point'])>1:
+            multiple_time_points = True;
+
+        if parallel_I and multiple_experiment_ids:
+            inca.make_isotopomerSimulation_parallel_experimentID_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+        elif parallel_I and multiple_snas:
+            inca.make_isotopomerSimulation_parallel_sna_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+        else:
+            inca.make_isotopomerSimulation_individual_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+
     
     # Deprecated
     def execute_makeIsotopomerSimulation_INCA_v1(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):

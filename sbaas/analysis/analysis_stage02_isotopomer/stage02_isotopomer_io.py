@@ -3246,19 +3246,73 @@ class stage02_isotopomer_io(base_analysis):
             # get the flux information for each simulation
             flux_data = [];
             flux_data = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
+            #min_flux,max_flux = None,None;
+            #min_flux,max_flux = self.stage02_isotopomer_query.get_fluxMinAndMax_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id)
             for i,row in enumerate(flux_data):
-                if row['flux']:
+                observable = self.check_observableNetFlux(row['flux'],row['flux_lb'],row['flux_ub']);
+                if not row['flux'] is None:
                     row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
                     row['flux_units'] = row['flux_units'].replace('*','x');
+                    row['flux_lb_stdev'] = row['flux'] - row['flux_stdev'];
+                    row['flux_ub_stdev'] = row['flux'] + row['flux_stdev'];
+                    row['flux_mean'] = numpy.mean([row['flux_lb'],row['flux_ub']]);
+                    if observable: row['observable'] = 'Yes';
+                    else: row['observable'] = 'No';
+                    data_O.append(row);
+                #if not row['flux'] is None and observable:
+                #    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                #    row['flux_units'] = row['flux_units'].replace('*','x');
+                #    row['flux_lb_stdev'] = row['flux'] - row['flux_stdev'];
+                #    row['flux_ub_stdev'] = row['flux'] + row['flux_stdev'];
+                #    row['flux_mean'] = numpy.mean([row['flux_lb'],row['flux_ub']]);
+                #    data_O.append(row);
+                #elif not row['flux'] is None and not observable: 
+                #    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                #    row['flux_units'] = row['flux_units'].replace('*','x');
+                #    row['flux_lb'] = None;
+                #    row['flux_ub'] = None;
+                #    row['flux_mean'] = None;
+                #    data_O.append(row);
+                #elif row['flux']==0.0 and observable:
+                #    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                #    row['flux_units'] = row['flux_units'].replace('*','x');
+                #    row['flux_lb_stdev'] = 0.0;
+                #    row['flux_ub_stdev'] = 0.0;
+                #    row['flux_mean'] = numpy.mean([row['flux_lb'],row['flux_ub']]);
+                #    data_O.append(row);
+                #elif row['flux']==0.0 and not observable:
+                #    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                #    row['flux_units'] = row['flux_units'].replace('*','x');
+                #    row['flux_lb'] = None;
+                #    row['flux_ub'] = None;
+                #    #row['flux_mean'] = None;
+                #    row['flux_lb_stdev'] = None;
+                #    row['flux_ub_stdev'] = None;
+                #    row['flux']=None;
+                #    data_O.append(row);
+                elif row['flux']==0.0:
+                    row['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                    row['flux_units'] = row['flux_units'].replace('*','x');
+                    row['flux_lb_stdev'] = 0.0;
+                    row['flux_ub_stdev'] = 0.0;
+                    row['flux'] = numpy.mean([row['flux_lb'],row['flux_ub']]);
+                    if observable: row['observable'] = 'Yes';
+                    else: row['observable'] = 'No';
                     data_O.append(row);
         # dump chart parameters to a js files
-        data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units'
+        data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units','observable'
                     ];
         data1_nestkeys = ['rxn_id'];
         data1_keymap = {'xdata':'rxn_id',
-                        'ydata':'flux',
+                        #'ydata':'flux',
+                        'ydata':'flux_mean',
                         'ydatalb':'flux_lb',
                         'ydataub':'flux_ub',
+                        #'ydatamin':'min',
+                        #'ydatamax':'max',
+                        'ydataiq1':'flux_lb_stdev',
+                        'ydataiq3':'flux_ub_stdev',
+                        'ydatamedian':'flux',
                         'serieslabel':'simulation_id',
                         'featureslabel':'rxn_id'};
         # make the data object
@@ -3271,7 +3325,7 @@ class stage02_isotopomer_io(base_analysis):
         svgparameters_O = {"svgtype":'boxandwhiskersplot2d_01',"svgkeymap":[data1_keymap,data1_keymap],
                             'svgid':'svg1',
                             "svgmargin":{ 'top': 50, 'right': 350, 'bottom': 50, 'left': 50 },
-                            "svgwidth":500,"svgheight":350,
+                            "svgwidth":750,"svgheight":350,
                             "svgx1axislabel":"rxn_id","svgy1axislabel":"flux",
     						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
         svgtileparameters_O = {'tileheader':'Flux precision','tiletype':'svg','tileid':"tile2",'rowid':"row1",'colid':"col1",
@@ -3325,15 +3379,26 @@ class stage02_isotopomer_io(base_analysis):
         #flux = self.stage02_isotopomer_query.get_rowsEscherFluxList_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id_I);
         flux_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id_I);
         for i,row in enumerate(flux_tmp):
-            if row['flux'] and row['flux'] < 10.0:
+            observable = self.check_observableNetFlux(row['flux'],row['flux_lb'],row['flux_ub']);
+            if not row['flux'] is None and row['flux']!=0.0 and numpy.abs(row['flux']) < 10.0:
                 flux_tmp[i]['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
                 flux_tmp[i]['flux_units'] = self.remove_jsRegularExpressions(row['flux_units']);
+                if observable: flux_tmp[i]['observable'] = 'Yes';
+                else: flux_tmp[i]['observable'] = 'No';
                 flux.append(flux_tmp[i]);
+            elif row['flux']==0.0 and numpy.abs(numpy.mean([row['flux_lb'],row['flux_ub']]))<10.0:
+                flux_tmp[i]['simulation_dateAndTime'] = self.convert_datetime2string(row['simulation_dateAndTime']);
+                flux_tmp[i]['flux_units'] = self.remove_jsRegularExpressions(row['flux_units']);
+                flux_tmp[i]['flux'] = numpy.mean([row['flux_lb'],row['flux_ub']]);
+                if observable: flux_tmp[i]['observable'] = 'Yes';
+                else: flux_tmp[i]['observable'] = 'No';
+                flux.append(flux_tmp[i]);
+
         # Get the map information
         map = [];
         map = iomod.get_rows_modelID_modelsEschermaps('iJO1366');
         # dump chart parameters to a js files
-        data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units'
+        data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units','observable'
                     ];
         data1_nestkeys = ['simulation_id'];
         data1_keymap = {'values':'flux','key':'rxn_id'};
@@ -3445,7 +3510,7 @@ class stage02_isotopomer_io(base_analysis):
         svgparameters1_O = {"svgtype":'horizontalbarschart2d_01',"svgkeymap":[data1_keymap],
                             'svgid':'svg1',
                             "svgmargin":{ 'top': 50, 'right': 250, 'bottom': 50, 'left': 50 },
-                            "svgwidth":350,"svgheight":500,
+                            "svgwidth":350,"svgheight":900,
                             "svgx1axislabel":"flux_distance","svgy1axislabel":"rxn_id",
     						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
         svgtileparameters1_O = {'tileheader':'Flux distance','tiletype':'svg','tileid':"tile1",'rowid':"row2",'colid':"col1",
@@ -3455,7 +3520,7 @@ class stage02_isotopomer_io(base_analysis):
         svgparameters2_O = {"svgtype":'horizontalbarschart2d_01',"svgkeymap":[data2_keymap],
                             'svgid':'svg2',
                             "svgmargin":{ 'top': 50, 'right': 250, 'bottom': 50, 'left': 50 },
-                            "svgwidth":350,"svgheight":500,
+                            "svgwidth":350,"svgheight":900,
                             "svgx1axislabel":"fold_change","svgy1axislabel":"rxn_id",
     						'svgformtileid':'filtermenu1','svgresetbuttonid':'reset1','svgsubmitbuttonid':'submit1'};
         svgtileparameters2_O = {'tileheader':'Fold change','tiletype':'svg','tileid':"tile2",'rowid':"row2",'colid':"col2",
@@ -3493,3 +3558,16 @@ class stage02_isotopomer_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
+    def check_observableNetFlux(self,flux_I,flux_lb_I,flux_ub_I):
+        '''Determine if a flux is observable
+        based on the criteria in doi:10.1016/j.ymben.2010.11.006'''
+        if not flux_I:
+            flux_I = 0.0;
+        flux_span = max([flux_ub_I,flux_lb_I])-min([flux_ub_I,flux_lb_I]);
+        if flux_I==0.0 and flux_lb_I==0.0 and flux_ub_I==0.0:
+            observable = False;
+        elif abs(flux_span) > 4*abs(flux_I):
+            observable = False;
+        else:
+            observable = True;
+        return observable;
