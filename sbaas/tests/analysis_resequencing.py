@@ -43,40 +43,40 @@ def data_stage00(session):
 def data_stage01(session):
 
     execute01 = stage01_resequencing_execute(session);
-    #execute01.drop_dataStage01();
-    #execute01.initialize_dataStage01();
-    #execute01.reset_dataStage01('ALEsKOs01');
+    execute01.drop_dataStage01();
+    execute01.initialize_dataStage01();
+    execute01.reset_dataStage01('ALEsKOs01');
 
-    #'''data import'''
-    #io = stage01_resequencing_io(session);
-    ## import resequencing data from breseq
-    #iobase = base_importData();
-    #iobase.read_csv('data/tests/analysis_resequencing/140823_Resequencing_ALEsKOs01_fileList01.csv');
-    #fileList = iobase.data;
-    ## read in each data file
-    #for file in fileList:
-    #    print('importing resequencing data for sample ' + file['sample_name'])
-    #    io.import_resequencingData_add(file['filename'],file['experiment_id'],file['sample_name']);
-    #iobase.clear_data();
+    '''data import'''
+    io = stage01_resequencing_io(session);
+    # import resequencing data from breseq
+    iobase = base_importData();
+    iobase.read_csv('data/tests/analysis_resequencing/140823_Resequencing_ALEsKOs01_fileList01.csv');
+    fileList = iobase.data;
+    # read in each data file
+    for file in fileList:
+        print('importing resequencing data for sample ' + file['sample_name'])
+        io.import_resequencingData_add(file['filename'],file['experiment_id'],file['sample_name']);
+    iobase.clear_data();
 
-    #'''data analysis'''
-    #execute01.reset_dataStage01_filtered('ALEsKOs01');
-    #execute01.execute_filterMutations_population('ALEsKOs01');
-    #execute01.execute_annotateFilteredMutations('ALEsKOs01',
-    #                ref_genome_I='data/U00096.2.gb',
-    #                ref_I = 'genbank',biologicalmaterial_id_I='MG1655')
-    #execute01.reset_dataStage01_lineage('ALEsKOs01')
-    #execute01.execute_analyzeLineage_population('ALEsKOs01',
-    #                                     strain_lineages());
-    #execute01.execute_annotateMutations_lineage('ALEsKOs01');
-    #execute01.reset_dataStage01_endpoints('ALEsKOs01')
-    #execute01.execute_analyzeEndpointReplicates_population('ALEsKOs01',
-    #                                     {"evo04tpiA":["140807_11_OxicEvo04tpiAEvo01EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1",
-    #                                                 "140807_11_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1"],
-    #                                    });
-    #execute01.execute_annotateMutations_endpoints('ALEsKOs01');
-    #execute01.reset_dataStage01_mutationsAnnotated('ALEsKOs01');
-    #execute01.execute_annotateFilteredMutations('ALEsKOs01');
+    '''data analysis'''
+    execute01.reset_dataStage01_filtered('ALEsKOs01');
+    execute01.execute_filterMutations_population('ALEsKOs01');
+    execute01.execute_annotateFilteredMutations('ALEsKOs01',
+                    ref_genome_I='data/U00096.2.gb',
+                    ref_I = 'genbank',biologicalmaterial_id_I='MG1655')
+    execute01.reset_dataStage01_lineage('ALEsKOs01')
+    execute01.execute_analyzeLineage_population('ALEsKOs01',
+                                         strain_lineages());
+    execute01.execute_annotateMutations_lineage('ALEsKOs01');
+    execute01.reset_dataStage01_endpoints('ALEsKOs01')
+    execute01.execute_analyzeEndpointReplicates_population('ALEsKOs01',
+                                         {"evo04tpiA":["140807_11_OxicEvo04tpiAEvo01EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04tpiAEvo02EPEcoliGlcM9_Broth-1",
+                                                     "140807_11_OxicEvo04tpiAEvo03EPEcoliGlcM9_Broth-1","140807_11_OxicEvo04tpiAEvo04EPEcoliGlcM9_Broth-1"],
+                                        });
+    execute01.execute_annotateMutations_endpoints('ALEsKOs01');
+    execute01.reset_dataStage01_mutationsAnnotated('ALEsKOs01');
+    execute01.execute_annotateFilteredMutations('ALEsKOs01');
     execute01.reset_dataStage01_resequencing_heatmap('ALEsKOs01_evo04tpiA_0_11_heatmap');
     execute01.reset_dataStage01_resequencing_dendrogram('ALEsKOs01_evo04tpiA_0_11_heatmap');
     execute01.execute_heatmap('ALEsKOs01_evo04tpiA_0_11_heatmap',mutation_id_exclusion_list=['MOB_insA-/-uspC_1977510',

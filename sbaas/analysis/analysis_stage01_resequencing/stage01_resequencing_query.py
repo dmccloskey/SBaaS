@@ -3,15 +3,12 @@ import json
 
 class stage01_resequencing_query(base_analysis):
     # query sample names from data_stage01_resequencing_metadata
-    def get_sampleNames_experimentID_dataStage01ResequencingMetadata(self,experiment_id_I,exp_type_I=8):
+    def get_sampleNames_experimentID_dataStage01ResequencingMetadata(self,experiment_id_I):
         '''Query samples names from resequencing metadata'''
         try:
             sample_names = self.session.query(data_stage01_resequencing_metadata.experiment_id,
                     data_stage01_resequencing_metadata.sample_name).filter(
-                    data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I),
-                    experiment.id.like(experiment_id_I),
-                    experiment.exp_type_id == exp_type_I,
-                    experiment.sample_name.like(data_stage01_resequencing_metadata.sample_name)).order_by(
+                    data_stage01_resequencing_metadata.experiment_id.like(experiment_id_I)).order_by(
                     data_stage01_resequencing_metadata.sample_name.asc()).all();
             sample_names_O = [];
             for sn in sample_names: 
@@ -547,7 +544,7 @@ class stage01_resequencing_query(base_analysis):
             return data_O;
         except SQLAlchemyError as e:
             print(e);
-    # query mutation information from data_stage01_resequencing_lineage
+    # query mutation information from data_stage01_resequencing_mutationsAnnotated
     def get_mutationData_experimentIDAndSampleName_dataStage01ResequencingMutationsAnnotated(self,experiment_id_I,sample_name_I):
         '''Query mutation information from resequencing lineage'''
         try:

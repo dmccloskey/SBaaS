@@ -1,6 +1,7 @@
 from sbaas.analysis.analysis_base import *
 
 class stage00_query(base_analysis):
+    #standards
     def get_structureFile_standards(self,met_id_I):
         '''Querry structure file and extension from metabolomics standards'''
         try:
@@ -18,7 +19,6 @@ class stage00_query(base_analysis):
             return struct_file_O, struct_file_ext_O
         except SQLAlchemyError as e:
             print(e);
-
     def get_exactMassAndFormula_standards(self,met_id_I):
         '''Querry exact mass and formula from metabolomics standards'''
         try:
@@ -36,7 +36,7 @@ class stage00_query(base_analysis):
             return mass_O, formula_O
         except SQLAlchemyError as e:
             print(e);
-
+    #MScomponents
     def get_Q1AndQ3MassAndMode_MSComponents(self,met_id_I):
         '''Querry q1 mass, q3 mass, and ms_mode from ms_components'''
         try:
@@ -58,7 +58,6 @@ class stage00_query(base_analysis):
             return mscomponents_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_row_MSComponents(self,met_id_I,ms_mode_I,ms_methodtype_I):
         '''Querry row from ms_components by met_id, ms_mode, and ms_methodtype'''
         try:
@@ -132,7 +131,6 @@ class stage00_query(base_analysis):
             return mscomponents_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_row_MSComponents_metIDAndFormula(self,met_id_I,precursor_formula_I,
                                              product_formula_I,ms_methodtype_I):
         '''Querry row from ms_components by met_id, precursor_formula, product_formula'''
@@ -208,7 +206,139 @@ class stage00_query(base_analysis):
             return mscomponents_O[0];
         except SQLAlchemyError as e:
             print(e);
-
+    #sample
+    def get_calibratorIDAndLevel_sampleNameAndSampleType_sample(self,sample_name_I,sample_type_I):
+        '''Querry calibrator id and level from metabolomics sample'''
+        try:
+            calibratorInfo = self.session.query(sample.calibrator_id,
+                    sample.calibrator_level).filter(
+                    sample.sample_name.like(sample_name_I),
+                    sample.sample_type.like(sample_type_I)).all();
+            id_O = None;
+            level_O = None;
+            if calibratorInfo:
+                id_O = calibratorInfo[0][0];
+                level_O = calibratorInfo[0][1];
+            else: 
+                print('no calibrator id nor level found for sample_name/sample_type ' + sample_name_I + ' / ' + sample_type_I);
+            return id_O, level_O
+        except SQLAlchemyError as e:
+            print(e);
+    #calibratorsAndMixes
+    def get_calibratorConcentrationAndUnit_metIDAndCalibratorIDAndLevel_calibratorConcentrations(self, met_id_I, calibrator_id_I, calibrator_level_I):
+        '''Querry calibrator id and level from metabolomics sample'''
+        concentration_O = 0.0;
+        unit_O = None;
+        # 1. query the calibrator id for the metabolite
+        try:
+            calibratorID = self.session.query(
+                    calibrator2mix.calibrator_id).filter(
+                    mix2met_id.met_id.like(met_id_I),
+                    mix2met_id.mix_id.like(calibrator2mix.mix_id)).all();
+            calibrator_id_O = None;
+            if calibratorID:
+                calibrator_id_O = calibratorID[0][0];
+            else: 
+                print('no calibrator ID nor unit found for met_id ' + met_id_I);
+        except SQLAlchemyError as e:
+            print(e);
+        # 2. check if the calibrator id matches
+        if calibrator_id_O == calibrator_id_I:
+            # 3. query the concentration and units
+            try:
+                calibratorInfo = self.session.query(
+                        calibrator_concentrations.calibrator_concentration,
+                        calibrator_concentrations.concentration_units).filter(
+                        calibrator_concentrations.met_id.like(met_id_I),
+                        calibrator_concentrations.calibrator_level == calibrator_level_I).all();
+                if calibratorInfo:
+                    concentration_O = calibratorInfo[0][0];
+                    unit_O = calibratorInfo[0][1];
+                else: 
+                    print('no calibrator concentration nor unit found for met_id/calibrator_id/calibrator_level ' + met_id_I + ' / ' + str(calibrator_id_I) + ' / ' + str(calibrator_level_I));
+                return concentration_O, unit_O
+            except SQLAlchemyError as e:
+                print(e);
+        else: 
+            return concentration_O, unit_O
+    #acquisitionMethod
+    def get_acqusitionMethod(self,lc_method_I,ms_mode_I,ms_methodtype_I):
+        '''Querry acqusition method (i.e., join tables lc_elution and ms_components)'''
+        try:
+            mscomponents = self.session.query(MS_components.component_name, 
+                    MS_components.met_id, 
+                    MS_components.met_name, 
+                    MS_components.q1_mass, 
+                    MS_components.q3_mass, 
+                    MS_components.dp, 
+                    MS_components.ep, 
+                    MS_components.ce, 
+                    MS_components.cxp, 
+                    MS_components.precursor_formula, 
+                    MS_components.product_formula, 
+                    MS_components.quantifier, 
+                    MS_components.ms_group, 
+                    MS_components.threshold, 
+                    MS_components.dwell_weight, 
+                    lc_elution.rt, 
+                    lc_elution.ms_window, 
+                    lc_elution.rt_units, 
+                    lc_elution.window_units).filter(
+                    lc_elution.lc_method_id.like(lc_method_I),
+                    MS_components.ms_mode.like(ms_mode_I),
+                    MS_components.ms_methodtype.like(ms_methodtype_I),
+                    MS_components.met_id.like(lc_elution.met_id),
+                    MS_components.ms_include).group_by( # query only components that are included in the method
+                    MS_components.component_name, 
+                    MS_components.met_id, 
+                    MS_components.met_name, 
+                    MS_components.q1_mass, 
+                    MS_components.q3_mass, 
+                    MS_components.dp, 
+                    MS_components.ep, 
+                    MS_components.ce, 
+                    MS_components.cxp, 
+                    MS_components.precursor_formula, 
+                    MS_components.product_formula, 
+                    MS_components.quantifier, 
+                    MS_components.ms_group, 
+                    MS_components.threshold, 
+                    MS_components.dwell_weight, 
+                    lc_elution.rt, 
+                    lc_elution.ms_window, 
+                    lc_elution.rt_units, 
+                    lc_elution.window_units).order_by(
+                    lc_elution.rt.asc(),
+                    MS_components.component_name.asc()).all();
+            mscomponents_O = [];
+            if not mscomponents:
+                print('bad query for row in ms_components: ')
+                print('lc_method_I: ' + lc_method_I + ', ms_mode_I: ' + ms_mode_I + ', ms_methodtype_I: ' + ms_methodtype_I);
+                exit(-1)
+            for msc in mscomponents: 
+                mscomponents_1 = {};
+                mscomponents_1["q1_mass"] = msc.q1_mass;
+                mscomponents_1["q3_mass"] = msc.q3_mass;
+                mscomponents_1["met_name"] = msc.met_name;
+                mscomponents_1["dp"] = msc.dp;
+                mscomponents_1["ep"] = msc.ep;
+                mscomponents_1["ce"] = msc.ce;
+                mscomponents_1["cxp"] = msc.cxp;
+                mscomponents_1["quantifier"] = msc.quantifier;
+                mscomponents_1["met_id"] = msc.met_id;
+                mscomponents_1["ms_group"] = msc.ms_group;
+                mscomponents_1["threshold"] = msc.threshold;
+                mscomponents_1["dwell_weight"] = msc.dwell_weight;
+                mscomponents_1["component_name"] = msc.component_name;
+                mscomponents_1["rt"] = msc.rt;
+                mscomponents_1["ms_window"] = msc.ms_window;
+                mscomponents_1["rt_units"] = msc.rt_units;
+                mscomponents_1["window_units"] = msc.window_units;
+                mscomponents_O.append(mscomponents_1);
+            return mscomponents_O;
+        except SQLAlchemyError as e:
+            print(e);
+    #experiment
     def get_nMaxBioReps_sampleDescription(self,experiment_id_I):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
@@ -228,7 +358,6 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_batchFileInfo_experimentID(self,experiment_id_I,sample_type_I):
         '''Query data from experiment and sample for batch file'''
         try:
@@ -332,7 +461,6 @@ class stage00_query(base_analysis):
             return data_O;
         except SQLAlchemyError as e:
             print(e);
-
     def delete_sample_experimentIDAndSampleID_experiment(self,dataListDelete_I):
         '''Delete specific samples from an experiment by their sample ID from experiment'''
         deletes = [];
@@ -350,7 +478,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
     def delete_sample_experimentIDAndSampleID_sample(self,dataListDelete_I):
         '''Delete specific samples from an experiment by their sample ID from sample'''
         deletes = [];
@@ -368,7 +495,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
     def delete_sample_experimentIDAndSampleID_sampleDescription(self,dataListDelete_I):
         '''Delete specific samples from an experiment by their sample ID from sample_description'''
         deletes = [];
@@ -387,7 +513,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
     def delete_sample_experimentIDAndSampleID_sampleStorage(self,dataListDelete_I):
         '''Delete specific samples from an experiment by their sample ID from sample_storage'''
         deletes = [];
@@ -406,7 +531,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
     def delete_sample_experimentIDAndSampleID_samplePhysiologicalParameters(self,dataListDelete_I):
         '''Delete specific samples from an experiment by their sample ID from sample_physiologicalparameters'''
         deletes = [];
@@ -425,139 +549,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
-    def get_calibratorIDAndLevel_sampleNameAndSampleType_sample(self,sample_name_I,sample_type_I):
-        '''Querry calibrator id and level from metabolomics sample'''
-        try:
-            calibratorInfo = self.session.query(sample.calibrator_id,
-                    sample.calibrator_level).filter(
-                    sample.sample_name.like(sample_name_I),
-                    sample.sample_type.like(sample_type_I)).all();
-            id_O = None;
-            level_O = None;
-            if calibratorInfo:
-                id_O = calibratorInfo[0][0];
-                level_O = calibratorInfo[0][1];
-            else: 
-                print('no calibrator id nor level found for sample_name/sample_type ' + sample_name_I + ' / ' + sample_type_I);
-            return id_O, level_O
-        except SQLAlchemyError as e:
-            print(e);
-
-    def get_calibratorConcentrationAndUnit_metIDAndCalibratorIDAndLevel_calibratorConcentrations(self, met_id_I, calibrator_id_I, calibrator_level_I):
-        '''Querry calibrator id and level from metabolomics sample'''
-        concentration_O = 0.0;
-        unit_O = None;
-        # 1. query the calibrator id for the metabolite
-        try:
-            calibratorID = self.session.query(
-                    calibrator2mix.calibrator_id).filter(
-                    mix2met_id.met_id.like(met_id_I),
-                    mix2met_id.mix_id.like(calibrator2mix.mix_id)).all();
-            calibrator_id_O = None;
-            if calibratorID:
-                calibrator_id_O = calibratorID[0][0];
-            else: 
-                print('no calibrator ID nor unit found for met_id ' + met_id_I);
-        except SQLAlchemyError as e:
-            print(e);
-        # 2. check if the calibrator id matches
-        if calibrator_id_O == calibrator_id_I:
-            # 3. query the concentration and units
-            try:
-                calibratorInfo = self.session.query(
-                        calibrator_concentrations.calibrator_concentration,
-                        calibrator_concentrations.concentration_units).filter(
-                        calibrator_concentrations.met_id.like(met_id_I),
-                        calibrator_concentrations.calibrator_level == calibrator_level_I).all();
-                if calibratorInfo:
-                    concentration_O = calibratorInfo[0][0];
-                    unit_O = calibratorInfo[0][1];
-                else: 
-                    print('no calibrator concentration nor unit found for met_id/calibrator_id/calibrator_level ' + met_id_I + ' / ' + str(calibrator_id_I) + ' / ' + str(calibrator_level_I));
-                return concentration_O, unit_O
-            except SQLAlchemyError as e:
-                print(e);
-        else: 
-            return concentration_O, unit_O
-
-    def get_acqusitionMethod(self,lc_method_I,ms_mode_I,ms_methodtype_I):
-        '''Querry acqusition method (i.e., join tables lc_elution and ms_components)'''
-        try:
-            mscomponents = self.session.query(MS_components.component_name, 
-                    MS_components.met_id, 
-                    MS_components.met_name, 
-                    MS_components.q1_mass, 
-                    MS_components.q3_mass, 
-                    MS_components.dp, 
-                    MS_components.ep, 
-                    MS_components.ce, 
-                    MS_components.cxp, 
-                    MS_components.precursor_formula, 
-                    MS_components.product_formula, 
-                    MS_components.quantifier, 
-                    MS_components.ms_group, 
-                    MS_components.threshold, 
-                    MS_components.dwell_weight, 
-                    lc_elution.rt, 
-                    lc_elution.ms_window, 
-                    lc_elution.rt_units, 
-                    lc_elution.window_units).filter(
-                    lc_elution.lc_method_id.like(lc_method_I),
-                    MS_components.ms_mode.like(ms_mode_I),
-                    MS_components.ms_methodtype.like(ms_methodtype_I),
-                    MS_components.met_id.like(lc_elution.met_id),
-                    MS_components.ms_include).group_by( # query only components that are included in the method
-                    MS_components.component_name, 
-                    MS_components.met_id, 
-                    MS_components.met_name, 
-                    MS_components.q1_mass, 
-                    MS_components.q3_mass, 
-                    MS_components.dp, 
-                    MS_components.ep, 
-                    MS_components.ce, 
-                    MS_components.cxp, 
-                    MS_components.precursor_formula, 
-                    MS_components.product_formula, 
-                    MS_components.quantifier, 
-                    MS_components.ms_group, 
-                    MS_components.threshold, 
-                    MS_components.dwell_weight, 
-                    lc_elution.rt, 
-                    lc_elution.ms_window, 
-                    lc_elution.rt_units, 
-                    lc_elution.window_units).order_by(
-                    lc_elution.rt.asc(),
-                    MS_components.component_name.asc()).all();
-            mscomponents_O = [];
-            if not mscomponents:
-                print('bad query for row in ms_components: ')
-                print('lc_method_I: ' + lc_method_I + ', ms_mode_I: ' + ms_mode_I + ', ms_methodtype_I: ' + ms_methodtype_I);
-                exit(-1)
-            for msc in mscomponents: 
-                mscomponents_1 = {};
-                mscomponents_1["q1_mass"] = msc.q1_mass;
-                mscomponents_1["q3_mass"] = msc.q3_mass;
-                mscomponents_1["met_name"] = msc.met_name;
-                mscomponents_1["dp"] = msc.dp;
-                mscomponents_1["ep"] = msc.ep;
-                mscomponents_1["ce"] = msc.ce;
-                mscomponents_1["cxp"] = msc.cxp;
-                mscomponents_1["quantifier"] = msc.quantifier;
-                mscomponents_1["met_id"] = msc.met_id;
-                mscomponents_1["ms_group"] = msc.ms_group;
-                mscomponents_1["threshold"] = msc.threshold;
-                mscomponents_1["dwell_weight"] = msc.dwell_weight;
-                mscomponents_1["component_name"] = msc.component_name;
-                mscomponents_1["rt"] = msc.rt;
-                mscomponents_1["ms_window"] = msc.ms_window;
-                mscomponents_1["rt_units"] = msc.rt_units;
-                mscomponents_1["window_units"] = msc.window_units;
-                mscomponents_O.append(mscomponents_1);
-            return mscomponents_O;
-        except SQLAlchemyError as e:
-            print(e);
-
     def delete_sample_experimentID_experiment(self,dataListDelete_I):
         '''Delete samples from an experiment from experiment'''
         deletes = [];
@@ -573,7 +564,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-
     def delete_sample_experimentID_sample(self,dataListDelete_I):
         '''Delete an experiment from sample'''
         deletes = [];
@@ -590,7 +580,6 @@ class stage00_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
-  
     def get_nMaxBioReps_experimentIDAndSampleName_sampleDescription(self,experiment_id_I,sample_name_I):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
@@ -611,7 +600,6 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_nMaxBioReps_experimentIDAndSampleID_sampleDescription(self,experiment_id_I,sample_id_I):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
@@ -633,7 +621,6 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_nMaxBioReps_experimentIDAndSampleNameAbbreviation_sampleDescription(self,experiment_id_I,sample_name_abbreviation_I):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
@@ -656,7 +643,6 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_nMaxBioReps_experimentIDAndSampleNameAbbreviationAndExpType_sampleDescription(self,experiment_id_I,sample_name_abbreviation_I,exp_type_I):
         '''Query the maximum number of biological replicates corresponding to a given experiment'''
         try:
@@ -680,7 +666,6 @@ class stage00_query(base_analysis):
             return maxBioReps_O;
         except SQLAlchemyError as e:
             print(e);
-       
     def get_sampleIDs_experimentID_experiment(self,experiment_id_I):
         '''Querry sample IDs that are used from the experiment'''
         try:
@@ -694,7 +679,6 @@ class stage00_query(base_analysis):
             return sample_names_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_sampleNameAbbreviation_experimentIDAndSampleID(self,experiment_id_I,sample_id_I):
         '''Querry sample name abbreviation from the experiment'''
         try:
@@ -710,7 +694,6 @@ class stage00_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_sampleNameAbbreviation_experimentIDAndSampleName(self,experiment_id_I,sample_name_I):
         '''Querry sample name abbreviation from the experiment'''
         try:
@@ -726,7 +709,6 @@ class stage00_query(base_analysis):
             return sample_name_abbreviations_O;
         except SQLAlchemyError as e:
             print(e);
-
     def get_sampleLabelAndBoxAndPos_experimentIDAndExperimentTypeID_sampleStorage(self,experiment_id_I,exp_type_id_I):
         '''Querry sample name abbreviation from the experiment'''
         try:

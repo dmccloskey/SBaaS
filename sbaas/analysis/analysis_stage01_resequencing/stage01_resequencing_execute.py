@@ -888,8 +888,6 @@ class stage01_resequencing_execute():
             data_stage01_resequencing_amplifications.__table__.drop(engine,True);
             data_stage01_resequencing_amplificationStats.__table__.drop(engine,True);
             data_stage01_resequencing_amplificationAnnotations.__table__.drop(engine,True);
-            data_stage01_rnasequencing_fpkmTracking.__table__.drop(engine,True);
-            data_stage01_rnasequencing_geneExpDiff.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
@@ -919,6 +917,26 @@ class stage01_resequencing_execute():
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);
+    def initialize_dataStage01(self):
+        try:
+            data_stage01_resequencing_metadata.__table__.create(engine,True);
+            data_stage01_resequencing_mutations.__table__.create(engine,True);
+            data_stage01_resequencing_evidence.__table__.create(engine,True);
+            data_stage01_resequencing_validation.__table__.create(engine,True);
+            data_stage01_resequencing_mutationsFiltered.__table__.create(engine,True);
+            data_stage01_resequencing_lineage.__table__.create(engine,True);
+            data_stage01_resequencing_endpoints.__table__.create(engine,True);
+            data_stage01_resequencing_mutationsAnnotated.__table__.create(engine,True);
+            data_stage01_resequencing_analysis.__table__.create(engine,True);
+            data_stage01_resequencing_heatmap.__table__.create(engine,True);
+            data_stage01_resequencing_dendrogram.__table__.create(engine,True);
+            data_stage01_resequencing_coverage.__table__.create(engine,True);
+            data_stage01_resequencing_coverageStats.__table__.create(engine,True);
+            data_stage01_resequencing_amplifications.__table__.create(engine,True);
+            data_stage01_resequencing_amplificationStats.__table__.create(engine,True);
+            data_stage01_resequencing_amplificationAnnotations.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
     def reset_dataStage01_mutationsAnnotated(self,experiment_id_I = None):
         try:
             if experiment_id_I:
@@ -944,28 +962,6 @@ class stage01_resequencing_execute():
             else:
                 reset = self.session.query(data_stage01_resequencing_dendrogram).delete(synchronize_session=False);
             self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def initialize_dataStage01(self):
-        try:
-            data_stage01_resequencing_metadata.__table__.create(engine,True);
-            data_stage01_resequencing_mutations.__table__.create(engine,True);
-            data_stage01_resequencing_evidence.__table__.create(engine,True);
-            data_stage01_resequencing_validation.__table__.create(engine,True);
-            data_stage01_resequencing_mutationsFiltered.__table__.create(engine,True);
-            data_stage01_resequencing_lineage.__table__.create(engine,True);
-            data_stage01_resequencing_endpoints.__table__.create(engine,True);
-            data_stage01_resequencing_mutationsAnnotated.__table__.create(engine,True);
-            data_stage01_resequencing_analysis.__table__.create(engine,True);
-            data_stage01_resequencing_heatmap.__table__.create(engine,True);
-            data_stage01_resequencing_dendrogram.__table__.create(engine,True);
-            data_stage01_resequencing_coverage.__table__.create(engine,True);
-            data_stage01_resequencing_coverageStats.__table__.create(engine,True);
-            data_stage01_resequencing_amplifications.__table__.create(engine,True);
-            data_stage01_resequencing_amplificationStats.__table__.create(engine,True);
-            data_stage01_resequencing_amplificationAnnotations.__table__.create(engine,True);
-            data_stage01_rnasequencing_fpkmTracking.__table__.create(engine,True);
-            data_stage01_rnasequencing_geneExpDiff.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01_metadataAndmutationsAndEvidenceAndValidation(self,experiment_id_I = None):
@@ -1064,29 +1060,6 @@ class stage01_resequencing_execute():
                 reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).filter(data_stage01_resequencing_amplificationAnnotations.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
             else:
                 reset = self.session.query(data_stage01_resequencing_amplificationAnnotations).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_rnasequencing_fpkmTracking(self,experiment_id_I = None, sample_names_I=[]):
-        try:
-            if experiment_id_I and sample_names_I:
-                for sn in sample_names_I:
-                    reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(
-                        data_stage01_rnasequencing_fpkmTracking.experiment_id.like(experiment_id_I),
-                        data_stage01_rnasequencing_fpkmTracking.sample_name.like(sn)).delete(synchronize_session=False);
-            elif experiment_id_I:
-                reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).filter(data_stage01_rnasequencing_fpkmTracking.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_rnasequencing_fpkmTracking).delete(synchronize_session=False);
-            self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def reset_dataStage01_rnasequencing_geneExpDiff(self,analysis_id_I = None):
-        try:
-            if analysis_id_I:
-                reset = self.session.query(data_stage01_rnasequencing_geneExpDiff).filter(data_stage01_rnasequencing_geneExpDiff.analysis_id.like(analysis_id_I)).delete(synchronize_session=False);
-            else:
-                reset = self.session.query(data_stage01_rnasequencing_geneExpDiff).delete(synchronize_session=False);
             self.session.commit();
         except SQLAlchemyError as e:
             print(e);

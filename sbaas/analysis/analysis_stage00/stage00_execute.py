@@ -1120,7 +1120,6 @@ class stage00_execute(base_analysis):
             experiment_types.__table__.create(engine,True);
             experiment.__table__.create(engine,True);
             data_versions.__table__.create(engine,True);
-            material.__table__.create(engine,True);
             biologicalMaterial_storage.__table__.create(engine,True);
             biologicalMaterial_description.__table__.create(engine,True);
             biologicalMaterial_geneReferences.__table__.create(engine,True);

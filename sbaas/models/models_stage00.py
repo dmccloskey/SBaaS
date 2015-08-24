@@ -382,6 +382,7 @@ class calibrator_levels(Base):
     dilution_concentration = Column(Float)
     __table_args__ = (PrimaryKeyConstraint('calibrator_level'),
             )
+
 #MS_components
 class MS_components(Base):
     #__table__ = make_table('ms_components')
@@ -1114,62 +1115,4 @@ class models_lumpedRxns(Base):
         self.rxn_id=rxn_id_I
         self.reactions=reactions_I
         self.stoichiometry=stoichiometry_I
-
-#Project
-#class project(Base):
-#    __tablename__ = 'project'
-#    id = Column(Integer, Sequence('project_id'),primary_key=True)
-#    project_id=Column(String(50),nullable=False); #1
-#    analysis_result_id = Column(String(500));
-#    analysis_id = Column(String(500));
-#    analysis_type = Column(String(100)); # time-course (i.e., multiple time points), paired (i.e., control compared to multiple replicates), group (i.e., single grouping of samples).
-#    analysis_method = Column(String(100)); #table identifier
-#    simulation_id = Column(String(500))
-#    simulation_dateAndTime = Column(DateTime);
-#    simulation_type = Column(String(50)); # sampling, fva, sra, fba, fba-loopless, pfba, etc.
-#    model_id = Column(String(50))
-#    experiment_type=Column(Integer); #2a
-#    experiment_id=Column(String(50)); #2
-#    sample_id=Column(String(500));
-#    sample_name_abbreviation = Column(String(100));
-#    sample_replicate = Column(Integer);
-#    sample_dateAndTime = Column(DateTime);
-#    time_point = Column(String(10));
-    
-#    __table_args__ = (
-#            UniqueConstraint('project_id','analysis_id','analysis_method'),
-#            )
-
-#    def __init__(self,exp_type_id_I,id_I,sample_name_I,
-#                 experimentor_id_I,extraction_method_id_I,
-#                 acquisition_method_id_I,quantitation_method_id_I,
-#                 internal_standard_id_I):
-#        self.exp_type_id=exp_type_id_I;
-#        self.id=id_I;
-#        self.sample_name=sample_name_I;
-#        self.experimentor_id=experimentor_id_I;
-#        self.extraction_method_id=extraction_method_id_I;
-#        self.acquisition_method_id=acquisition_method_id_I;
-#        self.quantitation_method_id=quantitation_method_id_I;
-#        self.internal_standard_id=internal_standard_id_I;
-#    #TODO:
-#    #define relations
-
-#    #define representation
-#    def __repr__(self):
-#        return "experiment: %s" % (self.id)
-
-#    #JSON representation
-#    def __repr__dict__(self):
-#        return {"id":self.id,
-#                "sample_name":self.sample_name,
-#                "experimentor_id":self.experimentor_id,
-#                "extraction_method_ide":self.extraction_method_id,
-#                "acquisition_method_id":self.acquisition_method_id,
-#                "quantitation_method_id":self.quantitation_method_id,
-#                "internal_standard_id":self.internal_standard_id}
-    
-#    def __repr__json__(self):
-#        return json.dumps(self.__repr__dict__())
-
 

@@ -5,6 +5,7 @@ import os, subprocess
 from os.path import join, dirname, realpath
 import json
 import re
+from mimetypes import guess_type
 # tornado dependencies
 import tornado.ioloop
 from tornado.web import RequestHandler, HTTPError, Application, asynchronous, authenticated
@@ -13,9 +14,8 @@ from tornado import gen
 import tornado.escape
 from tornado.options import define, options, parse_command_line
 from jinja2 import Environment, PackageLoader
-from mimetypes import guess_type
-from .urls import urls
 # visualization dependencies
+from .urls import urls
 from .version import __version__
 # sbaas dependencies
 from sbaas.data import sbaas_settings as sbaas_settings

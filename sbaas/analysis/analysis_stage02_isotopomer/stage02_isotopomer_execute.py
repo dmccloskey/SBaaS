@@ -1040,6 +1040,110 @@ class stage02_isotopomer_execute(base_analysis):
                 d['comment_']);
             self.session.add(row);
         self.session.commit();
+    def execute_findNetFluxSignificantDifferences(self,analysis_id_I, criteria_I = 'flux_lb/flux_ub',
+                                               simulation_ids_I=[],simulation_dateAndTimes_I = [],
+                                               rxn_ids_I = [],flux_units_I = [],
+                                               control_simulation_id_I=None, control_simulation_dateAndTime_I=None,
+                                               redundancy_I=False):
+        """Find fluxes that are significantly different
+        Input:
+        analysis_id_I = string,
+        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
+                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
+        control_simulation_id_I = string, simulation_id to compare all other simulation_ids to
+        simulation_dateAndTime_I =  string, simulation_dateAndTime to compare all other simulation_ids to
+        redundancy_I =  boolean, if true, all values with be compared, if false, only unique comparisons will be made
+        """
+        data_O = [];
+        print('executing findNetFluxSignificantDifferences...')
+        # get the simulation_id and simulation_id dateAndTimes
+        if simulation_ids_I and simulation_dateAndTimes_I:
+            simulation_ids = simulation_ids_I;
+            simulation_dateAndTimes = simulation_dateAndTimes_I;
+        else:
+            simulation_ids = [];
+            simulation_ids_unique = [];
+            simulation_dateAndTimes = [];
+            # get the simulation unique ids
+            simulation_ids_unique = self.stage02_isotopomer_query.get_simulationID_analysisID_dataStage02IsotopomerAnalysis(analysis_id_I);
+            for simulation_id in simulation_ids_unique:
+                # get the simulation dateAndTimes
+                simulation_dateAndTimes_tmp = []
+                simulation_dateAndTimes_tmp = self.stage02_isotopomer_query.get_simulationDateAndTimes_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
+                simulation_ids_tmp = [simulation_id for x in simulation_dateAndTimes_tmp];
+                simulation_dateAndTimes.extend(simulation_dateAndTimes_tmp)
+                simulation_ids.extend(simulation_ids_tmp)
+            if control_simulation_id_I and control_simulation_dateAndTime_I:
+                index = simulation_ids.index(control_simulation_id_I);
+                value = simulation_ids.pop(index);
+                simulation_ids.insert(0, value);
+                control_simulation_dateAndTime_I = self.convert_string2datetime(control_simulation_dateAndTime_I);
+                index = simulation_dateAndTimes.index(control_simulation_dateAndTime_I);
+                value = simulation_dateAndTimes.pop(index)
+                simulation_dateAndTimes.insert(0, value);
+        for simulation_cnt_1, simulation_id_1 in enumerate(simulation_ids):
+            print("calculating netFluxDifferes for simulation_id " + simulation_id_1);
+            # check for control
+            if control_simulation_id_I and control_simulation_dateAndTime_I and simulation_cnt_1>0:
+                break;
+            #prevents redundancy and 
+            if simulation_cnt_1+1 >= len(simulation_ids):
+                break;
+            # get the units
+            if flux_units_I:
+                flux_units = flux_units_I;
+            else:
+                flux_units = self.stage02_isotopomer_query.get_fluxUnits_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1])
+            for flux_unit in flux_units:    
+                print("calculating netFluxDifferes for flux_units " + flux_unit);
+                # get the rxn_ids
+                if rxn_ids_I:
+                    rxn_ids = rxn_ids_I;
+                else:
+                    rxn_ids = [];
+                    rxn_ids = self.stage02_isotopomer_query.get_rxnIDs_simulationIDAndSimulationDateAndTimeAndFluxUnits_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit);
+                for rxn_id in rxn_ids:
+                    print("calculating netFluxDifferes for rxn_id " + rxn_id);
+                    # get simulation_id_1 flux data
+                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=None,None,None,None,None;
+                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit,rxn_id);
+                    if not self.check_criteria(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1, criteria_I):
+                        continue;
+                    if redundancy_I: list_2 = simulation_ids;
+                    else: list_2 = simulation_ids[simulation_cnt_1+1:];
+                    for cnt,simulation_id_2 in enumerate(list_2): #prevents redundancy
+                        if redundancy_I: simulation_cnt_2 = cnt;
+                        else: simulation_cnt_2 = simulation_cnt_1+cnt+1;
+                        if simulation_cnt_2 == simulation_cnt_1:
+                            continue;
+                        # simulation_id_2 flux_data
+                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=None,None,None,None,None;
+                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_2,simulation_dateAndTimes[simulation_cnt_2],flux_unit,rxn_id);
+                        if not self.check_criteria(flux_2,flux_stdev_2,flux_lb_2,flux_ub_2, criteria_I):
+                            continue;
+                        flux_diff,flux_distance,fold_change,significant = None,None,None,False;
+                        flux_diff,flux_distance,fold_change,significant = self.calculate_fluxDifference(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
+                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
+                                                                            criteria_I = criteria_I);
+                        # record the data
+                        data_O.append({
+                            'analysis_id':analysis_id_I,
+                            'simulation_id_1':simulation_id_1,
+                            'simulation_dateAndTime_1':simulation_dateAndTimes[simulation_cnt_1],
+                            'simulation_id_2':simulation_id_2,
+                            'simulation_dateAndTime_2':simulation_dateAndTimes[simulation_cnt_2],
+                            'rxn_id':rxn_id,
+                            'flux_difference':flux_diff,
+                            'significant':significant,
+                            'significant_criteria':criteria_I,
+                            'flux_units':flux_unit,
+                            'fold_change_geo':fold_change,
+                            'flux_distance':flux_distance,
+                            'used_':True,
+                            'comment_':None});
+        # add data to the database
+        io02 = stage02_isotopomer_io();
+        io02.add_data_stage02_isotopomer_fittedNetFluxDifferences(data_O);
     #internal functions
     def calculate_totalFluxPrecision(self,flux_average_1,flux_stdev_1,flux_lb_1,flux_ub_1):
         '''calculate the total flux precision'''
@@ -1875,6 +1979,70 @@ class stage02_isotopomer_execute(base_analysis):
                 split_units.append('split_fraction');
 
         return split,split_stdev,split_lb,split_ub,split_units
+    def check_criteria(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,criteria_I):
+        """check if all the data is present to determine significance based on the criteria"""
+        criteria_check = False;
+        if criteria_I == 'flux_lb/flux_ub':
+            if flux_lb_1 and flux_ub_1: 
+                criteria_check = True;
+        elif criteria_I == 'flux_mean/flux_stdev':
+            if flux_1 and flux_stdev_1: 
+                criteria_check = True;
+        else:
+            print('criteria not recognized!');
+        return criteria_check;
+    def determine_fluxDifferenceSignificance(self,flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2):
+        """determine whether the difference between two fluxes is signifcant based on the lb and ub"""
+        significant = False;
+        if flux_lb_1 < flux_lb_2 and flux_ub_1 < flux_lb_2:
+            significant = True;
+        elif flux_lb_1 > flux_ub_2 and flux_ub_1 > flux_ub_2:
+            significant = True;
+        else:
+            significant = False;
+        return significant;
+    def calculate_fluxDifference(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
+                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
+                                                                            criteria_I = 'flux_lb/flux_ub'):
+        """Calculate flux differences and deterimine if the differences are significant
+        Input:
+        flux_1 = data for flux 1 to be compared
+        ...
+        flux_2 = data for flux 2 to be compared
+        ... 
+        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
+                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
+
+        Output:
+        flux_diff = relative flux difference, float
+        flux_distance = geometric difference, (i.e., distance)
+        fold_change = geometric fold change
+        significant = boolean
+    
+        """
+        flux_diff = 0.0;
+        flux_distance = 0.0;
+        significant = False;
+        fold_change = 0.0;
+        if criteria_I == 'flux_lb/flux_ub':
+            flux_mean_1 = mean([flux_lb_1,flux_ub_1]);
+            flux_mean_2 = mean([flux_lb_2,flux_ub_2]);
+            flux_diff = self.calculate.calculate_difference(flux_mean_1,flux_mean_2,type_I='relative');
+            flux_distance = self.calculate.calculate_difference(flux_mean_1,flux_mean_2,type_I='geometric');
+            fold_change = self.calculate.calculate_foldChange(flux_mean_1,flux_mean_2,type_I='geometric');
+            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
+        elif criteria_I == 'flux_mean/flux_stdev':
+            flux_diff = self.calculate.calculate_difference(flux_1,flux_2,type_I='relative');
+            flux_distance = self.calculate.calculate_difference(flux_1,flux_2,type_I='geometric');
+            fold_change = self.calculate.calculate_foldChange(flux_1,flux_2,type_I='geometric');
+            flux_lb_1 = flux_1 - flux_stdev_1;
+            flux_lb_2 = flux_2 - flux_stdev_2;
+            flux_ub_1 = flux_1 + flux_stdev_1;
+            flux_ub_2 = flux_2 + flux_stdev_2;
+            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
+        else:
+            print('criteria not recognized!');
+        return flux_diff,flux_distance,fold_change,significant;
     #Visualization
     def plot_fluxPrecision(self,simulation_ids_I = [], rxn_ids_I = [], plot_by_rxn_id_I=True, individual_plots_I=True, exclude_I = {}, use_lbubAsErrorBars_I=True):
         '''Plot the flux precision for a given set of simulations and a given set of reactions
@@ -2074,6 +2242,7 @@ class stage02_isotopomer_execute(base_analysis):
         else: 
             return;
     #INCA
+    #TODO: turn this into its own class
     def execute_makeIsotopomerSimulation_INCA(self,simulation_id_I, stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
         '''export a fluxomics experimental data for simulation using INCA'''
         #Input:
@@ -2082,7 +2251,6 @@ class stage02_isotopomer_execute(base_analysis):
         #   parallel_I = boolean
         #                  indicates whether multiple tracers were used
 
-        inca = inca_api();
 
         # get simulation information
         simulation_info = {};
@@ -2107,13 +2275,398 @@ class stage02_isotopomer_execute(base_analysis):
             multiple_time_points = True;
 
         if parallel_I and multiple_experiment_ids:
-            inca.make_isotopomerSimulation_parallel_experimentID_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+            self.make_isotopomerSimulation_parallel_experimentID_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
         elif parallel_I and multiple_snas:
-            inca.make_isotopomerSimulation_parallel_sna_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+            self.make_isotopomerSimulation_parallel_sna_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
         else:
-            inca.make_isotopomerSimulation_individual_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+            self.make_isotopomerSimulation_individual_INCA(simulation_info,stationary_I,ko_list_I,flux_dict_I,description_I)
+    def make_isotopomerSimulation_parallel_experimentID_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
+        '''Make parallel labeling simulation by experiment_id for INCA'''
+        
+        inca = inca_api();
+        model_id = simulation_info['model_id'][0]
+        mapping_id = simulation_info['mapping_id'][0]
+        time_points = simulation_info['time_point'][0]
+        experiment_ids = simulation_info['experiment_id']
+        sna = simulation_info['sample_name_abbreviation'][0]
+        # collect the simulation data
+        modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers = [],[],[],[],[];
+        for experiment_cnt,experiment_id in enumerate(experiment_ids):
+            # get the tracers
+            tracers_tmp = [];
+            tracers_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);  
+            tracers.extend(tracers_tmp); 
+            # get flux measurements
+            measuredFluxes_data_tmp = [];
+            measuredFluxes_data_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
+            measuredFluxes_data.extend(measuredFluxes_data_tmp)
+            # get the ms_data
+            if stationary_I:
+                experimentalMS_data_tmp = [];
+                experimentalMS_data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
+                experimentalMS_data.extend(experimentalMS_data_tmp);
+            else:
+                experimentalMS_data_tmp = [];
+                experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
+                experimentalMS_data.extend(experimentalMS_data_tmp);
+            #get model reactions
+            if not modelReaction_data: #only once
+                modelReaction_data = [];
+                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
+                #simulate the model
+                cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
+                for i,row in enumerate(modelReaction_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
+                    #generate reaction equations
+                    rxn_equation = '';
+                    print(row['rxn_id'])
+                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
+                    #    print 'check'
+                    if atomMapping:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    atomMapping['reactants_stoichiometry_tracked'],
+                                    atomMapping['products_stoichiometry_tracked'],
+                                    atomMapping['reactants_ids_tracked'],
+                                    atomMapping['products_ids_tracked'],
+                                    atomMapping['reactants_elements_tracked'],
+                                    atomMapping['products_elements_tracked'],
+                                    atomMapping['reactants_positions_tracked'],
+                                    atomMapping['products_positions_tracked'],
+                                    atomMapping['reactants_mapping'],
+								    atomMapping['products_mapping']);
+                    else:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+								    []);
+                    atomMapping['rxn_equation']=rxn_equation;
+                    modelReaction_data[i].update(atomMapping);
+                    # update the lower bounds and upper bounds of the model to represent the experimental data
+                    if measuredFluxes_data:
+                        for flux in measuredFluxes_data:
+                            if row['rxn_id'] == flux['rxn_id']:
+                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
+                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
+                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
+                    for ko in ko_list_I: # implement optimal KOs
+                        if row['rxn_id'] == ko:
+                            modelReaction_data[i]['lower_bound'] = 0.0;
+                            modelReaction_data[i]['upper_bound'] = 0.0;
+                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
+                        if row['rxn_id'] == rxn:
+                            modelReaction_data[i]['lower_bound'] = flux['lb'];
+                            modelReaction_data[i]['upper_bound'] = flux['ub'];
+                    # add in a flux_val field to supply an initial starting guess for the MFA solver
+                    if cobra_model.solution.f:
+                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
+                    else:
+                        modelReaction_data[i]['flux_val'] = 0;
+            # get model metabolites
+            if not modelMetabolite_data: #only once
+                modelMetabolite_data = [];
+                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
+                for i,row in enumerate(modelMetabolite_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
+                    #update
+                    if atomMapping:
+                        modelMetabolite_data[i].update(atomMapping);
+                    else:
+                        modelMetabolite_data[i].update({
+                            'met_elements':None,
+                            'met_atompositions':None,
+                            'met_symmetry_elements':None,
+                            'met_symmetry_atompositions':None});
+        # Write out to matlab script
+        filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
+        filename_mat_model = filename_mat + "_model" + '.m';
+        mat_script = '';
+        mat_script += inca.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
+                                        measuredFluxes_data,experimentalMS_data,tracers)
+        mat_script += inca.writeScript_simulationOptions_Inca(stationary_I)
+        mat_script += inca.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
+                                                measuredFluxes_data,experimentalMS_data,tracers,
+                                                'sample_name_abbreviation')
+        with open(filename_mat_model,'w') as f:
+            f.write(mat_script);
+    def make_isotopomerSimulation_parallel_sna_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
+        '''Make parallel labeling simulation by sample name abbreviation for INCA'''
+        
+        inca = inca_api();
+        model_id = simulation_info['model_id'][0]
+        mapping_id = simulation_info['mapping_id'][0]
+        time_points = simulation_info['time_point']
+        experiment_id = simulation_info['experiment_id'][0]
+        sample_name_abbreviations = simulation_info['sample_name_abbreviation']
+        # collect the simulation data
+        modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers = [],[],[],[],[];
+        for sna_cnt,sna in enumerate(sample_name_abbreviations):
+            # get the tracers
+            tracers_tmp = [];
+            tracers_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);  
+            tracers.extend(tracers_tmp); 
+            # get flux measurements
+            measuredFluxes_data_tmp = [];
+            measuredFluxes_data_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
+            measuredFluxes_data.extend(measuredFluxes_data_tmp)
+            # get the ms_data
+            if stationary_I:
+                experimentalMS_data_tmp = [];
+                experimentalMS_data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
+                experimentalMS_data.extend(experimentalMS_data_tmp);
+            else:
+                experimentalMS_data_tmp = [];
+                experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
+                experimentalMS_data.extend(experimentalMS_data_tmp);
+            #get model reactions
+            if not modelReaction_data: #only once
+                modelReaction_data = [];
+                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
+                #simulate the model
+                cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
+                for i,row in enumerate(modelReaction_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
+                    #generate reaction equations
+                    rxn_equation = '';
+                    print(row['rxn_id'])
+                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
+                    #    print 'check'
+                    if atomMapping:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    atomMapping['reactants_stoichiometry_tracked'],
+                                    atomMapping['products_stoichiometry_tracked'],
+                                    atomMapping['reactants_ids_tracked'],
+                                    atomMapping['products_ids_tracked'],
+                                    atomMapping['reactants_elements_tracked'],
+                                    atomMapping['products_elements_tracked'],
+                                    atomMapping['reactants_positions_tracked'],
+                                    atomMapping['products_positions_tracked'],
+                                    atomMapping['reactants_mapping'],
+								    atomMapping['products_mapping']);
+                    else:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+								    []);
+                    atomMapping['rxn_equation']=rxn_equation;
+                    modelReaction_data[i].update(atomMapping);
+                    # update the lower bounds and upper bounds of the model to represent the experimental data
+                    if measuredFluxes_data:
+                        for flux in measuredFluxes_data:
+                            if row['rxn_id'] == flux['rxn_id']:
+                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
+                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
+                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
+                    for ko in ko_list_I: # implement optimal KOs
+                        if row['rxn_id'] == ko:
+                            modelReaction_data[i]['lower_bound'] = 0.0;
+                            modelReaction_data[i]['upper_bound'] = 0.0;
+                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
+                        if row['rxn_id'] == rxn:
+                            modelReaction_data[i]['lower_bound'] = flux['lb'];
+                            modelReaction_data[i]['upper_bound'] = flux['ub'];
+                    # add in a flux_val field to supply an initial starting guess for the MFA solver
+                    if cobra_model.solution.f:
+                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
+                    else:
+                        modelReaction_data[i]['flux_val'] = 0;
+            # get model metabolites
+            if not modelMetabolite_data: #only once
+                modelMetabolite_data = [];
+                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
+                for i,row in enumerate(modelMetabolite_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
+                    #update
+                    if atomMapping:
+                        modelMetabolite_data[i].update(atomMapping);
+                    else:
+                        modelMetabolite_data[i].update({
+                            'met_elements':None,
+                            'met_atompositions':None,
+                            'met_symmetry_elements':None,
+                            'met_symmetry_atompositions':None});
+        # Write out to matlab script
+        filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
+        filename_mat_model = filename_mat + "_model" + '.m';
+        mat_script = '';
+        mat_script += inca.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
+                                        measuredFluxes_data,experimentalMS_data,tracers)
+        mat_script += inca.writeScript_simulationOptions_Inca(stationary_I)
+        mat_script += inca.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
+                                                measuredFluxes_data,experimentalMS_data,tracers,
+                                                'sample_name_abbreviation')
+        with open(filename_mat_model,'w') as f:
+            f.write(mat_script);
+    def make_isotopomerSimulation_individual_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
+        '''Make individual labeling simulations for INCA'''
+        
+        inca = inca_api();
+        model_id = simulation_info['model_id'][0]
+        mapping_id = simulation_info['mapping_id'][0]
+        time_points = simulation_info['time_point']
+        experiment_ids = simulation_info['experiment_id']
+        sample_name_abbreviations = simulation_info['sample_name_abbreviation']
+        for experiment_id in experiment_ids:
+            for sna_cnt,sna in enumerate(sample_name_abbreviations):
+                print('Collecting and writing experimental and model data for sample name abbreviation ' + sna);
+                # get the tracers
+                tracers = [];
+                tracers = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);
 
-    
+                # data containers
+                modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data = [],[],[],[];  
+                # get flux measurements
+                measuredFluxes_data = [];
+                measuredFluxes_data = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
+                # get the ms_data
+                if stationary_I:
+                    experimentalMS_data = [];
+                    experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
+                else:
+                    experimentalMS_data = [];
+                    experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
+                #get model reactions
+                modelReaction_data = [];
+                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
+                #simulate the model
+                cobra_model = None;
+                #cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
+                for i,row in enumerate(modelReaction_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
+                    #generate reaction equations
+                    rxn_equation = '';
+                    print(row['rxn_id'])
+                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
+                    #    print 'check'
+                    if atomMapping:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    atomMapping['reactants_stoichiometry_tracked'],
+                                    atomMapping['products_stoichiometry_tracked'],
+                                    atomMapping['reactants_ids_tracked'],
+                                    atomMapping['products_ids_tracked'],
+                                    atomMapping['reactants_elements_tracked'],
+                                    atomMapping['products_elements_tracked'],
+                                    atomMapping['reactants_positions_tracked'],
+                                    atomMapping['products_positions_tracked'],
+                                    atomMapping['reactants_mapping'],
+								    atomMapping['products_mapping']);
+                    else:
+                        rxn_equation = inca.make_isotopomerRxnEquations_INCA(
+                                    row['reactants_ids'],
+                                    row['products_ids'],
+                                    row['reactants_stoichiometry'],
+                                    row['products_stoichiometry'],
+                                    row['reversibility'],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+								    []);
+                    atomMapping['rxn_equation']=rxn_equation;
+                    modelReaction_data[i].update(atomMapping);
+                    # update the lower bounds and upper bounds of the model to represent the experimental data
+                    if measuredFluxes_data:
+                        for flux in measuredFluxes_data:
+                            if row['rxn_id'] == flux['rxn_id']:
+                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
+                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
+                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
+                    for ko in ko_list_I: # implement optimal KOs
+                        if row['rxn_id'] == ko:
+                            modelReaction_data[i]['lower_bound'] = 0.0;
+                            modelReaction_data[i]['upper_bound'] = 0.0;
+                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
+                        if row['rxn_id'] == rxn:
+                            modelReaction_data[i]['lower_bound'] = flux['lb'];
+                            modelReaction_data[i]['upper_bound'] = flux['ub'];
+                    # add in a flux_val field to supply an initial starting guess for the MFA solver
+                    if cobra_model and cobra_model.solution.f and row['rxn_id'] in cobra_model.solution.x_dict:
+                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
+                    else:
+                        modelReaction_data[i]['flux_val'] = 0;
+                # get model metabolites
+                modelMetabolite_data = [];
+                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
+                for i,row in enumerate(modelMetabolite_data):
+                    #get atom mapping data
+                    atomMapping = {};
+                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
+                    #update
+                    if atomMapping:
+                        modelMetabolite_data[i].update(atomMapping);
+                    else:
+                        modelMetabolite_data[i].update({
+                            'met_elements':None,
+                            'met_atompositions':None,
+                            'met_symmetry_elements':None,
+                            'met_symmetry_atompositions':None});
+
+                ## dump the experiment to a matlab script to generate the matlab files in matlab
+                # Matlab script file to make the structures
+                filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
+                filename_mat_model = filename_mat + '.m';
+                mat_script = '';
+                mat_script += inca.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
+                                                measuredFluxes_data,experimentalMS_data,tracers)
+                mat_script += inca.writeScript_simulationOptions_Inca(stationary_I)
+                mat_script += inca.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
+                                                        measuredFluxes_data,experimentalMS_data,tracers,
+                                                        'sample_name_abbreviation')
+        with open(filename_mat_model,'w') as f:
+            f.write(mat_script); 
     # Deprecated
     def execute_makeIsotopomerSimulation_INCA_v1(self,experiment_id_I, model_id_I = [], mapping_id_I = [], sample_name_abbreviations_I = [], time_points_I = [], met_ids_I = [], scan_types_I = [], stationary_I = True, parallel_I = False, ko_list_I=[],flux_dict_I={},description_I=None):
         '''export a fluxomics experimental data for simulation using INCA1.1'''
@@ -2284,179 +2837,11 @@ class stage02_isotopomer_execute(base_analysis):
                         mat_script = self.write_isotopomerExperiment_INCA(modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers);
                         with open(filename_mat,'w') as f:
                             f.write(mat_script);
-           
-    #TODO:
-    def check_criteria(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,criteria_I):
-        """check if all the data is present to determine significance based on the criteria"""
-        criteria_check = False;
-        if criteria_I == 'flux_lb/flux_ub':
-            if flux_lb_1 and flux_ub_1: 
-                criteria_check = True;
-        elif criteria_I == 'flux_mean/flux_stdev':
-            if flux_1 and flux_stdev_1: 
-                criteria_check = True;
-        else:
-            print('criteria not recognized!');
-        return criteria_check;
-    def determine_fluxDifferenceSignificance(self,flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2):
-        """determine whether the difference between two fluxes is signifcant based on the lb and ub"""
-        significant = False;
-        if flux_lb_1 < flux_lb_2 and flux_ub_1 < flux_lb_2:
-            significant = True;
-        elif flux_lb_1 > flux_ub_2 and flux_ub_1 > flux_ub_2:
-            significant = True;
-        else:
-            significant = False;
-        return significant;
-    def calculate_fluxDifference(self,flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
-                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
-                                                                            criteria_I = 'flux_lb/flux_ub'):
-        """Calculate flux differences and deterimine if the differences are significant
-        Input:
-        flux_1 = data for flux 1 to be compared
-        ...
-        flux_2 = data for flux 2 to be compared
-        ... 
-        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
-                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
-
-        Output:
-        flux_diff = relative flux difference, float
-        flux_distance = geometric difference, (i.e., distance)
-        fold_change = geometric fold change
-        significant = boolean
-    
-        """
-        flux_diff = 0.0;
-        flux_distance = 0.0;
-        significant = False;
-        fold_change = 0.0;
-        if criteria_I == 'flux_lb/flux_ub':
-            flux_mean_1 = mean([flux_lb_1,flux_ub_1]);
-            flux_mean_2 = mean([flux_lb_2,flux_ub_2]);
-            flux_diff = self.calculate.calculate_difference(flux_mean_1,flux_mean_2,type_I='relative');
-            flux_distance = self.calculate.calculate_difference(flux_mean_1,flux_mean_2,type_I='geometric');
-            fold_change = self.calculate.calculate_foldChange(flux_mean_1,flux_mean_2,type_I='geometric');
-            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
-        elif criteria_I == 'flux_mean/flux_stdev':
-            flux_diff = self.calculate.calculate_difference(flux_1,flux_2,type_I='relative');
-            flux_distance = self.calculate.calculate_difference(flux_1,flux_2,type_I='geometric');
-            fold_change = self.calculate.calculate_foldChange(flux_1,flux_2,type_I='geometric');
-            flux_lb_1 = flux_1 - flux_stdev_1;
-            flux_lb_2 = flux_2 - flux_stdev_2;
-            flux_ub_1 = flux_1 + flux_stdev_1;
-            flux_ub_2 = flux_2 + flux_stdev_2;
-            significant = self.determine_fluxDifferenceSignificance(flux_lb_1,flux_ub_1,flux_lb_2,flux_ub_2);
-        else:
-            print('criteria not recognized!');
-        return flux_diff,flux_distance,fold_change,significant;
-    def execute_findNetFluxSignificantDifferences(self,analysis_id_I, criteria_I = 'flux_lb/flux_ub',
-                                               simulation_ids_I=[],simulation_dateAndTimes_I = [],
-                                               rxn_ids_I = [],flux_units_I = [],
-                                               control_simulation_id_I=None, control_simulation_dateAndTime_I=None,
-                                               redundancy_I=False):
-        """Find fluxes that are significantly different
-        Input:
-        analysis_id_I = string,
-        criteria_I = string, flux_lb/flux_ub: use flux_lb and flux_ub to determine significance (default)
-                             flux_mean/flux_stdev: use the flux_mean and flux_stdev to determine significance
-        control_simulation_id_I = string, simulation_id to compare all other simulation_ids to
-        simulation_dateAndTime_I =  string, simulation_dateAndTime to compare all other simulation_ids to
-        redundancy_I =  boolean, if true, all values with be compared, if false, only unique comparisons will be made
-        """
-        data_O = [];
-        print('executing findNetFluxSignificantDifferences...')
-        # get the simulation_id and simulation_id dateAndTimes
-        if simulation_ids_I and simulation_dateAndTimes_I:
-            simulation_ids = simulation_ids_I;
-            simulation_dateAndTimes = simulation_dateAndTimes_I;
-        else:
-            simulation_ids = [];
-            simulation_ids_unique = [];
-            simulation_dateAndTimes = [];
-            # get the simulation unique ids
-            simulation_ids_unique = self.stage02_isotopomer_query.get_simulationID_analysisID_dataStage02IsotopomerAnalysis(analysis_id_I);
-            for simulation_id in simulation_ids_unique:
-                # get the simulation dateAndTimes
-                simulation_dateAndTimes_tmp = []
-                simulation_dateAndTimes_tmp = self.stage02_isotopomer_query.get_simulationDateAndTimes_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
-                simulation_ids_tmp = [simulation_id for x in simulation_dateAndTimes_tmp];
-                simulation_dateAndTimes.extend(simulation_dateAndTimes_tmp)
-                simulation_ids.extend(simulation_ids_tmp)
-            if control_simulation_id_I and control_simulation_dateAndTime_I:
-                index = simulation_ids.index(control_simulation_id_I);
-                value = simulation_ids.pop(index);
-                simulation_ids.insert(0, value);
-                control_simulation_dateAndTime_I = self.convert_string2datetime(control_simulation_dateAndTime_I);
-                index = simulation_dateAndTimes.index(control_simulation_dateAndTime_I);
-                value = simulation_dateAndTimes.pop(index)
-                simulation_dateAndTimes.insert(0, value);
-        for simulation_cnt_1, simulation_id_1 in enumerate(simulation_ids):
-            print("calculating netFluxDifferes for simulation_id " + simulation_id_1);
-            # check for control
-            if control_simulation_id_I and control_simulation_dateAndTime_I and simulation_cnt_1>0:
-                break;
-            #prevents redundancy and 
-            if simulation_cnt_1+1 >= len(simulation_ids):
-                break;
-            # get the units
-            if flux_units_I:
-                flux_units = flux_units_I;
-            else:
-                flux_units = self.stage02_isotopomer_query.get_fluxUnits_simulationIDAndSimulationDateAndTime_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1])
-            for flux_unit in flux_units:    
-                print("calculating netFluxDifferes for flux_units " + flux_unit);
-                # get the rxn_ids
-                if rxn_ids_I:
-                    rxn_ids = rxn_ids_I;
-                else:
-                    rxn_ids = [];
-                    rxn_ids = self.stage02_isotopomer_query.get_rxnIDs_simulationIDAndSimulationDateAndTimeAndFluxUnits_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit);
-                for rxn_id in rxn_ids:
-                    print("calculating netFluxDifferes for rxn_id " + rxn_id);
-                    # get simulation_id_1 flux data
-                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=None,None,None,None,None;
-                    flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_1,simulation_dateAndTimes[simulation_cnt_1],flux_unit,rxn_id);
-                    if not self.check_criteria(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1, criteria_I):
-                        continue;
-                    if redundancy_I: list_2 = simulation_ids;
-                    else: list_2 = simulation_ids[simulation_cnt_1+1:];
-                    for cnt,simulation_id_2 in enumerate(list_2): #prevents redundancy
-                        if redundancy_I: simulation_cnt_2 = cnt;
-                        else: simulation_cnt_2 = simulation_cnt_1+cnt+1;
-                        if simulation_cnt_2 == simulation_cnt_1:
-                            continue;
-                        # simulation_id_2 flux_data
-                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=None,None,None,None,None;
-                        flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2=self.stage02_isotopomer_query.get_flux_simulationIDAndSimulationDateAndTimeAndFluxUnitsAndRxnID_dataStage02IsotopomerfittedNetFluxes(simulation_id_2,simulation_dateAndTimes[simulation_cnt_2],flux_unit,rxn_id);
-                        if not self.check_criteria(flux_2,flux_stdev_2,flux_lb_2,flux_ub_2, criteria_I):
-                            continue;
-                        flux_diff,flux_distance,fold_change,significant = None,None,None,False;
-                        flux_diff,flux_distance,fold_change,significant = self.calculate_fluxDifference(flux_1,flux_stdev_1,flux_lb_1,flux_ub_1,flux_units_1,
-                                                                            flux_2,flux_stdev_2,flux_lb_2,flux_ub_2,flux_units_2,
-                                                                            criteria_I = criteria_I);
-                        # record the data
-                        data_O.append({
-                            'analysis_id':analysis_id_I,
-                            'simulation_id_1':simulation_id_1,
-                            'simulation_dateAndTime_1':simulation_dateAndTimes[simulation_cnt_1],
-                            'simulation_id_2':simulation_id_2,
-                            'simulation_dateAndTime_2':simulation_dateAndTimes[simulation_cnt_2],
-                            'rxn_id':rxn_id,
-                            'flux_difference':flux_diff,
-                            'significant':significant,
-                            'significant_criteria':criteria_I,
-                            'flux_units':flux_unit,
-                            'fold_change_geo':fold_change,
-                            'flux_distance':flux_distance,
-                            'used_':True,
-                            'comment_':None});
-        # add data to the database
-        io02 = stage02_isotopomer_io();
-        io02.add_data_stage02_isotopomer_fittedNetFluxDifferences(data_O);
                                              
-class inca_api(stage02_isotopomer_execute):
-
+class inca_api():
+    '''class of methods to interact with the INCA matlab interface
+    1. output to .m scripts
+    2. input from .mat files'''
     def write_isotopomerExperiment_INCA(self, modelReaction_data_I,modelMetabolite_data_I,
                                         measuredFluxes_data_I,experimentalMS_data_I,tracer_I,
                                         parallel_I = 'experiment_id'):
@@ -3301,390 +3686,6 @@ class inca_api(stage02_isotopomer_execute):
         mat_script += "f=continuate(f,m);\n"
 
         return mat_script
-    def make_isotopomerSimulation_parallel_experimentID_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
-        '''Make parallel labeling simulation by experiment_id for INCA'''
-        
-        model_id = simulation_info['model_id'][0]
-        mapping_id = simulation_info['mapping_id'][0]
-        time_points = simulation_info['time_point'][0]
-        experiment_ids = simulation_info['experiment_id']
-        sna = simulation_info['sample_name_abbreviation'][0]
-        # collect the simulation data
-        modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers = [],[],[],[],[];
-        for experiment_cnt,experiment_id in enumerate(experiment_ids):
-            # get the tracers
-            tracers_tmp = [];
-            tracers_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);  
-            tracers.extend(tracers_tmp); 
-            # get flux measurements
-            measuredFluxes_data_tmp = [];
-            measuredFluxes_data_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
-            measuredFluxes_data.extend(measuredFluxes_data_tmp)
-            # get the ms_data
-            if stationary_I:
-                experimentalMS_data_tmp = [];
-                experimentalMS_data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
-                experimentalMS_data.extend(experimentalMS_data_tmp);
-            else:
-                experimentalMS_data_tmp = [];
-                experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
-                experimentalMS_data.extend(experimentalMS_data_tmp);
-            #get model reactions
-            if not modelReaction_data: #only once
-                modelReaction_data = [];
-                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
-                #simulate the model
-                cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
-                for i,row in enumerate(modelReaction_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
-                    #generate reaction equations
-                    rxn_equation = '';
-                    print(row['rxn_id'])
-                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
-                    #    print 'check'
-                    if atomMapping:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    atomMapping['reactants_stoichiometry_tracked'],
-                                    atomMapping['products_stoichiometry_tracked'],
-                                    atomMapping['reactants_ids_tracked'],
-                                    atomMapping['products_ids_tracked'],
-                                    atomMapping['reactants_elements_tracked'],
-                                    atomMapping['products_elements_tracked'],
-                                    atomMapping['reactants_positions_tracked'],
-                                    atomMapping['products_positions_tracked'],
-                                    atomMapping['reactants_mapping'],
-								    atomMapping['products_mapping']);
-                    else:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-								    []);
-                    atomMapping['rxn_equation']=rxn_equation;
-                    modelReaction_data[i].update(atomMapping);
-                    # update the lower bounds and upper bounds of the model to represent the experimental data
-                    if measuredFluxes_data:
-                        for flux in measuredFluxes_data:
-                            if row['rxn_id'] == flux['rxn_id']:
-                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
-                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
-                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
-                    for ko in ko_list_I: # implement optimal KOs
-                        if row['rxn_id'] == ko:
-                            modelReaction_data[i]['lower_bound'] = 0.0;
-                            modelReaction_data[i]['upper_bound'] = 0.0;
-                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
-                        if row['rxn_id'] == rxn:
-                            modelReaction_data[i]['lower_bound'] = flux['lb'];
-                            modelReaction_data[i]['upper_bound'] = flux['ub'];
-                    # add in a flux_val field to supply an initial starting guess for the MFA solver
-                    if cobra_model.solution.f:
-                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
-                    else:
-                        modelReaction_data[i]['flux_val'] = 0;
-            # get model metabolites
-            if not modelMetabolite_data: #only once
-                modelMetabolite_data = [];
-                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
-                for i,row in enumerate(modelMetabolite_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
-                    #update
-                    if atomMapping:
-                        modelMetabolite_data[i].update(atomMapping);
-                    else:
-                        modelMetabolite_data[i].update({
-                            'met_elements':None,
-                            'met_atompositions':None,
-                            'met_symmetry_elements':None,
-                            'met_symmetry_atompositions':None});
-        # Write out to matlab script
-        filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
-        filename_mat_model = filename_mat + "_model" + '.m';
-        mat_script = '';
-        mat_script += self.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
-                                        measuredFluxes_data,experimentalMS_data,tracers)
-        mat_script += self.writeScript_simulationOptions_Inca(stationary_I)
-        mat_script += self.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
-                                                measuredFluxes_data,experimentalMS_data,tracers,
-                                                'sample_name_abbreviation')
-        with open(filename_mat_model,'w') as f:
-            f.write(mat_script);
-    def make_isotopomerSimulation_parallel_sna_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
-        '''Make parallel labeling simulation by sample name abbreviation for INCA'''
-        
-        model_id = simulation_info['model_id'][0]
-        mapping_id = simulation_info['mapping_id'][0]
-        time_points = simulation_info['time_point']
-        experiment_id = simulation_info['experiment_id'][0]
-        sample_name_abbreviations = simulation_info['sample_name_abbreviation']
-        # collect the simulation data
-        modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data,tracers = [],[],[],[],[];
-        for sna_cnt,sna in enumerate(sample_name_abbreviations):
-            # get the tracers
-            tracers_tmp = [];
-            tracers_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);  
-            tracers.extend(tracers_tmp); 
-            # get flux measurements
-            measuredFluxes_data_tmp = [];
-            measuredFluxes_data_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
-            measuredFluxes_data.extend(measuredFluxes_data_tmp)
-            # get the ms_data
-            if stationary_I:
-                experimentalMS_data_tmp = [];
-                experimentalMS_data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
-                experimentalMS_data.extend(experimentalMS_data_tmp);
-            else:
-                experimentalMS_data_tmp = [];
-                experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
-                experimentalMS_data.extend(experimentalMS_data_tmp);
-            #get model reactions
-            if not modelReaction_data: #only once
-                modelReaction_data = [];
-                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
-                #simulate the model
-                cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
-                for i,row in enumerate(modelReaction_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
-                    #generate reaction equations
-                    rxn_equation = '';
-                    print(row['rxn_id'])
-                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
-                    #    print 'check'
-                    if atomMapping:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    atomMapping['reactants_stoichiometry_tracked'],
-                                    atomMapping['products_stoichiometry_tracked'],
-                                    atomMapping['reactants_ids_tracked'],
-                                    atomMapping['products_ids_tracked'],
-                                    atomMapping['reactants_elements_tracked'],
-                                    atomMapping['products_elements_tracked'],
-                                    atomMapping['reactants_positions_tracked'],
-                                    atomMapping['products_positions_tracked'],
-                                    atomMapping['reactants_mapping'],
-								    atomMapping['products_mapping']);
-                    else:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-								    []);
-                    atomMapping['rxn_equation']=rxn_equation;
-                    modelReaction_data[i].update(atomMapping);
-                    # update the lower bounds and upper bounds of the model to represent the experimental data
-                    if measuredFluxes_data:
-                        for flux in measuredFluxes_data:
-                            if row['rxn_id'] == flux['rxn_id']:
-                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
-                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
-                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
-                    for ko in ko_list_I: # implement optimal KOs
-                        if row['rxn_id'] == ko:
-                            modelReaction_data[i]['lower_bound'] = 0.0;
-                            modelReaction_data[i]['upper_bound'] = 0.0;
-                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
-                        if row['rxn_id'] == rxn:
-                            modelReaction_data[i]['lower_bound'] = flux['lb'];
-                            modelReaction_data[i]['upper_bound'] = flux['ub'];
-                    # add in a flux_val field to supply an initial starting guess for the MFA solver
-                    if cobra_model.solution.f:
-                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
-                    else:
-                        modelReaction_data[i]['flux_val'] = 0;
-            # get model metabolites
-            if not modelMetabolite_data: #only once
-                modelMetabolite_data = [];
-                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
-                for i,row in enumerate(modelMetabolite_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
-                    #update
-                    if atomMapping:
-                        modelMetabolite_data[i].update(atomMapping);
-                    else:
-                        modelMetabolite_data[i].update({
-                            'met_elements':None,
-                            'met_atompositions':None,
-                            'met_symmetry_elements':None,
-                            'met_symmetry_atompositions':None});
-        # Write out to matlab script
-        filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
-        filename_mat_model = filename_mat + "_model" + '.m';
-        mat_script = '';
-        mat_script += self.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
-                                        measuredFluxes_data,experimentalMS_data,tracers)
-        mat_script += self.writeScript_simulationOptions_Inca(stationary_I)
-        mat_script += self.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
-                                                measuredFluxes_data,experimentalMS_data,tracers,
-                                                'sample_name_abbreviation')
-        with open(filename_mat_model,'w') as f:
-            f.write(mat_script);
-    def make_isotopomerSimulation_individual_INCA(self,simulation_info, stationary_I = True, ko_list_I=[],flux_dict_I={},description_I=None):
-        '''Make individual labeling simulations for INCA'''
-        
-        model_id = simulation_info['model_id'][0]
-        mapping_id = simulation_info['mapping_id'][0]
-        time_points = simulation_info['time_point']
-        experiment_ids = simulation_info['experiment_id']
-        sample_name_abbreviations = simulation_info['sample_name_abbreviation']
-        for experiment_id in experiment_ids:
-            for sna_cnt,sna in enumerate(sample_name_abbreviations):
-                print('Collecting and writing experimental and model data for sample name abbreviation ' + sna);
-                # get the tracers
-                tracers = [];
-                tracers = self.stage02_isotopomer_query.get_rows_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerTracers(experiment_id,sna);
-
-                # data containers
-                modelReaction_data,modelMetabolite_data,measuredFluxes_data,experimentalMS_data = [],[],[],[];  
-                # get flux measurements
-                measuredFluxes_data = [];
-                measuredFluxes_data = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
-                # get the ms_data
-                if stationary_I:
-                    experimentalMS_data = [];
-                    experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,time_points[0]);
-                else:
-                    experimentalMS_data = [];
-                    experimentalMS_data = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
-                #get model reactions
-                modelReaction_data = [];
-                modelReaction_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelReactions(model_id);
-                #simulate the model
-                cobra_model = None;
-                #cobra_model = self.simulate_model(model_id,ko_list_I,flux_dict_I,measuredFluxes_data,description_I);
-                for i,row in enumerate(modelReaction_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_row_mappingIDAndRxnID_dataStage02IsotopomerAtomMappingReactions(mapping_id,row['rxn_id']);
-                    #generate reaction equations
-                    rxn_equation = '';
-                    print(row['rxn_id'])
-                    #if row['rxn_id'] == 'EX_glc_LPAREN_e_RPAREN_':
-                    #    print 'check'
-                    if atomMapping:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    atomMapping['reactants_stoichiometry_tracked'],
-                                    atomMapping['products_stoichiometry_tracked'],
-                                    atomMapping['reactants_ids_tracked'],
-                                    atomMapping['products_ids_tracked'],
-                                    atomMapping['reactants_elements_tracked'],
-                                    atomMapping['products_elements_tracked'],
-                                    atomMapping['reactants_positions_tracked'],
-                                    atomMapping['products_positions_tracked'],
-                                    atomMapping['reactants_mapping'],
-								    atomMapping['products_mapping']);
-                    else:
-                        rxn_equation = self.make_isotopomerRxnEquations_INCA(
-                                    row['reactants_ids'],
-                                    row['products_ids'],
-                                    row['reactants_stoichiometry'],
-                                    row['products_stoichiometry'],
-                                    row['reversibility'],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-                                    [],
-								    []);
-                    atomMapping['rxn_equation']=rxn_equation;
-                    modelReaction_data[i].update(atomMapping);
-                    # update the lower bounds and upper bounds of the model to represent the experimental data
-                    if measuredFluxes_data:
-                        for flux in measuredFluxes_data:
-                            if row['rxn_id'] == flux['rxn_id']:
-                                modelReaction_data[i]['lower_bound'] = flux['flux_lb']
-                                modelReaction_data[i]['upper_bound'] = flux['flux_ub']
-                    # update the lower bounds and upper bounds of the model to represent the input data (if the model has not already been updated)
-                    for ko in ko_list_I: # implement optimal KOs
-                        if row['rxn_id'] == ko:
-                            modelReaction_data[i]['lower_bound'] = 0.0;
-                            modelReaction_data[i]['upper_bound'] = 0.0;
-                    for rxn,flux in flux_dict_I.items():  # implement flux constraints:
-                        if row['rxn_id'] == rxn:
-                            modelReaction_data[i]['lower_bound'] = flux['lb'];
-                            modelReaction_data[i]['upper_bound'] = flux['ub'];
-                    # add in a flux_val field to supply an initial starting guess for the MFA solver
-                    if cobra_model and cobra_model.solution.f and row['rxn_id'] in cobra_model.solution.x_dict:
-                        modelReaction_data[i]['flux_val'] = cobra_model.solution.x_dict[row['rxn_id']];
-                    else:
-                        modelReaction_data[i]['flux_val'] = 0;
-                # get model metabolites
-                modelMetabolite_data = [];
-                modelMetabolite_data = self.stage02_isotopomer_query.get_rows_modelID_dataStage02IsotopomerModelMetabolites(model_id);
-                for i,row in enumerate(modelMetabolite_data):
-                    #get atom mapping data
-                    atomMapping = {};
-                    atomMapping = self.stage02_isotopomer_query.get_rows_mappingIDAndMetID_dataStage02IsotopomerAtomMappingMetabolites(mapping_id,row['met_id']);
-                    #update
-                    if atomMapping:
-                        modelMetabolite_data[i].update(atomMapping);
-                    else:
-                        modelMetabolite_data[i].update({
-                            'met_elements':None,
-                            'met_atompositions':None,
-                            'met_symmetry_elements':None,
-                            'met_symmetry_atompositions':None});
-
-                ## dump the experiment to a matlab script to generate the matlab files in matlab
-                # Matlab script file to make the structures
-                filename_mat = settings.workspace_data + '/_output/' + re.sub('[.\/]','',simulation_info['simulation_id'][0]);
-                filename_mat_model = filename_mat + '.m';
-                mat_script = '';
-                mat_script += self.writeScript_model_INCA(modelReaction_data,modelMetabolite_data,
-                                                measuredFluxes_data,experimentalMS_data,tracers)
-                mat_script += self.writeScript_simulationOptions_Inca(stationary_I)
-                mat_script += self.writeScript_experiment_INCA(modelReaction_data,modelMetabolite_data,
-                                                        measuredFluxes_data,experimentalMS_data,tracers,
-                                                        'sample_name_abbreviation')
-        with open(filename_mat_model,'w') as f:
-            f.write(mat_script);
     def make_isotopomerRxnEquations_INCA(self,reactants_ids_I = [],
                                         products_ids_I = [],
                                         reactants_stoichiometry_I = [],
