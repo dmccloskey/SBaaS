@@ -8,11 +8,11 @@ from .stage01_resequencing_io import *
 #from calculate_utilities.r import r_calculate
 
 from sequencing_analysis.genome_diff import genome_diff
+from sequencing_analysis.genome_annotations import genome_annotations
 from sequencing_analysis.mutations_lineage import mutations_lineage
 from sequencing_analysis.mutations_endpoints import mutations_endpoints
 from sequencing_analysis.mutations_heatmap import mutations_heatmap
 from sequencing_analysis.gff_coverage import gff_coverage
-from sequencing_analysis.genome_annotations import genome_annotations
 
 class stage01_resequencing_execute():
     '''class for resequencing analysis'''

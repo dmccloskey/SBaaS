@@ -97,6 +97,15 @@ class stage01_rnasequencing_execute():
             data_stage01_rnasequencing_geneExpDiff.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
+    def initialize_dataStage01(self):
+        try:
+            data_stage01_rnasequencing_analysis.__table__.create(engine,True);
+            data_stage01_rnasequencing_heatmap.__table__.create(engine,True);
+            data_stage01_rnasequencing_dendrogram.__table__.create(engine,True);
+            data_stage01_rnasequencing_genesFpkmTracking.__table__.create(engine,True);
+            data_stage01_rnasequencing_geneExpDiff.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
     def reset_dataStage01(self,experiment_id_I = None,analysis_id_I = None):
         try:
             if experiment_id_I:
@@ -134,15 +143,6 @@ class stage01_rnasequencing_execute():
             else:
                 reset = self.session.query(data_stage01_rnasequencing_dendrogram).delete(synchronize_session=False);
             self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def initialize_dataStage01(self):
-        try:
-            data_stage01_rnasequencing_analysis.__table__.create(engine,True);
-            data_stage01_rnasequencing_heatmap.__table__.create(engine,True);
-            data_stage01_rnasequencing_dendrogram.__table__.create(engine,True);
-            data_stage01_rnasequencing_genesFpkmTracking.__table__.create(engine,True);
-            data_stage01_rnasequencing_geneExpDiff.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
     def reset_dataStage01_rnasequencing_genesFpkmTracking(self,experiment_id_I = None, sample_names_I=[]):

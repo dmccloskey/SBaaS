@@ -1326,6 +1326,29 @@ class stage01_quantification_execute():
             data_stage01_quantification_peakResolution.__table__.drop(engine,TRUE);
         except SQLAlchemyError as e:
             print(e);
+    def initialize_dataStage01_quantification(self):
+        try:
+            data_stage01_quantification_MQResultsTable.__table__.create(engine,True);
+            data_stage01_quantification_LLOQAndULOQ.__table__.create(engine,True);
+            data_stage01_quantification_checkLLOQAndULOQ.__table__.create(engine,True);
+            data_stage01_quantification_checkISMatch.__table__.create(engine,True);
+            data_stage01_quantification_QCs.__table__.create(engine,True);
+            data_stage01_quantification_checkCV_QCs.__table__.create(engine,True);
+            data_stage01_quantification_dilutions.__table__.create(engine,True);
+            data_stage01_quantification_checkCV_dilutions.__table__.create(engine,True);
+            data_stage01_quantification_normalized.__table__.create(engine,True);
+            data_stage01_quantification_replicates.__table__.create(engine,True);
+            data_stage01_quantification_averages.__table__.create(engine,True);
+            data_stage01_quantification_checkCVAndExtracellular_averages.__table__.create(engine,True);
+            data_stage01_quantification_replicatesMI.__table__.create(engine,True);
+            data_stage01_quantification_averagesMI.__table__.create(engine,True);
+            data_stage01_quantification_averagesMIgeo.__table__.create(engine,True);
+            data_stage01_quantification_physiologicalRatios_replicates.__table__.create(engine,True);
+            data_stage01_quantification_physiologicalRatios_averages.__table__.create(engine,True);
+            data_stage01_quantification_peakInformation.__table__.create(engine,True);
+            data_stage01_quantification_peakResolution.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
     def reset_dataStage01_quantification(self,experiment_id_I = None):
         try:
             if experiment_id_I:
@@ -1420,29 +1443,6 @@ class stage01_quantification_execute():
             if experiment_id_I:
                 reset = self.session.query(data_stage01_quantification_normalized).filter(data_stage01_quantification_normalized.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def initialize_dataStage01_quantification(self):
-        try:
-            data_stage01_quantification_MQResultsTable.__table__.create(engine,True);
-            data_stage01_quantification_LLOQAndULOQ.__table__.create(engine,True);
-            data_stage01_quantification_checkLLOQAndULOQ.__table__.create(engine,True);
-            data_stage01_quantification_checkISMatch.__table__.create(engine,True);
-            data_stage01_quantification_QCs.__table__.create(engine,True);
-            data_stage01_quantification_checkCV_QCs.__table__.create(engine,True);
-            data_stage01_quantification_dilutions.__table__.create(engine,True);
-            data_stage01_quantification_checkCV_dilutions.__table__.create(engine,True);
-            data_stage01_quantification_normalized.__table__.create(engine,True);
-            data_stage01_quantification_replicates.__table__.create(engine,True);
-            data_stage01_quantification_averages.__table__.create(engine,True);
-            data_stage01_quantification_checkCVAndExtracellular_averages.__table__.create(engine,True);
-            data_stage01_quantification_replicatesMI.__table__.create(engine,True);
-            data_stage01_quantification_averagesMI.__table__.create(engine,True);
-            data_stage01_quantification_averagesMIgeo.__table__.create(engine,True);
-            data_stage01_quantification_physiologicalRatios_replicates.__table__.create(engine,True);
-            data_stage01_quantification_physiologicalRatios_averages.__table__.create(engine,True);
-            data_stage01_quantification_peakInformation.__table__.create(engine,True);
-            data_stage01_quantification_peakResolution.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
     # data_stage01_quantification deletes

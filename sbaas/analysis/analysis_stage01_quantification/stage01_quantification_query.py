@@ -337,6 +337,7 @@ class stage01_quantification_query(base_analysis):
             return component_names_O;
         except SQLAlchemyError as e:
             print(e);
+
     # query component group names from data_stage01_quantification_mqresultstable
     def get_componentGroupNames_sampleName(self,sample_name_I):
         '''Querry component group names that are used from the sample name
@@ -369,7 +370,9 @@ class stage01_quantification_query(base_analysis):
             return component_group_name_O;
         except SQLAlchemyError as e:
             print(e);
-    # query physiological parameters from data_stage01_quantification_mqresultstable
+
+    # query physiological parameters and sample mass conversion
+    #requires experiment,sample,sample_description,sample_physiologicalParameters,sample_massVolumeConversion
     def get_CVSAndCVSUnitsAndODAndDilAndDilUnits_sampleName(self,sample_name_I):
         '''Querry culture volume sampled, culture volume sampled units, and OD600 from sample name
         NOTE: intended to be used within a for loop'''
@@ -413,6 +416,8 @@ class stage01_quantification_query(base_analysis):
             return cvs_O, cvs_units_O, od600_O, dil_O, dil_units_O;
         except SQLAlchemyError as e:
             print(e);
+
+    # query sample_massVolumeConversion
     def get_conversionAndConversionUnits_biologicalMaterialAndConversionName(self,biological_material_I,conversion_name_I):
         '''Querry conversion and conversion units from
         biological material and conversion name
@@ -427,84 +432,9 @@ class stage01_quantification_query(base_analysis):
             return conversion_O, conversion_units_O;
         except SQLAlchemyError as e:
             print(e);
+
     # query data from data_stage01_quantification_mqresultstable
-    def get_concAndConcUnits_sampleNameAndComponentName(self,sample_name_I,component_name_I):
-        '''Querry data (i.e. concentration, area/peak height ratio) from sample name and component name
-        NOTE: intended to be used within a for loop'''
-        # check for absolute or relative quantitation (i.e. area/peak height ratio)
-        try:
-            use_conc = self.session.query(data_stage01_quantification_MQResultsTable.use_calculated_concentration).filter(
-                    data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
-                    data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
-                    data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
-            if use_conc:
-                use_conc_O = use_conc[0][0];
-            else: 
-                use_conc_O = None;
-        except SQLAlchemyError as e:
-            print(e);
-
-        if use_conc_O:
-            try:
-                data = self.session.query(data_stage01_quantification_MQResultsTable.calculated_concentration,
-                        data_stage01_quantification_MQResultsTable.conc_units).filter(
-                        data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
-                        data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
-                        data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
-                if data:
-                    conc_O = data[0][0];
-                    conc_units_O = data[0][1];
-                else: 
-                    conc_O = None;
-                    conc_units_O = None;
-                return conc_O, conc_units_O;
-            except SQLAlchemyError as e:
-                print(e);
-
-        else:
-            # check for area or peak height ratio from quantitation_method
-            try:
-                data = self.session.query(quantitation_method.use_area).filter(
-                        experiment.sample_name.like(sample_name_I),
-                        experiment.quantitation_method_id.like(quantitation_method.id),
-                        quantitation_method.component_name.like(component_name_I)).all();
-                if data:
-                    ratio_O = data[0][0];
-                else: 
-                    ratio_O = None;
-            except SQLAlchemyError as e:
-                print(e);
-
-            if ratio_O:
-                try:
-                    data = self.session.query(data_stage01_quantification_MQResultsTable.area_ratio).filter(
-                            data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
-                            data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
-                            data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
-                    if data:
-                        conc_O = data[0][0];
-                        conc_units_O = 'area_ratio';
-                    else: 
-                        conc_O = None;
-                        conc_units_O = None;
-                    return conc_O, conc_units_O;
-                except SQLAlchemyError as e:
-                    print(e);
-            else:
-                try:
-                    data = self.session.query(data_stage01_quantification_MQResultsTable.height_ratio).filter(
-                            data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
-                            data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
-                            data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
-                    if data:
-                        conc_O = data[0][0];
-                        conc_units_O = 'height_ratio';
-                    else: 
-                        conc_O = None;
-                        conc_units_O = None;
-                    return conc_O, conc_units_O;
-                except SQLAlchemyError as e:
-                    print(e);
+    # no other table dependencies
     def get_peakHeight_sampleNameAndComponentName(self,sample_name_I,component_name_I):
         '''Querry peak height from sample name and component name
         NOTE: intended to be used within a for loop'''
@@ -662,7 +592,7 @@ class stage01_quantification_query(base_analysis):
             return used_O;
         except SQLAlchemyError as e:
             print(e);
-    # delet data from data_stage01_quantification_mqresultstable
+    # delete data from data_stage01_quantification_mqresultstable
     def delete_row_sampleName(self,sampleNames_I):
         '''Delete specific samples from an experiment by their sample ID from sample_physiologicalparameters'''
         deletes = [];
@@ -678,6 +608,85 @@ class stage01_quantification_query(base_analysis):
             except SQLAlchemyError as e:
                 print(e);
         self.session.commit();
+
+    # requires quantitation_method
+    def get_concAndConcUnits_sampleNameAndComponentName(self,sample_name_I,component_name_I):
+        '''Querry data (i.e. concentration, area/peak height ratio) from sample name and component name
+        NOTE: intended to be used within a for loop'''
+        # check for absolute or relative quantitation (i.e. area/peak height ratio)
+        try:
+            use_conc = self.session.query(data_stage01_quantification_MQResultsTable.use_calculated_concentration).filter(
+                    data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
+                    data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
+                    data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
+            if use_conc:
+                use_conc_O = use_conc[0][0];
+            else: 
+                use_conc_O = None;
+        except SQLAlchemyError as e:
+            print(e);
+
+        if use_conc_O:
+            try:
+                data = self.session.query(data_stage01_quantification_MQResultsTable.calculated_concentration,
+                        data_stage01_quantification_MQResultsTable.conc_units).filter(
+                        data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
+                        data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
+                        data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
+                if data:
+                    conc_O = data[0][0];
+                    conc_units_O = data[0][1];
+                else: 
+                    conc_O = None;
+                    conc_units_O = None;
+                return conc_O, conc_units_O;
+            except SQLAlchemyError as e:
+                print(e);
+
+        else:
+            # check for area or peak height ratio from quantitation_method
+            try:
+                data = self.session.query(quantitation_method.use_area).filter(
+                        experiment.sample_name.like(sample_name_I),
+                        experiment.quantitation_method_id.like(quantitation_method.id),
+                        quantitation_method.component_name.like(component_name_I)).all();
+                if data:
+                    ratio_O = data[0][0];
+                else: 
+                    ratio_O = None;
+            except SQLAlchemyError as e:
+                print(e);
+
+            if ratio_O:
+                try:
+                    data = self.session.query(data_stage01_quantification_MQResultsTable.area_ratio).filter(
+                            data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
+                            data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
+                            data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
+                    if data:
+                        conc_O = data[0][0];
+                        conc_units_O = 'area_ratio';
+                    else: 
+                        conc_O = None;
+                        conc_units_O = None;
+                    return conc_O, conc_units_O;
+                except SQLAlchemyError as e:
+                    print(e);
+            else:
+                try:
+                    data = self.session.query(data_stage01_quantification_MQResultsTable.height_ratio).filter(
+                            data_stage01_quantification_MQResultsTable.sample_name.like(sample_name_I),
+                            data_stage01_quantification_MQResultsTable.component_name.like(component_name_I),
+                            data_stage01_quantification_MQResultsTable.used_.is_(True)).all();
+                    if data:
+                        conc_O = data[0][0];
+                        conc_units_O = 'height_ratio';
+                    else: 
+                        conc_O = None;
+                        conc_units_O = None;
+                    return conc_O, conc_units_O;
+                except SQLAlchemyError as e:
+                    print(e);
         
     # query description from sample_description
     def get_description_experimentIDAndSampleID_sampleDescription(self,experiment_id_I,sample_id_I):
@@ -711,7 +720,7 @@ class stage01_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    # QC queries from data_stage01_quantification_normalized
+    # QC queries from quantitation_method
     def get_LLOQAndULOQ(self,experiment_id_I,exp_type_I=4):
         '''query to populate the "checkLLOQAndULOQ" view'''
         try:
@@ -833,13 +842,14 @@ class stage01_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
         return
-    def get_checkCV_dilutions(self,experiment_id_I):
+
+    # data_stage01_quantification_dilutions only
+    def get_checkCV_dilutions(self,experiment_id_I,cv_threshold_I=20.0):
         '''query to populate the "checkCV_dilutions" view'''
-        cv_threshold = 20;
         try:
             check = self.session.query(data_stage01_quantification_dilutions).filter(
                         data_stage01_quantification_dilutions.experiment_id.like(experiment_id_I),
-                        data_stage01_quantification_dilutions.calculated_concentration_cv > cv_threshold).all();
+                        data_stage01_quantification_dilutions.calculated_concentration_cv > cv_threshold_I).all();
             check_O = [];
             for c in check: 
                 check_1 = {};
@@ -855,6 +865,7 @@ class stage01_quantification_query(base_analysis):
             return  check_O;
         except SQLAlchemyError as e:
             print(e);
+    # data_stage01_quantification_averages only
     def get_checkCVAndExtracellular_averages(self,experiment_id_I,cv_threshold_I=20,extracellular_threshold_I=50):
         '''query to populate the "checkCVAndExtracellular_averages" view'''
         cv_threshold = 20;
