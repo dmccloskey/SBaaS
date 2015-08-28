@@ -846,10 +846,9 @@ class sample_description(Base):
         self.sample_replicate_biological=sample_replicate_biological_I
         self.istechnical=istechnical_I
         self.notes=notes_I
-#sample_massVolumeConversion
-class sample_massVolumeConversion(Base):
+class biologicalMaterial_massVolumeConversion(Base):
     #__table__ = make_table('sample_massvolumeconversion')
-    __tablename__ = 'sample_massvolumeconversion'
+    __tablename__ = 'biologicalmaterial_massvolumeconversion'
     biological_material=Column(String(100),nullable=False, primary_key=True);
     conversion_name=Column(String(50),nullable=False, primary_key=True);
     conversion_factor=Column(Float);

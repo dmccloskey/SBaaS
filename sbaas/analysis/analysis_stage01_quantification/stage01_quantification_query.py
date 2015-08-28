@@ -372,7 +372,7 @@ class stage01_quantification_query(base_analysis):
             print(e);
 
     # query physiological parameters and sample mass conversion
-    #requires experiment,sample,sample_description,sample_physiologicalParameters,sample_massVolumeConversion
+    #requires experiment,sample,sample_description,sample_physiologicalParameters,biologicalMaterial_massVolumeConversion
     def get_CVSAndCVSUnitsAndODAndDilAndDilUnits_sampleName(self,sample_name_I):
         '''Querry culture volume sampled, culture volume sampled units, and OD600 from sample name
         NOTE: intended to be used within a for loop'''
@@ -417,16 +417,16 @@ class stage01_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
 
-    # query sample_massVolumeConversion
+    # query biologicalMaterial_massVolumeConversion
     def get_conversionAndConversionUnits_biologicalMaterialAndConversionName(self,biological_material_I,conversion_name_I):
         '''Querry conversion and conversion units from
         biological material and conversion name
         NOTE: intended to be used within a for loop'''
         try:
-            physiologicalParameters = self.session.query(sample_massVolumeConversion.conversion_factor,
-                    sample_massVolumeConversion.conversion_units).filter(
-                    sample_massVolumeConversion.biological_material.like(biological_material_I),
-                    sample_massVolumeConversion.conversion_name.like(conversion_name_I)).all();
+            physiologicalParameters = self.session.query(biologicalMaterial_massVolumeConversion.conversion_factor,
+                    biologicalMaterial_massVolumeConversion.conversion_units).filter(
+                    biologicalMaterial_massVolumeConversion.biological_material.like(biological_material_I),
+                    biologicalMaterial_massVolumeConversion.conversion_name.like(conversion_name_I)).all();
             conversion_O = physiologicalParameters[0][0];
             conversion_units_O = physiologicalParameters[0][1];
             return conversion_O, conversion_units_O;

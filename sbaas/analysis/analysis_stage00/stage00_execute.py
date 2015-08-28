@@ -1001,7 +1001,7 @@ class stage00_execute(base_analysis):
             sample_storage.__table__.drop(engine,True);
             sample_physiologicalParameters.__table__.drop(engine,True);
             sample_description.__table__.drop(engine,True);
-            sample_massVolumeConversion.__table__.drop(engine,True);
+            biologicalMaterial_massVolumeConversion.__table__.drop(engine,True);
             internal_standard.__table__.drop(engine,True);
             internal_standard_storage.__table__.drop(engine,True);
             experiment_types.__table__.drop(engine,True);
@@ -1057,7 +1057,7 @@ class stage00_execute(base_analysis):
             reset = self.session.query(sample_storage).delete(synchronize_session=False);
             reset = self.session.query(sample_physiologicalParameters).delete(synchronize_session=False);
             reset = self.session.query(sample_description).delete(synchronize_session=False);
-            reset = self.session.query(sample_massVolumeConversion).delete(synchronize_session=False);
+            reset = self.session.query(biologicalMaterial_massVolumeConversion).delete(synchronize_session=False);
             reset = self.session.query(internal_standard).delete(synchronize_session=False);
             reset = self.session.query(internal_standard_storage).delete(synchronize_session=False);
             reset = self.session.query(experiment_types).delete(synchronize_session=False);
@@ -1114,7 +1114,7 @@ class stage00_execute(base_analysis):
             sample_storage.__table__.create(engine,True);
             sample_physiologicalParameters.__table__.create(engine,True);
             sample_description.__table__.create(engine,True);
-            sample_massVolumeConversion.__table__.create(engine,True);
+            biologicalMaterial_massVolumeConversion.__table__.create(engine,True);
             internal_standard.__table__.create(engine,True);
             internal_standard_storage.__table__.create(engine,True);
             experiment_types.__table__.create(engine,True);
