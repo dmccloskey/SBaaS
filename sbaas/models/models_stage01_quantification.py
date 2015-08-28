@@ -92,6 +92,22 @@ class data_stage01_quantification_QCs(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
+class data_stage01_quantification_checkISMatch(Base):
+    __tablename__ = 'data_stage01_quantification_checkISMatch'
+    experiment_id = Column(String(50), primary_key=True)
+    sample_name = Column(String(100), primary_key=True)
+    component_name = Column(String(500), primary_key=True)
+    IS_name_samples = Column(String(500))
+    IS_name_calibrators = Column(String(500))
+
+    def __init__(self, experiment_id_I, sample_name_I, component_name_I,
+                    IS_name_samples_I, IS_name_calibrators_I):
+        self.experiment_id = experiment_id_I;
+        self.sample_name = sample_name_I;
+        self.component_name = component_name_I;
+        self.IS_name_samples = IS_name_samples_I;
+        self.IS_name_calibrators = IS_name_calibrators_I;
+
 class data_stage01_quantification_normalized(Base):
     __tablename__ = 'data_stage01_quantification_normalized'
     id = Column(Integer, Sequence('data_stage01_quantification_normalized_id_seq'), primary_key=True)
@@ -212,6 +228,7 @@ class data_stage01_quantification_replicatesMI(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
+
 class data_stage01_quantification_averages(Base):
     __tablename__ = 'data_stage01_quantification_averages'
     id = Column(Integer, Sequence('data_stage01_quantification_averages_id_seq'), primary_key=True)
@@ -281,7 +298,6 @@ class data_stage01_quantification_averages(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
-
 class data_stage01_quantification_averagesMI(Base):
     __tablename__ = 'data_stage01_quantification_averagesmi'
     id = Column(Integer, Sequence('data_stage01_quantification_averagesmi_id_seq'), primary_key=True)
@@ -380,6 +396,7 @@ class data_stage01_quantification_averagesMIgeo(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
+
 class data_stage01_quantification_physiologicalRatios_replicates(Base):
     __tablename__ = 'data_stage01_quantification_physiologicalRatios_replicates'
     id = Column(Integer, Sequence('data_stage01_quantification_physiologicalRatios_replicates_id_seq'), primary_key=True)
@@ -500,6 +517,7 @@ class data_stage01_quantification_physiologicalRatios_averages(Base):
     
     def __repr__json__(self):
         return json.dumps(self.__repr__dict__())
+
 class data_stage01_quantification_peakInformation(Base):
     __tablename__ = 'data_stage01_quantification_peakInformation'
     id = Column(Integer, Sequence('data_stage01_quantification_peakInformation_id_seq'), primary_key=True)
@@ -677,21 +695,6 @@ class data_stage01_quantification_checkLLOQAndULOQ(Base):
         self.uloq = uloq_I;
         self.points = points_I;
         self.used_ = used_I;
-class data_stage01_quantification_checkISMatch(Base):
-    __tablename__ = 'data_stage01_quantification_checkISMatch'
-    experiment_id = Column(String(50), primary_key=True)
-    sample_name = Column(String(100), primary_key=True)
-    component_name = Column(String(500), primary_key=True)
-    IS_name_samples = Column(String(500))
-    IS_name_calibrators = Column(String(500))
-
-    def __init__(self, experiment_id_I, sample_name_I, component_name_I,
-                    IS_name_samples_I, IS_name_calibrators_I):
-        self.experiment_id = experiment_id_I;
-        self.sample_name = sample_name_I;
-        self.component_name = component_name_I;
-        self.IS_name_samples = IS_name_samples_I;
-        self.IS_name_calibrators = IS_name_calibrators_I;
 class data_stage01_quantification_checkCV_QCs(Base):
     __tablename__ = 'data_stage01_quantification_checkCV_QCs'
     experiment_id = Column(String(50), primary_key=True)
