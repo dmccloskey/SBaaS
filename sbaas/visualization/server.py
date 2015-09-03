@@ -210,8 +210,11 @@ class ProjectHandler(BaseHandler):
         template = env.get_template(template_dir)
         data = template.render(d3=url.get_url('d3', source),
                                colorbrewer=url.get_url('colorbrewer', source),
-                               jquery=url.get_url('jquery', 'web'),
-                               boot_js=url.get_url('boot_js', 'web'),
+                               #jquery=url.get_url('jquery', 'web'),
+                               #boot_js=url.get_url('boot_js', 'web'),
+                               jquery=url.get_url('jquery', source), 
+                               boot_js=url.get_url('boot_js', source),
+                               boot_css=url.get_url('boot_css', source),
                                escher_css=url.get_url('escher_css', source),
                                escher_js=url.get_url('escher_js', source),
                                container_js=url.get_url('container_js', source),

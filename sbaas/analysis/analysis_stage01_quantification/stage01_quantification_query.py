@@ -1,4 +1,4 @@
-from sbaas.analysis.analysis_base import *
+﻿from sbaas.analysis.analysis_base import *
 
 class stage01_quantification_query(base_analysis):
     # query sample names from data_stage01_quantification_mqresultstable
@@ -372,7 +372,6 @@ class stage01_quantification_query(base_analysis):
             print(e);
 
     # query physiological parameters and sample mass conversion
-    #requires experiment,sample,sample_description,sample_physiologicalParameters,biologicalMaterial_massVolumeConversion
     def get_CVSAndCVSUnitsAndODAndDilAndDilUnits_sampleName(self,sample_name_I):
         '''Querry culture volume sampled, culture volume sampled units, and OD600 from sample name
         NOTE: intended to be used within a for loop'''
@@ -393,6 +392,7 @@ class stage01_quantification_query(base_analysis):
             return cvs_O, cvs_units_O, od600_O, dil_O, dil_units_O;
         except SQLAlchemyError as e:
             print(e);
+    # query physiological parameters and sample mass conversion
     def get_CVSAndCVSUnitsAndODAndDilAndDilUnits_sampleNameShort(self,experiment_id_I,sample_name_short_I,exp_type_I=4):
         '''Querry culture volume sampled, culture volume sampled units, and OD600 from sample name
         NOTE: intended to be used within a for loop'''
@@ -865,6 +865,7 @@ class stage01_quantification_query(base_analysis):
             return  check_O;
         except SQLAlchemyError as e:
             print(e);
+
     # data_stage01_quantification_averages only
     def get_checkCVAndExtracellular_averages(self,experiment_id_I,cv_threshold_I=20,extracellular_threshold_I=50):
         '''query to populate the "checkCVAndExtracellular_averages" view'''
@@ -1795,9 +1796,9 @@ class stage01_quantification_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
     
-    # Query data from ms_components:data_stage01_quantification_physiologicalRatios_replicates
+    # Query data from ms_components
     def get_msGroup_componentName_MSComponents(self,component_name_I):
-        '''Querry component group names from the component name
+        '''Query component group names from the component name
         NOTE: intended to be used within a for loop'''
         try:
             component_group_name = self.session.query(MS_components.ms_group).filter(

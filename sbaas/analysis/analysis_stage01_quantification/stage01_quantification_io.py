@@ -1,4 +1,4 @@
-from sbaas.analysis.analysis_base import *
+﻿from sbaas.analysis.analysis_base import *
 from .stage01_quantification_query import stage01_quantification_query
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 # Resources
@@ -366,7 +366,7 @@ class stage01_quantification_io(base_analysis):
         data.clear_data();
 
     def update_dataStage01ReplicatesMI(self,dataListUpdated_I):
-        # update the data_stage01_quantification_normalized
+        # update the data_stage01_quantification_ReplicatesMI
         for d in dataListUpdated_I:
             try:
                 data_update = self.session.query(data_stage01_quantification_replicatesMI).filter(
