@@ -952,10 +952,10 @@ class stage01_resequencing_io(base_analysis):
         # get the analysis information
         experiment_ids,sample_names,time_points = [],[],[];
         experiment_ids,sample_names,time_points = self.stage01_resequencing_query.get_experimentIDAndSampleNameAndTimePoint_analysisID_dataStage01ResequencingAnalysis(analysis_id_I);
-        # convert time_point to intermediates
-        time_points_int = [int(x) for x in time_points];
-        intermediates,time_points,experiment_ids,sample_names = (list(t) for t in zip(*sorted(zip(time_points_int,time_points,experiment_ids,sample_names))))
-        intermediates = [i for i,x in enumerate(intermediates)];
+        ## convert time_point to intermediates
+        #time_points_int = [int(x) for x in time_points];
+        #intermediates,time_points,experiment_ids,sample_names = (list(t) for t in zip(*sorted(zip(time_points_int,time_points,experiment_ids,sample_names))))
+        #intermediates = [i for i,x in enumerate(intermediates)];
         mutation_data_O = [];
         mutation_ids = [];
         for sample_name_cnt,sample_name in enumerate(sample_names):
@@ -1023,6 +1023,7 @@ class stage01_resequencing_io(base_analysis):
                         tmp['mutation_links']=";".join([x for x in mutation['mutation_links'] if x is not None]);
                     else: tmp['mutation_links']=mutation['mutation_links'];
                     tmp['mutation_type']=mutation['mutation_type'];
+                    tmp['mutation_data']=json.dumps(mutation['mutation_data']);
                     tmp['used_']=mutation['used_'];
                     tmp['comment_']=mutation['comment_'];
                     mutation_ids_uniqueInfo.append(tmp);     
@@ -1035,7 +1036,7 @@ class stage01_resequencing_io(base_analysis):
                 tmp_fitted = {};
                 tmp['mutation_id']=mutation_id['mutation_id']
                 tmp['time_point']=time_points[sample_name_cnt]
-                tmp['intermediate']=intermediates[sample_name_cnt]
+                #tmp['intermediate']=intermediates[sample_name_cnt]
                 tmp['experiment_id']=experiment_ids[sample_name_cnt]
                 tmp['sample_name']=sample_name
                 tmp['mutation_frequency']=0.0;  
@@ -1045,6 +1046,7 @@ class stage01_resequencing_io(base_analysis):
                 tmp['mutation_locations']=mutation_id['mutation_locations'];
                 tmp['mutation_links']=mutation_id['mutation_links'];
                 tmp['mutation_type']=mutation_id['mutation_type'];
+                tmp['mutation_data']=mutation_id['mutation_data'];
                 tmp['used_']=mutation_id['used_'];
                 tmp['comment_']=mutation_id['comment_'];
                 for mutation in mutation_data_O:
