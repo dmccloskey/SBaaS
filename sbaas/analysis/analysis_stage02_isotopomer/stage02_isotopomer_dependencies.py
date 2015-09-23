@@ -4839,7 +4839,7 @@ class isotopomer_netRxns():
     def define_netRxns(self):
         isotopomer_rxns_net = {};
         isotopomer_rxns_net.update(self.define_netRxns_iDM2014_reversible());
-        isotopomer_rxns_net.update(self.define_netRxns_RL2013_reversible());
+        #isotopomer_rxns_net.update(self.define_netRxns_RL2013_reversible());
         return isotopomer_rxns_net
     def define_netRxns_iDM2014_reversible(self):
         isotopomer_rxns_net = {

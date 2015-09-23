@@ -198,27 +198,27 @@ class stage01_isotopomer_query(base_analysis):
             return sample_names_O,sample_replicates_O,sample_types_O;
         except SQLAlchemyError as e:
             print(e);
-    def get_sampleNames_experimentIDAndSampleNameAbbreviationAndSampleDescriptionAndComponentNameAndTimePointAndDilution(\
-        self,experiment_id_I,sample_name_abbreviation_I,sample_description_I,component_name_I,time_point_I,sample_dilution_I,exp_type_I=5):
-        '''Querry sample names that are used from
-        the experiment'''
-        try:
-            sample_names = self.session.query(sample.sample_name).filter(
-                    sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
-                    sample_description.time_point.like(time_point_I),
-                    sample_description.sample_desc.like(sample_description_I),
-                    sample.sample_id.like(sample_description.sample_id),
-                    sample.sample_dilution == sample_dilution_I,
-                    experiment.sample_name.like(sample.sample_name),
-                    experiment.exp_type_id == exp_type_I,
-                    experiment.id.like(experiment_id_I)).group_by(
-                    sample.sample_name).order_by(
-                    sample.sample_name.asc()).all();
-            sample_names_O = [];
-            for sn in sample_names: sample_names_O.append(sn.sample_name);
-            return sample_names_O;
-        except SQLAlchemyError as e:
-            print(e);
+    #def get_sampleNames_experimentIDAndSampleNameAbbreviationAndSampleDescriptionAndComponentNameAndTimePointAndDilution(\
+    #    self,experiment_id_I,sample_name_abbreviation_I,sample_description_I,component_name_I,time_point_I,sample_dilution_I,exp_type_I=5):
+    #    '''Querry sample names that are used from
+    #    the experiment'''
+    #    try:
+    #        sample_names = self.session.query(sample.sample_name).filter(
+    #                sample_description.sample_name_abbreviation.like(sample_name_abbreviation_I),
+    #                sample_description.time_point.like(time_point_I),
+    #                sample_description.sample_desc.like(sample_description_I),
+    #                sample.sample_id.like(sample_description.sample_id),
+    #                sample.sample_dilution == sample_dilution_I,
+    #                experiment.sample_name.like(sample.sample_name),
+    #                experiment.exp_type_id == exp_type_I,
+    #                experiment.id.like(experiment_id_I)).group_by(
+    #                sample.sample_name).order_by(
+    #                sample.sample_name.asc()).all();
+    #        sample_names_O = [];
+    #        for sn in sample_names: sample_names_O.append(sn.sample_name);
+    #        return sample_names_O;
+    #    except SQLAlchemyError as e:
+    #        print(e);
     # query sample ids from data_stage01_isotopomer_mqresultstable
     def get_sampleIDs_experimentIDAndSampleType(self,experiment_id_I,sample_type_I,exp_type_I=5):
         '''Querry sample names (i.e. unknowns) that are used from

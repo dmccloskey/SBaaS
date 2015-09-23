@@ -1569,6 +1569,18 @@ class stage01_isotopomer_execute():
             data_stage01_isotopomer_spectrumAccuracy.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
+    def initialize_dataStage01(self):
+        try:
+            data_stage01_isotopomer_MQResultsTable.__table__.create(engine,True);
+            data_stage01_isotopomer_peakSpectrum.__table__.create(engine,True);
+            data_stage01_isotopomer_peakList.__table__.create(engine,True);
+            data_stage01_isotopomer_peakData.__table__.create(engine,True);
+            data_stage01_isotopomer_normalized.__table__.create(engine,True);
+            data_stage01_isotopomer_averages.__table__.create(engine,True);
+            data_stage01_isotopomer_averagesNormSum.__table__.create(engine,True);
+            data_stage01_isotopomer_spectrumAccuracy.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
     def reset_dataStage01(self,experiment_id_I = None):
         try:
             if experiment_id_I:
@@ -1603,18 +1615,6 @@ class stage01_isotopomer_execute():
             if experiment_id_I:
                 reset = self.session.query(data_stage01_isotopomer_peakData).filter(data_stage01_isotopomer_peakData.experiment_id.like(experiment_id_I)).delete(synchronize_session=False);
                 self.session.commit();
-        except SQLAlchemyError as e:
-            print(e);
-    def initialize_dataStage01(self):
-        try:
-            data_stage01_isotopomer_MQResultsTable.__table__.create(engine,True);
-            data_stage01_isotopomer_peakSpectrum.__table__.create(engine,True);
-            data_stage01_isotopomer_peakList.__table__.create(engine,True);
-            data_stage01_isotopomer_peakData.__table__.create(engine,True);
-            data_stage01_isotopomer_normalized.__table__.create(engine,True);
-            data_stage01_isotopomer_averages.__table__.create(engine,True);
-            data_stage01_isotopomer_averagesNormSum.__table__.create(engine,True);
-            data_stage01_isotopomer_spectrumAccuracy.__table__.create(engine,True);
         except SQLAlchemyError as e:
             print(e);
     #plotting methods:

@@ -260,7 +260,8 @@ class stage01_isotopomer_io(base_analysis):
                 try:
                     data_update = self.session.query(data_stage01_isotopomer_MQResultsTable).filter(
                             data_stage01_isotopomer_MQResultsTable.component_name.like(d['Component Name']),
-                            data_stage01_isotopomer_MQResultsTable.sample_name.like(d['Sample Name'])).update(
+                            data_stage01_isotopomer_MQResultsTable.sample_name.like(d['Sample Name']),
+                            data_stage01_isotopomer_MQResultsTable.acquisition_date_and_time == d['Acquisition Date & Time']).update(
                             {'index_':d['Index'],
                             'sample_index':d['Sample Index'],
                             'original_filename':d['Original Filename'],
@@ -926,7 +927,7 @@ class stage01_isotopomer_io(base_analysis):
                     #'svgid':'svg1',
                     'svgid':'svg'+str(cnt),
                     "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
-                    "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",
+                    "svgwidth":350,"svgheight":250,"svgy1axislabel":"intensity (norm)",
                     "svgfilters":{'sample_name':[sn]}               
                         };
                 svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg',
@@ -1199,7 +1200,7 @@ class stage01_isotopomer_io(base_analysis):
                     #'svgid':'svg1',
                     'svgid':'svg'+str(cnt),
                     "svgmargin":{ 'top': 50, 'right': 150, 'bottom': 50, 'left': 50 },
-                    "svgwidth":500,"svgheight":350,"svgy1axislabel":"intensity (norm)",
+                    "svgwidth":350,"svgheight":250,"svgy1axislabel":"intensity (norm)",
                     "svgfilters":{'sample_name_abbreviation':[sn]}               
                         };
                 svgtileparameters1_O = {'tileheader':'Isotopomer distribution','tiletype':'svg',

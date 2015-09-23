@@ -694,6 +694,62 @@ class stage02_isotopomer_query(base_analysis):
         except SQLAlchemyError as e:
             print(e);
     # query row from data_stage02_isotopomer_measuredFragments
+    def get_row_experimentID_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I):
+        '''Querry rows by experiment_id that are used from the experiment'''
+        try:
+            data = query_session.query(data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).filter(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.like(experiment_id_I),
+                    data_stage02_isotopomer_measuredFragments.used_.is_(True)).group_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id,
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation,
+                    data_stage02_isotopomer_measuredFragments.time_point,
+                    data_stage02_isotopomer_measuredFragments.met_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_id,
+                    data_stage02_isotopomer_measuredFragments.fragment_formula,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_average,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_cv,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_stdev,
+                    data_stage02_isotopomer_measuredFragments.intensity_normalized_units,
+                    data_stage02_isotopomer_measuredFragments.scan_type,
+                    data_stage02_isotopomer_measuredFragments.met_elements,
+                    data_stage02_isotopomer_measuredFragments.met_atompositions).order_by(
+                    data_stage02_isotopomer_measuredFragments.experiment_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.sample_name_abbreviation.asc(),
+                    data_stage02_isotopomer_measuredFragments.met_id.asc(),
+                    data_stage02_isotopomer_measuredFragments.fragment_formula.desc(),
+                    data_stage02_isotopomer_measuredFragments.time_point.asc()).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    row_tmp = {'experiment_id':d.experiment_id,
+                            'sample_name_abbreviation':d.sample_name_abbreviation,
+                            'time_point':d.time_point,
+                            'met_id':d.met_id,
+                            'fragment_id':d.fragment_id,
+                            'fragment_formula':d.fragment_formula,
+                            'intensity_normalized_average':d.intensity_normalized_average,
+                            'intensity_normalized_cv':d.intensity_normalized_cv,
+                            'intensity_normalized_stdev':d.intensity_normalized_stdev,
+                            'intensity_normalized_units':d.intensity_normalized_units,
+                            'scan_type':d.scan_type,
+                            'met_elements':d.met_elements,
+                            'met_atompositions':d.met_atompositions};
+                    rows_O.append(row_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
     def get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(self,experiment_id_I,sample_name_abbreviation_I):
         '''Querry rows for the sample_name_abbreviation that are used from the experiment'''
         try:
@@ -2505,3 +2561,114 @@ class stage02_isotopomer_query(base_analysis):
             return rows_O;
         except SQLAlchemyError as e:
             print(e);   
+
+    #Query data_stage02_isotopomer_fittedFluxStatistics
+    def get_rows_simulationID_dataStage02IsotopomerFittedFluxStatistics(self,simulation_id_I):
+        '''Query rows by simulation_id that are used from the fittedFluxStatistics'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedFluxStatistics).filter(
+                    data_stage02_isotopomer_fittedFluxStatistics.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedFluxStatistics.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e); 
+    def get_rows_simulationIDAndFluxUnits_dataStage02IsotopomerFittedFluxStatistics(self,simulation_id_I,flux_units_I):
+        '''Query rows by simulation_id and flux units that are used from the fittedFluxStatistics'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedFluxStatistics).filter(
+                    data_stage02_isotopomer_fittedFluxStatistics.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedFluxStatistics.flux_units.like(flux_units_I),
+                    data_stage02_isotopomer_fittedFluxStatistics.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+            
+    #Query data_stage02_isotopomer_fittedNetFluxStatistics
+    def get_rows_simulationID_dataStage02IsotopomerFittedNetFluxStatistics(self,simulation_id_I):
+        '''Query rows by simulation_id that are used from the fittedNetFluxStatistics'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedNetFluxStatistics).filter(
+                    data_stage02_isotopomer_fittedNetFluxStatistics.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedNetFluxStatistics.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+    def get_rows_simulationIDAndFluxUnits_dataStage02IsotopomerFittedNetFluxStatistics(self,simulation_id_I,flux_units_I):
+        '''Query rows by simulation_id and flux units that are used from the fittedNetFluxStatistics'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedNetFluxStatistics).filter(
+                    data_stage02_isotopomer_fittedNetFluxStatistics.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedNetFluxStatistics.flux_units.like(flux_units_I),
+                    data_stage02_isotopomer_fittedNetFluxStatistics.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+
+    #Query data_stage02_isotopomer_fittedMeasuredFragments
+    def get_rows_simulationID_dataStage02IsotopomerFittedMeasuredFragments(self,simulation_id_I):
+        '''Query rows by simulation_id that are used from the fittedMeasuredFragments'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedMeasuredFragments).filter(
+                    data_stage02_isotopomer_fittedMeasuredFragments.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedMeasuredFragments.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+
+    #Query data_stage02_isotopomer_fittedData
+    def get_rows_simulationID_dataStage02IsotopomerFittedData(self,simulation_id_I):
+        '''Query rows by simulation_id that are used from the fittedData'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedData).filter(
+                    data_stage02_isotopomer_fittedData.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedData.used_.is_(True)).all();
+            rows_O = [];
+            if data: 
+                for d in data:
+                    data_tmp = d.__repr__dict__();
+                    rows_O.append(data_tmp);
+            return rows_O;
+        except SQLAlchemyError as e:
+            print(e);
+
+    #remove reactions that are unbounded
+    def setUnbounded2False_simulationID_dataStage02IsotopomerFittedFluxes(self,simulation_id_I,flux_lb_I=1e-6,flux_ub_I=999.9):
+        '''Set unbounded reactions to false'''
+        try:
+            data = self.session.query(data_stage02_isotopomer_fittedFluxes).filter(
+                    data_stage02_isotopomer_fittedFluxes.simulation_id.like(simulation_id_I),
+                    data_stage02_isotopomer_fittedFluxes.flux_lb<flux_lb_I,
+                    data_stage02_isotopomer_fittedFluxes.flux_ub>flux_ub_I,
+                    data_stage02_isotopomer_fittedFluxes.used_.is_(True)).update(
+                            {
+                            'used_':False,
+                            },
+                            synchronize_session=False);
+            self.session.commit();
+        except SQLAlchemyError as e:
+            print(e);  

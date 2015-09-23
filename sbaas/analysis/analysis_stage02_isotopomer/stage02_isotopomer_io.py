@@ -3228,9 +3228,18 @@ class stage02_isotopomer_io(base_analysis):
         filename_str = filename[0]+ '/' +experiment_id_I.replace('_','') + filename[1] + filename[2] + 'filter.js'
         with open(filename_str,'w') as file:
             file.write(json_str);
-    def export_dataStage02IsotopomerFittedNetFluxes_js(self,analysis_id_I = None, simulation_ids_I = [],data_dir_I="tmp"):
+    def export_dataStage02IsotopomerFittedNetFluxes_js(self,analysis_id_I = None,
+                        simulation_ids_I = [],
+                        bullet_chart_I = True,
+                        data_dir_I="tmp"):
         '''Plot the flux precision for a given set of simulations and a given set of reactions
-        Default: plot the flux precision for each simulation on a single plot for a single reaction'''
+        Input:
+        analysis_id_I = string, analysis id
+        Optional Input:
+        simulation_ids_I = [] of strings, simulation_ids in a specific order
+        bullet_chart_I = True: show the flux estimation +/- StDev
+                         False: show the 95% confidence invervals and flux estimation +/- StDev
+        '''
 
         #Input:
         # analysis_id_I or
@@ -3303,7 +3312,15 @@ class stage02_isotopomer_io(base_analysis):
         data1_keys = ['simulation_id','rxn_id','simulation_dateAndTime','flux_units','observable'
                     ];
         data1_nestkeys = ['rxn_id'];
-        data1_keymap = {'xdata':'rxn_id',
+        if bullet_chart_I:
+            data1_keymap = {'xdata':'rxn_id',
+                        'ydata':'flux',
+                        'ydatalb':'flux_lb_stdev',
+                        'ydataub':'flux_ub_stdev',
+                        'serieslabel':'simulation_id',
+                        'featureslabel':'rxn_id'};
+        else:
+            data1_keymap = {'xdata':'rxn_id',
                         #'ydata':'flux',
                         'ydata':'flux_mean',
                         'ydatalb':'flux_lb',
@@ -3558,6 +3575,7 @@ class stage02_isotopomer_io(base_analysis):
             file.write(data_str);
             file.write(parameters_str);
             file.write(tile2datamap_str);
+
     def check_observableNetFlux(self,flux_I,flux_lb_I,flux_ub_I):
         '''Determine if a flux is observable
         based on the criteria in doi:10.1016/j.ymben.2010.11.006'''
@@ -3571,3 +3589,127 @@ class stage02_isotopomer_io(base_analysis):
         else:
             observable = True;
         return observable;
+
+    
+    def export_data_stage02_isotopomer_fittedFluxStatistics_csv(self,simulation_ids_I,filename_O,flux_units_I=[]):
+        """export data_stage02_isotopomer_fittedFluxStatistics
+        INPUT:
+        simulation_id_I = [] of string, simulation_id
+        filename_O = string, filename for export"""
+        data_O = [];
+        for simulation_id in simulation_ids_I:
+            if flux_units_I:
+                for flux_units in flux_units_I:
+                    data_tmp =[];
+                    data_tmp = self.stage02_isotopomer_query.get_rows_simulationIDAndFluxUnits_dataStage02IsotopomerFittedFluxStatistics(simulation_id,flux_units);
+                    data_O.extend(data_tmp);
+            else:
+                data_tmp =[];
+                data_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerFittedFluxStatistics(simulation_id);
+                data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+    def export_data_stage02_isotopomer_fittedMeasuredFragments_csv(self,simulation_ids_I,filename_O):
+        """export data_stage02_isotopomer_fittedMeasuredFragments
+        INPUT:
+        simulation_id_I = [] of string, simulation_id
+        filename_O = string, filename for export"""
+        data_O = [];
+        for simulation_id in simulation_ids_I:
+            data_tmp =[];
+            data_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerFittedMeasuredFragments(simulation_id);
+            data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O)
+    def export_data_stage02_isotopomer_fittedData_csv(self,simulation_ids_I,filename_O):
+        """export data_stage02_isotopomer_fittedData
+        INPUT:
+        simulation_id_I = [] of string, simulation_id
+        filename_O = string, filename for export"""
+        data_O = [];
+        for simulation_id in simulation_ids_I:
+            data_tmp =[];
+            data_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerFittedData(simulation_id);
+            data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+
+    def export_data_stage02_isotopomer_fittedNetFluxes_csv(self,simulation_ids_I,filename_O):
+        """export data_stage02_isotopomer_fittedNetFluxes
+        INPUT:
+        simulation_id_I = [] of string, simulation_id
+        filename_O = string, filename for export"""
+        data_O = [];
+        for simulation_id in simulation_ids_I:
+            data_tmp =[];
+            data_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerfittedNetFluxes(simulation_id);
+            data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+    def export_data_stage02_isotopomer_fittedNetFluxStatistics_csv(self,simulation_ids_I,filename_O,flux_units_I=[]):
+        """export data_stage02_isotopomer_fittedNetFluxStatistics
+        INPUT:
+        simulation_id_I = [] of string, simulation_id
+        filename_O = string, filename for export"""
+        data_O = [];
+        for simulation_id in simulation_ids_I:
+            if flux_units_I:
+                for flux_units in flux_units_I:
+                    data_tmp =[];
+                    data_tmp = self.stage02_isotopomer_query.get_rows_simulationIDAndFluxUnits_dataStage02IsotopomerFittedNetFluxStatistics(simulation_id,flux_units);
+                    data_O.extend(data_tmp);
+            else:
+                data_tmp =[];
+                data_tmp = self.stage02_isotopomer_query.get_rows_simulationID_dataStage02IsotopomerFittedNetFluxStatistics(simulation_id);
+                data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+
+
+    def export_data_stage02_isotopomer_measuredFragments_csv(self,experiment_ids_I,sample_name_abbreviations_I,filename_O,time_points_I=[]):
+        """export data_stage02_isotopomer_measuredFragments
+        INPUT:
+        experiment_ids_I = [] of string, experiment_id
+        sample_name_abbreviations_I = [] of string, sample_name_abbreviation
+        filename_O = string, filename for export
+        time_points_I = [] of strings, time_point"""
+        data_O = [];
+        for experiment_id in experiment_ids_I:
+            for sna in sample_name_abbreviations_I:
+                if time_points_I:
+                    for tp in time_points_I:
+                        data_tmp =[];
+                        data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviationAndTimePoint_dataStage02IsotopomerMeasuredFragments(experiment_id,sna,tp);
+                        data_O.extend(data_tmp);
+                else:
+                    data_tmp =[];
+                    data_tmp = self.stage02_isotopomer_query.get_row_experimentIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFragments(experiment_id,sna);
+                    data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+    def export_data_stage02_isotopomer_measuredFluxes_csv(self,experiment_ids_I,model_ids_I,sample_name_abbreviations_I,filename_O):
+        """export data_stage02_isotopomer_measuredFluxes
+        INPUT:
+        experiment_ids_I = [] of string, experiment_id
+        model_ids_I = [] of strings, model_id
+        sample_name_abbreviations_I = [] of string, sample_name_abbreviation
+        filename_O = string, filename for export
+        """
+        data_O = [];
+        for experiment_id in experiment_ids_I:
+            for model_id in model_ids_I:
+                for sna in sample_name_abbreviations_I:
+                    data_tmp =[];
+                    data_tmp = self.stage02_isotopomer_query.get_rows_experimentIDAndModelIDAndSampleNameAbbreviation_dataStage02IsotopomerMeasuredFluxes(experiment_id,model_id,sna);
+                    data_O.extend(data_tmp);
+        if data_O:
+            io = base_exportData(data_O);
+            io.write_dict2csv(filename_O);
+
+    

@@ -565,20 +565,6 @@ class stage02_quantification_execute(base_analysis):
                     #self.matplot.barPlot(data_plot_component_names[0],data_plot_sna,data_plot_sna[0],'samples',data_plot_mean,data_plot_var);
                     self.matplot.boxAndWhiskersPlot(data_plot_component_names[0],data_plot_sna,data_plot_sna[0],'samples',data_plot_data,data_plot_mean,data_plot_ci);
     # data_stage02_quantification initializations
-    def drop_dataStage02_quantification(self):
-        try:
-            data_stage02_quantification_glogNormalized.__table__.drop(engine,True);
-            data_stage02_quantification_anova.__table__.drop(engine,True);
-            data_stage02_quantification_pairWiseTest.__table__.drop(engine,True);
-            data_stage02_quantification_descriptiveStats.__table__.drop(engine,True);
-            data_stage02_quantification_pca_scores.__table__.drop(engine,True);
-            data_stage02_quantification_pca_loadings.__table__.drop(engine,True);
-            data_stage02_quantification_heatmap.__table__.drop(engine,True);
-            data_stage02_quantification_dendrogram.__table__.drop(engine,True);
-            #data_stage02_quantification_svm.__table__.drop(engine,True);
-            data_stage02_quantification_analysis.__table__.drop(engine,True);
-        except SQLAlchemyError as e:
-            print(e);
     def reset_dataStage02_quantification(self,analysis_id_I = None):
         try:
             if analysis_id_I:
@@ -690,6 +676,20 @@ class stage02_quantification_execute(base_analysis):
             data_stage02_quantification_dendrogram.__table__.create(engine,True);
             #data_stage02_quantification_svm.__table__.create(engine,True);
             data_stage02_quantification_analysis.__table__.create(engine,True);
+        except SQLAlchemyError as e:
+            print(e);
+    def drop_dataStage02_quantification(self):
+        try:
+            data_stage02_quantification_glogNormalized.__table__.drop(engine,True);
+            data_stage02_quantification_anova.__table__.drop(engine,True);
+            data_stage02_quantification_pairWiseTest.__table__.drop(engine,True);
+            data_stage02_quantification_descriptiveStats.__table__.drop(engine,True);
+            data_stage02_quantification_pca_scores.__table__.drop(engine,True);
+            data_stage02_quantification_pca_loadings.__table__.drop(engine,True);
+            data_stage02_quantification_heatmap.__table__.drop(engine,True);
+            data_stage02_quantification_dendrogram.__table__.drop(engine,True);
+            #data_stage02_quantification_svm.__table__.drop(engine,True);
+            data_stage02_quantification_analysis.__table__.drop(engine,True);
         except SQLAlchemyError as e:
             print(e);
     #TODO
