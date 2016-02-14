@@ -1047,7 +1047,7 @@ class stage03_quantification_execute():
         '''exports thermodynamic data for visualization using escher'''
 
         print('execute_visualizeThermodynamicStates')
-    def execute_makeEstimatedFluxes(self,experimentID2IsotopomerSimulationID_I = {},sample_name_abbreviations_I = [],snaIsotopomer2snaPhysiology_I={}):
+    def execute_makeFluxomicsData(self,experimentID2IsotopomerSimulationID_I = {},sample_name_abbreviations_I = [],snaIsotopomer2snaPhysiology_I={}):
         '''Collect estimated flux data from data_stage02_istopomer_netFluxes for thermodynamic simulation'''
         return
 
