@@ -5,67 +5,25 @@ Systems Biochemistry as a Service
 Douglas McCloskey
 -----------------
 
-Analysis pipelines currently supported:
----------------------------------------
-LIMS:
-
-	a.	Documentation of wet-lab experiments
-	
-	b.	Sample extraction methods
-	
-	c.	Instrument acquisition methods and system suitability tests
-	
-	d.	Sample information and storage
-	
-	c.	Standards, calibrators, and internal standards information and storage
-	
-	e.	Biological material information and storage
-
-Quantification (i.e., Metabolomics)
-
-	1.	Batch QC/QA, quantification of analytes, biomass normalization, calculation of physiological ratios, and missing value imputation
-	
-	2.	Statistical and correlation analysis (e.g. PCA, ANOVA, etc.)
-	
-	3.	Thermodynamic analysis
-	
-	4.	Kinetic analysis
-
-Isotopomer (i.e., Fluxomics)
-
-	1.	Isotopomer deconvolution and isotopomer distribution calculations
-	
-	2.	Fluxomics
-
-Physiology (i.e., Phenomics)
-
-	1.	Calculation of growth rate and substrate uptake/secretion rates
-	
-	2.	Sampling and analysis of the solution space using constraint-based modeling
-
-adaptive laboratory evolution (ALE) (i.e., ALE experiment growth rate trajectories)
-
-	1.	Growth rate trajectory curve fitting and jump finding
-
-Resequencing (i.e., DNA population resequencing)
-
-	1.	parsing of breseq data, clonal and population mutation filtering, analysis of ALE population mutation lineages and end-point mutation frequencies
-	
-	2.	correlation analysis of mutations and physiological data
-
-Project organization:
+Project modules:
 ---------------------
-analysis/: analysis pipelines code
-
-data/: escher maps, cobra and fluxomics models, compound .mol files, postgresql initialization scripts, etc.
-
-models/: data models of the database written in the ORM (i.e., sqlalchemy)
-
-resources/: open-source and 3rd party dependencies and classes utilized in various analyses
-
-tests/: tests of the different analysis pipelines
-
-visualization/: webserver files used for data visualization
+SBaaS_ale
+SBaaS_base
+SBaaS_COBRA (porting from sbaas_v1...)
+SBaaS_dataPreProcessing (refactoring missing value and data normalization methods...)
+SBaaS_isotopomer
+SBaaS_LIMS
+SBaaS_MFA
+SBaaS_MASS (in development...)
+SBaaS_models
+SBaaS_physiology
+SBaaS_quantification
+SBaaS_resequencing
+SBaaS_rnasequencing
+SBaaS_statistics
+SBaaS_thermodynamics
+SBaaS_visualization
+SBaaS_webServer
 
 Analysis Pipeline software needs:
 ---------------------------------
@@ -79,11 +37,28 @@ Analysis Pipeline software needs:
 	
 	d.	flux estimate, parameter continuation, and monte-carlo sampling
 	
-2.	Peak viewing and peak integration software written outside of the vendor-specific/proprietary domain.  (expansion of data_stage01_quantification
-and data_stage01_isotopomer)
+2.	LC-MS raw data processing and integration software 
 
-3.	Direct integration with breseq
+	a. pre-processing:
+	
+		i. mass shift correction
+		ii. smoothing
+		iii. background removal (i.e., baseline reduction)
+		iv. de-spiking
+		v. mass defect filtering (MDF) to remove non-relevant background ions
+		vi. de-isotoping
+		
+	b. peak integration
+	
+		i. improved peak alignment and idenfication
+		ii. improved peak integration algorithms based on machine learning techniques
+		
+3.	Expansion of the toolbox of statistical methods and algorithms to more advanced machine learning algorithms including neural networks and simulated annealing.  
 
-4.	Web-UI for data analysis beyond only data visualization using [ddt](https://github.com/dmccloskey/ddt.git) (currently in progress...)
+4.	Improved user-friendly web-interface for data processing and analysis using [ddt](https://github.com/dmccloskey/ddt.git) (currently in progress...)
 
-5.  Modular database and pipeline deployment via the ORM (currently in progress...)
+5.	Integration with additional open-source sequencing alignment and annotation utilities
+
+6.	Integration with the MASS toolbox and other Kinetic modelling packages
+
+7.	Improved database security and SSH

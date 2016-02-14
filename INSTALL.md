@@ -17,7 +17,7 @@ Getting started:
 	
 	c.	C:\path_to_posgresql\PostgreSQL\9.3\bin\psql -h localhost -p 5432 -f C:\path_to_github\GitHub\sbaas\sbaas\data\postgresql\ansi\initialize_data_stage00_sbaas.sql sbaas postgres
 
-3.	Define the local user settings in the file data/sbaas_settings for use by the ORM
+3.	Define the local user settings in the file settings.ini
 
 4.	Run one or multiple of the desired tests provided
 
