@@ -1,0 +1,10 @@
+sbaas:
+  build: .
+  ports:
+  - "8080:8080"
+  volumns:
+  - .:/workspace
+  links:
+  - database
+database:
+  image: postgres
