@@ -1,10 +1,17 @@
-sbaas:
-  build: .
-  ports:
-  - "8080:8080"
-  volumns:
-  - .:/workspace
-  links:
-  - database
-database:
-  image: postgres
+version: '2'
+services:
+	sbaas:
+		image: dmccloskey/sbaas:latest
+		ports:
+		- "8080:8080"
+		depends_on:
+	database
+		-workspace
+	volume:
+		- .:/workspace
+		links:
+		- database
+	database:
+		image: postgres
+	workspace:
+		image: postgres
