@@ -24,3 +24,4 @@ do
 	unzip $GIT_BRANCH.zip
 	mv $GIT_REPO-$GIT_BRANCH $GIT_REPO
 	rm $GIT_BRANCH.zip
+done

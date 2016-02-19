@@ -37,5 +37,17 @@ RUN env --unset=GIT_USERNAME \
 	&& env --unset=GIT_REPOS
 	
 EXPOSE 8080
+
+# Create workspace directories
+RUN mkdir /home/user/workspace_notebooks \
+	&& mkdir /home/user/workspace_data \
+	&& mkdir /home/user/workspace_data/_input \
+	&& mkdir /home/user/workspace_data/_output \
+	&& mkdir /home/user/workspace_data/models \
+	&& mkdir /home/user/visualization_data \
+	&& mkdir /home/user/visualization_resources \
+	&& mkdir /home/user/postgresql \
+	&& mkdir /home/user/settings
+	
 WORKDIR $HOME
 USER user
