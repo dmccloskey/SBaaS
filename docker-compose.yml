@@ -1,44 +1,43 @@
 version: '2'
 services:
-	metabolomics:
-		environment::
-			POSTGRES_PASSWORD:dmccloskey
-			POSTGRES_USER:dmccloskey
-			PGDATA:/varlib/posgresql/data/metabolomics 
-			POSTGRES_DB:metabolomics
-		networks:
-			-sbaas_network
-		volumes:
-			pgdata:/var/lib/postgresql/data/dumps/metabolomics.backup
-			pgentry:/docker-entrypoint-initdb.d/restore_metabolomics.sh
-	sbaas:
-		image: dmccloskey/sbaas:latest
-		ports:
-		- "8080:8080"
-		networks:
-			-sbaas_network
-		volumes:
-			settings:/home/user/settings/settings_metabolomics_docker.ini
-			visualization_resources:/home/user/visualization_resources/
+  metabolomics:
+    environment::
+      POSTGRES_PASSWORD:dmccloskey
+      POSTGRES_USER:dmccloskey
+      PGDATA:/varlib/posgresql/data/metabolomics 
+      POSTGRES_DB:metabolomics
+    networks:
+      - sbaas_network
+    volumes:
+      pgdata:/var/lib/postgresql/data/dumps/metabolomics.backup
+      pgentry:/docker-entrypoint-initdb.d/restore_metabolomics.sh
+  sbaas:
+    image: dmccloskey/sbaas:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - sbaas_network
+    volumes:
+      settings:/home/user/settings/settings_metabolomics_docker.ini
+      visualization_resources:/home/user/visualization_resources/
 volumes:
-	settings:
-		external:
-			name: ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini
-	visualization_resources:
-		external:
-			name: ~/Documents/Dockerbuild/visualization_resources/
-	pgdata:
-		external:
-			name: ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup
-	pgentry
-		external:
-			name: ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh
-	
+  settings:
+    external:
+      name: ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini
+  visualization_resources:
+    external:
+      name: ~/Documents/Dockerbuild/visualization_resources/
+  pgdata:
+    external:
+      name: ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup
+  pgentry
+    external:
+      name: ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh
 network:
-	sbaas_network:
-		driver: bridge
-		ipam:
-			driver: bridge
-			config:
-				- subnet: 172.22.0.0/16
-				  gateway: 172.22.0.1
+  sbaas_network:
+    driver: bridge
+    ipam:
+      driver: bridge
+      config:
+        - subnet: 172.22.0.0/16
+          gateway: 172.22.0.1
