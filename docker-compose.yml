@@ -1,16 +1,20 @@
-version: '2'
+version: "2"
+
 services:
   metabolomics:
-    environment::
-      POSTGRES_PASSWORD:dmccloskey
-      POSTGRES_USER:dmccloskey
-      PGDATA:/varlib/posgresql/data/metabolomics 
-      POSTGRES_DB:metabolomics
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=dmccloskey
+      - POSTGRES_USER=dmccloskey
+#      - PGDATA=/home/user/posgresql/data 
+      - POSTGRES_DB=metabolomics
     networks:
       - sbaas_network
     volumes:
-      pgdata:/var/lib/postgresql/data/dumps/metabolomics.backup
-      pgentry:/docker-entrypoint-initdb.d/restore_metabolomics.sh
+      - ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup:/home/user/postgresql/dumps/metabolomics.backup
+      - ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh:/docker-entrypoint-initdb.d/restore_metabolomics.sh
+#      - pgdata:/var/lib/postgresql/data/dumps/metabolomics.backup
+#      - pgentry:/docker-entrypoint-initdb.d/restore_metabolomics.sh
   sbaas:
     image: dmccloskey/sbaas:latest
     ports:
@@ -18,26 +22,28 @@ services:
     networks:
       - sbaas_network
     volumes:
-      settings:/home/user/settings/settings_metabolomics_docker.ini
-      visualization_resources:/home/user/visualization_resources/
-volumes:
-  settings:
-    external:
-      name: ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini
-  visualization_resources:
-    external:
-      name: ~/Documents/Dockerbuild/visualization_resources/
-  pgdata:
-    external:
-      name: ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup
-  pgentry
-    external:
-      name: ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh
-network:
+      - ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini
+      - ~/Documents/Dockerbuild/visualization_resources/:/home/user/visualization_resources/
+#      - settings:/home/user/settings/settings_metabolomics_docker.ini
+#      - visualization_resources:/home/user/visualization_resources/
+
+#volumes:
+#  settings:
+#    external:
+#      name: ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini
+#  visualization_resources:
+#    external:
+#      name: ~/Documents/Dockerbuild/visualization_resources/
+#  pgdata:
+#    external:
+#      name: ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup
+#  pgentry:
+#    external:
+#      name: ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh
+
+networks:
   sbaas_network:
-    driver: bridge
     ipam:
-      driver: bridge
       config:
         - subnet: 172.22.0.0/16
           gateway: 172.22.0.1
