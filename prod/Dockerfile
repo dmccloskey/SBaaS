@@ -21,9 +21,8 @@ ENV GIT_REPOS component-contribution ddt_python genomeScale_MFA genomeScale_MFA_
 
 # Install SBaaS modules from github
 USER root
-WORKDIR /usr/local
-RUN mkdir SBaaS
-WORKDIR /usr/local/SBaaS
+RUN mkdir /usr/local/lib/SBaaS
+WORKDIR /usr/local/lib/SBaaS
 
 COPY scripts/git_download.sh scripts/git_download.sh
 RUN /bin/bash -c 'source scripts/git_download.sh ${GIT_USERNAME} ${GIT_PASSWORD} ${GIT_BRANCH} ${GIT_ACCOUNT} ${GIT_REPOS};'
@@ -51,3 +50,14 @@ RUN mkdir /home/user/workspace_notebooks \
 	
 WORKDIR $HOME
 USER user
+
+ENTRYPOINT ["python","/usr/local/lib/SBaaS/SBaaS_webServer/template_scripts/run_webServer.py"]
+
+#docker run -p 8080:8080 \
+#	-v ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini \
+#	-v ~/Documents/Dockerbuild/visualization_resources/:/home/user/visualization_resources/ \
+#	--name=sbaas \
+#	--net=sbaas_network \
+#	#--ip=172.22.0.3 \
+#	-it dmccloskey/sbaas bash
+#python /usr/local/lib/SBaaS/SBaaS_webServer/template_scripts/run_webServer.py
