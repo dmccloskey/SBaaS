@@ -10,22 +10,32 @@ services:
       - POSTGRES_DB=metabolomics
     networks:
       - sbaas_network
-    volumes:
-      - ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup:/home/user/postgresql/dumps/metabolomics.backup
-      - ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh:/docker-entrypoint-initdb.d/restore_metabolomics.sh
-#      - pgdata:/var/lib/postgresql/data/dumps/metabolomics.backup
-#      - pgentry:/docker-entrypoint-initdb.d/restore_metabolomics.sh
+    volumes_from:
+      - sbaas_data:rw
   sbaas:
     image: dmccloskey/sbaas:latest
     ports:
       - "8080:8080"
     networks:
       - sbaas_network
+    volumes_from:
+      - sbaas_workspace:rw
+  sbaas_data:
+    image: postgres:latest
+    networks:
+      - sbaas_network
+    volumes:
+      - ~/Documents/Dockerbuild/postgresql/dumps/metabolomics_160212a.backup:/home/user/postgresql/dumps/metabolomics.backup
+      - ~/Documents/Dockerbuild/postgresql/scripts/restore_metabolomics.sh:/docker-entrypoint-initdb.d/restore_metabolomics.sh
+    entrypoint: /bin/bash
+  sbaas_workspace:
+    image: dmccloskey/sbaas:latest
+    networks:
+      - sbaas_network
     volumes:
       - ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini
       - ~/Documents/Dockerbuild/visualization_resources/:/home/user/visualization_resources/
-#      - settings:/home/user/settings/settings_metabolomics_docker.ini
-#      - visualization_resources:/home/user/visualization_resources/
+    entrypoint: /bin/bash
 
 #volumes:
 #  settings:
