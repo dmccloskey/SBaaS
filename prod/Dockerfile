@@ -11,10 +11,10 @@ MAINTAINER Douglas McCloskey <dmccloskey87@gmail.com
 USER root
 
 # Set several environmental variables that will be later removed
-ENV GIT_USERNAME \
-	GIT_PASSWORD \
-	GIT_ACCOUNT \
-	GIT_BRANCH
+ENV GIT_USERNAME=dmccloskey \
+	GIT_PASSWORD=18dglass \
+	GIT_ACCOUNT=dmccloskey \
+	GIT_BRANCH=master
 ENV GIT_REPOS component-contribution ddt_python genomeScale_MFA genomeScale_MFA_INCA genomeScale_MFA_model io_utilities listDict matplotlib_utilities MDV_utilities molmass MS_utilities physiology_analysis python_statistics quantification_analysis r_statistics SBaaS_ale SBaaS_base SBaaS_COBRA SBaaS_database SBaaS_dataPreProcessing SBaaS_isotopomer SBaaS_LIMS SBaaS_MFA SBaaS_models SBaaS_physiology SBaaS_quantification SBaaS_resequencing SBaaS_rnasequencing SBaaS_statistics SBaaS_thermodynamics SBaaS_visualization SBaaS_webServer sequencing_analysis sequencing_utilities thermodynamics
 
 #curl -sL --user "${GIT_USERNAME}:${GIT_PASSWORD}" https://github.com/$account/$repo/tarball/$tag_name > tarball.tar
