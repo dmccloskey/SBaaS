@@ -15,7 +15,7 @@ ENV GIT_USERNAME=dmccloskey \
 	GIT_PASSWORD=18dglass \
 	GIT_ACCOUNT=dmccloskey \
 	GIT_BRANCH=master
-ENV GIT_REPOS component-contribution ddt_python genomeScale_MFA genomeScale_MFA_INCA genomeScale_MFA_model io_utilities listDict matplotlib_utilities MDV_utilities molmass MS_utilities physiology_analysis python_statistics quantification_analysis r_statistics SBaaS_ale SBaaS_base SBaaS_COBRA SBaaS_database SBaaS_dataPreProcessing SBaaS_isotopomer SBaaS_LIMS SBaaS_MFA SBaaS_models SBaaS_physiology SBaaS_quantification SBaaS_resequencing SBaaS_rnasequencing SBaaS_statistics SBaaS_thermodynamics SBaaS_visualization SBaaS_webServer sequencing_analysis sequencing_utilities thermodynamics
+ENV GIT_REPOS component-contribution ddt_python genomeScale_MFA genomeScale_MFA_INCA genomeScale_MFA_model io_utilities listDict matplotlib_utilities MDV_utilities molmass MS_utilities physiology_analysis python_statistics quantification_analysis r_statistics SBaaS_ale SBaaS_base SBaaS_COBRA SBaaS_database SBaaS_isotopomer SBaaS_LIMS SBaaS_MFA SBaaS_models SBaaS_physiology SBaaS_quantification SBaaS_resequencing SBaaS_rnasequencing SBaaS_statistics SBaaS_thermodynamics SBaaS_visualization SBaaS_webServer sequencing_analysis sequencing_utilities thermodynamics
 
 #curl -sL --user "${GIT_USERNAME}:${GIT_PASSWORD}" https://github.com/$account/$repo/tarball/$tag_name > tarball.tar
 
@@ -55,10 +55,10 @@ USER user
 ENTRYPOINT ["python","/usr/local/lib/SBaaS/SBaaS_webServer/template_scripts/run_webServer.py"]
 
 #docker run -p 8080:8080 \
-#	-v ~/Documents/Dockerbuild/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini \
-#	-v ~/Documents/Dockerbuild/visualization_resources/:/home/user/visualization_resources/ \
+#	-v /Documents/Dockerbuild/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini \
+#	-v /Documents/Dockerbuild/visualization_resources/:/home/user/visualization_resources/ \
 #	--name=sbaas \
-#	--net=sbaas_network \
+#	#--net=sbaas_network \
 #	#--ip=172.22.0.3 \
 #	-it dmccloskey/sbaas bash
-#python /usr/local/lib/SBaaS/SBaaS_webServer/template_scripts/run_webServer.py
+#python /usr/local/lib/SBaaS/SBaaS_webServer/template_scripts/run_webServer_docker.py
