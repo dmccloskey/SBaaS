@@ -43,15 +43,15 @@ VOLUME /home/user/workspace_notebooks \
 	/home/user/settings
 	
 # Add the script for running ipython notebooks
-WORKDIR /home/user/workspace/workspace_notebooks
-ADD scripts/run_ipython.sh /home/user/workspace/workspace_notebooks/run_ipython.sh
+WORKDIR /home/user/workspace_notebooks
+ADD scripts/run_ipython.sh /home/user/workspace_notebooks/run_ipython.sh
 
 EXPOSE 8888
 
-WORKDIR $HOME/workspace/workspace_notebooks
+WORKDIR $HOME/workspace_notebooks
 USER user
 
-ENTRYPOINT ["bash","/home/user/workspace/workspace_notebooks/run_ipython.sh"]
+ENTRYPOINT ["bash","/home/user/workspace_notebooks/run_ipython.sh"]
 #docker run -p 8888:8888 -v /home/douglas/Documents/Dockerbuild_sbaas/settings/settings_metabolomics_docker.ini:/home/user/settings/settings_metabolomics_docker.ini -v /home/douglas/Documents/Dockerbuild_sbaas/visualization_resources/:/home/user/visualization_resources/ --name=sbaas --user=root -it -e "PASSWORD=metabolomics" dmccloskey/sbaas
 #	#--net=sbaas_network \
 #	#--ip=172.22.0.3 \
